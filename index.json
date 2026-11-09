@@ -1,0 +1,60 @@
+{
+ "schema_version": "0.2.0",
+ "generated_at": "2026-11-09T00:00:00+08:00",
+ "name": "card-offer master list",
+ "license": {
+  "id": "CC-BY-4.0",
+  "name": "Creative Commons Attribution 4.0 International",
+  "url": "https://creativecommons.org/licenses/by/4.0/",
+  "file": "LICENSE"
+ },
+ "countries": {
+  "MY": {
+   "cards": 186,
+   "offers": 542,
+   "merchants": 399,
+   "issuers": 18,
+   "path": "/my/"
+  },
+  "SG": {
+   "cards": 114,
+   "offers": 993,
+   "merchants": 667,
+   "issuers": 16,
+   "path": "/sg/"
+  }
+ },
+ "files_per_country": [
+  "cards.json",
+  "offers.json",
+  "merchants.json",
+  "issuers.json",
+  "index/by_merchant.json",
+  "index/by_card.json",
+  "index/by_issuer.json",
+  "index/by_network.json",
+  "index/by_category.json",
+  "index/by_country.json",
+  "index/by_benefit_type.json",
+  "index/by_tier.json"
+ ],
+ "global_indexes": [
+  "global/by_network.json",
+  "global/by_category.json",
+  "global/by_benefit_type.json",
+  "global/by_tier.json",
+  "global/by_country.json",
+  "global/by_merchant_name.json"
+ ],
+ "schemas": [
+  "card.schema.json",
+  "cards-file.schema.json",
+  "index.schema.json",
+  "issuer.schema.json",
+  "issuers-file.schema.json",
+  "merchant.schema.json",
+  "merchants-file.schema.json",
+  "offer.schema.json",
+  "offers-file.schema.json"
+ ]
+}

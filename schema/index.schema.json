@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://card-offer.github.io/master-list/schema/index.schema.json",
+  "title": "Lookup index",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "key",
+    "generated_at",
+    "entries"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "key": {
+      "type": "string"
+    },
+    "country": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "entries": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "card_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "offer_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "merchant_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "issuer_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

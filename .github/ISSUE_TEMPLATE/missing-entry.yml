@@ -1,0 +1,55 @@
+name: Missing card or offer
+description: A card or offer that is not in the list.
+title: "[Missing] "
+labels: ["missing-entry"]
+body:
+  - type: markdown
+    attributes:
+      value: "Offers are published only when an official source states an end date."
+  - type: dropdown
+    id: country
+    attributes:
+      label: Country
+      options:
+        - MY
+        - SG
+    validations:
+      required: true
+  - type: input
+    id: issuer
+    attributes:
+      label: Issuer
+      description: The bank or card issuer.
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Card or offer name
+      description: As written on the official page.
+    validations:
+      required: true
+  - type: input
+    id: source_url
+    attributes:
+      label: Official source URL
+      description: The issuer, network or merchant page, or the offer's T&C document.
+      placeholder: https://
+    validations:
+      required: true
+  - type: input
+    id: start_date
+    attributes:
+      label: Start date
+      description: "As stated in the T&C, YYYY-MM-DD. Leave blank if not stated."
+      placeholder: YYYY-MM-DD
+    validations:
+      required: false
+  - type: input
+    id: end_date
+    attributes:
+      label: End date
+      description: "As stated in the T&C, YYYY-MM-DD. Required for offers."
+      placeholder: YYYY-MM-DD
+    validations:
+      required: false

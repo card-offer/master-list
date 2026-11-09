@@ -1,0 +1,28 @@
+name: Issuer submission
+description: For banks and card issuers sharing their official offer feed or pages.
+title: "[Issuer] "
+labels: ["issuer-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: "We list only data from official sources. Your submission is reviewed by the maintainer before anything is added."
+  - type: input
+    id: bank_name
+    attributes:
+      label: Bank name
+    validations:
+      required: true
+  - type: input
+    id: work_email
+    attributes:
+      label: Work email
+      description: An address on the bank's own domain, so we can confirm the submission.
+    validations:
+      required: true
+  - type: textarea
+    id: feed_urls
+    attributes:
+      label: Offer feed or page URLs
+      description: One URL per line. Official promotion hubs, offer feeds (JSON, XML, CSV) or T&C pages.
+    validations:
+      required: true

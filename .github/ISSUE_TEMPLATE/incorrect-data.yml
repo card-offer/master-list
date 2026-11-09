@@ -1,0 +1,44 @@
+name: Incorrect data
+description: A value on a card or offer is wrong.
+title: "[Incorrect data] "
+labels: ["incorrect-data"]
+body:
+  - type: markdown
+    attributes:
+      value: "Please cite an official bank, card network or merchant page. Reports without an official source cannot be accepted."
+  - type: input
+    id: record_id
+    attributes:
+      label: Card or offer ID
+      description: "The `id` value, for example my-cimb-cash-rebate-platinum-credit-card."
+    validations:
+      required: true
+  - type: input
+    id: field
+    attributes:
+      label: Field
+      description: "The field name, for example end_date or annual_fee.amount."
+    validations:
+      required: true
+  - type: textarea
+    id: current_value
+    attributes:
+      label: Current value
+      description: What the list says now.
+    validations:
+      required: true
+  - type: textarea
+    id: correct_value
+    attributes:
+      label: Correct value
+      description: What the official source says.
+    validations:
+      required: true
+  - type: input
+    id: source_url
+    attributes:
+      label: Official source URL
+      description: A page or T&C document on the issuer, network or merchant site.
+      placeholder: https://
+    validations:
+      required: true

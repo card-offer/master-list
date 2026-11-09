@@ -1,0 +1,8124 @@
+{
+ "schema_version": "0.2.0",
+ "country": "SG",
+ "generated_at": "2026-11-09T00:00:00+08:00",
+ "count": 667,
+ "items": [
+  {
+   "id": "sg-refer-a-friend",
+   "name": "Refer a Friend",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-citi-refer-a-friend-credit-card-referral-program"
+   ]
+  },
+  {
+   "id": "my-tomei",
+   "name": "TOMEI",
+   "aliases": [
+    "Tomei"
+   ],
+   "country": "MY",
+   "categories": [
+    "fashion"
+   ],
+   "offer_ids": [
+    "my-alliance-enjoy-30-off-normal-priced-of-diamond-jewellery-at-tomei",
+    "my-bank-islam-tomei-card-promotion",
+    "my-hsbc-tomei-30-off",
+    "sg-uob-tomei-30-off-normal-priced-diamond-jewellery"
+   ]
+  },
+  {
+   "id": "sg-global-dining",
+   "name": "Global Dining",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-amex-the-platinum-card-s-200-global-dining-credit"
+   ]
+  },
+  {
+   "id": "sg-wine",
+   "name": "Wine",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-amex-the-platinum-card-s-400-platinum-wine-credit"
+   ]
+  },
+  {
+   "id": "sg-golf",
+   "name": "Golf",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "entertainment"
+   ],
+   "offer_ids": [
+    "sg-amex-the-platinum-card-regional-golf-programme-complimentary-green-fees"
+   ]
+  },
+  {
+   "id": "sg-0-fees",
+   "name": "0% fees",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-dbs-split-bills-into-3-payments-at-0-fees"
+   ]
+  },
+  {
+   "id": "sg-s-8-every-wed",
+   "name": "S$8 every Wed",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-dbs-50-off-capped-at-s-8-every-wed",
+    "sg-posb-50-off-purchases-capped-at-s-8-every-wed-with-dbs-chromo-card"
+   ]
+  },
+  {
+   "id": "sg-11-11-mega-sale",
+   "name": "11.11 Mega Sale",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-dbs-11-11-mega-sale-up-to-s-220-off-flights-hotels-china-exclusive-deals-and-mor",
+    "sg-posb-11-11-mega-sale-up-to-s-220-off-flights-hotels-china-exclusive-deals-and-mo"
+   ]
+  },
+  {
+   "id": "sg-oct-exclusive",
+   "name": "Oct Exclusive",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-dbs-oct-exclusive-up-to-s-110-off-sitewide-bookings-and-more",
+    "sg-posb-oct-exclusive-up-to-s-110-off-sitewide-bookings-and-more"
+   ]
+  },
+  {
+   "id": "sg-nov-mega-sale",
+   "name": "Nov Mega Sale",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-dbs-nov-mega-sale-up-to-60-off-plus-additional-15-off-hotel-bookings",
+    "sg-posb-nov-mega-sale-up-to-60-off-plus-additional-15-off-hotel-bookings"
+   ]
+  },
+  {
+   "id": "sg-s-40-every-tue",
+   "name": "S$40 every Tue",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-dbs-50-off-selected-destinations-capped-at-s-40-every-tue"
+   ]
+  },
+  {
+   "id": "sg-s-100-every-tue",
+   "name": "S$100 every Tue",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-dbs-50-off-flights-capped-at-s-100-every-tue"
+   ]
+  },
+  {
+   "id": "sg-s-60-every-tue",
+   "name": "S$60 every Tue",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-dbs-50-off-hotels-capped-at-s-60-every-tue"
+   ]
+  },
+  {
+   "id": "sg-the-meat-club",
+   "name": "The Meat Club",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-dbs-enjoy-up-to-s-20-off-sitewide-at-the-meat-club",
+    "sg-posb-enjoy-up-to-s-20-off-sitewide-at-the-meat-club"
+   ]
+  },
+  {
+   "id": "sg-little-farms",
+   "name": "Little Farms",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-dbs-get-s-10-off-s-150-spend-at-little-farms",
+    "sg-posb-get-s-10-off-s-150-spend-at-little-farms"
+   ]
+  },
+  {
+   "id": "sg-enjoy-up-to-s-6-off-on-weekends",
+   "name": "Enjoy up to S$6 off on weekends",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-dbs-enjoy-up-to-s-6-off-on-weekends-dbs-singapore"
+   ]
+  },
+  {
+   "id": "sg-enjoy-s-576-off-any-phones",
+   "name": "Enjoy S$576 off any phones",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "electronics"
+   ],
+   "offer_ids": [
+    "sg-dbs-enjoy-s-576-off-any-phones-dbs-singapore"
+   ]
+  },
+  {
+   "id": "sg-dconvert-0-fee-campaign",
+   "name": "DConvert 0% Fee Campaign",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-dcs-dconvert-0-fee-campaign-dcs-card-centre"
+   ]
+  },
+  {
+   "id": "sg-dcs-november-exclusive",
+   "name": "DCS November Exclusive",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-dcs-dcs-november-exclusive-extra-2-cashback-on-lazada"
+   ]
+  },
+  {
+   "id": "sg-shopee",
+   "name": "Shopee",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-dcs-shopee-11-11-big-sale"
+   ]
+  },
+  {
+   "id": "sg-dcs-ultimate-platinum-mastercard-exclusive",
+   "name": "DCS Ultimate Platinum Mastercard Exclusive",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-dcs-dcs-ultimate-platinum-mastercard-exclusive-travel-cashback-promotion"
+   ]
+  },
+  {
+   "id": "sg-unionpay-exclusive",
+   "name": "UnionPay Exclusive",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-dcs-unionpay-exclusive-s-5-off-on-grabrides"
+   ]
+  },
+  {
+   "id": "sg-ihg-hotels",
+   "name": "IHG Hotels",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-dcs-ihg-hotels-mainland-china"
+   ]
+  },
+  {
+   "id": "sg-shangri-la-singapore",
+   "name": "Shangri-La Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-hsbc-shangri-la-singapore-the-line"
+   ]
+  },
+  {
+   "id": "sg-trip-com",
+   "name": "Trip.com",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel",
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-hsbc-trip-com-s-50-off-hotel-bookings-with-a-minimum-spend-of-s-500",
+    "sg-hsbc-trip-com-hsbc-travelone-credit-card-exclusive-s-120-off-flight-with-s-1-000",
+    "sg-ocbc-trip-com-up-to-s-100-off-with-a-min-spend",
+    "sg-ocbc-trip-com-up-to-s-120-off-with-a-min-spend-on-flights-and-hotels-valid-on-ev",
+    "sg-standard-chartered-trip-com-enjoy-up-to-100-off-min-spend-of-1-000-for-flights-a",
+    "sg-standard-chartered-trip-com-enjoy-up-to-8-off-hotel-bookings-and-3-off-flights-w"
+   ]
+  },
+  {
+   "id": "sg-expedia",
+   "name": "Expedia",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-hsbc-expedia-enjoy-9-off-selected-hotels",
+    "sg-hsbc-expedia-enjoy-12-off-selected-hotels-with-minimum-spend-above-s-600-excludi",
+    "sg-hsbc-expedia-8-off-selected-hotel-bookings",
+    "sg-standard-chartered-expedia-up-to-8-off-bookings-at-eligible-hotels-and-more"
+   ]
+  },
+  {
+   "id": "sg-golden-village",
+   "name": "Golden Village",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "entertainment"
+   ],
+   "offer_ids": [
+    "sg-hsbc-golden-village-s-2-off-movie-tickets-everyday-including-gold-class-on-www-g"
+   ]
+  },
+  {
+   "id": "sg-eva-air",
+   "name": "EVA Air",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other",
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-hsbc-eva-air-up-to-7-off-up-fares-and-up-to-5-off-regular-base-fares",
+    "sg-ocbc-eva-air-up-to-7-off-airfare",
+    "sg-standard-chartered-eva-air-enjoy-up-to-7-off-airfares-with-standard-chartered-ca"
+   ]
+  },
+  {
+   "id": "sg-shopee-new-customers",
+   "name": "Shopee (New Customers)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-hsbc-shopee-new-customers-new-customers-offer-s-15-off-with-no-minimum-spend"
+   ]
+  },
+  {
+   "id": "sg-sp-mobility-spm",
+   "name": "SP Mobility (SPM)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "ev_charging",
+    "other"
+   ],
+   "offer_ids": [
+    "sg-hsbc-sp-mobility-spm-not-a-hsbc-credit-cardholder-apply-now-to-receive-s-300-wor",
+    "sg-hsbc-sp-mobility-spm-new-to-sp-mobility-spm-users-50-cashback-on-your-first-tran"
+   ]
+  },
+  {
+   "id": "sg-the-fullerton-hotel-singapore",
+   "name": "The Fullerton Hotel Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-hsbc-the-fullerton-hotel-singapore-jade-15-off-a-la-carte-food-bill-daily"
+   ]
+  },
+  {
+   "id": "sg-helloride",
+   "name": "HelloRide",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-hsbc-helloride-free-30-mins-pass-with-min-s-10-top-up-to-your-helloride-wallet"
+   ]
+  },
+  {
+   "id": "sg-s-55",
+   "name": "S$55)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-hsbc-expedia-16-off-selected-hotel-bookings-worldwide-capped-at-s-55"
+   ]
+  },
+  {
+   "id": "sg-chang-korean-bbq",
+   "name": "Chang Korean BBQ",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "cafe"
+   ],
+   "offer_ids": [
+    "sg-hsbc-chang-korean-bbq-complimentary-dessert-with-minimum-spend-of-s-100-nett"
+   ]
+  },
+  {
+   "id": "sg-w-singapore",
+   "name": "W Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-icbc-be-rewarded-with-2d1n-staycation-at-w-singapore-sentosa-cove-cable-car-dini"
+   ]
+  },
+  {
+   "id": "sg-transactions-made-in-mainland-china",
+   "name": "transactions made in Mainland China",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-icbc-up-to-5-cashback-on-transactions-made-in-mainland-china-with-icbc-unionpay-"
+   ]
+  },
+  {
+   "id": "sg-mbs",
+   "name": "MBS",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-icbc-mbs-complimentary-sands-rewards-lifestyle-elite-membership"
+   ]
+  },
+  {
+   "id": "sg-shopee-singapore",
+   "name": "Shopee Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-icbc-enjoy-s-8-voucher-off-with-icbc-mastercard-credit-cards-at-shopee-singapore"
+   ]
+  },
+  {
+   "id": "sg-the-kitchen-table-w-singapore",
+   "name": "the kitchen table, W Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-maybank-the-kitchen-table-w-singapore-sentosa-cove"
+   ]
+  },
+  {
+   "id": "sg-anti",
+   "name": "ANTI",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-maybank-4-elements-at-anti-dote-fairmont-singapore"
+   ]
+  },
+  {
+   "id": "sg-subang-airport",
+   "name": "Subang Airport",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-maybank-exclusive-access-to-skylounge-and-skylounge-xpress-at-subang-airport"
+   ]
+  },
+  {
+   "id": "sg-away-spa-w-singapore",
+   "name": "AWAY Spa, W Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "beauty"
+   ],
+   "offer_ids": [
+    "sg-maybank-away-spa-w-singapore-sentosa-cove"
+   ]
+  },
+  {
+   "id": "sg-bmf",
+   "name": "BMF",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "beauty"
+   ],
+   "offer_ids": [
+    "sg-maybank-bmf-the-aesthetics-people"
+   ]
+  },
+  {
+   "id": "sg-shaw-theatres",
+   "name": "Shaw Theatres",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "entertainment"
+   ],
+   "offer_ids": [
+    "sg-ocbc-shaw-theatres-s-1-off-and-more"
+   ]
+  },
+  {
+   "id": "sg-klook",
+   "name": "Klook",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-klook-7-off-with-a-min-spend-of-s-250-sitewide",
+    "sg-ocbc-klook-s-10-off-with-min-spend-on-every-wednesdays",
+    "sg-standard-chartered-klook-enjoy-up-to-10-off-sitewide"
+   ]
+  },
+  {
+   "id": "sg-agoda",
+   "name": "Agoda",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-agoda-10-off-on-hotel-bookings",
+    "sg-ocbc-agoda-10-off-hotel-bookings-capped-at-s-20-valid-on-every-wednesday",
+    "sg-standard-chartered-agoda-enjoy-up-to-16-instant-discount-on-hotel-bookings-world"
+   ]
+  },
+  {
+   "id": "sg-gardens-by-the-bay",
+   "name": "Gardens by the Bay",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "entertainment"
+   ],
+   "offer_ids": [
+    "sg-ocbc-gardens-by-the-bay-10-off-flower-dome-singapore-resident-admission-tickets"
+   ]
+  },
+  {
+   "id": "sg-foodline-sg",
+   "name": "FoodLine.sg",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-foodline-sg-up-to-s-40-off"
+   ]
+  },
+  {
+   "id": "sg-singapore-cable-car",
+   "name": "Singapore Cable Car",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-singapore-cable-car-25-off-online-and-on-site-purchases"
+   ]
+  },
+  {
+   "id": "sg-wings-of-time-fireworks-symphony",
+   "name": "Wings of Time Fireworks Symphony",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "entertainment"
+   ],
+   "offer_ids": [
+    "sg-ocbc-wings-of-time-fireworks-symphony-25-off-wings-of-time-fireworks-symphony-st"
+   ]
+  },
+  {
+   "id": "sg-skyhelix-sentosa",
+   "name": "SkyHelix Sentosa",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "entertainment"
+   ],
+   "offer_ids": [
+    "sg-ocbc-skyhelix-sentosa-25-off-skyhelix-sentosa"
+   ]
+  },
+  {
+   "id": "sg-sentosa-island-bus-tour",
+   "name": "Sentosa Island Bus Tour",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sentosa-island-bus-tour-25-off-sentosa-island-bus-tour"
+   ]
+  },
+  {
+   "id": "sg-gin-khao",
+   "name": "Gin Khao",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-gin-khao-1-for-1-gin-khao-rice-noodles-mon-fri-dinner-only"
+   ]
+  },
+  {
+   "id": "sg-thachang",
+   "name": "Thachang",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-thachang-up-to-15-off-a-la-carte-food"
+   ]
+  },
+  {
+   "id": "sg-watsons-online",
+   "name": "Watsons Online",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-watsons-online-s-8-off-min-spend-of-s-150-online"
+   ]
+  },
+  {
+   "id": "sg-guo-fu-hotpot",
+   "name": "Guo Fu Hotpot",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-guo-fu-hotpot-1-for-1-6-pcs-xiao-long-bao-at-s-11-90"
+   ]
+  },
+  {
+   "id": "sg-traveloka",
+   "name": "Traveloka",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-traveloka-up-to-8-off-bookings",
+    "sg-standard-chartered-traveloka-enjoy-up-to-8-off"
+   ]
+  },
+  {
+   "id": "sg-lumos-projector",
+   "name": "LUMOS Projector",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-lumos-projector-s-55-off-with-a-min-spend-of-s-200"
+   ]
+  },
+  {
+   "id": "sg-burma-social",
+   "name": "Burma Social",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-burma-social-up-to-15-off-a-la-carte-food",
+    "sg-standard-chartered-burma-social-enjoy-up-to-15-off-a-la-carte-food-with-your-sta"
+   ]
+  },
+  {
+   "id": "sg-complimentary-golf-benefit",
+   "name": "Complimentary Golf Benefit",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "entertainment"
+   ],
+   "offer_ids": [
+    "sg-ocbc-complimentary-golf-benefit-voyage-exclusive"
+   ]
+  },
+  {
+   "id": "sg-wang-lu-hot-pot",
+   "name": "Wang Lu Hot Pot",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-wang-lu-hot-pot-1-for-1-wagyu-ribeye-set"
+   ]
+  },
+  {
+   "id": "sg-tempura-tendon-tenya",
+   "name": "Tempura Tendon Tenya",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-tempura-tendon-tenya-complimentary-3-piece-ebi-tempura-with-a-min-spend-of-"
+   ]
+  },
+  {
+   "id": "sg-gim-tim",
+   "name": "Gim Tim",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-gim-tim-10-off-peking-duck"
+   ]
+  },
+  {
+   "id": "sg-sospiri",
+   "name": "Sospiri",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sospiri-up-to-15-off-a-la-carte-food"
+   ]
+  },
+  {
+   "id": "sg-nalan-restaurant",
+   "name": "Nalan Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-nalan-restaurant-up-to-15-off-a-la-carte-food",
+    "sg-standard-chartered-nalan-restaurant-enjoy-up-to-15-off-a-la-carte-food-with-your"
+   ]
+  },
+  {
+   "id": "sg-manam",
+   "name": "Manam",
+   "aliases": [
+    "MANAM"
+   ],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-manam-up-to-15-off-a-la-carte-food",
+    "sg-standard-chartered-manam-enjoy-up-to-15-off-a-la-carte-food-with-your-standard-c"
+   ]
+  },
+  {
+   "id": "sg-optik-seis",
+   "name": "Optik Seis",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-optik-seis-15-off-glasses-or-sunglasses"
+   ]
+  },
+  {
+   "id": "sg-china-airlines",
+   "name": "China Airlines",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-china-airlines-6-off-airfares-to-taiwan-japan-korea-and-north-america"
+   ]
+  },
+  {
+   "id": "sg-crystal-jade-hong-kong-kitchen",
+   "name": "Crystal Jade Hong Kong Kitchen",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-crystal-jade-hong-kong-kitchen-12-off-with-a-min-spend-of-s-80-on-a-la-cart"
+   ]
+  },
+  {
+   "id": "sg-crystal-jade-pavilion",
+   "name": "Crystal Jade Pavilion",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-crystal-jade-pavilion-12-off-with-a-min-spend-of-s-80-on-a-la-carte-food-it"
+   ]
+  },
+  {
+   "id": "sg-crystal-jade-golden-palace",
+   "name": "Crystal Jade Golden Palace",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-crystal-jade-golden-palace-12-off-with-a-min-spend-of-s-80-on-a-la-carte-fo"
+   ]
+  },
+  {
+   "id": "sg-crystal-jade-palace",
+   "name": "Crystal Jade Palace",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-crystal-jade-palace-12-off-with-a-min-spend-of-s-80-on-a-la-carte-food-item"
+   ]
+  },
+  {
+   "id": "sg-empire-chinese-cuisine",
+   "name": "Empire Chinese Cuisine",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-empire-chinese-cuisine-s-20-off-with-a-min-spend-of-s-100"
+   ]
+  },
+  {
+   "id": "sg-8-crabs",
+   "name": "8 Crabs",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-8-crabs-10-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-8-tacos",
+   "name": "8 Tacos",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-8-tacos-10-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-barrels",
+   "name": "Barrels",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-barrels-up-to-15-off-a-la-carte-food"
+   ]
+  },
+  {
+   "id": "sg-shoo-loong-kan-hot-pot",
+   "name": "Shoo Loong Kan Hot Pot",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-shoo-loong-kan-hot-pot-12-off-a-la-carte-food-items"
+   ]
+  },
+  {
+   "id": "sg-nets-x-eu-yan-sang",
+   "name": "NETS x Eu Yan Sang",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-nets-x-eu-yan-sang-enjoy-a-free-traditional-essence-of-chicken-6s-worth-s-1"
+   ]
+  },
+  {
+   "id": "sg-search-travel",
+   "name": "Search Travel",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-search-travel-up-to-s-300-off-on-selected-destination-tour-packages"
+   ]
+  },
+  {
+   "id": "sg-yoyo-holidays",
+   "name": "Yoyo Holidays",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-yoyo-holidays-get-a-luggage-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-crane-living-ocbc-wisma-atria",
+   "name": "Crane Living @ OCBC Wisma Atria",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-crane-living-ocbc-wisma-atria-10-off-on-crane-living-items"
+   ]
+  },
+  {
+   "id": "sg-bookxcess-ocbc-wisma-atria",
+   "name": "BookXcess @ OCBC Wisma Atria",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "fashion"
+   ],
+   "offer_ids": [
+    "sg-ocbc-bookxcess-ocbc-wisma-atria-15-off-books"
+   ]
+  },
+  {
+   "id": "sg-mandai-wildlife-reserve",
+   "name": "Mandai Wildlife Reserve",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping",
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-mandai-wildlife-reserve-10-off-at-select-f-and-b-outlets",
+    "sg-ocbc-mandai-wildlife-reserve-10-off-at-in-park-retail-stores",
+    "sg-standard-chartered-mandai-wildlife-reserve-free-breakfast-in-the-wild-with-every",
+    "sg-standard-chartered-mandai-wildlife-reserve-enjoy-10-off-at-in-park-retail-stores"
+   ]
+  },
+  {
+   "id": "sg-swissotel-the-stamford",
+   "name": "Swissôtel The Stamford",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-swissotel-the-stamford-15-off-best-available-rates-with-complimentary-break"
+   ]
+  },
+  {
+   "id": "sg-fairmont-singapore",
+   "name": "Fairmont Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-fairmont-singapore-15-off-best-available-rates-with-complimentary-breakfast"
+   ]
+  },
+  {
+   "id": "sg-thanying",
+   "name": "Thanying",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-thanying-20-off-a-la-carte-food-menu"
+   ]
+  },
+  {
+   "id": "sg-cali",
+   "name": "CALI",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-cali-up-to-15-off-a-la-carte-food",
+    "sg-standard-chartered-cali-enjoy-up-to-15-off-a-la-carte-food-with-your-standard-ch"
+   ]
+  },
+  {
+   "id": "sg-bellezza-aesthetics",
+   "name": "Bellezza Aesthetics",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "beauty"
+   ],
+   "offer_ids": [
+    "sg-ocbc-bellezza-aesthetics-k-glow-glass-skin-facial-at-s-38-nett-u-p-s-588",
+    "sg-ocbc-bellezza-aesthetics-receive-1-box-of-baby-cell-recovery-mask-salmon-pdrn-wo"
+   ]
+  },
+  {
+   "id": "sg-gha-discovery-titanium-status",
+   "name": "GHA DISCOVERY TITANIUM STATUS",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-gha-discovery-titanium-status-voyage-exclusive"
+   ]
+  },
+  {
+   "id": "sg-fairmont-singapore-asian-market-cafe",
+   "name": "Fairmont Singapore, Asian Market Café",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-fairmont-singapore-asian-market-cafe-20-off-total-food-bill"
+   ]
+  },
+  {
+   "id": "sg-swissotel-the-stamford-the-stamford-brasserie",
+   "name": "Swissôtel The Stamford, The Stamford Brasserie",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-swissotel-the-stamford-the-stamford-brasserie-20-off-total-food-bill"
+   ]
+  },
+  {
+   "id": "sg-swissotel-the-stamford-clove",
+   "name": "Swissôtel The Stamford, CLOVE",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-swissotel-the-stamford-clove-20-off-total-food-bill"
+   ]
+  },
+  {
+   "id": "sg-fairmont-singapore-prego",
+   "name": "Fairmont Singapore, Prego",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-fairmont-singapore-prego-20-off-total-food-bill"
+   ]
+  },
+  {
+   "id": "sg-airsim",
+   "name": "AIRSIM",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-airsim-limited-time-offer-and-yearlong-offer-on-airsim"
+   ]
+  },
+  {
+   "id": "sg-voco-orchard-singapore-opus-bar-and-grill",
+   "name": "voco Orchard Singapore, Opus Bar and Grill",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-voco-orchard-singapore-opus-bar-and-grill-1-for-1-weekend-makan-local-buffe",
+    "sg-ocbc-voco-orchard-singapore-opus-bar-and-grill-20-off-total-bill-for-a-la-carte-"
+   ]
+  },
+  {
+   "id": "sg-the-barracks-hotel-sentosa",
+   "name": "The Barracks Hotel Sentosa",
+   "aliases": [
+    "The Barracks Hotel - Sentosa"
+   ],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-barracks-hotel-sentosa-up-to-20-off",
+    "sg-standard-chartered-the-barracks-hotel-sentosa-enjoy-20-off-best-flexible-rates-f"
+   ]
+  },
+  {
+   "id": "sg-the-outpost-hotel-sentosa",
+   "name": "The Outpost Hotel Sentosa",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-outpost-hotel-sentosa-15-off-best-flexible-rate",
+    "sg-standard-chartered-the-outpost-hotel-sentosa-enjoy-20-off-best-flexible-rates-fo"
+   ]
+  },
+  {
+   "id": "sg-oasia-resort-sentosa",
+   "name": "Oasia Resort Sentosa",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-oasia-resort-sentosa-15-off-best-flexible-rate"
+   ]
+  },
+  {
+   "id": "sg-eu-yan-sang-tcm-clinic",
+   "name": "Eu Yan Sang TCM Clinic",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-eu-yan-sang-tcm-clinic-tcm-consultation-acupuncture-and-paediatric-tuina-of"
+   ]
+  },
+  {
+   "id": "sg-empurau-kopitiam",
+   "name": "Empurau Kopitiam",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "cafe"
+   ],
+   "offer_ids": [
+    "sg-ocbc-empurau-kopitiam-10-off-on-a-la-carte-menu-items-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-meng-meng-roasted-duck",
+   "name": "Meng Meng Roasted Duck",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-meng-meng-roasted-duck-10-off-on-a-la-carte-menu-items-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-season-confectionary-and-bakery",
+   "name": "Season Confectionary & Bakery",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "cafe"
+   ],
+   "offer_ids": [
+    "sg-ocbc-season-confectionary-and-bakery-complimentary-bun-s-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-regency-medical-care-centre",
+   "name": "Regency Medical Care Centre",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-regency-medical-care-centre-10-off-on-signature-package-signature-plus-pack"
+   ]
+  },
+  {
+   "id": "sg-regency-specialist-hospital",
+   "name": "Regency Specialist Hospital",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-regency-specialist-hospital-10-off-on-wellness-and-premier-packages"
+   ]
+  },
+  {
+   "id": "sg-mondrian-singapore-duxton-bottega-di-carna",
+   "name": "Mondrian Singapore Duxton, Bottega di Carna",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-mondrian-singapore-duxton-bottega-di-carna-20-off-a-la-carte-food-menu"
+   ]
+  },
+  {
+   "id": "sg-one-farrer-hotel-nest-at-one-farrer",
+   "name": "One Farrer Hotel, Nest at One Farrer",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-one-farrer-hotel-nest-at-one-farrer-10-off-executive-menu"
+   ]
+  },
+  {
+   "id": "sg-one-farrer-hotel-whampoa-room",
+   "name": "One Farrer Hotel, Whampoa Room",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-one-farrer-hotel-whampoa-room-20-off-weekend-buffets"
+   ]
+  },
+  {
+   "id": "sg-riverside-buns-by-bq-bar",
+   "name": "Riverside Buns by BQ Bar",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-riverside-buns-by-bq-bar-15-off-total-bill-with-a-min-spend-of-s-100"
+   ]
+  },
+  {
+   "id": "sg-the-fullerton-bay-hotel-singapore-the-landing-point",
+   "name": "The Fullerton Bay Hotel Singapore, The Landing Point",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-fullerton-bay-hotel-singapore-the-landing-point-up-to-20-off-afternoon-"
+   ]
+  },
+  {
+   "id": "sg-the-fullerton-bay-hotel-singapore-la-brasserie",
+   "name": "The Fullerton Bay Hotel Singapore, La Brasserie",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-fullerton-bay-hotel-singapore-la-brasserie-up-to-20-off-a-la-carte-and-"
+   ]
+  },
+  {
+   "id": "sg-the-fullerton-hotel-singapore-the-courtyard",
+   "name": "The Fullerton Hotel Singapore, The Courtyard",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-fullerton-hotel-singapore-the-courtyard-up-to-20-off-afternoon-tea-and-"
+   ]
+  },
+  {
+   "id": "sg-the-fullerton-hotel-singapore-jade",
+   "name": "The Fullerton Hotel Singapore, Jade",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-fullerton-hotel-singapore-jade-up-to-20-off-ala-carte-menu"
+   ]
+  },
+  {
+   "id": "sg-the-fullerton-hotel-singapore-town-restaurant",
+   "name": "The Fullerton Hotel Singapore, Town Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-fullerton-hotel-singapore-town-restaurant-up-to-20-off-lunch-and-dinner"
+   ]
+  },
+  {
+   "id": "sg-sofitel-singapore-city-centre-racines",
+   "name": "Sofitel Singapore City Centre, Racines",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sofitel-singapore-city-centre-racines-40-off-ultimate-racines-brunch-and-25",
+    "sg-ocbc-sofitel-singapore-city-centre-racines-1-for-1-festive-saturday-brunch-buffe"
+   ]
+  },
+  {
+   "id": "sg-sofitel-singapore-city-centre-1864",
+   "name": "Sofitel Singapore City Centre, 1864",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel",
+    "cafe"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sofitel-singapore-city-centre-1864-up-to-20-off",
+    "sg-ocbc-sofitel-singapore-city-centre-1864-30-off-festive-afternoon-tea"
+   ]
+  },
+  {
+   "id": "sg-carlton-hotel-singapore-cafe-mosaic",
+   "name": "Carlton Hotel Singapore, Café Mosaic",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-carlton-hotel-singapore-cafe-mosaic-1-for-1-hong-kong-buffets-and-more"
+   ]
+  },
+  {
+   "id": "sg-carlton-hotel-singapore-tuxedo",
+   "name": "Carlton Hotel Singapore, Tuxedo",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-carlton-hotel-singapore-tuxedo-20-off-mains-and-10-off-cakes"
+   ]
+  },
+  {
+   "id": "sg-carlton-hotel-singapore-tux-bar-and-lounge",
+   "name": "Carlton Hotel Singapore, TUX Bar & Lounge",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-carlton-hotel-singapore-tux-bar-and-lounge-20-off-total-bill-and-compliment"
+   ]
+  },
+  {
+   "id": "sg-carlton-hotel-singapore-wah-lok-cantonese-restaurant",
+   "name": "Carlton Hotel Singapore, Wah Lok Cantonese Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-carlton-hotel-singapore-wah-lok-cantonese-restaurant-complimentary-dessert-"
+   ]
+  },
+  {
+   "id": "sg-carlton-hotel-singapore",
+   "name": "Carlton Hotel Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-carlton-hotel-singapore-up-to-35-plus-additional-15-off-room-bookings"
+   ]
+  },
+  {
+   "id": "sg-hotel-grand-pacific-singapore-suns-cafe",
+   "name": "Hotel Grand Pacific Singapore, Sun’s Café",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-hotel-grand-pacific-singapore-suns-cafe-1-for-1-peranakan-and-local-cuisine"
+   ]
+  },
+  {
+   "id": "sg-mondrian-singapore-duxton",
+   "name": "Mondrian Singapore Duxton",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-mondrian-singapore-duxton-20-off-best-available-rate"
+   ]
+  },
+  {
+   "id": "sg-voco-orchard-singapore-il-cielo",
+   "name": "voco Orchard Singapore, il Cielo",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-voco-orchard-singapore-il-cielo-20-off-total-bill-for-a-la-carte-lunch-and-"
+   ]
+  },
+  {
+   "id": "sg-voco-orchard-singapore-d9-cakery",
+   "name": "voco Orchard Singapore, D9 Cakery",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-voco-orchard-singapore-d9-cakery-10-off-whole-cake"
+   ]
+  },
+  {
+   "id": "sg-carlton-city-hotel-singapore-plate",
+   "name": "Carlton City Hotel Singapore, Plate",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-carlton-city-hotel-singapore-plate-1-for-1-buffet"
+   ]
+  },
+  {
+   "id": "sg-the-westin-singapore-seasonal-tastes",
+   "name": "The Westin Singapore, Seasonal Tastes",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-westin-singapore-seasonal-tastes-50-off-every-2nd-diner-for-lunch-and-d"
+   ]
+  },
+  {
+   "id": "sg-the-westin-singapore-cook-and-brew",
+   "name": "The Westin Singapore, Cook & Brew",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-westin-singapore-cook-and-brew-15-off-ala-carte-menu"
+   ]
+  },
+  {
+   "id": "sg-the-westin-singapore-lobby-lounge",
+   "name": "The Westin Singapore, Lobby Lounge",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-westin-singapore-lobby-lounge-50-off-afternoon-tea-for-every-second-din"
+   ]
+  },
+  {
+   "id": "sg-airalo",
+   "name": "Airalo",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-airalo-up-to-20-off"
+   ]
+  },
+  {
+   "id": "sg-sheraton-towers-singapore-the-dining-room",
+   "name": "Sheraton Towers Singapore, The Dining Room",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sheraton-towers-singapore-the-dining-room-20-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-lobby-bar-sheraton-towers-singapore",
+   "name": "Lobby Bar, Sheraton Towers Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-lobby-bar-sheraton-towers-singapore-20-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-sheraton-towers-singapore-li-bai-cantonese-restaurant",
+   "name": "Sheraton Towers Singapore, Li Bai Cantonese Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sheraton-towers-singapore-li-bai-cantonese-restaurant-10-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-swensen-s",
+   "name": "Swensen's",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining",
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-swensen-s-receive-a-s-12-return-voucher-with-any-spend",
+    "sg-ocbc-swensen-s-up-to-10-off-christmas-log-cake"
+   ]
+  },
+  {
+   "id": "sg-earle-swensen-s",
+   "name": "Earle Swensen's",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-earle-swensen-s-receive-a-s-12-return-voucher-with-any-spend"
+   ]
+  },
+  {
+   "id": "sg-four-seasons-hotel-singapore-nobu-singapore",
+   "name": "Four Seasons Hotel Singapore, Nobu Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-four-seasons-hotel-singapore-nobu-singapore-15-off-a-la-carte-food-menu"
+   ]
+  },
+  {
+   "id": "sg-four-seasons-hotel-singapore-one-ninety-restaurant",
+   "name": "Four Seasons Hotel Singapore, One-Ninety Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-four-seasons-hotel-singapore-one-ninety-restaurant-15-off-a-la-carte-food-m"
+   ]
+  },
+  {
+   "id": "sg-four-seasons-hotel-singapore-jiang-nan-chun",
+   "name": "Four Seasons Hotel Singapore, Jiang-Nan Chun",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-four-seasons-hotel-singapore-jiang-nan-chun-15-off-a-la-carte-food-menu"
+   ]
+  },
+  {
+   "id": "sg-four-seasons-hotel-singapore-one-ninety-bar",
+   "name": "Four Seasons Hotel Singapore, One-Ninety Bar",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-four-seasons-hotel-singapore-one-ninety-bar-15-off-a-la-carte-food-menu"
+   ]
+  },
+  {
+   "id": "sg-the-ritz-carlton-millenia-singapore-colony",
+   "name": "The Ritz-Carlton, Millenia Singapore, Colony",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-ritz-carlton-millenia-singapore-colony-up-to-15-off-lunch-and-dinner"
+   ]
+  },
+  {
+   "id": "sg-the-ritz-carlton-millenia-singapore-the-ritz-lounge",
+   "name": "The Ritz-Carlton, Millenia Singapore, The Ritz Lounge",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-ritz-carlton-millenia-singapore-the-ritz-lounge-up-to-15-off-lunch-and-"
+   ]
+  },
+  {
+   "id": "sg-w-singapore-sentosa-cove-wet-deck",
+   "name": "W Singapore – Sentosa Cove, WET Deck",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-w-singapore-sentosa-cove-wet-deck-up-to-15-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-w-singapore-sentosa-cove-woobar",
+   "name": "W Singapore – Sentosa Cove, WOOBAR",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-w-singapore-sentosa-cove-woobar-up-to-15-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-w-singapore-sentosa-cove-skirt",
+   "name": "W Singapore – Sentosa Cove, SKIRT",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-w-singapore-sentosa-cove-skirt-up-to-15-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-w-singapore-sentosa-cove-the-kitchen-table",
+   "name": "W Singapore – Sentosa Cove, the kitchen table",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-w-singapore-sentosa-cove-the-kitchen-table-up-to-15-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-q-and-m-dental-group-malaysia",
+   "name": "Q & M Dental Group (Malaysia)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-q-and-m-dental-group-malaysia-scaling-and-polishing-at-rm140"
+   ]
+  },
+  {
+   "id": "sg-din-tai-fung",
+   "name": "Din Tai Fung",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping",
+    "other",
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-din-tai-fung-complimentary-hot-and-sour-soup-small-worth-up-to-s-11-50-with",
+    "sg-ocbc-din-tai-fung-seniorcare-10-off-steamed-buns-and-steamed-snacks",
+    "sg-ocbc-din-tai-fung-myown-and-frank-exclusive-15-off-steamed-buns-with-purchase-of",
+    "sg-ocbc-din-tai-fung-10-off-steamed-chocolate-lava-bun"
+   ]
+  },
+  {
+   "id": "sg-jen-singapore-orchardgateway-by-shangri-la-otg-takeaway",
+   "name": "JEN Singapore Orchardgateway by Shangri-La, OTG (Takeaway)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-jen-singapore-orchardgateway-by-shangri-la-otg-takeaway-20-off-for-regular-"
+   ]
+  },
+  {
+   "id": "sg-jen-singapore-orchardgateway-by-shangri-la-makan-jen",
+   "name": "JEN Singapore Orchardgateway by Shangri-La, Makan@Jen",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-jen-singapore-orchardgateway-by-shangri-la-makan-jen-1-for-1-buffets-and-mo"
+   ]
+  },
+  {
+   "id": "sg-jen-singapore-orchardgateway-by-shangri-la-trippi",
+   "name": "JEN Singapore Orchardgateway by Shangri-La, Trippi",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-jen-singapore-orchardgateway-by-shangri-la-trippi-15-off-ala-carte-menu-ite"
+   ]
+  },
+  {
+   "id": "sg-holiday-inn-singapore-orchard-city-centre",
+   "name": "Holiday Inn Singapore Orchard City Centre",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-holiday-inn-singapore-orchard-city-centre-up-to-15-off-best-flexible-rate"
+   ]
+  },
+  {
+   "id": "sg-holiday-inn-singapore-orchard-city-centre-haris-lobby-lounge-and-bar",
+   "name": "Holiday Inn Singapore Orchard City Centre, Hari’s Lobby Lounge and Bar",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-holiday-inn-singapore-orchard-city-centre-haris-lobby-lounge-and-bar-1-for-"
+   ]
+  },
+  {
+   "id": "sg-holiday-inn-singapore-orchard-city-centre-tandoor",
+   "name": "Holiday Inn Singapore Orchard City Centre, Tandoor",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-holiday-inn-singapore-orchard-city-centre-tandoor-20-off-ala-carte-menu"
+   ]
+  },
+  {
+   "id": "sg-holiday-inn-singapore-orchard-city-centre-window-on-the-park",
+   "name": "Holiday Inn Singapore Orchard City Centre, Window on the Park",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-holiday-inn-singapore-orchard-city-centre-window-on-the-park-1-for-1-dinner"
+   ]
+  },
+  {
+   "id": "sg-travelgoogoo",
+   "name": "Travelgoogoo",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-travelgoogoo"
+   ]
+  },
+  {
+   "id": "sg-ergoworks",
+   "name": "Ergoworks",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other",
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-ergoworks-free-ergo-eye-care-led-desk-lamp-with-min-s-200-spend",
+    "sg-ocbc-ergoworks-1-to-1-truly-comfort-chair"
+   ]
+  },
+  {
+   "id": "sg-dancing-crab",
+   "name": "Dancing Crab",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-dancing-crab-10-off-a-la-carte-food-orders-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-lao-beijing",
+   "name": "Lao Beijing",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-lao-beijing-10-off-a-la-carte-food-orders-with-a-min-spend-of-s-60",
+    "sg-standard-chartered-lao-beijing-enjoy-up-to-15-off-a-la-carte-food-with-your-stan"
+   ]
+  },
+  {
+   "id": "sg-tunglok-teahouse",
+   "name": "TungLok Teahouse",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-tunglok-teahouse-10-off-a-la-carte-food-orders-with-a-min-spend-of-s-60",
+    "sg-standard-chartered-tunglok-teahouse-enjoy-up-to-15-off-a-la-carte-food-with-your"
+   ]
+  },
+  {
+   "id": "sg-tunglok-peking-duck",
+   "name": "TungLok Peking Duck",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-tunglok-peking-duck-10-off-a-la-carte-food-orders-with-a-min-spend-of-s-60",
+    "sg-standard-chartered-tunglok-peking-duck-enjoy-up-to-15-off-a-la-carte-food-with-y"
+   ]
+  },
+  {
+   "id": "sg-ushio-sumiyaki-and-sake-bar",
+   "name": "USHIO Sumiyaki and Sake Bar",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-ushio-sumiyaki-and-sake-bar-10-off-a-la-carte-food-orders-with-a-min-spend-"
+   ]
+  },
+  {
+   "id": "sg-cavern-restaurant",
+   "name": "Cavern Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-cavern-restaurant-10-off-a-la-carte-food-orders-with-min-spend-s-60"
+   ]
+  },
+  {
+   "id": "sg-noel-gifts",
+   "name": "Noel Gifts",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-noel-gifts-up-to-10-off-flowers-and-gifts",
+    "sg-ocbc-noel-gifts-8-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-humming",
+   "name": "Humming",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-humming-s-10-off-flowers-and-gifts-for-new-customers",
+    "sg-ocbc-humming-5-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-lema-dumpling",
+   "name": "LeMa Dumpling",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "fashion"
+   ],
+   "offer_ids": [
+    "sg-ocbc-lema-dumpling-complimentary-braised-beancurd-with-a-min-spend-by-paradise-g"
+   ]
+  },
+  {
+   "id": "sg-le-congee-and-noodle-house",
+   "name": "LE Congee & Noodle House",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-le-congee-and-noodle-house-complimentary-braised-beancurd-in-pork-broth-wit"
+   ]
+  },
+  {
+   "id": "sg-lenu",
+   "name": "LeNu",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-lenu-complimentary-crispy-beancurd-skin-stuffed-with-fish-paste-with-a-min-"
+   ]
+  },
+  {
+   "id": "sg-le-shrimp-ramen",
+   "name": "Le Shrimp Ramen",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-le-shrimp-ramen-complimentary-crispy-vegetable-spring-roll-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-paradise-hotpot",
+   "name": "Paradise Hotpot",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-paradise-hotpot-complimentary-mini-abalone-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-paradise-classic",
+   "name": "Paradise Classic",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-paradise-classic-complimentary-crisp-fried-salted-egg-yolk-fish-skin-with-a"
+   ]
+  },
+  {
+   "id": "sg-canton-paradise",
+   "name": "Canton Paradise +",
+   "aliases": [
+    "Canton Paradise"
+   ],
+   "country": "SG",
+   "categories": [
+    "electronics",
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-canton-paradise-plus-complimentary-baked-mini-egg-tart-with-a-min-spend",
+    "sg-ocbc-canton-paradise-complimentary-crisp-fried-eggplant-with-pork-floss-with-a-m"
+   ]
+  },
+  {
+   "id": "sg-paradise-dynasty",
+   "name": "Paradise Dynasty",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-paradise-dynasty-complimentary-pork-dumpling-in-chilli-vinaigrette-with-a-m"
+   ]
+  },
+  {
+   "id": "sg-beauty-in-the-pot",
+   "name": "Beauty in The Pot",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "beauty"
+   ],
+   "offer_ids": [
+    "sg-ocbc-beauty-in-the-pot-complimentary-sliced-spanish-pork-collar-half-portion-wor"
+   ]
+  },
+  {
+   "id": "sg-seafood-paradise",
+   "name": "Seafood Paradise",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-seafood-paradise-complimentary-crispy-dough-fritter-stuffed-with-seafood-pa",
+    "sg-ocbc-seafood-paradise-up-to-30-off-live-seafood"
+   ]
+  },
+  {
+   "id": "sg-paradise-teochew",
+   "name": "Paradise Teochew",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-paradise-teochew-complimentary-teochew-style-stewed-pan-fried-tofu-with-a-m",
+    "sg-ocbc-paradise-teochew-premium-hairy-crab-delicacies-at-special-prices"
+   ]
+  },
+  {
+   "id": "sg-taste-paradise",
+   "name": "Taste Paradise",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-taste-paradise-complimentary-crispy-whitebait-tossed-with-salt-and-pepper-w",
+    "sg-ocbc-taste-paradise-premium-hairy-crab-delicacies-at-special-prices"
+   ]
+  },
+  {
+   "id": "sg-frasers-house-a-luxury-collection-hotel-singapore-the-lobby-lounge",
+   "name": "Frasers House, a Luxury Collection Hotel, Singapore, The Lobby Lounge",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-frasers-house-a-luxury-collection-hotel-singapore-the-lobby-lounge-15-off-t"
+   ]
+  },
+  {
+   "id": "sg-frasers-house-a-luxury-collection-hotel-singapore-man-fu-yuan",
+   "name": "Frasers House, a Luxury Collection Hotel, Singapore, Man Fu Yuan",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-frasers-house-a-luxury-collection-hotel-singapore-man-fu-yuan-15-off-total-"
+   ]
+  },
+  {
+   "id": "sg-frasers-house-a-luxury-collection-hotel-singapore-luce",
+   "name": "Frasers House, a Luxury Collection Hotel, Singapore, LUCE",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-frasers-house-a-luxury-collection-hotel-singapore-luce-20-off-buffets"
+   ]
+  },
+  {
+   "id": "sg-ion-orchard",
+   "name": "ION Orchard",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-ion-orchard-voyage-exclusive"
+   ]
+  },
+  {
+   "id": "sg-the-capitol-kempinski-hotel-singapore-15-stamford-restaurant",
+   "name": "The Capitol Kempinski Hotel Singapore, 15 Stamford Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-capitol-kempinski-hotel-singapore-15-stamford-restaurant-15-off-a-la-ca"
+   ]
+  },
+  {
+   "id": "sg-the-capitol-kempinski-hotel-singapore-lobby-lounge",
+   "name": "The Capitol Kempinski Hotel Singapore, Lobby Lounge",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-capitol-kempinski-hotel-singapore-lobby-lounge-15-off-a-la-carte-food-m"
+   ]
+  },
+  {
+   "id": "sg-the-capitol-kempinski-hotel-singapore-the-bar-at-15-stamford",
+   "name": "The Capitol Kempinski Hotel Singapore, The Bar at 15 Stamford",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-capitol-kempinski-hotel-singapore-the-bar-at-15-stamford-15-off-a-la-ca"
+   ]
+  },
+  {
+   "id": "sg-conrad-singapore-orchard-manhattan-bar",
+   "name": "Conrad Singapore Orchard, Manhattan Bar",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-conrad-singapore-orchard-manhattan-bar-15-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-conrad-singapore-orchard-tea-lounge",
+   "name": "Conrad Singapore Orchard, Tea Lounge",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "cafe"
+   ],
+   "offer_ids": [
+    "sg-ocbc-conrad-singapore-orchard-tea-lounge-15-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-conrad-singapore-orchard-basilico-bar",
+   "name": "Conrad Singapore Orchard, Basilico Bar",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-conrad-singapore-orchard-basilico-bar-15-off-total-food-bill"
+   ]
+  },
+  {
+   "id": "sg-conrad-singapore-orchard-basilico-restaurant",
+   "name": "Conrad Singapore Orchard, Basilico Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-conrad-singapore-orchard-basilico-restaurant-15-off-total-food-bill"
+   ]
+  },
+  {
+   "id": "sg-sushi-tei",
+   "name": "Sushi Tei",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sushi-tei-50-off-unagi-tamago-toji-u-p-s-18-80-with-a-min-spend-of-s-80"
+   ]
+  },
+  {
+   "id": "sg-pullman-singapore-hill-street-madison-s",
+   "name": "Pullman Singapore Hill Street, Madison's",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-pullman-singapore-hill-street-madison-s-15-off-food-bill-for-a-la-carte-men"
+   ]
+  },
+  {
+   "id": "sg-pullman-singapore-hill-street-el-chido",
+   "name": "Pullman Singapore Hill Street, EL CHIDO",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-pullman-singapore-hill-street-el-chido-15-off-food-bill-for-selected-a-la-c"
+   ]
+  },
+  {
+   "id": "sg-pullman-singapore-hill-street-moga",
+   "name": "Pullman Singapore Hill Street, MOGA",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-pullman-singapore-hill-street-moga-10-off-food-bill-for-selected-dinner-ala"
+   ]
+  },
+  {
+   "id": "sg-grand-copthorne-waterfront-hotel-singapore-food-capital",
+   "name": "Grand Copthorne Waterfront Hotel Singapore, Food Capital",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-grand-copthorne-waterfront-hotel-singapore-food-capital-20-off-total-bill-a"
+   ]
+  },
+  {
+   "id": "sg-grand-copthorne-waterfront-hotel-singapore-sansara",
+   "name": "Grand Copthorne Waterfront Hotel Singapore, SanSara",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-grand-copthorne-waterfront-hotel-singapore-sansara-20-off-total-bill-and-ad"
+   ]
+  },
+  {
+   "id": "sg-grand-copthorne-waterfront-hotel-singapore-riverside-terrace",
+   "name": "Grand Copthorne Waterfront Hotel Singapore, Riverside Terrace",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-grand-copthorne-waterfront-hotel-singapore-riverside-terrace-20-off-total-b"
+   ]
+  },
+  {
+   "id": "sg-grand-copthorne-waterfront-hotel-singapore-the-lobby-lounge",
+   "name": "Grand Copthorne Waterfront Hotel Singapore, The Lobby Lounge",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-grand-copthorne-waterfront-hotel-singapore-the-lobby-lounge-20-off-total-bi"
+   ]
+  },
+  {
+   "id": "sg-copthorne-kings-hotel-singapore-princess-terrace",
+   "name": "Copthorne King’s Hotel Singapore, Princess Terrace",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-copthorne-kings-hotel-singapore-princess-terrace-20-off-total-bill-and-addi"
+   ]
+  },
+  {
+   "id": "sg-copthorne-kings-hotel-singapore-tien-court-restaurant",
+   "name": "Copthorne King’s Hotel Singapore, Tien Court Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-copthorne-kings-hotel-singapore-tien-court-restaurant-20-off-total-bill-and"
+   ]
+  },
+  {
+   "id": "sg-copthorne-kings-hotel-singapore-connections-lounge",
+   "name": "Copthorne King’s Hotel Singapore, Connections Lounge",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-copthorne-kings-hotel-singapore-connections-lounge-20-off-total-bill-and-ad"
+   ]
+  },
+  {
+   "id": "sg-orchard-hotel-singapore-the-orchard-cafe",
+   "name": "Orchard Hotel Singapore, The Orchard Cafe",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-orchard-hotel-singapore-the-orchard-cafe-20-off-total-bill-and-additional-5"
+   ]
+  },
+  {
+   "id": "sg-orchard-hotel-singapore-hua-ting-restaurant",
+   "name": "Orchard Hotel Singapore, Hua Ting Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-orchard-hotel-singapore-hua-ting-restaurant-20-off-total-bill-and-additiona"
+   ]
+  },
+  {
+   "id": "sg-orchard-hotel-singapore-bar-intermezzo",
+   "name": "Orchard Hotel Singapore, Bar Intermezzo",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-orchard-hotel-singapore-bar-intermezzo-20-off-total-bill-and-additional-5-o"
+   ]
+  },
+  {
+   "id": "sg-tentsuru",
+   "name": "Tentsuru",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-tentsuru-10-off-total-bill-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-studio-m-hotel-singapore-memo-cafe",
+   "name": "Studio M Hotel Singapore, Memo Cafe",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-studio-m-hotel-singapore-memo-cafe-20-off-total-bill-and-additional-5-off-f"
+   ]
+  },
+  {
+   "id": "sg-grand-shanghai-restaurant",
+   "name": "Grand Shanghai Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-grand-shanghai-restaurant-15-off-total-bill-and-additional-5-off-for-mymill"
+   ]
+  },
+  {
+   "id": "sg-mandarin-oriental-singapore-embu",
+   "name": "Mandarin Oriental, Singapore, embu",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-mandarin-oriental-singapore-embu-15-off-total-food-bill-applicable-for-week"
+   ]
+  },
+  {
+   "id": "sg-mandarin-oriental-singapore-dolce-vita",
+   "name": "Mandarin Oriental, Singapore, Dolce Vita",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-mandarin-oriental-singapore-dolce-vita-15-off-total-food-bill-excluding-set"
+   ]
+  },
+  {
+   "id": "sg-mandarin-oriental-singapore-mo-bar",
+   "name": "Mandarin Oriental, Singapore, MO BAR",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-mandarin-oriental-singapore-mo-bar-15-off-total-food-bill"
+   ]
+  },
+  {
+   "id": "sg-mandarin-oriental-singapore-mandarin-oriental-cake-shop",
+   "name": "Mandarin Oriental, Singapore, Mandarin Oriental Cake Shop",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-mandarin-oriental-singapore-mandarin-oriental-cake-shop-15-off-total-food-b"
+   ]
+  },
+  {
+   "id": "sg-m-hotel-singapore-city-centre-the-buffet-restaurant",
+   "name": "M Hotel Singapore City Centre, The Buffet Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-m-hotel-singapore-city-centre-the-buffet-restaurant-20-off-total-bill-and-a"
+   ]
+  },
+  {
+   "id": "sg-m-hotel-singapore-city-centre-earthember",
+   "name": "M Hotel Singapore City Centre, earthember",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-m-hotel-singapore-city-centre-earthember-20-off-total-bill-and-additional-5"
+   ]
+  },
+  {
+   "id": "sg-suki-ya",
+   "name": "Suki-Ya",
+   "aliases": [
+    "Suki-ya"
+   ],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-suki-ya-30-off-premium-buffet-top-up-by-creative-eateries-group",
+    "sg-ocbc-suki-ya-1-for-1-weekday-dinner-regular-buffet-u-p-s-28-90-per-pax"
+   ]
+  },
+  {
+   "id": "sg-suki-suki-hotpot",
+   "name": "Suki-Suki Hotpot",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-suki-suki-hotpot-30-off-premium-buffet-top-up-by-creative-eateries-group"
+   ]
+  },
+  {
+   "id": "sg-bangkok-jam",
+   "name": "Bangkok Jam",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-bangkok-jam-complimentary-green-curry-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-siam-kitchen",
+   "name": "Siam Kitchen",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-siam-kitchen-complimentary-gai-yang-half-butterfly-chicken-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-sarai-fine-thai",
+   "name": "Sarai Fine Thai",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sarai-fine-thai-complimentary-deep-fried-chicken-with-a-min-spend-by-creati"
+   ]
+  },
+  {
+   "id": "sg-typhoon-cafe",
+   "name": "Typhoon Cafe",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "cafe"
+   ],
+   "offer_ids": [
+    "sg-ocbc-typhoon-cafe-complimentary-spicy-chilli-oil-dumplings-with-a-min-spend-by-c",
+    "sg-ocbc-typhoon-cafe-1-for-1-mains-mon-fri"
+   ]
+  },
+  {
+   "id": "sg-barossa-steak-and-grill",
+   "name": "Barossa Steak & Grill",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-barossa-steak-and-grill-up-to-15-off-sharing-platters-by-creative-eateries-"
+   ]
+  },
+  {
+   "id": "sg-tanglin-cookhouse",
+   "name": "Tanglin CookHouse",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-tanglin-cookhouse-complimentary-truffle-fries-with-parmigiano-with-a-min-sp"
+   ]
+  },
+  {
+   "id": "sg-vineyard",
+   "name": "Vineyard",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-vineyard-two-complimentary-sides-with-any-purchase-of-sharing-plate"
+   ]
+  },
+  {
+   "id": "sg-tajimaya-yakiniku",
+   "name": "Tajimaya Yakiniku",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-tajimaya-yakiniku-complimentary-sundubu-wagyu-beef-soup-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-andaz-singapore-665f",
+   "name": "Andaz Singapore, 665°F",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-andaz-singapore-665f-15-off-lunch-and-dinner-menu"
+   ]
+  },
+  {
+   "id": "sg-andaz-singapore-wu-yue-ting",
+   "name": "Andaz Singapore, Wu Yue Ting",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-andaz-singapore-wu-yue-ting-15-off-on-lunch-and-dinner-menus"
+   ]
+  },
+  {
+   "id": "sg-andaz-singapore-alley-on-25",
+   "name": "Andaz Singapore, Alley on 25",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-andaz-singapore-alley-on-25-15-off-a-la-carte-and-weekend-lazy-breakfast"
+   ]
+  },
+  {
+   "id": "sg-yummy-punjaby",
+   "name": "Yummy Punjaby",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-yummy-punjaby-up-to-15-off-a-la-carte-food"
+   ]
+  },
+  {
+   "id": "sg-grand-hyatt-singapore-straitskitchen",
+   "name": "Grand Hyatt Singapore, StraitsKitchen",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-grand-hyatt-singapore-straitskitchen-15-off-lunch-and-dinner-buffets"
+   ]
+  },
+  {
+   "id": "sg-tanoke",
+   "name": "TANOKE",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-tanoke-up-to-15-off-a-la-carte-food",
+    "sg-standard-chartered-tanoke-enjoy-up-to-15-off-a-la-carte-food-with-your-standard-"
+   ]
+  },
+  {
+   "id": "sg-ryan-s-kitchen",
+   "name": "Ryan's Kitchen",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-ryan-s-kitchen-up-to-15-off-a-la-carte-food"
+   ]
+  },
+  {
+   "id": "sg-l-entrecote",
+   "name": "L'Entrecôte",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-l-entrecote-up-to-15-off-a-la-carte-food",
+    "sg-standard-chartered-l-entrecote-enjoy-up-to-15-off-a-la-carte-food-with-your-stan"
+   ]
+  },
+  {
+   "id": "sg-incredi-bowl",
+   "name": "iNCREDi BOWL",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-incredi-bowl-up-to-15-off-a-la-carte-food",
+    "sg-standard-chartered-incredi-bowl-enjoy-up-to-15-off-a-la-carte-food-with-your-sta"
+   ]
+  },
+  {
+   "id": "sg-mercure-singapore-bugis-song-garden",
+   "name": "Mercure Singapore Bugis, Song Garden",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-mercure-singapore-bugis-song-garden-15-off-a-la-carte-food-and-beverages-to"
+   ]
+  },
+  {
+   "id": "sg-mercure-singapore-bugis-royale",
+   "name": "Mercure Singapore Bugis, Royale",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-mercure-singapore-bugis-royale-1-for-1-buffets-and-afternoon-tea-set"
+   ]
+  },
+  {
+   "id": "sg-grand-copthorne-waterfront-hotel-singapore",
+   "name": "Grand Copthorne Waterfront Hotel Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-grand-copthorne-waterfront-hotel-singapore-20-off-the-flexible-rate-with-co"
+   ]
+  },
+  {
+   "id": "sg-copthorne-kings-hotel-singapore",
+   "name": "Copthorne King’s Hotel Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-copthorne-kings-hotel-singapore-20-off-the-flexible-rate-with-complimentary"
+   ]
+  },
+  {
+   "id": "sg-m-hotel-singapore-city-centre",
+   "name": "M Hotel Singapore City Centre",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-m-hotel-singapore-city-centre-20-off-the-flexible-rate-with-complimentary-b"
+   ]
+  },
+  {
+   "id": "sg-orchard-hotel-singapore",
+   "name": "Orchard Hotel Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-orchard-hotel-singapore-20-off-the-flexible-rate-with-complimentary-breakfa"
+   ]
+  },
+  {
+   "id": "sg-studio-m-hotel-singapore",
+   "name": "Studio M Hotel Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-studio-m-hotel-singapore-20-off-the-flexible-rate-with-complimentary-breakf"
+   ]
+  },
+  {
+   "id": "sg-m-social-hotel-singapore",
+   "name": "M Social Hotel Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-m-social-hotel-singapore-20-off-the-flexible-rate-with-complimentary-breakf"
+   ]
+  },
+  {
+   "id": "sg-m-social-hotel-singapore-beast-and-butterflies",
+   "name": "M Social Hotel Singapore, Beast & Butterflies",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-m-social-hotel-singapore-beast-and-butterflies-20-off-total-bill-and-additi"
+   ]
+  },
+  {
+   "id": "sg-heavenly-spa-by-westin-sup-tm-sup",
+   "name": "Heavenly Spa by Westin<sup>TM</sup>",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "beauty"
+   ],
+   "offer_ids": [
+    "sg-ocbc-heavenly-spa-by-westin-sup-tm-sup-1-for-1-on-90-minute-and-above-treatments"
+   ]
+  },
+  {
+   "id": "sg-soup-restaurant",
+   "name": "Soup Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-soup-restaurant-individual-double-boiled-soup-at-s-7-90",
+    "sg-ocbc-soup-restaurant-seniorcare-1-for-1-individual-rice-bowl"
+   ]
+  },
+  {
+   "id": "sg-lyvin-clinic",
+   "name": "LyVin Clinic",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-lyvin-clinic-10-off-all-regular-priced-services"
+   ]
+  },
+  {
+   "id": "sg-tasixi-hong-kong-dim-sum-restaurant",
+   "name": "Tasixi Hong Kong Dim Sum Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-tasixi-hong-kong-dim-sum-restaurant-8-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-hawk-tyre-service",
+   "name": "Hawk Tyre Service",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "automotive"
+   ],
+   "offer_ids": [
+    "sg-ocbc-hawk-tyre-service-rm100-off-a-purchase-of-4-tyres"
+   ]
+  },
+  {
+   "id": "sg-mataku",
+   "name": "MATAKU",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-mataku-rm50-off-with-min-spend-rm500"
+   ]
+  },
+  {
+   "id": "sg-shu-da-xia-mount-austin",
+   "name": "Shu Da Xia (Mount Austin)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-shu-da-xia-mount-austin-10-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-cove-care-clinic",
+   "name": "Cove Care Clinic",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-cove-care-clinic-free-ecg-test-with-purchase"
+   ]
+  },
+  {
+   "id": "sg-moxie-signatures",
+   "name": "Moxie Signatures",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-moxie-signatures-10-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-pet-lovers-centre",
+   "name": "Pet Lovers Centre",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping",
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-pet-lovers-centre-5-off-all-regular-priced-items-in-store",
+    "sg-posb-3-off-at-pet-lovers-centre-posb-singapore"
+   ]
+  },
+  {
+   "id": "sg-cow-play-cow-moo",
+   "name": "Cow Play Cow Moo",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "sign_up"
+   ],
+   "offer_ids": [
+    "sg-ocbc-cow-play-cow-moo-8-off-any-purchase-or-top-up"
+   ]
+  },
+  {
+   "id": "sg-wai-tyre-specialist-taman-putri-johor",
+   "name": "Wai Tyre Specialist (Taman Putri, Johor)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "automotive"
+   ],
+   "offer_ids": [
+    "sg-ocbc-wai-tyre-specialist-taman-putri-johor-free-tyre-alignment-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-monaco-dining-restaurant-johor-bahru",
+   "name": "Monaco Dining Restaurant (Johor Bahru)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-monaco-dining-restaurant-johor-bahru-10-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-dr-ko-skin-specialist",
+   "name": "Dr. Ko Skin Specialist",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "beauty"
+   ],
+   "offer_ids": [
+    "sg-ocbc-dr-ko-skin-specialist-20-off-skincare-products-and-10-off-treatments"
+   ]
+  },
+  {
+   "id": "sg-ren-tcm-johor-bahru",
+   "name": "REN TCM (Johor Bahru)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-ren-tcm-johor-bahru-rm50-off-consultation-fee-on-first-visit"
+   ]
+  },
+  {
+   "id": "sg-new-ubin-seafood",
+   "name": "New Ubin Seafood",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-new-ubin-seafood-up-to-15-off-with-min-spend"
+   ]
+  },
+  {
+   "id": "sg-uncle-fong-hotpot",
+   "name": "Uncle Fong Hotpot",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-uncle-fong-hotpot-complimentary-australian-beef-top-blade-with-min-s-60-spe"
+   ]
+  },
+  {
+   "id": "sg-hakka-yu",
+   "name": "Hakka Yu",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "fashion"
+   ],
+   "offer_ids": [
+    "sg-ocbc-hakka-yu-20-off-selected-dishes"
+   ]
+  },
+  {
+   "id": "sg-jumbo-seafood-and-jumbo-premium",
+   "name": "JUMBO Seafood & JUMBO Premium",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-jumbo-seafood-and-jumbo-premium-complimentary-seafood-donut-with-a-min-spen"
+   ]
+  },
+  {
+   "id": "sg-jumbo-signatures",
+   "name": "JUMBO Signatures",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-jumbo-signatures-complimentary-upgrade-to-a-4-course-meal-with-order-of-a-3"
+   ]
+  },
+  {
+   "id": "sg-chui-huay-lim-teochew-cuisine",
+   "name": "Chui Huay Lim Teochew Cuisine",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-chui-huay-lim-teochew-cuisine-complimentary-deep-fried-ngoh-hiang-with-a-mi"
+   ]
+  },
+  {
+   "id": "sg-zui-yu-xuan-teochew-cuisine",
+   "name": "Zui Yu Xuan Teochew Cuisine",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-zui-yu-xuan-teochew-cuisine-complimentary-ngoh-hiang-worth-s-18-with-a-min-"
+   ]
+  },
+  {
+   "id": "sg-xing-yue-xuan",
+   "name": "Xing Yue Xuan",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-xing-yue-xuan-complimentary-chinese-pastry-platter-with-a-min-spend-by-jumb"
+   ]
+  },
+  {
+   "id": "sg-ng-ah-sio-bak-kut-teh",
+   "name": "NG AH SIO Bak Kut Teh",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining",
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-ng-ah-sio-bak-kut-teh-choice-of-complimentary-teochew-style-braised-special",
+    "sg-ocbc-ng-ah-sio-bak-kut-teh-complimentary-you-tiao-worth-s-2-20-with-every-soup-o"
+   ]
+  },
+  {
+   "id": "sg-tsui-wah",
+   "name": "Tsui Wah",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining",
+    "electronics"
+   ],
+   "offer_ids": [
+    "sg-ocbc-tsui-wah-complimentary-bottled-milk-tea-worth-s-4-80-with-a-min-spend-on-a-",
+    "sg-ocbc-tsui-wah-seniorcare-s-2-off-with-a-min-spend-of-s-10"
+   ]
+  },
+  {
+   "id": "sg-coucou-hotpot",
+   "name": "Coucou Hotpot",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "fashion"
+   ],
+   "offer_ids": [
+    "sg-ocbc-coucou-hotpot-10-off-a-la-carte-items"
+   ]
+  },
+  {
+   "id": "sg-jia-he-grand-chinese-restaurant",
+   "name": "Jia He Grand Chinese Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-jia-he-grand-chinese-restaurant-10-off-a-la-carte-food-items-with-a-min-spe"
+   ]
+  },
+  {
+   "id": "sg-dunkin",
+   "name": "Dunkin’",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping",
+    "cafe"
+   ],
+   "offer_ids": [
+    "sg-ocbc-dunkin-ocbc-myown-debit-card-exclusive",
+    "sg-ocbc-dunkin-donut-deals-from-rm10"
+   ]
+  },
+  {
+   "id": "sg-malaysia-boleh",
+   "name": "Malaysia Boleh!",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "cafe"
+   ],
+   "offer_ids": [
+    "sg-ocbc-malaysia-boleh-seniorcare-s-1-coffee-or-tea"
+   ]
+  },
+  {
+   "id": "sg-sg-hawker",
+   "name": "SG Hawker",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "cafe"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sg-hawker-seniorcare-s-1-coffee-or-tea"
+   ]
+  },
+  {
+   "id": "sg-85-redhill",
+   "name": "85 Redhill",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "cafe"
+   ],
+   "offer_ids": [
+    "sg-ocbc-85-redhill-seniorcare-s-1-coffee-or-tea"
+   ]
+  },
+  {
+   "id": "sg-encik-tan",
+   "name": "Encik Tan",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "cafe"
+   ],
+   "offer_ids": [
+    "sg-ocbc-encik-tan-seniorcare-s-1-coffee-or-tea"
+   ]
+  },
+  {
+   "id": "sg-eat",
+   "name": "EAT.",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "cafe"
+   ],
+   "offer_ids": [
+    "sg-ocbc-eat-seniorcare-s-1-coffee-or-tea"
+   ]
+  },
+  {
+   "id": "sg-madam-ang-kk",
+   "name": "Madam Ang KK",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-madam-ang-kk-buy-3-get-1-free-ang-ku-kueh"
+   ]
+  },
+  {
+   "id": "sg-old-seng-choong",
+   "name": "Old Seng Choong",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-old-seng-choong-up-to-15-off-regular-priced-items"
+   ]
+  },
+  {
+   "id": "sg-cat-and-the-fiddle",
+   "name": "Cat & the Fiddle",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-cat-and-the-fiddle-up-to-15-off-total-bill-for-dine-in-and-regular-priced-t"
+   ]
+  },
+  {
+   "id": "sg-habitat-bistro",
+   "name": "Habitat Bistro",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-habitat-bistro-20-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-shichirin-ubud",
+   "name": "Shichirin Ubud",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-shichirin-ubud-20-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-shichirin-seminyak",
+   "name": "Shichirin Seminyak",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-shichirin-seminyak-20-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-shichirin-canggu",
+   "name": "Shichirin Canggu",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-shichirin-canggu-20-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-ankhusa",
+   "name": "Ankhusa",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-ankhusa-20-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-sans-indian-cuisine",
+   "name": "Sans Indian Cuisine",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sans-indian-cuisine-20-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-norii",
+   "name": "Norii",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-norii-20-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-sanctuary-umalas",
+   "name": "Sanctuary Umalas",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sanctuary-umalas-20-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-cantina-classe",
+   "name": "Cantina Classe",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-cantina-classe-20-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-paed-thai-canggu",
+   "name": "Paed Thai Canggu",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-paed-thai-canggu-20-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-paed-thai-sanur",
+   "name": "Paed Thai Sanur",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-paed-thai-sanur-20-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-seabird",
+   "name": "Seabird",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-seabird-20-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-workmates",
+   "name": "Workmates",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-workmates-20-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-tsune",
+   "name": "Tsune",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-tsune-20-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-mai-main-playground",
+   "name": "Mai Main Playground",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-mai-main-playground-20-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-svaha-spa",
+   "name": "Svaha Spa",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "beauty"
+   ],
+   "offer_ids": [
+    "sg-ocbc-svaha-spa-20-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-le-meridien-bali-jimbaran",
+   "name": "Le Meridien Bali Jimbaran",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-le-meridien-bali-jimbaran-up-to-15-off"
+   ]
+  },
+  {
+   "id": "sg-klive-beach-club",
+   "name": "Klive Beach Club",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-klive-beach-club-25-off"
+   ]
+  },
+  {
+   "id": "sg-bali-bird-park",
+   "name": "Bali Bird Park",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "entertainment"
+   ],
+   "offer_ids": [
+    "sg-ocbc-bali-bird-park-20-off-admission-tickets"
+   ]
+  },
+  {
+   "id": "sg-tropical-temptation",
+   "name": "Tropical Temptation",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-tropical-temptation-choose-one-of-the-following-15-off-or-free-signature-co"
+   ]
+  },
+  {
+   "id": "sg-the-jungle-club-ubud",
+   "name": "The Jungle Club Ubud",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-jungle-club-ubud-choose-one-of-the-following-15-off-or-free-signature-c"
+   ]
+  },
+  {
+   "id": "sg-haruyama-udon-sup-sup",
+   "name": "Haruyama Udon<sup>®</sup>",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-haruyama-udon-sup-sup-complimentary-peri-peri-crispy-chicken-with-a-min-spe"
+   ]
+  },
+  {
+   "id": "sg-collins-sup-sup",
+   "name": "COLLIN’S<sup>®</sup>",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-collins-sup-sup-complimentary-prawn-and-clam-aglio-olio-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-union-tyre-and-service",
+   "name": "Union Tyre & Service",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "automotive"
+   ],
+   "offer_ids": [
+    "sg-ocbc-union-tyre-and-service-complimentary-car-alignment-and-balancing-with-minim"
+   ]
+  },
+  {
+   "id": "sg-restaurant-hua-mui",
+   "name": "Restaurant Hua Mui",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-restaurant-hua-mui-complimentary-hainanese-toast-with-rm100-spend"
+   ]
+  },
+  {
+   "id": "sg-pioko-bak-kut-teh",
+   "name": "Pioko Bak Kut Teh",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-pioko-bak-kut-teh-10-off-total-bill-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-furusato-japanese-restaurant",
+   "name": "Furusato Japanese Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-furusato-japanese-restaurant-8-off-total-bill-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-raku-ken-johor-bahru",
+   "name": "Raku Ken (Johor Bahru)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-raku-ken-johor-bahru-10-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-mr-ryori-johor-bahru",
+   "name": "Mr. Ryori (Johor Bahru)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-mr-ryori-johor-bahru-10-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-monaco-signature-johor-bahru",
+   "name": "Monaco Signature (Johor Bahru)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-monaco-signature-johor-bahru-10-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-maks-chee",
+   "name": "Mak’s Chee",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-maks-chee-complimentary-vegetable-dish-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-ultragolf",
+   "name": "UltraGolf",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "entertainment"
+   ],
+   "offer_ids": [
+    "sg-ocbc-ultragolf-15-off-1-round-of-mini-golf"
+   ]
+  },
+  {
+   "id": "sg-hydrodash",
+   "name": "HydroDash",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "entertainment"
+   ],
+   "offer_ids": [
+    "sg-ocbc-hydrodash-15-off-1-hour-and-2-hour-ticket"
+   ]
+  },
+  {
+   "id": "sg-splash-tribe",
+   "name": "Splash Tribe",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-splash-tribe-20-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-twelve",
+   "name": "+Twelve",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-plus-twelve-20-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-pororo-park",
+   "name": "Pororo Park",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-pororo-park-unlimited-playtime-on-weekdays-at-s-38"
+   ]
+  },
+  {
+   "id": "sg-tayo-station",
+   "name": "Tayo Station",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-tayo-station-unlimited-playtime-on-weekdays-at-s-27-90"
+   ]
+  },
+  {
+   "id": "sg-superpark",
+   "name": "SuperPark",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-superpark-superpark-ocbc-card-deals"
+   ]
+  },
+  {
+   "id": "sg-courtyard-by-marriott-singapore-novena-sky22",
+   "name": "Courtyard by Marriott Singapore Novena, Sky22",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-courtyard-by-marriott-singapore-novena-sky22-50-off-2nd-main-course"
+   ]
+  },
+  {
+   "id": "sg-sofitel-singapore-sentosa-kwee-zeen",
+   "name": "Sofitel Singapore Sentosa, Kwee Zeen",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sofitel-singapore-sentosa-kwee-zeen-20-off-a-la-carte-food-bill"
+   ]
+  },
+  {
+   "id": "sg-sofitel-singapore-sentosa-the-cliff",
+   "name": "Sofitel Singapore Sentosa, The Cliff",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sofitel-singapore-sentosa-the-cliff-20-off-a-la-carte-food-bill"
+   ]
+  },
+  {
+   "id": "sg-sofitel-singapore-sentosa-lebar",
+   "name": "Sofitel Singapore Sentosa, LeBar",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sofitel-singapore-sentosa-lebar-20-off-a-la-carte-food-bill"
+   ]
+  },
+  {
+   "id": "sg-ruhens",
+   "name": "Ruhens",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-ruhens-up-to-s-500-off-selected-ruhens-water-purifier"
+   ]
+  },
+  {
+   "id": "sg-agoda-x-mastercard",
+   "name": "Agoda x Mastercard",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-agoda-x-mastercard-up-to-16-off-on-eligible-properties"
+   ]
+  },
+  {
+   "id": "sg-zalora",
+   "name": "ZALORA",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-zalora-15-off-with-a-min-spend-of-s-120"
+   ]
+  },
+  {
+   "id": "sg-watsons",
+   "name": "Watsons",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-watsons-s-3-off-min-spend-of-s-50-in-store"
+   ]
+  },
+  {
+   "id": "sg-sofitel-singapore-city-centre-ambre",
+   "name": "Sofitel Singapore City Centre, Ambre",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sofitel-singapore-city-centre-ambre-30-off-food-and-whiskey-by-the-glass"
+   ]
+  },
+  {
+   "id": "sg-the-clarity-club",
+   "name": "The Clarity Club",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-clarity-club-up-to-s-1-350-for-3-hours-inclusive-of-a-complimentary-sna"
+   ]
+  },
+  {
+   "id": "sg-the-clarity-group",
+   "name": "The Clarity Group",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-clarity-group-10-off-selected-products"
+   ]
+  },
+  {
+   "id": "sg-gardens-by-the-bay-disney-garden-of-wonder",
+   "name": "Gardens by the Bay – Disney Garden of Wonder",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "entertainment"
+   ],
+   "offer_ids": [
+    "sg-ocbc-gardens-by-the-bay-disney-garden-of-wonder-complimentary-two-way-shuttle-wi"
+   ]
+  },
+  {
+   "id": "sg-house-of-holly",
+   "name": "House of Holly",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-house-of-holly-up-to-15-off-with-min-spend"
+   ]
+  },
+  {
+   "id": "sg-oasia-spa",
+   "name": "Oasia Spa",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "beauty"
+   ],
+   "offer_ids": [
+    "sg-ocbc-oasia-spa-15-off-a-la-carte-60-or-90-minute-massage-or-facial-treatments-wi"
+   ]
+  },
+  {
+   "id": "sg-lenskart",
+   "name": "Lenskart",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-lenskart-seniorcare-and-myown-exclusive-48-off-all-single-frame-purchase"
+   ]
+  },
+  {
+   "id": "sg-polar-puffs-and-cakes",
+   "name": "Polar Puffs & Cakes",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-polar-puffs-and-cakes-seniorcare-buy-5-sugar-rolls-get-1-free"
+   ]
+  },
+  {
+   "id": "sg-saints-and-sports",
+   "name": "Saints & Sports",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-saints-and-sports-up-to-10-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-kojin",
+   "name": "Kojin",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-kojin-20-off-with-a-min-spend-of-idr-300-000"
+   ]
+  },
+  {
+   "id": "sg-tous-les-jours",
+   "name": "Tous Les Jours",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-tous-les-jours-10-off-whole-cakes"
+   ]
+  },
+  {
+   "id": "sg-tunglok-seafood",
+   "name": "TungLok Seafood",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-tunglok-seafood-10-off-a-la-carte-food-orders-with-a-min-spend",
+    "sg-standard-chartered-tunglok-seafood-enjoy-up-to-15-off-a-la-carte-food-with-your-"
+   ]
+  },
+  {
+   "id": "sg-qin-restaurant-and-bar",
+   "name": "QĪN Restaurant & Bar",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-qin-restaurant-and-bar-10-off-a-la-carte-food-orders-with-min-s-60"
+   ]
+  },
+  {
+   "id": "sg-tunglok-signatures",
+   "name": "TungLok Signatures",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-tunglok-signatures-10-off-a-la-carte-food-orders-min-s-60-spend"
+   ]
+  },
+  {
+   "id": "sg-singapore-marriott-tang-plaza-hotel-java",
+   "name": "Singapore Marriott Tang Plaza Hotel, JAVA+",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-singapore-marriott-tang-plaza-hotel-java-plus-10-off-pastries-savouries-and"
+   ]
+  },
+  {
+   "id": "sg-singapore-marriott-tang-plaza-hotel-lobby-lounge",
+   "name": "Singapore Marriott Tang Plaza Hotel, Lobby Lounge",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-singapore-marriott-tang-plaza-hotel-lobby-lounge-15-off-a-la-carte-food-and"
+   ]
+  },
+  {
+   "id": "sg-singapore-marriott-tang-plaza-hotel-wan-hao-chinese-restaurant",
+   "name": "Singapore Marriott Tang Plaza Hotel, Wan Hao Chinese Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-singapore-marriott-tang-plaza-hotel-wan-hao-chinese-restaurant-10-off-total"
+   ]
+  },
+  {
+   "id": "sg-singapore-marriott-tang-plaza-hotel-crossroads-cafe",
+   "name": "Singapore Marriott Tang Plaza Hotel, Crossroads Café",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-singapore-marriott-tang-plaza-hotel-crossroads-cafe-20-off-total-food-bill"
+   ]
+  },
+  {
+   "id": "sg-singapore-marriott-tang-plaza-hotel-crossroads-buffet",
+   "name": "Singapore Marriott Tang Plaza Hotel, Crossroads Buffet",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-singapore-marriott-tang-plaza-hotel-crossroads-buffet-20-off-total-food-bil",
+    "sg-ocbc-singapore-marriott-tang-plaza-hotel-crossroads-buffet-50-off-every-2nd-dine",
+    "sg-ocbc-singapore-marriott-tang-plaza-hotel-crossroads-buffet-1-for-1-weekday-dinne"
+   ]
+  },
+  {
+   "id": "sg-21-aesthetics",
+   "name": "21 Aesthetics",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "beauty"
+   ],
+   "offer_ids": [
+    "sg-ocbc-21-aesthetics-5r-derma-system-face-treatment-at-s-55-u-p-s-598"
+   ]
+  },
+  {
+   "id": "sg-we-desi",
+   "name": "We Desi",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-we-desi-up-to-15-off-a-la-carte-food",
+    "sg-standard-chartered-we-desi-enjoy-up-to-15-off-a-la-carte-food-with-your-standard"
+   ]
+  },
+  {
+   "id": "sg-lucca-s-trattoria",
+   "name": "Lucca's Trattoria",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-lucca-s-trattoria-up-to-15-off-a-la-carte-food"
+   ]
+  },
+  {
+   "id": "sg-prasana-by-arjani-resorts",
+   "name": "Prasana by Arjani Resorts",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-prasana-by-arjani-resorts-25-off-on-rooms-dining-and-spa-treatments"
+   ]
+  },
+  {
+   "id": "sg-viuum-eyewear",
+   "name": "VIUUM Eyewear",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-viuum-eyewear-15-off-viuum-frame-set-plus-lens"
+   ]
+  },
+  {
+   "id": "sg-crystal-jade-jadeite-membership",
+   "name": "Crystal Jade Jadeite Membership",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "sign_up"
+   ],
+   "offer_ids": [
+    "sg-ocbc-crystal-jade-jadeite-membership-complimentary-jadeite-membership-with-exclu"
+   ]
+  },
+  {
+   "id": "sg-baa-baa-sheepz-sup-sup",
+   "name": "Baa Baa Sheepz<sup>®</sup>",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-baa-baa-sheepz-sup-sup-20-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-fairmont-singapore-anti-dote",
+   "name": "Fairmont Singapore, ANTI:DOTE",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-fairmont-singapore-anti-dote-20-off-total-food-bill"
+   ]
+  },
+  {
+   "id": "sg-willow-stream-spa-fairmont-singapore",
+   "name": "Willow Stream Spa, Fairmont Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "beauty"
+   ],
+   "offer_ids": [
+    "sg-ocbc-willow-stream-spa-fairmont-singapore-20-off-all-spa-treatments"
+   ]
+  },
+  {
+   "id": "sg-fairmont-singapore-the-eight",
+   "name": "Fairmont Singapore, The Eight",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-fairmont-singapore-the-eight-20-off-total-food-bill"
+   ]
+  },
+  {
+   "id": "sg-happie",
+   "name": "Happie",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-happie-s-100-off-any-happie-water-purifiers-purchase"
+   ]
+  },
+  {
+   "id": "sg-sterra",
+   "name": "Sterra",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sterra-40-off-selected-sterra-vacuum-cleaner-with-any-purchase"
+   ]
+  },
+  {
+   "id": "sg-kakushin",
+   "name": "Kakushin",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-kakushin-30-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-hush-candle",
+   "name": "Hush Candle",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-hush-candle-10-off-with-a-min-spend-of-s-50",
+    "sg-ocbc-hush-candle-10-off-christmas-collection-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-chin-lee-tea-and-dine",
+   "name": "Chin Lee Tea & Dine",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-chin-lee-tea-and-dine-1-for-1-dessert"
+   ]
+  },
+  {
+   "id": "sg-mandarin-oriental-jakarta",
+   "name": "Mandarin Oriental Jakarta",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "beauty"
+   ],
+   "offer_ids": [
+    "sg-ocbc-mandarin-oriental-jakarta-15-off-room-10-off-spa"
+   ]
+  },
+  {
+   "id": "sg-pizza-hut",
+   "name": "Pizza Hut",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-pizza-hut-10-off-total-bill-capped-at-s-10-with-a-min-spend",
+    "sg-ocbc-pizza-hut-ocbc-myown-debit-card-and-ocbc-frank-debit-card-exclusive"
+   ]
+  },
+  {
+   "id": "sg-hipvan",
+   "name": "HipVan",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other",
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-hipvan-up-to-14-off-with-min-spend",
+    "sg-standard-chartered-hipvan-up-to-12-off"
+   ]
+  },
+  {
+   "id": "sg-fred-perry",
+   "name": "Fred Perry",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-fred-perry-enjoy-15-off-with-every-2-regular-priced-items-purchased"
+   ]
+  },
+  {
+   "id": "sg-swensen-s-unlimited",
+   "name": "Swensen's Unlimited",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "electronics"
+   ],
+   "offer_ids": [
+    "sg-ocbc-swensen-s-unlimited-receive-a-s-12-return-voucher-with-any-spend"
+   ]
+  },
+  {
+   "id": "sg-raph-and-remy",
+   "name": "Raph & Remy",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-raph-and-remy-15-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-sigi-skin",
+   "name": "Sigi Skin",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sigi-skin-10-off-total-bill-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-technogym",
+   "name": "Technogym",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-technogym-complimentary-technogym-exercise-mat-and-exercise-ball"
+   ]
+  },
+  {
+   "id": "sg-oak-and-sand",
+   "name": "Oak and Sand",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-oak-and-sand-10-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-better-vision",
+   "name": "Better Vision",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-better-vision-up-to-50-off-eyewear-at-better-vision"
+   ]
+  },
+  {
+   "id": "sg-din-tai-fung-johor-bahru",
+   "name": "Din Tai Fung (Johor Bahru)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-din-tai-fung-johor-bahru-rm20-off-with-a-min-spend-of-rm200"
+   ]
+  },
+  {
+   "id": "sg-causeway-link-bus",
+   "name": "Causeway Link Bus",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-causeway-link-bus-get-rm2-off-each-causeway-link-bus-ride-up-to-2-rides-per"
+   ]
+  },
+  {
+   "id": "sg-arthur-s-storehouse",
+   "name": "Arthur's Storehouse",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "education"
+   ],
+   "offer_ids": [
+    "sg-ocbc-arthur-s-storehouse-complimentary-ice-cream-with-any-main-course-ordered"
+   ]
+  },
+  {
+   "id": "sg-adam-and-eve-grill-and-lounge",
+   "name": "Adam & Eve Grill and Lounge",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-adam-and-eve-grill-and-lounge-10-off-total-bill-exclude-beverages"
+   ]
+  },
+  {
+   "id": "sg-1975-avenue-and-hotel",
+   "name": "1975 Avenue and Hotel",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-1975-avenue-and-hotel-15-off-hotel-room-bookings"
+   ]
+  },
+  {
+   "id": "sg-scotts-grill",
+   "name": "Scotts Grill",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-scotts-grill-20-off-degustation-menu-by-les-amis-group"
+   ]
+  },
+  {
+   "id": "sg-peperoni-pizzeria",
+   "name": "Peperoni Pizzeria",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-peperoni-pizzeria-20-off-capped-at-s-30-with-a-min-of-s-100-by-les-amis-gro"
+   ]
+  },
+  {
+   "id": "sg-lino",
+   "name": "LINO",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-lino-20-off-capped-at-s-50-with-a-min-of-s-150-by-les-amis-group"
+   ]
+  },
+  {
+   "id": "sg-tenjin",
+   "name": "Tenjin",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-tenjin-complimentary-upgrade-to-premium-tendon-with-every-order-of-ebi-tend"
+   ]
+  },
+  {
+   "id": "sg-amazon-singapore",
+   "name": "Amazon Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-amazon-singapore-s-5-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-and-other-stories",
+   "name": "& Other Stories",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping",
+    "fashion"
+   ],
+   "offer_ids": [
+    "sg-ocbc-and-other-stories-10-off-with-a-min-spend-of-s-200",
+    "sg-standard-chartered-and-other-stories-enjoy-10-off-with-a-minimum-spend-of-s-200"
+   ]
+  },
+  {
+   "id": "sg-jinjo",
+   "name": "Jinjo",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-jinjo-20-off-with-a-min-spend-by-les-amis-group"
+   ]
+  },
+  {
+   "id": "sg-sushi-jin",
+   "name": "Sushi Jin",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sushi-jin-2nd-pax-discount-off-your-age-for-umi-omakase-lunch-u-p-s-98-by-l"
+   ]
+  },
+  {
+   "id": "sg-asics",
+   "name": "ASICS",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-asics-15-off-with-min-spend-s-200-on-selected-items",
+    "sg-ocbc-asics-complimentary-asics-jacquard-face-towel-worth-s-29-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-kfc-delivery",
+   "name": "KFC Delivery",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-kfc-delivery-s-4-off-8pcs-super-saver-feast-u-p-s-46-95"
+   ]
+  },
+  {
+   "id": "sg-dreame",
+   "name": "Dreame",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-dreame-additional-5-off-on-all-purchases"
+   ]
+  },
+  {
+   "id": "sg-legoland-sup-sup-malaysia-resort",
+   "name": "LEGOLAND<sup>®</sup> Malaysia Resort",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-legoland-sup-sup-malaysia-resort-buy-2-adult-tickets-and-get-a-3rd-ticket-f",
+    "sg-ocbc-legoland-sup-sup-malaysia-resort-10-off-hotel-stays-best-available-rate"
+   ]
+  },
+  {
+   "id": "sg-dao-by-dorsett-amtd-singapore-collective",
+   "name": "Dao by Dorsett AMTD Singapore, Collective",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-dao-by-dorsett-amtd-singapore-collective-20-off-lunch-and-dinner-food-bill"
+   ]
+  },
+  {
+   "id": "sg-pizza-hut-delivery",
+   "name": "Pizza Hut Delivery",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-pizza-hut-delivery-s-3-off-with-a-min-spend-of-s-30"
+   ]
+  },
+  {
+   "id": "sg-chilli-padi-tok-panjang",
+   "name": "Chilli Padi Tok Panjang",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-chilli-padi-tok-panjang-10-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-chilli-padi-nonya-restaurant",
+   "name": "Chilli Padi Nonya Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-chilli-padi-nonya-restaurant-10-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-emirates-singapore",
+   "name": "Emirates Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-emirates-singapore-up-to-10-off"
+   ]
+  },
+  {
+   "id": "sg-parkway-shenton",
+   "name": "Parkway Shenton",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-parkway-shenton-healthspan-longevity-and-wellness-programme-and-more"
+   ]
+  },
+  {
+   "id": "sg-fullerton-health",
+   "name": "Fullerton Health",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-fullerton-health-teleconsultation-from-s-16-35-health-screening-specialist-"
+   ]
+  },
+  {
+   "id": "sg-travel-apps",
+   "name": "Travel Apps",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-travel-apps-up-to-s-188-off-with-minimum-spend"
+   ]
+  },
+  {
+   "id": "sg-food-republic-and-food-junction",
+   "name": "Food Republic and Food Junction",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-food-republic-and-food-junction-seniorcare-s-1-hot-kopi-teh"
+   ]
+  },
+  {
+   "id": "sg-the-oriental-group-of-restaurants",
+   "name": "The Oriental Group of Restaurants",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-oriental-group-of-restaurants-10-off-a-la-carte-and-dim-sum-orders"
+   ]
+  },
+  {
+   "id": "sg-picklego",
+   "name": "PickleGO",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-picklego-up-to-10-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-lets-eat",
+   "name": "Let’s Eat!",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "cafe"
+   ],
+   "offer_ids": [
+    "sg-ocbc-lets-eat-seniorcare-s-1-coffee-or-tea"
+   ]
+  },
+  {
+   "id": "sg-tangs",
+   "name": "TANGS",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "instalment"
+   ],
+   "offer_ids": [
+    "sg-ocbc-tangs-0-interest-free-ocbc-instalment-payment-plan-of-6-or-12-months-with-a"
+   ]
+  },
+  {
+   "id": "sg-travel-21",
+   "name": "Travel 21",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-travel-21-up-to-s-200-off-per-couple"
+   ]
+  },
+  {
+   "id": "sg-benjamin-barker",
+   "name": "Benjamin Barker",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-benjamin-barker-10-off-regular-priced-items"
+   ]
+  },
+  {
+   "id": "sg-bombay-garden",
+   "name": "Bombay Garden",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-bombay-garden-up-to-15-off-a-la-carte-food"
+   ]
+  },
+  {
+   "id": "sg-canning-bar-and-lounge",
+   "name": "Canning Bar & Lounge",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-canning-bar-and-lounge-up-to-15-off-a-la-carte-food",
+    "sg-standard-chartered-canning-bar-and-lounge-enjoy-up-to-15-off-a-la-carte-food-wit"
+   ]
+  },
+  {
+   "id": "sg-ember-and-oak-by-reverie",
+   "name": "Ember & Oak by Reverie",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-ember-and-oak-by-reverie-up-to-15-off-a-la-carte-food",
+    "sg-standard-chartered-ember-and-oak-by-reverie-enjoy-up-to-15-off-a-la-carte-food-w"
+   ]
+  },
+  {
+   "id": "sg-gotti-italiano",
+   "name": "Gotti Italiano",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-gotti-italiano-up-to-15-off-a-la-carte-food",
+    "sg-standard-chartered-gotti-italiano-enjoy-up-to-15-off-a-la-carte-food-with-your-s"
+   ]
+  },
+  {
+   "id": "sg-old-city-biryani",
+   "name": "Old City Biryani",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-old-city-biryani-up-to-15-off-a-la-carte-food",
+    "sg-standard-chartered-old-city-biryani-enjoy-up-to-15-off-a-la-carte-food-with-your"
+   ]
+  },
+  {
+   "id": "sg-omar-shariff-authentic-indian-cuisine",
+   "name": "Omar Shariff Authentic Indian Cuisine",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-omar-shariff-authentic-indian-cuisine-up-to-15-off-a-la-carte-food",
+    "sg-standard-chartered-omar-shariff-authentic-indian-cuisine-enjoy-up-to-15-off-a-la"
+   ]
+  },
+  {
+   "id": "sg-vincenzo-capuano",
+   "name": "Vincenzo Capuano",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-vincenzo-capuano-up-to-15-off-a-la-carte-food",
+    "sg-standard-chartered-vincenzo-capuano-enjoy-up-to-15-off-a-la-carte-food-with-your"
+   ]
+  },
+  {
+   "id": "sg-eden-restaurant",
+   "name": "Eden Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-eden-restaurant-up-to-15-off-a-la-carte-food"
+   ]
+  },
+  {
+   "id": "sg-p-s-o-beach-club",
+   "name": "P.S.O. Beach Club",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-p-s-o-beach-club-up-to-15-off-a-la-carte-food"
+   ]
+  },
+  {
+   "id": "sg-pen-and-inc",
+   "name": "PEN & INC",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-pen-and-inc-up-to-15-off-a-la-carte-food"
+   ]
+  },
+  {
+   "id": "sg-healthway-screening-centre",
+   "name": "Healthway Screening Centre",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-healthway-screening-centre-bring-friends-and-receive-an-ultrasound-each-wit"
+   ]
+  },
+  {
+   "id": "sg-nobel-paediatric-surgery-centre",
+   "name": "Nobel Paediatric Surgery Centre",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-nobel-paediatric-surgery-centre-first-consultation-from-s-196-20-nett"
+   ]
+  },
+  {
+   "id": "sg-nobel-psychological-wellness-centre",
+   "name": "Nobel Psychological Wellness Centre",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-nobel-psychological-wellness-centre-first-consultation-at-s-218-nett"
+   ]
+  },
+  {
+   "id": "sg-island-orthopaedics",
+   "name": "Island Orthopaedics",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-island-orthopaedics-first-consultation-at-s-163-50-nett"
+   ]
+  },
+  {
+   "id": "sg-nobel-ent-centre",
+   "name": "Nobel ENT Centre",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-nobel-ent-centre-first-consultation-at-s-163-50-nett"
+   ]
+  },
+  {
+   "id": "sg-nobel-heart-centre",
+   "name": "Nobel Heart Centre",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-nobel-heart-centre-first-consultation-at-s-163-50-nett"
+   ]
+  },
+  {
+   "id": "sg-nobel-eye-and-vision-centre",
+   "name": "Nobel Eye & Vision Centre",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-nobel-eye-and-vision-centre-first-consultation-at-s-163-50-nett"
+   ]
+  },
+  {
+   "id": "sg-nobel-gastroenterology-centre",
+   "name": "Nobel Gastroenterology Centre",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "utilities"
+   ],
+   "offer_ids": [
+    "sg-ocbc-nobel-gastroenterology-centre-first-consultation-at-s-163-50-nett"
+   ]
+  },
+  {
+   "id": "sg-nobel-diabetes-thyroid-and-endocrine-centre",
+   "name": "Nobel Diabetes, Thyroid & Endocrine Centre",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-nobel-diabetes-thyroid-and-endocrine-centre-first-consultation-at-s-163-50-"
+   ]
+  },
+  {
+   "id": "sg-nobel-obstetrics-gynaecology-and-minimally-invasive-surgery-centre",
+   "name": "Nobel Obstetrics, Gynaecology & Minimally Invasive Surgery Centre",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-nobel-obstetrics-gynaecology-and-minimally-invasive-surgery-centre-first-co"
+   ]
+  },
+  {
+   "id": "sg-sbcc-women-s-clinic",
+   "name": "SBCC Women's Clinic",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sbcc-women-s-clinic-first-consultation-at-s-163-50-nett"
+   ]
+  },
+  {
+   "id": "sg-ten-surgery-group",
+   "name": "Ten Surgery Group",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-ten-surgery-group-first-consultation-at-s-163-50-nett"
+   ]
+  },
+  {
+   "id": "sg-urohealth",
+   "name": "Urohealth",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-urohealth-first-consultation-at-s-163-50-nett"
+   ]
+  },
+  {
+   "id": "sg-sheraton-belitung-resort",
+   "name": "Sheraton Belitung Resort",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sheraton-belitung-resort-4d3n-at-598-nett-inclusive-of-all-taxes"
+   ]
+  },
+  {
+   "id": "sg-proof-living",
+   "name": "Proof Living",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other",
+    "petrol"
+   ],
+   "offer_ids": [
+    "sg-ocbc-proof-living-complimentary-poltrona-frau-gift-worth-s-400-with-min-spend",
+    "sg-ocbc-proof-living-20-off-all-in-stock-accessories"
+   ]
+  },
+  {
+   "id": "sg-wyndham-singapore-hotel-jaspe",
+   "name": "Wyndham Singapore Hotel, Jaspé",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-wyndham-singapore-hotel-jaspe-1-for-1-buffet"
+   ]
+  },
+  {
+   "id": "sg-sone-aesthetics",
+   "name": "SONÉ Aesthetics",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "ewallet"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sone-aesthetics-up-to-s-100-off-skin-booster-and-laser-treatments"
+   ]
+  },
+  {
+   "id": "sg-heymax",
+   "name": "HeyMax",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "sign_up"
+   ],
+   "offer_ids": [
+    "sg-ocbc-heymax-ocbc-cardmembers-who-sign-up-as-heymax-customers-will-receive-100-ma"
+   ]
+  },
+  {
+   "id": "sg-yeomama-batik",
+   "name": "YeoMama Batik",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-yeomama-batik-up-to-15-off-all-regular-priced-items-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-ztp-ginseng-birdnest",
+   "name": "ZTP Ginseng Birdnest",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-ztp-ginseng-birdnest-seniorcare-50-off-top-selling-health-essentials"
+   ]
+  },
+  {
+   "id": "sg-wawafish-jalan-petaling",
+   "name": "Wawafish, Jalan Petaling",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-wawafish-jalan-petaling-rm20-off-with-every-rm200-spend-in-a-single-receipt"
+   ]
+  },
+  {
+   "id": "sg-kopi-street",
+   "name": "Kopi Street",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-kopi-street-10-off-total-bill-with-min-spend-rm80"
+   ]
+  },
+  {
+   "id": "sg-senjaa-bakery-cafe-johor-bahru",
+   "name": "Senjaa Bakery Café, Johor Bahru",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "cafe"
+   ],
+   "offer_ids": [
+    "sg-ocbc-senjaa-bakery-cafe-johor-bahru-10-off-with-a-min-spend-of-rm50"
+   ]
+  },
+  {
+   "id": "sg-berjaya-hospitality-group",
+   "name": "Berjaya Hospitality Group",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-berjaya-hospitality-group-up-to-60-off-at-participating-berjaya-hospitality"
+   ]
+  },
+  {
+   "id": "sg-fulfilled-by-shopee-wednesdays",
+   "name": "Fulfilled by Shopee Wednesdays",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-fulfilled-by-shopee-wednesdays-up-to-s-12-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-lazada-wednesdays",
+   "name": "Lazada Wednesdays",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-lazada-wednesdays-s-25-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-the-ritz-carlton-millenia-singapore-colony-bakery",
+   "name": "The Ritz-Carlton, Millenia Singapore, Colony Bakery",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "cafe"
+   ],
+   "offer_ids": [
+    "sg-ocbc-the-ritz-carlton-millenia-singapore-colony-bakery-10-off-festive-goodies"
+   ]
+  },
+  {
+   "id": "sg-crocs",
+   "name": "Crocs",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-crocs-15-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-four-seasons-hotel-singapore",
+   "name": "Four Seasons Hotel Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-four-seasons-hotel-singapore-15-off-selected-festive-takeaway-items"
+   ]
+  },
+  {
+   "id": "sg-blue-box-cafe-singapore",
+   "name": "Blue Box Café Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "cafe"
+   ],
+   "offer_ids": [
+    "sg-ocbc-blue-box-cafe-singapore-10-off-total-bill-on-weekdays-mon-fri-with-a-min-ne"
+   ]
+  },
+  {
+   "id": "sg-wine-connection",
+   "name": "Wine Connection",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "spend_campaign"
+   ],
+   "offer_ids": [
+    "sg-ocbc-wine-connection-complimentary-bottle-of-wine-from-a-curated-selection-with-"
+   ]
+  },
+  {
+   "id": "sg-booking-com",
+   "name": "Booking.com",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-booking-com-10-booking-com-wallet-credit-rebate-on-any-booking-globally-dom",
+    "sg-standard-chartered-booking-com-earn-up-to-10-booking-com-wallet-credits-on-accom"
+   ]
+  },
+  {
+   "id": "sg-collin-s-sup-sup",
+   "name": "COLLIN'S<sup>®</sup>",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-collin-s-sup-sup-10-off-festive-e-store-orders-with-min-spend"
+   ]
+  },
+  {
+   "id": "sg-sofitel-singapore-city-centre",
+   "name": "Sofitel Singapore City Centre",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-sofitel-singapore-city-centre-20-off-festive-goodies-online"
+   ]
+  },
+  {
+   "id": "sg-curious-creatures",
+   "name": "Curious Creatures",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "fashion"
+   ],
+   "offer_ids": [
+    "sg-ocbc-curious-creatures-complimentary-curious-creatures-tote-bag-with-a-min-nett-"
+   ]
+  },
+  {
+   "id": "sg-masons-home-decor",
+   "name": "Masons Home Decor",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-masons-home-decor-10-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-klook-11-11",
+   "name": "Klook (11.11)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-klook-11-11-s-25-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-foodpanda-singapore",
+   "name": "foodpanda Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-ocbc-foodpanda-singapore-60-off-your-first-order"
+   ]
+  },
+  {
+   "id": "sg-taobao-11-11-sale",
+   "name": "Taobao 11.11 Sale",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-taobao-11-11-sale-s-30-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-taobao-weekly-thursday",
+   "name": "Taobao Weekly Thursday",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-taobao-weekly-thursday-s-10-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-montigo-resorts-nongsa",
+   "name": "Montigo Resorts Nongsa",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-montigo-resorts-nongsa-up-to-40-off-best-available-rate-plus-idr-300-000-re"
+   ]
+  },
+  {
+   "id": "sg-shopee-11-11-big-sale",
+   "name": "Shopee 11.11 Big Sale",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-shopee-11-11-big-sale-up-to-s-60-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-agoda-flight-campaign",
+   "name": "Agoda Flight Campaign",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-agoda-flight-campaign-5-discount-with-a-minimum-spend"
+   ]
+  },
+  {
+   "id": "sg-agoda-november-mega-sale",
+   "name": "Agoda November Mega Sale",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-ocbc-agoda-november-mega-sale-up-to-18-discount-with-a-minimum-spend"
+   ]
+  },
+  {
+   "id": "sg-alipay-wallet",
+   "name": "Alipay Wallet",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-ocbc-alipay-wallet-link-your-ocbc-mastercard-to-alipay-and-enjoy-rmb-30-off-your"
+   ]
+  },
+  {
+   "id": "sg-tune-clinic-seoul",
+   "name": "Tune Clinic – Seoul",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-ocbc-tune-clinic-seoul-enjoy-20-instant-discount-coupon"
+   ]
+  },
+  {
+   "id": "sg-lazada-11-11-biggest-sale-of-the-year",
+   "name": "Lazada 11.11 Biggest Sale of the Year",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-lazada-11-11-biggest-sale-of-the-year-up-to-s-100-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-zalora-11-11",
+   "name": "ZALORA 11.11",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-zalora-11-11-15-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-b-skin",
+   "name": "B/SKIN",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-b-skin-20-off-total-bill",
+    "sg-ocbc-b-skin-s-50-off-with-a-min-spend"
+   ]
+  },
+  {
+   "id": "sg-hdi",
+   "name": "HDI",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "online"
+   ],
+   "offer_ids": [
+    "sg-ocbc-hdi-complimentary-gift-with-a-min-nett-spend-of-s-60",
+    "sg-ocbc-hdi-10-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-nets-x-axs-x-cdg-zig",
+   "name": "NETS x AXS x CDG Zig",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-nets-x-axs-x-cdg-zig-enjoy-rewards-while-paying-your-bills-simply-make-paym"
+   ]
+  },
+  {
+   "id": "sg-nets-x-cdg-zig",
+   "name": "NETS x CDG Zig",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-ocbc-nets-x-cdg-zig-get-up-to-8-off-your-rides-with-nets-on-cdg-zig-app"
+   ]
+  },
+  {
+   "id": "sg-enjoy-s-576-off",
+   "name": "Enjoy S$576 off",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-posb-enjoy-s-576-off-posb-singapore"
+   ]
+  },
+  {
+   "id": "sg-cny20",
+   "name": "CNY20",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-posb-up-to-100-rebate-on-metro-and-subway-fares-capped-at-cny20"
+   ]
+  },
+  {
+   "id": "sg-receive-8-return-voucher-on-saturdays",
+   "name": "Receive $8 return voucher on Saturdays",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-posb-receive-8-return-voucher-on-saturdays-dbs-singapore"
+   ]
+  },
+  {
+   "id": "sg-sentosa-the-kitchen-table-w-singapore",
+   "name": "Sentosa The kitchen table - W Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-sentosa-the-kitchen-table-w-singapore-enjoy-15-off-total-bill"
+   ]
+  },
+  {
+   "id": "sg-changi-recommends-changi-prepaid-sim-card",
+   "name": "Changi Recommends | Changi Prepaid SIM Card",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-changi-recommends-changi-prepaid-sim-card-10-off-for-all-prep"
+   ]
+  },
+  {
+   "id": "sg-changi-recommends-changi-travel-esim",
+   "name": "Changi Recommends | Changi Travel eSIM",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-changi-recommends-changi-travel-esim-10-off-applicable-for-al"
+   ]
+  },
+  {
+   "id": "sg-mastercard-discover-the-citys-best-capitaland-malls",
+   "name": "Mastercard - Discover The City’s Best @ CapitaLand Malls",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-mastercard-discover-the-citys-best-capitaland-malls-earn-up-t"
+   ]
+  },
+  {
+   "id": "sg-sentosa-village-hotel",
+   "name": "Sentosa - Village Hotel",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-sentosa-village-hotel-20-off-best-flexible-rates-for-room-onl"
+   ]
+  },
+  {
+   "id": "sg-sentosa-oasia-spa",
+   "name": "Sentosa | Oasia Spa",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "beauty"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-sentosa-oasia-spa-enjoy-15-off-massages-or-complimentary-15-m"
+   ]
+  },
+  {
+   "id": "sg-sentosa-siloso-beach-resort",
+   "name": "Sentosa | Siloso Beach Resort",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-sentosa-siloso-beach-resort-deluxe-room-stay-3-pay-2"
+   ]
+  },
+  {
+   "id": "sg-sentosa-madame-tussauds-singapore",
+   "name": "Sentosa - Madame Tussauds Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-sentosa-madame-tussauds-singapore-enjoy-20-off-standard-plus-"
+   ]
+  },
+  {
+   "id": "sg-splash-tribe-the-palawan-sentosa",
+   "name": "Splash Tribe @ The Palawan Sentosa",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-splash-tribe-the-palawan-sentosa-enjoy-15-off-your-total-bill"
+   ]
+  },
+  {
+   "id": "sg-the-cliff-at-sofitel-sentosa",
+   "name": "The Cliff at Sofitel Sentosa",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-the-cliff-at-sofitel-sentosa-enjoy-20-off-a-la-carte-food-bil"
+   ]
+  },
+  {
+   "id": "sg-kwee-zeen-sofitel-sentosa",
+   "name": "Kwee Zeen @ Sofitel Sentosa",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-kwee-zeen-sofitel-sentosa-enjoy-20-off-a-la-carte-dining-sund"
+   ]
+  },
+  {
+   "id": "sg-shangri-la-rasa-sentosa",
+   "name": "Shangri-La Rasa Sentosa",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-shangri-la-rasa-sentosa-enjoy-15-off-best-available-rate-for-"
+   ]
+  },
+  {
+   "id": "sg-jewel-changi-airport-canopy-bridge",
+   "name": "Jewel Changi Airport Canopy Bridge",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "fashion"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-jewel-changi-airport-canopy-bridge-enjoy-1-for-1-mastercard-c"
+   ]
+  },
+  {
+   "id": "sg-sentosa-away-spa",
+   "name": "Sentosa | AWAY Spa",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "beauty"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-sentosa-away-spa-enjoy-15-off-a-la-carte-treatments"
+   ]
+  },
+  {
+   "id": "sg-sentosa-bikini-bar",
+   "name": "Sentosa - Bikini Bar",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-sentosa-bikini-bar-enjoy-10-off-food-and-beverages"
+   ]
+  },
+  {
+   "id": "sg-empire-grill",
+   "name": "Empire Grill",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-empire-grill-enjoy-20-off-a-la-carte-food-bill"
+   ]
+  },
+  {
+   "id": "sg-chairman-s-room-raffles-sentosa",
+   "name": "Chairman's Room @ Raffles Sentosa",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-chairman-s-room-raffles-sentosa-enjoy-20-off-a-la-carte-food-"
+   ]
+  },
+  {
+   "id": "sg-raffles-room",
+   "name": "Raffles Room",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-raffles-room-enjoy-20-off-a-la-carte-food-bill"
+   ]
+  },
+  {
+   "id": "sg-jewel-changi-airport",
+   "name": "Jewel Changi Airport",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "fashion"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-jewel-changi-airport-receive-an-exclusive-jewel-limited-editi"
+   ]
+  },
+  {
+   "id": "sg-sentosa-aj-hackett",
+   "name": "Sentosa - AJ Hackett",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "groceries"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-sentosa-aj-hackett-enjoy-15-off-giant-swing-and-15-off-aj-hac"
+   ]
+  },
+  {
+   "id": "sg-eco-alfresco-cafe-siloso-beach-resort",
+   "name": "Eco Alfresco Cafe @ Siloso Beach Resort",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-eco-alfresco-cafe-siloso-beach-resort-enjoy-10-off-your-main-"
+   ]
+  },
+  {
+   "id": "sg-le-bar-sofitel-sentosa",
+   "name": "Le Bar @ Sofitel Sentosa",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-le-bar-sofitel-sentosa-enjoy-20-off-a-la-carte-food-bill-and-"
+   ]
+  },
+  {
+   "id": "sg-wet-deck-at-w-singapore",
+   "name": "WET Deck at W Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-wet-deck-at-w-singapore-enjoy-15-off-total-bill-with-a-minimu"
+   ]
+  },
+  {
+   "id": "sg-burberry-beauty-store",
+   "name": "Burberry Beauty Store",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "beauty"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-burberry-beauty-store-10-off-selected-products"
+   ]
+  },
+  {
+   "id": "sg-chloe-atelier-store",
+   "name": "Chloé Atelier Store",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-chloe-atelier-store-10-off-selected-products"
+   ]
+  },
+  {
+   "id": "sg-changi-recommends-changiwifi-rental-and-5g-data-upsize",
+   "name": "Changi Recommends - ChangiWiFI Rental and 5G Data Upsize",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-changi-recommends-changiwifi-rental-and-5g-data-upsize-free-1"
+   ]
+  },
+  {
+   "id": "sg-royal-china-raffles-sentosa",
+   "name": "Royal China @ Raffles Sentosa",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-royal-china-raffles-sentosa-enjoy-20-off-a-la-carte-food-bill"
+   ]
+  },
+  {
+   "id": "sg-sentosa-twelve-at-the-palawan",
+   "name": "Sentosa +Twelve at The Palawan",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-sentosa-plus-twelve-at-the-palawan-enjoy-15-off-total-bill-wh"
+   ]
+  },
+  {
+   "id": "sg-lingzhi-greens",
+   "name": "LingZhi Greens",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-lingzhi-greens-enjoy-up-to-15-off-a-la-carte-food-with-your-s"
+   ]
+  },
+  {
+   "id": "sg-buglas-isla-cafe",
+   "name": "Buglas Isla Cafe",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-buglas-isla-cafe-15-discount-on-food-and-non-alcoholic-bevera"
+   ]
+  },
+  {
+   "id": "sg-iberry-group",
+   "name": "iberry Group",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-iberry-group-thb100-discount-with-a-minimum-spend-of-thb1-000"
+   ]
+  },
+  {
+   "id": "sg-planter-s-restaurant-at-the-danna-langkawi-resort-and-beach-villas",
+   "name": "Planter's Restaurant at The Danna Langkawi Resort & Beach Villas",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-planter-s-restaurant-at-the-danna-langkawi-resort-and-beach-v"
+   ]
+  },
+  {
+   "id": "sg-bianca-italian-restaurant",
+   "name": "BIANCA ITALIAN RESTAURANT",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-bianca-italian-restaurant-complimentary-frutti-rossi-panna-co"
+   ]
+  },
+  {
+   "id": "sg-straits-and-co-at-the-danna-langkawi-resort-and-beach-villas",
+   "name": "Straits & Co at The Danna Langkawi Resort & Beach Villas",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-straits-and-co-at-the-danna-langkawi-resort-and-beach-villas-"
+   ]
+  },
+  {
+   "id": "sg-a-and-w",
+   "name": "A&W",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-a-and-w-buy-1-get-1-free"
+   ]
+  },
+  {
+   "id": "sg-starbucks",
+   "name": "Starbucks",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-starbucks-enjoy-15-off-food-and-beverages"
+   ]
+  },
+  {
+   "id": "sg-k-pop-concert-tickets-and-korea-travel-5-off-with-mastercard-nol-world",
+   "name": "K-Pop Concert Tickets & Korea Travel - 5% Off with Mastercard | NOL World",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-k-pop-concert-tickets-and-korea-travel-5-off-with-mastercard-"
+   ]
+  },
+  {
+   "id": "sg-airportels-luggage-delivery-and-storage",
+   "name": "AIRPORTELs Luggage Delivery & Storage",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-airportels-luggage-delivery-and-storage-enjoy-up-to-15-off-in"
+   ]
+  },
+  {
+   "id": "sg-dr-stretch",
+   "name": "Dr.stretch",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-dr-stretch-enjoy-up-to-50-off"
+   ]
+  },
+  {
+   "id": "sg-rajadamnern-stadium",
+   "name": "Rajadamnern Stadium",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-rajadamnern-stadium-10-discount-on-all-seats-vip-and-non-vip-"
+   ]
+  },
+  {
+   "id": "sg-lotte-mart-seoul",
+   "name": "LOTTE Mart Seoul",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-lotte-mart-seoul-enjoy-up-to-5-off-at-lotte-mart-when-you-spe"
+   ]
+  },
+  {
+   "id": "sg-santiburi-samui-country-club",
+   "name": "Santiburi Samui Country Club",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-santiburi-samui-country-club-a-special-15-discount-applies-to"
+   ]
+  },
+  {
+   "id": "sg-terrace-at-the-danna-langkawi-resort-and-beach-villas",
+   "name": "Terrace at The Danna Langkawi Resort & Beach Villas",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-terrace-at-the-danna-langkawi-resort-and-beach-villas-20-off-"
+   ]
+  },
+  {
+   "id": "sg-verandah-lounge-at-the-danna-langkawi-resort-and-beach-villas",
+   "name": "Verandah Lounge at The Danna Langkawi Resort & Beach Villas",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-verandah-lounge-at-the-danna-langkawi-resort-and-beach-villas"
+   ]
+  },
+  {
+   "id": "sg-robinson-department-store",
+   "name": "Robinson Department Store",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-robinson-department-store-get-cash-coupon-up-to-1-400-thb-whe"
+   ]
+  },
+  {
+   "id": "sg-rustan-s",
+   "name": "Rustan's",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-rustan-s-get-up-to-10-off-regular-priced-items-with-a-minimum"
+   ]
+  },
+  {
+   "id": "sg-taiwan-duty-free",
+   "name": "TAIWAN DUTY FREE",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-taiwan-duty-free-single-transaction-over-nt-3-000-redeem-nt-1"
+   ]
+  },
+  {
+   "id": "sg-the-danna-spa-at-the-danna-langkawi-resort-and-beach-villas",
+   "name": "The Danna Spa at The Danna Langkawi Resort & Beach Villas",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-the-danna-spa-at-the-danna-langkawi-resort-and-beach-villas-g"
+   ]
+  },
+  {
+   "id": "sg-grand-batam-mall",
+   "name": "Grand Batam Mall",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping",
+    "entertainment"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-grand-batam-mall-spend-thb-5-000-get-thb-1-000-on-top-discoun",
+    "sg-standard-chartered-grand-batam-mall-10-offmahanakhon-skyverse-adult-ticket-dayti",
+    "sg-standard-chartered-grand-batam-mall-get-idr-300-000-voucher-when-you-spend-idr-1"
+   ]
+  },
+  {
+   "id": "sg-lotte-department-store",
+   "name": "LOTTE Department Store",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-lotte-department-store-enjoy-up-to-3-x-5-off-coupons-with-the"
+   ]
+  },
+  {
+   "id": "sg-accor-hotels-ap",
+   "name": "Accor Hotels AP",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-accor-hotels-ap-enjoy-complimentary-breakfast-at-participatin"
+   ]
+  },
+  {
+   "id": "sg-fairways-and-bluewater-boracay",
+   "name": "Fairways & Bluewater Boracay",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-fairways-and-bluewater-boracay-enjoy-50-off-on-published-rate"
+   ]
+  },
+  {
+   "id": "sg-firefly",
+   "name": "Firefly",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-firefly-enjoy-up-to-12-off-all-firefly-flights"
+   ]
+  },
+  {
+   "id": "sg-malaysia-airlines",
+   "name": "Malaysia Airlines",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-malaysia-airlines-enjoy-up-to-10-off-all-malaysia-airlines-fl"
+   ]
+  },
+  {
+   "id": "sg-somerset",
+   "name": "Somerset",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-somerset-enjoy-25-off-on-room-accommodations-based-on-best-av"
+   ]
+  },
+  {
+   "id": "sg-lyf",
+   "name": "lyf",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-lyf-enjoy-21-off-on-room-accomodation-based-on-best-available"
+   ]
+  },
+  {
+   "id": "sg-jpark-island-resort-and-waterpark-mactan-cebu",
+   "name": "Jpark Island Resort & Waterpark Mactan, Cebu",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "sign_up"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-jpark-island-resort-and-waterpark-mactan-cebu-stay-3-nights-p"
+   ]
+  },
+  {
+   "id": "sg-airsim-limited-time-promotion",
+   "name": "AIRSIM Limited Time Promotion",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-airsim-limited-time-promotion-25-discount-on-airsim"
+   ]
+  },
+  {
+   "id": "sg-grammarly",
+   "name": "Grammarly",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-grammarly-get-25-off-on-grammarly-subscription"
+   ]
+  },
+  {
+   "id": "sg-gallabox",
+   "name": "Gallabox",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-gallabox-get-usd-75-off-at-gallabox"
+   ]
+  },
+  {
+   "id": "sg-clevertap",
+   "name": "CleverTap",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "utilities"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-clevertap-get-75-off-first-12-months-on-the-clevertap-essenti"
+   ]
+  },
+  {
+   "id": "sg-constant-contact",
+   "name": "Constant Contact",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-constant-contact-get-20-off-on-email-marketing-plans"
+   ]
+  },
+  {
+   "id": "sg-lukfook-jewellery-lukfook-joaillerie-and-love-lukfook-jewellery",
+   "name": "Lukfook Jewellery, Lukfook Joaillerie and Love Lukfook Jewellery",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "fashion"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-lukfook-jewellery-lukfook-joaillerie-and-love-lukfook-jewelle"
+   ]
+  },
+  {
+   "id": "sg-appsflyer",
+   "name": "AppsFlyer",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-appsflyer-get-12-000-free-conversions-for-the-first-year"
+   ]
+  },
+  {
+   "id": "sg-quest-plus-conference-center-manila",
+   "name": "Quest Plus Conference Center Manila",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-quest-plus-conference-center-manila-enjoy-50-off-on-deluxe-si"
+   ]
+  },
+  {
+   "id": "sg-kuya-j",
+   "name": "Kuya J",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-kuya-j-enjoy-30-off-on-total-bill-with-a-minimum-spend-of-php"
+   ]
+  },
+  {
+   "id": "sg-hug-samui-restaurant-and-beach-club",
+   "name": "Hug Samui Restaurant & Beach Club",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-hug-samui-restaurant-and-beach-club-enjoy-5-off-all-food-purc"
+   ]
+  },
+  {
+   "id": "sg-hbo-max",
+   "name": "HBO Max",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-hbo-max-enjoy-33-off-the-price-of-the-hbo-max-standard-plan-f"
+   ]
+  },
+  {
+   "id": "sg-gordon-ramsay-bar-and-grill",
+   "name": "Gordon Ramsay Bar & Grill",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-gordon-ramsay-bar-and-grill-enjoy-complimentary-or-special-pr"
+   ]
+  },
+  {
+   "id": "sg-the-exchange-trx",
+   "name": "The Exchange TRX",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-the-exchange-trx-redeem-rm100-seibu-cash-voucher-with-rm2-800"
+   ]
+  },
+  {
+   "id": "sg-the-financial-times",
+   "name": "The Financial Times",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-the-financial-times-up-to-6-months-of-free-subscription"
+   ]
+  },
+  {
+   "id": "sg-museum-of-ice-cream-singapore",
+   "name": "Museum of Ice Cream Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "cafe"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-museum-of-ice-cream-singapore-enjoy-15-off-online-ticket-purc"
+   ]
+  },
+  {
+   "id": "sg-mount-faber-leisure-group-skypass-premium-singapore-sling-cocktail-or-",
+   "name": "Mount Faber Leisure Group | SkyPass Premium + Singapore Sling Cocktail or Mocktail With Fries",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-mount-faber-leisure-group-skypass-premium-plus-singapore-slin"
+   ]
+  },
+  {
+   "id": "sg-crimson-resort-and-spa-mactan",
+   "name": "Crimson Resort and Spa Mactan",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-crimson-resort-and-spa-mactan-up-to-46-8-off-on-a-3d2n-accomm"
+   ]
+  },
+  {
+   "id": "sg-crimson-resort-and-spa-boracay",
+   "name": "Crimson Resort and Spa Boracay",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-crimson-resort-and-spa-boracay-up-to-71-off-on-a-3d2n-accommo"
+   ]
+  },
+  {
+   "id": "sg-changi-airport-mastercard-year-long-privileges",
+   "name": "Changi Airport Mastercard Year Long Privileges",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-changi-airport-mastercard-year-long-privileges-enjoy-perks-wi"
+   ]
+  },
+  {
+   "id": "sg-four-points-by-sheraton-boracay",
+   "name": "Four Points by Sheraton Boracay",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-four-points-by-sheraton-boracay-20-off-total-food-bill"
+   ]
+  },
+  {
+   "id": "sg-hainan-hotels",
+   "name": "Hainan Hotels",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-hainan-hotels-get-cny200-cashback-when-you-spend-and-pay-cny1"
+   ]
+  },
+  {
+   "id": "sg-alipay",
+   "name": "Alipay",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-alipay-get-rmb-30-off-when-you-link-your-standard-chartered-m"
+   ]
+  },
+  {
+   "id": "sg-fairmont-singapore-christmas-at-home-2026",
+   "name": "Fairmont Singapore, Christmas at Home 2026",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-fairmont-singapore-christmas-at-home-2026-up-to-15-off"
+   ]
+  },
+  {
+   "id": "sg-oso-ristorante",
+   "name": "OSO Ristorante",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-oso-ristorante-enjoy-up-to-15-off-a-la-carte-food-with-your-s"
+   ]
+  },
+  {
+   "id": "sg-mag-s",
+   "name": "MAG'S",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-mag-s-enjoy-up-to-15-off-a-la-carte-and-omakase-food-with-you"
+   ]
+  },
+  {
+   "id": "sg-lamo-bistro-del-mare",
+   "name": "L’Amo Bistrò del Mare",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-lamo-bistro-del-mare-enjoy-up-to-15-off-a-la-carte-food-with-"
+   ]
+  },
+  {
+   "id": "sg-evan-s-kitch",
+   "name": "Evan's Kitch",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-evan-s-kitch-enjoy-up-to-15-off-a-la-carte-food-with-your-sta"
+   ]
+  },
+  {
+   "id": "sg-mount-faber-leisure-group-sentosa-island-bus-tour-singapore",
+   "name": "Mount Faber Leisure Group - Sentosa Island Bus Tour(Singapore)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-mount-faber-leisure-group-sentosa-island-bus-tour-singapore-2"
+   ]
+  },
+  {
+   "id": "sg-mount-faber-leisure-group-wings-of-time-fireworks-symphony-singapore",
+   "name": "Mount Faber Leisure Group - Wings of Time Fireworks Symphony (Singapore)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-mount-faber-leisure-group-wings-of-time-fireworks-symphony-si"
+   ]
+  },
+  {
+   "id": "sg-mount-faber-leisure-group-skyorb-cabin-singapore",
+   "name": "Mount Faber Leisure Group - SkyOrb Cabin (Singapore)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-mount-faber-leisure-group-skyorb-cabin-singapore-25-off-skyor"
+   ]
+  },
+  {
+   "id": "sg-mount-faber-leisure-group-skyhelix-sentosa-singapore",
+   "name": "Mount Faber Leisure Group - SkyHelix Sentosa (Singapore)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-mount-faber-leisure-group-skyhelix-sentosa-singapore-20-off-s"
+   ]
+  },
+  {
+   "id": "sg-mount-faber-leisure-group-cable-car-skypass-premium-singapore",
+   "name": "Mount Faber Leisure Group - Cable Car SkyPass premium(Singapore)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-mount-faber-leisure-group-cable-car-skypass-premium-singapore"
+   ]
+  },
+  {
+   "id": "sg-mount-faber-leisure-group-cable-car-skypass-singapore",
+   "name": "Mount Faber Leisure Group - Cable Car SkyPass (Singapore)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-mount-faber-leisure-group-cable-car-skypass-singapore-20-off-"
+   ]
+  },
+  {
+   "id": "sg-cygnet",
+   "name": "Cygnet",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-cygnet-enjoy-up-to-15-off-a-la-carte-food-with-your-standard-"
+   ]
+  },
+  {
+   "id": "sg-eminami",
+   "name": "Eminami",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-eminami-enjoy-up-to-15-off-a-la-carte-food-with-your-standard"
+   ]
+  },
+  {
+   "id": "sg-alice-boulangerie",
+   "name": "Alice Boulangerie",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-alice-boulangerie-enjoy-up-to-15-off-a-la-carte-food-with-you"
+   ]
+  },
+  {
+   "id": "sg-q-and-m-dental",
+   "name": "Q & M Dental",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-q-and-m-dental-enjoy-dental-care-package-at-218"
+   ]
+  },
+  {
+   "id": "sg-spoon-restaurant-myanmar",
+   "name": "SPOON Restaurant (Myanmar)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-spoon-restaurant-myanmar-enjoy-up-to-10-off-on-a-la-carte-men"
+   ]
+  },
+  {
+   "id": "sg-the-osteopathic-centre",
+   "name": "The Osteopathic Centre",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-the-osteopathic-centre-enjoy-s-20-off-on-selected-professiona"
+   ]
+  },
+  {
+   "id": "sg-tokyu-department-store-japan",
+   "name": "Tokyu Department Store (Japan)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-tokyu-department-store-japan-receive-an-exclusive-gift-and-en"
+   ]
+  },
+  {
+   "id": "sg-vintage-36-myanmar",
+   "name": "Vintage 36 (Myanmar)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-vintage-36-myanmar-enjoy-10-off-food-bill-with-minimum-spend-"
+   ]
+  },
+  {
+   "id": "sg-yoox-global",
+   "name": "YOOX (Global)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "fashion"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-yoox-global-enjoy-15-off-with-no-minimum-spending"
+   ]
+  },
+  {
+   "id": "sg-trafalgar-tours",
+   "name": "Trafalgar Tours",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-trafalgar-tours-enjoy-up-to-20-off-tours-with-standard-charte"
+   ]
+  },
+  {
+   "id": "sg-himalaya-optical",
+   "name": "Himalaya Optical",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-himalaya-optical-up-to-25-off"
+   ]
+  },
+  {
+   "id": "sg-save-big-on-your-wellness-get-up-to-30-off-at-mixcare-health",
+   "name": "Save big on your wellness! Get up to 30% off at MixCare Health",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-save-big-on-your-wellness-get-up-to-30-off-at-mixcare-health-"
+   ]
+  },
+  {
+   "id": "sg-chengdu-metro-and-bus-tourist-exclusive",
+   "name": "Chengdu Metro and Bus (Tourist Exclusive)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-chengdu-metro-and-bus-tourist-exclusive-enjoy-up-to-100-rebat"
+   ]
+  },
+  {
+   "id": "sg-luxury-escapes",
+   "name": "Luxury Escapes",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-luxury-escapes-enjoy-up-to-10-off-on-escapes-to-the-world-s-b"
+   ]
+  },
+  {
+   "id": "sg-shanghai-maglev-tourist-exclusive",
+   "name": "Shanghai Maglev (Tourist Exclusive)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-shanghai-maglev-tourist-exclusive-enjoy-up-to-cny-20-cashback"
+   ]
+  },
+  {
+   "id": "sg-shanghai-metro-tourist-exclusive",
+   "name": "Shanghai Metro (Tourist Exclusive)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-shanghai-metro-tourist-exclusive-enjoy-up-to-100-rebate"
+   ]
+  },
+  {
+   "id": "sg-beijing-subway-tourist-exclusive",
+   "name": "Beijing Subway (Tourist Exclusive)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-beijing-subway-tourist-exclusive-enjoy-up-to-100-rebate-up-to"
+   ]
+  },
+  {
+   "id": "sg-fortune-hotel",
+   "name": "Fortune Hotel",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-fortune-hotel-get-15-off-on-food-bill"
+   ]
+  },
+  {
+   "id": "sg-pan-pacific-hotels-and-resorts",
+   "name": "Pan Pacific Hotels and Resorts",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-pan-pacific-hotels-and-resorts-get-one-night-free"
+   ]
+  },
+  {
+   "id": "sg-parkroyal-collection-hotels-and-resorts",
+   "name": "PARKROYAL COLLECTION Hotels & Resorts",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-parkroyal-collection-hotels-and-resorts-get-one-night-free"
+   ]
+  },
+  {
+   "id": "sg-parkroyal-hotels-and-resorts",
+   "name": "PARKROYAL Hotels & Resorts",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-parkroyal-hotels-and-resorts-get-one-night-free"
+   ]
+  },
+  {
+   "id": "sg-readmio",
+   "name": "Readmio",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-readmio-get-up-to-30-discount-on-yearly-subscription-plan"
+   ]
+  },
+  {
+   "id": "sg-china-theme-park-china",
+   "name": "China Theme Park (CHINA)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "entertainment"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-china-theme-park-china-enjoy-up-to-rmb-65-cashback"
+   ]
+  },
+  {
+   "id": "sg-marina-bay-sands-mastercard-hotel-package",
+   "name": "Marina Bay Sands: Mastercard Hotel Package",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-marina-bay-sands-mastercard-hotel-package-indulge-in-exclusiv"
+   ]
+  },
+  {
+   "id": "sg-beijing-101",
+   "name": "Beijing 101",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "beauty"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-beijing-101-beijing-101-first-trial-offer-40-signature-hair-g"
+   ]
+  },
+  {
+   "id": "sg-mokobara",
+   "name": "Mokobara",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-mokobara-10-off-on-total-bill"
+   ]
+  },
+  {
+   "id": "sg-satvik-store",
+   "name": "Satvik Store",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-satvik-store-10-off-on-a-minimum-order-value-of-rs-1500-and-a"
+   ]
+  },
+  {
+   "id": "sg-sri-jagdamba-pearls",
+   "name": "Sri Jagdamba Pearls",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "fashion"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-sri-jagdamba-pearls-25-off-on-pearl-gemstone-and-fashion-jewe"
+   ]
+  },
+  {
+   "id": "sg-jen",
+   "name": "JEN",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-jen-enjoy-one-night-free"
+   ]
+  },
+  {
+   "id": "sg-shangri-la-hotels-and-resorts",
+   "name": "Shangri-La Hotels and Resorts",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-shangri-la-hotels-and-resorts-enjoy-one-night-free"
+   ]
+  },
+  {
+   "id": "sg-the-clarks-hotel",
+   "name": "The Clarks Hotel",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-the-clarks-hotel-enjoy-25-off-on-rooms"
+   ]
+  },
+  {
+   "id": "sg-traders-hotel",
+   "name": "Traders Hotel",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-traders-hotel-enjoy-one-night-free"
+   ]
+  },
+  {
+   "id": "sg-central-pattana-thailand",
+   "name": "Central Pattana, Thailand",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-central-pattana-thailand-receive-food-voucher-when-shop-at-14"
+   ]
+  },
+  {
+   "id": "sg-central-phuket-thailand",
+   "name": "Central Phuket, Thailand",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-central-phuket-thailand-exclusive-luxe-privileges-for-interna"
+   ]
+  },
+  {
+   "id": "sg-swiss-bar",
+   "name": "Swiss Bar",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-swiss-bar-enjoy-up-to-15-off-on-total-bill"
+   ]
+  },
+  {
+   "id": "sg-sunrise-cafe",
+   "name": "Sunrise Café",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-sunrise-cafe-enjoy-up-to-10-off-on-food-and-beverages"
+   ]
+  },
+  {
+   "id": "sg-sharon-inn-rooftop-restaurant",
+   "name": "Sharon Inn Rooftop Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-sharon-inn-rooftop-restaurant-enjoy-up-to-10-off-on-total-bil"
+   ]
+  },
+  {
+   "id": "sg-pronto",
+   "name": "Pronto",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-pronto-enjoy-up-to-10-off-on-food-and-beverages"
+   ]
+  },
+  {
+   "id": "sg-king-of-the-mambo-galle-face-hotel",
+   "name": "King of the Mambo - Galle Face Hotel",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-king-of-the-mambo-galle-face-hotel-enjoy-up-to-10-off-on-food"
+   ]
+  },
+  {
+   "id": "sg-hotels-com-hong-kong",
+   "name": "Hotels.com (Hong Kong)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-hotels-com-hong-kong-enjoy-up-to-hk-100-off-selected-hotel-bo"
+   ]
+  },
+  {
+   "id": "sg-homm-china-indonesia-laos-south-korea-thailand",
+   "name": "Homm (China, Indonesia, Laos, South Korea, Thailand)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-homm-china-indonesia-laos-south-korea-thailand-stay-three-nig"
+   ]
+  },
+  {
+   "id": "sg-heybo-online-hong-kong-singapore",
+   "name": "Heybo Online (Hong Kong, Singapore)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-heybo-online-hong-kong-singapore-enjoy-up-to-20-off"
+   ]
+  },
+  {
+   "id": "sg-accor-properties-in-great-china",
+   "name": "Accor Properties in Great China",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-accor-properties-in-great-china-enjoy-up-to-20-off-hotel-rese"
+   ]
+  },
+  {
+   "id": "sg-amari-asia-pacific",
+   "name": "Amari (Asia Pacific)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-amari-asia-pacific-one-night-free-with-a-minimum-3-night-stay"
+   ]
+  },
+  {
+   "id": "sg-best-western-plus-kathmandu",
+   "name": "Best Western Plus Kathmandu",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-best-western-plus-kathmandu-enjoy-20-off-on-direct-booking"
+   ]
+  },
+  {
+   "id": "sg-eagle-regency-hotel",
+   "name": "Eagle Regency Hotel",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-eagle-regency-hotel-enjoy-10-off-on-total-bill"
+   ]
+  },
+  {
+   "id": "sg-hotel-durbar-himalayas",
+   "name": "Hotel Durbar Himalayas",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-hotel-durbar-himalayas-enjoy-10-off-on-direct-booking"
+   ]
+  },
+  {
+   "id": "sg-hotel-zeilan-sunset-point",
+   "name": "Hotel Zeilan Sunset Point",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-hotel-zeilan-sunset-point-enjoy-15-off-on-total-bill"
+   ]
+  },
+  {
+   "id": "sg-onyx-rewards",
+   "name": "ONYX Rewards",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-onyx-rewards-unlock-exclusive-member-benefits-and-rewards-wit"
+   ]
+  },
+  {
+   "id": "sg-place-vendome",
+   "name": "Place Vendome",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-place-vendome-enjoy-up-20-off-on-total-bill"
+   ]
+  },
+  {
+   "id": "sg-qatar-airways",
+   "name": "Qatar Airways",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-qatar-airways-save-up-to-10-on-your-next-qatar-airways-flight"
+   ]
+  },
+  {
+   "id": "sg-the-langham-hotels-and-resorts",
+   "name": "The Langham Hotels and Resorts",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-the-langham-hotels-and-resorts-one-night-free-at-participatin"
+   ]
+  },
+  {
+   "id": "sg-yingnflo",
+   "name": "Ying’nFlo",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-yingnflo-one-night-free-at-participating-properties"
+   ]
+  },
+  {
+   "id": "sg-uniworld-boutique-river-cruises",
+   "name": "Uniworld Boutique River Cruises",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "fashion"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-uniworld-boutique-river-cruises-enjoy-us-1-000-off-per-cabin"
+   ]
+  },
+  {
+   "id": "sg-lotte-car-rental",
+   "name": "Lotte Car Rental",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-lotte-car-rental-enjoy-up-to-89-off-jeju-island-60-off-mainla"
+   ]
+  },
+  {
+   "id": "sg-1864-limited-edition-galle-face-hotel",
+   "name": "1864 Limited Edition - Galle Face Hotel",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-1864-limited-edition-galle-face-hotel-get-10-off-on-food-bill"
+   ]
+  },
+  {
+   "id": "sg-firebeach-galle-face-hotel-sri-lanka",
+   "name": "Firebeach - Galle Face Hotel Sri Lanka",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-firebeach-galle-face-hotel-sri-lanka-enjoy-get-10-off-on-food"
+   ]
+  },
+  {
+   "id": "sg-hotels-com",
+   "name": "Hotels.com",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-hotels-com-enjoy-up-to-8-off-selected-hotel-bookings"
+   ]
+  },
+  {
+   "id": "sg-wyndham-hotels-and-resorts-wyndham-rewards",
+   "name": "Wyndham Hotels & Resorts (Wyndham Rewards)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-wyndham-hotels-and-resorts-wyndham-rewards-enjoy-complimentar"
+   ]
+  },
+  {
+   "id": "sg-wyndham-hotels-and-resorts",
+   "name": "Wyndham Hotels & Resorts",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-wyndham-hotels-and-resorts-enjoy-one-night-free-stay-for-3-ni"
+   ]
+  },
+  {
+   "id": "sg-expedia-global",
+   "name": "Expedia (Global)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-expedia-global-enjoy-up-to-8-off-selected-hotel-bookings"
+   ]
+  },
+  {
+   "id": "sg-expedia-hong-kong",
+   "name": "Expedia (Hong Kong)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-expedia-hong-kong-enjoy-up-to-10-off-selected-hotel-bookings"
+   ]
+  },
+  {
+   "id": "sg-garrya-china-indonesia-japan-thailand-vietnam",
+   "name": "Garrya (China, Indonesia, Japan, Thailand, Vietnam)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-garrya-china-indonesia-japan-thailand-vietnam-stay-three-nigh"
+   ]
+  },
+  {
+   "id": "sg-ascott-star-rewards-global",
+   "name": "Ascott Star Rewards (Global)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "sign_up"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-ascott-star-rewards-global-enjoy-one-night-free-at-ascott-sta"
+   ]
+  },
+  {
+   "id": "sg-banyan-tree-africa-and-middle-east-asia-pacific",
+   "name": "Banyan Tree (Africa and Middle East, Asia Pacific)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-banyan-tree-africa-and-middle-east-asia-pacific-stay-three-ni"
+   ]
+  },
+  {
+   "id": "sg-brilliant-by-langham-global",
+   "name": "Brilliant by Langham (Global)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-brilliant-by-langham-global-complimentary-fast-track-access-t"
+   ]
+  },
+  {
+   "id": "sg-cassia-online",
+   "name": "Cassia (Online)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-cassia-online-stay-three-nights-enjoy-one-complimentary-night"
+   ]
+  },
+  {
+   "id": "sg-cordis-hotels-and-resorts-china-hong-kong-new-zealand",
+   "name": "Cordis Hotels and Resorts (China, Hong Kong, New Zealand)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-cordis-hotels-and-resorts-china-hong-kong-new-zealand-one-nig"
+   ]
+  },
+  {
+   "id": "sg-dhawa-china-japan-maldives-vietnam",
+   "name": "Dhawa (China, Japan, Maldives, Vietnam)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-dhawa-china-japan-maldives-vietnam-stay-three-nights-enjoy-on"
+   ]
+  },
+  {
+   "id": "sg-eaton-and-chelsea-hotel-toronto-canada",
+   "name": "Eaton and Chelsea Hotel, Toronto (Canada)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-eaton-and-chelsea-hotel-toronto-canada-one-night-free-at-part"
+   ]
+  },
+  {
+   "id": "sg-farfetch-online",
+   "name": "FARFETCH (Online)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "fashion"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-farfetch-online-enjoy-10-off-full-priced-items"
+   ]
+  },
+  {
+   "id": "sg-angsana-greece",
+   "name": "Angsana (Greece)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-angsana-greece-stay-three-nights-enjoy-one-complimentary-nigh"
+   ]
+  },
+  {
+   "id": "sg-oriental-residence-thailand",
+   "name": "Oriental Residence Thailand",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-oriental-residence-thailand-enjoy-one-night-free-with-a-minim"
+   ]
+  },
+  {
+   "id": "sg-ozo-thailand",
+   "name": "OZO Thailand",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-ozo-thailand-enjoy-one-night-free-with-a-minimum-3-night-stay"
+   ]
+  },
+  {
+   "id": "sg-shama-thailand",
+   "name": "Shama Thailand",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-shama-thailand-enjoy-one-night-free-with-a-minimum-3-night-st"
+   ]
+  },
+  {
+   "id": "sg-ihg-hotels-and-resorts",
+   "name": "IHG® Hotels & Resorts",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-ihg-hotels-and-resorts-enjoy-15-savings-on-best-flexible-rate"
+   ]
+  },
+  {
+   "id": "sg-jiak99-enjoy-local-classic-hawker-experiences",
+   "name": "Jiak99: Enjoy local classic hawker experiences",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-jiak99-enjoy-local-classic-hawker-experiences-enjoy-10-off-ji"
+   ]
+  },
+  {
+   "id": "sg-landmark-hongkong",
+   "name": "LANDMARK HONGKONG",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-landmark-hongkong-enjoy-hk-100-off-for-every-hk-500-you-dine"
+   ]
+  },
+  {
+   "id": "sg-hotels-com-singapore",
+   "name": "Hotels.com (Singapore)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-hotels-com-singapore-enjoy-enjoy-up-to-s-60-off-selected-hote"
+   ]
+  },
+  {
+   "id": "sg-edelweiss-restaurant",
+   "name": "Edelweiss Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-edelweiss-restaurant-get-15-off-on-total-bill-at-edelweiss-re"
+   ]
+  },
+  {
+   "id": "sg-asado-pub-and-grill",
+   "name": "Asado Pub & Grill",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-asado-pub-and-grill-enjoy-15-off-on-food-items"
+   ]
+  },
+  {
+   "id": "sg-bandipur-chhen-coffee-shop",
+   "name": "Bandipur Chhen - Coffee Shop",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-bandipur-chhen-coffee-shop-enjoy-5-off-on-food-and-beverages"
+   ]
+  },
+  {
+   "id": "sg-bhanjayang-bar",
+   "name": "Bhanjayang Bar",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-bhanjayang-bar-10-off-on-food-and-beverages-bhanjayang-bar"
+   ]
+  },
+  {
+   "id": "sg-the-khukri-experience-nepal",
+   "name": "The Khukri Experience (Nepal)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-the-khukri-experience-nepal-enjoy-flat-10-off-on-total-bill-w"
+   ]
+  },
+  {
+   "id": "sg-travellers-bar-galle-face-hotel-sri-lanka",
+   "name": "Travellers' Bar - Galle Face Hotel (Sri Lanka)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-travellers-bar-galle-face-hotel-sri-lanka-enjoy-10-off-on-foo"
+   ]
+  },
+  {
+   "id": "sg-zeilan-sunset-point-restaurant-sri-lanka",
+   "name": "Zeilan Sunset Point Restaurant (Sri Lanka)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-zeilan-sunset-point-restaurant-sri-lanka-enjoy-15-off-on-tota"
+   ]
+  },
+  {
+   "id": "sg-cheval-bleu-nepal",
+   "name": "Cheval Bleu (Nepal)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-cheval-bleu-nepal-enjoy-10-off-on-total-bill-when-pay-with-st"
+   ]
+  },
+  {
+   "id": "sg-ba-and-sh",
+   "name": "ba&sh",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "fashion"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-ba-and-sh-enjoy-12-off-sitewide-including-sale-items"
+   ]
+  },
+  {
+   "id": "sg-anker-nepal",
+   "name": "Anker (Nepal)",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-anker-nepal-enjoy-15-off-on-all-anker-products-cellucity-inte"
+   ]
+  },
+  {
+   "id": "sg-carlton-city-hotel-singapore",
+   "name": "Carlton City Hotel Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-carlton-city-hotel-singapore-1-for-1-buffet-experiences"
+   ]
+  },
+  {
+   "id": "sg-sentosa-altitudex-indoor-skydiving",
+   "name": "Sentosa - AltitudeX Indoor Skydiving",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-sentosa-altitudex-indoor-skydiving-enjoy-15-off-altitudex-ind"
+   ]
+  },
+  {
+   "id": "sg-my-little-spanish-place",
+   "name": "My Little Spanish Place",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-my-little-spanish-place-enjoy-up-to-15-off-a-la-carte-foodwit"
+   ]
+  },
+  {
+   "id": "sg-casa-latteria",
+   "name": "Casa Latteria",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-casa-latteria-enjoy-up-to-15-off-a-la-carte-food-with-your-st"
+   ]
+  },
+  {
+   "id": "sg-stirling-steaks",
+   "name": "Stirling Steaks",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-stirling-steaks-enjoy-up-to-15-off-a-la-carte-food-with-your-"
+   ]
+  },
+  {
+   "id": "sg-one-ninety-restaurant",
+   "name": "One-Ninety Restaurant",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-one-ninety-restaurant-enjoy-up-to-15-off-a-la-carte-food-and-"
+   ]
+  },
+  {
+   "id": "sg-hue",
+   "name": "HUE",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-hue-enjoy-up-to-15-off-a-la-carte-food-with-your-standard-cha"
+   ]
+  },
+  {
+   "id": "sg-istudio-x-standard-chartered",
+   "name": "iStudio x Standard Chartered",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "electronics"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-istudio-x-standard-chartered-enjoy-s-150-off-any-iphone-at-is"
+   ]
+  },
+  {
+   "id": "sg-summerhouse-beach-club-sentosa",
+   "name": "Summerhouse Beach Club - Sentosa",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-summerhouse-beach-club-sentosa-enjoy-15-off-total-bill-dine-i"
+   ]
+  },
+  {
+   "id": "sg-chi-spa-at-shangri-la-rasa-sentosa",
+   "name": "Chi Spa at Shangri-La Rasa Sentosa",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "hotel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-chi-spa-at-shangri-la-rasa-sentosa-enjoy-15-off-a-la-carte-tr"
+   ]
+  },
+  {
+   "id": "sg-mandai-wildlife-reserve-f-and-b-outlets",
+   "name": "Mandai Wildlife Reserve F&B outlets",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-mandai-wildlife-reserve-f-and-b-outlets-enjoy-10-off-at-selec"
+   ]
+  },
+  {
+   "id": "sg-caltex",
+   "name": "Caltex",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "petrol"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-caltex-enjoy-up-to-27-91-upfront-fuel-discount"
+   ]
+  },
+  {
+   "id": "sg-capitaland-link-now-and-be-rewarded-on-capitastar-app",
+   "name": "CapitaLand: Link Now & Be Rewarded on CapitaStar App",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-capitaland-link-now-and-be-rewarded-on-capitastar-app-unlock-"
+   ]
+  },
+  {
+   "id": "sg-sentosa-coastes",
+   "name": "Sentosa - Coastes",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "dining"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-sentosa-coastes-enjoy-10-discount-on-food-and-beverage"
+   ]
+  },
+  {
+   "id": "sg-saladstop-online",
+   "name": "SaladStop! online",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "petrol"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-saladstop-online-enjoy-up-to-20-off"
+   ]
+  },
+  {
+   "id": "sg-bedrock-origin",
+   "name": "Bedrock Origin",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-bedrock-origin-enjoy-10-off-the-harvest-table-sunday-brunch-w"
+   ]
+  },
+  {
+   "id": "sg-skirt-w-singapore",
+   "name": "SKIRT @ W Singapore",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-skirt-w-singapore-enjoy-15-off-total-bill-with-a-minimum-spen"
+   ]
+  },
+  {
+   "id": "sg-silver-shell-cafe-at-shangri-la-rasa-sentosa",
+   "name": "Silver Shell Cafe at Shangri-La Rasa Sentosa",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "petrol"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-silver-shell-cafe-at-shangri-la-rasa-sentosa-enjoy-15-off-din"
+   ]
+  },
+  {
+   "id": "sg-sentosa-ultragolf",
+   "name": "Sentosa - UltraGolf",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "entertainment"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-sentosa-ultragolf-enjoy-15-off-1-round-of-mini-golf"
+   ]
+  },
+  {
+   "id": "sg-sentosa-hydrodash",
+   "name": "Sentosa - HydroDash",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "entertainment"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-sentosa-hydrodash-enjoy-15-off-1-hour-and-2-hour-tickets"
+   ]
+  },
+  {
+   "id": "sg-sentosa-scentopia",
+   "name": "Sentosa - Scentopia",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "beauty"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-sentosa-scentopia-enjoy-20-off-perfume-workshop-ticket"
+   ]
+  },
+  {
+   "id": "sg-hertz",
+   "name": "Hertz",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-hertz-enjoy-10-off-on-car-rentals-worldwide"
+   ]
+  },
+  {
+   "id": "sg-airsim-promotion",
+   "name": "AIRSIM Promotion",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "travel"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-airsim-promotion-up-to-15-discount-on-airsim"
+   ]
+  },
+  {
+   "id": "sg-asiamedic-wellness-assessment-centre-pte-ltd",
+   "name": "AsiaMedic Wellness Assessment Centre Pte Ltd",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "health"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-asiamedic-wellness-assessment-centre-pte-ltd-350-nett-per-exa"
+   ]
+  },
+  {
+   "id": "sg-takashimaya-s-c",
+   "name": "Takashimaya S.C.",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "shopping"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-takashimaya-s-c-enjoy-up-to-15-off-all-year-long-at-participa"
+   ]
+  },
+  {
+   "id": "sg-brooks-brothers-malaysia",
+   "name": "Brooks Brothers [Malaysia]",
+   "aliases": [],
+   "country": "SG",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-standard-chartered-brooks-brothers-malaysia-10-off-with-minimum-purchase-of-2-no"
+   ]
+  },
+  {
+   "id": "my-american-tourister",
+   "name": "American Tourister",
+   "aliases": [],
+   "country": "MY",
+   "categories": [
+    "other"
+   ],
+   "offer_ids": [
+    "sg-uob-american-tourister-10-off-regular-priced-items"
+   ]
+  },
+  {
+   "id": "my-samsonite",
+   "name": "Samsonite",
+   "aliases": [],
+   "country": "MY",
+   "categories": [
+    "fashion"
+   ],
+   "offer_ids": [
+    "sg-uob-samsonite-10-off-regular-priced-items"
+   ]
+  }
+ ]
+}
