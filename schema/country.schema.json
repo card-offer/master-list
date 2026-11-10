@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://card-offer.github.io/master-list/schema/country.schema.json",
+  "title": "Country",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["code", "name", "currency", "timezone"],
+  "properties": {
+    "code": {"type": "string", "pattern": "^[A-Z]{2}$"},
+    "name": {"type": "string"},
+    "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+    "timezone": {"type": "string"}
+  }
+}

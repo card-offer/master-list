@@ -1,0 +1,17 @@
+{
+  "patterns": [
+    "(?i)^(?:s\\$|rm|myr|sgd|\\$)\\s?\\d",
+    "(?i)^enjoy\\s+(?:up to\\s+)?(?:s\\$|rm|\\$|\\d)",
+    "(?i)^receive\\s+",
+    "(?i)^save big\\b",
+    "(?i)^refer a friend$",
+    "(?i)^0%\\s*fees?$",
+    "(?i)^purchases of\\b",
+    "(?i)\\bevery\\s+(?:mon|tue|wed|thu|fri|sat|sun)",
+    "(?i)^dconvert\\b",
+    "(?i)\\b11\\.11\\b",
+    "(?i)\\bmega sale\\b",
+    "(?i)\\bbiggest sale\\b",
+    "(?i)^cny\\d+$"
+  ]
+}

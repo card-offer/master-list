@@ -3,457 +3,185 @@
   "$id": "https://card-offer.github.io/master-list/schema/card.schema.json",
   "title": "Card",
   "type": "object",
-  "required": [
-    "id",
-    "name",
-    "issuer_id",
-    "country",
-    "currency",
-    "networks",
-    "card_type",
-    "islamic",
-    "status",
-    "benefits",
-    "official_url",
-    "sources",
-    "last_checked"
-  ],
   "additionalProperties": false,
+  "required": [
+    "id", "aliases", "name", "issuer_id", "country", "currency", "networks",
+    "card_type", "islamic", "status", "benefits", "official_url", "sources",
+    "checked_at", "first_seen", "last_seen"
+  ],
   "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^[a-z]{2}-[a-z0-9-]+$"
-    },
-    "name": {
-      "type": "string"
-    },
-    "issuer_id": {
-      "type": "string",
-      "pattern": "^[a-z]{2}-[a-z0-9-]+$"
-    },
-    "country": {
-      "type": "string",
-      "pattern": "^[A-Z]{2}$",
-      "description": "ISO 3166-1 alpha-2"
-    },
-    "currency": {
-      "type": "string",
-      "pattern": "^[A-Z]{3}$",
-      "description": "ISO 4217"
-    },
-    "network": {
-      "oneOf": [
-        {
-          "enum": [
-            "visa",
-            "mastercard",
-            "amex",
-            "unionpay",
-            "jcb",
-            "diners"
-          ]
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
+    "id": {"type": "string", "pattern": "^[a-z]{2}-[a-z0-9-]+$"},
+    "aliases": {"type": "array", "items": {"type": "string"}},
+    "name": {"type": "string"},
+    "issuer_id": {"type": "string", "pattern": "^[a-z]{2}-[a-z0-9-]+$"},
+    "country": {"type": "string", "pattern": "^[A-Z]{2}$"},
+    "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
     "networks": {
       "type": "array",
-      "items": {
-        "enum": [
-          "visa",
-          "mastercard",
-          "amex",
-          "unionpay",
-          "jcb",
-          "diners"
-        ]
-      },
+      "items": {"enum": ["visa", "mastercard", "amex", "unionpay", "jcb", "diners"]},
       "uniqueItems": true
     },
-    "network_source": {
-      "enum": [
-        "name",
-        "curated_from_page",
-        "page_heading",
-        null
-      ]
+    "network_source": {"enum": ["name", "curated_from_page", "page_heading", null]},
+    "network_candidates": {
+      "type": "array",
+      "items": {"enum": ["visa", "mastercard", "amex", "unionpay", "jcb", "diners"]}
     },
     "tier": {
       "enum": [
-        "classic",
-        "gold",
-        "platinum",
-        "titanium",
-        "signature",
-        "infinite",
-        "world",
-        "world_elite",
-        "reserve",
-        "centurion",
-        null
+        "classic", "gold", "platinum", "titanium", "signature", "infinite",
+        "world", "world_elite", "reserve", "centurion", null
       ]
     },
-    "card_type": {
-      "enum": [
-        "credit",
-        "charge",
-        "debit",
-        "prepaid"
-      ]
-    },
-    "islamic": {
-      "type": "boolean"
-    },
-    "status": {
-      "enum": [
-        "active",
-        "no_new_applications",
-        "discontinued"
-      ]
-    },
+    "card_type": {"enum": ["credit", "charge", "debit", "prepaid"]},
+    "islamic": {"type": "boolean"},
+    "status": {"enum": ["active", "no_new_applications", "discontinued", "needs_review"]},
+    "review_reason": {"type": ["string", "null"]},
     "annual_fee": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "required": [
-        "source_url",
-        "amount",
-        "waiver_rules"
-      ],
+      "type": ["object", "null"],
       "additionalProperties": false,
+      "required": ["source_url", "amount", "waiver_rules"],
       "properties": {
-        "text": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "source_url": {
-          "type": "string",
-          "format": "uri"
-        },
-        "amount": {
-          "type": [
-            "number",
-            "null"
-          ],
-          "description": "Principal card annual fee in local currency. 0 when the page says no annual fee."
-        },
-        "principal_amount": {
-          "type": [
-            "number",
-            "null"
-          ]
-        },
-        "supplementary_amount": {
-          "type": [
-            "number",
-            "null"
-          ]
-        },
+        "text": {"type": ["string", "null"]},
+        "source_url": {"type": "string", "format": "uri"},
+        "amount": {"type": ["number", "null"]},
+        "principal_amount": {"type": ["number", "null"]},
+        "supplementary_amount": {"type": ["number", "null"]},
         "waiver_rules": {
           "type": "array",
           "items": {
             "type": "object",
-            "required": [
-              "text",
-              "kind"
-            ],
             "additionalProperties": false,
+            "required": ["text", "kind"],
             "properties": {
-              "text": {
-                "type": "string"
-              },
-              "kind": {
-                "enum": [
-                  "lifetime",
-                  "first_year",
-                  "spend_based",
-                  "transaction_based",
-                  "conditional"
-                ]
-              },
-              "min_spend": {
-                "type": [
-                  "number",
-                  "null"
-                ]
-              },
-              "min_transactions": {
-                "type": [
-                  "integer",
-                  "null"
-                ]
-              }
+              "text": {"type": "string"},
+              "kind": {"enum": ["lifetime", "first_year", "spend_based", "transaction_based", "conditional"]},
+              "min_spend": {"type": ["number", "null"]},
+              "min_transactions": {"type": ["integer", "null"]}
             }
           }
         }
       }
     },
     "min_income": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "required": [
-        "text",
-        "source_url",
-        "amount"
-      ],
+      "type": ["object", "null"],
       "additionalProperties": false,
+      "required": ["text", "source_url", "amount"],
       "properties": {
-        "text": {
-          "type": "string"
-        },
-        "source_url": {
-          "type": "string",
-          "format": "uri"
-        },
-        "amount": {
-          "type": [
-            "number",
-            "null"
-          ]
-        },
-        "period": {
-          "enum": [
-            "year",
-            "month",
-            null
-          ]
-        },
-        "annual_amount": {
-          "type": [
-            "number",
-            "null"
-          ]
-        }
+        "text": {"type": "string"},
+        "source_url": {"type": "string", "format": "uri"},
+        "amount": {"type": ["number", "null"]},
+        "period": {"enum": ["year", "month", null]},
+        "annual_amount": {"type": ["number", "null"]}
       }
     },
     "benefits": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": [
-          "type",
-          "text",
-          "texts",
-          "source_url"
-        ],
         "additionalProperties": false,
+        "required": ["type", "text", "texts", "source_url"],
         "properties": {
           "type": {
             "enum": [
-              "cashback",
-              "points",
-              "miles",
-              "lounge_access",
-              "travel_insurance",
-              "golf",
-              "fuel",
-              "dining",
-              "instalment",
-              "annual_fee_waiver",
-              "merchant_offer",
-              "other"
+              "cashback", "points", "miles", "lounge_access", "travel_insurance", "golf",
+              "fuel", "dining", "instalment", "annual_fee_waiver", "merchant_offer", "other"
             ]
           },
-          "text": {
-            "type": "string",
-            "description": "Verbatim sentence from the source page"
-          },
-          "source_url": {
-            "type": "string",
-            "format": "uri"
-          },
+          "text": {"type": "string"},
+          "texts": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+          "source_url": {"type": "string", "format": "uri"},
           "details": {
-            "type": [
-              "object",
-              "null"
-            ],
+            "type": ["object", "null"],
+            "additionalProperties": false,
             "properties": {
-              "rates_pct": {
-                "type": "array",
-                "items": {
-                  "type": "number"
-                }
-              },
-              "cap_text": {
-                "type": "string"
-              },
+              "rates_pct": {"type": "array", "items": {"type": "number"}},
+              "cap_text": {"type": "string"},
               "programmes": {
                 "type": "array",
                 "items": {
                   "enum": [
-                    "priority_pass",
-                    "loungekey",
-                    "dragonpass",
-                    "plaza_premium",
-                    "mastercard_travel_pass",
-                    "visa_airport_companion",
-                    "malaysia_airlines_golden_lounge",
-                    "mastercard_airport_experiences"
+                    "priority_pass", "loungekey", "dragonpass", "plaza_premium",
+                    "mastercard_travel_pass", "visa_airport_companion",
+                    "malaysia_airlines_golden_lounge", "mastercard_airport_experiences"
                   ]
                 }
               },
-              "visits": {
-                "type": [
-                  "integer",
-                  "null"
-                ]
-              },
-              "min_spend_text": {
-                "type": "string"
-              },
-              "coverage_text": {
-                "type": "string"
-              },
-              "visits_values": {
-                "type": "array",
-                "items": {
-                  "type": [
-                    "integer",
-                    "string"
-                  ]
-                }
-              },
-              "guest_policy_text": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "supplementary_share_visits": {
-                "type": [
-                  "boolean",
-                  "null"
-                ],
-                "description": "true or false only when the page states it; null when unstated."
-              }
+              "visits": {"type": ["integer", "null"]},
+              "min_spend_text": {"type": "string"},
+              "coverage_text": {"type": "string"},
+              "visits_values": {"type": "array", "items": {"type": ["integer", "string"]}},
+              "guest_policy_text": {"type": ["string", "null"]},
+              "supplementary_share_visits": {"type": ["boolean", "null"]}
             }
-          },
-          "texts": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "minItems": 1,
-            "description": "All distinct verbatim lines for this benefit type, merged."
           }
         }
       }
     },
-    "benefit_types": {
+    "benefit_types": {"type": "array", "items": {"type": "string"}},
+    "benefits_scope": {"enum": ["card", "shared_product_page", null]},
+    "earn_rates": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "category", "rate", "text", "source_url"],
+        "properties": {
+          "kind": {
+            "enum": ["cashback_pct", "points_multiplier", "points_per_currency_unit", "miles_per_currency_unit"]
+          },
+          "category": {
+            "enum": [
+              "unspecified", "overseas", "all_spend", "local", "dining", "shopping", "online",
+              "petrol", "groceries", "travel", "utilities", "contactless", "transport",
+              "entertainment", "ewallet"
+            ]
+          },
+          "rate": {"type": "number"},
+          "up_to": {"type": "boolean"},
+          "text": {"type": "string"},
+          "source_url": {"type": "string", "format": "uri"}
+        }
       }
     },
-    "benefits_scope": {
-      "enum": [
-        "card",
-        "shared_product_page"
-      ]
-    },
-    "official_url": {
-      "type": "string",
-      "format": "uri"
-    },
+    "official_url": {"type": "string", "format": "uri"},
     "sources": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": [
-          "url",
-          "kind",
-          "fetched_at"
-        ],
         "additionalProperties": false,
+        "required": ["url", "kind", "fetched_at"],
         "properties": {
-          "url": {
-            "type": "string",
-            "format": "uri"
-          },
+          "url": {"type": "string", "format": "uri"},
           "kind": {
             "enum": [
-              "issuer_product_page",
-              "issuer_listing",
-              "issuer_promotion_page",
-              "issuer_promotion_listing",
-              "network_offer_page",
-              "merchant_page"
+              "issuer_product_page", "issuer_listing", "issuer_promotion_page",
+              "issuer_promotion_listing", "network_offer_page", "merchant_page"
             ]
           },
-          "fetched_at": {
-            "type": "string"
-          }
+          "fetched_at": {"type": ["string", "null"]}
         }
       }
     },
-    "name_verified_on_source": {
-      "type": "boolean"
+    "name_verified_on_source": {"type": ["boolean", "null"]},
+    "checked_at": {"type": ["string", "null"]},
+    "checked_fetch_url": {"type": ["string", "null"]},
+    "checked_at_null_reason": {"type": ["string", "null"]},
+    "first_seen": {"type": ["string", "null"], "format": "date"},
+    "last_seen": {"type": ["string", "null"], "format": "date"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "active"}}, "required": ["status"]},
+      "then": {"properties": {"networks": {"minItems": 1}}}
     },
-    "last_checked": {
-      "type": "string",
-      "format": "date"
+    {
+      "if": {"properties": {"status": {"const": "needs_review"}}, "required": ["status"]},
+      "then": {"properties": {"review_reason": {"type": "string"}}, "required": ["review_reason"]}
     },
-    "network_candidates": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "visa",
-          "mastercard",
-          "amex",
-          "unionpay",
-          "jcb",
-          "diners"
-        ]
-      },
-      "description": "Network(s) mentioned on the product page but not stated in the card name or heading. Unconfirmed."
-    },
-    "earn_rates": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": [
-          "kind",
-          "category",
-          "rate",
-          "text",
-          "source_url"
-        ],
-        "additionalProperties": false,
-        "properties": {
-          "kind": {
-            "enum": [
-              "cashback_pct",
-              "points_multiplier",
-              "points_per_currency_unit",
-              "miles_per_currency_unit"
-            ]
-          },
-          "category": {
-            "type": "string"
-          },
-          "rate": {
-            "type": "number"
-          },
-          "up_to": {
-            "type": "boolean"
-          },
-          "text": {
-            "type": "string"
-          },
-          "source_url": {
-            "type": "string",
-            "format": "uri"
-          }
-        }
-      }
+    {
+      "if": {"properties": {"checked_at": {"type": "null"}}, "required": ["checked_at"]},
+      "then": {"properties": {"checked_at_null_reason": {"type": "string"}}, "required": ["checked_at_null_reason"]}
     }
-  }
+  ]
 }

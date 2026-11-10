@@ -1,0 +1,136 @@
+{
+ "my-cimb": {
+  "seeds": [
+   "https://www.cimb.com.my/en/personal/promotions/latest-promotions.html"
+  ],
+  "sitemap": "my_cimb",
+  "pat": "^/en/personal/promotions/[a-z0-9/-]+\\.html$"
+ },
+ "my-public-bank": {
+  "seeds": [
+   "https://www.pbebank.com/en/promotions/credit-cards-promotions/",
+   "https://www.pbebank.com/en/promotions/credit-debit-cards-promotions/",
+   "https://www.pbebank.com/en/promotions/"
+  ],
+  "pat": "^/en/promotions/latest-promotions/[a-z0-9-]+/$"
+ },
+ "my-hong-leong": {
+  "seeds": [
+   "https://www.hlb.com.my/en/personal-banking/promotions.html"
+  ],
+  "sitemap": "my_hlb",
+  "pat": "^/en/personal-banking/promotions/[a-z0-9/-]+\\.html$"
+ },
+ "my-ambank": {
+  "seeds": [
+   "https://www.ambank.com.my/promotions"
+  ],
+  "pat": "^/promotions/[A-Za-z0-9-]+$"
+ },
+ "my-uob": {
+  "seeds": [
+   "https://www.uob.com.my/personal/promotions/index.page"
+  ],
+  "sitemap": "my_uob",
+  "pat": "^/personal/promotions/[a-z0-9/-]+\\.page$"
+ },
+ "my-standard-chartered": {
+  "seeds": [
+   "https://www.sc.com/my/promotions/"
+  ],
+  "sitemap": "my_scb",
+  "pat": "^/my/promotions/[a-z0-9-]+/$"
+ },
+ "my-alliance": {
+  "seeds": [
+   "https://www.alliancebank.com.my/promotions"
+  ],
+  "sitemap": "my_alliance",
+  "pat": "^/promotions/(Cards|cards|alliance-privilege)/[A-Za-z0-9-]+$"
+ },
+ "my-aeon-credit": {
+  "seeds": [
+   "https://myaeoncredit.com.my/promotions/"
+  ],
+  "sitemap": "my_aeon",
+  "pat": "^/promotions/[a-z0-9-]+/$"
+ },
+ "my-bank-islam": {
+  "seeds": [
+   "https://www.bankislam.com/promotions/"
+  ],
+  "pat": "^/promotions/[a-z0-9-]+/$"
+ },
+ "my-muamalat": {
+  "seeds": [
+   "https://www.muamalat.com.my/promotions/",
+   "https://www.muamalat.com.my/promotions/card/"
+  ],
+  "sitemap": "my_muamalat",
+  "pat": "^/promotions/[a-z0-9-]+/[a-z0-9-]+/$"
+ },
+ "my-hsbc": {
+  "seeds": [
+   "https://www.hsbc.com.my/offers/",
+   "https://www.hsbc.com.my/credit-cards/"
+  ],
+  "sitemap": "my_hsbc",
+  "pat": "^/(credit-cards/)?(offers|promotions)/[a-z0-9/-]+/$"
+ },
+ "my-al-rajhi": {
+  "seeds": [
+   "https://www.alrajhibank.com.my/"
+  ],
+  "sitemap": "my_alrajhi",
+  "pat": "promo"
+ },
+ "sg-ocbc": {
+  "seeds": [
+   "https://www.ocbc.com/personal-banking/cards/card-promotion.page"
+  ],
+  "sitemap": "sg_ocbc",
+  "pat": "^/personal-banking/(cards/)?(promotions?|deals)[a-z0-9/.-]*$"
+ },
+ "sg-uob": {
+  "seeds": [
+   "https://www.uob.com.sg/personal/promotions/index.page",
+   "https://www.uob.com.sg/personal/promotions/cards/jbdeals/index.page"
+  ],
+  "sitemap": "sg_uob",
+  "pat": "^/personal/(promotions/[a-z0-9/-]+|cards/rewards/ladys-card/[a-z-]*promotions)\\.page$"
+ },
+ "sg-standard-chartered": {
+  "seeds": [
+   "https://www.sc.com/sg/promotions/"
+  ],
+  "sitemap": "sg_scb",
+  "pat": "^/sg/promotions/[a-z0-9-]+/$"
+ },
+ "sg-hsbc": {
+  "seeds": [
+   "https://www.hsbc.com.sg/promotions/credit-cards/"
+  ],
+  "sitemap": "sg_hsbc",
+  "pat": "^/(promotions|credit-cards/offers)/[a-z0-9/-]+/$"
+ },
+ "sg-cimb": {
+  "seeds": [
+   "https://www.cimb.com.sg/en/personal/promotions.html"
+  ],
+  "sitemap": "sg_cimb",
+  "pat": "^/en/personal/promotions/[a-z0-9/-]+\\.html$"
+ },
+ "sg-citi": {
+  "seeds": [
+   "https://www.citibank.com.sg/credit-cards/"
+  ],
+  "sitemap": "sg_citi",
+  "pat": "(promotions|privileges-programs|landing-page)/[a-z0-9/-]+"
+ },
+ "sg-dbs": {
+  "seeds": [
+   "https://www.dbs.com.sg/personal/cards/promotions/default.page"
+  ],
+  "pat": "^/personal/promotion/[a-z0-9-]+$"
+ }
+}

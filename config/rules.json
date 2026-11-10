@@ -1,0 +1,7 @@
+{
+  "end_date_max_months": 24,
+  "evergreen_review_months": 6,
+  "archive_retention_days": 180,
+  "merchant_min_offers": 2,
+  "id_hash_hex_chars": 10
+}

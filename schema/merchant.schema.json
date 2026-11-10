@@ -3,44 +3,15 @@
   "$id": "https://card-offer.github.io/master-list/schema/merchant.schema.json",
   "title": "Merchant",
   "type": "object",
-  "required": [
-    "id",
-    "name",
-    "country",
-    "categories",
-    "offer_ids"
-  ],
   "additionalProperties": false,
+  "required": ["id", "name", "aliases", "countries", "categories", "official_domain", "offer_ids"],
   "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^[a-z]{2}-[a-z0-9-]+$"
-    },
-    "name": {
-      "type": "string"
-    },
-    "aliases": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "country": {
-      "type": "string",
-      "pattern": "^[A-Z]{2}$",
-      "description": "ISO 3166-1 alpha-2"
-    },
-    "categories": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "offer_ids": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    }
+    "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "name": {"type": "string"},
+    "aliases": {"type": "array", "items": {"type": "string"}},
+    "countries": {"type": "array", "items": {"type": "string", "pattern": "^[A-Z]{2}$"}},
+    "categories": {"type": "array", "items": {"type": "string"}},
+    "official_domain": {"type": ["string", "null"]},
+    "offer_ids": {"type": "array", "items": {"type": "string"}}
   }
 }

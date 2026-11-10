@@ -1,0 +1,638 @@
+{
+  "generated_at": "2026-11-10T04:38:02+00:00",
+  "offers_in": 1535,
+  "cards_in": 300,
+  "merchants_in": 1065,
+  "offers_out": 1535,
+  "cards_out": 300,
+  "merchants_out": 100,
+  "dropped": [],
+  "unmatched_checked_at": [
+    {
+      "kind": "card",
+      "id": "my-maybank-world-elite-mastercard",
+      "new_id": "my-maybank-world-elite-mastercard",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-islamic-world-elite-mastercard-ikhwan",
+      "new_id": "my-maybank-islamic-world-elite-mastercard-ikhwan",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-visa-infinite",
+      "new_id": "my-maybank-visa-infinite",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-manchester-united-visa-infinite",
+      "new_id": "my-maybank-manchester-united-visa-infinite",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-2-cards-premier-reserve-american-express",
+      "new_id": "my-maybank-2-cards-premier-reserve-american-express",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-islamic-ikhwan-visa-infinite-card-i",
+      "new_id": "my-maybank-islamic-ikhwan-visa-infinite-card-i",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-visa-signature",
+      "new_id": "my-maybank-visa-signature",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-american-express-platinum-credit-card",
+      "new_id": "my-maybank-american-express-platinum-credit-card",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-petronas-visa-platinum",
+      "new_id": "my-maybank-petronas-visa-platinum",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-visa-platinum",
+      "new_id": "my-maybank-visa-platinum",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-mastercard-platinum",
+      "new_id": "my-maybank-mastercard-platinum",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-2-platinum-cards",
+      "new_id": "my-maybank-2-platinum-cards",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-islamic-petronas-ikhwan-visa-platinum-credit-card-i",
+      "new_id": "my-maybank-islamic-petronas-ikhwan-visa-platinum-credit-card-i",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-singapore-airlines-krisflyer-american-express-platinum-credit-card",
+      "new_id": "my-maybank-singapore-airlines-krisflyer-american-express-platinum-credit-card",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-fc-barcelona-visa-signature",
+      "new_id": "my-maybank-fc-barcelona-visa-signature",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-islamic-ikhwan-mastercard-platinum-credit-card-i",
+      "new_id": "my-maybank-islamic-ikhwan-mastercard-platinum-credit-card-i",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-islamic-ikhwan-american-express-platinum-credit-card-i",
+      "new_id": "my-maybank-islamic-ikhwan-american-express-platinum-credit-card-i",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-singapore-airlines-krisflyer-american-express-gold-credit-card",
+      "new_id": "my-maybank-singapore-airlines-krisflyer-american-express-gold-credit-card",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-myimpact-visa-signature-credit-card",
+      "new_id": "my-maybank-myimpact-visa-signature-credit-card",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-visa-gold",
+      "new_id": "my-maybank-visa-gold",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-mastercard-gold",
+      "new_id": "my-maybank-mastercard-gold",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-petronas-visa-gold",
+      "new_id": "my-maybank-petronas-visa-gold",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-manchester-united-visa-card",
+      "new_id": "my-maybank-manchester-united-visa-card",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-mastercard-classic",
+      "new_id": "my-maybank-mastercard-classic",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-visa-classic",
+      "new_id": "my-maybank-visa-classic",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-american-express-cash-back-gold-credit-card",
+      "new_id": "my-maybank-american-express-cash-back-gold-credit-card",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-islamic-petronas-ikhwan-visa-gold-card-i",
+      "new_id": "my-maybank-islamic-petronas-ikhwan-visa-gold-card-i",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-2-gold-cards",
+      "new_id": "my-maybank-2-gold-cards",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-islamic-myimpact-ikhwan-mastercard-platinum-credit-card-i",
+      "new_id": "my-maybank-islamic-myimpact-ikhwan-mastercard-platinum-credit-card-i",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-cash-back-mastercard-platinum",
+      "new_id": "my-maybank-cash-back-mastercard-platinum",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-nadi-mastercard-credit-card-i",
+      "new_id": "my-maybank-nadi-mastercard-credit-card-i",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-shopee-visa-platinum-credit-card",
+      "new_id": "my-maybank-shopee-visa-platinum-credit-card",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "my-maybank-islamic-ikhwan-mastercard-gold-credit-card-i",
+      "new_id": "my-maybank-islamic-ikhwan-mastercard-gold-credit-card-i",
+      "urls": [
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+        "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "sg-maybank-xl-cashback-card",
+      "new_id": "sg-maybank-xl-cashback-card",
+      "urls": [
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "sg-maybank-xl-rewards-card",
+      "new_id": "sg-maybank-xl-rewards-card",
+      "urls": [
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "sg-maybank-family-and-friends-card",
+      "new_id": "sg-maybank-family-and-friends-card",
+      "urls": [
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "sg-maybank-platinum-visa-card",
+      "new_id": "sg-maybank-platinum-visa-card",
+      "urls": [
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "sg-maybank-horizon-visa-signature-card",
+      "new_id": "sg-maybank-horizon-visa-signature-card",
+      "urls": [
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "sg-maybank-world-mastercard",
+      "new_id": "sg-maybank-world-mastercard",
+      "urls": [
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "sg-maybank-visa-infinite-card",
+      "new_id": "sg-maybank-visa-infinite-card",
+      "urls": [
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "sg-maybank-manchester-united-platinum-visa-credit-card",
+      "new_id": "sg-maybank-manchester-united-platinum-visa-credit-card",
+      "urls": [
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "sg-maybank-fc-barcelona-visa-signature-card",
+      "new_id": "sg-maybank-fc-barcelona-visa-signature-card",
+      "urls": [
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "sg-maybank-evibes-card",
+      "new_id": "sg-maybank-evibes-card",
+      "urls": [
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page"
+      ]
+    },
+    {
+      "kind": "card",
+      "id": "sg-maybank-duo-platinum-mastercard",
+      "new_id": "sg-maybank-duo-platinum-mastercard",
+      "urls": [
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page",
+        "https://www.maybank2u.com.sg/en/personal/cards/credit/index.page"
+      ]
+    }
+  ],
+  "date_review": [
+    {
+      "id": "my-cimb-hooray4eday-with-enhanced-rewards",
+      "new_id": "my-cimb-a45c0ad982",
+      "status": "needs_review",
+      "end_date": null,
+      "stated_end_date": "2028-12-31",
+      "review_reason": "The date range in dates_text belongs to an annual fee waiver campaign, not to this offer. No end date is published for the offer."
+    },
+    {
+      "id": "my-bank-islam-hertz-card-promotion",
+      "new_id": "my-bank-islam-06fe510505",
+      "status": "needs_review",
+      "end_date": null,
+      "stated_end_date": "2028-12-31",
+      "review_reason": "The source states an end date of 2028-12-31, past the configured horizon. It is not published as end_date unless end_date_reviewer_accepted is true."
+    },
+    {
+      "id": "sg-dbs-the-new-dbs-chromo-card",
+      "new_id": "sg-dbs-365afc55b6",
+      "status": "needs_review",
+      "end_date": null,
+      "stated_end_date": "2028-04-30",
+      "review_reason": "dates_text is a rewards-rate illustration, not a promotion period. The parsed end date was not kept."
+    },
+    {
+      "id": "sg-maybank-diamond-sky-fuel-card",
+      "new_id": "sg-maybank-b9873878a3",
+      "status": "needs_review",
+      "end_date": null,
+      "stated_end_date": "2029-03-26",
+      "review_reason": "The source says the promotion is valid for 36 months from 2023-03-27 (through 2026-03-26) and also states 2029-03-26. The two dates conflict, so no end date is published."
+    },
+    {
+      "id": "sg-standard-chartered-hertz-enjoy-10-off-on-car-rentals-worldwide",
+      "new_id": "sg-standard-chartered-045a1e8d9b",
+      "status": "needs_review",
+      "end_date": null,
+      "stated_end_date": "2028-12-31",
+      "review_reason": "The source states an end date of 2028-12-31, past the configured horizon. It is not published as end_date unless end_date_reviewer_accepted is true."
+    }
+  ],
+  "rules": {
+    "end_date_max_months": 24,
+    "evergreen_review_months": 6,
+    "archive_retention_days": 180,
+    "merchant_min_offers": 2,
+    "id_hash_hex_chars": 10
+  },
+  "before": {
+    "offers": {
+      "MY": 542,
+      "SG": 993,
+      "total": 1535
+    },
+    "cards": {
+      "MY": 186,
+      "SG": 114,
+      "total": 300
+    },
+    "merchants": 1066,
+    "card_status": {
+      "active": 299,
+      "no_new_applications": 1
+    },
+    "offer_status": {
+      "active_implicit": 1535
+    }
+  },
+  "after": {
+    "offers": {
+      "MY": 542,
+      "SG": 993,
+      "total": 1535
+    },
+    "cards": {
+      "MY": 186,
+      "SG": 114,
+      "total": 300
+    },
+    "offer_status": {
+      "active": 1530,
+      "needs_review": 5
+    },
+    "card_status": {
+      "needs_review": 100,
+      "active": 199,
+      "no_new_applications": 1
+    },
+    "merchants": 100
+  },
+  "merchant_text_offers": 930,
+  "merchant_id_offers": 256,
+  "no_merchant_offers": 349
+}

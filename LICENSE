@@ -1,3 +1,13 @@
+Scope of this repository
+
+CC BY 4.0 applies to the compiled structured data in this repository only: the JSON records, the schemas, and the documentation written for this project.
+
+Issuer terms and conditions belong to the issuers. They are not part of the licensed material. This repository does not publish verbatim issuer terms. It publishes structured facts taken from those documents (dates, amounts, eligibility rules), together with a source URL and a hash of the text that was read.
+
+The Creative Commons licence text follows, unchanged.
+
+=======================================================================
+
 Attribution 4.0 International
 
 =======================================================================

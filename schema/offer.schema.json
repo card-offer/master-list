@@ -3,430 +3,235 @@
   "$id": "https://card-offer.github.io/master-list/schema/offer.schema.json",
   "title": "Offer",
   "type": "object",
+  "additionalProperties": false,
   "required": [
+    "aliases",
     "benefit",
+    "booking_period",
     "category",
+    "checked_at",
     "country",
-    "dates_source_url",
+    "cross_border",
+    "currency",
+    "detail_level",
     "eligibility",
-    "eligible_card_ids",
     "end_date",
+    "end_date_reviewer_accepted",
+    "first_seen",
     "id",
-    "last_checked",
+    "last_seen",
+    "provider",
+    "review_by",
     "source_url",
     "source_verified",
     "sources",
     "start_date",
+    "status",
+    "terms_hash",
     "terms_url",
-    "title"
+    "title",
+    "usage_period"
   ],
-  "additionalProperties": false,
   "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^[a-z]{2}-[a-z0-9-]+$"
-    },
-    "country": {
-      "type": "string",
-      "pattern": "^[A-Z]{2}$",
-      "description": "ISO 3166-1 alpha-2"
-    },
-    "currency": {
-      "type": "string",
-      "pattern": "^[A-Z]{3}$",
-      "description": "ISO 4217"
-    },
-    "title": {
-      "type": "string"
-    },
-    "description": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "issuer_id": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "network": {
-      "oneOf": [
-        {
-          "enum": [
-            "visa",
-            "mastercard",
-            "amex",
-            "unionpay",
-            "jcb",
-            "diners"
-          ]
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
-    "merchant_ids": {
-      "type": "array",
-      "items": {
-        "type": "string"
+    "id": {"type": "string", "pattern": "^[a-z]{2}-[a-z0-9-]+$"},
+    "aliases": {"type": "array", "items": {"type": "string"}},
+    "country": {"type": "string", "pattern": "^[A-Z]{2}$"},
+    "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+    "title": {"type": "string"},
+    "description": {"type": ["string", "null"]},
+    "provider": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "id"],
+      "properties": {
+        "type": {"enum": ["issuer", "network", "merchant"]},
+        "id": {"type": "string"}
       }
     },
+    "merchant_id": {"type": ["string", "null"]},
+    "merchant_text": {"type": ["string", "null"]},
     "category": {
-      "type": "string"
+      "enum": [
+        "automotive", "balance_transfer", "beauty", "cafe", "dining", "education",
+        "electronics", "entertainment", "ev_charging", "ewallet", "fashion", "groceries",
+        "health", "hotel", "instalment", "insurance", "online", "other", "petrol",
+        "shopping", "sign_up", "spend_campaign", "travel", "utilities"
+      ]
     },
     "benefit": {
       "type": "object",
-      "required": [
-        "type"
-      ],
+      "additionalProperties": false,
+      "required": ["type", "value", "unit", "value_text", "up_to", "source"],
       "properties": {
         "type": {
-          "type": "string"
-        },
-        "value_pct": {
-          "type": "number"
-        },
-        "value_text": {
-          "type": [
-            "string",
-            "null"
+          "enum": [
+            "discount_pct", "freebie", "amount_off", "other", "special_deal",
+            "amount_cashback", "cashback_pct", "cashback", "lucky_draw",
+            "instalment_0pct", "points_miles", "amount_voucher"
           ]
+        },
+        "value": {"type": ["number", "null"]},
+        "unit": {"enum": ["percent", "currency", "points", "multiplier", null]},
+        "value_text": {"type": ["string", "null"]},
+        "up_to": {"type": "boolean"},
+        "source": {"enum": ["offer_text", "title", null]}
+      }
+    },
+    "min_spend": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["amount", "currency"],
+      "properties": {
+        "amount": {"type": "number"},
+        "currency": {"type": "string", "pattern": "^[A-Z]{3}$"}
+      }
+    },
+    "min_spend_text": {"type": ["string", "null"]},
+    "min_spend_source_url": {"type": ["string", "null"], "format": "uri"},
+    "cap": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["amount", "currency", "per"],
+      "properties": {
+        "amount": {"type": "number"},
+        "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+        "per": {
+          "enum": ["month", "year", "day", "visit", "table", "transaction", "cardmember", "customer", "redemption", null]
         }
       }
     },
-    "min_spend_text": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
+    "cap_text": {"type": ["string", "null"]},
+    "cap_source_url": {"type": ["string", "null"], "format": "uri"},
     "eligibility": {
       "type": "object",
-      "required": [
-        "scope",
-        "rule"
-      ],
+      "additionalProperties": false,
+      "required": ["scope", "rule", "confidence", "issuer_ids", "network_ids", "card_ids", "card_types", "tiers"],
       "properties": {
-        "scope": {
-          "enum": [
-            "card",
-            "issuer",
-            "issuer_network",
-            "network"
-          ]
-        },
-        "rule": {
-          "type": "string"
-        },
-        "issuer_ids": {
+        "scope": {"enum": ["card", "issuer", "issuer_network", "network"]},
+        "rule": {"type": "string"},
+        "confidence": {"enum": ["stated", "inferred", "assumed"]},
+        "issuer_ids": {"type": "array", "items": {"type": "string"}},
+        "network_ids": {
           "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "items": {"enum": ["visa", "mastercard", "amex", "unionpay", "jcb", "diners"]}
         },
-        "networks": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "visa",
-              "mastercard",
-              "amex",
-              "unionpay",
-              "jcb",
-              "diners"
-            ]
-          }
-        },
-        "card_ids": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "card_types": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "evidence_text": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "confidence": {
-          "enum": [
-            "stated",
-            "inferred",
-            "assumed"
-          ]
-        }
-      }
-    },
-    "eligible_card_ids": {
-      "type": "array",
-      "items": {
-        "type": "string"
+        "card_ids": {"type": "array", "items": {"type": "string"}},
+        "card_types": {"type": "array", "items": {"type": "string"}},
+        "tiers": {"type": "array", "items": {"type": "string"}},
+        "evidence_text": {"type": ["string", "null"]}
       }
     },
     "cross_border": {
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["is_cross_border", "card_issuing_country", "redeem_countries", "basis"],
       "properties": {
-        "merchant_country": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "card_issuing_countries": {
+        "is_cross_border": {"type": "boolean"},
+        "card_issuing_country": {"type": "string", "pattern": "^[A-Z]{2}$"},
+        "redeem_countries": {
           "type": "array",
-          "items": {
-            "type": "string",
-            "pattern": "^[A-Z]{2}$",
-            "description": "ISO 3166-1 alpha-2"
-          }
-        }
+          "items": {"type": "string", "pattern": "^([A-Z]{2}|\\*)$"}
+        },
+        "basis": {"enum": ["no_foreign_signal", "stated_merchant_country", "place_name", "foreign_currency", "mixed"]}
       }
     },
-    "terms_url": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "format": "uri",
-      "description": "The deal's own T&C link (PDF or page). Never the bank's general T&C."
+    "status": {"enum": ["active", "expired", "withdrawn", "evergreen", "needs_review"]},
+    "first_seen": {"type": ["string", "null"], "format": "date"},
+    "last_seen": {"type": ["string", "null"], "format": "date"},
+    "review_by": {"type": ["string", "null"], "format": "date"},
+    "review_reason": {"type": ["string", "null"]},
+    "end_date_reviewer_accepted": {"type": "boolean"},
+    "stated_end_date": {"type": ["string", "null"], "format": "date"},
+    "start_date": {"type": ["string", "null"], "format": "date"},
+    "start_date_null_reason": {"enum": ["not_stated_in_terms_or_page", null]},
+    "end_date": {"type": ["string", "null"], "format": "date"},
+    "dates_text": {"type": ["string", "null"]},
+    "dates_source_url": {"type": ["string", "null"], "format": "uri"},
+    "booking_period": {"$ref": "#/$defs/period"},
+    "usage_period": {"$ref": "#/$defs/period"},
+    "valid_days": {
+      "type": ["array", "null"],
+      "uniqueItems": true,
+      "items": {"enum": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]}
     },
-    "source_url": {
-      "type": "string",
-      "format": "uri"
-    },
-    "source_verified": {
-      "type": "boolean"
-    },
+    "terms_url": {"type": ["string", "null"], "format": "uri"},
+    "terms_url_null_reason": {"type": ["string", "null"]},
+    "terms_scope": {"enum": ["deal_document", "deal_page_section", "listing_popup", null]},
+    "terms_hash": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "terms_hash_null_reason": {"type": ["string", "null"]},
+    "terms_fetched_at": {"type": ["string", "null"]},
+    "source_url": {"type": "string", "format": "uri"},
+    "source_verified": {"type": "boolean"},
     "sources": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": [
-          "url",
-          "kind",
-          "fetched_at"
-        ],
         "additionalProperties": false,
+        "required": ["url", "kind", "fetched_at"],
         "properties": {
-          "url": {
-            "type": "string",
-            "format": "uri"
-          },
+          "url": {"type": "string", "format": "uri"},
           "kind": {
             "enum": [
-              "issuer_product_page",
-              "issuer_listing",
-              "issuer_promotion_page",
-              "issuer_promotion_listing",
-              "network_offer_page",
-              "merchant_page",
+              "issuer_product_page", "issuer_listing", "issuer_promotion_page",
+              "issuer_promotion_listing", "network_offer_page", "merchant_page",
               "issuer_terms_document"
             ]
           },
-          "fetched_at": {
-            "type": "string"
-          }
+          "fetched_at": {"type": ["string", "null"]}
         }
       }
     },
-    "last_checked": {
-      "type": "string",
-      "format": "date"
-    },
-    "detail_level": {
-      "enum": [
-        "structured",
-        "title_only"
-      ],
-      "description": "title_only: official promotion page found, but no benefit value, validity, merchant or minimum spend could be parsed. Read source_url."
-    },
-    "start_date": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "format": "date",
-      "description": "First day of the deal as written in the deal's own T&C or page. Null when not stated (never guessed)."
-    },
-    "start_date_null_reason": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "enum": [
-        "not_stated_in_terms_or_page",
-        null
-      ],
-      "description": "Required when start_date is null."
-    },
-    "end_date": {
-      "type": "string",
-      "format": "date",
-      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
-      "description": "Last day of the deal as written in the deal's own T&C or page. Required: offers without one are held back from publishing."
-    },
-    "dates_text": {
-      "type": "string",
-      "description": "Verbatim sentence the dates were read from."
-    },
-    "dates_source_url": {
-      "type": "string",
-      "format": "uri",
-      "description": "Document the dates were read from (T&C or deal page)."
-    },
-    "dates_last_checked": {
-      "type": "string",
-      "format": "date",
-      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-    },
-    "min_spend_source_url": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "format": "uri"
-    },
-    "cap_text": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "description": "Cap or redemption limit sentence, verbatim."
-    },
-    "cap_source_url": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "format": "uri"
-    },
-    "terms_url_null_reason": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "description": "Why terms_url is null, for example no_deal_specific_terms_link_on_page."
-    },
-    "terms_scope": {
-      "enum": [
-        "deal_document",
-        "deal_page_section",
-        null
-      ],
-      "description": "deal_document: a T&C document for this deal. deal_page_section: the T&C section printed on the deal page."
-    },
-    "terms_clauses": {
-      "type": [
-        "array",
-        "null"
-      ],
-      "items": {
-        "type": "object",
-        "required": [
-          "n",
-          "text"
-        ],
-        "additionalProperties": false,
-        "properties": {
-          "n": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "text": {
-            "type": "string"
-          }
-        }
-      },
-      "description": "The deal's own T&C text as ordered clauses, verbatim."
-    },
-    "terms_hash": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "pattern": "^[0-9a-f]{64}$",
-      "description": "sha256 of the T&C text, lower-cased with whitespace collapsed."
-    },
-    "terms_fetched_at": {
-      "type": [
-        "string",
-        "null"
-      ]
+    "detail_level": {"enum": ["structured", "title_only"]},
+    "checked_at": {"type": ["string", "null"], "pattern": "^(\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}[+-]\\d{2}:\\d{2})?$"},
+    "checked_fetch_url": {"type": ["string", "null"]},
+    "checked_at_null_reason": {"type": ["string", "null"]}
+  },
+  "$defs": {
+    "period": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["start", "end"],
+      "properties": {
+        "start": {"type": ["string", "null"], "format": "date"},
+        "end": {"type": ["string", "null"], "format": "date"}
+      }
     }
   },
   "allOf": [
     {
-      "if": {
-        "properties": {
-          "start_date": {
-            "type": "null"
-          }
-        }
-      },
+      "if": {"properties": {"start_date": {"type": "null"}}, "required": ["start_date"]},
+      "then": {"properties": {"start_date_null_reason": {"type": "string"}}, "required": ["start_date_null_reason"]}
+    },
+    {
+      "if": {"properties": {"terms_url": {"type": "null"}}, "required": ["terms_url"]},
+      "then": {"properties": {"terms_url_null_reason": {"type": "string"}}, "required": ["terms_url_null_reason"]}
+    },
+    {
+      "if": {"properties": {"checked_at": {"type": "null"}}, "required": ["checked_at"]},
+      "then": {"properties": {"checked_at_null_reason": {"type": "string"}}, "required": ["checked_at_null_reason"]}
+    },
+    {
+      "if": {"properties": {"status": {"const": "evergreen"}}},
       "then": {
-        "required": [
-          "start_date_null_reason"
-        ],
-        "properties": {
-          "start_date_null_reason": {
-            "type": "string"
-          }
-        }
+        "properties": {"end_date": {"type": "null"}, "review_by": {"type": "string"}},
+        "required": ["review_by"]
       }
     },
     {
-      "if": {
-        "properties": {
-          "terms_url": {
-            "type": "null"
-          }
-        }
-      },
+      "if": {"properties": {"status": {"const": "active"}}},
       "then": {
-        "required": [
-          "terms_url_null_reason"
-        ],
-        "properties": {
-          "terms_url_null_reason": {
-            "type": "string"
-          }
-        }
+        "properties": {"end_date": {"type": "string"}, "review_by": {"type": "string"}},
+        "required": ["end_date", "review_by"]
       }
     },
     {
-      "if": {
-        "properties": {
-          "terms_clauses": {
-            "type": "array"
-          }
-        },
-        "required": [
-          "terms_clauses"
-        ]
-      },
-      "then": {
-        "required": [
-          "terms_hash",
-          "terms_fetched_at",
-          "terms_scope"
-        ]
-      }
+      "if": {"properties": {"status": {"const": "needs_review"}}},
+      "then": {"properties": {"review_reason": {"type": "string"}}, "required": ["review_reason"]}
+    },
+    {
+      "if": {"properties": {"status": {"const": "expired"}}},
+      "then": {"properties": {"end_date": {"type": "string"}}, "required": ["end_date"]}
     }
   ]
 }
