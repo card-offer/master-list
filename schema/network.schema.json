@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://card-offer.github.io/master-list/schema/network.schema.json",
+  "title": "Network",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "official_domains"],
+  "properties": {
+    "id": {"enum": ["visa", "mastercard", "amex", "unionpay", "jcb", "diners"]},
+    "name": {"type": "string"},
+    "official_domains": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+  }
+}

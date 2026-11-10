@@ -1,0 +1,386 @@
+[
+ {
+  "id": "my-maybank",
+  "country": "MY",
+  "name": "Maybank",
+  "legal_name": "Malayan Banking Berhad",
+  "website": "https://www.maybank2u.com.my",
+  "seeds": [
+   "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards/index.page"
+  ],
+  "product": "/personal/cards/credit_cards/[a-z0-9_-]+\\.page$"
+ },
+ {
+  "id": "my-cimb",
+  "country": "MY",
+  "name": "CIMB Bank",
+  "legal_name": "CIMB Bank Berhad",
+  "website": "https://www.cimb.com.my",
+  "seeds": [
+   "https://www.cimb.com.my/en/personal/day-to-day-banking/cards/credit-card.html"
+  ],
+  "product": "/en/personal/day-to-day-banking/cards/credit-card/[a-z0-9-]*(card|credit)[a-z0-9-]*\\.html$"
+ },
+ {
+  "id": "my-public-bank",
+  "country": "MY",
+  "name": "Public Bank",
+  "legal_name": "Public Bank Berhad",
+  "website": "https://www.pbebank.com",
+  "seeds": [
+   "https://www.pbebank.com/en/cards/our-cards/",
+   "https://www.pbebank.com/en/cards/credit-cards/"
+  ],
+  "product": "/en/cards/our-cards/[a-z0-9-]*credit[a-z0-9-]*/$"
+ },
+ {
+  "id": "my-rhb",
+  "country": "MY",
+  "name": "RHB Bank",
+  "legal_name": "RHB Bank Berhad",
+  "website": "https://www.rhbgroup.com",
+  "seeds": [
+   "https://www.rhbgroup.com/personal/cards/credit-cards/overview/index.html"
+  ],
+  "product": "/personal/cards/credit-cards/[a-z0-9-]+/index\\.html$"
+ },
+ {
+  "id": "my-hong-leong",
+  "country": "MY",
+  "name": "Hong Leong Bank",
+  "legal_name": "Hong Leong Bank Berhad",
+  "website": "https://www.hlb.com.my",
+  "seeds": [
+   "https://www.hlb.com.my/en/personal-banking/credit-cards.html"
+  ],
+  "product": "/en/personal-banking/credit-cards/(cash-back|no-frills|rewards-points|travel|lifestyle|premium|islamic)/[a-z0-9-]+\\.html$"
+ },
+ {
+  "id": "my-ambank",
+  "country": "MY",
+  "name": "AmBank",
+  "legal_name": "AmBank (M) Berhad",
+  "website": "https://www.ambank.com.my",
+  "seeds": [
+   "https://www.ambank.com.my/cards/credit-cards"
+  ],
+  "product": "/cards/credit-cards/[a-z0-9-]+$"
+ },
+ {
+  "id": "my-uob",
+  "country": "MY",
+  "name": "UOB Malaysia",
+  "legal_name": "United Overseas Bank (Malaysia) Bhd",
+  "website": "https://www.uob.com.my",
+  "seeds": [
+   "https://www.uob.com.my/personal/cards/all-cards.page",
+   "https://www.uob.com.my/personal/cards/index.page"
+  ],
+  "product": "/personal/cards/credit(-cards)?/[a-z0-9-]+(\\.page|/index\\.html|/)$"
+ },
+ {
+  "id": "my-ocbc",
+  "country": "MY",
+  "name": "OCBC Malaysia",
+  "legal_name": "OCBC Bank (Malaysia) Berhad",
+  "website": "https://www.ocbc.com.my",
+  "seeds": [
+   "https://www.ocbc.com.my/personal-banking/cards/credit-cards"
+  ],
+  "product": "/personal-banking/(cards|islamic-banking)/[a-z0-9-]*card[a-z0-9-]*(\\.html)?$"
+ },
+ {
+  "id": "my-hsbc",
+  "country": "MY",
+  "name": "HSBC Malaysia",
+  "legal_name": "HSBC Bank Malaysia Berhad",
+  "website": "https://www.hsbc.com.my",
+  "seeds": [
+   "https://www.hsbc.com.my/credit-cards/"
+  ],
+  "product": "/credit-cards/products/[a-z0-9-]+/$"
+ },
+ {
+  "id": "my-standard-chartered",
+  "country": "MY",
+  "name": "Standard Chartered Malaysia",
+  "legal_name": "Standard Chartered Bank Malaysia Berhad",
+  "website": "https://www.sc.com/my",
+  "seeds": [
+   "https://www.sc.com/my/credit-cards/"
+  ],
+  "product": "/my/credit-cards/[a-z0-9-]+/$"
+ },
+ {
+  "id": "my-alliance",
+  "country": "MY",
+  "name": "Alliance Bank",
+  "legal_name": "Alliance Bank Malaysia Berhad",
+  "website": "https://www.alliancebank.com.my",
+  "seeds": [
+   "https://www.alliancebank.com.my/personal/cards/credit-cards"
+  ],
+  "product": "/personal/cards/credit-cards/[a-z0-9-]+$"
+ },
+ {
+  "id": "my-affin",
+  "country": "MY",
+  "name": "Affin Bank",
+  "legal_name": "Affin Bank Berhad",
+  "website": "https://www.affinalways.com",
+  "seeds": [
+   "https://www.affinalways.com/en/my-cards",
+   "https://www.affinalways.com/en/affin-duo",
+   "https://www.affinalways.com/en/affin-visa-mastercard-gold"
+  ],
+  "product": "^/en/affin-[a-z0-9-]+$"
+ },
+ {
+  "id": "my-aeon-credit",
+  "country": "MY",
+  "name": "AEON Credit Service",
+  "legal_name": "AEON Credit Service (M) Berhad",
+  "website": "https://myaeoncredit.com.my",
+  "seeds": [
+   "https://myaeoncredit.com.my/cards/credit-cards/"
+  ],
+  "product": "/aeon-cards/[a-z0-9-]+/$"
+ },
+ {
+  "id": "my-bsn",
+  "country": "MY",
+  "name": "BSN",
+  "legal_name": "Bank Simpanan Nasional",
+  "website": "https://www.bsn.com.my",
+  "seeds": [
+   "https://www.bsn.com.my/PersonalBanking/Cards/cards",
+   "https://www.bsn.com.my/page/site-map"
+  ],
+  "product": "/PersonalBanking/Cards/[a-z0-9-]*credit-card[a-z0-9-]*$"
+ },
+ {
+  "id": "my-bank-islam",
+  "country": "MY",
+  "name": "Bank Islam",
+  "legal_name": "Bank Islam Malaysia Berhad",
+  "website": "https://www.bankislam.com",
+  "seeds": [
+   "https://www.bankislam.com/personal-banking/bank-islam-cards/bank-islam-credit-card-i/",
+   "https://www.bankislam.com/personal-banking/bank-islam-cards/"
+  ],
+  "product": "/bank-islam-cards/[a-z0-9-]*credit-card[a-z0-9-]*/$"
+ },
+ {
+  "id": "my-bank-rakyat",
+  "country": "MY",
+  "name": "Bank Rakyat",
+  "legal_name": "Bank Kerjasama Rakyat Malaysia Berhad",
+  "website": "https://www.bankrakyat.com.my",
+  "seeds": [
+   "https://www.bankrakyat.com.my/portal-main/compare-cards"
+  ],
+  "product": "/portal-main/[a-z0-9-]*card[a-z0-9-]*$"
+ },
+ {
+  "id": "my-muamalat",
+  "country": "MY",
+  "name": "Bank Muamalat",
+  "legal_name": "Bank Muamalat Malaysia Berhad",
+  "website": "https://www.muamalat.com.my",
+  "seeds": [
+   "https://www.muamalat.com.my/card/personal/credit-card-i/"
+  ],
+  "product": "/card/personal/credit-card-i/[a-z0-9-]+/$"
+ },
+ {
+  "id": "my-al-rajhi",
+  "country": "MY",
+  "name": "Al Rajhi Bank Malaysia",
+  "legal_name": "Al Rajhi Banking & Investment Corporation (Malaysia) Berhad",
+  "website": "https://www.alrajhibank.com.my",
+  "seeds": [
+   "https://www.alrajhibank.com.my/news/alrajhi-bank-malaysia-expands-retail-banking-business-with-new-visa-credit-cards/"
+  ],
+  "product": "card"
+ },
+ {
+  "id": "sg-dbs",
+  "country": "SG",
+  "name": "DBS Bank",
+  "legal_name": "DBS Bank Ltd",
+  "website": "https://www.dbs.com.sg",
+  "seeds": [
+   "https://www.dbs.com.sg/personal/cards/cards-comparator.page",
+   "https://www.dbs.com.sg/personal/cards/default.page"
+  ],
+  "product": "/personal/cards/credit-cards/[a-z0-9-]+(\\.page)?$"
+ },
+ {
+  "id": "sg-posb",
+  "country": "SG",
+  "name": "POSB",
+  "legal_name": "DBS Bank Ltd (POSB)",
+  "website": "https://www.posb.com.sg",
+  "seeds": [
+   "https://www.posb.com.sg/personal/cards/cards-comparator.page"
+  ],
+  "product": "/personal/cards/credit-cards/[a-z0-9-]+(\\.page)?$"
+ },
+ {
+  "id": "sg-ocbc",
+  "country": "SG",
+  "name": "OCBC",
+  "legal_name": "Oversea-Chinese Banking Corporation Limited",
+  "website": "https://www.ocbc.com",
+  "seeds": [
+   "https://www.ocbc.com/personal-banking/cards/credit-card",
+   "https://www.ocbc.com/personal-banking/cards"
+  ],
+  "product": "/personal-banking/cards/[a-z0-9-]*card[a-z0-9-]*(\\.page)?$"
+ },
+ {
+  "id": "sg-uob",
+  "country": "SG",
+  "name": "UOB",
+  "legal_name": "United Overseas Bank Limited",
+  "website": "https://www.uob.com.sg",
+  "seeds": [
+   "https://www.uob.com.sg/personal/cards/index.page",
+   "https://www.uob.com.sg/personal/cards/compare.page"
+  ],
+  "product": "/personal/cards/(cashback|travel|rewards|lifestyle|premier|privilege)/[a-z0-9-]+(\\.page|/index\\.page)$"
+ },
+ {
+  "id": "sg-citi",
+  "country": "SG",
+  "name": "Citibank Singapore",
+  "legal_name": "Citibank Singapore Limited",
+  "website": "https://www.citibank.com.sg",
+  "seeds": [
+   "https://www.citibank.com.sg/credit-cards/"
+  ],
+  "product": "/credit-cards/(cashback|rewards|travel|student|lifestyle)/[a-z0-9-]+/?$|/gcb/credit_cards/[a-z0-9-]+"
+ },
+ {
+  "id": "sg-standard-chartered",
+  "country": "SG",
+  "name": "Standard Chartered Singapore",
+  "legal_name": "Standard Chartered Bank (Singapore) Limited",
+  "website": "https://www.sc.com/sg",
+  "seeds": [
+   "https://www.sc.com/sg/credit-cards/"
+  ],
+  "product": "/sg/credit-cards/[a-z0-9-]*card[a-z0-9-]*/$"
+ },
+ {
+  "id": "sg-hsbc",
+  "country": "SG",
+  "name": "HSBC Singapore",
+  "legal_name": "HSBC Bank (Singapore) Limited",
+  "website": "https://www.hsbc.com.sg",
+  "seeds": [
+   "https://www.hsbc.com.sg/credit-cards/"
+  ],
+  "product": "/credit-cards/products/[a-z0-9-]+/$"
+ },
+ {
+  "id": "sg-maybank",
+  "country": "SG",
+  "name": "Maybank Singapore",
+  "legal_name": "Maybank Singapore Limited",
+  "website": "https://www.maybank2u.com.sg",
+  "seeds": [
+   "https://www.maybank2u.com.sg/en/personal/cards/credit-cards/index.page"
+  ],
+  "product": "/en/personal/cards/credit-cards/[a-z0-9-]+\\.page$"
+ },
+ {
+  "id": "sg-amex",
+  "country": "SG",
+  "name": "American Express Singapore",
+  "legal_name": "American Express International Inc.",
+  "website": "https://www.americanexpress.com/sg/",
+  "seeds": [
+   "https://www.americanexpress.com/sg/credit-cards/all-cards/",
+   "https://www.americanexpress.com/en-sg/credit-cards/"
+  ],
+  "product": "/sg/credit-cards/[a-z0-9-]*(card|club)[a-z0-9-]*/$"
+ },
+ {
+  "id": "sg-cimb",
+  "country": "SG",
+  "name": "CIMB Singapore",
+  "legal_name": "CIMB Bank Berhad, Singapore Branch",
+  "website": "https://www.cimb.com.sg",
+  "seeds": [
+   "https://www.cimb.com.sg/en/personal/banking-with-us/cards/credit-cards.html"
+  ],
+  "product": "/en/personal/banking-with-us/cards/credit-cards/[a-z0-9-]+\\.html$"
+ },
+ {
+  "id": "sg-trust",
+  "country": "SG",
+  "name": "Trust Bank",
+  "legal_name": "Trust Bank Singapore Limited",
+  "website": "https://www.trust.com.sg",
+  "seeds": [
+   "https://www.trust.com.sg/"
+  ],
+  "product": "card"
+ },
+ {
+  "id": "sg-boc",
+  "country": "SG",
+  "name": "Bank of China Singapore",
+  "legal_name": "Bank of China Limited, Singapore Branch",
+  "website": "https://www.bankofchina.com/sg/",
+  "seeds": [
+   "https://www.bankofchina.com/sg/bcservice/bc1/"
+  ],
+  "product": "/sg/bcservice/bc1/\\d{6}/t\\d+_\\d+\\.html$"
+ },
+ {
+  "id": "sg-gxs",
+  "country": "SG",
+  "name": "GXS Bank",
+  "legal_name": "GXS Bank Pte. Ltd.",
+  "website": "https://www.gxs.com.sg",
+  "seeds": [
+   "https://www.gxs.com.sg/flexicard"
+  ],
+  "product": "/flexicard$"
+ },
+ {
+  "id": "sg-maribank",
+  "country": "SG",
+  "name": "MariBank",
+  "legal_name": "MariBank Singapore Private Limited",
+  "website": "https://www.maribank.sg",
+  "seeds": [
+   "https://www.maribank.sg/product/mari-credit-card"
+  ],
+  "product": "/product/mari-credit-card$"
+ },
+ {
+  "id": "sg-dcs",
+  "country": "SG",
+  "name": "DCS Card Centre",
+  "legal_name": "DCS Card Centre Pte. Ltd.",
+  "website": "https://dcscc.com",
+  "seeds": [
+   "https://cards.dcscc.com/products"
+  ],
+  "product": "/products$"
+ },
+ {
+  "id": "sg-icbc",
+  "country": "SG",
+  "name": "ICBC Singapore",
+  "legal_name": "Industrial and Commercial Bank of China Limited, Singapore Branch",
+  "website": "https://www.icbc.com.sg",
+  "seeds": [
+   "https://www.icbc.com.sg/en/column/1438059017535897814.html"
+  ],
+  "product": "/en/column/\\d+\\.html$"
+ }
+]

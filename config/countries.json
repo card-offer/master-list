@@ -1,0 +1,17 @@
+{
+  "schema_version": "0.3.0",
+  "items": [
+    {
+      "code": "MY",
+      "name": "Malaysia",
+      "currency": "MYR",
+      "timezone": "Asia/Kuala_Lumpur"
+    },
+    {
+      "code": "SG",
+      "name": "Singapore",
+      "currency": "SGD",
+      "timezone": "Asia/Singapore"
+    }
+  ]
+}

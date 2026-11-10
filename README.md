@@ -1,81 +1,81 @@
 # card-offer / master-list
 
-An open, machine-readable list of credit cards and card offers in Malaysia (MY) and Singapore (SG): cards, offers, merchants and issuers, with an official source URL and a `last_checked` date on every record.
+An open, machine-readable list of credit cards and card offers. Malaysia (MY) and Singapore (SG) are the countries published today. The layout is one folder per country, so another country is another folder, not a schema change.
 
-Every value comes from an official bank, card network or merchant page or T&C document. If a value is not stated there, it is `null`. Nothing is estimated.
+Every value comes from an official issuer, card network or merchant page. If a value is not stated there, it is null. Nothing is estimated.
+
+Schema version: 0.3.0.
+
+## Licence scope
+
+The [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) licence (see `LICENSE`) covers the compiled structured data in this repository only.
+
+Issuer terms and conditions belong to the issuers. This repository does not publish issuer terms and conditions text: no terms documents, no terms clauses, and no descriptions copied from issuer pages. It also does not publish the `dates_text`, `cap_text`, and `min_spend_text` extracts. Those stay in the crawler's private raw cache, which is not part of this repository. Other short fields from official pages are published, including card benefit, fee, income and guest text, and offer `evidence_text` and `value_text`. A record may carry `terms_url`, `terms_hash` and `terms_fetched_at`, plus structured facts. `terms_hash` is the sha256 of the full terms text read at fetch time. When that full text is not available offline, `terms_hash` is null and `terms_hash_null_reason` says why.
+
+Attribution line: `Data: card-offer master-list (https://github.com/card-offer/master-list), CC BY 4.0.`
+
+Card names and trademarks belong to their issuers, networks and merchants.
 
 ## Layout
 
 | Path | What it holds |
 |---|---|
-| `index.json` | Entry point: countries, counts, file paths, schema list. |
-| `my/`, `sg/` | One folder per country (lowercase ISO 3166-1 alpha-2). Each has `cards.json`, `offers.json`, `merchants.json`, `issuers.json` and `index/by_*.json` (by merchant, card, issuer, network, category, country, benefit type, tier). |
-| `global/` | Cross-country indexes: by network, category, benefit type, tier, country and merchant name. |
-| `schema/` | JSON Schema (draft 2020-12) for every entity and file. |
-| `tools/validate.py` | The check that runs on every pull request. |
+| `index.json` | Entry point: countries, counts, layout, schema list. |
+| `{cc}/offers/{issuer}.json` | Offers for one issuer, sorted by id, one record per line. |
+| `{cc}/cards/{issuer}.json` | Cards for one issuer, same shape. |
+| `{cc}/issuers.json` | Issuers, including `official_domains`. |
+| `{cc}/archive/offers/{issuer}.json` | Expired offers still inside the configured retention window. |
+| `merchants/registry.json` | One global brand record: countries, official domain, aliases. |
+| `networks.json` | Visa, Mastercard, American Express, UnionPay, JCB, Diners Club. |
+| `countries.json` | Currency and IANA time zone per country. |
+| `config/rules.json` | Horizon, review interval, archive retention, merchant rule. Read at run time. |
+| `schema/` | JSON Schema (draft 2020-12). `$id` URLs point at GitHub Pages. |
+| `pipeline/` | The crawl and publish code. |
+| `tools/validate.py` | The check that runs on every pull request and on every push to `main`. |
 
-Every data file uses the same wrapper: `{schema_version, country, generated_at, count, items}`.
+Derived indexes (`by_card`, `by_merchant`, and the rest) are not stored on `main`. CI builds them and the Pages workflow publishes them. Fetching one issuer's file does not download every offer in the country.
 
 ## Schema summary
 
 Full definitions are in [`schema/`](schema/).
 
-- **Card** (`schema/card.schema.json`): issuer, networks, tier, Islamic flag, `annual_fee` (number, plus `waiver_rules`), `min_income` (number and period), `earn_rates` (numeric rate per spend category), and `benefits` with one entry per benefit type. Lounge entries carry programmes, visits, guest policy text and `supplementary_share_visits` (true, false, or null when the page does not say).
-- **Offer** (`schema/offer.schema.json`): title, issuer, merchant, category, benefit, eligibility (`scope`, `rule`, `confidence`, `eligible_card_ids`), `start_date` and `end_date` (ISO dates from the deal's own T&C or page; `start_date` is null with `start_date_null_reason` when not stated), `min_spend_text`, `cap_text`, `terms_url`, and the deal's own T&C as `terms_clauses` with `terms_hash` (sha256 of the normalised text) and `terms_fetched_at`.
-- **Merchant** and **Issuer**: names, country, categories, and the card and offer IDs that point to them.
+- **Card** id: `{cc}-{issuer}-{slug}`. `aliases` lists every id the card had under schema 0.2.0. `networks` is required and non-empty while `status` is `active`. A card with no stated network has `status` `needs_review`.
+- **Offer** id: `{cc}-{issuer}-{short hash of the first source URL}`. The same issuer and `source_url` keep that id when the pipeline runs again. `aliases` lists the schema 0.2.0 id.
+- **Provider**: `{type: issuer|network|merchant, id}`. Network offers have a place in `networks.json`.
+- **Merchant**: a global id. A name becomes a merchant when it has an official domain or at least as many offers as `merchant_min_offers` in `config/rules.json`. Other names stay on the offer as `merchant_text`. Duplicate brands across countries are one record.
+- **Eligibility** is the rule (`scope`, `rule`, `confidence`, issuer, network, card ids, evidence). The expanded card list is an index built in CI. Inferred rules are not expanded.
+- **Money**: `min_spend` is `{amount, currency}`. `limits` lists every stated limit (`kind`, `amount`, `currency`, `per`, `scope`, `weekdays`). `per` is an array. It can hold a time period (such as month or year) and a who-dimension (card, customer, visit, or table) together. When both are present, the legacy `cap.per` keeps the time period and `limits` keeps both. `scope` is `hotel`, `online`, `category`, or null.
+- **Time**: `checked_at` is a full ISO date-time with offset, taken from the fetch log. `generated_at` is stamped when the file is built. `status` is `active`, `expired`, `withdrawn`, `evergreen` or `needs_review`. `first_seen`, `last_seen` and `review_by` are dates. An offer with no stated end date is `evergreen` and carries `review_by`. Every other live offer has an end date.
+- **Periods**: `booking_period` and `usage_period` are separate. `valid_days` lists weekdays when the source states them. Each country has an IANA time zone.
+- **cross_border** is computed from a stated merchant country, a place name, or a foreign currency in the title. It is not copied from the card country.
 
-Rules every published offer meets:
-
-- It has an `end_date`. Offers whose end date is not written in an official document are held back until it is.
-- It has a `source_url`, and every structured field that came from another document names that document (`dates_source_url`, `min_spend_source_url`, `cap_source_url`, `terms_url`).
-- `terms_url` is the deal's own T&C, never a bank's general terms.
+`category`, `benefit.type` and `benefit.unit` are enums. Every object sets `additionalProperties` to false.
 
 ## Using the data
 
-The JSON files are the API today. Fetch them directly, for example:
-
 ```
 https://raw.githubusercontent.com/card-offer/master-list/main/index.json
-https://raw.githubusercontent.com/card-offer/master-list/main/my/offers.json
-https://raw.githubusercontent.com/card-offer/master-list/main/sg/index/by_merchant.json
+https://raw.githubusercontent.com/card-offer/master-list/main/my/offers/cimb.json
+https://raw.githubusercontent.com/card-offer/master-list/main/merchants/registry.json
 ```
 
-Typical lookups:
+Resolve a schema 0.2.0 id by scanning `id` and `aliases`.
 
-- Offers for a card: `{cc}/index/by_card.json` gives `offer_ids` per card ID; read the offers from `{cc}/offers.json`.
-- Offers at a merchant: `{cc}/index/by_merchant.json`, or `global/by_merchant_name.json` across countries.
-- Active offers on a date: filter `offers.json` where `start_date` (if set) is on or before the date and `end_date` is on or after it.
+Active offers on a date: `status` is `active`, `start_date` is null or on or before that date, and `end_date` is on or after it. Evergreen offers have no end date; use `review_by`.
 
-Check `terms_url` and the issuer's page before relying on an offer. Issuers change terms without notice.
+Check `terms_url` and the issuer page before relying on an offer. Issuers change terms without notice.
 
-### Planned read-only API (not live yet)
+Indexes, once Pages is serving them, live under the site that hosts the schema `$id` URLs (`https://card-offer.github.io/master-list/`).
 
-A versioned, read-only HTTP API mirroring this tree is planned:
+## Known issues
 
-- `GET /v1/index`
-- `GET /v1/{cc}/cards?issuer=&network=&tier=&islamic=&benefit=`
-- `GET /v1/{cc}/cards/{id}` (includes eligible offers)
-- `GET /v1/{cc}/offers?merchant=&category=&card=&active_on=YYYY-MM-DD`
-- `GET /v1/{cc}/merchants/{id}/offers`
-- `GET /v1/search?q=`
-- `GET /v1/schema/{entity}`
-
-Responses will carry `source_url` and `last_checked`. Until it ships, use the raw files above.
+- Short weekday names such as `every Tue` are not parsed. That misses 8 DBS and POSB offers. A full name such as `every Tuesday` is parsed.
+- `per stay`, `per receipt` and `per plan` are not parsed.
+- `limits.per` can list a time period and a who-dimension together. The legacy `cap.per` keeps the time period.
+- Standard Chartered's `per calendar quarter` count is recorded as a `pool_limit`.
+- Limit dedupe ignores the period. The same amount, kind and scope become one limit, and the periods are combined.
+- The payout phrase rule can drop a per-booking cap that says first-come, first-served. A per-person cap that says the same phrase is kept.
 
 ## Report a mistake or suggest an offer
 
-Open an issue using one of the forms:
-
-- **Incorrect data**: a value on a card or offer is wrong. Give the record ID, the field, the correct value and an official source URL.
-- **Missing card or offer**: something is not listed. Give the issuer, the name, an official source URL and its dates.
-- **Issuer submission**: for banks that want to point us at their official offer feed or pages.
-
-Blank issues are turned off so every report carries a source. See [CONTRIBUTING.md](CONTRIBUTING.md) for the rules.
-
-## Licence and attribution
-
-Data is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (see `LICENSE`).
-
-Attribution line: `Data: card-offer master-list (https://github.com/card-offer/master-list), CC BY 4.0.`
-
-Card names, trademarks and offer terms belong to their issuers, networks and merchants.
+Open an issue with one of the forms: incorrect data, missing card or offer, or issuer submission. See [CONTRIBUTING.md](CONTRIBUTING.md).

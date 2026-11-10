@@ -1,0 +1,29 @@
+{
+  "places": [
+    {"phrase": "kuala lumpur", "country": "MY"},
+    {"phrase": "hong kong", "country": "HK"},
+    {"phrase": "hokkaido", "country": "JP"},
+    {"phrase": "bangkok", "country": "TH"},
+    {"phrase": "singapore", "country": "SG"},
+    {"phrase": "phuket", "country": "TH"},
+    {"phrase": "myanmar", "country": "MM"},
+    {"phrase": "taiwan", "country": "TW"},
+    {"phrase": "london", "country": "GB"},
+    {"phrase": "japan", "country": "JP"},
+    {"phrase": "korea", "country": "KR"},
+    {"phrase": "worldwide", "country": "*"}
+  ],
+  "currency_country": {
+    "THB": "TH",
+    "CNY": "CN",
+    "IDR": "ID",
+    "TWD": "TW",
+    "PHP": "PH",
+    "JPY": "JP",
+    "KRW": "KR",
+    "USD": "US",
+    "HKD": "HK",
+    "EUR": "EU",
+    "GBP": "GB"
+  }
+}

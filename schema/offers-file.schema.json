@@ -2,32 +2,15 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://card-offer.github.io/master-list/schema/offers-file.schema.json",
   "type": "object",
-  "required": [
-    "schema_version",
-    "country",
-    "generated_at",
-    "items"
-  ],
+  "additionalProperties": false,
+  "required": ["schema_version", "country", "issuer_id", "generated_at", "count", "items"],
   "properties": {
-    "schema_version": {
-      "type": "string"
-    },
-    "country": {
-      "type": "string",
-      "pattern": "^[A-Z]{2}$",
-      "description": "ISO 3166-1 alpha-2"
-    },
-    "generated_at": {
-      "type": "string"
-    },
-    "count": {
-      "type": "integer"
-    },
-    "items": {
-      "type": "array",
-      "items": {
-        "$ref": "offer.schema.json"
-      }
-    }
+    "schema_version": {"const": "0.3.0"},
+    "country": {"type": "string", "pattern": "^[A-Z]{2}$"},
+    "issuer_id": {"type": "string"},
+    "generated_at": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}[+-]\\d{2}:\\d{2}$"},
+    "count": {"type": "integer"},
+    "archive": {"type": "boolean"},
+    "items": {"type": "array", "items": {"$ref": "offer.schema.json"}}
   }
 }

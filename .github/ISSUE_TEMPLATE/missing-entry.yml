@@ -49,7 +49,7 @@ body:
     id: end_date
     attributes:
       label: End date
-      description: "As stated in the T&C, YYYY-MM-DD. Required for offers."
+      description: "As stated in the terms, YYYY-MM-DD. Leave blank only when the source states no end date (the offer is evergreen)."
       placeholder: YYYY-MM-DD
     validations:
       required: false

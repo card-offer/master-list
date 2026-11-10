@@ -1,0 +1,58 @@
+{
+  "end_date_max_months": 24,
+  "evergreen_review_months": 6,
+  "archive_retention_days": 180,
+  "merchant_min_offers": 2,
+  "id_hash_hex_chars": 10,
+  "listing_end_date_ceiling": "2028-12-31",
+  "max_promotion_days": 1100,
+  "default_period_months": 36,
+  "description_max_chars": 400,
+  "amount_context_chars": 80,
+  "minimum_phrase_chars": 40,
+  "per_context_words": 4,
+  "campaign_payout_min_amount": {
+    "MYR": 10000,
+    "SGD": 10000
+  },
+  "not_a_cap_patterns": [
+    "shall be imposed",
+    "(?<=\\d)\\s+off\\b",
+    "subject to\\s+\\d+%"
+  ],
+  "campaign_payout_phrases": [
+    "first-come, first-served",
+    "first come, first served",
+    "first-come-first-served",
+    "cash back payment"
+  ],
+  "listing_popup_issuers": ["sg-ocbc"],
+  "currency_symbols": [
+    {"symbol": "HK$", "currency": "HKD"},
+    {"symbol": "US$", "currency": "USD"},
+    {"symbol": "NZ$", "currency": "NZD"},
+    {"symbol": "AU$", "currency": "AUD"},
+    {"symbol": "A$", "currency": "AUD"},
+    {"symbol": "C$", "currency": "CAD"},
+    {"symbol": "S$", "currency": "SGD"},
+    {"symbol": "MYR", "currency": "MYR"},
+    {"symbol": "SGD", "currency": "SGD"},
+    {"symbol": "USD", "currency": "USD"},
+    {"symbol": "HKD", "currency": "HKD"},
+    {"symbol": "THB", "currency": "THB"},
+    {"symbol": "TWD", "currency": "TWD"},
+    {"symbol": "JPY", "currency": "JPY"},
+    {"symbol": "EUR", "currency": "EUR"},
+    {"symbol": "GBP", "currency": "GBP"},
+    {"symbol": "RM", "currency": "MYR"}
+  ],
+  "description_clause_patterns": [
+    "\\bshall\\b",
+    "cardholder",
+    "not valid",
+    "subject to",
+    "valid till",
+    "t&c",
+    "terms and conditions"
+  ]
+}
