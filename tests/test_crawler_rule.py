@@ -166,6 +166,27 @@ class GateTests(unittest.TestCase):
     def test_inferred_eligibility_carries_no_cards(self):
         self.assert_error("inferred eligibility", offer(eligibility__confidence="inferred"))
 
+    def test_fee_is_not_a_benefit_value(self):
+        row = offer(benefit={"type": "other", "value": 0.88, "unit": "percent", "up_to": False,
+                             "value_text": "processing fee from 0.88%", "quote": "low processing fees from 0.88%"})
+        self.assert_error("A fee is not a benefit value", row)
+
+    def test_customer_segment_is_not_a_tier(self):
+        self.assert_error("is not one of", offer(eligibility__tiers=["CIMB Preferred"]))
+
+    def test_off_domain_redirect_goes_to_blocked(self):
+        data = hand_in([offer()])
+        moved = fetch("https://www.cimb.com.sg/en/personal/promotions/elsewhere.html", "issuer_promotion_listing", 5)
+        moved["final_url"] = "https://offers.example.com/sg"
+        data["fetches"].append(moved)
+        errors = check(data, ROOT, now=NOW)[0]
+        self.assertTrue(any("reason off_domain_redirect" in line for line in errors), errors)
+        data["fetches"].pop()
+        data["run"]["blocked"] = [{"url": moved["url"], "reason": "off_domain_redirect", "redirect_to": moved["final_url"]}]
+        self.assertEqual(check(data, ROOT, now=NOW)[0], [])
+        data["run"]["listing_complete"] = True
+        self.assertTrue(any("listing_complete is true" in line for line in check(data, ROOT, now=NOW)[0]))
+
     def test_number_and_date_proof(self):
         self.assertTrue(number_in("capped at RM5,000", 5000))
         self.assertFalse(number_in("RM500 cap", 5000))
@@ -297,6 +318,24 @@ class IngestTests(unittest.TestCase):
         self.assertEqual(len(report["cards"]["needs_review"]), 1)
         errors, _warnings, _stats = validate(self.tree)
         self.assertEqual(errors, [])
+
+    def test_em_dash_in_a_quote_does_not_stop_the_ingest(self):
+        row = offer(eligibility__quote="Valid for CIMB Visa Signature cardmembers \u2014 principal only.")
+        ingest(hand_in([row]), root=self.tree, now=NOW)
+        new = [item for item in self.items("sg", "offers", "cimb.json") if item["merchant_name"] == "Example Kopi"][0]
+        self.assertEqual(new["eligibility"]["evidence_text"], "Valid for CIMB Visa Signature cardmembers - principal only.")
+        errors, _warnings, _stats = validate(self.tree)
+        self.assertEqual(errors, [])
+
+    def test_ingest_adds_lines_to_the_fetch_log_and_changes_none(self):
+        path = os.path.join(self.tree, "pipeline", "fetch_metadata.json")
+        with open(path, encoding="utf-8") as fh:
+            before = fh.read().splitlines()
+        ingest(hand_in([offer()]), root=self.tree, now=NOW)
+        with open(path, encoding="utf-8") as fh:
+            after = fh.read().splitlines()
+        self.assertEqual(len(after) - len(before), 4)
+        self.assertEqual(after[:len(before) - 2], before[:-2])
 
     def test_bad_hand_in_changes_nothing(self):
         before = self.items("sg", "offers", "cimb.json")

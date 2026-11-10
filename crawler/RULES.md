@@ -8,7 +8,7 @@ You crawl. The pipeline publishes. You do not write the public files, you do not
 
 1. Read `{cc}/issuers.json`. Take the issuer and its `official_domains`.
 2. Crawl the issuer's offer listings and each offer page and terms document.
-3. Write `raw/observations/{cc}/{issuer}/{run_id}.json`. The `raw/` folder is private. Do not commit it.
+3. Write `raw/observations/{cc}/{issuer_id}/{run_id}.json`. The `raw/` folder is private. Do not commit it.
 4. Run `python tools/check_observations.py <file>`. Correct each `error` line. Run it again until it gives exit 0.
 5. Run `python pipeline/ingest.py <file>`, then `python tools/validate.py .`.
 6. Open a pull request with the changed public files. Do not merge it.
@@ -25,6 +25,7 @@ If the gate refuses a fact and the page does not support a correction, remove th
 6. Record each fetch in `fetches` with its real time and time zone offset. Do not write a time that you did not measure.
 7. Set `run.listing_complete` to true only if you read every page and every tile of every listing. If you are not sure, set false.
 8. If you cannot reach a page, record it in `run.blocked`. Do not fill the gap from memory.
+9. If an official URL sends you to a host that is not in `official_domains`, do not read that host. Do not record the fetch. Record the official URL in `run.blocked` with reason `off_domain_redirect` and the target in `redirect_to`, and keep `listing_complete` false. The maintainer decides if the host is official.
 
 ## 3. The merchant name
 
@@ -91,17 +92,17 @@ Set `official_domain` only when the issuer page links to the merchant's own site
 
 ## 5. Facts and quotes
 
-Each fact that will be published needs a quote: the one sentence on the official page or in the terms that states it. A quote has a maximum of 300 characters. Quotes are private and are not published, except the eligibility quote.
+Each fact that will be published needs a quote: the one sentence on the official page or in the terms that states it. A quote has a maximum of 300 characters. Quotes are private and are not published, except the eligibility quote and the card quotes. An em dash in a published quote is written as a hyphen.
 
 | Fact | Rule |
 |---|---|
-| `benefit.value` | The number must be in `benefit.quote`. If the page gives no number, use null and a `benefit.type` that fits. |
+| `benefit.value` | What the cardholder gets: the discount, cashback, voucher or gift value. The number must be in `benefit.quote`. A fee, an interest rate or a minimum spend is not a benefit value: use null. If the page gives no number, use null and a `benefit.type` that fits. |
 | `dates.end_date` | Day, month and year must be in `dates.quote`. If the page states no end date, use null with `end_date_null_reason: not_stated`. The offer is then published as evergreen. |
 | `dates.start_date` | Only if the page states it. If not, use null. Do not use the fetch date. |
 | `booking_period`, `usage_period` | Use them when the page gives a booking window and a stay or travel window. |
 | `min_spend` | Amount and ISO 4217 currency. The amount must be in its quote. |
 | `limits` | One entry for each stated limit. Do not put a campaign budget or a prize pool as a `reward_cap`. A total for all customers is a `pool_limit`. |
-| `eligibility` | `stated` needs a quote. Use `card` with `card_names` as the page writes them, or `issuer_network` with `network_ids`, or `issuer` when the page says all cards. If the page states no restriction, use `issuer` with `inferred` and no card names. |
+| `eligibility` | `stated` needs a quote. Use `card` with `card_names` as the page writes them, or `issuer_network` with `network_ids`, or `issuer` when the page says all cards. If the page states no restriction, use `issuer` with `inferred` and no card names. `tiers` holds card tiers only (gold, platinum, signature and so on). A customer segment, for example a priority banking programme, is not a tier. The eligibility quote is published as `evidence_text`, so give one sentence only, from the page or from the terms. |
 | `terms` | `deal_document`: the deal's own document. `deal_page_section`: the terms section on the offer page. `listing_popup`: a popup on the listing. Hash the full terms text (lower case, white space collapsed to one space, sha256). Never use the bank's general terms. |
 | `redeem.countries` | Where the cardholder can use the offer. Use the card country unless the page states a different place. Use `*` for worldwide. |
 

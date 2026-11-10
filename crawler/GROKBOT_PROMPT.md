@@ -22,9 +22,9 @@ Work on one issuer at a time. Start with `sg-cimb`. Do not start a second issuer
 1. Read `{cc}/issuers.json` and take the issuer's `official_domains`. Use only those hosts.
 2. Read `robots.txt` on each host. Do not fetch a disallowed path.
 3. Crawl the issuer's card pages, then its offer listings, each offer page and each terms document. Public pages only. No sign-in, no forms. One request at a time for each host, with a minimum of 1.5 seconds between requests.
-4. Write one file: `raw/observations/{cc}/{issuer}/{run_id}.json`. It must agree with `schema/observation.schema.json`. This file is private. Do not commit it and do not paste it into a public place.
-5. Run the gate: `python tools/check_observations.py raw/observations/{cc}/{issuer}/{run_id}.json`. Correct each `error` line. Run the gate again until it gives exit code 0.
-6. Run `python pipeline/ingest.py raw/observations/{cc}/{issuer}/{run_id}.json`, then `python tools/validate.py .` and `python -m unittest discover -s tests`.
+4. Write one file: `raw/observations/{cc}/{issuer_id}/{run_id}.json`. It must agree with `schema/observation.schema.json`. This file is private. Do not commit it and do not paste it into a public place.
+5. Run the gate: `python tools/check_observations.py raw/observations/{cc}/{issuer_id}/{run_id}.json`. Correct each `error` line. Run the gate again until it gives exit code 0.
+6. Run `python pipeline/ingest.py raw/observations/{cc}/{issuer_id}/{run_id}.json`, then `python tools/validate.py .` and `python -m unittest discover -s tests`.
 7. Open a pull request with the changed public files. Do not merge it.
 
 If you cannot run Python, do steps 1 to 4 only and give me the file. I will have the gate and the ingest step run for you.

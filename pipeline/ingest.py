@@ -60,6 +60,18 @@ def match_existing(obs_offer, merchant_key, existing, taken):
     return None, "new"
 
 
+def write_fetch_log(path, rows):
+    """One fetch on each line, in the order they were added, so a new run adds lines and changes none."""
+    lines = [json.dumps(row, ensure_ascii=False) for row in rows]
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write("[\n" + ",\n".join(lines) + "\n]\n")
+
+
+def public_text(value):
+    """Text that is published. The repository has no em dash in any file, so one in a quote becomes a hyphen."""
+    return value.replace("\u2014", "-") if isinstance(value, str) else value
+
+
 def ingest_cards(obs, cards, issuer_id, country, zone, mrules, report):
     """Update the issuer's card list from the hand-in. Cards that the run did not see stay as they are."""
     cc, slug = country.lower(), issuer_id.split("-", 1)[1]
@@ -102,12 +114,12 @@ def ingest_cards(obs, cards, issuer_id, country, zone, mrules, report):
                 details.update({
                     "programmes": lounge["programmes"], "visits": lounge["visits"],
                     "visits_values": ["unlimited"] if lounge["unlimited"] else ([lounge["visits"]] if lounge["visits"] is not None else []),
-                    "guest_policy_text": lounge["guest_policy_quote"], "supplementary_share_visits": lounge["supplementary_share_visits"],
+                    "guest_policy_text": public_text(lounge["guest_policy_quote"]), "supplementary_share_visits": lounge["supplementary_share_visits"],
                 })
             if limits:
                 cap, cap_reason = cap_view(limits, None)
                 details.update({"limits": limits, "cap": cap, "cap_null_reason": cap_reason})
-            benefits.append({"type": benefit["type"], "text": benefit["quote"], "texts": [benefit["quote"]], "source_url": page, "details": details})
+            benefits.append({"type": benefit["type"], "text": public_text(benefit["quote"]), "texts": [public_text(benefit["quote"])], "source_url": page, "details": details})
         record = {
             "id": card_id, "aliases": list(old.get("aliases") or []) if old else [], "name": clean_name(item["name"]),
             "issuer_id": issuer_id, "country": country, "currency": zone["currency"],
@@ -115,17 +127,17 @@ def ingest_cards(obs, cards, issuer_id, country, zone, mrules, report):
             "tier": item["tier"], "card_type": item["card_type"], "islamic": item["islamic"],
             "status": "needs_review" if reasons else item["status"], "review_reason": "; ".join(reasons) if reasons else None,
             "annual_fee": {
-                "text": fee["quote"], "source_url": page, "amount": fee["amount"], "principal_amount": fee["amount"],
+                "text": public_text(fee["quote"]), "source_url": page, "amount": fee["amount"], "principal_amount": fee["amount"],
                 "supplementary_amount": fee["supplementary_amount"],
-                "waiver_rules": [{"text": w["quote"], "kind": w["kind"], "min_spend": w["min_spend"], "min_transactions": w["min_transactions"]} for w in fee["waivers"]],
+                "waiver_rules": [{"text": public_text(w["quote"]), "kind": w["kind"], "min_spend": w["min_spend"], "min_transactions": w["min_transactions"]} for w in fee["waivers"]],
             } if fee else None,
             "min_income": {
-                "text": income["quote"], "source_url": page, "amount": income["amount"], "period": income["period"],
+                "text": public_text(income["quote"]), "source_url": page, "amount": income["amount"], "period": income["period"],
                 "annual_amount": income["amount"] * 12 if income["period"] == "month" else income["amount"],
             } if income else None,
             "benefits": benefits, "benefit_types": sorted({benefit["type"] for benefit in benefits}),
             "benefits_scope": "shared_product_page" if "shared_product_page" in item["flags"] else "card",
-            "earn_rates": [{"kind": r["kind"], "category": r["category"], "rate": r["rate"], "up_to": r["up_to"], "text": r["quote"], "source_url": page} for r in item["earn_rates"]],
+            "earn_rates": [{"kind": r["kind"], "category": r["category"], "rate": r["rate"], "up_to": r["up_to"], "text": public_text(r["quote"]), "source_url": page} for r in item["earn_rates"]],
             "official_url": page, "sources": [{"url": page, "kind": source["kind"], "fetched_at": source["fetched_at"]}],
             "name_verified_on_source": True,
             "checked_at": source["fetched_at"], "checked_fetch_url": source["url"], "checked_at_null_reason": None,
@@ -234,10 +246,11 @@ def ingest(obs, root=None, now=None):
                 latest = row
         benefit = {key: value for key, value in item["benefit"].items() if key != "quote"}
         benefit["source"] = "offer_text" if benefit["value"] is not None else None
+        benefit["value_text"] = public_text(benefit["value_text"])
         countries = item["redeem"]["countries"]
         out.append({
             "id": offer_id, "aliases": aliases, "country": country, "currency": zone["currency"],
-            "title": item["title"], "description": None,
+            "title": public_text(item["title"]), "description": None,
             "provider": {"type": "issuer", "id": issuer_id},
             "merchant_kind": merchant["kind"],
             "merchant_name": clean_name(merchant["name"]) if merchant["kind"] == "single" else None,
@@ -252,7 +265,7 @@ def ingest(obs, root=None, now=None):
             "eligibility": {
                 "scope": rule["scope"], "rule": RULE_NAMES[(rule["scope"], rule["confidence"])], "confidence": rule["confidence"],
                 "issuer_ids": [issuer_id], "network_ids": rule["network_ids"], "card_ids": sorted(card_ids),
-                "card_types": rule["card_types"], "tiers": rule["tiers"], "evidence_text": rule["quote"],
+                "card_types": rule["card_types"], "tiers": rule["tiers"], "evidence_text": public_text(rule["quote"]),
             },
             "cross_border": {
                 "is_cross_border": any(code not in (country, "*") for code in countries) or "*" in countries,
@@ -319,9 +332,7 @@ def ingest(obs, root=None, now=None):
     for row in obs["fetches"]:
         if (row["url"], row["fetched_at"]) not in known:
             log.append({"url": row["url"], "status": row["status"], "final_url": row["final_url"], "fetched_at": row["fetched_at"]})
-    with open(log_path, "w", encoding="utf-8") as fh:
-        json.dump(log, fh, ensure_ascii=False, indent=0)
-        fh.write("\n")
+    write_fetch_log(log_path, log)
     index_path = os.path.join(root, "index.json")
     index = load_json(index_path)
     index["merchants"] = len(merchants)
