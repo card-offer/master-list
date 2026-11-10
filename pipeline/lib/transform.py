@@ -267,6 +267,16 @@ def _window(text, start, end, rules):
     return text[max(0, start - width):start], text[end:end + width]
 
 
+def _clause_end(text, start):
+    """Stop before a later number. A count inside 'per N noun' stays in this clause."""
+    number = re.compile(r"\b(?:\d{1,3}(?:,\d{3})*|\d+)\b")
+    nxt = number.search(text, start)
+    while nxt and re.search(r"\bper\s*$", text[start:nxt.start()], re.I):
+        start = nxt.end()
+        nxt = number.search(text, start)
+    return nxt.start() if nxt else len(text)
+
+
 def _is_minimum_amount(before, width):
     """A minimum-spend phrase applies only when no cap phrase sits between it and the amount."""
     tail = before[-max(1, int(width)):]
@@ -356,6 +366,8 @@ def parse_limits(text, default_currency, rules=None):
         before, after = _window(text, item["start"], item["end"], rules)
         next_start = money[index + 1]["start"] if index + 1 < len(money) else len(text)
         until_next = text[item["end"]:next_start]
+        # A period that follows a later number belongs to that number's clause.
+        own = text[item["end"]:min(next_start, _clause_end(text, item["end"]))]
         if _is_minimum_amount(before, rules["minimum_phrase_chars"]):
             continue
         local = text[item["start"]:item["end"]] + after
@@ -369,7 +381,7 @@ def parse_limits(text, default_currency, rules=None):
             dropped_budget = True
             continue
         since_prev = text[(money[index - 1]["end"] if index else max(0, item["start"] - int(rules["amount_context_chars"]))):item["start"]]
-        pers = pers_in(until_next, rules) or pers_in(after, rules)
+        pers = pers_in(own, rules) or pers_in(after, rules)
         if not pers and not re.search(r"\bper categor", until_next, re.I):
             pers = pers_in(since_prev, rules)
         scope = _scope(before, until_next)

@@ -181,9 +181,16 @@ class RulesTests(unittest.TestCase):
             "capped at RM70 per Eligible Participant and limited to a maximum of 200 winners per Campaign Month",
             "MYR",
         )
-        pool = [item for item in winners if item["amount"] == 200]
-        self.assertEqual(pool[0]["kind"], "pool_limit")
-        self.assertIn("month", pool[0]["per"])
+        reward = [item for item in winners if item["amount"] == 70][0]
+        self.assertEqual(reward["kind"], "reward_cap")
+        self.assertEqual(reward["per"], ["customer"])
+        pool = [item for item in winners if item["amount"] == 200][0]
+        self.assertEqual(pool["kind"], "pool_limit")
+        self.assertEqual(pool["per"], ["month"])
+        cap, cap_reason = cap_view(winners, None)
+        self.assertIsNone(cap_reason)
+        self.assertEqual(cap["amount"], 70)
+        self.assertEqual(cap["per"], "customer")
         bonus, _reason = parse_limits(
             "capped at S$2,000 eligible retail spend (i.e. maximum monthly Bonus Cash Back is S$8)",
             "SGD",

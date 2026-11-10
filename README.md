@@ -67,6 +67,15 @@ Check `terms_url` and the issuer page before relying on an offer. Issuers change
 
 Indexes, once Pages is serving them, live under the site that hosts the schema `$id` URLs (`https://card-offer.github.io/master-list/`).
 
+## Known issues
+
+- Short weekday names such as `every Tue` are not parsed. That misses 8 DBS and POSB offers. A full name such as `every Tuesday` is parsed.
+- `per stay`, `per receipt` and `per plan` are not parsed.
+- `limits.per` can list a time period and a who-dimension together. The legacy `cap.per` keeps the time period.
+- Standard Chartered's `per calendar quarter` count is recorded as a `pool_limit`.
+- Limit dedupe ignores the period. The same amount, kind and scope become one limit, and the periods are combined.
+- The payout phrase rule can drop a per-booking cap that says first-come, first-served. A per-person cap that says the same phrase is kept.
+
 ## Report a mistake or suggest an offer
 
 Open an issue with one of the forms: incorrect data, missing card or offer, or issuer submission. See [CONTRIBUTING.md](CONTRIBUTING.md).
