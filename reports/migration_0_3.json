@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T05:28:36+00:00",
+  "generated_at": "2026-11-10T05:43:24+00:00",
   "offers_in": 1535,
   "cards_in": 300,
   "merchants_in": 1065,
@@ -593,8 +593,80 @@
     "max_promotion_days": 1100,
     "default_period_months": 36,
     "description_max_chars": 400,
+    "amount_context_chars": 80,
+    "per_context_words": 4,
     "listing_popup_issuers": [
       "sg-ocbc"
+    ],
+    "currency_symbols": [
+      {
+        "symbol": "HK$",
+        "currency": "HKD"
+      },
+      {
+        "symbol": "US$",
+        "currency": "USD"
+      },
+      {
+        "symbol": "NZ$",
+        "currency": "NZD"
+      },
+      {
+        "symbol": "AU$",
+        "currency": "AUD"
+      },
+      {
+        "symbol": "A$",
+        "currency": "AUD"
+      },
+      {
+        "symbol": "C$",
+        "currency": "CAD"
+      },
+      {
+        "symbol": "S$",
+        "currency": "SGD"
+      },
+      {
+        "symbol": "MYR",
+        "currency": "MYR"
+      },
+      {
+        "symbol": "SGD",
+        "currency": "SGD"
+      },
+      {
+        "symbol": "USD",
+        "currency": "USD"
+      },
+      {
+        "symbol": "HKD",
+        "currency": "HKD"
+      },
+      {
+        "symbol": "THB",
+        "currency": "THB"
+      },
+      {
+        "symbol": "TWD",
+        "currency": "TWD"
+      },
+      {
+        "symbol": "JPY",
+        "currency": "JPY"
+      },
+      {
+        "symbol": "EUR",
+        "currency": "EUR"
+      },
+      {
+        "symbol": "GBP",
+        "currency": "GBP"
+      },
+      {
+        "symbol": "RM",
+        "currency": "MYR"
+      }
     ],
     "description_clause_patterns": [
       "\\bshall\\b",

@@ -12,7 +12,7 @@ sys.path.insert(0, str(ROOT))
 
 from pipeline.lib.calendar import add_months
 from pipeline.lib.rules import load_rules
-from pipeline.lib.transform import apply_date_policy, cross_border, currency_cap, placement
+from pipeline.lib.transform import apply_date_policy, cap_view, cross_border, limits_from_text, parse_limits, placement
 from tools.validate import check_constant_checked_at, check_horizon
 
 
@@ -37,27 +37,58 @@ class RulesTests(unittest.TestCase):
         transform = (ROOT / "pipeline" / "lib" / "transform.py").read_text(encoding="utf-8")
         self.assertNotIn("sg-ocbc", transform)
 
-    def test_currency_cap_ignores_the_minimum_spend(self):
-        text = "capped at RM200 with a minimum spend of RM800 in a single receipt"
-        cap, reason = currency_cap(text, "MYR")
-        self.assertIsNone(reason)
-        self.assertEqual(cap["currency"], "MYR")
-        self.assertEqual(cap["per"], None)
-        self.assertEqual(cap["amount"], currency_cap("capped at RM200", "MYR")[0]["amount"])
+    def test_prefixed_dollar_is_not_the_home_currency(self):
+        hong_kong = parse_limits("maximum discount at HK$240 in a single transaction", "SGD")[0]
+        self.assertEqual(hong_kong[0]["currency"], "HKD")
+        self.assertEqual(hong_kong[0]["kind"], "per_transaction_limit")
+        self.assertEqual(hong_kong[0]["per"], "transaction")
+        united = parse_limits("maximum discount value is US$100", "SGD")[0]
+        self.assertEqual(united[0]["currency"], "USD")
+        bare = parse_limits("capped at $20 per month", "SGD")[0]
+        self.assertEqual(bare[0]["currency"], "SGD")
 
-    def test_currency_cap_keeps_a_stated_period(self):
-        cap, reason = currency_cap("capped at S$150 per calendar month", "SGD")
-        self.assertIsNone(reason)
-        self.assertEqual(cap["currency"], "SGD")
-        self.assertEqual(cap["per"], "month")
+    def test_second_cap_and_hotel_scope_are_kept(self):
+        limits, _reason = parse_limits(
+            "maximum Cash Back of RM80 per Participating Month and RM240 throughout the Campaign Period",
+            "MYR",
+        )
+        amounts = {item["amount"]: item["per"] for item in limits}
+        self.assertEqual(amounts[80], "month")
+        self.assertEqual(amounts[240], "campaign")
+        hotel, _reason = parse_limits(
+            "capped at RM100 with a minimum spend of RM600. Hotels: 8% off (capped at RM50)",
+            "MYR",
+        )
+        scoped = [item for item in hotel if item["amount"] == 50]
+        self.assertEqual(scoped[0]["scope"], "hotel")
 
-    def test_currency_cap_states_why_a_number_is_not_published(self):
-        cap, reason = currency_cap("limited to 1 redemption per customer", "MYR")
+    def test_redemption_and_pool_limits_keep_the_count(self):
+        limits, reason = parse_limits("limited to 1 redemption per customer and capped at a maximum of 2000 redemptions", "MYR")
+        self.assertIsNone(reason)
+        kinds = {(item["kind"], item["amount"]) for item in limits}
+        self.assertIn(("redemption_limit", 1), kinds)
+        self.assertIn(("pool_limit", 2000), kinds)
+
+    def test_spend_cap_is_not_a_reward_cap(self):
+        limits, _reason = parse_limits("capped at S$1,000 spend on online spend per calendar month", "SGD")
+        self.assertEqual(limits[0]["kind"], "qualifying_spend_cap")
+        self.assertEqual(limits[0]["per"], "month")
+        cap, reason = cap_view(limits, None)
         self.assertIsNone(cap)
-        self.assertEqual(reason, "not_a_currency_amount")
-        cap, reason = currency_cap("capped at RM80 per month and RM240 throughout the period", "MYR")
-        self.assertIsNone(cap)
-        self.assertEqual(reason, "more_than_one_currency_amount")
+        self.assertEqual(reason, "not_a_reward_cap")
+
+    def test_campaign_budget_is_not_a_cardholder_limit(self):
+        limits, reason = parse_limits("capped at RM100,000 monthly budget allocation", "MYR")
+        self.assertEqual(limits, [])
+        self.assertEqual(reason, "campaign_budget_is_not_a_cardholder_limit")
+
+    def test_parser_window_comes_from_config(self):
+        rules = load_rules()
+        self.assertIsInstance(rules["amount_context_chars"], int)
+        self.assertIsInstance(rules["per_context_words"], int)
+        source = (ROOT / "pipeline" / "lib" / "transform.py").read_text(encoding="utf-8")
+        self.assertNotIn(" - 80", source)
+        self.assertNotIn("{0,4}", source)
 
     def test_fee_waiver_date_is_not_kept(self):
         offer = {
@@ -192,21 +223,70 @@ class PublishedTests(unittest.TestCase):
             missing = [old for old in old_ids if old not in index]
             self.assertEqual(missing, [], kind)
 
-    def test_offers_that_had_cap_text_keep_a_number_or_a_reason(self):
-        fixture_path = ROOT / "tests" / "fixtures" / "cap_text_offer_ids.json"
-        offer_ids = json.loads(fixture_path.read_text(encoding="utf-8"))
+    def _offers(self):
         offers = {}
         for country in ("my", "sg"):
             folder = ROOT / country / "offers"
             for file in folder.glob("*.json"):
                 for offer in json.loads(file.read_text(encoding="utf-8"))["items"]:
                     offers[offer["id"]] = offer
+        return offers
+
+    def test_named_amount_fixes(self):
+        offers = self._offers()
+        hong_kong = offers["sg-standard-chartered-d28d6e9ba9"]
+        self.assertEqual(hong_kong["cap"]["currency"], "HKD")
+        self.assertEqual(hong_kong["cap"]["per"], "transaction")
+        self.assertEqual(hong_kong["limits"][0]["kind"], "per_transaction_limit")
+        united = offers["sg-ocbc-5b9e79af32"]
+        self.assertEqual(united["limits"][0]["currency"], "USD")
+        budget = offers["my-hsbc-0dcfbab5d3"]
+        self.assertIsNone(budget["cap"])
+        self.assertEqual(budget["limits"], [])
+        self.assertEqual(budget["cap_null_reason"], "campaign_budget_is_not_a_cardholder_limit")
+        for offer_id in ("my-hsbc-cfc584cbaa", "my-hong-leong-02f7f7226b"):
+            hotel = [item for item in offers[offer_id]["limits"] if item["amount"] == 50]
+            self.assertEqual(hotel[0]["scope"], "hotel", offer_id)
+        dbs = offers["sg-dbs-05312cf75e"]
+        self.assertEqual(dbs["limits"][0]["kind"], "qualifying_spend_cap")
+        self.assertIsNone(dbs["cap"])
+
+    def test_card_cashback_caps_keep_the_stated_period(self):
         missing = []
-        for offer_id in offer_ids:
-            offer = offers[offer_id]
-            if offer.get("cap") or offer.get("cap_null_reason"):
+        for country in ("my", "sg"):
+            folder = ROOT / country / "cards"
+            for file in folder.glob("*.json"):
+                for card in json.loads(file.read_text(encoding="utf-8"))["items"]:
+                    for benefit in card.get("benefits") or []:
+                        details = benefit.get("details") or {}
+                        if benefit.get("type") != "cashback" or not details.get("limits"):
+                            continue
+                        for item in details["limits"]:
+                            if item["kind"] == "qualifying_spend_cap":
+                                self.assertEqual(item["per"], "month", card["id"])
+                                continue
+                            if item.get("scope") == "category":
+                                continue
+                            if card["id"] == "sg-uob-singtel-uob-card":
+                                continue
+                            if not item["per"]:
+                                missing.append(card["id"])
+        self.assertEqual(missing, [])
+
+    def test_every_cap_text_amount_is_a_limit_or_a_reason(self):
+        fixture = json.loads((ROOT / "tests" / "fixtures" / "cap_text_amounts.json").read_text(encoding="utf-8"))
+        offers = self._offers()
+        missing = []
+        for row in fixture:
+            offer = offers[row["id"]]
+            if row["reason"]:
+                self.assertTrue(offer.get("cap_null_reason"), row["id"])
                 continue
-            missing.append(offer_id)
+            found = {(item["amount"], item["currency"]) for item in offer.get("limits") or []}
+            for amount in row["amounts"]:
+                key = (amount["amount"], amount["currency"])
+                if key not in found:
+                    missing.append((row["id"], key))
         self.assertEqual(missing, [])
 
 

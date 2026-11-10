@@ -31,20 +31,13 @@ MONTHS = {
 }
 BENEFIT_UNITS = {"percent", "currency", "points", "multiplier"}
 BENEFIT_SOURCES = {"offer_text", "title"}
-AMOUNT = re.compile(
-    r"(RM|MYR|S\$|SGD|USD|THB|TWD|HKD|JPY|EUR|GBP|\$)\s?(\d{1,3}(?:,\d{3})*(?:\.\d+)?|\d+(?:\.\d+)?)"
+NUMBER = r"(\d{1,3}(?:,\d{3})*(?:\.\d+)?|\d+(?:\.\d+)?)"
+MIN_SPEND_BEFORE = re.compile(r"minimum\s+(?:spend|purchase)|min(?:imum)?\s+spend", re.I)
+COUNT_NOUN = re.compile(
+    r"\b(?:redemptions?|customers?|card\s?members?|cardholders?|users?)\b",
+    re.I,
 )
-PER_RULES = (
-    ("month", re.compile(r"\bmonthly\b|\bper\s+(?:[\w]+\s+){0,4}months?\b", re.I)),
-    ("year", re.compile(r"\bannually\b|\bper\s+(?:[\w]+\s+){0,4}years?\b", re.I)),
-    ("day", re.compile(r"\bdaily\b|\bper\s+(?:[\w]+\s+){0,4}days?\b", re.I)),
-    ("visit", re.compile(r"\bper\s+(?:[\w]+\s+){0,3}visits?\b", re.I)),
-    ("table", re.compile(r"\bper\s+tables?\b", re.I)),
-    ("transaction", re.compile(r"\bper\s+(?:[\w]+\s+){0,3}transactions?\b", re.I)),
-    ("cardmember", re.compile(r"\bper\s+(?:[\w]+\s+){0,3}card\s?members?\b|\bper\s+cardholders?\b", re.I)),
-    ("customer", re.compile(r"\bper\s+customers?\b", re.I)),
-    ("redemption", re.compile(r"\bper\s+redemptions?\b", re.I)),
-)
+BUDGET_PHRASE = re.compile(r"budget allocation|campaign budget|monthly budget", re.I)
 WEEKDAY = (
     ("monday", "mon"), ("mondays", "mon"), ("tuesday", "tue"), ("tuesdays", "tue"),
     ("wednesday", "wed"), ("wednesdays", "wed"), ("thursday", "thu"), ("thursdays", "thu"),
@@ -162,69 +155,244 @@ def whole_amount(number):
     return number
 
 
-def parse_money(text, default_currency):
-    if not text:
-        return None
-    found = []
-    for symbol, raw in AMOUNT.findall(text):
-        if symbol == "$":
-            currency = default_currency
-        elif symbol in {"RM", "MYR"}:
-            currency = "MYR"
-        elif symbol in {"S$", "SGD"}:
-            currency = "SGD"
-        else:
-            currency = symbol
-        found.append((whole_amount(float(raw.replace(",", ""))), currency))
-    unique = set(found)
-    if len(unique) != 1:
-        return None
-    amount, currency = next(iter(unique))
-    return {"amount": amount, "currency": currency}
+def _rules(rules):
+    if rules is None:
+        from pipeline.lib.rules import load_rules
+        return load_rules()
+    return rules
 
 
-def cap_per(text):
-    if not text:
+def _money_pattern(rules):
+    symbols = sorted((row["symbol"] for row in rules["currency_symbols"]), key=len, reverse=True)
+    body = "|".join(re.escape(symbol) for symbol in symbols)
+    return re.compile(rf"(?P<sym>{body}|(?<![A-Za-z])\$)\s?(?P<num>{NUMBER})")
+
+
+def _symbol_currency(symbol, rules):
+    if symbol == "$":
         return None
-    for name, pattern in PER_RULES:
-        if pattern.search(text):
-            return name
+    for row in rules["currency_symbols"]:
+        if row["symbol"] == symbol:
+            return row["currency"]
     return None
 
 
-MIN_SPEND_BEFORE = re.compile(r"minimum\s+(?:spend|purchase)|min(?:imum)?\s+spend", re.I)
-
-
-def currency_cap(text, default_currency):
-    """One currency cap from source text, or a reason when the text does not state exactly one.
-
-    Amounts introduced as a minimum spend are not the cap. Callers keep the source text private.
-    """
+def find_money(text, default_currency, rules=None):
+    """Currency amounts. A bare $ uses the home currency only when the text states no other currency."""
+    rules = _rules(rules)
     if not text:
-        return None, None
-    caps = []
-    for match in AMOUNT.finditer(text):
-        before = text[max(0, match.start() - 80):match.start()]
-        if MIN_SPEND_BEFORE.search(before):
+        return []
+    found = []
+    for match in _money_pattern(rules).finditer(text):
+        amount = whole_amount(float(match.group("num").replace(",", "")))
+        found.append({
+            "start": match.start(),
+            "end": match.end(),
+            "amount": amount,
+            "currency": _symbol_currency(match.group("sym"), rules),
+            "bare": match.group("sym") == "$",
+        })
+    stated = {item["currency"] for item in found if item["currency"]}
+    kept = []
+    for item in found:
+        if item["bare"]:
+            if len(stated) == 0:
+                item["currency"] = default_currency
+            elif len(stated) == 1:
+                item["currency"] = next(iter(stated))
+            else:
+                continue
+        kept.append(item)
+    return kept
+
+
+def parse_money(text, default_currency, rules=None):
+    if not text:
+        return None
+    found = {(item["amount"], item["currency"]) for item in find_money(text, default_currency, rules)}
+    if len(found) != 1:
+        return None
+    amount, currency = next(iter(found))
+    return {"amount": amount, "currency": currency}
+
+
+def _gap(rules):
+    return rf"(?:[\w]+\s+){{0,{int(rules['per_context_words'])}}}"
+
+
+def per_in(text, rules):
+    """One period word. Explicit 'per …' beats a loose campaign phrase."""
+    if not text:
+        return None
+    gap = _gap(rules)
+    explicit = (
+        ("transaction", rf"\bsingle transaction\b|\bper\s+{gap}transactions?\b"),
+        ("booking", rf"\bin one booking\b|\bper\s+{gap}bookings?\b"),
+        ("day", rf"\bdaily\b|\bper\s+{gap}days?\b"),
+        ("month", rf"\bmonthly\b|\bcalendar months?\b|\bper\s+{gap}months?\b|\bstatement cycle\b|\ba month\b"),
+        ("year", rf"\bannually\b|\bper\s+{gap}years?\b|\ba year\b|\bcalendar year\b"),
+        ("visit", rf"\bper\s+{gap}visits?\b"),
+        ("table", rf"\bper\s+tables?\b"),
+        ("customer", rf"\bper\s+{gap}(?:customers?|users?)\b"),
+        ("card", rf"\bper\s+{gap}(?:card\s?members?|cardholders?|cards?)\b"),
+    )
+    for name, pattern in explicit:
+        if re.search(pattern, text, re.I):
+            return name
+    if re.search(r"campaign period|promotion period|offer period|entire period|throughout the", text, re.I):
+        return "campaign"
+    return None
+
+
+def cap_per(text, rules=None):
+    return per_in(text, _rules(rules))
+
+
+def _window(text, start, end, rules):
+    width = int(rules["amount_context_chars"])
+    return text[max(0, start - width):start], text[end:end + width]
+
+
+def _is_minimum_amount(before, width):
+    """A minimum-spend phrase applies only when no cap phrase sits between it and the amount."""
+    tail = before[-max(1, width // 2):]
+    minimums = list(MIN_SPEND_BEFORE.finditer(before))
+    if not minimums and re.search(r"\bminimum\b", tail, re.I):
+        minimums = list(re.finditer(r"\bminimum\b", before, re.I))
+    if not minimums:
+        return False
+    caps = list(re.finditer(r"capped\s+at|\bmaximum\b", before, re.I))
+    if not caps:
+        return True
+    return minimums[-1].start() > caps[-1].start()
+
+
+def _scope(before, after):
+    if re.search(r"\bhotels?\b", before, re.I):
+        return "hotel"
+    if re.search(r"\bonline\b", before + after, re.I):
+        return "online"
+    if re.search(r"\bper categor", after, re.I):
+        return "category"
+    return None
+
+
+def _limit(kind, amount, currency, per, scope):
+    return {
+        "kind": kind,
+        "amount": amount,
+        "currency": currency,
+        "per": per,
+        "scope": scope,
+    }
+
+
+def parse_limits(text, default_currency, rules=None):
+    """Every stated limit in text. Minimum-spend amounts are not limits.
+
+    Returns (limits, null_reason). A campaign-wide budget is not a cardholder limit.
+    """
+    rules = _rules(rules)
+    if not text:
+        return [], None
+    spans = [(item["start"], item["end"]) for item in find_money(text, default_currency, rules)]
+    limits = []
+    dropped_budget = False
+    money = find_money(text, default_currency, rules)
+    for index, item in enumerate(money):
+        before, after = _window(text, item["start"], item["end"], rules)
+        next_start = money[index + 1]["start"] if index + 1 < len(money) else len(text)
+        until_next = text[item["end"]:next_start]
+        if _is_minimum_amount(before, int(rules["amount_context_chars"])):
             continue
-        symbol = match.group(1)
-        if symbol == "$":
-            found_currency = default_currency
-        elif symbol in {"RM", "MYR"}:
-            found_currency = "MYR"
-        elif symbol in {"S$", "SGD"}:
-            found_currency = "SGD"
+        if re.search(r"\bi\.e\.?\b", before, re.I):
+            continue
+        if BUDGET_PHRASE.search(before + " " + after):
+            dropped_budget = True
+            continue
+        since_prev = text[(money[index - 1]["end"] if index else max(0, item["start"] - int(rules["amount_context_chars"]))):item["start"]]
+        per = per_in(after, rules)
+        if per is None and not re.search(r"\bper categor", until_next, re.I):
+            per = per_in(since_prev, rules)
+        scope = _scope(before, until_next)
+        if re.match(r"\s*(?:eligible\s+|retail\s+)*spend\b", until_next, re.I):
+            kind = "qualifying_spend_cap"
+        elif per == "transaction":
+            kind = "per_transaction_limit"
         else:
-            found_currency = symbol
-        amount = whole_amount(float(match.group(2).replace(",", "")))
-        caps.append((amount, found_currency))
-    distinct = set(caps)
-    if not distinct:
-        return None, "not_a_currency_amount"
-    if len(distinct) != 1:
+            kind = "reward_cap"
+        limits.append(_limit(kind, item["amount"], item["currency"], per, scope))
+    number = re.compile(rf"\b(\d{{1,3}}(?:,\d{{3}})*|\d+)\b")
+    for match in number.finditer(text):
+        if any(start <= match.start() < end for start, end in spans):
+            continue
+        if re.match(r"\s*%", text[match.end():]):
+            continue
+        tail = text[match.end():match.end() + int(rules["amount_context_chars"])]
+        if not COUNT_NOUN.search(tail):
+            continue
+        before, after = _window(text, match.start(), match.end(), rules)
+        amount = whole_amount(float(match.group(1).replace(",", "")))
+        per = per_in(after, rules)
+        personal = re.search(r"\bper\s+(?:[\w]+\s+){0," + str(int(rules["per_context_words"])) + r"}(?:customers?|users?|card\s?members?|cardholders?|cards?)\b", after, re.I)
+        if per == "transaction":
+            kind = "per_transaction_limit"
+        elif re.search(r"\bfirst\b", before, re.I) or not personal:
+            kind = "pool_limit"
+        else:
+            kind = "redemption_limit"
+        limits.append(_limit(kind, amount, None, per, None))
+    unique = []
+    seen = set()
+    for item in limits:
+        key = (item["kind"], item["amount"], item["currency"], item["per"], item["scope"])
+        if key in seen:
+            continue
+        seen.add(key)
+        unique.append(item)
+    unique.sort(key=lambda item: (item["kind"], item["amount"], item["currency"] or "", item["per"] or "", item["scope"] or ""))
+    if dropped_budget and not unique:
+        return [], "campaign_budget_is_not_a_cardholder_limit"
+    return unique, None
+
+
+def cap_view(limits, null_reason):
+    """The legacy cap mirrors the single cardholder reward. Anything else stays only in limits."""
+    rewards = [
+        item for item in limits
+        if item["kind"] in {"reward_cap", "per_transaction_limit"} and item["currency"]
+    ]
+    if len(rewards) == 1:
+        reward = rewards[0]
+        return {"amount": reward["amount"], "currency": reward["currency"], "per": reward["per"]}, None
+    if len(rewards) > 1:
         return None, "more_than_one_currency_amount"
-    amount, found_currency = caps[0]
-    return {"amount": amount, "currency": found_currency, "per": cap_per(text)}, None
+    if null_reason:
+        return None, null_reason
+    if limits:
+        return None, "not_a_reward_cap"
+    return None, None
+
+
+def focus_cap_text(cap_text, context):
+    """Offer text is already a cap sentence. A bare card amount is read in the sentence that states it."""
+    if not cap_text:
+        return ""
+    if re.search(r"capped|limited|maximum|redemption|budget", cap_text, re.I):
+        return cap_text
+    if not context:
+        return cap_text
+    parts = re.split(r"[\n]+", context)
+    hits = [part for part in parts if cap_text in part]
+    stated = [part for part in hits if re.search(r"capped|cap\b|maximum|spend", part, re.I)]
+    chosen = stated or hits
+    return "\n".join(chosen) if chosen else cap_text
+
+
+def limits_from_text(text, default_currency, rules=None, context=""):
+    rules = _rules(rules)
+    focused = focus_cap_text(text or "", context or "")
+    return parse_limits(focused, default_currency, rules)
 
 
 def parse_human_date(value):
@@ -615,21 +783,26 @@ def build_tree(src, generated_at, fetch_path=None, existing_index=None, alias_le
             if raw_details is not None:
                 details = {key: raw_details[key] for key in raw_details if key in DETAIL_KEYS}
                 if benefit.get("type") == "lounge_access" and raw_details.get("min_spend_text"):
-                    parsed = parse_money(raw_details.get("min_spend_text"), card_currency)
+                    parsed = parse_money(raw_details.get("min_spend_text"), card_currency, rules)
                     if parsed:
                         details["min_spend"] = {
                             "amount": parsed["amount"],
                             "currency": parsed["currency"],
-                            "per": cap_per(raw_details.get("min_spend_text")),
+                            "per": cap_per(raw_details.get("min_spend_text"), rules),
                         }
                     else:
                         details["min_spend_null_reason"] = "not_a_currency_amount"
                 if raw_details.get("cap_text"):
-                    parsed_cap, cap_reason = currency_cap(raw_details.get("cap_text"), card_currency)
-                    if parsed_cap:
-                        details["cap"] = parsed_cap
-                    elif cap_reason:
-                        details["cap_null_reason"] = cap_reason
+                    context = "\n".join([benefit.get("text") or ""] + list(benefit.get("texts") or []))
+                    parsed_limits, limit_reason = limits_from_text(
+                        raw_details.get("cap_text"), card_currency, rules, context
+                    )
+                    card_cap, card_reason = cap_view(parsed_limits, limit_reason)
+                    details["limits"] = parsed_limits
+                    if card_cap:
+                        details["cap"] = card_cap
+                    elif card_reason:
+                        details["cap_null_reason"] = card_reason
             benefits.append({
                 "type": benefit.get("type"),
                 "text": benefit.get("text"),
@@ -831,8 +1004,9 @@ def build_tree(src, generated_at, fetch_path=None, existing_index=None, alias_le
         if merchant_id and merchant_id in merchants_out:
             merchants_out[merchant_id]["offer_ids"].append(new_id)
         currency = offer.get("currency") or country_by[offer["country"]]["currency"]
-        min_spend = parse_money(offer.get("min_spend_text"), currency)
-        cap, cap_null_reason = currency_cap(offer.get("cap_text"), currency)
+        min_spend = parse_money(offer.get("min_spend_text"), currency, rules)
+        limits, limit_reason = limits_from_text(offer.get("cap_text"), currency, rules)
+        cap, cap_null_reason = cap_view(limits, limit_reason)
         booking, usage = periods_for(offer)
         terms_hash = None
         terms_scope = offer.get("terms_scope")
@@ -881,6 +1055,7 @@ def build_tree(src, generated_at, fetch_path=None, existing_index=None, alias_le
             "min_spend_source_url": offer.get("min_spend_source_url"),
             "cap": cap,
             "cap_null_reason": cap_null_reason,
+            "limits": limits,
             "cap_source_url": offer.get("cap_source_url"),
             "eligibility": eligibility_of(offer.get("eligibility"), card_id_map),
             "cross_border": cross_border(offer, merchant_text or _merchant_name(merchant_id, merchants_out), places, currency_country),

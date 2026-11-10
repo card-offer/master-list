@@ -12,11 +12,14 @@ INT_KEYS = (
     "max_promotion_days",
     "default_period_months",
     "description_max_chars",
+    "amount_context_chars",
+    "per_context_words",
 )
 OTHER_KEYS = (
     "listing_end_date_ceiling",
     "listing_popup_issuers",
     "description_clause_patterns",
+    "currency_symbols",
 )
 
 
@@ -44,6 +47,11 @@ def load_rules():
         raise SystemExit("config/rules.json listing_popup_issuers must be a list")
     if not isinstance(data["description_clause_patterns"], list):
         raise SystemExit("config/rules.json description_clause_patterns must be a list")
+    if not isinstance(data["currency_symbols"], list) or not data["currency_symbols"]:
+        raise SystemExit("config/rules.json currency_symbols must be a non-empty list")
+    for row in data["currency_symbols"]:
+        if not isinstance(row, dict) or not row.get("symbol") or not row.get("currency"):
+            raise SystemExit("config/rules.json currency_symbols entries need symbol and currency")
     return data
 
 

@@ -95,12 +95,23 @@
         "amount": {"type": "number"},
         "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
         "per": {
-          "enum": ["month", "year", "day", "visit", "table", "transaction", "cardmember", "customer", "redemption", null]
+          "enum": ["transaction", "booking", "day", "month", "campaign", "customer", "card", "visit", "table", "year", null]
         }
       }
     },
     "cap_null_reason": {
-      "enum": ["not_a_currency_amount", "more_than_one_currency_amount", null]
+      "enum": [
+        "not_a_currency_amount",
+        "not_a_reward_cap",
+        "more_than_one_currency_amount",
+        "campaign_budget_is_not_a_cardholder_limit",
+        null
+      ]
+    },
+    "limits": {
+      "type": "array",
+      "description": "Every stated limit. cap, when set, mirrors the single reward_cap or per_transaction_limit.",
+      "items": {"$ref": "#/$defs/limit"}
     },
     "cap_source_url": {"type": ["string", "null"], "format": "uri"},
     "eligibility": {
@@ -188,6 +199,28 @@
     "checked_at_null_reason": {"type": ["string", "null"]}
   },
   "$defs": {
+    "limit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "amount", "currency", "per", "scope"],
+      "properties": {
+        "kind": {
+          "enum": [
+            "reward_cap",
+            "qualifying_spend_cap",
+            "redemption_limit",
+            "pool_limit",
+            "per_transaction_limit"
+          ]
+        },
+        "amount": {"type": "number"},
+        "currency": {"type": ["string", "null"], "pattern": "^[A-Z]{3}$"},
+        "per": {
+          "enum": ["transaction", "booking", "day", "month", "campaign", "customer", "card", "visit", "table", "year", null]
+        },
+        "scope": {"type": ["string", "null"]}
+      }
+    },
     "period": {
       "type": ["object", "null"],
       "additionalProperties": false,
