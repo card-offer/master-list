@@ -17,7 +17,7 @@ from pipeline.lib.calendar import add_months, local_date, parse_instant, stamp
 from pipeline.lib.layout import write_collection, write_json
 from pipeline.lib.merchants import Registry, clean_name, load_merchant_rules, name_key
 from pipeline.lib.rules import load_rules, repo_root
-from pipeline.lib.transform import cap_view, new_offer_id, placement
+from pipeline.lib.transform import cap_view, new_card_id, new_offer_id, placement
 from tools.check_observations import check
 
 RULE_NAMES = {
@@ -60,6 +60,87 @@ def match_existing(obs_offer, merchant_key, existing, taken):
     return None, "new"
 
 
+def ingest_cards(obs, cards, issuer_id, country, zone, mrules, report):
+    """Update the issuer's card list from the hand-in. Cards that the run did not see stay as they are."""
+    cc, slug = country.lower(), issuer_id.split("-", 1)[1]
+    fetch_by = {}
+    for row in obs["fetches"]:
+        fetch_by[row["url"]] = row
+        fetch_by.setdefault(row["final_url"], row)
+    by_key = {name_key(card["name"], mrules): card for card in cards}
+    by_url = {}
+    for card in cards:
+        by_url.setdefault(card["official_url"], []).append(card)
+    observed_urls = [item["official_url"] for item in obs.get("cards") or []]
+    used = {card["id"] for card in cards}
+    for card in cards:
+        used.update(card.get("aliases") or [])
+    report["cards"] = {"new": 0, "kept": 0, "needs_review": []}
+    for item in obs.get("cards") or []:
+        page = item["official_url"]
+        old = by_key.get(name_key(item["name"], mrules))
+        if old is None and len(by_url.get(page, [])) == 1 and observed_urls.count(page) == 1:
+            old = by_url[page][0]
+        source = fetch_by[page]
+        seen_day = local_date(parse_instant(source["fetched_at"]), zone["timezone"]).isoformat()
+        if old:
+            card_id = old["id"]
+            report["cards"]["kept"] += 1
+        else:
+            card_id = new_card_id(cc, slug, item["name"], item["name"], used)
+            report["cards"]["new"] += 1
+        reasons = [f"crawler flag: {flag}" for flag in item["flags"] if flag != "shared_product_page"]
+        fee, income = item["annual_fee"], item["min_income"]
+        benefits = []
+        for benefit in item["benefits"]:
+            details = None
+            limits = [{key: value for key, value in limit.items() if key != "quote"} for limit in benefit["limits"]]
+            lounge = benefit["lounge"]
+            if lounge or limits:
+                details = {}
+            if lounge:
+                details.update({
+                    "programmes": lounge["programmes"], "visits": lounge["visits"],
+                    "visits_values": ["unlimited"] if lounge["unlimited"] else ([lounge["visits"]] if lounge["visits"] is not None else []),
+                    "guest_policy_text": lounge["guest_policy_quote"], "supplementary_share_visits": lounge["supplementary_share_visits"],
+                })
+            if limits:
+                cap, cap_reason = cap_view(limits, None)
+                details.update({"limits": limits, "cap": cap, "cap_null_reason": cap_reason})
+            benefits.append({"type": benefit["type"], "text": benefit["quote"], "texts": [benefit["quote"]], "source_url": page, "details": details})
+        record = {
+            "id": card_id, "aliases": list(old.get("aliases") or []) if old else [], "name": clean_name(item["name"]),
+            "issuer_id": issuer_id, "country": country, "currency": zone["currency"],
+            "networks": item["networks"], "network_source": "crawler_quote" if item["networks"] else None,
+            "tier": item["tier"], "card_type": item["card_type"], "islamic": item["islamic"],
+            "status": "needs_review" if reasons else item["status"], "review_reason": "; ".join(reasons) if reasons else None,
+            "annual_fee": {
+                "text": fee["quote"], "source_url": page, "amount": fee["amount"], "principal_amount": fee["amount"],
+                "supplementary_amount": fee["supplementary_amount"],
+                "waiver_rules": [{"text": w["quote"], "kind": w["kind"], "min_spend": w["min_spend"], "min_transactions": w["min_transactions"]} for w in fee["waivers"]],
+            } if fee else None,
+            "min_income": {
+                "text": income["quote"], "source_url": page, "amount": income["amount"], "period": income["period"],
+                "annual_amount": income["amount"] * 12 if income["period"] == "month" else income["amount"],
+            } if income else None,
+            "benefits": benefits, "benefit_types": sorted({benefit["type"] for benefit in benefits}),
+            "benefits_scope": "shared_product_page" if "shared_product_page" in item["flags"] else "card",
+            "earn_rates": [{"kind": r["kind"], "category": r["category"], "rate": r["rate"], "up_to": r["up_to"], "text": r["quote"], "source_url": page} for r in item["earn_rates"]],
+            "official_url": page, "sources": [{"url": page, "kind": source["kind"], "fetched_at": source["fetched_at"]}],
+            "name_verified_on_source": True,
+            "checked_at": source["fetched_at"], "checked_fetch_url": source["url"], "checked_at_null_reason": None,
+            "first_seen": (old.get("first_seen") if old else None) or seen_day, "last_seen": seen_day,
+        }
+        if reasons:
+            report["cards"]["needs_review"].append({"card": card_id, "reasons": reasons})
+        if old:
+            cards[cards.index(old)] = record
+        else:
+            cards.append(record)
+        by_key[name_key(item["name"], mrules)] = record
+    return cards
+
+
 def ingest(obs, root=None, now=None):
     root = root or repo_root()
     now = now or datetime.datetime.now(datetime.timezone.utc)
@@ -79,7 +160,9 @@ def ingest(obs, root=None, now=None):
     for offer in existing:
         offer["_merchant_key"] = name_key(offer.get("merchant_name") or "", mrules)
     registry = Registry(load_items(reg_path), mrules)
-    cards = load_items(os.path.join(root, cc, "cards", f"{slug}.json"))
+    cards_path = os.path.join(root, cc, "cards", f"{slug}.json")
+    cards = load_items(cards_path)
+    cards_before = json.dumps(cards, sort_keys=True)
     card_by_key = {}
     for card in cards:
         for text in [card["name"]] + [a for a in card.get("aliases") or [] if " " in a]:
@@ -91,7 +174,14 @@ def ingest(obs, root=None, now=None):
     used = {offer["id"] for offer in existing} | {offer["id"] for offer in archived}
     for offer in existing + archived:
         used.update(offer.get("aliases") or [])
-    taken, out, report = set(), [], {"new": 0, "exact": 0, "page_and_merchant": 0, "moved_url": 0, "needs_review": [], "unmatched_card_names": []}
+    report = {}
+    cards = ingest_cards(obs, cards, issuer_id, country, zone, mrules, report)
+    card_by_key = {}
+    for card in cards:
+        for text in [card["name"]] + [a for a in card.get("aliases") or [] if " " in a]:
+            card_by_key.setdefault(name_key(text, mrules), card["id"])
+    taken, out = set(), []
+    report.update({"new": 0, "exact": 0, "page_and_merchant": 0, "moved_url": 0, "needs_review": [], "unmatched_card_names": []})
     for item in obs["offers"]:
         merchant = item["merchant"]
         mkey = name_key(merchant["name"] or "", mrules) if merchant["kind"] == "single" else ""
@@ -209,6 +299,8 @@ def ingest(obs, root=None, now=None):
     generated = stamp(now)
     header = {"schema_version": "0.3.0", "country": country, "issuer_id": issuer_id, "generated_at": generated}
     write_collection(offers_path, header, live)
+    if json.dumps(cards, sort_keys=True) != cards_before:
+        write_collection(cards_path, header, cards)
     if to_archive:
         write_collection(archive_path, dict(header, archive=True), to_archive)
     # Registry counts need every live and archived offer in every country.
@@ -235,12 +327,14 @@ def ingest(obs, root=None, now=None):
     index["merchants"] = len(merchants)
     index["generated_at"] = generated
     index["countries"][country]["offers"] = sum(len(load_items(os.path.join(root, cc, "offers", f))) for f in os.listdir(os.path.join(root, cc, "offers")))
+    index["countries"][country]["cards"] = sum(len(load_items(os.path.join(root, cc, "cards", f))) for f in os.listdir(os.path.join(root, cc, "cards")))
     write_json(index_path, index)
     issuers_path = os.path.join(root, cc, "issuers.json")
     issuers = load_json(issuers_path)
     for row in issuers["items"]:
         if row["id"] == issuer_id:
             row["offer_count"] = len(live)
+            row["card_ids"] = sorted(card["id"] for card in cards)
     header = {key: value for key, value in issuers.items() if key not in ("items", "count")}
     write_collection(issuers_path, header, issuers["items"])
     report.update({"issuer": issuer_id, "live": len(live), "archived": len(to_archive), "dropped_after_retention": dropped,

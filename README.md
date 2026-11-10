@@ -72,7 +72,7 @@ Indexes, once Pages is serving them, live under the site that hosts the schema `
 ## Known issues
 
 - 441 offers have `merchant_kind` `unknown`, and 1,094 merchant names are `legacy_title_parse`. The next crawl under `crawler/RULES.md` replaces them.
-- The crawler rule covers offers. Cards still use the older scripts in `pipeline/`.
+- The 300 published cards came from the older scripts. The next crawl under `crawler/RULES.md` replaces them, with one benefit entry for each stated sentence.
 - Short weekday names such as `every Tue` are not parsed. That misses 8 DBS and POSB offers. A full name such as `every Tuesday` is parsed.
 - `per stay`, `per receipt` and `per plan` are not parsed.
 - `limits.per` can list a time period and a who-dimension together. The legacy `cap.per` keeps the time period.
