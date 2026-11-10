@@ -1,0 +1,459 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://card-offer.github.io/master-list/schema/card.schema.json",
+  "title": "Card",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "issuer_id",
+    "country",
+    "currency",
+    "networks",
+    "card_type",
+    "islamic",
+    "status",
+    "benefits",
+    "official_url",
+    "sources",
+    "last_checked"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z]{2}-[a-z0-9-]+$"
+    },
+    "name": {
+      "type": "string"
+    },
+    "issuer_id": {
+      "type": "string",
+      "pattern": "^[a-z]{2}-[a-z0-9-]+$"
+    },
+    "country": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "description": "ISO 3166-1 alpha-2"
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "ISO 4217"
+    },
+    "network": {
+      "oneOf": [
+        {
+          "enum": [
+            "visa",
+            "mastercard",
+            "amex",
+            "unionpay",
+            "jcb",
+            "diners"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "networks": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "visa",
+          "mastercard",
+          "amex",
+          "unionpay",
+          "jcb",
+          "diners"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "network_source": {
+      "enum": [
+        "name",
+        "curated_from_page",
+        "page_heading",
+        null
+      ]
+    },
+    "tier": {
+      "enum": [
+        "classic",
+        "gold",
+        "platinum",
+        "titanium",
+        "signature",
+        "infinite",
+        "world",
+        "world_elite",
+        "reserve",
+        "centurion",
+        null
+      ]
+    },
+    "card_type": {
+      "enum": [
+        "credit",
+        "charge",
+        "debit",
+        "prepaid"
+      ]
+    },
+    "islamic": {
+      "type": "boolean"
+    },
+    "status": {
+      "enum": [
+        "active",
+        "no_new_applications",
+        "discontinued"
+      ]
+    },
+    "annual_fee": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "source_url",
+        "amount",
+        "waiver_rules"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "amount": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "Principal card annual fee in local currency. 0 when the page says no annual fee."
+        },
+        "principal_amount": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "supplementary_amount": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "waiver_rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "text",
+              "kind"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "kind": {
+                "enum": [
+                  "lifetime",
+                  "first_year",
+                  "spend_based",
+                  "transaction_based",
+                  "conditional"
+                ]
+              },
+              "min_spend": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "min_transactions": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "min_income": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "text",
+        "source_url",
+        "amount"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "amount": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "period": {
+          "enum": [
+            "year",
+            "month",
+            null
+          ]
+        },
+        "annual_amount": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "benefits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "text",
+          "texts",
+          "source_url"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "enum": [
+              "cashback",
+              "points",
+              "miles",
+              "lounge_access",
+              "travel_insurance",
+              "golf",
+              "fuel",
+              "dining",
+              "instalment",
+              "annual_fee_waiver",
+              "merchant_offer",
+              "other"
+            ]
+          },
+          "text": {
+            "type": "string",
+            "description": "Verbatim sentence from the source page"
+          },
+          "source_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "details": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "rates_pct": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "cap_text": {
+                "type": "string"
+              },
+              "programmes": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "priority_pass",
+                    "loungekey",
+                    "dragonpass",
+                    "plaza_premium",
+                    "mastercard_travel_pass",
+                    "visa_airport_companion",
+                    "malaysia_airlines_golden_lounge",
+                    "mastercard_airport_experiences"
+                  ]
+                }
+              },
+              "visits": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "min_spend_text": {
+                "type": "string"
+              },
+              "coverage_text": {
+                "type": "string"
+              },
+              "visits_values": {
+                "type": "array",
+                "items": {
+                  "type": [
+                    "integer",
+                    "string"
+                  ]
+                }
+              },
+              "guest_policy_text": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "supplementary_share_visits": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "true or false only when the page states it; null when unstated."
+              }
+            }
+          },
+          "texts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "description": "All distinct verbatim lines for this benefit type, merged."
+          }
+        }
+      }
+    },
+    "benefit_types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "benefits_scope": {
+      "enum": [
+        "card",
+        "shared_product_page"
+      ]
+    },
+    "official_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "url",
+          "kind",
+          "fetched_at"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "kind": {
+            "enum": [
+              "issuer_product_page",
+              "issuer_listing",
+              "issuer_promotion_page",
+              "issuer_promotion_listing",
+              "network_offer_page",
+              "merchant_page"
+            ]
+          },
+          "fetched_at": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "name_verified_on_source": {
+      "type": "boolean"
+    },
+    "last_checked": {
+      "type": "string",
+      "format": "date"
+    },
+    "network_candidates": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "visa",
+          "mastercard",
+          "amex",
+          "unionpay",
+          "jcb",
+          "diners"
+        ]
+      },
+      "description": "Network(s) mentioned on the product page but not stated in the card name or heading. Unconfirmed."
+    },
+    "earn_rates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kind",
+          "category",
+          "rate",
+          "text",
+          "source_url"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "enum": [
+              "cashback_pct",
+              "points_multiplier",
+              "points_per_currency_unit",
+              "miles_per_currency_unit"
+            ]
+          },
+          "category": {
+            "type": "string"
+          },
+          "rate": {
+            "type": "number"
+          },
+          "up_to": {
+            "type": "boolean"
+          },
+          "text": {
+            "type": "string"
+          },
+          "source_url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    }
+  }
+}

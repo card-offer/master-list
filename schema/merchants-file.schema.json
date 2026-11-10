@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://card-offer.github.io/master-list/schema/merchants-file.schema.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "country",
+    "generated_at",
+    "items"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "description": "ISO 3166-1 alpha-2"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "count": {
+      "type": "integer"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "merchant.schema.json"
+      }
+    }
+  }
+}

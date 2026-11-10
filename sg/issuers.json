@@ -1,0 +1,413 @@
+{
+ "schema_version": "0.2.0",
+ "country": "SG",
+ "generated_at": "2026-11-09T00:00:00+08:00",
+ "count": 16,
+ "items": [
+  {
+   "id": "sg-dbs",
+   "name": "DBS Bank",
+   "legal_name": "DBS Bank Ltd",
+   "country": "SG",
+   "website": "https://www.dbs.com.sg",
+   "card_ids": [
+    "sg-dbs-altitude-visa-signature-card",
+    "sg-dbs-chromo-card",
+    "sg-dbs-esso-card",
+    "sg-safra-dbs-card",
+    "sg-dbs-takashimaya-card",
+    "sg-dbs-vantage-visa-infinite-card",
+    "sg-dbs-woman-s-mastercard-card",
+    "sg-dbs-yuu-card"
+   ],
+   "offer_count": 68,
+   "crawl": {
+    "card_sources": [
+     "https://www.dbs.com.sg/personal/cards/cards-comparator.page",
+     "https://www.dbs.com.sg/personal/cards/default.page"
+    ],
+    "offer_sources": [],
+    "status": "ok",
+    "note": null
+   }
+  },
+  {
+   "id": "sg-posb",
+   "name": "POSB",
+   "legal_name": "DBS Bank Ltd (POSB)",
+   "country": "SG",
+   "website": "https://www.posb.com.sg",
+   "card_ids": [
+    "sg-posb-everyday-card"
+   ],
+   "offer_count": 56,
+   "crawl": {
+    "card_sources": [
+     "https://www.posb.com.sg/personal/cards/cards-comparator.page"
+    ],
+    "offer_sources": [],
+    "status": "ok",
+    "note": null
+   }
+  },
+  {
+   "id": "sg-ocbc",
+   "name": "OCBC",
+   "legal_name": "Oversea-Chinese Banking Corporation Limited",
+   "country": "SG",
+   "website": "https://www.ocbc.com",
+   "card_ids": [
+    "sg-ocbc-365-credit-card",
+    "sg-ocbc-90n-card",
+    "sg-ocbc-arts-credit-card",
+    "sg-best-ocbc-credit-card",
+    "sg-ocbc-nxt-credit-card",
+    "sg-ocbc-great-eastern-cashflo-credit-card",
+    "sg-ocbc-infinity-cashback-card",
+    "sg-ocbc-frank-credit-card",
+    "sg-ocbc-platinum-credit-card",
+    "sg-ocbc-rewards-card",
+    "sg-ocbc-voyage-card"
+   ],
+   "offer_count": 450,
+   "crawl": {
+    "card_sources": [
+     "https://www.ocbc.com/personal-banking/cards/credit-card",
+     "https://www.ocbc.com/personal-banking/cards"
+    ],
+    "offer_sources": [],
+    "status": "ok",
+    "note": null
+   }
+  },
+  {
+   "id": "sg-uob",
+   "name": "UOB",
+   "legal_name": "United Overseas Bank Limited",
+   "country": "SG",
+   "website": "https://www.uob.com.sg",
+   "card_ids": [
+    "sg-uob-absolute-cashback-card",
+    "sg-uob-evol-card",
+    "sg-lazada-uob-card",
+    "sg-metro-uob-card",
+    "sg-uob-one-card",
+    "sg-singtel-uob-card",
+    "sg-uob-unionpay-card",
+    "sg-uob-lady-s-solitaire-metal-card",
+    "sg-uob-visa-infinite-metal-card",
+    "sg-uob-lady-s-card",
+    "sg-uob-preferred-visa-card",
+    "sg-uob-professionals-platinum-card",
+    "sg-uob-visa-signature-card",
+    "sg-krisflyer-uob-credit-card",
+    "sg-uob-prvi-miles-card"
+   ],
+   "offer_count": 4,
+   "crawl": {
+    "card_sources": [
+     "https://www.uob.com.sg/personal/cards/index.page",
+     "https://www.uob.com.sg/personal/cards/compare.page"
+    ],
+    "offer_sources": [],
+    "status": "ok",
+    "note": null
+   }
+  },
+  {
+   "id": "sg-citi",
+   "name": "Citibank Singapore",
+   "legal_name": "Citibank Singapore Limited",
+   "country": "SG",
+   "website": "https://www.citibank.com.sg",
+   "card_ids": [
+    "sg-citi-cash-back-card",
+    "sg-citi-cash-back-plus-card",
+    "sg-citi-smrt-card",
+    "sg-citi-rewards-card",
+    "sg-citi-prestige-card",
+    "sg-citi-clear-card",
+    "sg-citi-premiermiles-card",
+    "sg-citi-m1-card"
+   ],
+   "offer_count": 3,
+   "crawl": {
+    "card_sources": [
+     "https://www.citibank.com.sg/credit-cards/"
+    ],
+    "offer_sources": [],
+    "status": "ok",
+    "note": null
+   }
+  },
+  {
+   "id": "sg-standard-chartered",
+   "name": "Standard Chartered Singapore",
+   "legal_name": "Standard Chartered Bank (Singapore) Limited",
+   "country": "SG",
+   "website": "https://www.sc.com/sg",
+   "card_ids": [
+    "sg-standard-chartered-beyond-credit-card",
+    "sg-standard-chartered-journey-credit-card",
+    "sg-standard-chartered-nus-alumni-platinum-card",
+    "sg-standard-chartered-platinum-visa-credit-card",
+    "sg-standard-chartered-platinum-mastercard-credit-card",
+    "sg-standard-chartered-prudential-platinum-card",
+    "sg-standard-chartered-prudential-visa-signature-card",
+    "sg-standard-chartered-rewards-plus-credit-card",
+    "sg-standard-chartered-simply-cash-credit-card",
+    "sg-standard-chartered-smart-credit-card",
+    "sg-standard-chartered-spree-credit-card"
+   ],
+   "offer_count": 240,
+   "crawl": {
+    "card_sources": [
+     "https://www.sc.com/sg/credit-cards/"
+    ],
+    "offer_sources": [],
+    "status": "ok",
+    "note": null
+   }
+  },
+  {
+   "id": "sg-hsbc",
+   "name": "HSBC Singapore",
+   "legal_name": "HSBC Bank (Singapore) Limited",
+   "country": "SG",
+   "website": "https://www.hsbc.com.sg",
+   "card_ids": [
+    "sg-hsbc-advance-credit-card",
+    "sg-hsbc-live-plus-credit-card",
+    "sg-hsbc-premier-mastercard",
+    "sg-hsbc-revolution-credit-card",
+    "sg-hsbc-travelone-credit-card",
+    "sg-hsbc-visa-infinite-credit-card",
+    "sg-hsbc-visa-platinum-card"
+   ],
+   "offer_count": 19,
+   "crawl": {
+    "card_sources": [
+     "https://www.hsbc.com.sg/credit-cards/"
+    ],
+    "offer_sources": [],
+    "status": "ok",
+    "note": null
+   }
+  },
+  {
+   "id": "sg-maybank",
+   "name": "Maybank Singapore",
+   "legal_name": "Maybank Singapore Limited",
+   "country": "SG",
+   "website": "https://www.maybank2u.com.sg",
+   "card_ids": [
+    "sg-maybank-xl-cashback-card",
+    "sg-maybank-xl-rewards-card",
+    "sg-maybank-family-and-friends-card",
+    "sg-maybank-platinum-visa-card",
+    "sg-maybank-horizon-visa-signature-card",
+    "sg-maybank-world-mastercard",
+    "sg-maybank-visa-infinite-card",
+    "sg-maybank-manchester-united-platinum-visa-credit-card",
+    "sg-maybank-fc-barcelona-visa-signature-card",
+    "sg-maybank-evibes-card",
+    "sg-maybank-duo-platinum-mastercard"
+   ],
+   "offer_count": 88,
+   "crawl": {
+    "card_sources": [
+     "https://www.maybank2u.com.sg/en/personal/cards/credit-cards/index.page"
+    ],
+    "offer_sources": [],
+    "status": "ok",
+    "note": null
+   }
+  },
+  {
+   "id": "sg-amex",
+   "name": "American Express Singapore",
+   "legal_name": "American Express International Inc.",
+   "country": "SG",
+   "website": "https://www.americanexpress.com/sg/",
+   "card_ids": [
+    "sg-the-platinum-card",
+    "sg-the-american-express-platinum-credit-card",
+    "sg-the-american-express-platinum-reserve-credit-card",
+    "sg-the-american-express-singapore-airlines-krisflyer-ascend-credit-card",
+    "sg-the-american-express-singapore-airlines-krisflyer-credit-card",
+    "sg-the-american-express-singapore-airlines-pps-club-credit-card",
+    "sg-the-american-express-true-cashback-card"
+   ],
+   "offer_count": 4,
+   "crawl": {
+    "card_sources": [
+     "https://www.americanexpress.com/sg/credit-cards/all-cards/",
+     "https://www.americanexpress.com/en-sg/credit-cards/"
+    ],
+    "offer_sources": [],
+    "status": "ok",
+    "note": null
+   }
+  },
+  {
+   "id": "sg-cimb",
+   "name": "CIMB Singapore",
+   "legal_name": "CIMB Bank Berhad, Singapore Branch",
+   "country": "SG",
+   "website": "https://www.cimb.com.sg",
+   "card_ids": [
+    "sg-cimb-awsm-card",
+    "sg-cimb-founders-card",
+    "sg-cimb-visa-infinite",
+    "sg-cimb-visa-signature",
+    "sg-cimb-world-mastercard"
+   ],
+   "offer_count": 3,
+   "crawl": {
+    "card_sources": [
+     "https://www.cimb.com.sg/en/personal/banking-with-us/cards/credit-cards.html"
+    ],
+    "offer_sources": [],
+    "status": "ok",
+    "note": null
+   }
+  },
+  {
+   "id": "sg-trust",
+   "name": "Trust Bank",
+   "legal_name": "Trust Bank Singapore Limited",
+   "country": "SG",
+   "website": "https://www.trust.com.sg",
+   "card_ids": [],
+   "offer_count": 0,
+   "crawl": {
+    "card_sources": [
+     "https://www.trust.com.sg/"
+    ],
+    "offer_sources": [],
+    "status": "not_covered",
+    "note": null
+   }
+  },
+  {
+   "id": "sg-boc",
+   "name": "Bank of China Singapore",
+   "legal_name": "Bank of China Limited, Singapore Branch",
+   "country": "SG",
+   "website": "https://www.bankofchina.com/sg/",
+   "card_ids": [
+    "sg-boc-great-wall-platinum-card-visa",
+    "sg-boc-great-wall-platinum-card-mastercard",
+    "sg-boc-travel-card",
+    "sg-boc-f1rst-card",
+    "sg-boc-visa-infinite-card",
+    "sg-boc-nvmo-card",
+    "sg-boc-zaobao-credit-card",
+    "sg-boc-elite-miles-world-mastercard",
+    "sg-boc-splendorplus-card"
+   ],
+   "offer_count": 0,
+   "crawl": {
+    "card_sources": [
+     "https://www.bankofchina.com/sg/bcservice/bc1/"
+    ],
+    "offer_sources": [],
+    "status": "partial",
+    "note": null
+   }
+  },
+  {
+   "id": "sg-gxs",
+   "name": "GXS Bank",
+   "legal_name": "GXS Bank Pte. Ltd.",
+   "country": "SG",
+   "website": "https://www.gxs.com.sg",
+   "card_ids": [
+    "sg-gxs-flexicard"
+   ],
+   "offer_count": 4,
+   "crawl": {
+    "card_sources": [
+     "https://www.gxs.com.sg/flexicard"
+    ],
+    "offer_sources": [],
+    "status": "ok",
+    "note": null
+   }
+  },
+  {
+   "id": "sg-maribank",
+   "name": "MariBank",
+   "legal_name": "MariBank Singapore Private Limited",
+   "country": "SG",
+   "website": "https://www.maribank.sg",
+   "card_ids": [
+    "sg-mari-credit-card"
+   ],
+   "offer_count": 3,
+   "crawl": {
+    "card_sources": [
+     "https://www.maribank.sg/product/mari-credit-card"
+    ],
+    "offer_sources": [],
+    "status": "ok",
+    "note": null
+   }
+  },
+  {
+   "id": "sg-dcs",
+   "name": "DCS Card Centre",
+   "legal_name": "DCS Card Centre Pte. Ltd.",
+   "country": "SG",
+   "website": "https://dcscc.com",
+   "card_ids": [
+    "sg-courts-dcs-mastercard",
+    "sg-dcs-ultimate-platinum-mastercard",
+    "sg-dcs-flex-visa-platinum-card",
+    "sg-dcs-imperium-world-elite-card",
+    "sg-dcs-v2-card",
+    "sg-dcs-ultimate-platinum-unionpay-card",
+    "sg-dcs-diners-club-international-credit-card",
+    "sg-dcs-cashback-credit-card",
+    "sg-dcs-don-don-donki-credit-card",
+    "sg-dcs-mustafa-credit-card",
+    "sg-dcs-vicom-credit-card"
+   ],
+   "offer_count": 46,
+   "crawl": {
+    "card_sources": [
+     "https://cards.dcscc.com/products"
+    ],
+    "offer_sources": [],
+    "status": "ok",
+    "note": null
+   }
+  },
+  {
+   "id": "sg-icbc",
+   "name": "ICBC Singapore",
+   "legal_name": "Industrial and Commercial Bank of China Limited, Singapore Branch",
+   "country": "SG",
+   "website": "https://www.icbc.com.sg",
+   "card_ids": [
+    "sg-icbc-friendship-credit-card",
+    "sg-icbc-horoscope-credit-card",
+    "sg-icbc-chinese-zodiac-credit-card",
+    "sg-icbc-global-travel-mastercard-credit-card",
+    "sg-cea-friends-credit-card",
+    "sg-icbc-unionpay-dual-currency-credit-card",
+    "sg-icbc-visa-dual-currency-credit-card",
+    "sg-icbc-student-talent-credit-card"
+   ],
+   "offer_count": 5,
+   "crawl": {
+    "card_sources": [
+     "https://www.icbc.com.sg/en/column/1438059017535897814.html"
+    ],
+    "offer_sources": [],
+    "status": "ok",
+    "note": null
+   }
+  }
+ ]
+}
