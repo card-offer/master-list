@@ -12,6 +12,7 @@
     "(?i)\\b11\\.11\\b",
     "(?i)\\bmega sale\\b",
     "(?i)\\bbiggest sale\\b",
-    "(?i)^cny\\d+$"
+    "(?i)^cny\\d+$",
+    "(?i)^oct exclusive\\b"
   ]
 }

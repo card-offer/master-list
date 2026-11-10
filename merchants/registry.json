@@ -1,6 +1,6 @@
 {
-  "count": 100,
-  "generated_at": "2026-11-10T04:38:02+00:00",
+  "count": 99,
+  "generated_at": "2026-11-10T05:01:54+00:00",
   "schema_version": "0.3.0",
   "items": [
     {"aliases":["1975 Avenue and Hotel","my-1975-avenue-and-hotel","sg-1975-avenue-and-hotel"],"categories":["hotel"],"countries":["MY","SG"],"id":"1975-avenue-and-hotel","name":"1975 Avenue & Hotel","offer_ids":["my-standard-chartered-e34d8ddc8e","sg-ocbc-bc6e8cea0e"],"official_domain":null},
@@ -42,7 +42,7 @@
     {"aliases":["Klook (11.11)","my-klook","sg-klook","sg-klook-11-11"],"categories":["travel"],"countries":["MY","SG"],"id":"klook","name":"Klook","offer_ids":["my-rhb-a4191dd271","sg-ocbc-1f3cc500ce","sg-ocbc-5bd205cad5","sg-ocbc-a5c1d1c863","sg-standard-chartered-3953ed8698"],"official_domain":null},
     {"aliases":["sg-l-entrecote"],"categories":["dining"],"countries":["SG"],"id":"l-entrecote","name":"L'Entrecôte","offer_ids":["sg-ocbc-d54a80a437","sg-standard-chartered-14af102db7"],"official_domain":null},
     {"aliases":["sg-lao-beijing"],"categories":["dining"],"countries":["SG"],"id":"lao-beijing","name":"Lao Beijing","offer_ids":["sg-ocbc-d5778c5790","sg-standard-chartered-c994274590"],"official_domain":null},
-    {"aliases":["sg-legoland-sup-sup-malaysia-resort"],"categories":["hotel"],"countries":["SG"],"id":"legoland-sup-sup-malaysia-resort","name":"LEGOLAND<sup>®</sup> Malaysia Resort","offer_ids":["sg-ocbc-0e23877e6a","sg-ocbc-1e0835e458"],"official_domain":null},
+    {"aliases":["sg-legoland-sup-sup-malaysia-resort"],"categories":["hotel"],"countries":["SG"],"id":"legoland-malaysia-resort","name":"LEGOLAND Malaysia Resort","offer_ids":["sg-ocbc-0e23877e6a","sg-ocbc-1e0835e458"],"official_domain":null},
     {"aliases":["sg-little-farms"],"categories":["other"],"countries":["SG"],"id":"little-farms","name":"Little Farms","offer_ids":["sg-dbs-dfe7c3c428","sg-posb-a07d291304"],"official_domain":null},
     {"aliases":["sg-manam"],"categories":["dining"],"countries":["SG"],"id":"manam","name":"Manam","offer_ids":["sg-ocbc-b56b0229f2","sg-standard-chartered-693b0a57bc"],"official_domain":null},
     {"aliases":["Mandai Wildlife Reserve F&B outlets","sg-mandai-wildlife-reserve","sg-mandai-wildlife-reserve-f-and-b-outlets"],"categories":["other","shopping"],"countries":["SG"],"id":"mandai-wildlife-reserve","name":"Mandai Wildlife Reserve","offer_ids":["sg-ocbc-1ac5da9fe9","sg-ocbc-495cf4c801","sg-standard-chartered-164e2242ea","sg-standard-chartered-8f2d8b1373","sg-standard-chartered-a7de75e858"],"official_domain":null},
@@ -54,7 +54,6 @@
     {"aliases":["sg-nalan-restaurant"],"categories":["dining"],"countries":["SG"],"id":"nalan-restaurant","name":"Nalan Restaurant","offer_ids":["sg-ocbc-e70d656475","sg-standard-chartered-07121b100d"],"official_domain":null},
     {"aliases":["sg-ng-ah-sio-bak-kut-teh"],"categories":["dining","other"],"countries":["SG"],"id":"ng-ah-sio-bak-kut-teh","name":"NG AH SIO Bak Kut Teh","offer_ids":["sg-ocbc-abdd7c625e","sg-ocbc-da399d73d2"],"official_domain":null},
     {"aliases":["sg-noel-gifts"],"categories":["other"],"countries":["SG"],"id":"noel-gifts","name":"Noel Gifts","offer_ids":["sg-ocbc-22601ca43a","sg-ocbc-cc396361a0"],"official_domain":null},
-    {"aliases":["sg-oct-exclusive"],"categories":["other"],"countries":["SG"],"id":"oct-exclusive","name":"Oct Exclusive","offer_ids":["sg-dbs-37cccfe707","sg-posb-b32e011c38"],"official_domain":null},
     {"aliases":["sg-old-city-biryani"],"categories":["dining"],"countries":["SG"],"id":"old-city-biryani","name":"Old City Biryani","offer_ids":["sg-ocbc-2deaf3b39c","sg-standard-chartered-45b3a8b2a6"],"official_domain":null},
     {"aliases":["sg-omar-shariff-authentic-indian-cuisine"],"categories":["dining"],"countries":["SG"],"id":"omar-shariff-authentic-indian-cuisine","name":"Omar Shariff Authentic Indian Cuisine","offer_ids":["sg-ocbc-3845371463","sg-standard-chartered-7866ccac24"],"official_domain":null},
     {"aliases":["my-oppo"],"categories":["electronics"],"countries":["MY"],"id":"oppo","name":"OPPO","offer_ids":["my-public-bank-8b5dc8d9dd","my-uob-5234d32d31"],"official_domain":null},

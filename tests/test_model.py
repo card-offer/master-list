@@ -29,10 +29,13 @@ class RulesTests(unittest.TestCase):
         self.assertNotIn("TODAY", "\n".join(p.read_text(encoding="utf-8") for p in (ROOT / "pipeline").rglob("*.py")))
 
     def test_pipeline_has_no_clock_constant(self):
+        forbidden = ("TODAY", "datetime.date(2026", "2028-12-31", "[:400]", " or 36", "<=1100", ">1100")
         for path in (ROOT / "pipeline").rglob("*.py"):
             text = path.read_text(encoding="utf-8")
-            self.assertNotIn("TODAY", text, path)
-            self.assertNotIn("datetime.date(2026", text, path)
+            for token in forbidden:
+                self.assertNotIn(token, text, f"{path} contains {token}")
+        transform = (ROOT / "pipeline" / "lib" / "transform.py").read_text(encoding="utf-8")
+        self.assertNotIn("sg-ocbc", transform)
 
     def test_fee_waiver_date_is_not_kept(self):
         offer = {

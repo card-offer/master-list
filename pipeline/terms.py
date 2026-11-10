@@ -1,7 +1,11 @@
 """Promotion period, minimum spend, cap and clause extraction from an offer's own T&C or page text.
 Only dates written in the document are returned. Nothing is inferred beyond filling a missing
 month or year inside one written range (for example '1 - 31 Dec 2026')."""
-import re,datetime,hashlib
+import json,os,re,datetime,hashlib
+def _max_promotion_days():
+    path=os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','config','rules.json')
+    with open(path,encoding='utf-8') as fh:
+        return json.load(fh)['max_promotion_days']
 MONTHS={'january':1,'february':2,'march':3,'april':4,'may':5,'june':6,'july':7,'august':8,'september':9,'october':10,'november':11,'december':12,
  'januari':1,'februari':2,'mac':3,'mei':5,'jun':6,'julai':7,'ogos':8,'oktober':10,'disember':12}
 for k,v in list(MONTHS.items()):
@@ -58,7 +62,7 @@ def _range(s):
                 a,b=_mk(yy1,mo1,d1),_mk(y2,mo2,d2)
             else:
                 a,b=_mk(g[2],g[1],g[0]),_mk(g[5],g[4],g[3])
-            if a and b and a<=b and (b-a).days<=1100:
+            if a and b and a<=b and (b-a).days<=_max_promotion_days():
                 if best is None or m.start()<best[0]: best=(m.start(),a,b,m.group(0))
     return best
 CE=re.compile(r'(?:commenc\w*|start\w*|begin\w*|run\w*)\s+(?:on|from)\s+(.{6,30}?20\d\d)\b[^.;]{0,80}?\b(?:end\w*|until|till|to|expir\w*)\s+(?:on\s+)?(.{6,30}?20\d\d)\b',re.I)
@@ -82,7 +86,7 @@ def period(text):
             k=m.start()-lo
             best=min(rs,key=lambda r:0 if r[0]<=k<=r[1]+5 else min(abs(r[0]-k),abs(r[1]-k)))
             a,b=best[2],best[3]
-            if (b-a).days>1100: continue
+            if (b-a).days>_max_promotion_days(): continue
             hits.append((0 if strong else 1,m.start(),{'valid_from':a.isoformat(),'valid_until':b.isoformat(),'text':flat(t[max(0,lo+best[0]-80):lo+best[1]+80])[:300],'start_basis':'stated'}))
             continue
         # end-only or start-only phrase directly followed by one date

@@ -1,7 +1,7 @@
 {
   "count": 16,
   "country": "SG",
-  "generated_at": "2026-11-10T04:38:02+00:00",
+  "generated_at": "2026-11-10T05:01:54+00:00",
   "schema_version": "0.3.0",
   "items": [
     {"card_ids":["sg-amex-the-american-express-platinum-credit-card","sg-amex-the-american-express-platinum-reserve-credit-card","sg-amex-the-american-express-singapore-airlines-krisflyer-ascend-credit-card","sg-amex-the-american-express-singapore-airlines-krisflyer-credit-card","sg-amex-the-american-express-singapore-airlines-pps-club-credit-card","sg-amex-the-american-express-true-cashback-card","sg-amex-the-platinum-card"],"country":"SG","crawl":{"card_sources":["https://www.americanexpress.com/sg/credit-cards/all-cards/","https://www.americanexpress.com/en-sg/credit-cards/"],"note":null,"offer_sources":[],"status":"ok"},"id":"sg-amex","legal_name":"American Express International Inc.","name":"American Express Singapore","offer_count":4,"official_domains":["americanexpress.com"],"website":"https://www.americanexpress.com/sg/"},

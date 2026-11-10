@@ -3,12 +3,20 @@ import json
 import os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-REQUIRED = (
+INT_KEYS = (
     "end_date_max_months",
     "evergreen_review_months",
     "archive_retention_days",
     "merchant_min_offers",
     "id_hash_hex_chars",
+    "max_promotion_days",
+    "default_period_months",
+    "description_max_chars",
+)
+OTHER_KEYS = (
+    "listing_end_date_ceiling",
+    "listing_popup_issuers",
+    "description_clause_patterns",
 )
 
 
@@ -24,12 +32,18 @@ def _load(name):
 
 def load_rules():
     data = _load("rules.json")
-    missing = [key for key in REQUIRED if key not in data]
+    missing = [key for key in INT_KEYS + OTHER_KEYS if key not in data]
     if missing:
         raise SystemExit("config/rules.json is missing: " + ", ".join(missing))
-    for key in REQUIRED:
+    for key in INT_KEYS:
         if not isinstance(data[key], int) or isinstance(data[key], bool):
             raise SystemExit(f"config/rules.json {key} must be an integer")
+    if not isinstance(data["listing_end_date_ceiling"], str):
+        raise SystemExit("config/rules.json listing_end_date_ceiling must be a string")
+    if not isinstance(data["listing_popup_issuers"], list):
+        raise SystemExit("config/rules.json listing_popup_issuers must be a list")
+    if not isinstance(data["description_clause_patterns"], list):
+        raise SystemExit("config/rules.json description_clause_patterns must be a list")
     return data
 
 

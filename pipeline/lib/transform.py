@@ -96,6 +96,12 @@ def host_of(url):
     return host
 
 
+def clean_name(value):
+    text = re.sub(r"<[^>]+>", " ", value or "")
+    text = text.replace("\u00ae", " ").replace("\u2122", " ")
+    return re.sub(r"\s+", " ", text).strip()
+
+
 def hash_text(value):
     flat = re.sub(r"\s+", " ", (value or "").replace("\u00a0", " ")).strip().lower()
     return hashlib.sha256(flat.encode()).hexdigest()
@@ -224,7 +230,7 @@ def apply_date_policy(offer, clause_text, today, max_months):
     combined = (clause_text or "") + "\n" + text
     conflict = CONFLICT.search(combined)
     if conflict and offer.get("end_date"):
-        count = int(conflict.group(1) or 36)
+        count = int(conflict.group(1) or load_rules()["default_period_months"])
         started = parse_human_date(conflict.group(2))
         parsed = datetime.date.fromisoformat(offer["end_date"])
         if started:
@@ -502,7 +508,8 @@ def build_tree(src, generated_at, fetch_path=None, existing_index=None, alias_le
         else:
             new_id = new_card_id(country, slug, card.get("name") or card["_old_id"], card["_old_id"], used_cards)
             aliases = []
-        if alias_legacy and card["_old_id"] not in aliases:
+        aliases = [alias for alias in aliases if alias != new_id]
+        if alias_legacy and card["_old_id"] != new_id and card["_old_id"] not in aliases:
             aliases.append(card["_old_id"])
         card_id_map[card["_old_id"]] = new_id
         fetch = index.best(card_urls(card))
@@ -575,7 +582,7 @@ def build_tree(src, generated_at, fetch_path=None, existing_index=None, alias_le
             continue
         mid = mids[0]
         merchant = old_merchants.get(mid)
-        name = merchant["name"] if merchant else mid
+        name = clean_name(merchant["name"] if merchant else mid) or mid
         key = norm_name(name) or mid
         group = groups.setdefault(key, {
             "names": Counter(),
@@ -681,7 +688,8 @@ def build_tree(src, generated_at, fetch_path=None, existing_index=None, alias_le
         else:
             new_id = new_offer_id(country, slug, offer.get("source_url") or offer["_old_id"], rules["id_hash_hex_chars"], used_offers)
             aliases = []
-        if alias_legacy and offer["_old_id"] not in aliases:
+        aliases = [alias for alias in aliases if alias != new_id]
+        if alias_legacy and offer["_old_id"] != new_id and offer["_old_id"] not in aliases:
             aliases.append(offer["_old_id"])
         clauses = offer.get("terms_clauses") or []
         clause_text = "\n".join((clause.get("text") or "") for clause in clauses) if isinstance(clauses, list) else ""
@@ -735,17 +743,20 @@ def build_tree(src, generated_at, fetch_path=None, existing_index=None, alias_le
         terms_hash = None
         terms_scope = offer.get("terms_scope")
         terms_hash_null_reason = None
+        popup_issuers = set(rules.get("listing_popup_issuers") or [])
+        fetched_terms = offer.get("terms") if isinstance(offer.get("terms"), dict) else None
         if clauses:
             terms_hash = hash_clauses(clauses)
             terms_hash_null_reason = None
             if not terms_scope:
                 terms_scope = "deal_document"
-        elif offer["issuer_id"] == "sg-ocbc" and not offer.get("terms_url"):
+        elif offer["issuer_id"] in popup_issuers and not offer.get("terms_url"):
             terms_scope = "listing_popup"
-            if offer.get("description"):
-                terms_hash = hash_text(offer["description"])
+            if fetched_terms and fetched_terms.get("hash"):
+                terms_hash = fetched_terms["hash"]
             else:
-                terms_hash_null_reason = "popup_text_not_in_published_record"
+                terms_hash = None
+                terms_hash_null_reason = "full_popup_text_not_available_offline"
         else:
             terms_hash_null_reason = "no_terms_text_in_source_record"
         terms_fetched = None
@@ -766,7 +777,7 @@ def build_tree(src, generated_at, fetch_path=None, existing_index=None, alias_le
             "country": offer["country"],
             "currency": currency,
             "title": offer.get("title"),
-            "description": offer.get("description"),
+            "description": None,
             "provider": {"type": provider_type, "id": provider_id},
             "merchant_id": merchant_id,
             "merchant_text": merchant_text,

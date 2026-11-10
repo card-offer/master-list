@@ -140,7 +140,7 @@ def build(iss,cc,title,source_url,snippet=None,detail_url=None,tnc_url=None,merc
     el,ids=eligibility(iss,title+'\n'+(snippet or main[:5000]),brand)
     merch=merchant or merchant_from_title(title)
     o={'id':f"{cc.lower()}-{slug(iss.split('-',1)[1]+'-'+title)}",'country':cc,'currency':CCY[cc],'title':title,
-       'description':noem(re.sub(r'\s+',' ',snippet)[:400]) if snippet else None,'issuer_id':iss,'network':None,'merchant_ids':[],'_merchant_name':merch,
+       'description':None,'issuer_id':iss,'network':None,'merchant_ids':[],'_merchant_name':merch,
        'category':category(title+' '+(merch or '')),'benefit':bnf(title,snippet or main),
        'min_spend':min_spend(body),'cap':cap(body),'min_spend_text':(min_spend(body) or {}).get('text'),
        'validity':({'valid_from':start,'valid_until':end,'text':noem(per['text'])} if per else None),

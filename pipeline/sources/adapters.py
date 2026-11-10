@@ -8,6 +8,9 @@ from fetch import fetch; from hfetch import render,close; from extract import vi
 from links import links
 LOG=open('raw/sources/adapters.log','a')
 def log(*a): print(*a,flush=True); print(*a,file=LOG,flush=True)
+def end_ceiling():
+    from lib.rules import load_rules
+    return load_rules()["listing_end_date_ceiling"]
 DEBIT_ONLY=re.compile(r'debit card',re.I)
 def is_credit(text): return bool(re.search(r'credit card|kad kredit|credit/debit|credit or debit|credit cards?/-?i|cardmember|cardholders?',text,re.I))
 def lines(text): return [l.strip() for l in text.split('\n') if l.strip()]
@@ -183,7 +186,7 @@ def ocbcsg_json():
             try: return datetime.datetime.strptime(x.split(' ')[0],'%d/%m/%Y').date().isoformat()
             except Exception: return None
         js,je=pd(dt.get('start','')),pd(dt.get('end',''))
-        if not o['end_date'] and je and je<='2028-12-31':
+        if not o['end_date'] and je and je<=end_ceiling():
             o['end_date']=je; o['end_date_status']='stated_listing_data'; o['start_date']=js; o['start_date_reason']=None if js else 'listing data has no start'
             o['validity']={'valid_from':js,'valid_until':je,'text':'listing data date window '+(dt.get('start') or '')+' to '+(dt.get('end') or '')}; o['dates_source_url']=ju
         # expired offers are kept; publish assigns status and the archive path
@@ -276,7 +279,7 @@ def scsg_json(cc='SG'):
         o,why=OL.build(iss,cc,title,su,snippet=snip,merchant=name or None,brand='standard chartered|sc')
         if not o: s[why.split(' ')[0]]=s.get(why.split(' ')[0],0)+1; continue
         js,je=pd(r.get('sd')),pd(r.get('ed'))
-        if not o['end_date'] and je and je<='2028-12-31':
+        if not o['end_date'] and je and je<=end_ceiling():
             o['end_date']=je; o['end_date_status']='stated_listing_data'; o['start_date']=o['start_date'] or js; o['start_date_reason']=None if o['start_date'] else 'listing data has no start'
             o['validity']={'valid_from':o['start_date'],'valid_until':je,'text':'offer record window '+(r.get('sd') or '')+' to '+(r.get('ed') or '')}; o['dates_source_url']=ju
         # expired offers are kept; publish assigns status and the archive path

@@ -45,12 +45,19 @@ def load_tree(root):
 
 
 def expand(offer, cards_by_issuer, cards_by_id):
-    """Return (resolved card ids, excluded card ids, confirmed). Inferred rules are not expanded."""
+    """Return (resolved card ids, excluded card ids, confirmed).
+
+    Inferred rules are not expanded. A card-scoped rule names the cards, so those
+    ids go into the per-card index even when the page did not quote evidence_text.
+    """
     rule = offer["eligibility"]
-    confirmed = rule.get("confidence") == "stated" and bool(rule.get("evidence_text"))
+    scope = rule.get("scope")
+    confidence = rule.get("confidence")
+    if scope == "card" and rule.get("card_ids") and confidence != "inferred":
+        return list(rule.get("card_ids") or []), [], True
+    confirmed = confidence == "stated" and bool(rule.get("evidence_text"))
     if not confirmed:
         return [], [], False
-    scope = rule.get("scope")
     if scope == "card":
         return list(rule.get("card_ids") or []), [], True
     issuers = list(rule.get("issuer_ids") or [])

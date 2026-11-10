@@ -164,7 +164,7 @@
       }
     },
     "name_verified_on_source": {"type": ["boolean", "null"]},
-    "checked_at": {"type": ["string", "null"]},
+    "checked_at": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}[+-]\\d{2}:\\d{2}$"},
     "checked_fetch_url": {"type": ["string", "null"]},
     "checked_at_null_reason": {"type": ["string", "null"]},
     "first_seen": {"type": ["string", "null"], "format": "date"},

@@ -3,5 +3,19 @@
   "evergreen_review_months": 6,
   "archive_retention_days": 180,
   "merchant_min_offers": 2,
-  "id_hash_hex_chars": 10
+  "id_hash_hex_chars": 10,
+  "listing_end_date_ceiling": "2028-12-31",
+  "max_promotion_days": 1100,
+  "default_period_months": 36,
+  "description_max_chars": 400,
+  "listing_popup_issuers": ["sg-ocbc"],
+  "description_clause_patterns": [
+    "\\bshall\\b",
+    "cardholder",
+    "not valid",
+    "subject to",
+    "valid till",
+    "t&c",
+    "terms and conditions"
+  ]
 }

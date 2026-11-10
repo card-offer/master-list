@@ -8,8 +8,10 @@ A constant checked_at is rejected when the records do not share one fetched docu
 An end date past the configured horizon is rejected unless end_date_reviewer_accepted is true.
 """
 import datetime
+import hashlib
 import json
 import os
+import re
 import sys
 import tempfile
 from urllib.parse import urlparse
@@ -95,13 +97,46 @@ def check_constant_checked_at(records, where, errors):
     errors.append(f"{where}: constant checked_at across records that do not share one checked_fetch_url")
 
 
+def parse_instant_or_error(value):
+    try:
+        return parse_instant(value), None
+    except (ValueError, TypeError) as exc:
+        return None, str(exc)
+
+
+def parse_date_or_error(value):
+    try:
+        return datetime.date.fromisoformat(value), None
+    except (ValueError, TypeError) as exc:
+        return None, str(exc)
+
+
 def check_horizon(offer, generated_at, max_months, errors):
     end = offer.get("end_date")
     if not end or offer.get("end_date_reviewer_accepted"):
         return
-    limit = add_months(parse_instant(generated_at).date(), max_months)
-    if datetime.date.fromisoformat(end) > limit:
+    generated, generated_error = parse_instant_or_error(generated_at)
+    if generated_error:
+        errors.append(f"{offer['id']}: generated_at is not a valid date-time ({generated_error})")
+        return
+    parsed, date_error = parse_date_or_error(end)
+    if date_error:
+        errors.append(f"{offer['id']}: end_date is not a valid date ({date_error})")
+        return
+    limit = add_months(generated.date(), max_months)
+    if parsed > limit:
         errors.append(f"{offer['id']}: end_date {end} is past the configured horizon")
+
+
+def network_id_for_host(host, networks):
+    if not host:
+        return None
+    for network_id, row in networks.items():
+        for domain in row.get("official_domains") or []:
+            domain = domain.lower()
+            if host == domain or host.endswith("." + domain):
+                return network_id
+    return None
 
 
 def domains_for(offer, issuers, networks, merchants):
@@ -118,9 +153,40 @@ def domains_for(offer, issuers, networks, merchants):
     merchant = merchants.get(offer.get("merchant_id") or "")
     if merchant and merchant.get("official_domain"):
         allowed.add(merchant["official_domain"])
-    for network in networks.values():
-        allowed.update(network.get("official_domains") or [])
     return allowed
+
+
+def load_fetch_pairs(root):
+    path = os.path.join(root, "pipeline", "fetch_metadata.json")
+    pairs = set()
+    if not os.path.exists(path):
+        return pairs
+    for row in load_json(path):
+        fetched = row.get("fetched_at")
+        for url in (row.get("url"), row.get("final_url")):
+            if url and fetched:
+                pairs.add((url, fetched))
+    return pairs
+
+
+def expected_offer_id(offer, hash_len):
+    provider = offer.get("provider") or {}
+    source = offer.get("source_url")
+    country = offer.get("country")
+    if provider.get("type") != "issuer" or not source or not country or "-" not in provider.get("id", ""):
+        return None
+    slug = provider["id"].split("-", 1)[1]
+    digest = hashlib.sha256(source.encode()).hexdigest()[:hash_len]
+    return f"{country.lower()}-{slug}-{digest}"
+
+
+def check_fetch_log(record, pairs, errors):
+    checked = record.get("checked_at")
+    if checked in (None, ""):
+        return
+    url = record.get("checked_fetch_url")
+    if not url or (url, checked) not in pairs:
+        errors.append(f"{record.get('id')}: checked_at or checked_fetch_url is not in the fetch log")
 
 
 def offer_url_list(offer):
@@ -158,8 +224,16 @@ def validate(root, index_dir=None):
             generated_at = data.get("generated_at")
             for item in items:
                 checked = item.get("checked_at")
+                if checked == "":
+                    errors.append(f"{item.get('id')}: checked_at is empty")
                 if checked and generated_at:
-                    if parse_instant(checked) > parse_instant(generated_at):
+                    checked_at, checked_error = parse_instant_or_error(checked)
+                    generated, generated_error = parse_instant_or_error(generated_at)
+                    if checked_error:
+                        errors.append(f"{item.get('id')}: checked_at is not a valid date-time ({checked_error})")
+                    elif generated_error:
+                        errors.append(f"{item.get('id')}: generated_at is not a valid date-time ({generated_error})")
+                    elif checked_at > generated:
                         errors.append(f"{item.get('id')}: checked_at {checked} is later than generated_at {generated_at}")
                 if schema_name == "offers-file.schema.json":
                     check_horizon(item, generated_at, rules["end_date_max_months"], errors)
@@ -174,13 +248,43 @@ def validate(root, index_dir=None):
         for row in load_json(network_path)["items"]:
             networks[row["id"]] = row
     card_ids = {card["id"] for card in cards}
+    seen_offer_ids = set()
+    hash_len = rules["id_hash_hex_chars"]
+    clause_patterns = [re.compile(pat, re.I) for pat in rules["description_clause_patterns"]]
+    fetch_pairs = load_fetch_pairs(root)
     for offer in offers:
+        if offer["id"] in seen_offer_ids:
+            errors.append(f"{offer['id']}: duplicate offer id")
+        seen_offer_ids.add(offer["id"])
+        expected = expected_offer_id(offer, hash_len)
+        if expected and offer["id"] != expected:
+            errors.append(f"{offer['id']}: offer id is not the hash of source_url (expected {expected})")
+        eligibility = offer.get("eligibility") or {}
+        if eligibility.get("confidence") == "inferred" and eligibility.get("card_ids"):
+            errors.append(f"{offer['id']}: inferred offer must not carry card ids")
+        description = offer.get("description") or ""
+        if len(description) > rules["description_max_chars"]:
+            errors.append(f"{offer['id']}: description is longer than the configured maximum")
+        if any(pattern.search(description) for pattern in clause_patterns):
+            errors.append(f"{offer['id']}: description contains clause text")
+        check_fetch_log(offer, fetch_pairs, errors)
         allowed = domains_for(offer, issuer_by, networks, merchant_by)
         for url in offer_url_list(offer):
             host = host_of(url)
-            if host and host not in allowed:
-                errors.append(f"{offer['id']}: host {host} is not an official domain of the provider, merchant or network")
-        for card_id in offer["eligibility"].get("card_ids") or []:
+            if not host:
+                continue
+            network_id = network_id_for_host(host, networks)
+            provider = offer["provider"]
+            issuer_domains = set()
+            if provider.get("type") == "issuer":
+                issuer_domains = set((issuer_by.get(provider.get("id")) or {}).get("official_domains") or [])
+            network_is_provider = provider.get("type") == "network" and provider.get("id") == network_id
+            if network_id and not network_is_provider and host not in issuer_domains:
+                errors.append(f"{offer['id']}: host {host} is a {network_id} domain but that network is not the provider")
+                continue
+            if host not in allowed:
+                errors.append(f"{offer['id']}: host {host} is not an official domain of the provider or merchant")
+        for card_id in eligibility.get("card_ids") or []:
             if card_id not in card_ids:
                 errors.append(f"{offer['id']}: unknown card id {card_id}")
         if offer.get("merchant_id") and offer["merchant_id"] not in merchant_by:
@@ -203,6 +307,7 @@ def validate(root, index_dir=None):
                     errors.append(f"{card['id']}: host {host} is not on issuer {card['issuer_id']} official_domains")
         if card.get("status") == "active" and not card.get("networks"):
             errors.append(f"{card['id']}: active card has an empty networks list")
+        check_fetch_log(card, fetch_pairs, errors)
     if index_dir is None:
         index_dir = tempfile.mkdtemp(prefix="card-offer-indexes-")
         write_indexes(root, index_dir)
@@ -219,7 +324,8 @@ def validate(root, index_dir=None):
         dirnames[:] = [name for name in dirnames if name not in {".git", "dist", "__pycache__"}]
         for name in files:
             if name.endswith((".json", ".md", ".yml", ".yaml")):
-                text = open(os.path.join(dirpath, name), encoding="utf-8").read()
+                with open(os.path.join(dirpath, name), encoding="utf-8") as fh:
+                    text = fh.read()
                 if "\u2014" in text:
                     errors.append(f"{os.path.relpath(os.path.join(dirpath, name), root)}: contains an em dash")
     return errors, warnings, {

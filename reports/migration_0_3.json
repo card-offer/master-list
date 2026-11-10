@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-10T04:38:02+00:00",
+  "generated_at": "2026-11-10T05:01:54+00:00",
   "offers_in": 1535,
   "cards_in": 300,
   "merchants_in": 1065,
   "offers_out": 1535,
   "cards_out": 300,
-  "merchants_out": 100,
+  "merchants_out": 99,
   "dropped": [],
   "unmatched_checked_at": [
     {
@@ -588,7 +588,23 @@
     "evergreen_review_months": 6,
     "archive_retention_days": 180,
     "merchant_min_offers": 2,
-    "id_hash_hex_chars": 10
+    "id_hash_hex_chars": 10,
+    "listing_end_date_ceiling": "2028-12-31",
+    "max_promotion_days": 1100,
+    "default_period_months": 36,
+    "description_max_chars": 400,
+    "listing_popup_issuers": [
+      "sg-ocbc"
+    ],
+    "description_clause_patterns": [
+      "\\bshall\\b",
+      "cardholder",
+      "not valid",
+      "subject to",
+      "valid till",
+      "t&c",
+      "terms and conditions"
+    ]
   },
   "before": {
     "offers": {
@@ -630,9 +646,9 @@
       "active": 199,
       "no_new_applications": 1
     },
-    "merchants": 100
+    "merchants": 99
   },
-  "merchant_text_offers": 930,
-  "merchant_id_offers": 256,
+  "merchant_text_offers": 932,
+  "merchant_id_offers": 254,
   "no_merchant_offers": 349
 }
