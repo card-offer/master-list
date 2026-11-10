@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T05:53:33+00:00",
+  "generated_at": "2026-11-10T06:00:48+00:00",
   "offers_in": 1535,
   "cards_in": 300,
   "merchants_in": 1065,
@@ -596,7 +596,10 @@
     "amount_context_chars": 80,
     "minimum_phrase_chars": 40,
     "per_context_words": 4,
-    "campaign_payout_min_amount": 10000,
+    "campaign_payout_min_amount": {
+      "MYR": 10000,
+      "SGD": 10000
+    },
     "not_a_cap_patterns": [
       "shall be imposed",
       "(?<=\\d)\\s+off\\b",

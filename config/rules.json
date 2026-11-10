@@ -11,7 +11,10 @@
   "amount_context_chars": 80,
   "minimum_phrase_chars": 40,
   "per_context_words": 4,
-  "campaign_payout_min_amount": 10000,
+  "campaign_payout_min_amount": {
+    "MYR": 10000,
+    "SGD": 10000
+  },
   "not_a_cap_patterns": [
     "shall be imposed",
     "(?<=\\d)\\s+off\\b",

@@ -92,6 +92,34 @@ class RulesTests(unittest.TestCase):
         self.assertNotIn("// 2", source)
         self.assertIsInstance(rules["minimum_phrase_chars"], int)
 
+    def test_count_between_per_and_the_noun_still_matches(self):
+        limits, _reason = parse_limits(
+            "Limited to 1 redemption per 1 card per 1 passport number throughout the program",
+            "SGD",
+        )
+        self.assertEqual(limits[0]["kind"], "redemption_limit")
+        self.assertIn("card", limits[0]["per"])
+
+    def test_same_amount_twice_is_one_limit(self):
+        limits, reason = parse_limits(
+            "capped at RM100 a year. capped at RM100 per calendar year, per Principal card",
+            "MYR",
+        )
+        self.assertIsNone(reason)
+        self.assertEqual(len(limits), 1)
+        self.assertEqual(limits[0]["amount"], 100)
+        cap, cap_reason = cap_view(limits, reason)
+        self.assertIsNone(cap_reason)
+        self.assertEqual(cap["per"], "year")
+
+    def test_cap_period_prefers_the_time_dimension(self):
+        limits, reason = parse_limits("capped at RM80 rebate per card per month", "MYR")
+        cap, cap_reason = cap_view(limits, reason)
+        self.assertIsNone(cap_reason)
+        self.assertEqual(cap["per"], "month")
+        self.assertIn("card", limits[0]["per"])
+        self.assertIn("month", limits[0]["per"])
+
     def test_plain_amounts_are_not_cut_at_three_digits(self):
         spend = parse_money("minimum spend of RM5000", "MYR")
         self.assertEqual(spend["amount"], 5000)
@@ -132,11 +160,23 @@ class RulesTests(unittest.TestCase):
         )
         self.assertEqual(payout, [])
         self.assertEqual(reason, "campaign_budget_is_not_a_cardholder_limit")
-        small, _reason = parse_limits(
+        phrase_only, reason = parse_limits(
+            "maximum Cash Back payment of RM500 each Campaign month",
+            "MYR",
+        )
+        self.assertEqual(phrase_only, [])
+        self.assertEqual(reason, "campaign_budget_is_not_a_cardholder_limit")
+        kept, _reason = parse_limits(
             "capped at RM50 per month per Eligible Cardmember, on a first-come, first-served basis",
             "MYR",
         )
-        self.assertEqual(small[0]["kind"], "reward_cap")
+        self.assertEqual(kept[0]["kind"], "reward_cap")
+        self.assertEqual(cap_view(kept, None)[0]["per"], "month")
+        large, reason = parse_limits("capped at RM10000 per month", "MYR")
+        self.assertEqual(large, [])
+        self.assertEqual(reason, "campaign_budget_is_not_a_cardholder_limit")
+        below, _reason = parse_limits("capped at S$2500", "SGD")
+        self.assertEqual(below[0]["amount"], 2500)
         winners, _reason = parse_limits(
             "capped at RM70 per Eligible Participant and limited to a maximum of 200 winners per Campaign Month",
             "MYR",

@@ -15,7 +15,6 @@ INT_KEYS = (
     "amount_context_chars",
     "minimum_phrase_chars",
     "per_context_words",
-    "campaign_payout_min_amount",
 )
 OTHER_KEYS = (
     "listing_end_date_ceiling",
@@ -24,6 +23,7 @@ OTHER_KEYS = (
     "currency_symbols",
     "not_a_cap_patterns",
     "campaign_payout_phrases",
+    "campaign_payout_min_amount",
 )
 
 
@@ -59,6 +59,12 @@ def load_rules():
     for key in ("not_a_cap_patterns", "campaign_payout_phrases"):
         if not isinstance(data[key], list):
             raise SystemExit(f"config/rules.json {key} must be a list")
+    amounts = data["campaign_payout_min_amount"]
+    if not isinstance(amounts, dict) or not amounts:
+        raise SystemExit("config/rules.json campaign_payout_min_amount must be a currency map")
+    for code, value in amounts.items():
+        if not isinstance(value, int) or isinstance(value, bool):
+            raise SystemExit(f"config/rules.json campaign_payout_min_amount {code} must be an integer")
     return data
 
 

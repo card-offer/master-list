@@ -306,12 +306,37 @@ def _matches_any(text, patterns):
     return any(re.search(pattern, text, re.I) for pattern in patterns)
 
 
-def _is_campaign_payout(amount, text, rules):
-    if amount >= rules["campaign_payout_min_amount"]:
+TIME_PERIODS = ("transaction", "booking", "day", "week", "month", "quarter", "year", "campaign")
+
+
+def _is_campaign_payout(amount, currency, text, rules):
+    """A phrase match is enough. A large amount is enough on its own, per currency.
+
+    A per-person cap stays even when the sentence also says first-come, first-served.
+    """
+    personal = re.search(
+        r"\bper\s+(?:[\w]+\s+){0," + str(int(rules["per_context_words"]))
+        + r"}(?:card\s?members?|cardholders?|customers?|eligible)\b",
+        text,
+        re.I,
+    )
+    if personal:
+        return False
+    if _matches_any(text, rules["campaign_payout_phrases"]):
         return True
-    if _matches_any(text, rules["campaign_payout_phrases"]) and amount >= rules["campaign_payout_min_amount"]:
-        return True
-    return False
+    thresholds = rules["campaign_payout_min_amount"]
+    limit = thresholds.get(currency) if isinstance(thresholds, dict) else None
+    return isinstance(limit, int) and not isinstance(limit, bool) and amount >= limit
+
+
+def _cap_period(periods):
+    """When time and a who-dimension are both stated, the legacy cap uses the time period."""
+    times = [name for name in periods if name in TIME_PERIODS]
+    if len(times) == 1:
+        return times[0]
+    if len(periods) == 1:
+        return periods[0]
+    return None
 
 
 def parse_limits(text, default_currency, rules=None):
@@ -337,7 +362,7 @@ def parse_limits(text, default_currency, rules=None):
         if _matches_any(before + " " + local, rules["not_a_cap_patterns"]):
             dropped_not_cap = True
             continue
-        if _is_campaign_payout(item["amount"], before + " " + local, rules):
+        if _is_campaign_payout(item["amount"], item["currency"], before + " " + local, rules):
             dropped_budget = True
             continue
         if BUDGET_PHRASE.search(before + " " + local):
@@ -366,6 +391,8 @@ def parse_limits(text, default_currency, rules=None):
             continue
         before, after = _window(text, match.start(), match.end(), rules)
         nxt = number.search(text, match.end())
+        if nxt and re.search(r"\bper\s*$", text[match.end():nxt.start()], re.I):
+            nxt = number.search(text, nxt.end())
         if nxt:
             after = text[match.end():nxt.start()]
         amount = whole_amount(float(match.group(1).replace(",", "")))
@@ -379,14 +406,25 @@ def parse_limits(text, default_currency, rules=None):
         else:
             kind = "pool_limit"
         limits.append(_limit(kind, amount, None, pers, None, weekdays_in(before + " " + after)))
-    unique = []
-    seen = set()
+    merged = {}
+    order = []
     for item in limits:
-        key = (item["kind"], item["amount"], item["currency"], tuple(item["per"]), item["scope"], tuple(item["weekdays"] or []))
-        if key in seen:
+        key = (item["kind"], item["amount"], item["currency"], item["scope"])
+        if key not in merged:
+            merged[key] = item
+            order.append(key)
             continue
-        seen.add(key)
-        unique.append(item)
+        current = merged[key]
+        for name in item["per"]:
+            if name not in current["per"]:
+                current["per"].append(name)
+        if item["weekdays"]:
+            days = list(current["weekdays"] or [])
+            for day in item["weekdays"]:
+                if day not in days:
+                    days.append(day)
+            current["weekdays"] = days
+    unique = [merged[key] for key in order]
     unique.sort(key=lambda item: (item["kind"], item["amount"], item["currency"] or "", ",".join(item["per"]), item["scope"] or ""))
     if not unique and dropped_not_cap:
         return [], "not_a_cap"
@@ -405,11 +443,25 @@ def cap_view(limits, null_reason):
     ]
     if len(rewards) == 1:
         reward = rewards[0]
-        periods = reward["per"]
         return {
             "amount": reward["amount"],
             "currency": reward["currency"],
-            "per": periods[0] if len(periods) == 1 else None,
+            "per": _cap_period(reward["per"]),
+        }, None
+    distinct = {(item["amount"], item["currency"]) for item in rewards}
+    if len(rewards) > 1 and len(distinct) == 1:
+        merged = []
+        for name in rewards[0]["per"]:
+            if name not in merged:
+                merged.append(name)
+        for item in rewards[1:]:
+            for name in item["per"]:
+                if name not in merged:
+                    merged.append(name)
+        return {
+            "amount": rewards[0]["amount"],
+            "currency": rewards[0]["currency"],
+            "per": _cap_period(merged),
         }, None
     if len(rewards) > 1:
         return None, "more_than_one_currency_amount"
