@@ -9,3 +9,9 @@ Run them from the repository root. They read `config/rules.json` for the end-dat
 `python pipeline/migrate_0_3.py` is the one-time offline migration from schema 0.2.0. It does not fetch any page.
 
 Derived indexes are built by `python tools/build_indexes.py` and are not committed.
+
+## Crawler hand-in
+
+`crawler/RULES.md` is the rule for the crawler. The crawler writes one private file for each issuer and run under `raw/observations/`. `python tools/check_observations.py <file>` is the gate. `python pipeline/ingest.py <file>` publishes a file that passes: it keeps or makes ids, links merchants to the registry, sets lifecycle dates, moves expired offers to the archive and adds the fetches to `pipeline/fetch_metadata.json`.
+
+`python pipeline/migrate_merchants.py` is the one-time offline step that gave the published offers their merchant fields. Run it after `migrate_0_3.py`.

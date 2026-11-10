@@ -1,0 +1,42 @@
+{
+  "name_max_chars": 60,
+  "quote_max_chars": 300,
+  "unknown_merchant_max_pct": 5,
+  "withdraw_after_days": 14,
+  "legal_suffixes": [
+    "sdn bhd",
+    "sdn. bhd.",
+    "berhad",
+    "bhd",
+    "pte ltd",
+    "pte. ltd.",
+    "private limited",
+    "ltd",
+    "limited",
+    "inc",
+    "llc",
+    "plc",
+    "co ltd"
+  ],
+  "country_words": [
+    "malaysia",
+    "singapore"
+  ],
+  "leading_words": [
+    "the"
+  ],
+  "name_reject_patterns": [
+    "(?i)(?:\\b(?:rm|myr|sgd|usd)|s\\$|us\\$|hk\\$|\\$)\\s?\\d",
+    "\\d\\s?%",
+    "(?i)\\b\\d+\\s?x\\b",
+    "(?i)\\b(?:off|discount|cashback|cash back|rebate|complimentary|free|promo(?:tion)?|campaign|exclusive|offer|deal|sale|privileges?|rewards?|instal?ment|waiver)\\b",
+    "(?i)\\b(?:enjoy|receive|earn|save|get|spend|apply|redeem|convert|refer)\\b",
+    "(?i)\\bevery\\s+(?:day|week|month|mon|tue|wed|thu|fri|sat|sun)",
+    "(?i)\\b(?:credit|debit)\\s+cards?\\b",
+    "(?i)\\bcardmembers?\\b|\\bcardholders?\\b",
+    "[<>|!?*]",
+    "(?i)^(?:your|our|this|new|all)\\b",
+    "(?i)\\s+x\\s+",
+    "(?i)^[a-z]{2,5}\\d+$"
+  ]
+}

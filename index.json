@@ -17,7 +17,7 @@
       "timezone": "Asia/Singapore"
     }
   },
-  "generated_at": "2026-11-10T06:08:48+00:00",
+  "generated_at": "2026-11-10T07:48:07+00:00",
   "indexes": "Built in CI and published to GitHub Pages. Not stored on the main branch.",
   "layout": {
     "archive": "{cc}/archive/offers/{issuer}.json",
@@ -35,7 +35,7 @@
     "scope": "Compiled structured data only. Issuer terms belong to the issuers.",
     "url": "https://creativecommons.org/licenses/by/4.0/"
   },
-  "merchants": 99,
+  "merchants": 936,
   "name": "card-offer master list",
   "networks": 6,
   "schema_version": "0.3.0",
