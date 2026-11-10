@@ -106,6 +106,28 @@
                 }
               },
               "visits": {"type": ["integer", "null"]},
+              "min_spend": {
+                "type": ["object", "null"],
+                "additionalProperties": false,
+                "required": ["amount", "currency", "per"],
+                "properties": {
+                  "amount": {"type": "number"},
+                  "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+                  "per": {"enum": ["month", "year", "day", "visit", "table", "transaction", "cardmember", "customer", "redemption", null]}
+                }
+              },
+              "min_spend_null_reason": {"enum": ["not_a_currency_amount", null]},
+              "cap": {
+                "type": ["object", "null"],
+                "additionalProperties": false,
+                "required": ["amount", "currency", "per"],
+                "properties": {
+                  "amount": {"type": "number"},
+                  "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+                  "per": {"enum": ["month", "year", "day", "visit", "table", "transaction", "cardmember", "customer", "redemption", null]}
+                }
+              },
+              "cap_null_reason": {"enum": ["not_a_currency_amount", "more_than_one_currency_amount", null]},
               "coverage_text": {"type": "string"},
               "visits_values": {"type": "array", "items": {"type": ["integer", "string"]}},
               "guest_policy_text": {"type": ["string", "null"]},

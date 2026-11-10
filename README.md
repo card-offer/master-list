@@ -10,7 +10,7 @@ Schema version: 0.3.0.
 
 The [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) licence (see `LICENSE`) covers the compiled structured data in this repository only.
 
-Issuer terms and conditions belong to the issuers. This repository does not publish verbatim source text. It does not publish terms documents, terms clauses, copied descriptions, or source sentences for dates and amounts. A record may carry `terms_url`, `terms_hash` and `terms_fetched_at`, plus structured facts. `terms_hash` is the sha256 of the full terms text read at fetch time. When that full text is not available offline, `terms_hash` is null and `terms_hash_null_reason` says why. The source sentences stay in the crawler's private raw cache, which is not part of this repository.
+Issuer terms and conditions belong to the issuers. This repository does not publish issuer terms and conditions text: no terms documents, no terms clauses, and no descriptions copied from issuer pages. It also does not publish the `dates_text`, `cap_text`, and `min_spend_text` extracts. Those stay in the crawler's private raw cache, which is not part of this repository. Other short fields from official pages are published, including card benefit, fee, income and guest text, and offer `evidence_text` and `value_text`. A record may carry `terms_url`, `terms_hash` and `terms_fetched_at`, plus structured facts. `terms_hash` is the sha256 of the full terms text read at fetch time. When that full text is not available offline, `terms_hash` is null and `terms_hash_null_reason` says why.
 
 Attribution line: `Data: card-offer master-list (https://github.com/card-offer/master-list), CC BY 4.0.`
 

@@ -35,15 +35,15 @@ AMOUNT = re.compile(
     r"(RM|MYR|S\$|SGD|USD|THB|TWD|HKD|JPY|EUR|GBP|\$)\s?(\d{1,3}(?:,\d{3})*(?:\.\d+)?|\d+(?:\.\d+)?)"
 )
 PER_RULES = (
-    ("month", re.compile(r"per month", re.I)),
-    ("year", re.compile(r"per year", re.I)),
-    ("day", re.compile(r"per day", re.I)),
-    ("visit", re.compile(r"per visit", re.I)),
-    ("table", re.compile(r"per table", re.I)),
-    ("transaction", re.compile(r"per transaction", re.I)),
-    ("cardmember", re.compile(r"per (?:eligible )?card\s?members?", re.I)),
-    ("customer", re.compile(r"per customer", re.I)),
-    ("redemption", re.compile(r"per redemption", re.I)),
+    ("month", re.compile(r"\bmonthly\b|\bper\s+(?:[\w]+\s+){0,4}months?\b", re.I)),
+    ("year", re.compile(r"\bannually\b|\bper\s+(?:[\w]+\s+){0,4}years?\b", re.I)),
+    ("day", re.compile(r"\bdaily\b|\bper\s+(?:[\w]+\s+){0,4}days?\b", re.I)),
+    ("visit", re.compile(r"\bper\s+(?:[\w]+\s+){0,3}visits?\b", re.I)),
+    ("table", re.compile(r"\bper\s+tables?\b", re.I)),
+    ("transaction", re.compile(r"\bper\s+(?:[\w]+\s+){0,3}transactions?\b", re.I)),
+    ("cardmember", re.compile(r"\bper\s+(?:[\w]+\s+){0,3}card\s?members?\b|\bper\s+cardholders?\b", re.I)),
+    ("customer", re.compile(r"\bper\s+customers?\b", re.I)),
+    ("redemption", re.compile(r"\bper\s+redemptions?\b", re.I)),
 )
 WEEKDAY = (
     ("monday", "mon"), ("mondays", "mon"), ("tuesday", "tue"), ("tuesdays", "tue"),
@@ -190,6 +190,41 @@ def cap_per(text):
         if pattern.search(text):
             return name
     return None
+
+
+MIN_SPEND_BEFORE = re.compile(r"minimum\s+(?:spend|purchase)|min(?:imum)?\s+spend", re.I)
+
+
+def currency_cap(text, default_currency):
+    """One currency cap from source text, or a reason when the text does not state exactly one.
+
+    Amounts introduced as a minimum spend are not the cap. Callers keep the source text private.
+    """
+    if not text:
+        return None, None
+    caps = []
+    for match in AMOUNT.finditer(text):
+        before = text[max(0, match.start() - 80):match.start()]
+        if MIN_SPEND_BEFORE.search(before):
+            continue
+        symbol = match.group(1)
+        if symbol == "$":
+            found_currency = default_currency
+        elif symbol in {"RM", "MYR"}:
+            found_currency = "MYR"
+        elif symbol in {"S$", "SGD"}:
+            found_currency = "SGD"
+        else:
+            found_currency = symbol
+        amount = whole_amount(float(match.group(2).replace(",", "")))
+        caps.append((amount, found_currency))
+    distinct = set(caps)
+    if not distinct:
+        return None, "not_a_currency_amount"
+    if len(distinct) != 1:
+        return None, "more_than_one_currency_amount"
+    amount, found_currency = caps[0]
+    return {"amount": amount, "currency": found_currency, "per": cap_per(text)}, None
 
 
 def parse_human_date(value):
@@ -573,10 +608,28 @@ def build_tree(src, generated_at, fetch_path=None, existing_index=None, alias_le
             review_reason = "No card network is stated on the official page, so the card cannot stay active."
         seen = checked_at[:10] if checked_at else None
         benefits = []
+        card_currency = card.get("currency") or country_by[card["country"]]["currency"]
         for benefit in card.get("benefits") or []:
-            details = benefit.get("details")
-            if isinstance(details, dict):
-                details = {key: details[key] for key in details if key in DETAIL_KEYS}
+            raw_details = benefit.get("details") if isinstance(benefit.get("details"), dict) else None
+            details = None
+            if raw_details is not None:
+                details = {key: raw_details[key] for key in raw_details if key in DETAIL_KEYS}
+                if benefit.get("type") == "lounge_access" and raw_details.get("min_spend_text"):
+                    parsed = parse_money(raw_details.get("min_spend_text"), card_currency)
+                    if parsed:
+                        details["min_spend"] = {
+                            "amount": parsed["amount"],
+                            "currency": parsed["currency"],
+                            "per": cap_per(raw_details.get("min_spend_text")),
+                        }
+                    else:
+                        details["min_spend_null_reason"] = "not_a_currency_amount"
+                if raw_details.get("cap_text"):
+                    parsed_cap, cap_reason = currency_cap(raw_details.get("cap_text"), card_currency)
+                    if parsed_cap:
+                        details["cap"] = parsed_cap
+                    elif cap_reason:
+                        details["cap_null_reason"] = cap_reason
             benefits.append({
                 "type": benefit.get("type"),
                 "text": benefit.get("text"),
@@ -779,10 +832,7 @@ def build_tree(src, generated_at, fetch_path=None, existing_index=None, alias_le
             merchants_out[merchant_id]["offer_ids"].append(new_id)
         currency = offer.get("currency") or country_by[offer["country"]]["currency"]
         min_spend = parse_money(offer.get("min_spend_text"), currency)
-        cap_money = parse_money(offer.get("cap_text"), currency)
-        cap = None
-        if cap_money:
-            cap = {"amount": cap_money["amount"], "currency": cap_money["currency"], "per": cap_per(offer.get("cap_text"))}
+        cap, cap_null_reason = currency_cap(offer.get("cap_text"), currency)
         booking, usage = periods_for(offer)
         terms_hash = None
         terms_scope = offer.get("terms_scope")
@@ -830,6 +880,7 @@ def build_tree(src, generated_at, fetch_path=None, existing_index=None, alias_le
             "min_spend": min_spend,
             "min_spend_source_url": offer.get("min_spend_source_url"),
             "cap": cap,
+            "cap_null_reason": cap_null_reason,
             "cap_source_url": offer.get("cap_source_url"),
             "eligibility": eligibility_of(offer.get("eligibility"), card_id_map),
             "cross_border": cross_border(offer, merchant_text or _merchant_name(merchant_id, merchants_out), places, currency_country),

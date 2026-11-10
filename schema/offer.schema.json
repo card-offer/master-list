@@ -99,6 +99,9 @@
         }
       }
     },
+    "cap_null_reason": {
+      "enum": ["not_a_currency_amount", "more_than_one_currency_amount", null]
+    },
     "cap_source_url": {"type": ["string", "null"], "format": "uri"},
     "eligibility": {
       "type": "object",

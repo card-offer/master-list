@@ -12,7 +12,7 @@ sys.path.insert(0, str(ROOT))
 
 from pipeline.lib.calendar import add_months
 from pipeline.lib.rules import load_rules
-from pipeline.lib.transform import apply_date_policy, cross_border, placement
+from pipeline.lib.transform import apply_date_policy, cross_border, currency_cap, placement
 from tools.validate import check_constant_checked_at, check_horizon
 
 
@@ -36,6 +36,28 @@ class RulesTests(unittest.TestCase):
                 self.assertNotIn(token, text, f"{path} contains {token}")
         transform = (ROOT / "pipeline" / "lib" / "transform.py").read_text(encoding="utf-8")
         self.assertNotIn("sg-ocbc", transform)
+
+    def test_currency_cap_ignores_the_minimum_spend(self):
+        text = "capped at RM200 with a minimum spend of RM800 in a single receipt"
+        cap, reason = currency_cap(text, "MYR")
+        self.assertIsNone(reason)
+        self.assertEqual(cap["currency"], "MYR")
+        self.assertEqual(cap["per"], None)
+        self.assertEqual(cap["amount"], currency_cap("capped at RM200", "MYR")[0]["amount"])
+
+    def test_currency_cap_keeps_a_stated_period(self):
+        cap, reason = currency_cap("capped at S$150 per calendar month", "SGD")
+        self.assertIsNone(reason)
+        self.assertEqual(cap["currency"], "SGD")
+        self.assertEqual(cap["per"], "month")
+
+    def test_currency_cap_states_why_a_number_is_not_published(self):
+        cap, reason = currency_cap("limited to 1 redemption per customer", "MYR")
+        self.assertIsNone(cap)
+        self.assertEqual(reason, "not_a_currency_amount")
+        cap, reason = currency_cap("capped at RM80 per month and RM240 throughout the period", "MYR")
+        self.assertIsNone(cap)
+        self.assertEqual(reason, "more_than_one_currency_amount")
 
     def test_fee_waiver_date_is_not_kept(self):
         offer = {
@@ -169,6 +191,23 @@ class PublishedTests(unittest.TestCase):
                     index[alias] = row["id"]
             missing = [old for old in old_ids if old not in index]
             self.assertEqual(missing, [], kind)
+
+    def test_offers_that_had_cap_text_keep_a_number_or_a_reason(self):
+        fixture_path = ROOT / "tests" / "fixtures" / "cap_text_offer_ids.json"
+        offer_ids = json.loads(fixture_path.read_text(encoding="utf-8"))
+        offers = {}
+        for country in ("my", "sg"):
+            folder = ROOT / country / "offers"
+            for file in folder.glob("*.json"):
+                for offer in json.loads(file.read_text(encoding="utf-8"))["items"]:
+                    offers[offer["id"]] = offer
+        missing = []
+        for offer_id in offer_ids:
+            offer = offers[offer_id]
+            if offer.get("cap") or offer.get("cap_null_reason"):
+                continue
+            missing.append(offer_id)
+        self.assertEqual(missing, [])
 
 
 if __name__ == "__main__":

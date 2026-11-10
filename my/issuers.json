@@ -1,7 +1,7 @@
 {
   "count": 18,
   "country": "MY",
-  "generated_at": "2026-11-10T05:01:54+00:00",
+  "generated_at": "2026-11-10T05:28:36+00:00",
   "schema_version": "0.3.0",
   "items": [
     {"card_ids":["my-aeon-credit-aeon-biker-gold-visa-card","my-aeon-credit-aeon-biker-infinite-visa-card","my-aeon-credit-aeon-japan-club-of-kuala-lumpur-credit-card","my-aeon-credit-aeon-member-plus-amp-mastercard-classic-credit-card","my-aeon-credit-aeon-member-plus-amp-mastercard-gold-credit-card","my-aeon-credit-aeon-member-plus-amp-mastercard-platinum-credit-card","my-aeon-credit-aeon-member-plus-amp-visa-classic-credit-card","my-aeon-credit-aeon-member-plus-amp-visa-gold-credit-card","my-aeon-credit-aeon-member-plus-amp-visa-platinum-credit-card"],"country":"MY","crawl":{"card_sources":["https://myaeoncredit.com.my/cards/credit-cards/"],"note":null,"offer_sources":[],"status":"ok"},"id":"my-aeon-credit","legal_name":"AEON Credit Service (M) Berhad","name":"AEON Credit Service","offer_count":5,"official_domains":["myaeoncredit.com.my"],"website":"https://myaeoncredit.com.my"},
