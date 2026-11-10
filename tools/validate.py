@@ -180,6 +180,21 @@ def expected_offer_id(offer, hash_len):
     return f"{country.lower()}-{slug}-{digest}"
 
 
+VERBATIM_KEYS = {"dates_text", "cap_text", "min_spend_text"}
+
+
+def reject_verbatim_keys(value, where, errors):
+    if isinstance(value, dict):
+        for key, item in value.items():
+            if key in VERBATIM_KEYS:
+                errors.append(f"{where}: {key} is not published")
+            else:
+                reject_verbatim_keys(item, where, errors)
+    elif isinstance(value, list):
+        for item in value:
+            reject_verbatim_keys(item, where, errors)
+
+
 def check_fetch_log(record, pairs, errors):
     checked = record.get("checked_at")
     if checked in (None, ""):
@@ -248,6 +263,11 @@ def validate(root, index_dir=None):
         for row in load_json(network_path)["items"]:
             networks[row["id"]] = row
     card_ids = {card["id"] for card in cards}
+    live_ids = {offer["id"] for offer in offers} | card_ids
+    for record in list(offers) + list(cards):
+        for alias in record.get("aliases") or []:
+            if alias in live_ids and alias != record["id"]:
+                errors.append(f"{record['id']}: alias {alias} equals another record's live id")
     seen_offer_ids = set()
     hash_len = rules["id_hash_hex_chars"]
     clause_patterns = [re.compile(pat, re.I) for pat in rules["description_clause_patterns"]]
@@ -256,6 +276,7 @@ def validate(root, index_dir=None):
         if offer["id"] in seen_offer_ids:
             errors.append(f"{offer['id']}: duplicate offer id")
         seen_offer_ids.add(offer["id"])
+        reject_verbatim_keys(offer, offer["id"], errors)
         expected = expected_offer_id(offer, hash_len)
         if expected and offer["id"] != expected:
             errors.append(f"{offer['id']}: offer id is not the hash of source_url (expected {expected})")
@@ -305,6 +326,7 @@ def validate(root, index_dir=None):
                 host = host_of(url)
                 if host and host not in allowed:
                     errors.append(f"{card['id']}: host {host} is not on issuer {card['issuer_id']} official_domains")
+        reject_verbatim_keys(card, card["id"], errors)
         if card.get("status") == "active" and not card.get("networks"):
             errors.append(f"{card['id']}: active card has an empty networks list")
         check_fetch_log(card, fetch_pairs, errors)

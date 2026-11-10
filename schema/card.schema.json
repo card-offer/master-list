@@ -95,7 +95,6 @@
             "additionalProperties": false,
             "properties": {
               "rates_pct": {"type": "array", "items": {"type": "number"}},
-              "cap_text": {"type": "string"},
               "programmes": {
                 "type": "array",
                 "items": {
@@ -107,7 +106,6 @@
                 }
               },
               "visits": {"type": ["integer", "null"]},
-              "min_spend_text": {"type": "string"},
               "coverage_text": {"type": "string"},
               "visits_values": {"type": "array", "items": {"type": ["integer", "string"]}},
               "guest_policy_text": {"type": ["string", "null"]},

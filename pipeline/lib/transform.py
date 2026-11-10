@@ -58,7 +58,7 @@ CONFLICT = re.compile(
 )
 HUMAN_DATE = re.compile(r"(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})")
 DETAIL_KEYS = {
-    "rates_pct", "cap_text", "programmes", "visits", "min_spend_text", "coverage_text",
+    "rates_pct", "programmes", "visits", "coverage_text",
     "visits_values", "guest_policy_text", "supplementary_share_visits",
 }
 
@@ -94,6 +94,46 @@ def host_of(url):
     if host.startswith("www."):
         host = host[4:]
     return host
+
+
+def read_fetch_rows(fetch_path):
+    path = fetch_path or os.path.join(
+        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+        "pipeline",
+        "fetch_metadata.json",
+    )
+    if not path or not os.path.exists(path):
+        return []
+    with open(path, encoding="utf-8") as fh:
+        data = json.load(fh)
+    return data if isinstance(data, list) else []
+
+
+def country_hosts_for(base_domains, country_codes, rows):
+    """Hosts in the fetch log shaped as {base domain}.{country code}."""
+    codes = {code.lower() for code in country_codes}
+    found = set()
+    for row in rows:
+        for url in (row.get("url"), row.get("final_url")):
+            host = host_of(url)
+            if not host:
+                continue
+            for domain in base_domains:
+                for code in codes:
+                    candidate = f"{domain}.{code}"
+                    if host == candidate or host.endswith("." + candidate):
+                        found.add(candidate)
+    return found
+
+
+def extend_network_country_domains(networks_doc, rows, country_codes, network_id="visa"):
+    """Add country sites from the fetch log onto one network's official domains."""
+    for item in networks_doc.get("items") or []:
+        if item.get("id") != network_id:
+            continue
+        extra = country_hosts_for(item.get("official_domains") or [], country_codes, rows)
+        item["official_domains"] = sorted(set(item.get("official_domains") or []) | extra)
+    return networks_doc
 
 
 def clean_name(value):
@@ -209,7 +249,7 @@ def apply_date_policy(offer, clause_text, today, max_months):
         offer["start_date_null_reason"] = "not_stated_in_terms_or_page"
         offer["status"] = "needs_review"
         offer["review_reason"] = (
-            "The date range in dates_text belongs to an annual fee waiver campaign, not to this offer. "
+            "The date range in the source sentence belongs to an annual fee waiver campaign, not to this offer. "
             "No end date is published for the offer."
         )
         notes.append({"id": offer.get("_old_id"), "action": "fee_waiver_date_removed", "stated_end_date": stated})
@@ -222,7 +262,7 @@ def apply_date_policy(offer, clause_text, today, max_months):
         offer["start_date_null_reason"] = "not_stated_in_terms_or_page"
         offer["status"] = "needs_review"
         offer["review_reason"] = (
-            "dates_text is a rewards-rate illustration, not a promotion period. "
+            "The source sentence is a rewards-rate illustration, not a promotion period. "
             "The parsed end date was not kept."
         )
         notes.append({"id": offer.get("_old_id"), "action": "illustration_date_removed", "stated_end_date": stated})
@@ -460,7 +500,11 @@ def build_tree(src, generated_at, fetch_path=None, existing_index=None, alias_le
     countries, country_by = load_countries()
     places, currency_country = load_places()
     patterns = load_patterns()
-    networks_doc = load_networks()
+    networks_doc = extend_network_country_domains(
+        load_networks(),
+        read_fetch_rows(fetch_path),
+        [item["code"] for item in countries],
+    )
     index = FetchIndex(fetch_path)
     existing_index = existing_index or {}
     generated = parse_instant(generated_at)
@@ -784,10 +828,8 @@ def build_tree(src, generated_at, fetch_path=None, existing_index=None, alias_le
             "category": offer.get("category") or "other",
             "benefit": benefit_of(offer.get("benefit") or {}),
             "min_spend": min_spend,
-            "min_spend_text": offer.get("min_spend_text"),
             "min_spend_source_url": offer.get("min_spend_source_url"),
             "cap": cap,
-            "cap_text": offer.get("cap_text"),
             "cap_source_url": offer.get("cap_source_url"),
             "eligibility": eligibility_of(offer.get("eligibility"), card_id_map),
             "cross_border": cross_border(offer, merchant_text or _merchant_name(merchant_id, merchants_out), places, currency_country),
@@ -801,7 +843,6 @@ def build_tree(src, generated_at, fetch_path=None, existing_index=None, alias_le
             "start_date": offer.get("start_date"),
             "start_date_null_reason": offer.get("start_date_null_reason") if not offer.get("start_date") else None,
             "end_date": offer.get("end_date"),
-            "dates_text": offer.get("dates_text"),
             "dates_source_url": offer.get("dates_source_url"),
             "booking_period": booking,
             "usage_period": usage,

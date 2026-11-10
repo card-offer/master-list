@@ -5,6 +5,7 @@ import shutil
 import tempfile
 import unittest
 
+from pipeline.lib.transform import host_of
 from tests.test_model import ROOT
 from tools.validate import validate
 
@@ -123,6 +124,68 @@ class ValidatorGapTests(unittest.TestCase):
             self.save(path, data)
         errors = self.errors_after(mutate)
         self.assertTrue(any("visa domain" in error for error in errors), errors[:8])
+
+    def test_visa_country_offer_host_passes(self):
+        url, fetched = self.visa_country_fetch("visa.com.my")
+        offer_id = self.load(self.offer_path(self.base))["items"][0]["id"]
+
+        def mutate(tmp):
+            path = self.offer_path(tmp)
+            data = self.load(path)
+            offer = data["items"][0]
+            offer["provider"] = {"type": "network", "id": "visa"}
+            offer["checked_at"] = fetched
+            offer["checked_fetch_url"] = url
+            offer["source_url"] = url
+            offer["terms_url"] = url
+            self.retarget_urls(offer, url)
+            self.save(path, data)
+
+        errors = self.errors_after(mutate)
+        own = [error for error in errors if offer_id in error]
+        self.assertEqual(own, [], own[:8])
+
+    def visa_country_fetch(self, host):
+        path = os.path.join(ROOT, "pipeline", "fetch_metadata.json")
+        with open(path, encoding="utf-8") as fh:
+            rows = json.load(fh)
+        for row in rows:
+            url = row.get("url")
+            if host_of(url) == host:
+                return url, row["fetched_at"]
+        self.fail(f"fetch log has no {host} url")
+
+    def retarget_urls(self, value, url):
+        if isinstance(value, dict):
+            for key, item in list(value.items()):
+                if isinstance(item, str) and item.startswith("http") and key != "checked_fetch_url":
+                    value[key] = url
+                else:
+                    self.retarget_urls(item, url)
+        elif isinstance(value, list):
+            for item in value:
+                self.retarget_urls(item, url)
+
+    def test_alias_equal_to_another_live_id_fails(self):
+        def mutate(tmp):
+            path = self.offer_path(tmp)
+            data = self.load(path)
+            data["items"][0]["aliases"] = [data["items"][1]["id"]]
+            self.save(path, data)
+        errors = self.errors_after(mutate)
+        self.assertTrue(any("equals another record's live id" in error for error in errors), errors[:8])
+
+    def test_verbatim_source_keys_fail(self):
+        def mutate(tmp):
+            path = self.offer_path(tmp)
+            data = self.load(path)
+            data["items"][0]["dates_text"] = "Valid till 31 December 2026."
+            data["items"][0]["cap_text"] = "capped at RM10"
+            data["items"][0]["min_spend_text"] = "minimum spend RM15"
+            self.save(path, data)
+        errors = self.errors_after(mutate)
+        for key in ("dates_text", "cap_text", "min_spend_text"):
+            self.assertTrue(any(key in error for error in errors), errors[:8])
 
     def test_malformed_checked_at_is_a_validation_error(self):
         def mutate(tmp):

@@ -86,7 +86,6 @@
         "currency": {"type": "string", "pattern": "^[A-Z]{3}$"}
       }
     },
-    "min_spend_text": {"type": ["string", "null"]},
     "min_spend_source_url": {"type": ["string", "null"], "format": "uri"},
     "cap": {
       "type": ["object", "null"],
@@ -100,7 +99,6 @@
         }
       }
     },
-    "cap_text": {"type": ["string", "null"]},
     "cap_source_url": {"type": ["string", "null"], "format": "uri"},
     "eligibility": {
       "type": "object",
@@ -145,7 +143,6 @@
     "start_date": {"type": ["string", "null"], "format": "date"},
     "start_date_null_reason": {"enum": ["not_stated_in_terms_or_page", null]},
     "end_date": {"type": ["string", "null"], "format": "date"},
-    "dates_text": {"type": ["string", "null"]},
     "dates_source_url": {"type": ["string", "null"], "format": "uri"},
     "booking_period": {"$ref": "#/$defs/period"},
     "usage_period": {"$ref": "#/$defs/period"},

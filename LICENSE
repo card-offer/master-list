@@ -2,7 +2,7 @@ Scope of this repository
 
 CC BY 4.0 applies to the compiled structured data in this repository only: the JSON records, the schemas, and the documentation written for this project.
 
-Issuer terms and conditions belong to the issuers. They are not part of the licensed material. This repository does not publish issuer terms documents, terms clauses, or descriptions copied from issuer pages. It publishes structured facts (dates, amounts, eligibility), a source URL, and a hash of the full terms text when that text was read at fetch time. Short extracts that record where a date or an amount was read (dates_text, min_spend_text, cap_text) are still present.
+Issuer terms and conditions belong to the issuers. They are not part of the licensed material. This repository does not publish verbatim source text: no terms documents, no terms clauses, no copied descriptions, and no source sentences for dates or amounts. It publishes structured facts (dates, amounts, eligibility), a source URL, and a hash of the full terms text when that text was read at fetch time. The source sentences stay in the crawler's private raw cache, which is not part of this repository.
 
 The Creative Commons licence text follows, unchanged.
 

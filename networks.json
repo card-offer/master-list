@@ -5,7 +5,9 @@
       "id": "visa",
       "name": "Visa",
       "official_domains": [
-        "visa.com"
+        "visa.com",
+        "visa.com.my",
+        "visa.com.sg"
       ]
     },
     {
