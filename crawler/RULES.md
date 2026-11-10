@@ -1,0 +1,133 @@
+# Crawler rule for Grok Bot
+
+Version 1. Contract: `observation/1`. Schema: `schema/observation.schema.json`.
+
+You crawl. The pipeline publishes. You do not write the public files, you do not make IDs, and you do not edit the merchant registry. You give one hand-in file for each issuer and each run. The gate checks it. The ingest step publishes it.
+
+## 1. The work cycle
+
+1. Read `{cc}/issuers.json`. Take the issuer and its `official_domains`.
+2. Crawl the issuer's offer listings and each offer page and terms document.
+3. Write `raw/observations/{cc}/{issuer}/{run_id}.json`. The `raw/` folder is private. Do not commit it.
+4. Run `python tools/check_observations.py <file>`. Correct each `error` line. Run it again until it gives exit 0.
+5. Run `python pipeline/ingest.py <file>`, then `python tools/validate.py .`.
+6. Open a pull request with the changed public files. Do not merge it.
+
+If the gate refuses a fact and the page does not support a correction, remove the fact (use null) or set a flag. Do not change a quote to make the gate pass.
+
+## 2. Crawl limits
+
+1. Use only hosts in the issuer's `official_domains`. A merchant's own site is permitted only as fetch kind `merchant_page`, and only when the issuer page links to it.
+2. Do not use aggregator, comparison, deal, review, blog or forum sites. Do not use search engine snippets as a source.
+3. Read `robots.txt` for each host before the crawl. Do not fetch a disallowed path. Record it in `run.blocked` with reason `robots_disallow`.
+4. Public pages only. No sign-in, no sign-up, no form, no contact, no captcha bypass.
+5. One request at a time for each host, with a minimum of 1.5 seconds between requests.
+6. Record each fetch in `fetches` with its real time and time zone offset. Do not write a time that you did not measure.
+7. Set `run.listing_complete` to true only if you read every page and every tile of every listing. If you are not sure, set false.
+8. If you cannot reach a page, record it in `run.blocked`. Do not fill the gap from memory.
+
+## 3. The merchant name
+
+This is the most important field. A cardholder looks for offers by merchant.
+
+### 3.1 Find the name in this order
+
+1. The heading of the offer page (`page_heading`).
+2. The tile on the listing (`listing_tile`).
+3. The terms document, where it names the participating merchant (`terms_document`).
+4. The alt text of the merchant logo (`logo_alt_text`).
+5. The merchant's own page that the issuer page links to (`merchant_page`).
+
+Do not take the name from the URL, from your memory or from a guess.
+
+### 3.2 Write the name correctly
+
+1. Write the trading name as the page writes it. Keep the page's spelling and capitals: `Trip.com`, `7-Eleven`, `B/SKIN`.
+2. Remove markup and trademark signs: `Baa Baa Sheepz<sup>®</sup>` becomes `Baa Baa Sheepz`.
+3. Give the brand only. Do not add offer words, prices, dates, card names or campaign names.
+4. Put a branch, outlet or in-hotel restaurant in `outlet`, not in `name`.
+5. Do not translate the name. Do not expand or shorten it.
+6. Copy the text that contains the name into `name_quote`. The gate fails if the name is not inside the quote.
+
+| The page says | name | outlet | kind |
+|---|---|---|---|
+| Fairmont Singapore, The Eight: 20% off total food bill | Fairmont Singapore | The Eight | single |
+| Complimentary Yakitori platter at Toji Yakitori Bar | Toji Yakitori Bar | null | single |
+| Agoda x Mastercard: up to 12% off | Agoda | null | single |
+| 15% off at Ogawa (KLSCM) | Ogawa | KLSCM | single |
+| 10% off at Hertz, Avis and Budget | null (use `names`) | null | multiple |
+| 5% cashback on all petrol spend | null | null | category |
+| 0% instalment plan, balance transfer, sign-up gift | null | null | issuer_own |
+| 50% off flights capped at S$100 every Tue | null | null | category |
+
+### 3.3 Choose the kind
+
+- `single`: one merchant. `name`, `name_source` and `name_quote` are mandatory.
+- `multiple`: the offer names two or more merchants. Put each in `names`. If the page gives each merchant its own terms or dates, hand in one offer for each merchant.
+- `category`: the offer applies to a type of spend, not a named merchant.
+- `issuer_own`: the issuer's own product or campaign. The issuer and the card networks are never merchants.
+- `unknown`: permitted only after you read the page, the tile and the terms and none states a merchant. Set the flag `merchant_not_stated`. The gate fails a run of 20 or more offers when more than 5 percent are `unknown`.
+
+### 3.4 Names with offer words
+
+The gate refuses a name that contains words such as off, free, sale, deal, rewards, or an amount. If that is the real trading name (for example `Free Fire`), set `name_checked` to true. Use it only when the page shows it as the brand.
+
+### 3.5 Official domain
+
+Set `official_domain` only when the issuer page links to the merchant's own site. Write the host only, for example `trip.com`. If there is no link, use null.
+
+## 4. One offer, one record
+
+1. One record for each deal that has its own merchant, benefit or dates.
+2. `source_url` is the official page that shows the offer. Do not add a fragment.
+3. `source_key` tells the offer apart from other offers on the same page. Choose the first that exists:
+   1. `single_offer_page`: the page has one offer. Use the last part of the URL path.
+   2. `page_anchor`: the page's own element id or anchor for the tile.
+   3. `deal_code`: the promo code or deal id that the page prints.
+   4. `terms_file_name`: the file name of the deal's terms document.
+   5. `merchant_name`: the merchant name key that the gate prints.
+4. Do not make `source_key` from the title. Titles change. The key must stay the same in the next crawl.
+5. Do not hand in an offer whose end date is before the run date.
+
+## 5. Facts and quotes
+
+Each fact that will be published needs a quote: the one sentence on the official page or in the terms that states it. A quote has a maximum of 300 characters. Quotes are private and are not published, except the eligibility quote.
+
+| Fact | Rule |
+|---|---|
+| `benefit.value` | The number must be in `benefit.quote`. If the page gives no number, use null and a `benefit.type` that fits. |
+| `dates.end_date` | Day, month and year must be in `dates.quote`. If the page states no end date, use null with `end_date_null_reason: not_stated`. The offer is then published as evergreen. |
+| `dates.start_date` | Only if the page states it. If not, use null. Do not use the fetch date. |
+| `booking_period`, `usage_period` | Use them when the page gives a booking window and a stay or travel window. |
+| `min_spend` | Amount and ISO 4217 currency. The amount must be in its quote. |
+| `limits` | One entry for each stated limit. Do not put a campaign budget or a prize pool as a `reward_cap`. A total for all customers is a `pool_limit`. |
+| `eligibility` | `stated` needs a quote. Use `card` with `card_names` as the page writes them, or `issuer_network` with `network_ids`, or `issuer` when the page says all cards. If the page states no restriction, use `issuer` with `inferred` and no card names. |
+| `terms` | `deal_document`: the deal's own document. `deal_page_section`: the terms section on the offer page. `listing_popup`: a popup on the listing. Hash the full terms text (lower case, white space collapsed to one space, sha256). Never use the bank's general terms. |
+| `redeem.countries` | Where the cardholder can use the offer. Use the card country unless the page states a different place. Use `*` for worldwide. |
+
+Rules for all facts:
+
+1. If the page does not state it, the value is null. Do not estimate, do not calculate and do not copy from a different offer.
+2. If two sentences on the page conflict, set the flag `date_conflict` or `amount_unclear`. The offer then goes to review.
+3. If an end date is more than 24 months ahead, read it again. If it is correct, set the flag `end_date_past_horizon`.
+4. Use the currency that the page writes. Do not convert.
+5. Do not use an em dash in a title.
+
+## 6. What the pipeline does with your file
+
+- It keeps the published ID when the page and key are the same, or when the page and the merchant are the same. A new title does not make a new ID.
+- It links each `single` merchant to one global record in `merchants/registry.json`. `Shopee Singapore`, `SHOPEE` and `Shopee Pte Ltd` become one brand. A brand with one offer and no official domain is published with `verified: false`.
+- It maps `card_names` to card IDs. A name that is not in the card list sends the offer to review. Report these names. Do not change them to fit.
+- It sets `first_seen`, `last_seen`, `status` and `review_by`.
+- After a complete listing run, an offer that was not seen for 14 days becomes `withdrawn`.
+- Expired offers move to the archive.
+
+## 7. Report after each run
+
+Give these numbers and nothing else, unless something failed:
+
+1. Offers handed in, and the count for each merchant kind.
+2. New, kept and withdrawn offers from the ingest report.
+3. Offers in `needs_review`, with the reason.
+4. Card names that were not matched.
+5. Blocked URLs, with the reason.

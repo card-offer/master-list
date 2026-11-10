@@ -31,6 +31,8 @@ Card names and trademarks belong to their issuers, networks and merchants.
 | `config/rules.json` | Horizon, review interval, archive retention, merchant rule. Read at run time. |
 | `schema/` | JSON Schema (draft 2020-12). `$id` URLs point at GitHub Pages. |
 | `pipeline/` | The crawl and publish code. |
+| `crawler/RULES.md` | The rule for the crawler: sources, merchant name, facts and quotes. |
+| `schema/observation.schema.json` | The crawler hand-in file. Private, never committed. `tools/check_observations.py` is its gate and `pipeline/ingest.py` publishes it. |
 | `tools/validate.py` | The check that runs on every pull request and on every push to `main`. |
 
 Derived indexes (`by_card`, `by_merchant`, and the rest) are not stored on `main`. CI builds them and the Pages workflow publishes them. Fetching one issuer's file does not download every offer in the country.
@@ -42,7 +44,7 @@ Full definitions are in [`schema/`](schema/).
 - **Card** id: `{cc}-{issuer}-{slug}`. `aliases` lists every id the card had under schema 0.2.0. `networks` is required and non-empty while `status` is `active`. A card with no stated network has `status` `needs_review`.
 - **Offer** id: `{cc}-{issuer}-{short hash of the first source URL}`. The same issuer and `source_url` keep that id when the pipeline runs again. `aliases` lists the schema 0.2.0 id.
 - **Provider**: `{type: issuer|network|merchant, id}`. Network offers have a place in `networks.json`.
-- **Merchant**: a global id. A name becomes a merchant when it has an official domain or at least as many offers as `merchant_min_offers` in `config/rules.json`. Other names stay on the offer as `merchant_text`. Duplicate brands across countries are one record.
+- **Merchant**: each offer has `merchant_kind` (`single`, `multiple`, `category`, `issuer_own`, `unknown`). A `single` offer has `merchant_name` as the official page states it, an optional `merchant_outlet`, and a `merchant_id` in the global registry. One brand is one record in all countries. `verified` is true when the brand has an official domain or at least `merchant_min_offers` offers. `merchant_name_source` says where the name was read. `legacy_title_parse` means the name came from the old title parser and the crawler has not confirmed it on the page.
 - **Eligibility** is the rule (`scope`, `rule`, `confidence`, issuer, network, card ids, evidence). The expanded card list is an index built in CI. Inferred rules are not expanded.
 - **Money**: `min_spend` is `{amount, currency}`. `limits` lists every stated limit (`kind`, `amount`, `currency`, `per`, `scope`, `weekdays`). `per` is an array. It can hold a time period (such as month or year) and a who-dimension (card, customer, visit, or table) together. When both are present, the legacy `cap.per` keeps the time period and `limits` keeps both. `scope` is `hotel`, `online`, `category`, or null.
 - **Time**: `checked_at` is a full ISO date-time with offset, taken from the fetch log. `generated_at` is stamped when the file is built. `status` is `active`, `expired`, `withdrawn`, `evergreen` or `needs_review`. `first_seen`, `last_seen` and `review_by` are dates. An offer with no stated end date is `evergreen` and carries `review_by`. Every other live offer has an end date.
@@ -69,6 +71,8 @@ Indexes, once Pages is serving them, live under the site that hosts the schema `
 
 ## Known issues
 
+- 441 offers have `merchant_kind` `unknown`, and 1,094 merchant names are `legacy_title_parse`. The next crawl under `crawler/RULES.md` replaces them.
+- The crawler rule covers offers. Cards still use the older scripts in `pipeline/`.
 - Short weekday names such as `every Tue` are not parsed. That misses 8 DBS and POSB offers. A full name such as `every Tuesday` is parsed.
 - `per stay`, `per receipt` and `per plan` are not parsed.
 - `limits.per` can list a time period and a who-dimension together. The legacy `cap.per` keeps the time period.

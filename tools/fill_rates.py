@@ -36,6 +36,8 @@ def main():
         ("offer terms_url", offers, lambda row: row.get("terms_url")),
         ("offer terms_hash", offers, lambda row: row.get("terms_hash")),
         ("offer merchant_id", offers, lambda row: row.get("merchant_id")),
+        ("offer merchant_kind known", offers, lambda row: True if row.get("merchant_kind") not in (None, "unknown") else None),
+        ("offer merchant confirmed on page", offers, lambda row: True if row.get("merchant_name_source") not in (None, "legacy_title_parse") else None),
         ("offer evidence_text", offers, lambda row: (row.get("eligibility") or {}).get("evidence_text")),
         ("offer checked_at", offers, lambda row: row.get("checked_at")),
         ("offer benefit.value", offers, lambda row: (row.get("benefit") or {}).get("value")),

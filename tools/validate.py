@@ -20,6 +20,7 @@ from jsonschema import Draft202012Validator, FormatChecker
 from referencing import Registry, Resource
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from pipeline.lib.merchants import load_merchant_rules, name_key
 from pipeline.lib.calendar import add_months, parse_instant
 from pipeline.lib.rules import load_rules
 from pipeline.lib.transform import host_of
@@ -180,7 +181,7 @@ def expected_offer_id(offer, hash_len):
     return f"{country.lower()}-{slug}-{digest}"
 
 
-VERBATIM_KEYS = {"dates_text", "cap_text", "min_spend_text"}
+VERBATIM_KEYS = {"dates_text", "cap_text", "min_spend_text", "quote", "name_quote"}
 
 
 def reject_verbatim_keys(value, where, errors):
@@ -269,6 +270,13 @@ def validate(root, index_dir=None):
             if alias in live_ids and alias != record["id"]:
                 errors.append(f"{record['id']}: alias {alias} equals another record's live id")
     seen_offer_ids = set()
+    merchant_rules = load_merchant_rules(root)
+    for brand in merchants:
+        expected = bool(brand.get("official_domain")) or len(brand.get("offer_ids") or []) >= rules["merchant_min_offers"]
+        if brand.get("verified") != expected:
+            errors.append(f"merchant {brand['id']}: verified must be {str(expected).lower()} (official domain or {rules['merchant_min_offers']} offers)")
+        if not brand.get("offer_ids"):
+            errors.append(f"merchant {brand['id']}: no offer links to this merchant")
     hash_len = rules["id_hash_hex_chars"]
     clause_patterns = [re.compile(pat, re.I) for pat in rules["description_clause_patterns"]]
     fetch_pairs = load_fetch_pairs(root)
@@ -310,6 +318,13 @@ def validate(root, index_dir=None):
                 errors.append(f"{offer['id']}: unknown card id {card_id}")
         if offer.get("merchant_id") and offer["merchant_id"] not in merchant_by:
             errors.append(f"{offer['id']}: unknown merchant id {offer['merchant_id']}")
+        if offer.get("merchant_kind") == "single" and offer.get("merchant_id") in merchant_by:
+            brand = merchant_by[offer["merchant_id"]]
+            keys = {name_key(text, merchant_rules) for text in [brand["name"]] + list(brand.get("aliases") or [])}
+            if name_key(offer.get("merchant_name") or "", merchant_rules) not in keys:
+                errors.append(f"{offer['id']}: merchant_name {offer.get('merchant_name')} is not a name or alias of merchant {brand['id']}")
+            if offer["id"] not in brand.get("offer_ids") or []:
+                errors.append(f"{offer['id']}: merchant {brand['id']} does not list this offer")
         if offer["status"] == "active" and not offer.get("end_date"):
             errors.append(f"{offer['id']}: active offer is missing end_date")
         if offer["status"] == "evergreen" and offer.get("end_date"):

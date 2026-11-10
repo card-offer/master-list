@@ -30,72 +30,262 @@
     "terms_hash",
     "terms_url",
     "title",
-    "usage_period"
+    "usage_period",
+    "merchant_kind",
+    "merchant_name",
+    "merchant_names",
+    "merchant_outlet",
+    "merchant_name_source",
+    "merchant_id"
   ],
   "properties": {
-    "id": {"type": "string", "pattern": "^[a-z]{2}-[a-z0-9-]+$"},
-    "aliases": {"type": "array", "items": {"type": "string"}},
-    "country": {"type": "string", "pattern": "^[A-Z]{2}$"},
-    "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
-    "title": {"type": "string"},
-    "description": {"type": ["string", "null"]},
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z]{2}-[a-z0-9-]+$"
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "country": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "provider": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["type", "id"],
+      "required": [
+        "type",
+        "id"
+      ],
       "properties": {
-        "type": {"enum": ["issuer", "network", "merchant"]},
-        "id": {"type": "string"}
+        "type": {
+          "enum": [
+            "issuer",
+            "network",
+            "merchant"
+          ]
+        },
+        "id": {
+          "type": "string"
+        }
       }
     },
-    "merchant_id": {"type": ["string", "null"]},
-    "merchant_text": {"type": ["string", "null"]},
+    "merchant_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "merchant_kind": {
+      "enum": [
+        "single",
+        "multiple",
+        "category",
+        "issuer_own",
+        "unknown"
+      ],
+      "description": "single: one merchant. multiple: the offer names two or more merchants. category: any merchant in a spend category. issuer_own: the issuer's own product or campaign, no merchant. unknown: the merchant was not captured."
+    },
+    "merchant_name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The merchant's trading name as the official page states it. Set when merchant_kind is single."
+    },
+    "merchant_names": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Every merchant the page names, when merchant_kind is multiple."
+    },
+    "merchant_outlet": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Outlet, branch or restaurant inside the merchant, when the page states one."
+    },
+    "merchant_name_source": {
+      "enum": [
+        "page_heading",
+        "listing_tile",
+        "terms_document",
+        "logo_alt_text",
+        "merchant_page",
+        "legacy_title_parse",
+        null
+      ],
+      "description": "Where the name was read. legacy_title_parse: parsed from the title before the crawler rule, not confirmed on the page."
+    },
     "category": {
       "enum": [
-        "automotive", "balance_transfer", "beauty", "cafe", "dining", "education",
-        "electronics", "entertainment", "ev_charging", "ewallet", "fashion", "groceries",
-        "health", "hotel", "instalment", "insurance", "online", "other", "petrol",
-        "shopping", "sign_up", "spend_campaign", "travel", "utilities"
+        "automotive",
+        "balance_transfer",
+        "beauty",
+        "cafe",
+        "dining",
+        "education",
+        "electronics",
+        "entertainment",
+        "ev_charging",
+        "ewallet",
+        "fashion",
+        "groceries",
+        "health",
+        "hotel",
+        "instalment",
+        "insurance",
+        "online",
+        "other",
+        "petrol",
+        "shopping",
+        "sign_up",
+        "spend_campaign",
+        "travel",
+        "utilities"
       ]
     },
     "benefit": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["type", "value", "unit", "value_text", "up_to", "source"],
+      "required": [
+        "type",
+        "value",
+        "unit",
+        "value_text",
+        "up_to",
+        "source"
+      ],
       "properties": {
         "type": {
           "enum": [
-            "discount_pct", "freebie", "amount_off", "other", "special_deal",
-            "amount_cashback", "cashback_pct", "cashback", "lucky_draw",
-            "instalment_0pct", "points_miles", "amount_voucher"
+            "discount_pct",
+            "freebie",
+            "amount_off",
+            "other",
+            "special_deal",
+            "amount_cashback",
+            "cashback_pct",
+            "cashback",
+            "lucky_draw",
+            "instalment_0pct",
+            "points_miles",
+            "amount_voucher"
           ]
         },
-        "value": {"type": ["number", "null"]},
-        "unit": {"enum": ["percent", "currency", "points", "multiplier", null]},
-        "value_text": {"type": ["string", "null"]},
-        "up_to": {"type": "boolean"},
-        "source": {"enum": ["offer_text", "title", null]}
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "unit": {
+          "enum": [
+            "percent",
+            "currency",
+            "points",
+            "multiplier",
+            null
+          ]
+        },
+        "value_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "up_to": {
+          "type": "boolean"
+        },
+        "source": {
+          "enum": [
+            "offer_text",
+            "title",
+            null
+          ]
+        }
       }
     },
     "min_spend": {
-      "type": ["object", "null"],
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false,
-      "required": ["amount", "currency"],
+      "required": [
+        "amount",
+        "currency"
+      ],
       "properties": {
-        "amount": {"type": "number"},
-        "currency": {"type": "string", "pattern": "^[A-Z]{3}$"}
+        "amount": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        }
       }
     },
-    "min_spend_source_url": {"type": ["string", "null"], "format": "uri"},
+    "min_spend_source_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
     "cap": {
-      "type": ["object", "null"],
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false,
-      "required": ["amount", "currency", "per"],
+      "required": [
+        "amount",
+        "currency",
+        "per"
+      ],
       "properties": {
-        "amount": {"type": "number"},
-        "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+        "amount": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
         "per": {
-          "enum": ["transaction", "booking", "day", "week", "month", "quarter", "year", "campaign", "customer", "card", "visit", "table", null]
+          "enum": [
+            "transaction",
+            "booking",
+            "day",
+            "week",
+            "month",
+            "quarter",
+            "year",
+            "campaign",
+            "customer",
+            "card",
+            "visit",
+            "table",
+            null
+          ]
         }
       }
     },
@@ -112,98 +302,347 @@
     "limits": {
       "type": "array",
       "description": "Every stated limit. cap, when set, mirrors the single reward_cap or per_transaction_limit.",
-      "items": {"$ref": "#/$defs/limit"}
+      "items": {
+        "$ref": "#/$defs/limit"
+      }
     },
-    "cap_source_url": {"type": ["string", "null"], "format": "uri"},
+    "cap_source_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
     "eligibility": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["scope", "rule", "confidence", "issuer_ids", "network_ids", "card_ids", "card_types", "tiers"],
+      "required": [
+        "scope",
+        "rule",
+        "confidence",
+        "issuer_ids",
+        "network_ids",
+        "card_ids",
+        "card_types",
+        "tiers"
+      ],
       "properties": {
-        "scope": {"enum": ["card", "issuer", "issuer_network", "network"]},
-        "rule": {"type": "string"},
-        "confidence": {"enum": ["stated", "inferred", "assumed"]},
-        "issuer_ids": {"type": "array", "items": {"type": "string"}},
+        "scope": {
+          "enum": [
+            "card",
+            "issuer",
+            "issuer_network",
+            "network"
+          ]
+        },
+        "rule": {
+          "type": "string"
+        },
+        "confidence": {
+          "enum": [
+            "stated",
+            "inferred",
+            "assumed"
+          ]
+        },
+        "issuer_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "network_ids": {
           "type": "array",
-          "items": {"enum": ["visa", "mastercard", "amex", "unionpay", "jcb", "diners"]}
+          "items": {
+            "enum": [
+              "visa",
+              "mastercard",
+              "amex",
+              "unionpay",
+              "jcb",
+              "diners"
+            ]
+          }
         },
-        "card_ids": {"type": "array", "items": {"type": "string"}},
-        "card_types": {"type": "array", "items": {"type": "string"}},
-        "tiers": {"type": "array", "items": {"type": "string"}},
-        "evidence_text": {"type": ["string", "null"]}
+        "card_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "card_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tiers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
       }
     },
     "cross_border": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["is_cross_border", "card_issuing_country", "redeem_countries", "basis"],
+      "required": [
+        "is_cross_border",
+        "card_issuing_country",
+        "redeem_countries",
+        "basis"
+      ],
       "properties": {
-        "is_cross_border": {"type": "boolean"},
-        "card_issuing_country": {"type": "string", "pattern": "^[A-Z]{2}$"},
+        "is_cross_border": {
+          "type": "boolean"
+        },
+        "card_issuing_country": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$"
+        },
         "redeem_countries": {
           "type": "array",
-          "items": {"type": "string", "pattern": "^([A-Z]{2}|\\*)$"}
+          "items": {
+            "type": "string",
+            "pattern": "^([A-Z]{2}|\\*)$"
+          }
         },
-        "basis": {"enum": ["no_foreign_signal", "stated_merchant_country", "place_name", "foreign_currency", "mixed"]}
+        "basis": {
+          "enum": [
+            "no_foreign_signal",
+            "stated_merchant_country",
+            "place_name",
+            "foreign_currency",
+            "mixed"
+          ]
+        }
       }
     },
-    "status": {"enum": ["active", "expired", "withdrawn", "evergreen", "needs_review"]},
-    "first_seen": {"type": ["string", "null"], "format": "date"},
-    "last_seen": {"type": ["string", "null"], "format": "date"},
-    "review_by": {"type": ["string", "null"], "format": "date"},
-    "review_reason": {"type": ["string", "null"]},
-    "end_date_reviewer_accepted": {"type": "boolean"},
-    "stated_end_date": {"type": ["string", "null"], "format": "date"},
-    "start_date": {"type": ["string", "null"], "format": "date"},
-    "start_date_null_reason": {"enum": ["not_stated_in_terms_or_page", null]},
-    "end_date": {"type": ["string", "null"], "format": "date"},
-    "dates_source_url": {"type": ["string", "null"], "format": "uri"},
-    "booking_period": {"$ref": "#/$defs/period"},
-    "usage_period": {"$ref": "#/$defs/period"},
-    "valid_days": {
-      "type": ["array", "null"],
-      "uniqueItems": true,
-      "items": {"enum": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]}
+    "status": {
+      "enum": [
+        "active",
+        "expired",
+        "withdrawn",
+        "evergreen",
+        "needs_review"
+      ]
     },
-    "terms_url": {"type": ["string", "null"], "format": "uri"},
-    "terms_url_null_reason": {"type": ["string", "null"]},
-    "terms_scope": {"enum": ["deal_document", "deal_page_section", "listing_popup", null]},
-    "terms_hash": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
-    "terms_hash_null_reason": {"type": ["string", "null"]},
-    "terms_fetched_at": {"type": ["string", "null"]},
-    "source_url": {"type": "string", "format": "uri"},
-    "source_verified": {"type": "boolean"},
+    "first_seen": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "last_seen": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "review_by": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "review_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "end_date_reviewer_accepted": {
+      "type": "boolean"
+    },
+    "stated_end_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "start_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "start_date_null_reason": {
+      "enum": [
+        "not_stated_in_terms_or_page",
+        null
+      ]
+    },
+    "end_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "dates_source_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "booking_period": {
+      "$ref": "#/$defs/period"
+    },
+    "usage_period": {
+      "$ref": "#/$defs/period"
+    },
+    "valid_days": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "mon",
+          "tue",
+          "wed",
+          "thu",
+          "fri",
+          "sat",
+          "sun"
+        ]
+      }
+    },
+    "terms_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "terms_url_null_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "terms_scope": {
+      "enum": [
+        "deal_document",
+        "deal_page_section",
+        "listing_popup",
+        null
+      ]
+    },
+    "terms_hash": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "terms_hash_null_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "terms_fetched_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "source_verified": {
+      "type": "boolean"
+    },
     "sources": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["url", "kind", "fetched_at"],
+        "required": [
+          "url",
+          "kind",
+          "fetched_at"
+        ],
         "properties": {
-          "url": {"type": "string", "format": "uri"},
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
           "kind": {
             "enum": [
-              "issuer_product_page", "issuer_listing", "issuer_promotion_page",
-              "issuer_promotion_listing", "network_offer_page", "merchant_page",
+              "issuer_product_page",
+              "issuer_listing",
+              "issuer_promotion_page",
+              "issuer_promotion_listing",
+              "network_offer_page",
+              "merchant_page",
               "issuer_terms_document"
             ]
           },
-          "fetched_at": {"type": ["string", "null"]}
+          "fetched_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
         }
       }
     },
-    "detail_level": {"enum": ["structured", "title_only"]},
-    "checked_at": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}[+-]\\d{2}:\\d{2}$"},
-    "checked_fetch_url": {"type": ["string", "null"]},
-    "checked_at_null_reason": {"type": ["string", "null"]}
+    "detail_level": {
+      "enum": [
+        "structured",
+        "title_only"
+      ]
+    },
+    "checked_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}[+-]\\d{2}:\\d{2}$"
+    },
+    "checked_fetch_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "checked_at_null_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
   },
   "$defs": {
     "limit": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["kind", "amount", "currency", "per", "scope", "weekdays"],
+      "required": [
+        "kind",
+        "amount",
+        "currency",
+        "per",
+        "scope",
+        "weekdays"
+      ],
       "properties": {
         "kind": {
           "enum": [
@@ -214,65 +653,311 @@
             "per_transaction_limit"
           ]
         },
-        "amount": {"type": "number"},
-        "currency": {"type": ["string", "null"], "pattern": "^[A-Z]{3}$"},
+        "amount": {
+          "type": "number"
+        },
+        "currency": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[A-Z]{3}$"
+        },
         "per": {
           "type": "array",
           "items": {
-            "enum": ["transaction", "booking", "day", "week", "month", "quarter", "year", "campaign", "customer", "card", "visit", "table"]
+            "enum": [
+              "transaction",
+              "booking",
+              "day",
+              "week",
+              "month",
+              "quarter",
+              "year",
+              "campaign",
+              "customer",
+              "card",
+              "visit",
+              "table"
+            ]
           }
         },
-        "scope": {"enum": ["hotel", "online", "category", null]},
+        "scope": {
+          "enum": [
+            "hotel",
+            "online",
+            "category",
+            null
+          ]
+        },
         "weekdays": {
-          "type": ["array", "null"],
-          "items": {"enum": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]}
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "enum": [
+              "mon",
+              "tue",
+              "wed",
+              "thu",
+              "fri",
+              "sat",
+              "sun"
+            ]
+          }
         }
       }
     },
     "period": {
-      "type": ["object", "null"],
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false,
-      "required": ["start", "end"],
+      "required": [
+        "start",
+        "end"
+      ],
       "properties": {
-        "start": {"type": ["string", "null"], "format": "date"},
-        "end": {"type": ["string", "null"], "format": "date"}
+        "start": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "end": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        }
       }
     }
   },
   "allOf": [
     {
-      "if": {"properties": {"start_date": {"type": "null"}}, "required": ["start_date"]},
-      "then": {"properties": {"start_date_null_reason": {"type": "string"}}, "required": ["start_date_null_reason"]}
-    },
-    {
-      "if": {"properties": {"terms_url": {"type": "null"}}, "required": ["terms_url"]},
-      "then": {"properties": {"terms_url_null_reason": {"type": "string"}}, "required": ["terms_url_null_reason"]}
-    },
-    {
-      "if": {"properties": {"checked_at": {"type": "null"}}, "required": ["checked_at"]},
-      "then": {"properties": {"checked_at_null_reason": {"type": "string"}}, "required": ["checked_at_null_reason"]}
-    },
-    {
-      "if": {"properties": {"status": {"const": "evergreen"}}},
+      "if": {
+        "properties": {
+          "start_date": {
+            "type": "null"
+          }
+        },
+        "required": [
+          "start_date"
+        ]
+      },
       "then": {
-        "properties": {"end_date": {"type": "null"}, "review_by": {"type": "string"}},
-        "required": ["review_by"]
+        "properties": {
+          "start_date_null_reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "start_date_null_reason"
+        ]
       }
     },
     {
-      "if": {"properties": {"status": {"const": "active"}}},
+      "if": {
+        "properties": {
+          "terms_url": {
+            "type": "null"
+          }
+        },
+        "required": [
+          "terms_url"
+        ]
+      },
       "then": {
-        "properties": {"end_date": {"type": "string"}, "review_by": {"type": "string"}},
-        "required": ["end_date", "review_by"]
+        "properties": {
+          "terms_url_null_reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "terms_url_null_reason"
+        ]
       }
     },
     {
-      "if": {"properties": {"status": {"const": "needs_review"}}},
-      "then": {"properties": {"review_reason": {"type": "string"}}, "required": ["review_reason"]}
+      "if": {
+        "properties": {
+          "checked_at": {
+            "type": "null"
+          }
+        },
+        "required": [
+          "checked_at"
+        ]
+      },
+      "then": {
+        "properties": {
+          "checked_at_null_reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "checked_at_null_reason"
+        ]
+      }
     },
     {
-      "if": {"properties": {"status": {"const": "expired"}}},
-      "then": {"properties": {"end_date": {"type": "string"}}, "required": ["end_date"]}
+      "if": {
+        "properties": {
+          "status": {
+            "const": "evergreen"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "end_date": {
+            "type": "null"
+          },
+          "review_by": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "review_by"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "active"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "end_date": {
+            "type": "string"
+          },
+          "review_by": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "end_date",
+          "review_by"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "needs_review"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "review_reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "review_reason"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "expired"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "end_date": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "end_date"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "merchant_kind": {
+            "const": "single"
+          }
+        },
+        "required": [
+          "merchant_kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "merchant_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "merchant_id": {
+            "type": "string"
+          },
+          "merchant_name_source": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "merchant_kind": {
+            "enum": [
+              "category",
+              "issuer_own",
+              "unknown",
+              "multiple"
+            ]
+          }
+        },
+        "required": [
+          "merchant_kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "merchant_name": {
+            "type": "null"
+          },
+          "merchant_id": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "merchant_kind": {
+            "const": "multiple"
+          }
+        },
+        "required": [
+          "merchant_kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "merchant_names": {
+            "minItems": 2
+          }
+        }
+      }
     }
   ]
 }

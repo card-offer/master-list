@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://card-offer.github.io/master-list/schema/observation.schema.json",
+  "title": "Crawler hand-in: one issuer, one run",
+  "description": "What the crawler gives to the pipeline. This file holds short quotes from official pages, so it is private. It stays under raw/ and is never committed.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract", "run", "fetches", "offers"],
+  "properties": {
+    "contract": {"const": "observation/1"},
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run_id", "crawler", "country", "issuer_id", "started_at", "finished_at", "listing_urls", "listing_complete", "robots_checked", "blocked"],
+      "properties": {
+        "run_id": {"type": "string", "pattern": "^[a-z0-9-]{6,64}$"},
+        "crawler": {"type": "string", "minLength": 1},
+        "country": {"type": "string", "pattern": "^[A-Z]{2}$"},
+        "issuer_id": {"type": "string", "pattern": "^[a-z]{2}-[a-z0-9-]+$"},
+        "started_at": {"$ref": "#/$defs/instant"},
+        "finished_at": {"$ref": "#/$defs/instant"},
+        "listing_urls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}},
+        "listing_complete": {"type": "boolean", "description": "True only when every page and every tile of every listing was read."},
+        "robots_checked": {"type": "boolean"},
+        "blocked": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["url", "reason"],
+            "properties": {
+              "url": {"type": "string", "format": "uri"},
+              "reason": {"enum": ["robots_disallow", "http_error", "timeout", "login_required", "captcha", "app_only", "not_found"]}
+            }
+          }
+        }
+      }
+    },
+    "fetches": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["url", "final_url", "status", "fetched_at", "kind"],
+        "properties": {
+          "url": {"type": "string", "format": "uri"},
+          "final_url": {"type": "string", "format": "uri"},
+          "status": {"type": "integer"},
+          "fetched_at": {"$ref": "#/$defs/instant"},
+          "kind": {"enum": ["issuer_promotion_listing", "issuer_promotion_page", "issuer_terms_document", "network_offer_page", "merchant_page"]}
+        }
+      }
+    },
+    "offers": {"type": "array", "items": {"$ref": "#/$defs/offer"}}
+  },
+  "$defs": {
+    "instant": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}[+-]\\d{2}:\\d{2}$"},
+    "date": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+    "quote": {"type": "string", "minLength": 1, "description": "Short exact text copied from the official page or terms. Private. Never published."},
+    "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+    "period": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["start", "end"],
+      "properties": {"start": {"anyOf": [{"$ref": "#/$defs/date"}, {"type": "null"}]}, "end": {"anyOf": [{"$ref": "#/$defs/date"}, {"type": "null"}]}}
+    },
+    "offer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_url", "source_key", "source_key_basis", "title", "merchant", "category", "benefit", "dates", "min_spend", "limits", "eligibility", "terms", "redeem", "flags"],
+      "properties": {
+        "source_url": {"type": "string", "format": "uri", "description": "The official page that shows the offer. No fragment."},
+        "source_key": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 60, "description": "Tells this offer apart from other offers on the same page. It must not come from the offer title."},
+        "source_key_basis": {"enum": ["single_offer_page", "page_anchor", "deal_code", "terms_file_name", "merchant_name"]},
+        "title": {"type": "string", "minLength": 1, "maxLength": 160},
+        "merchant": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "name", "names", "outlet", "name_source", "name_quote", "name_checked", "official_domain"],
+          "properties": {
+            "kind": {"enum": ["single", "multiple", "category", "issuer_own", "unknown"]},
+            "name": {"type": ["string", "null"]},
+            "names": {"type": "array", "items": {"type": "string", "minLength": 1}},
+            "outlet": {"type": ["string", "null"]},
+            "name_source": {"enum": ["page_heading", "listing_tile", "terms_document", "logo_alt_text", "merchant_page", null]},
+            "name_quote": {"anyOf": [{"$ref": "#/$defs/quote"}, {"type": "null"}]},
+            "name_checked": {"type": "boolean", "description": "True when the crawler confirms that a name with offer-like words (for example Free Fire) is the real trading name."},
+            "official_domain": {"type": ["string", "null"], "pattern": "^[a-z0-9.-]+\\.[a-z]{2,}$", "description": "Set only when the official page links to the merchant's own site."}
+          }
+        },
+        "category": {"enum": ["automotive", "balance_transfer", "beauty", "cafe", "dining", "education", "electronics", "entertainment", "ev_charging", "ewallet", "fashion", "groceries", "health", "hotel", "instalment", "insurance", "online", "other", "petrol", "shopping", "sign_up", "spend_campaign", "travel", "utilities"]},
+        "benefit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "value", "unit", "up_to", "value_text", "quote"],
+          "properties": {
+            "type": {"enum": ["discount_pct", "freebie", "amount_off", "other", "special_deal", "amount_cashback", "cashback_pct", "cashback", "lucky_draw", "instalment_0pct", "points_miles", "amount_voucher"]},
+            "value": {"type": ["number", "null"]},
+            "unit": {"enum": ["percent", "currency", "points", "multiplier", null]},
+            "up_to": {"type": "boolean"},
+            "value_text": {"type": ["string", "null"], "maxLength": 40},
+            "quote": {"anyOf": [{"$ref": "#/$defs/quote"}, {"type": "null"}]}
+          }
+        },
+        "dates": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["start_date", "end_date", "end_date_null_reason", "quote", "source_url", "booking_period", "usage_period", "valid_days"],
+          "properties": {
+            "start_date": {"anyOf": [{"$ref": "#/$defs/date"}, {"type": "null"}]},
+            "end_date": {"anyOf": [{"$ref": "#/$defs/date"}, {"type": "null"}]},
+            "end_date_null_reason": {"enum": ["not_stated", null]},
+            "quote": {"anyOf": [{"$ref": "#/$defs/quote"}, {"type": "null"}]},
+            "source_url": {"type": ["string", "null"], "format": "uri"},
+            "booking_period": {"$ref": "#/$defs/period"},
+            "usage_period": {"$ref": "#/$defs/period"},
+            "valid_days": {"type": ["array", "null"], "uniqueItems": true, "items": {"enum": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]}}
+          }
+        },
+        "min_spend": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["amount", "currency", "quote"],
+          "properties": {"amount": {"type": "number"}, "currency": {"$ref": "#/$defs/currency"}, "quote": {"$ref": "#/$defs/quote"}}
+        },
+        "limits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "amount", "currency", "per", "scope", "weekdays", "quote"],
+            "properties": {
+              "kind": {"enum": ["reward_cap", "qualifying_spend_cap", "redemption_limit", "pool_limit", "per_transaction_limit"]},
+              "amount": {"type": "number"},
+              "currency": {"anyOf": [{"$ref": "#/$defs/currency"}, {"type": "null"}]},
+              "per": {"type": "array", "uniqueItems": true, "items": {"enum": ["transaction", "booking", "day", "week", "month", "quarter", "year", "campaign", "customer", "card", "visit", "table"]}},
+              "scope": {"enum": ["hotel", "online", "category", null]},
+              "weekdays": {"type": ["array", "null"], "items": {"enum": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]}},
+              "quote": {"$ref": "#/$defs/quote"}
+            }
+          }
+        },
+        "eligibility": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["scope", "confidence", "network_ids", "card_names", "card_types", "tiers", "quote"],
+          "properties": {
+            "scope": {"enum": ["card", "issuer", "issuer_network"]},
+            "confidence": {"enum": ["stated", "inferred"]},
+            "network_ids": {"type": "array", "uniqueItems": true, "items": {"enum": ["visa", "mastercard", "amex", "unionpay", "jcb", "diners"]}},
+            "card_names": {"type": "array", "items": {"type": "string", "minLength": 1}},
+            "card_types": {"type": "array", "uniqueItems": true, "items": {"enum": ["credit", "charge", "debit", "prepaid"]}},
+            "tiers": {"type": "array", "items": {"type": "string"}},
+            "quote": {"anyOf": [{"$ref": "#/$defs/quote"}, {"type": "null"}]}
+          }
+        },
+        "terms": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["url", "scope", "sha256", "fetched_at", "null_reason"],
+          "properties": {
+            "url": {"type": ["string", "null"], "format": "uri"},
+            "scope": {"enum": ["deal_document", "deal_page_section", "listing_popup", null]},
+            "sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$", "description": "sha256 of the full terms text, lower case, white space collapsed to one space."},
+            "fetched_at": {"anyOf": [{"$ref": "#/$defs/instant"}, {"type": "null"}]},
+            "null_reason": {"enum": ["no_deal_specific_terms_link_on_page", null]}
+          }
+        },
+        "redeem": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["countries", "basis"],
+          "properties": {
+            "countries": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^([A-Z]{2}|\\*)$"}},
+            "basis": {"enum": ["no_foreign_signal", "stated_merchant_country", "place_name", "foreign_currency", "mixed"]}
+          }
+        },
+        "flags": {"type": "array", "uniqueItems": true, "items": {"enum": ["date_conflict", "end_date_past_horizon", "amount_unclear", "merchant_not_stated", "eligibility_unclear", "page_changed_during_crawl"]}}
+      }
+    }
+  }
+}

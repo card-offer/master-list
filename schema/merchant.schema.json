@@ -4,14 +4,58 @@
   "title": "Merchant",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "name", "aliases", "countries", "categories", "official_domain", "offer_ids"],
+  "required": [
+    "id",
+    "name",
+    "aliases",
+    "countries",
+    "categories",
+    "official_domain",
+    "offer_ids",
+    "verified"
+  ],
   "properties": {
-    "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
-    "name": {"type": "string"},
-    "aliases": {"type": "array", "items": {"type": "string"}},
-    "countries": {"type": "array", "items": {"type": "string", "pattern": "^[A-Z]{2}$"}},
-    "categories": {"type": "array", "items": {"type": "string"}},
-    "official_domain": {"type": ["string", "null"]},
-    "offer_ids": {"type": "array", "items": {"type": "string"}}
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "name": {
+      "type": "string"
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "countries": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]{2}$"
+      }
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "official_domain": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "offer_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "verified": {
+      "type": "boolean",
+      "description": "True when the brand has an official domain or at least merchant_min_offers offers. False: one offer and no domain, treat the name with care."
+    }
   }
 }
