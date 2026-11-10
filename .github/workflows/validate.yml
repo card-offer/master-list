@@ -4,6 +4,10 @@ on:
   pull_request:
   push:
     branches: [main]
+    # Tag push lets CI record the validate check on a commit before a branch
+    # ref is allowed to point at it.
+    tags:
+      - 'schema-0-3-*'
 
 permissions:
   contents: read
