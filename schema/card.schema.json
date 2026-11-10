@@ -113,7 +113,7 @@
                 "properties": {
                   "amount": {"type": "number"},
                   "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
-                  "per": {"enum": ["transaction", "booking", "day", "month", "campaign", "customer", "card", "visit", "table", "year", null]}
+                  "per": {"enum": ["transaction", "booking", "day", "week", "month", "quarter", "year", "campaign", "customer", "card", "visit", "table", null]}
                 }
               },
               "min_spend_null_reason": {"enum": ["not_a_currency_amount", null]},
@@ -124,7 +124,7 @@
                 "properties": {
                   "amount": {"type": "number"},
                   "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
-                  "per": {"enum": ["transaction", "booking", "day", "month", "campaign", "customer", "card", "visit", "table", "year", null]}
+                  "per": {"enum": ["transaction", "booking", "day", "week", "month", "quarter", "year", "campaign", "customer", "card", "visit", "table", null]}
                 }
               },
               "cap_null_reason": {
@@ -133,6 +133,7 @@
                   "not_a_reward_cap",
                   "more_than_one_currency_amount",
                   "campaign_budget_is_not_a_cardholder_limit",
+                  "not_a_cap",
                   null
                 ]
               },
@@ -142,7 +143,7 @@
                 "items": {
                   "type": "object",
                   "additionalProperties": false,
-                  "required": ["kind", "amount", "currency", "per", "scope"],
+                  "required": ["kind", "amount", "currency", "per", "scope", "weekdays"],
                   "properties": {
                     "kind": {
                       "enum": [
@@ -156,9 +157,16 @@
                     "amount": {"type": "number"},
                     "currency": {"type": ["string", "null"], "pattern": "^[A-Z]{3}$"},
                     "per": {
-                      "enum": ["transaction", "booking", "day", "month", "campaign", "customer", "card", "visit", "table", "year", null]
+                      "type": "array",
+                      "items": {
+                        "enum": ["transaction", "booking", "day", "week", "month", "quarter", "year", "campaign", "customer", "card", "visit", "table"]
+                      }
                     },
-                    "scope": {"type": ["string", "null"]}
+                    "scope": {"enum": ["hotel", "online", "category", null]},
+                    "weekdays": {
+                      "type": ["array", "null"],
+                      "items": {"enum": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]}
+                    }
                   }
                 }
               },

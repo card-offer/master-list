@@ -12,7 +12,7 @@ sys.path.insert(0, str(ROOT))
 
 from pipeline.lib.calendar import add_months
 from pipeline.lib.rules import load_rules
-from pipeline.lib.transform import apply_date_policy, cap_view, cross_border, limits_from_text, parse_limits, placement
+from pipeline.lib.transform import apply_date_policy, cap_view, cross_border, limits_from_text, parse_limits, parse_money, placement
 from tools.validate import check_constant_checked_at, check_horizon
 
 
@@ -41,7 +41,7 @@ class RulesTests(unittest.TestCase):
         hong_kong = parse_limits("maximum discount at HK$240 in a single transaction", "SGD")[0]
         self.assertEqual(hong_kong[0]["currency"], "HKD")
         self.assertEqual(hong_kong[0]["kind"], "per_transaction_limit")
-        self.assertEqual(hong_kong[0]["per"], "transaction")
+        self.assertEqual(hong_kong[0]["per"], ["transaction"])
         united = parse_limits("maximum discount value is US$100", "SGD")[0]
         self.assertEqual(united[0]["currency"], "USD")
         bare = parse_limits("capped at $20 per month", "SGD")[0]
@@ -53,8 +53,8 @@ class RulesTests(unittest.TestCase):
             "MYR",
         )
         amounts = {item["amount"]: item["per"] for item in limits}
-        self.assertEqual(amounts[80], "month")
-        self.assertEqual(amounts[240], "campaign")
+        self.assertEqual(amounts[80], ["month"])
+        self.assertEqual(amounts[240], ["campaign"])
         hotel, _reason = parse_limits(
             "capped at RM100 with a minimum spend of RM600. Hotels: 8% off (capped at RM50)",
             "MYR",
@@ -72,7 +72,7 @@ class RulesTests(unittest.TestCase):
     def test_spend_cap_is_not_a_reward_cap(self):
         limits, _reason = parse_limits("capped at S$1,000 spend on online spend per calendar month", "SGD")
         self.assertEqual(limits[0]["kind"], "qualifying_spend_cap")
-        self.assertEqual(limits[0]["per"], "month")
+        self.assertEqual(limits[0]["per"], ["month"])
         cap, reason = cap_view(limits, None)
         self.assertIsNone(cap)
         self.assertEqual(reason, "not_a_reward_cap")
@@ -89,6 +89,68 @@ class RulesTests(unittest.TestCase):
         source = (ROOT / "pipeline" / "lib" / "transform.py").read_text(encoding="utf-8")
         self.assertNotIn(" - 80", source)
         self.assertNotIn("{0,4}", source)
+        self.assertNotIn("// 2", source)
+        self.assertIsInstance(rules["minimum_phrase_chars"], int)
+
+    def test_plain_amounts_are_not_cut_at_three_digits(self):
+        spend = parse_money("minimum spend of RM5000", "MYR")
+        self.assertEqual(spend["amount"], 5000)
+        limits, _reason = parse_limits("capped at RM1000", "MYR")
+        self.assertEqual(limits[0]["amount"], 1000)
+
+    def test_period_labels_are_not_campaign_periods(self):
+        limits, _reason = parse_limits("capped at S$100 Promotion Period: Every Tuesday, from 6 Jan 2026", "SGD")
+        self.assertNotIn("campaign", limits[0]["per"])
+        self.assertEqual(limits[0]["weekdays"], ["tue"])
+        labelled, _reason = parse_limits("capped at RM150 Offer period: 1 November 2026 to 30 November 2026", "MYR")
+        self.assertNotIn("campaign", labelled[0]["per"])
+
+    def test_table_bill_is_a_redemption_and_quarter_is_kept(self):
+        limits, _reason = parse_limits("Limited to 1 redemption per table per bill", "SGD")
+        self.assertEqual(limits[0]["kind"], "redemption_limit")
+        self.assertIn("table", limits[0]["per"])
+        quarter, _reason = parse_limits("capped at 2 redemptions per calendar quarter", "SGD")
+        self.assertEqual(quarter[0]["kind"], "pool_limit")
+        self.assertEqual(quarter[0]["per"], ["quarter"])
+        pool, _reason = parse_limits("Capped at 880 redemptions per month Limited to one (1) redemption per user per month", "SGD")
+        kinds = {(item["kind"], item["amount"]) for item in pool}
+        self.assertIn(("pool_limit", 880), kinds)
+
+    def test_charges_and_balance_transfers_are_not_caps(self):
+        limits, reason = parse_limits("up to a maximum of RM100 shall be imposed to the card", "MYR")
+        self.assertEqual(limits, [])
+        self.assertEqual(reason, "not_a_cap")
+        discount, reason = parse_limits("capped at 50 redemptions) Promo code: X RM210 off with a min", "MYR")
+        self.assertFalse(any(item["amount"] == 210 for item in discount))
+        facility, reason = parse_limits("up to a maximum of RM30000 subject to 80% of available credit", "MYR")
+        self.assertEqual(facility, [])
+
+    def test_large_payout_and_winners_pool(self):
+        payout, reason = parse_limits(
+            "maximum Cash Back payment of RM30000 each Campaign month during the Campaign Period",
+            "MYR",
+        )
+        self.assertEqual(payout, [])
+        self.assertEqual(reason, "campaign_budget_is_not_a_cardholder_limit")
+        small, _reason = parse_limits(
+            "capped at RM50 per month per Eligible Cardmember, on a first-come, first-served basis",
+            "MYR",
+        )
+        self.assertEqual(small[0]["kind"], "reward_cap")
+        winners, _reason = parse_limits(
+            "capped at RM70 per Eligible Participant and limited to a maximum of 200 winners per Campaign Month",
+            "MYR",
+        )
+        pool = [item for item in winners if item["amount"] == 200]
+        self.assertEqual(pool[0]["kind"], "pool_limit")
+        self.assertIn("month", pool[0]["per"])
+        bonus, _reason = parse_limits(
+            "capped at S$2,000 eligible retail spend (i.e. maximum monthly Bonus Cash Back is S$8)",
+            "SGD",
+        )
+        kinds = {(item["kind"], item["amount"]) for item in bonus}
+        self.assertIn(("qualifying_spend_cap", 2000), kinds)
+        self.assertIn(("reward_cap", 8), kinds)
 
     def test_fee_waiver_date_is_not_kept(self):
         offer = {
@@ -250,6 +312,12 @@ class PublishedTests(unittest.TestCase):
         dbs = offers["sg-dbs-05312cf75e"]
         self.assertEqual(dbs["limits"][0]["kind"], "qualifying_spend_cap")
         self.assertIsNone(dbs["cap"])
+        self.assertEqual(offers["my-hsbc-b1fc0473a7"]["min_spend"]["amount"], 5000)
+        self.assertEqual(offers["my-standard-chartered-74ca506a6d"]["limits"][0]["amount"], 1000)
+        for offer_id in ("sg-dbs-157c8ce3e1", "sg-posb-64e190b407"):
+            self.assertEqual(offers[offer_id]["limits"][0]["weekdays"], ["tue"])
+            self.assertNotIn("campaign", offers[offer_id]["limits"][0]["per"])
+        self.assertNotIn("campaign", offers["my-uob-ad87b6b148"]["limits"][0]["per"])
 
     def test_card_cashback_caps_keep_the_stated_period(self):
         missing = []
@@ -263,7 +331,7 @@ class PublishedTests(unittest.TestCase):
                             continue
                         for item in details["limits"]:
                             if item["kind"] == "qualifying_spend_cap":
-                                self.assertEqual(item["per"], "month", card["id"])
+                                self.assertIn("month", item["per"], card["id"])
                                 continue
                             if item.get("scope") == "category":
                                 continue

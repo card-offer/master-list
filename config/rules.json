@@ -9,7 +9,20 @@
   "default_period_months": 36,
   "description_max_chars": 400,
   "amount_context_chars": 80,
+  "minimum_phrase_chars": 40,
   "per_context_words": 4,
+  "campaign_payout_min_amount": 10000,
+  "not_a_cap_patterns": [
+    "shall be imposed",
+    "(?<=\\d)\\s+off\\b",
+    "subject to\\s+\\d+%"
+  ],
+  "campaign_payout_phrases": [
+    "first-come, first-served",
+    "first come, first served",
+    "first-come-first-served",
+    "cash back payment"
+  ],
   "listing_popup_issuers": ["sg-ocbc"],
   "currency_symbols": [
     {"symbol": "HK$", "currency": "HKD"},

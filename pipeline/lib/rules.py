@@ -13,13 +13,17 @@ INT_KEYS = (
     "default_period_months",
     "description_max_chars",
     "amount_context_chars",
+    "minimum_phrase_chars",
     "per_context_words",
+    "campaign_payout_min_amount",
 )
 OTHER_KEYS = (
     "listing_end_date_ceiling",
     "listing_popup_issuers",
     "description_clause_patterns",
     "currency_symbols",
+    "not_a_cap_patterns",
+    "campaign_payout_phrases",
 )
 
 
@@ -52,6 +56,9 @@ def load_rules():
     for row in data["currency_symbols"]:
         if not isinstance(row, dict) or not row.get("symbol") or not row.get("currency"):
             raise SystemExit("config/rules.json currency_symbols entries need symbol and currency")
+    for key in ("not_a_cap_patterns", "campaign_payout_phrases"):
+        if not isinstance(data[key], list):
+            raise SystemExit(f"config/rules.json {key} must be a list")
     return data
 
 

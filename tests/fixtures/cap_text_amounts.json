@@ -31,13 +31,8 @@
   },
   {
     "id": "my-affin-7f9cb95260",
-    "reason": false,
-    "amounts": [
-      {
-        "amount": 100,
-        "currency": "MYR"
-      }
-    ]
+    "reason": true,
+    "amounts": []
   },
   {
     "id": "my-affin-afa3ef5567",
@@ -51,13 +46,8 @@
   },
   {
     "id": "my-affin-b62f86e211",
-    "reason": false,
-    "amounts": [
-      {
-        "amount": 100,
-        "currency": "MYR"
-      }
-    ]
+    "reason": true,
+    "amounts": []
   },
   {
     "id": "my-affin-cf08d15e9e",
@@ -71,13 +61,8 @@
   },
   {
     "id": "my-affin-f2cb9efedd",
-    "reason": false,
-    "amounts": [
-      {
-        "amount": 50000,
-        "currency": "MYR"
-      }
-    ]
+    "reason": true,
+    "amounts": []
   },
   {
     "id": "my-ambank-313b2a1276",
@@ -134,6 +119,10 @@
     "reason": false,
     "amounts": [
       {
+        "amount": 200,
+        "currency": null
+      },
+      {
         "amount": 70,
         "currency": "MYR"
       }
@@ -164,12 +153,12 @@
     "reason": false,
     "amounts": [
       {
-        "amount": 10,
-        "currency": "MYR"
-      },
-      {
         "amount": 16000,
         "currency": null
+      },
+      {
+        "amount": 10,
+        "currency": "MYR"
       }
     ]
   },
@@ -178,11 +167,11 @@
     "reason": false,
     "amounts": [
       {
-        "amount": 100,
+        "amount": 50,
         "currency": "MYR"
       },
       {
-        "amount": 50,
+        "amount": 100,
         "currency": "MYR"
       }
     ]
@@ -194,24 +183,19 @@
   },
   {
     "id": "my-hsbc-6d0da1f9d3",
-    "reason": false,
-    "amounts": [
-      {
-        "amount": 50000,
-        "currency": "MYR"
-      }
-    ]
+    "reason": true,
+    "amounts": []
   },
   {
     "id": "my-hsbc-cfc584cbaa",
     "reason": false,
     "amounts": [
       {
-        "amount": 100,
+        "amount": 50,
         "currency": "MYR"
       },
       {
-        "amount": 50,
+        "amount": 100,
         "currency": "MYR"
       }
     ]
@@ -282,23 +266,13 @@
   },
   {
     "id": "my-public-bank-7af6f3d31b",
-    "reason": false,
-    "amounts": [
-      {
-        "amount": 30000,
-        "currency": "MYR"
-      }
-    ]
+    "reason": true,
+    "amounts": []
   },
   {
     "id": "my-public-bank-833d027e66",
-    "reason": false,
-    "amounts": [
-      {
-        "amount": 98200,
-        "currency": "MYR"
-      }
-    ]
+    "reason": true,
+    "amounts": []
   },
   {
     "id": "my-public-bank-8b5dc8d9dd",
@@ -312,17 +286,8 @@
   },
   {
     "id": "my-public-bank-96ec831c91",
-    "reason": false,
-    "amounts": [
-      {
-        "amount": 10000,
-        "currency": "MYR"
-      },
-      {
-        "amount": 120000,
-        "currency": "MYR"
-      }
-    ]
+    "reason": true,
+    "amounts": []
   },
   {
     "id": "my-public-bank-b2c07b7189",
@@ -346,24 +311,19 @@
   },
   {
     "id": "my-rhb-31438f290b",
-    "reason": false,
-    "amounts": [
-      {
-        "amount": 30000,
-        "currency": "MYR"
-      }
-    ]
+    "reason": true,
+    "amounts": []
   },
   {
     "id": "my-rhb-40f727428c",
     "reason": false,
     "amounts": [
       {
-        "amount": 1,
+        "amount": 2000,
         "currency": null
       },
       {
-        "amount": 2000,
+        "amount": 1,
         "currency": null
       }
     ]
@@ -433,7 +393,7 @@
     "reason": false,
     "amounts": [
       {
-        "amount": 100,
+        "amount": 1000,
         "currency": "MYR"
       }
     ]
@@ -493,10 +453,6 @@
     "reason": false,
     "amounts": [
       {
-        "amount": 210,
-        "currency": "MYR"
-      },
-      {
         "amount": 50,
         "currency": null
       }
@@ -547,11 +503,11 @@
     "reason": false,
     "amounts": [
       {
-        "amount": 100,
+        "amount": 20,
         "currency": "SGD"
       },
       {
-        "amount": 20,
+        "amount": 100,
         "currency": "SGD"
       }
     ]
@@ -561,11 +517,11 @@
     "reason": false,
     "amounts": [
       {
-        "amount": 100,
+        "amount": 20,
         "currency": "SGD"
       },
       {
-        "amount": 20,
+        "amount": 100,
         "currency": "SGD"
       }
     ]
@@ -1588,10 +1544,6 @@
     "id": "sg-ocbc-f815f3f300",
     "reason": false,
     "amounts": [
-      {
-        "amount": 50,
-        "currency": "SGD"
-      },
       {
         "amount": 50,
         "currency": "SGD"
