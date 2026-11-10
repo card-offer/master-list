@@ -242,11 +242,84 @@ def check(obs, root, now=None):
     for url, group in per_url.items():
         if len(group) > 1 and any(offer["source_key_basis"] == "single_offer_page" for offer in group):
             errors.append(f"{url}: source_key_basis single_offer_page is used, but the page has {len(group)} offers")
+    network_words = {"visa": ["visa"], "mastercard": ["mastercard", "master card"], "amex": ["american express", "amex"],
+                     "unionpay": ["unionpay", "union pay"], "jcb": ["jcb"], "diners": ["diners"]}
+    seen_cards = set()
+    for index, card in enumerate(obs.get("cards") or []):
+        where = f"card[{index}] {card['name']}"
+        page = card["official_url"]
+        if "#" in page:
+            errors.append(f"{where}: official_url must not have a fragment")
+        need_fetch(where, page)
+        key = name_key(card["name"], mrules)
+        if key in seen_cards:
+            errors.append(f"{where}: the same card name appears twice")
+        seen_cards.add(key)
+        quote_ok(where + " name", card["name_quote"])
+        if not quote_has_name(card["name_quote"], card["name"]):
+            errors.append(f"{where}: card name is not inside name_quote. Copy the name as the page heading writes it.")
+        if key == name_key(issuer["name"], mrules):
+            errors.append(f"{where}: card name is only the issuer name")
+        if card["networks"]:
+            proof = ((card["network_quote"] or "") + " " + card["name"]).lower()
+            if not card["network_quote"]:
+                errors.append(f"{where}: networks need network_quote")
+            quote_ok(where + " network", card["network_quote"])
+            for network in card["networks"]:
+                if not any(word in proof for word in network_words[network]):
+                    errors.append(f"{where}: network {network} is not inside network_quote or the card name")
+            if "network_not_stated" in card["flags"]:
+                errors.append(f"{where}: flag network_not_stated is set but networks are given")
+        elif "network_not_stated" not in card["flags"]:
+            errors.append(f"{where}: no network. Read the page, the card image alt text and the product disclosure sheet. If none states it, set the flag network_not_stated.")
+        fee = card["annual_fee"]
+        if fee:
+            quote_ok(where + " annual_fee", fee["quote"])
+            for label in ("amount", "supplementary_amount"):
+                value = fee[label]
+                if value not in (None, 0) and not number_in(fee["quote"], value):
+                    errors.append(f"{where}: annual_fee {label} {value} is not inside its quote")
+            for number, waiver in enumerate(fee["waivers"]):
+                quote_ok(f"{where} waivers[{number}]", waiver["quote"])
+                if waiver["min_spend"] is not None and not number_in(waiver["quote"], waiver["min_spend"]):
+                    errors.append(f"{where}: waivers[{number}] min_spend is not inside its quote")
+                if waiver["min_transactions"] is not None and not number_in(waiver["quote"], waiver["min_transactions"]):
+                    errors.append(f"{where}: waivers[{number}] min_transactions is not inside its quote")
+            kinds_seen = [waiver["kind"] for waiver in fee["waivers"]]
+            if len(kinds_seen) != len(set(kinds_seen)):
+                errors.append(f"{where}: two waivers have the same kind. Give one waiver for each kind.")
+            if "lifetime" in kinds_seen and len(kinds_seen) > 1:
+                errors.append(f"{where}: a lifetime waiver cannot stand with other waivers. Read the page again or set the flag fee_unclear.")
+        income = card["min_income"]
+        if income:
+            quote_ok(where + " min_income", income["quote"])
+            if not number_in(income["quote"], income["amount"]):
+                errors.append(f"{where}: min_income amount {income['amount']} is not inside its quote")
+        for number, rate in enumerate(card["earn_rates"]):
+            quote_ok(f"{where} earn_rates[{number}]", rate["quote"])
+            if not number_in(rate["quote"], rate["rate"]):
+                errors.append(f"{where}: earn_rates[{number}] rate {rate['rate']} is not inside its quote")
+        for number, benefit in enumerate(card["benefits"]):
+            quote_ok(f"{where} benefits[{number}]", benefit["quote"])
+            lounge = benefit["lounge"]
+            if lounge and benefit["type"] != "lounge_access":
+                errors.append(f"{where}: benefits[{number}] has lounge details but type is {benefit['type']}")
+            if lounge:
+                quote_ok(f"{where} benefits[{number}] guest", lounge["guest_policy_quote"])
+                if lounge["visits"] is not None and lounge["unlimited"]:
+                    errors.append(f"{where}: benefits[{number}] gives a visit count and unlimited. Use one entry for each lounge rule.")
+                if lounge["visits"] is not None and not number_in(benefit["quote"], lounge["visits"]):
+                    errors.append(f"{where}: benefits[{number}] lounge visits {lounge['visits']} is not inside its quote")
+                if lounge["unlimited"] and "unlimited" not in benefit["quote"].lower():
+                    errors.append(f"{where}: benefits[{number}] unlimited is not inside its quote")
+            for position, limit in enumerate(benefit["limits"]):
+                if not number_in(limit["quote"], limit["amount"]):
+                    errors.append(f"{where}: benefits[{number}] limits[{position}] amount is not inside its quote")
     total = len(obs["offers"])
     unknown = kinds.get("unknown", 0)
     if total >= 20 and unknown * 100 > mrules["unknown_merchant_max_pct"] * total:
         errors.append(f"run: {unknown} of {total} offers have merchant kind unknown. The limit is {mrules['unknown_merchant_max_pct']} percent. Read the listing tiles and terms again.")
-    stats = {"offers": total, "merchant_kinds": kinds, "errors": len(errors), "warnings": len(warnings)}
+    stats = {"cards": len(obs.get("cards") or []), "offers": total, "merchant_kinds": kinds, "errors": len(errors), "warnings": len(warnings)}
     return errors, warnings, stats
 
 

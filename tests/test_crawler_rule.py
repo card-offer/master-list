@@ -51,13 +51,43 @@ def offer(**changes):
     return row
 
 
+CARD_PAGE = "https://www.cimb.com.sg/en/personal/banking-with-us/cards/credit-cards/example-travel.html"
+
+
+def card(**changes):
+    row = {
+        "official_url": CARD_PAGE, "name": "CIMB Example Travel Card", "name_quote": "CIMB Example Travel Card",
+        "networks": ["mastercard"], "network_quote": "World Mastercard benefits", "tier": "world", "card_type": "credit",
+        "islamic": False, "status": "active",
+        "annual_fee": {"amount": 196.2, "supplementary_amount": None, "quote": "Annual fee: S$196.20, waived for the first year.",
+                       "waivers": [{"kind": "first_year", "min_spend": None, "min_transactions": None, "quote": "Annual fee: S$196.20, waived for the first year."}]},
+        "min_income": {"amount": 30000, "period": "year", "quote": "Minimum annual income of S$30,000"},
+        "earn_rates": [{"kind": "cashback_pct", "category": "overseas", "rate": 2, "up_to": False, "quote": "2% cashback on overseas spend"}],
+        "benefits": [
+            {"type": "lounge_access", "quote": "6 complimentary lounge visits each year", "limits": [],
+             "lounge": {"programmes": ["dragonpass"], "visits": 6, "unlimited": False, "guest_policy_quote": None, "supplementary_share_visits": None}},
+            {"type": "lounge_access", "quote": "Unlimited access to the Example Lounge", "limits": [],
+             "lounge": {"programmes": [], "visits": None, "unlimited": True, "guest_policy_quote": None, "supplementary_share_visits": None}},
+        ],
+        "flags": [],
+    }
+    for path, value in changes.items():
+        target = row
+        parts = path.split("__")
+        for part in parts[:-1]:
+            target = target[part]
+        target[parts[-1]] = value
+    return row
+
+
 def hand_in(offers):
     return {
         "contract": "observation/1",
         "run": {"run_id": "test-run-0001", "crawler": "test", "country": "SG", "issuer_id": "sg-cimb",
                 "started_at": "2026-11-12T01:00:00+08:00", "finished_at": "2026-11-12T02:00:00+08:00",
                 "listing_urls": [LIST], "listing_complete": False, "robots_checked": True, "blocked": []},
-        "fetches": [fetch(LIST, "issuer_promotion_listing", 1), fetch(PAGE, "issuer_promotion_page", 2), fetch(TERMS, "issuer_terms_document", 3)],
+        "fetches": [fetch(LIST, "issuer_promotion_listing", 1), fetch(PAGE, "issuer_promotion_page", 2), fetch(TERMS, "issuer_terms_document", 3),
+                    fetch(CARD_PAGE, "issuer_product_page", 4)],
         "offers": offers,
     }
 
@@ -124,7 +154,7 @@ class GateTests(unittest.TestCase):
 
     def test_host_must_be_official(self):
         row = hand_in([offer()])
-        row["fetches"].append(fetch("https://deals.example.com/cimb", "issuer_promotion_page", 4))
+        row["fetches"].append(fetch("https://deals.example.com/cimb", "issuer_promotion_page", 5))
         self.assertTrue(any("official_domains" in line for line in check(row, ROOT, now=NOW)[0]))
 
     def test_source_key_must_not_come_from_title(self):
@@ -142,6 +172,46 @@ class GateTests(unittest.TestCase):
         self.assertFalse(number_in("115%", 15))
         self.assertTrue(date_in("until 31 Dec 26", "2026-12-31"))
         self.assertFalse(date_in("effective from 1st May 2028", "2028-04-30"))
+
+
+class CardGateTests(unittest.TestCase):
+    def errors(self, row):
+        data = hand_in([])
+        data["cards"] = [row]
+        return check(data, ROOT, now=NOW)[0]
+
+    def assert_error(self, text, row):
+        errors = self.errors(row)
+        self.assertTrue(any(text in line for line in errors), errors)
+
+    def test_good_card_passes(self):
+        self.assertEqual(self.errors(card()), [])
+
+    def test_network_needs_proof(self):
+        self.assert_error("network visa is not inside", card(networks=["visa"]))
+
+    def test_no_network_needs_flag(self):
+        self.assert_error("set the flag network_not_stated", card(networks=[], network_quote=None))
+
+    def test_fee_and_income_and_rate_need_proof(self):
+        self.assert_error("annual_fee amount 200", card(annual_fee__amount=200))
+        self.assert_error("min_income amount 24000", card(min_income__amount=24000))
+        row = card()
+        row["earn_rates"][0]["rate"] = 5
+        self.assert_error("rate 5 is not inside", row)
+
+    def test_lifetime_waiver_stands_alone(self):
+        row = card()
+        row["annual_fee"]["waivers"].append({"kind": "lifetime", "min_spend": None, "min_transactions": None, "quote": "No annual fee for life"})
+        self.assert_error("lifetime waiver cannot stand with other waivers", row)
+
+    def test_lounge_count_and_unlimited_are_separate(self):
+        row = card()
+        row["benefits"][0]["lounge"]["unlimited"] = True
+        self.assert_error("gives a visit count and unlimited", row)
+
+    def test_card_name_must_be_in_quote(self):
+        self.assert_error("card name is not inside name_quote", card(name="CIMB Sample Card"))
 
 
 class MerchantNameTests(unittest.TestCase):
@@ -200,6 +270,33 @@ class IngestTests(unittest.TestCase):
         second = [row for row in self.items("sg", "offers", "cimb.json") if row["merchant_name"] == "Example Kopi"]
         self.assertEqual(report["page_and_merchant"], 1)
         self.assertEqual([row["id"] for row in second], [first["id"]])
+
+    def test_ingest_adds_a_card_and_an_offer_can_name_it(self):
+        data = hand_in([offer(eligibility__card_names=["CIMB Example Travel Card"], eligibility__quote="Valid for CIMB Example Travel Card.")])
+        data["cards"] = [card()]
+        report = ingest(data, root=self.tree, now=NOW)
+        self.assertEqual(report["cards"]["new"], 1)
+        cards = {row["id"]: row for row in self.items("sg", "cards", "cimb.json")}
+        new = cards["sg-cimb-example-travel-card"]
+        self.assertEqual((new["networks"], new["network_source"], new["status"]), (["mastercard"], "crawler_quote", "active"))
+        self.assertEqual(new["annual_fee"]["amount"], 196.2)
+        self.assertEqual(len(new["annual_fee"]["waiver_rules"]), 1)
+        self.assertEqual([b["details"]["visits_values"] for b in new["benefits"]], [[6], ["unlimited"]])
+        linked = [row for row in self.items("sg", "offers", "cimb.json") if row["merchant_name"] == "Example Kopi"][0]
+        self.assertEqual(linked["eligibility"]["card_ids"], ["sg-cimb-example-travel-card"])
+        self.assertEqual(report["unmatched_card_names"], [])
+        again = ingest(data, root=self.tree, now=NOW)
+        self.assertEqual((again["cards"]["new"], again["cards"]["kept"]), (0, 1))
+        errors, _warnings, _stats = validate(self.tree)
+        self.assertEqual(errors, [])
+
+    def test_card_with_no_network_goes_to_review(self):
+        data = hand_in([])
+        data["cards"] = [card(networks=[], network_quote=None, flags=["network_not_stated"])]
+        report = ingest(data, root=self.tree, now=NOW)
+        self.assertEqual(len(report["cards"]["needs_review"]), 1)
+        errors, _warnings, _stats = validate(self.tree)
+        self.assertEqual(errors, [])
 
     def test_bad_hand_in_changes_nothing(self):
         before = self.items("sg", "offers", "cimb.json")

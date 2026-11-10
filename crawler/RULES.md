@@ -113,20 +113,36 @@ Rules for all facts:
 4. Use the currency that the page writes. Do not convert.
 5. Do not use an em dash in a title.
 
-## 6. What the pipeline does with your file
+## 6. Cards
+
+Hand in the issuer's cards in the `cards` list of the same file. Do the cards before the offers, so each card name in an offer finds its card.
+
+1. `official_url` is the issuer's own product page for the card. Fetch kind is `issuer_product_page`.
+2. `name` is the product name as the page heading writes it. Copy the heading into `name_quote`.
+3. `networks`: the network must be in `network_quote` or in the card name. Look in this order: the card name, the page text, the alt text of the card image, the product disclosure sheet. If none states it, give an empty list and set the flag `network_not_stated`. Do not guess from the card design or from your memory.
+4. `annual_fee.amount` is the principal card fee for one year, as the page writes it. Use 0 only when the page says there is no annual fee. The amount must be in the quote.
+5. `waivers`: one entry for each kind. `lifetime` stands alone. If the page gives conflicting waiver sentences, set the flag `fee_unclear`.
+6. `min_income`: amount and period (`year` or `month`) as stated. Do not convert a month to a year.
+7. `earn_rates`: one entry for each stated rate. The rate must be in its quote.
+8. `benefits`: one entry for each stated benefit, with the one sentence that states it. Do not merge two sentences. For lounge access, give one entry for each rule: "6 visits each year" and "unlimited access to lounge X" are two entries.
+9. If one page describes two or more cards and you cannot tell which benefit belongs to which card, set the flag `shared_product_page`.
+10. Card texts are published. Keep each quote to the one sentence that states the fact.
+
+## 7. What the pipeline does with your file
 
 - It keeps the published ID when the page and key are the same, or when the page and the merchant are the same. A new title does not make a new ID.
 - It links each `single` merchant to one global record in `merchants/registry.json`. `Shopee Singapore`, `SHOPEE` and `Shopee Pte Ltd` become one brand. A brand with one offer and no official domain is published with `verified: false`.
+- It keeps a card ID when the card name is the same. A card with no network goes to review.
 - It maps `card_names` to card IDs. A name that is not in the card list sends the offer to review. Report these names. Do not change them to fit.
 - It sets `first_seen`, `last_seen`, `status` and `review_by`.
 - After a complete listing run, an offer that was not seen for 14 days becomes `withdrawn`.
 - Expired offers move to the archive.
 
-## 7. Report after each run
+## 8. Report after each run
 
 Give these numbers and nothing else, unless something failed:
 
-1. Offers handed in, and the count for each merchant kind.
+1. Cards and offers handed in, and the count for each merchant kind.
 2. New, kept and withdrawn offers from the ingest report.
 3. Offers in `needs_review`, with the reason.
 4. Card names that were not matched.
