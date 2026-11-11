@@ -318,6 +318,19 @@ def validate(root, index_dir=None):
                 errors.append(f"{offer['id']}: unknown card id {card_id}")
         if offer.get("merchant_id") and offer["merchant_id"] not in merchant_by:
             errors.append(f"{offer['id']}: unknown merchant id {offer['merchant_id']}")
+        ids = offer.get("merchant_ids") or []
+        kind = offer.get("merchant_kind")
+        if kind == "single" and ids != [offer.get("merchant_id")]:
+            errors.append(f"{offer['id']}: merchant_ids must hold the one merchant_id when merchant_kind is single")
+        if kind == "multiple" and len(ids) < 2:
+            errors.append(f"{offer['id']}: merchant_kind multiple needs two or more merchant_ids")
+        if kind in {"category", "issuer_own", "unknown"} and ids:
+            errors.append(f"{offer['id']}: merchant_ids must be empty when merchant_kind is {kind}")
+        for merchant_id in ids:
+            if merchant_id not in merchant_by:
+                errors.append(f"{offer['id']}: unknown merchant id {merchant_id}")
+            elif offer["id"] not in merchant_by[merchant_id].get("offer_ids") or []:
+                errors.append(f"{offer['id']}: merchant {merchant_id} does not list this offer")
         if offer.get("merchant_kind") == "single" and offer.get("merchant_id") in merchant_by:
             brand = merchant_by[offer["merchant_id"]]
             keys = {name_key(text, merchant_rules) for text in [brand["name"]] + list(brand.get("aliases") or [])}

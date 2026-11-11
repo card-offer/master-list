@@ -137,14 +137,14 @@ def build(root, generated_at=None):
         add(pack["by_category"], offer["category"], "offer_ids", offer["id"])
         add(pack["by_country"], country, "offer_ids", offer["id"])
         add(pack["by_benefit_type"], offer["benefit"]["type"], "offer_ids", offer["id"])
-        if offer.get("merchant_id"):
-            add(pack["by_merchant"], offer["merchant_id"], "offer_ids", offer["id"])
+        for merchant_id in offer.get("merchant_ids") or []:
+            add(pack["by_merchant"], merchant_id, "offer_ids", offer["id"])
             for card_id in resolved_of[offer["id"]]:
-                add(pack["by_merchant"], offer["merchant_id"], "card_ids", card_id)
+                add(pack["by_merchant"], merchant_id, "card_ids", card_id)
         for card_id in resolved_of[offer["id"]]:
             add(pack["by_card"], card_id, "offer_ids", offer["id"])
-            if offer.get("merchant_id"):
-                add(pack["by_card"], card_id, "merchant_ids", offer["merchant_id"])
+            for merchant_id in offer.get("merchant_ids") or []:
+                add(pack["by_card"], card_id, "merchant_ids", merchant_id)
         networks = set(offer["eligibility"].get("network_ids") or [])
         for card_id in resolved_of[offer["id"]]:
             networks.update(cards_by_id[card_id].get("networks") or [])
