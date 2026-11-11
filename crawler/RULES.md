@@ -1,6 +1,6 @@
 # Crawler rule for Grok Bot
 
-Version 1. Contract: `observation/1`. Schema: `schema/observation.schema.json`.
+Version 2. Contract: `observation/1`. Schema: `schema/observation.schema.json`.
 
 You crawl. The pipeline publishes. You do not write the public files, you do not make IDs, and you do not edit the merchant registry. You give one hand-in file for each issuer and each run. The gate checks it. The ingest step publishes it.
 
@@ -129,7 +129,17 @@ Hand in the issuer's cards in the `cards` list of the same file. Do the cards be
 9. If one page describes two or more cards and you cannot tell which benefit belongs to which card, set the flag `shared_product_page`.
 10. Card texts are published. Keep each quote to the one sentence that states the fact.
 
-## 7. What the pipeline does with your file
+## 7. Network runs and other languages
+
+`crawler/COMPLETE_INSTRUCTION.md` has the steps. The rules for the facts are:
+
+1. A run of a card network's own offer site has `run.network_id` and no `run.issuer_id`. It has no `cards` list. Eligibility is scope `network`, with `network_ids` equal to the network of the run.
+2. Card tiers that the page names go in `tiers`. Issuers that the page names go in `issuer_names`, as the page writes them.
+3. The country of a network run is the location where the card was issued, as the site lists it. The country must be in `countries.json`.
+4. Keep the title, the merchant name and each quote in the language and the script of the page. If the page shows the merchant name in two scripts, put the Latin form in `name` and the second form in `alt_names`.
+5. The gate reads amounts with the separators of the country and with number words (juta, triệu, 万, lakh), and dates with Indonesian and Thai month names and the Thai Buddhist year. The word lists are in `config/merchant_rules.json`.
+
+## 8. What the pipeline does with your file
 
 - It keeps the published ID when the page and key are the same, or when the page and the merchant are the same. A new title does not make a new ID.
 - It links each `single` merchant to one global record in `merchants/registry.json`. `Shopee Singapore`, `SHOPEE` and `Shopee Pte Ltd` become one brand. A brand with one offer and no official domain is published with `verified: false`.
@@ -139,7 +149,7 @@ Hand in the issuer's cards in the `cards` list of the same file. Do the cards be
 - After a complete listing run, an offer that was not seen for 14 days becomes `withdrawn`.
 - Expired offers move to the archive.
 
-## 8. Report after each run
+## 9. Report after each run
 
 Give these numbers and nothing else, unless something failed:
 

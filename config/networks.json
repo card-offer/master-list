@@ -4,32 +4,47 @@
     {
       "id": "visa",
       "name": "Visa",
-      "official_domains": ["visa.com"]
+      "official_domains": [
+        "visa.com"
+      ]
     },
     {
       "id": "mastercard",
       "name": "Mastercard",
-      "official_domains": ["mastercard.com", "priceless.com"]
+      "official_domains": [
+        "mastercard.com",
+        "priceless.com",
+        "specials.priceless.com"
+      ]
     },
     {
       "id": "amex",
       "name": "American Express",
-      "official_domains": ["americanexpress.com"]
+      "official_domains": [
+        "americanexpress.com"
+      ]
     },
     {
       "id": "unionpay",
       "name": "UnionPay",
-      "official_domains": ["unionpayintl.com"]
+      "official_domains": [
+        "unionpayintl.com"
+      ]
     },
     {
       "id": "jcb",
       "name": "JCB",
-      "official_domains": ["jcb.co.jp", "specialoffers.jcb"]
+      "official_domains": [
+        "jcb.co.jp",
+        "specialoffers.jcb"
+      ]
     },
     {
       "id": "diners",
       "name": "Diners Club",
-      "official_domains": ["dinersclub.com"]
+      "official_domains": [
+        "dinersclub.com"
+      ]
     }
   ]
 }

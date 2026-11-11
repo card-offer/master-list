@@ -202,6 +202,132 @@ class GateTests(unittest.TestCase):
         self.assertFalse(date_in("effective from 1st May 2028", "2028-04-30"))
 
 
+NET_LIST = "https://specials.priceless.com/th-th"
+NET_PAGE = "https://specials.priceless.com/th-th/offers/example-cafe"
+
+
+def network_hand_in(*offers, country="TH"):
+    return {
+        "contract": "observation/1",
+        "run": {"run_id": "test-net-0001", "crawler": "test", "country": country, "network_id": "mastercard", "language": "th",
+                "started_at": "2026-11-12T01:00:00+08:00", "finished_at": "2026-11-12T02:00:00+08:00",
+                "listing_urls": [NET_LIST], "listing_complete": False, "robots_checked": True, "blocked": []},
+        "fetches": [fetch(NET_LIST, "network_offer_listing", 1), fetch(NET_PAGE, "network_offer_page", 2)],
+        "offers": list(offers),
+    }
+
+
+def network_offer(**changes):
+    row = offer(
+        source_url=NET_PAGE, source_key="example-cafe", source_key_basis="single_offer_page",
+        title="\u0e2a\u0e48\u0e27\u0e19\u0e25\u0e14 15% \u0e17\u0e35\u0e48 Example Cafe",
+        merchant={"kind": "single", "name": "Example Cafe", "names": [], "outlet": None, "name_source": "page_heading",
+                  "name_quote": "Example Cafe | \u0e40\u0e2d\u0e47\u0e01\u0e0b\u0e4c\u0e41\u0e2d\u0e21\u0e40\u0e1b\u0e34\u0e25 \u0e04\u0e32\u0e40\u0e1f\u0e48", "name_checked": False, "official_domain": None,
+                  "alt_names": ["\u0e40\u0e2d\u0e47\u0e01\u0e0b\u0e4c\u0e41\u0e2d\u0e21\u0e40\u0e1b\u0e34\u0e25 \u0e04\u0e32\u0e40\u0e1f\u0e48"]},
+        dates={"start_date": None, "end_date": "2026-12-31", "end_date_null_reason": None,
+               "quote": "\u0e16\u0e36\u0e07 31 \u0e18.\u0e04. 2569", "source_url": NET_PAGE,
+               "booking_period": None, "usage_period": None, "valid_days": None},
+        min_spend={"amount": 1500, "currency": "THB", "quote": "\u0e43\u0e0a\u0e49\u0e08\u0e48\u0e32\u0e22\u0e02\u0e31\u0e49\u0e19\u0e15\u0e48\u0e33 1,500 \u0e1a\u0e32\u0e17"},
+        limits=[],
+        eligibility={"scope": "network", "confidence": "stated", "network_ids": ["mastercard"], "card_names": [], "card_types": ["credit"],
+                     "tiers": ["world"], "issuer_names": [], "quote": "World Mastercard cardholders"},
+        terms={"url": NET_PAGE, "scope": "deal_page_section", "sha256": "c" * 64, "fetched_at": "2026-11-12T01:02:00+08:00", "null_reason": None},
+        redeem={"countries": ["TH"], "basis": "no_foreign_signal"},
+    )
+    for path, value in changes.items():
+        target = row
+        parts = path.split("__")
+        for part in parts[:-1]:
+            target = target[part]
+        target[parts[-1]] = value
+    return row
+
+
+class NetworkAndLanguageTests(unittest.TestCase):
+    def setUp(self):
+        parent = tempfile.mkdtemp(prefix="card-offer-net-")
+        self.tree = os.path.join(parent, "tree")
+        shutil.copytree(ROOT, self.tree, ignore=shutil.ignore_patterns(".git", "dist", "__pycache__", "raw"))
+
+    def errors(self, data):
+        return check(data, ROOT, now=NOW)[0]
+
+    def test_network_hand_in_in_thai_passes(self):
+        self.assertEqual(self.errors(network_hand_in(network_offer())), [])
+
+    def test_network_run_needs_network_scope_and_no_cards(self):
+        bad = network_offer(eligibility__scope="issuer")
+        self.assertTrue(any("scope network" in line for line in self.errors(network_hand_in(bad))))
+        data = network_hand_in(network_offer())
+        data["cards"] = [card()]
+        self.assertTrue(any("has no cards list" in line for line in self.errors(data)))
+
+    def test_run_needs_one_owner_and_a_known_country(self):
+        data = network_hand_in(network_offer())
+        data["run"]["issuer_id"] = "sg-cimb"
+        self.assertTrue(any("not both" in line for line in self.errors(data)))
+        self.assertTrue(any("not in countries.json" in line for line in self.errors(network_hand_in(network_offer(), country="ZZ"))))
+
+    def test_network_host_must_be_listed(self):
+        data = network_hand_in(network_offer())
+        data["fetches"].append(fetch("https://www.priceless-deals.example/th", "network_offer_page", 3))
+        self.assertTrue(any("official_domains" in line for line in self.errors(data)))
+
+    def test_alt_name_must_be_in_quote(self):
+        bad = network_offer(merchant__alt_names=["\u0e23\u0e49\u0e32\u0e19\u0e2d\u0e37\u0e48\u0e19"])
+        self.assertTrue(any("alt name" in line for line in self.errors(network_hand_in(bad))))
+
+    def test_amounts_and_dates_in_other_languages(self):
+        self.assertTrue(number_in("minimal transaksi Rp1 juta", 1000000))
+        self.assertTrue(number_in("Rp 500.000", 500000))
+        self.assertFalse(number_in("Rp 500.000", 500))
+        self.assertTrue(number_in("5\u4e07\u5186\u4ee5\u4e0a", 50000))
+        self.assertTrue(date_in("berlaku hingga 31 Desember 2026", "2026-12-31"))
+        self.assertTrue(date_in("2026\u5e7412\u670831\u65e5\u307e\u3067", "2026-12-31"))
+        self.assertTrue(date_in("\u0111\u1ebfn h\u1ebft ng\u00e0y 31/12/2026", "2026-12-31"))
+
+    def test_names_in_other_scripts_keep_a_key_and_get_an_id(self):
+        rules = load_merchant_rules(ROOT)
+        self.assertEqual(name_key("\u30b9\u30bf\u30fc\u30d0\u30c3\u30af\u30b9", rules), "\u30b9\u30bf\u30fc\u30d0\u30c3\u30af\u30b9")
+        self.assertEqual(name_key("Shopee Vi\u1ec7t Nam", rules), "shopee")
+        self.assertEqual(name_key("Uniqlo Hong Kong", rules), "uniqlo")
+
+    def test_network_ingest_makes_a_new_country_and_validates(self):
+        report = ingest(network_hand_in(network_offer()), root=self.tree, now=NOW)
+        self.assertEqual((report["new"], report["provider"]), (1, "mastercard"))
+        path = os.path.join(self.tree, "th", "offers", "network-mastercard.json")
+        with open(path, encoding="utf-8") as fh:
+            data = json.load(fh)
+        new = data["items"][0]
+        self.assertEqual((data["network_id"], data["issuer_id"]), ("mastercard", None))
+        self.assertTrue(new["id"].startswith("th-network-mastercard-"))
+        self.assertEqual(new["provider"], {"type": "network", "id": "mastercard"})
+        self.assertEqual((new["eligibility"]["scope"], new["eligibility"]["issuer_ids"], new["eligibility"]["tiers"]), ("network", [], ["world"]))
+        self.assertEqual((new["currency"], new["end_date"], new["min_spend"]), ("THB", "2026-12-31", {"amount": 1500, "currency": "THB"}))
+        with open(os.path.join(self.tree, "merchants", "registry.json"), encoding="utf-8") as fh:
+            brand = {row["id"]: row for row in json.load(fh)["items"]}["example-cafe"]
+        self.assertEqual(len(brand["aliases"]), 1)
+        self.assertEqual(brand["countries"], ["TH"])
+        with open(os.path.join(self.tree, "index.json"), encoding="utf-8") as fh:
+            self.assertEqual(json.load(fh)["countries"]["TH"]["offers"], 1)
+        errors, _warnings, _stats = validate(self.tree)
+        self.assertEqual(errors, [])
+
+    def test_network_offer_for_named_issuers(self):
+        row = network_offer(eligibility__issuer_names=["CIMB Singapore", "Example Bank"], redeem__countries=["SG"],
+                            min_spend=None)
+        data = network_hand_in(row, country="SG")
+        report = ingest(data, root=self.tree, now=NOW)
+        with open(os.path.join(self.tree, "sg", "offers", "network-mastercard.json"), encoding="utf-8") as fh:
+            new = json.load(fh)["items"][0]
+        self.assertEqual(new["eligibility"]["issuer_ids"], ["sg-cimb"])
+        self.assertEqual(new["status"], "needs_review")
+        self.assertIn("Example Bank", new["review_reason"])
+        self.assertEqual(len(report["needs_review"]), 1)
+        errors, _warnings, _stats = validate(self.tree)
+        self.assertEqual(errors, [])
+
+
 class CardGateTests(unittest.TestCase):
     def errors(self, row):
         data = hand_in([])
