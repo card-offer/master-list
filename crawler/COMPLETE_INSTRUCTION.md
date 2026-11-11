@@ -31,7 +31,8 @@ There are three tracks. Do them in the order of section 9.
 7. Do not make IDs. Do not edit the country folders or `merchants/registry.json` by hand. Only `pipeline/ingest.py` writes them. The exceptions are `{cc}/issuers.json` and the census file in a census.
 8. Do not commit anything under `raw/`. Do not merge a pull request.
 9. If an official URL sends you to a host that is not in `official_domains`, do not read that host. Record the URL in `run.blocked` with reason `off_domain_redirect` and the target in `redirect_to`. The maintainer decides if the host is official.
-10. If a rule is not clear, stop and ask. Do not guess.
+10. Make each request with `pipeline/fetcher.py`. Do not make a request to a crawl host by a different path. If a site does not answer, needs JavaScript or blocks you, follow `crawler/HARD_SITES.md` step by step.
+11. If a rule is not clear, stop and ask. Do not guess.
 
 ## 3. The merchant name
 

@@ -29,7 +29,8 @@ If the gate refuses a fact and the page does not support a correction, remove th
 5. One request at a time for each host, with a minimum of 1.5 seconds between the starts of two requests. Measure the gap with a monotonic clock, and log each request with its time to the millisecond. A log with whole seconds does not prove the gap.
    - A redirect hop and a `robots.txt` request are requests.
    - A headless browser has the same rules. Each request that the browser makes to the host (document, script, data) is a request: check `robots.txt` for it, space it and log it. Stop requests to hosts that are not in `official_domains`, apart from the files that the page needs to show its text.
-   - Do not click a button, choose from a list or type in a field to get data. If a page needs this, record it in `run.blocked` with reason `login_required` or report it.
+   - In a browser, the only permitted actions are a scroll and a click on a control that shows more of the same public content: load more, next page, a tab, an accordion, a category or country filter, a cookie notice. Log each action. Do not type in a field, do not submit a form, and do not sign in. If a page needs this, record it in `run.blocked` with reason `login_required`.
+   - Use `pipeline/fetcher.py` for each request. It applies this section in code. `crawler/HARD_SITES.md` says what to do when a site does not answer, needs JavaScript or blocks the crawler.
    - Status 429 or 503 on a page: stop requests to that host for the remainder of the run.
    - Do not fetch a URL whose path is a sign-in, registration or application form.
    - Keep session IDs out of the hand-in file. If a site puts a session ID in a URL (for example `jsessionid`), record the URL without it.

@@ -92,13 +92,20 @@
                   "app_only",
                   "not_found",
                   "off_domain_redirect",
-                  "robots_unreachable"
+                  "robots_unreachable",
+                  "bot_wall",
+                  "network_unreachable"
                 ]
               },
               "redirect_to": {
                 "type": "string",
                 "format": "uri",
                 "description": "Where the official URL sent the crawler, when reason is off_domain_redirect."
+              },
+              "detail": {
+                "type": "string",
+                "maxLength": 300,
+                "description": "What the site answered, in a few words."
               }
             }
           }
@@ -160,6 +167,13 @@
               "issuer_listing",
               "network_offer_listing"
             ]
+          },
+          "via": {
+            "enum": [
+              "http",
+              "browser"
+            ],
+            "description": "How the page was read. browser: a headless browser rendered it, and the quotes come from the rendered text."
           }
         }
       }
