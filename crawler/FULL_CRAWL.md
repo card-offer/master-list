@@ -2,6 +2,8 @@
 
 This file is the instruction for the crawler for the first full crawl. `crawler/RULES.md` is the rule for each fact. If the two files disagree, `crawler/RULES.md` is correct.
 
+For the phase 1 review follow-up, also read [PHASE1_REVIEW.md](PHASE1_REVIEW.md). It records the reviewed source domains and the evidence gaps that remain. Phase 2 still requires phase 1 acceptance and merge.
+
 Copy all the text below the line and give it to Grok Bot.
 
 ---
@@ -120,7 +122,7 @@ Do them in this order. The small ones are first, so that a problem shows early. 
 | 1 | `sg-cimb` | CIMB Singapore | cimb.com.sg, deals.cimb.com | 5 | 3 | Run 2 is in PR 7. Finish the deals site. |
 | 2 | `sg-gxs` | GXS Bank | gxs.com.sg, cdn.prod.website-files.com | 1 | 4 | |
 | 3 | `sg-maribank` | MariBank | maribank.sg, banking-aka-storage.maribank.com.sg | 1 | 3 | |
-| 4 | `sg-trust` | Trust Bank | trust.com.sg | 0 | 0 | Not covered before. The site did not answer. |
+| 4 | `sg-trust` | Trust Bank | trustbank.sg | 0 | 0 | Phase 1 review corrected the source host. Use https://trustbank.sg/credit-card/; cards and offers are not covered yet. |
 | 5 | `sg-icbc` | ICBC Singapore | icbc.com.sg | 8 | 5 | |
 | 6 | `sg-boc` | Bank of China Singapore | bankofchina.com | 9 | 0 | No offers were found before. |
 | 7 | `sg-amex` | American Express Singapore | americanexpress.com | 7 | 4 | Singapore pages only. |
@@ -151,7 +153,7 @@ Do them in this order. The small ones are first, so that a problem shows early. 
 | 27 | `my-cimb` | CIMB Bank | cimb.com.my | 17 | 15 | If the deals are on deals.cimb.com, report it. The host is not in this issuer's domains. |
 | 28 | `my-public-bank` | Public Bank | pbebank.com | 16 | 18 | |
 | 29 | `my-uob` | UOB Malaysia | uob.com.my | 7 | 57 | |
-| 30 | `my-hsbc` | HSBC Malaysia | hsbc.com.my, sp.hsbc.com.my | 6 | 69 | |
+| 30 | `my-hsbc` | HSBC Malaysia | hsbc.com.my, sp.hsbc.com.my, hsbcamanah.com.my | 6 | 69 | Phase 1 review added the Amanah card catalogue; its cards have not been ingested yet. |
 | 31 | `my-ambank` | AmBank | ambank.com.my | 35 | 8 | 35 cards is high. Check for the same card under two names. |
 | 32 | `my-standard-chartered` | Standard Chartered Malaysia | sc.com, av.sc.com | 3 | 101 | Malaysia pages only (sc.com/my). |
 | 33 | `my-rhb` | RHB Bank | rhbgroup.com | 12 | 166 | |

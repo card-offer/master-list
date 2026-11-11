@@ -3,7 +3,7 @@
     "MY": {
       "cards": 186,
       "currency": "MYR",
-      "issuers": 18,
+      "issuers": 19,
       "offers": 542,
       "path": "/my/",
       "timezone": "Asia/Kuala_Lumpur"
@@ -17,7 +17,7 @@
       "timezone": "Asia/Singapore"
     }
   },
-  "generated_at": "2026-11-11T02:50:00+00:00",
+  "generated_at": "2026-11-11T05:59:54+00:00",
   "indexes": "Built in CI and published to GitHub Pages. Not stored on the main branch.",
   "layout": {
     "archive": "{cc}/archive/offers/{issuer}.json",
