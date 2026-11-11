@@ -80,12 +80,22 @@ def check(obs, root, now=None):
         when = parse_instant(row["fetched_at"])
         if not started <= when <= finished:
             errors.append(f"fetch {row['url']}: fetched_at is outside the run start and finish")
-        for url in (row["url"], row["final_url"]):
-            host = host_of(url)
-            if host not in official and row["kind"] != "merchant_page":
-                errors.append(f"fetch {url}: host {host} is not on {run['issuer_id']} official_domains")
+        if row["kind"] != "merchant_page":
+            first, last = host_of(row["url"]), host_of(row["final_url"])
+            if first not in official:
+                errors.append(f"fetch {row['url']}: host {first} is not on {run['issuer_id']} official_domains")
+            elif last not in official:
+                errors.append(f"fetch {row['url']}: it redirects to {last}, which is not on {run['issuer_id']} official_domains. "
+                              f"Remove this fetch record and add the url to run.blocked with reason off_domain_redirect and redirect_to.")
         fetched[row["url"]] = row
         fetched.setdefault(row["final_url"], row)
+    for row in run["blocked"]:
+        if host_of(row["url"]) not in official:
+            errors.append(f"run.blocked {row['url']}: host is not on {run['issuer_id']} official_domains. Record only official urls that you could not read.")
+        if (row["reason"] == "off_domain_redirect") != ("redirect_to" in row):
+            errors.append(f"run.blocked {row['url']}: redirect_to goes with reason off_domain_redirect, and only with it")
+    if run["listing_complete"] and any(row["reason"] == "off_domain_redirect" for row in run["blocked"]):
+        errors.append("run: listing_complete is true, but an official url redirects to a host that was not crawled")
     for url in run["listing_urls"]:
         if url not in fetched:
             errors.append(f"run: listing url {url} has no fetch record")
@@ -166,6 +176,8 @@ def check(obs, root, now=None):
             errors.append(f"{where}: source_key is made from the title. Use the page anchor, deal code, terms file name or merchant name.")
         benefit = offer["benefit"]
         quote_ok(where + " benefit", benefit["quote"])
+        if benefit["value"] is not None and re.search(r"(?i)\b(?:processing|service|admin(?:istrative)?|annual)\s+fees?\b|\binterest\b|\bp\.?\s?a\.?(?![a-z])|\beir\b", benefit["value_text"] or ""):
+            errors.append(f"{where}: benefit value_text describes a fee or an interest rate. A fee is not a benefit value: use value null, or give the amount that the cardholder gets.")
         if benefit["value"] is not None:
             if benefit["unit"] is None or not benefit["quote"]:
                 errors.append(f"{where}: benefit value needs unit and quote")

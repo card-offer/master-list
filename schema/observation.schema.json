@@ -90,8 +90,14 @@
                   "login_required",
                   "captcha",
                   "app_only",
-                  "not_found"
+                  "not_found",
+                  "off_domain_redirect"
                 ]
+              },
+              "redirect_to": {
+                "type": "string",
+                "format": "uri",
+                "description": "Where the official URL sent the crawler, when reason is off_domain_redirect."
               }
             }
           }
@@ -386,7 +392,8 @@
               "type": [
                 "number",
                 "null"
-              ]
+              ],
+              "description": "What the cardholder gets: the discount, cashback, voucher or gift value. A fee, an interest rate or a minimum spend is not a benefit value."
             },
             "unit": {
               "enum": [
@@ -674,9 +681,22 @@
             },
             "tiers": {
               "type": "array",
+              "uniqueItems": true,
               "items": {
-                "type": "string"
-              }
+                "enum": [
+                  "classic",
+                  "gold",
+                  "platinum",
+                  "titanium",
+                  "signature",
+                  "infinite",
+                  "world",
+                  "world_elite",
+                  "reserve",
+                  "centurion"
+                ]
+              },
+              "description": "Card tiers only. A customer segment such as a priority banking programme is not a tier."
             },
             "quote": {
               "anyOf": [
