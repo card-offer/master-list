@@ -41,7 +41,8 @@ The repository has 34 issuers now. They are in the table at the end of this file
    - `in_repository`: it is one of the 34. Give the issuer ID.
    - `same_group`: its cards are sold on the site of an issuer in the repository (for example the Islamic bank of a group). Give the issuer ID. Its cards go under that issuer, with `islamic: true` where the page says so.
    - `new_issuer`: it issues consumer credit or charge cards and is not in the repository.
-   - `no_consumer_card`: it has no consumer credit or charge card (for example debit cards only, or corporate cards only). Give the official URL that shows this.
+   - `no_consumer_card`: it has no consumer credit or charge card (for example debit cards only, or corporate cards only). Give the official URL that shows this. This is a product exclusion. Do not use it for a MAS Wholesale Bank that is excluded only by category or by a maintainer scope decision.
+   - `out_of_scope_wholesale`: it is listed as a MAS Wholesale Bank and is outside the Singapore consumer-card census by a maintainer decision. This is a scope exclusion, not a finding that the official site has no consumer credit or charge card. Cite the MAS category and the decision. Give an official URL if one was read.
    - `not_reached`: you could not read its site. Give the reason.
 4. Check these names with special care. They are not in the repository, and earlier work did not settle them:
    - Malaysia: Paydee, Agrobank, MBSB Bank, Kuwait Finance House, Co-opbank Pertama, GXBank, AEON Bank, Boost Bank, Ryt Bank, KAF Digital Bank, Diners Club, American Express, Citibank, Bank of China, ICBC.
