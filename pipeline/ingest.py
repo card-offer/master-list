@@ -15,7 +15,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from pipeline.lib.calendar import add_months, local_date, parse_instant, stamp
 from pipeline.lib.layout import write_collection, write_json
-from pipeline.lib.merchants import Registry, clean_name, load_merchant_rules, name_key
+from pipeline.lib.merchants import Registry, clean_name, load_merchant_rules, match_card, name_key
 from pipeline.lib.rules import load_rules, repo_root
 from pipeline.lib.transform import cap_view, new_card_id, new_offer_id, placement
 from tools.check_observations import check
@@ -121,7 +121,8 @@ def ingest_cards(obs, cards, issuer_id, country, zone, mrules, report):
                 details.update({"limits": limits, "cap": cap, "cap_null_reason": cap_reason})
             benefits.append({"type": benefit["type"], "text": public_text(benefit["quote"]), "texts": [public_text(benefit["quote"])], "source_url": page, "details": details})
         record = {
-            "id": card_id, "aliases": list(old.get("aliases") or []) if old else [], "name": clean_name(item["name"]),
+            "id": card_id, "aliases": list(old.get("aliases") or []) if old else [],
+            "name": old["name"] if old and name_key(old["name"], mrules) == name_key(item["name"], mrules) else clean_name(item["name"]),
             "issuer_id": issuer_id, "country": country, "currency": zone["currency"],
             "networks": item["networks"], "network_source": "crawler_quote" if item["networks"] else None,
             "tier": item["tier"], "card_type": item["card_type"], "islamic": item["islamic"],
@@ -186,6 +187,7 @@ def ingest(obs, root=None, now=None):
     used = {offer["id"] for offer in existing} | {offer["id"] for offer in archived}
     for offer in existing + archived:
         used.update(offer.get("aliases") or [])
+    issuer_name = next(row["name"] for row in load_items(os.path.join(root, cc, "issuers.json")) if row["id"] == issuer_id)
     report = {}
     cards = ingest_cards(obs, cards, issuer_id, country, zone, mrules, report)
     card_by_key = {}
@@ -211,13 +213,16 @@ def ingest(obs, root=None, now=None):
             if old:
                 taken.add(old["id"])
                 aliases = sorted(set(old.get("aliases") or []) | {old["id"]})
-        merchant_id = None
+        merchant_id, merchant_ids = None, []
         if merchant["kind"] == "single":
             merchant_id = registry.resolve(merchant["name"], country, item["category"], merchant["official_domain"])
+            merchant_ids = [merchant_id]
+        elif merchant["kind"] == "multiple":
+            merchant_ids = sorted({registry.resolve(name, country, item["category"]) for name in merchant["names"]})
         rule, dates, terms = item["eligibility"], item["dates"], item["terms"]
         card_ids, reasons = [], []
         for name in rule["card_names"]:
-            card_id = card_by_key.get(name_key(name, mrules))
+            card_id = card_by_key.get(name_key(name, mrules)) or match_card(name, cards, issuer_name, mrules)
             if card_id:
                 card_ids.append(card_id)
             else:
@@ -255,7 +260,7 @@ def ingest(obs, root=None, now=None):
             "merchant_kind": merchant["kind"],
             "merchant_name": clean_name(merchant["name"]) if merchant["kind"] == "single" else None,
             "merchant_names": [clean_name(name) for name in merchant["names"]],
-            "merchant_outlet": merchant["outlet"], "merchant_id": merchant_id,
+            "merchant_outlet": merchant["outlet"], "merchant_id": merchant_id, "merchant_ids": merchant_ids,
             "merchant_name_source": merchant["name_source"] if merchant["kind"] == "single" else None,
             "category": item["category"], "benefit": benefit,
             "min_spend": {"amount": item["min_spend"]["amount"], "currency": item["min_spend"]["currency"]} if item["min_spend"] else None,
@@ -264,7 +269,7 @@ def ingest(obs, root=None, now=None):
             "cap_source_url": (terms["url"] or item["source_url"]) if limits else None,
             "eligibility": {
                 "scope": rule["scope"], "rule": RULE_NAMES[(rule["scope"], rule["confidence"])], "confidence": rule["confidence"],
-                "issuer_ids": [issuer_id], "network_ids": rule["network_ids"], "card_ids": sorted(card_ids),
+                "issuer_ids": [issuer_id], "network_ids": rule["network_ids"], "card_ids": sorted(set(card_ids)),
                 "card_types": rule["card_types"], "tiers": rule["tiers"], "evidence_text": public_text(rule["quote"]),
             },
             "cross_border": {

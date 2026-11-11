@@ -48,7 +48,7 @@ Do not take the name from the URL, from your memory or from a guess.
 3. Give the brand only. Do not add offer words, prices, dates, card names or campaign names.
 4. Put a branch, outlet or in-hotel restaurant in `outlet`, not in `name`.
 5. Do not translate the name. Do not expand or shorten it.
-6. Copy the text that contains the name into `name_quote`. The gate fails if the name is not inside the quote.
+6. Copy the text that contains the name into `name_quote`. The gate fails if the name is not inside the quote. The name must be in one part of the quote: the gate cuts the quote at each comma, semicolon and line end. An address line is not proof of a name. Quote the heading or the tile that names the merchant.
 
 | The page says | name | outlet | kind |
 |---|---|---|---|
@@ -64,7 +64,7 @@ Do not take the name from the URL, from your memory or from a guess.
 ### 3.3 Choose the kind
 
 - `single`: one merchant. `name`, `name_source` and `name_quote` are mandatory.
-- `multiple`: the offer names two or more merchants. Put each in `names`. If the page gives each merchant its own terms or dates, hand in one offer for each merchant.
+- `multiple`: the offer names two or more merchants. Put each in `names`. Each name gets its own record in the merchant registry, so write each one with the same care as a single name. If the page gives each merchant its own terms or dates, hand in one offer for each merchant.
 - `category`: the offer applies to a type of spend, not a named merchant.
 - `issuer_own`: the issuer's own product or campaign. The issuer and the card networks are never merchants.
 - `unknown`: permitted only after you read the page, the tile and the terms and none states a merchant. Set the flag `merchant_not_stated`. The gate fails a run of 20 or more offers when more than 5 percent are `unknown`.
@@ -120,7 +120,7 @@ Hand in the issuer's cards in the `cards` list of the same file. Do the cards be
 
 1. `official_url` is the issuer's own product page for the card. Fetch kind is `issuer_product_page`.
 2. `name` is the product name as the page heading writes it. Copy the heading into `name_quote`.
-3. `networks`: the network must be in `network_quote` or in the card name. Look in this order: the card name, the page text, the alt text of the card image, the product disclosure sheet. If none states it, give an empty list and set the flag `network_not_stated`. Do not guess from the card design or from your memory.
+3. `networks`: the network must be in `network_quote` or in the card name. Look in this order: the card name, the page text, the alt text of the card image, the product disclosure sheet. If none states it, give an empty list and set the flag `network_not_stated`. Do not guess from the card design or from your memory. The quote must state the network of the card itself. The name of a network service, for example a lounge or travel programme, is not proof.
 4. `annual_fee.amount` is the principal card fee for one year, as the page writes it. Use 0 only when the page says there is no annual fee. The amount must be in the quote.
 5. `waivers`: one entry for each kind. `lifetime` stands alone. If the page gives conflicting waiver sentences, set the flag `fee_unclear`.
 6. `min_income`: amount and period (`year` or `month`) as stated. Do not convert a month to a year.
@@ -134,7 +134,7 @@ Hand in the issuer's cards in the `cards` list of the same file. Do the cards be
 - It keeps the published ID when the page and key are the same, or when the page and the merchant are the same. A new title does not make a new ID.
 - It links each `single` merchant to one global record in `merchants/registry.json`. `Shopee Singapore`, `SHOPEE` and `Shopee Pte Ltd` become one brand. A brand with one offer and no official domain is published with `verified: false`.
 - It keeps a card ID when the card name is the same. A card with no network goes to review.
-- It maps `card_names` to card IDs. A name that is not in the card list sends the offer to review. Report these names. Do not change them to fit.
+- It maps `card_names` to card IDs. Write each card name as the page writes it. The pipeline ignores the issuer name, the country and the words credit card when it matches. A name that is not in the card list sends the offer to review. Report these names. Do not change them to fit.
 - It sets `first_seen`, `last_seen`, `status` and `review_by`.
 - After a complete listing run, an offer that was not seen for 14 days becomes `withdrawn`.
 - Expired offers move to the archive.

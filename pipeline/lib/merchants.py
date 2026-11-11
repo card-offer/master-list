@@ -81,9 +81,18 @@ def name_problems(value, rules, issuer_names=(), network_names=()):
 
 
 def quote_has_name(quote, name):
-    """True when the name is inside the quote, ignoring case, markup, accents and punctuation."""
+    """True when the name is inside one part of the quote, ignoring case, markup, accents and punctuation.
+
+    The quote is cut at commas, semicolons, bars and line ends, so a name cannot be made from the
+    end of one phrase and the start of the next (an address line such as "Level 1 Fairmont, Singapore").
+    A name that has a comma of its own is looked for in the whole quote.
+    """
     needle = _flat(clean_name(name))
-    return bool(needle) and needle in _flat(clean_name(quote))
+    if not needle:
+        return False
+    text = clean_name(quote)
+    parts = [text] if re.search(r"[,;|]", clean_name(name)) else re.split(r"[,;|\n]", text)
+    return any(needle in _flat(part) for part in parts)
 
 
 def slug(value):
@@ -137,9 +146,10 @@ class Registry:
         for row in self.items.values():
             row["offer_ids"] = []
         for offer in offers:
-            row = self.items.get(offer.get("merchant_id") or "")
-            if row is not None:
-                row["offer_ids"].append(offer["id"])
+            for merchant_id in offer.get("merchant_ids") or []:
+                row = self.items.get(merchant_id)
+                if row is not None:
+                    row["offer_ids"].append(offer["id"])
         out = []
         for row in self.items.values():
             row["offer_ids"] = sorted(set(row["offer_ids"]))
@@ -148,3 +158,20 @@ class Registry:
             row["verified"] = bool(row.get("official_domain")) or len(row["offer_ids"]) >= min_offers
             out.append(row)
         return sorted(out, key=lambda r: r["id"])
+
+
+def card_core(name, issuer_name, rules):
+    """The part of a card name that tells it apart: no issuer name, no country word, no 'credit card'."""
+    drop = set(_flat(issuer_name).split()) | set(rules["country_words"]) | {"credit", "card", "cards", "the"}
+    return " ".join(word for word in _flat(clean_name(name)).split() if word not in drop)
+
+
+def match_card(name, cards, issuer_name, rules):
+    """Card id for a card name as an offer page writes it, or None. Exact name first, then a unique core."""
+    key = name_key(name, rules)
+    for card in cards:
+        if name_key(card["name"], rules) == key:
+            return card["id"]
+    core = card_core(name, issuer_name, rules)
+    hits = [card["id"] for card in cards if core and card_core(card["name"], issuer_name, rules) == core]
+    return hits[0] if len(hits) == 1 else None

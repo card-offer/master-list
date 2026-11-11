@@ -131,6 +131,13 @@ class GateTests(unittest.TestCase):
         self.assertEqual(errors, [])
         self.assertEqual(len(warnings), 1)
 
+    def test_name_cannot_be_made_from_two_parts_of_an_address(self):
+        row = offer(merchant__name="Fairmont Singapore", merchant__outlet=None, source_key="fairmont",
+                    merchant__name_quote="80 Bras Basah Rd, Level 1 Fairmont, Singapore 189560")
+        self.assert_error("is not inside name_quote", row)
+        row["merchant"]["name_quote"] = "Fairmont Singapore 80 Bras Basah Road, Level 8 Singapore 189560"
+        self.assertEqual(self.errors(row), [])
+
     def test_issuer_is_not_a_merchant(self):
         self.assert_error("card issuer", offer(merchant__name="CIMB", merchant__name_quote="CIMB", source_key="cimb"))
 
@@ -336,6 +343,38 @@ class IngestTests(unittest.TestCase):
             after = fh.read().splitlines()
         self.assertEqual(len(after) - len(before), 4)
         self.assertEqual(after[:len(before) - 2], before[:-2])
+
+    def test_card_names_match_without_the_issuer_or_country_word(self):
+        row = offer(eligibility__card_names=["Visa Infinite", "CIMB Singapore Visa Signature", "CIMB VISA Infinite"],
+                    eligibility__quote="Valid for CIMB Singapore Visa Signature and Visa Infinite.")
+        report = ingest(hand_in([row]), root=self.tree, now=NOW)
+        new = [item for item in self.items("sg", "offers", "cimb.json") if item["merchant_name"] == "Example Kopi"][0]
+        self.assertEqual(report["unmatched_card_names"], [])
+        self.assertEqual(new["eligibility"]["card_ids"], ["sg-cimb-visa-infinite", "sg-cimb-visa-signature"])
+        self.assertEqual(new["status"], "active")
+
+    def test_each_merchant_of_a_multiple_offer_is_in_the_registry(self):
+        row = offer(source_key="airport-dining", source_key_basis="page_anchor",
+                    merchant={"kind": "multiple", "name": None, "names": ["Example Kopi", "Sample Noodle Bar"], "outlet": None,
+                              "name_source": "page_heading", "name_quote": "Example Kopi: T1, Sample Noodle Bar: T3",
+                              "name_checked": False, "official_domain": None})
+        ingest(hand_in([row]), root=self.tree, now=NOW)
+        new = [item for item in self.items("sg", "offers", "cimb.json") if item["merchant_kind"] == "multiple"][0]
+        self.assertEqual(new["merchant_ids"], ["example-kopi", "sample-noodle-bar"])
+        self.assertIsNone(new["merchant_id"])
+        registry = {item["id"]: item for item in self.items("merchants", "registry.json")}
+        self.assertEqual(registry["sample-noodle-bar"]["offer_ids"], [new["id"]])
+        errors, _warnings, _stats = validate(self.tree)
+        self.assertEqual(errors, [])
+
+    def test_a_kept_card_keeps_its_published_name(self):
+        data = hand_in([])
+        data["cards"] = [card(name="CIMB VISA SIGNATURE", name_quote="CIMB VISA SIGNATURE", networks=["visa"], network_quote="CIMB VISA SIGNATURE",
+                              official_url=CARD_PAGE)]
+        ingest(data, root=self.tree, now=NOW)
+        names = [item["name"] for item in self.items("sg", "cards", "cimb.json")]
+        self.assertIn("CIMB Visa Signature", names)
+        self.assertNotIn("CIMB VISA SIGNATURE", names)
 
     def test_bad_hand_in_changes_nothing(self):
         before = self.items("sg", "offers", "cimb.json")

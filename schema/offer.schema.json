@@ -36,7 +36,8 @@
     "merchant_names",
     "merchant_outlet",
     "merchant_name_source",
-    "merchant_id"
+    "merchant_id",
+    "merchant_ids"
   ],
   "properties": {
     "id": {
@@ -629,6 +630,14 @@
         "string",
         "null"
       ]
+    },
+    "merchant_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      },
+      "description": "Every merchant of the offer in the registry. One id when merchant_kind is single. One id for each name in merchant_names when it is multiple. Empty for the other kinds."
     }
   },
   "$defs": {
