@@ -495,7 +495,7 @@ class IngestTests(unittest.TestCase):
                               "name_source": "page_heading", "name_quote": "Example Kopi: T1, Sample Noodle Bar: T3",
                               "name_checked": False, "official_domain": None})
         ingest(hand_in([row]), root=self.tree, now=NOW)
-        new = [item for item in self.items("sg", "offers", "cimb.json") if item["merchant_kind"] == "multiple"][0]
+        new = [item for item in self.items("sg", "offers", "cimb.json") if item["source_url"].endswith("#airport-dining")][0]
         self.assertEqual(new["merchant_ids"], ["example-kopi", "sample-noodle-bar"])
         self.assertIsNone(new["merchant_id"])
         registry = {item["id"]: item for item in self.items("merchants", "registry.json")}
