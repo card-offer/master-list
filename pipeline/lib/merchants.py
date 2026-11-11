@@ -1,4 +1,5 @@
 """Merchant names: clean, test, key and match. All word lists come from config/merchant_rules.json."""
+import hashlib
 import html
 import json
 import os
@@ -15,7 +16,10 @@ def load_merchant_rules(root=None):
     for key in ("name_max_chars", "quote_max_chars", "unknown_merchant_max_pct", "withdraw_after_days"):
         if not isinstance(data.get(key), int) or isinstance(data.get(key), bool):
             raise SystemExit(f"config/merchant_rules.json {key} must be an integer")
-    for key in ("legal_suffixes", "country_words", "leading_words", "name_reject_patterns"):
+    for key in ("number_words", "month_words"):
+        if not isinstance(data.get(key), dict):
+            raise SystemExit(f"config/merchant_rules.json {key} must be a map")
+    for key in ("legal_suffixes", "country_words", "leading_words", "name_reject_patterns", "name_reject_words"):
         if not isinstance(data.get(key), list):
             raise SystemExit(f"config/merchant_rules.json {key} must be a list")
     data["_reject"] = [re.compile(pattern) for pattern in data["name_reject_patterns"]]
@@ -33,10 +37,27 @@ def clean_name(value):
     return text.strip(" :;,-*")
 
 
+def _fold(char):
+    """Lower case. A Latin letter with an accent becomes the plain letter. Letters of other scripts stay."""
+    base = unicodedata.normalize("NFKD", char)[0]
+    return base if base.isascii() and base.isalpha() else char
+
+
 def _flat(value):
+    """Match form of a text in any script: folded letters, digits and marks, single spaces."""
+    text = unicodedata.normalize("NFKC", value or "").casefold().replace("&", " and ").replace("'", "")
+    out = []
+    for char in text:
+        if char.isalnum() or unicodedata.category(char).startswith("M"):
+            out.append(_fold(char))
+        else:
+            out.append(" ")
+    return re.sub(r"\s+", " ", "".join(out)).strip()
+
+
+def _ascii(value):
     text = unicodedata.normalize("NFKD", value or "").encode("ascii", "ignore").decode().lower()
-    text = text.replace("&", " and ").replace("'", "")
-    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9]+", " ", text)).strip()
+    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9]+", " ", text.replace("&", " and ").replace("'", ""))).strip()
 
 
 def name_key(value, rules):
@@ -49,9 +70,11 @@ def name_key(value, rules):
             if suffix and text.endswith(" " + suffix):
                 text = text[: -len(suffix) - 1].strip()
                 changed = True
+    for country in sorted(rules["country_words"], key=len, reverse=True):
+        if text.endswith(" " + country):
+            text = text[: -len(country) - 1].strip()
+            break
     words = text.split()
-    if len(words) > 1 and words[-1] in rules["country_words"]:
-        words = words[:-1]
     if len(words) > 1 and words[0] in rules["leading_words"]:
         words = words[1:]
     return " ".join(words)
@@ -72,6 +95,11 @@ def name_problems(value, rules, issuer_names=(), network_names=()):
         if pattern.search(name):
             problems.append(f"name looks like offer wording, not a merchant (pattern {pattern.pattern})")
             break
+    else:
+        for word in rules["name_reject_words"]:
+            if word in name.casefold():
+                problems.append(f"name looks like offer wording, not a merchant (word {word})")
+                break
     key = name_key(name, rules)
     if key in {name_key(n, rules) for n in issuer_names}:
         problems.append("name is the card issuer, use kind issuer_own")
@@ -91,12 +119,17 @@ def quote_has_name(quote, name):
     if not needle:
         return False
     text = clean_name(quote)
-    parts = [text] if re.search(r"[,;|]", clean_name(name)) else re.split(r"[,;|\n]", text)
+    parts = [text] if re.search(r"[,;|]", clean_name(name)) else re.split(r"[,;|\n\u3001\uff0c\uff1b]", text)
     return any(needle in _flat(part) for part in parts)
 
 
 def slug(value):
-    return _flat(clean_name(value)).replace(" ", "-")
+    """ASCII id part. A name with no Latin letter or digit gets a short hash, so the id stays stable."""
+    text = _ascii(clean_name(value)).replace(" ", "-")
+    if text:
+        return text
+    flat = _flat(clean_name(value))
+    return "m-" + hashlib.sha256(flat.encode()).hexdigest()[:10] if flat else ""
 
 
 class Registry:
@@ -115,7 +148,7 @@ class Registry:
     def find(self, name):
         return self.by_key.get(name_key(name, self.rules))
 
-    def resolve(self, name, country, category, official_domain=None):
+    def resolve(self, name, country, category, official_domain=None, alt_names=()):
         merchant_id = self.find(name)
         if merchant_id is None:
             base = slug(name_key(name, self.rules)) or slug(name)
@@ -133,6 +166,11 @@ class Registry:
         shown = clean_name(name)
         if shown != row["name"] and shown not in row["aliases"]:
             row["aliases"] = sorted(set(row["aliases"]) | {shown})
+        for other in alt_names:
+            other = clean_name(other)
+            if other and other != row["name"] and other not in row["aliases"]:
+                row["aliases"] = sorted(set(row["aliases"]) | {other})
+            self.by_key.setdefault(name_key(other, self.rules), merchant_id)
         if country and country not in row["countries"]:
             row["countries"] = sorted(set(row["countries"]) | {country})
         if category and category != "other" and category not in row["categories"]:

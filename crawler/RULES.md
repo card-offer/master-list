@@ -1,6 +1,6 @@
 # Crawler rule for Grok Bot
 
-Version 1. Contract: `observation/1`. Schema: `schema/observation.schema.json`.
+Version 2. Contract: `observation/1`. Schema: `schema/observation.schema.json`.
 
 You crawl. The pipeline publishes. You do not write the public files, you do not make IDs, and you do not edit the merchant registry. You give one hand-in file for each issuer and each run. The gate checks it. The ingest step publishes it.
 
@@ -19,9 +19,20 @@ If the gate refuses a fact and the page does not support a correction, remove th
 
 1. Use only hosts in the issuer's `official_domains`. A merchant's own site is permitted only as fetch kind `merchant_page`, and only when the issuer page links to it.
 2. Do not use aggregator, comparison, deal, review, blog or forum sites. Do not use search engine snippets as a source.
-3. Read `robots.txt` for each host before the crawl. Do not fetch a disallowed path. Record it in `run.blocked` with reason `robots_disallow`.
+3. Read `robots.txt` for each host before the first page of that host, over https. Do not fetch a disallowed path. Record it in `run.blocked` with reason `robots_disallow`. What the answer means:
+   - Status 200: obey the rules for your user agent.
+   - Status 404 or 410: the host has no rules. You can crawl it.
+   - Status 401, 403 or 429, a server error (500 and higher), a timeout, a TLS or connection error, more than 5 redirects, a redirect loop, or a redirect to a host that is not in `official_domains`: `robots.txt` is not readable. Do not fetch a page of that host in this run. Record the host in `run.blocked` with reason `robots_unreachable`.
+   - A redirect of `robots.txt` to a host that is in the same `official_domains` list is permitted. Log each hop.
+   - A fact from a page that was fetched after `robots.txt` was not readable is not evidence. Fetch the page again in a run where `robots.txt` is readable, or leave the fact out.
 4. Public pages only. No sign-in, no sign-up, no form, no contact, no captcha bypass.
-5. One request at a time for each host, with a minimum of 1.5 seconds between requests.
+5. One request at a time for each host, with a minimum of 1.5 seconds between the starts of two requests. Measure the gap with a monotonic clock, and log each request with its time to the millisecond. A log with whole seconds does not prove the gap.
+   - A redirect hop and a `robots.txt` request are requests.
+   - A headless browser has the same rules. Each request that the browser makes to the host (document, script, data) is a request: check `robots.txt` for it, space it and log it. Stop requests to hosts that are not in `official_domains`, apart from the files that the page needs to show its text.
+   - Do not click a button, choose from a list or type in a field to get data. If a page needs this, record it in `run.blocked` with reason `login_required` or report it.
+   - Status 429 or 503 on a page: stop requests to that host for the remainder of the run.
+   - Do not fetch a URL whose path is a sign-in, registration or application form.
+   - Keep session IDs out of the hand-in file. If a site puts a session ID in a URL (for example `jsessionid`), record the URL without it.
 6. Record each fetch in `fetches` with its real time and time zone offset. Do not write a time that you did not measure.
 7. Set `run.listing_complete` to true only if you read every page and every tile of every listing. If you are not sure, set false.
 8. If you cannot reach a page, record it in `run.blocked`. Do not fill the gap from memory.
@@ -129,7 +140,17 @@ Hand in the issuer's cards in the `cards` list of the same file. Do the cards be
 9. If one page describes two or more cards and you cannot tell which benefit belongs to which card, set the flag `shared_product_page`.
 10. Card texts are published. Keep each quote to the one sentence that states the fact.
 
-## 7. What the pipeline does with your file
+## 7. Network runs and other languages
+
+`crawler/COMPLETE_INSTRUCTION.md` has the steps. The rules for the facts are:
+
+1. A run of a card network's own offer site has `run.network_id` and no `run.issuer_id`. It has no `cards` list. Eligibility is scope `network`, with `network_ids` equal to the network of the run.
+2. Card tiers that the page names go in `tiers`. Issuers that the page names go in `issuer_names`, as the page writes them.
+3. The country of a network run is the location where the card was issued, as the site lists it. The country must be in `countries.json`.
+4. Keep the title, the merchant name and each quote in the language and the script of the page. If the page shows the merchant name in two scripts, put the Latin form in `name` and the second form in `alt_names`.
+5. The gate reads amounts with the separators of the country and with number words (juta, triệu, 万, lakh), and dates with Indonesian and Thai month names and the Thai Buddhist year. The word lists are in `config/merchant_rules.json`.
+
+## 8. What the pipeline does with your file
 
 - It keeps the published ID when the page and key are the same, or when the page and the merchant are the same. A new title does not make a new ID.
 - It links each `single` merchant to one global record in `merchants/registry.json`. `Shopee Singapore`, `SHOPEE` and `Shopee Pte Ltd` become one brand. A brand with one offer and no official domain is published with `verified: false`.
@@ -139,7 +160,7 @@ Hand in the issuer's cards in the `cards` list of the same file. Do the cards be
 - After a complete listing run, an offer that was not seen for 14 days becomes `withdrawn`.
 - Expired offers move to the archive.
 
-## 8. Report after each run
+## 9. Report after each run
 
 Give these numbers and nothing else, unless something failed:
 

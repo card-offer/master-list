@@ -12,6 +12,84 @@
       "name": "Singapore",
       "currency": "SGD",
       "timezone": "Asia/Singapore"
+    },
+    {
+      "code": "ID",
+      "currency": "IDR",
+      "name": "Indonesia",
+      "timezone": "Asia/Jakarta"
+    },
+    {
+      "code": "PH",
+      "currency": "PHP",
+      "name": "Philippines",
+      "timezone": "Asia/Manila"
+    },
+    {
+      "code": "BN",
+      "currency": "BND",
+      "name": "Brunei",
+      "timezone": "Asia/Brunei"
+    },
+    {
+      "code": "TH",
+      "currency": "THB",
+      "name": "Thailand",
+      "timezone": "Asia/Bangkok"
+    },
+    {
+      "code": "VN",
+      "currency": "VND",
+      "name": "Vietnam",
+      "timezone": "Asia/Ho_Chi_Minh"
+    },
+    {
+      "code": "AU",
+      "currency": "AUD",
+      "name": "Australia",
+      "timezone": "Australia/Sydney"
+    },
+    {
+      "code": "IN",
+      "currency": "INR",
+      "name": "India",
+      "timezone": "Asia/Kolkata"
+    },
+    {
+      "code": "TW",
+      "currency": "TWD",
+      "name": "Taiwan",
+      "timezone": "Asia/Taipei"
+    },
+    {
+      "code": "JP",
+      "currency": "JPY",
+      "name": "Japan",
+      "timezone": "Asia/Tokyo"
+    },
+    {
+      "code": "HK",
+      "currency": "HKD",
+      "name": "Hong Kong SAR",
+      "timezone": "Asia/Hong_Kong"
+    },
+    {
+      "code": "NZ",
+      "currency": "NZD",
+      "name": "New Zealand",
+      "timezone": "Pacific/Auckland"
+    },
+    {
+      "code": "KR",
+      "currency": "KRW",
+      "name": "Korea",
+      "timezone": "Asia/Seoul"
+    },
+    {
+      "code": "LK",
+      "currency": "LKR",
+      "name": "Sri Lanka",
+      "timezone": "Asia/Colombo"
     }
   ]
 }
