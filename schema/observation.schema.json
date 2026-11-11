@@ -91,7 +91,8 @@
                   "captcha",
                   "app_only",
                   "not_found",
-                  "off_domain_redirect"
+                  "off_domain_redirect",
+                  "robots_unreachable"
                 ]
               },
               "redirect_to": {

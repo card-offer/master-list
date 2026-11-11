@@ -23,6 +23,7 @@ from pipeline.lib.transform import host_of
 
 THAI_DIGITS = str.maketrans("\u0e50\u0e51\u0e52\u0e53\u0e54\u0e55\u0e56\u0e57\u0e58\u0e59", "0123456789")
 WORDS = {}
+SESSION_ID = re.compile(r"(?i)(?:;jsessionid=|[?&;](?:jsessionid|phpsessid|sessionid|sid|aspsessionid\w*)=)")
 
 
 def load_json(path):
@@ -136,6 +137,10 @@ def check(obs, root, now=None):
             errors.append(f"run.blocked {row['url']}: redirect_to goes with reason off_domain_redirect, and only with it")
     if run["listing_complete"] and any(row["reason"] == "off_domain_redirect" for row in run["blocked"]):
         errors.append("run: listing_complete is true, but an official url redirects to a host that was not crawled")
+    for row in obs["fetches"]:
+        for url in (row["url"], row["final_url"]):
+            if SESSION_ID.search(url):
+                errors.append(f"fetch {url[:80]}: the url has a session id. Record the url without it.")
     for url in run["listing_urls"]:
         if url not in fetched:
             errors.append(f"run: listing url {url} has no fetch record")

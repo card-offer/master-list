@@ -194,6 +194,16 @@ class GateTests(unittest.TestCase):
         data["run"]["listing_complete"] = True
         self.assertTrue(any("listing_complete is true" in line for line in check(data, ROOT, now=NOW)[0]))
 
+    def test_session_id_in_a_url_is_refused(self):
+        data = hand_in([offer()])
+        data["fetches"].append(fetch("https://www.cimb.com.sg/page.html;jsessionid=ABC123", "issuer_promotion_page", 5))
+        self.assertTrue(any("session id" in line for line in check(data, ROOT, now=NOW)[0]))
+
+    def test_robots_unreachable_is_a_blocked_reason(self):
+        data = hand_in([offer()])
+        data["run"]["blocked"] = [{"url": "https://www.cimb.com.sg/robots.txt", "reason": "robots_unreachable"}]
+        self.assertEqual(check(data, ROOT, now=NOW)[0], [])
+
     def test_number_and_date_proof(self):
         self.assertTrue(number_in("capped at RM5,000", 5000))
         self.assertFalse(number_in("RM500 cap", 5000))

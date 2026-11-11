@@ -19,9 +19,20 @@ If the gate refuses a fact and the page does not support a correction, remove th
 
 1. Use only hosts in the issuer's `official_domains`. A merchant's own site is permitted only as fetch kind `merchant_page`, and only when the issuer page links to it.
 2. Do not use aggregator, comparison, deal, review, blog or forum sites. Do not use search engine snippets as a source.
-3. Read `robots.txt` for each host before the crawl. Do not fetch a disallowed path. Record it in `run.blocked` with reason `robots_disallow`.
+3. Read `robots.txt` for each host before the first page of that host, over https. Do not fetch a disallowed path. Record it in `run.blocked` with reason `robots_disallow`. What the answer means:
+   - Status 200: obey the rules for your user agent.
+   - Status 404 or 410: the host has no rules. You can crawl it.
+   - Status 401, 403 or 429, a server error (500 and higher), a timeout, a TLS or connection error, more than 5 redirects, a redirect loop, or a redirect to a host that is not in `official_domains`: `robots.txt` is not readable. Do not fetch a page of that host in this run. Record the host in `run.blocked` with reason `robots_unreachable`.
+   - A redirect of `robots.txt` to a host that is in the same `official_domains` list is permitted. Log each hop.
+   - A fact from a page that was fetched after `robots.txt` was not readable is not evidence. Fetch the page again in a run where `robots.txt` is readable, or leave the fact out.
 4. Public pages only. No sign-in, no sign-up, no form, no contact, no captcha bypass.
-5. One request at a time for each host, with a minimum of 1.5 seconds between requests.
+5. One request at a time for each host, with a minimum of 1.5 seconds between the starts of two requests. Measure the gap with a monotonic clock, and log each request with its time to the millisecond. A log with whole seconds does not prove the gap.
+   - A redirect hop and a `robots.txt` request are requests.
+   - A headless browser has the same rules. Each request that the browser makes to the host (document, script, data) is a request: check `robots.txt` for it, space it and log it. Stop requests to hosts that are not in `official_domains`, apart from the files that the page needs to show its text.
+   - Do not click a button, choose from a list or type in a field to get data. If a page needs this, record it in `run.blocked` with reason `login_required` or report it.
+   - Status 429 or 503 on a page: stop requests to that host for the remainder of the run.
+   - Do not fetch a URL whose path is a sign-in, registration or application form.
+   - Keep session IDs out of the hand-in file. If a site puts a session ID in a URL (for example `jsessionid`), record the URL without it.
 6. Record each fetch in `fetches` with its real time and time zone offset. Do not write a time that you did not measure.
 7. Set `run.listing_complete` to true only if you read every page and every tile of every listing. If you are not sure, set false.
 8. If you cannot reach a page, record it in `run.blocked`. Do not fill the gap from memory.
