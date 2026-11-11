@@ -6,7 +6,8 @@
 It fetches nothing. A name that came from the old title parser is kept only when it passes
 the name test in config/merchant_rules.json, and it is marked legacy_title_parse. Every other
 offer becomes merchant_kind unknown until the crawler states the merchant with proof.
-Safe to run again: offers that already have merchant_kind are not changed.
+Safe to run again: offers that already have merchant_kind are not changed. It also gives each
+offer merchant_ids, the list form of the merchant link, when the field is missing.
 """
 import glob
 import json
@@ -60,6 +61,8 @@ def main(root=None):
                 offer["merchant_names"] = []
                 offer["merchant_outlet"] = None
                 offer["merchant_name_source"] = "legacy_title_parse" if name else None
+            if "merchant_ids" not in offer:
+                offer["merchant_ids"] = [offer["merchant_id"]] if offer.get("merchant_id") else []
             offers.append(offer)
         loaded.append((path, data))
     generated = stamp()
