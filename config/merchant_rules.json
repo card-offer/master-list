@@ -4,23 +4,45 @@
   "unknown_merchant_max_pct": 5,
   "withdraw_after_days": 14,
   "legal_suffixes": [
-    "sdn bhd",
-    "sdn. bhd.",
     "berhad",
     "bhd",
+    "co",
+    "co ltd",
+    "company",
+    "corp",
+    "corporation",
+    "inc",
+    "jsc",
+    "limited",
+    "llc",
+    "ltd",
+    "pcl",
+    "plc",
+    "private limited",
     "pte ltd",
     "pte. ltd.",
-    "private limited",
-    "ltd",
-    "limited",
-    "inc",
-    "llc",
-    "plc",
-    "co ltd"
+    "public company limited",
+    "sdn bhd",
+    "sdn. bhd.",
+    "tbk"
   ],
   "country_words": [
+    "australia",
+    "brunei",
+    "hong kong",
+    "india",
+    "indonesia",
+    "japan",
+    "korea",
     "malaysia",
-    "singapore"
+    "new zealand",
+    "philippines",
+    "singapore",
+    "sri lanka",
+    "taiwan",
+    "thailand",
+    "viet nam",
+    "vietnam"
   ],
   "leading_words": [
     "the"
@@ -38,5 +60,142 @@
     "(?i)^(?:your|our|this|new|all)\\b",
     "(?i)\\s+x\\s+",
     "(?i)^[a-z]{2,5}\\d+$"
-  ]
+  ],
+  "name_reject_words": [
+    "diskon",
+    "gratis",
+    "potongan harga",
+    "giảm giá",
+    "ưu đãi",
+    "hoàn tiền",
+    "miễn phí",
+    "ส่วนลด",
+    "ฟรี",
+    "折扣",
+    "優惠",
+    "优惠",
+    "割引",
+    "無料",
+    "할인",
+    "무료"
+  ],
+  "number_words": {
+    "1000": [
+      "k",
+      "ribu",
+      "rb",
+      "nghìn",
+      "ngàn",
+      "พัน",
+      "천",
+      "thousand"
+    ],
+    "10000": [
+      "万",
+      "萬",
+      "만",
+      "หมื่น"
+    ],
+    "100000": [
+      "lakh",
+      "lakhs",
+      "แสน"
+    ],
+    "1000000": [
+      "m",
+      "mil",
+      "million",
+      "juta",
+      "jt",
+      "triệu",
+      "tr",
+      "ล้าน"
+    ],
+    "10000000": [
+      "crore",
+      "crores"
+    ],
+    "100000000": [
+      "億",
+      "亿",
+      "억"
+    ]
+  },
+  "month_words": {
+    "1": [
+      "jan",
+      "januari",
+      "มกราคม",
+      "ม.ค."
+    ],
+    "2": [
+      "feb",
+      "februari",
+      "pebruari",
+      "กุมภาพันธ์",
+      "ก.พ."
+    ],
+    "3": [
+      "mar",
+      "maret",
+      "มีนาคม",
+      "มี.ค."
+    ],
+    "4": [
+      "apr",
+      "เมษายน",
+      "เม.ย."
+    ],
+    "5": [
+      "may",
+      "mei",
+      "พฤษภาคม",
+      "พ.ค."
+    ],
+    "6": [
+      "jun",
+      "juni",
+      "มิถุนายน",
+      "มิ.ย."
+    ],
+    "7": [
+      "jul",
+      "juli",
+      "กรกฎาคม",
+      "ก.ค."
+    ],
+    "8": [
+      "aug",
+      "agustus",
+      "agu",
+      "ags",
+      "สิงหาคม",
+      "ส.ค."
+    ],
+    "9": [
+      "sep",
+      "กันยายน",
+      "ก.ย."
+    ],
+    "10": [
+      "oct",
+      "oktober",
+      "okt",
+      "ตุลาคม",
+      "ต.ค."
+    ],
+    "11": [
+      "nov",
+      "nopember",
+      "พฤศจิกายน",
+      "พ.ย."
+    ],
+    "12": [
+      "dec",
+      "desember",
+      "des",
+      "ธันวาคม",
+      "ธ.ค."
+    ]
+  }
 }
