@@ -122,6 +122,8 @@ Card names and trademarks belong to their issuers, networks and merchants.
 | `schema/` | JSON Schema (draft 2020-12). `$id` URLs point at GitHub Pages. |
 | `pipeline/` | The crawl and publish code. |
 | `crawler/RULES.md` | The rule for the crawler: sources, merchant name, facts and quotes. |
+| `crawler/COMPLETE_INSTRUCTION.md` | The steps for the crawler: issuer census, cards and offers of each issuer, and the offer sites of the card networks. |
+| `{cc}/offers/network-{id}.json` | Offers from a card network's own offer site for cards issued in that country. `provider.type` is `network`. |
 | `schema/observation.schema.json` | The crawler hand-in file. Private, never committed. `tools/check_observations.py` is its gate and `pipeline/ingest.py` publishes it. |
 | `tools/validate.py` | The check that runs on every pull request and on every push to `main`. |
 

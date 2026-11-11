@@ -1,5 +1,7 @@
 # Instruction for Grok Bot
 
+This file is replaced by `crawler/COMPLETE_INSTRUCTION.md`. It is kept for the record of the first test.
+
 Copy all the text below the line and give it to Grok Bot.
 
 ---

@@ -270,6 +270,13 @@ def validate(root, index_dir=None):
             if alias in live_ids and alias != record["id"]:
                 errors.append(f"{record['id']}: alias {alias} equals another record's live id")
     seen_offer_ids = set()
+    session_id = re.compile(r"(?i)(?:;jsessionid=|[?&;](?:jsessionid|phpsessid|sessionid|sid|aspsessionid\w*)=)")
+    log_path = os.path.join(root, "pipeline", "fetch_metadata.json")
+    if os.path.exists(log_path):
+        for row in load_json(log_path):
+            for url in (row.get("url"), row.get("final_url")):
+                if url and session_id.search(url):
+                    errors.append(f"pipeline/fetch_metadata.json: url with a session id: {url[:80]}")
     merchant_rules = load_merchant_rules(root)
     for brand in merchants:
         expected = bool(brand.get("official_domain")) or len(brand.get("offer_ids") or []) >= rules["merchant_min_offers"]

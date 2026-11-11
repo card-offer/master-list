@@ -65,19 +65,23 @@ def expand(offer, cards_by_issuer, cards_by_id):
         issuers = [offer["provider"]["id"]]
     pool = []
     if scope == "network" and not issuers:
-        pool = list(cards_by_id.values())
+        pool = [card for card in cards_by_id.values() if card.get("country") == offer.get("country")]
     else:
         for issuer_id in issuers:
             pool.extend(cards_by_issuer.get(issuer_id, []))
     if scope == "issuer":
         return sorted({card["id"] for card in pool}), [], True
     networks = set(rule.get("network_ids") or [])
+    tiers = set(rule.get("tiers") or [])
     resolved, excluded = [], []
     for card in pool:
         if card.get("status") == "needs_review" or not card.get("networks"):
             excluded.append(card["id"])
         elif networks & set(card.get("networks") or []):
-            resolved.append(card["id"])
+            if tiers and card.get("tier") is None:
+                excluded.append(card["id"])
+            elif not tiers or card.get("tier") in tiers:
+                resolved.append(card["id"])
     return sorted(set(resolved)), sorted(set(excluded)), True
 
 

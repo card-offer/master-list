@@ -21,7 +21,9 @@ from pipeline.lib.merchants import load_merchant_rules, name_key, name_problems,
 from pipeline.lib.rules import load_rules
 from pipeline.lib.transform import host_of
 
-MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
+THAI_DIGITS = str.maketrans("\u0e50\u0e51\u0e52\u0e53\u0e54\u0e55\u0e56\u0e57\u0e58\u0e59", "0123456789")
+WORDS = {}
+SESSION_ID = re.compile(r"(?i)(?:;jsessionid=|[?&;](?:jsessionid|phpsessid|sessionid|sid|aspsessionid\w*)=)")
 
 
 def load_json(path):
@@ -29,24 +31,50 @@ def load_json(path):
         return json.load(fh)
 
 
-def number_in(quote, amount):
+def _words():
+    if not WORDS:
+        WORDS.update(load_merchant_rules())
+    return WORDS
+
+
+def _digits(amount):
     whole, _, frac = f"{amount:.4f}".rstrip("0").rstrip(".").partition(".")
     grouped = ""
     for index, digit in enumerate(reversed(whole)):
         if index and index % 3 == 0:
-            grouped = "[,. ]?" + grouped
+            grouped = "[,. \u00a0]?" + grouped
         grouped = digit + grouped
-    pattern = r"(?<![\d.,])" + grouped + (r"\." + frac + "0*" if frac else r"(?:\.0+)?") + r"(?!\d)"
-    return re.search(pattern, quote or "") is not None
+    return grouped, frac
+
+
+def number_in(quote, amount):
+    """True when the amount is written in the quote, in digits or in digits with a number word (1 juta, 5万)."""
+    text = (quote or "").translate(THAI_DIGITS)
+    grouped, frac = _digits(amount)
+    pattern = r"(?<![\d.,])" + grouped + (r"[.,]" + frac + "0*" if frac else r"(?:[.,]0{1,2})?") + r"(?![\d])(?![.,]\d)"
+    if re.search(pattern, text):
+        return True
+    for factor, names in _words()["number_words"].items():
+        part = amount / int(factor)
+        if part < 0.01 or abs(part * 100 - round(part * 100)) > 1e-6:
+            continue
+        grouped, frac = _digits(part)
+        number = grouped + (r"[.,]" + frac if frac else "")
+        for name in names:
+            if re.search(r"(?<![\d.,])" + number + r"\s?" + re.escape(name) + r"(?![a-z])", text.casefold()):
+                return True
+    return False
 
 
 def date_in(quote, iso):
+    """True when day, month and year of the date are in the quote. Month names and the Thai year come from config."""
     day = datetime.date.fromisoformat(iso)
-    text = (quote or "").lower()
+    text = (quote or "").translate(THAI_DIGITS).casefold()
     has_day = re.search(rf"(?<!\d)0?{day.day}(?!\d)", text) is not None
-    has_year = str(day.year) in text or re.search(rf"(?<!\d){day.year % 100:02d}(?!\d)", text) is not None
-    name = MONTHS[day.month - 1]
-    has_month = name[:3] in text or re.search(rf"(?<!\d)0?{day.month}(?!\d)", text) is not None
+    years = (day.year, day.year + 543)
+    has_year = any(str(year) in text or re.search(rf"(?<!\d){year % 100:02d}(?!\d)", text) for year in years)
+    names = _words()["month_words"][str(day.month)]
+    has_month = any(name in text for name in names) or re.search(rf"(?<!\d)0?{day.month}(?!\d)", text) is not None
     return has_day and has_month and has_year
 
 
@@ -61,13 +89,26 @@ def check(obs, root, now=None):
     rules, mrules = load_rules(), load_merchant_rules(root)
     run = obs["run"]
     country = run["country"]
-    issuer_path = os.path.join(root, country.lower(), "issuers.json")
-    issuers = {row["id"]: row for row in load_json(issuer_path)["items"]} if os.path.exists(issuer_path) else {}
-    issuer = issuers.get(run["issuer_id"])
-    if issuer is None:
-        return [f"run: issuer {run['issuer_id']} is not in {country.lower()}/issuers.json. Add the issuer with its official_domains first."], warnings, {}
     networks = load_json(os.path.join(root, "networks.json"))["items"]
-    official = set(issuer.get("official_domains") or [])
+    issuer_id, network_id = run.get("issuer_id"), run.get("network_id")
+    if bool(issuer_id) == bool(network_id):
+        return ["run: give issuer_id or network_id, and not both"], warnings, {}
+    if country not in {row["code"] for row in load_json(os.path.join(root, "countries.json"))["items"]}:
+        return [f"run: country {country} is not in countries.json. The maintainer adds a country first."], warnings, {}
+    if network_id:
+        owner = next(row for row in networks if row["id"] == network_id)
+        owner_id = network_id
+        if obs.get("cards"):
+            errors.append("run: a network run has no cards list. Cards belong to issuers.")
+    else:
+        issuer_path = os.path.join(root, country.lower(), "issuers.json")
+        issuers = {row["id"]: row for row in load_json(issuer_path)["items"]} if os.path.exists(issuer_path) else {}
+        owner = issuers.get(issuer_id)
+        owner_id = issuer_id
+        if owner is None:
+            return [f"run: issuer {issuer_id} is not in {country.lower()}/issuers.json. Add the issuer with its official_domains first."], warnings, {}
+    issuer = owner
+    official = set(owner.get("official_domains") or [])
     currencies = {row["currency"] for row in rules["currency_symbols"]}
     currencies |= {row["currency"] for row in load_json(os.path.join(root, "countries.json"))["items"]}
     if not run["robots_checked"]:
@@ -83,19 +124,23 @@ def check(obs, root, now=None):
         if row["kind"] != "merchant_page":
             first, last = host_of(row["url"]), host_of(row["final_url"])
             if first not in official:
-                errors.append(f"fetch {row['url']}: host {first} is not on {run['issuer_id']} official_domains")
+                errors.append(f"fetch {row['url']}: host {first} is not on {owner_id} official_domains")
             elif last not in official:
-                errors.append(f"fetch {row['url']}: it redirects to {last}, which is not on {run['issuer_id']} official_domains. "
+                errors.append(f"fetch {row['url']}: it redirects to {last}, which is not on {owner_id} official_domains. "
                               f"Remove this fetch record and add the url to run.blocked with reason off_domain_redirect and redirect_to.")
         fetched[row["url"]] = row
         fetched.setdefault(row["final_url"], row)
     for row in run["blocked"]:
         if host_of(row["url"]) not in official:
-            errors.append(f"run.blocked {row['url']}: host is not on {run['issuer_id']} official_domains. Record only official urls that you could not read.")
+            errors.append(f"run.blocked {row['url']}: host is not on {owner_id} official_domains. Record only official urls that you could not read.")
         if (row["reason"] == "off_domain_redirect") != ("redirect_to" in row):
             errors.append(f"run.blocked {row['url']}: redirect_to goes with reason off_domain_redirect, and only with it")
     if run["listing_complete"] and any(row["reason"] == "off_domain_redirect" for row in run["blocked"]):
         errors.append("run: listing_complete is true, but an official url redirects to a host that was not crawled")
+    for row in obs["fetches"]:
+        for url in (row["url"], row["final_url"]):
+            if SESSION_ID.search(url):
+                errors.append(f"fetch {url[:80]}: the url has a session id. Record the url without it.")
     for url in run["listing_urls"]:
         if url not in fetched:
             errors.append(f"run: listing url {url} has no fetch record")
@@ -149,6 +194,12 @@ def check(obs, root, now=None):
                     errors.append(f"{where}: the outlet is repeated inside the merchant name. Put the brand in name and the outlet in outlet.")
             if merchant["names"]:
                 errors.append(f"{where}: merchant kind single must have an empty names list")
+            for other in merchant.get("alt_names") or []:
+                for problem in name_problems(other, mrules, [issuer["name"]], [row["name"] for row in networks]):
+                    if not ("offer wording" in problem and merchant["name_checked"]):
+                        errors.append(f"{where}: merchant alt name '{other}': {problem}")
+                if merchant["name_quote"] and not quote_has_name(merchant["name_quote"], other):
+                    errors.append(f"{where}: merchant alt name '{other}' is not inside name_quote")
         else:
             if merchant["name"] is not None:
                 errors.append(f"{where}: merchant name must be null when kind is {kind}")
@@ -166,6 +217,8 @@ def check(obs, root, now=None):
                 errors.append(f"{where}: names must be empty when kind is {kind}")
             if kind == "unknown" and "merchant_not_stated" not in offer["flags"]:
                 errors.append(f"{where}: merchant kind unknown needs the flag merchant_not_stated. Use it only after you read the page, the tile and the terms.")
+        if kind != "single" and merchant.get("alt_names"):
+            errors.append(f"{where}: alt_names are for merchant kind single only")
         if kind != "unknown" and "merchant_not_stated" in offer["flags"]:
             errors.append(f"{where}: flag merchant_not_stated is set but merchant kind is {kind}")
         basis = offer["source_key_basis"]
@@ -226,8 +279,17 @@ def check(obs, root, now=None):
         quote_ok(where + " eligibility", rule["quote"])
         if rule["confidence"] == "stated" and not rule["quote"]:
             errors.append(f"{where}: stated eligibility needs a quote")
-        if rule["confidence"] == "inferred" and (rule["scope"] != "issuer" or rule["card_names"] or rule["network_ids"]):
-            errors.append(f"{where}: inferred eligibility must be scope issuer with no card names and no networks")
+        names_of_issuers = rule.get("issuer_names") or []
+        if network_id:
+            if rule["scope"] != "network" or rule["network_ids"] != [network_id] or rule["card_names"]:
+                errors.append(f"{where}: in a network run, eligibility is scope network, network_ids [{network_id}] and no card names")
+            if rule["confidence"] == "inferred" and (rule["tiers"] or names_of_issuers):
+                errors.append(f"{where}: inferred eligibility must have no tiers and no issuer names")
+        else:
+            if rule["scope"] == "network" or names_of_issuers:
+                errors.append(f"{where}: scope network and issuer_names are for network runs only")
+            if rule["confidence"] == "inferred" and (rule["scope"] != "issuer" or rule["card_names"] or rule["network_ids"]):
+                errors.append(f"{where}: inferred eligibility must be scope issuer with no card names and no networks")
         if rule["scope"] == "card" and not rule["card_names"]:
             errors.append(f"{where}: scope card needs card_names")
         if rule["scope"] == "issuer_network" and not rule["network_ids"]:
