@@ -27,6 +27,16 @@ def load_json(path):
         return json.load(fh)
 
 
+def load_builder():
+    # tools/ is not a package. Load the builder by path so the test uses the same code.
+    import importlib.util
+    module_path = ROOT / "tools" / "build_sources.py"
+    spec = importlib.util.spec_from_file_location("build_sources", module_path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 class SourcesListTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -36,6 +46,12 @@ class SourcesListTests(unittest.TestCase):
         for country in ("my", "sg"):
             cls.issuers.extend(load_json(ROOT / country / "issuers.json")["items"])
         cls.networks = load_json(ROOT / "config" / "networks.json")["items"]
+
+    def test_committed_list_matches_the_builder(self):
+        builder = load_builder()
+        built = builder.build_sources(ROOT)
+        self.assertEqual(self.data, built)
+        self.assertEqual(SOURCES_MD.read_text(encoding="utf-8"), builder.render_sources_md(built))
 
     def test_ids_are_unique_and_rows_are_complete(self):
         ids = [row["id"] for row in self.items]

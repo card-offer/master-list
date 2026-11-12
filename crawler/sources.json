@@ -190,14 +190,14 @@
    "issuer_id": "sg-maribank"
   },
   {
-   "id": "sg-trust-trust.com.sg-cards",
+   "id": "sg-trust-trustbank.sg-cards",
    "site": "Trust Bank",
-   "host": "trust.com.sg",
+   "host": "trustbank.sg",
    "country": "SG",
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.trust.com.sg/"
+    "https://trustbank.sg/credit-card/"
    ],
    "status": "untested",
    "full_crawl_order": 4,
@@ -205,9 +205,9 @@
    "issuer_id": "sg-trust"
   },
   {
-   "id": "sg-trust-trust.com.sg-offers",
+   "id": "sg-trust-trustbank.sg-offers",
    "site": "Trust Bank",
-   "host": "trust.com.sg",
+   "host": "trustbank.sg",
    "country": "SG",
    "type": "issuer",
    "purpose": "offers",
@@ -1123,6 +1123,34 @@
    "issuer_id": "my-hsbc"
   },
   {
+   "id": "my-hsbc-hsbcamanah.com.my-cards",
+   "site": "HSBC Malaysia",
+   "host": "hsbcamanah.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.hsbcamanah.com.my/credit-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 30,
+   "suggested_by": null,
+   "issuer_id": "my-hsbc"
+  },
+  {
+   "id": "my-hsbc-hsbcamanah.com.my-offers",
+   "site": "HSBC Malaysia",
+   "host": "hsbcamanah.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 30,
+   "suggested_by": null,
+   "issuer_id": "my-hsbc"
+  },
+  {
    "id": "my-hsbc-sp.hsbc.com.my-cards",
    "site": "HSBC Malaysia",
    "host": "sp.hsbc.com.my",
@@ -1263,6 +1291,32 @@
    "issuer_id": "my-rhb"
   },
   {
+   "id": "my-maybank-maybank.com-cards",
+   "site": "Maybank",
+   "host": "maybank.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 34,
+   "suggested_by": null,
+   "issuer_id": "my-maybank"
+  },
+  {
+   "id": "my-maybank-maybank.com-offers",
+   "site": "Maybank",
+   "host": "maybank.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 34,
+   "suggested_by": null,
+   "issuer_id": "my-maybank"
+  },
+  {
    "id": "my-maybank-maybank2u.com.my-cards",
    "site": "Maybank",
    "host": "maybank2u.com.my",
@@ -1289,6 +1343,58 @@
    "full_crawl_order": 34,
    "suggested_by": null,
    "issuer_id": "my-maybank"
+  },
+  {
+   "id": "my-icbc-icbcmy.com-cards",
+   "site": "ICBC Malaysia",
+   "host": "icbcmy.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "after-34",
+   "suggested_by": null,
+   "issuer_id": "my-icbc"
+  },
+  {
+   "id": "my-icbc-icbcmy.com-offers",
+   "site": "ICBC Malaysia",
+   "host": "icbcmy.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "after-34",
+   "suggested_by": null,
+   "issuer_id": "my-icbc"
+  },
+  {
+   "id": "my-icbc-v.icbc.com.cn-cards",
+   "site": "ICBC Malaysia",
+   "host": "v.icbc.com.cn",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "after-34",
+   "suggested_by": null,
+   "issuer_id": "my-icbc"
+  },
+  {
+   "id": "my-icbc-v.icbc.com.cn-offers",
+   "site": "ICBC Malaysia",
+   "host": "v.icbc.com.cn",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "after-34",
+   "suggested_by": null,
+   "issuer_id": "my-icbc"
   },
   {
    "id": "my-network-mastercard-mastercard.com-offers",

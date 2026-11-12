@@ -2,7 +2,7 @@
 
 This file describes the canonical list of sites to crawl for Malaysia (MY) and Singapore (SG). The list itself is [`crawler/sources.json`](sources.json). Do not crawl a host that is not on the list.
 
-The list is built from `{cc}/issuers.json` (card and offer entry URLs), `pipeline/offers_config.json` seeds, `config/networks.json`, the regulator hosts in `crawler/FULL_CRAWL.md`, and the network offer sites in that file. A host also has to be in the issuer's or the network's `official_domains`, except for the two regulator sites used in the phase 1 census.
+Issuer rows are built by `tools/build_sources.py` from `{cc}/issuers.json` official domains and entry URLs, and from `pipeline/offers_config.json` seeds. Network and regulator rows are kept as they are in `crawler/sources.json`. A host also has to be in the issuer's or the network's `official_domains`, except for the two regulator sites used in the phase 1 census.
 
 ## How to read a row
 
@@ -15,7 +15,7 @@ The list is built from `{cc}/issuers.json` (card and offer entry URLs), `pipelin
 | `purpose` | `cards` or `offers` for crawl pages, and `census` for the regulator lists. |
 | `entry_urls` | Known listing or start URLs from the repository. An empty list means the host is official but no start URL is recorded yet. |
 | `status` | Fetcher class from repository evidence only: `ok`, `js_shell`, `bot_wall`, `network_unreachable`, or `untested` when the repository has no such evidence. Do not invent a status. |
-| `full_crawl_order` | The order in `crawler/FULL_CRAWL.md`: `1` to `34` for issuers, `C1` to `C12` for network offer sites, and `phase-1` for regulators. |
+| `full_crawl_order` | The order in `crawler/FULL_CRAWL.md`: `1` to `34` for issuers in that table, `after-34` for a phase 1 issuer not yet given a number, `C1` to `C12` for network offer sites, and `phase-1` for regulators. |
 | `suggested_by` | The GitHub issue that proposed the site, or `null` when the row came from the repository itself. |
 
 ## Suggesting a site
@@ -24,7 +24,7 @@ Contributors can propose a site with the "Suggest a site to crawl" issue form. T
 
 ## The list
 
-There are 108 rows in `crawler/sources.json`. Counts by country: MY 50, SG 58. Counts by type: issuer 88, network 18, regulator 2.
+There are 116 rows in `crawler/sources.json`. Counts by country: MY 58, SG 58. Counts by type: issuer 96, network 18, regulator 2.
 
 | Order | Country | Type | Purpose | Site | Host | Status | Entry URLs |
 |---|---|---|---|---|---|---|---|
@@ -42,8 +42,8 @@ There are 108 rows in `crawler/sources.json`. Counts by country: MY 50, SG 58. C
 | 3 | SG | issuer | offers | MariBank | `banking-aka-storage.maribank.com.sg` | untested |  |
 | 3 | SG | issuer | cards | MariBank | `maribank.sg` | untested | https://www.maribank.sg/product/mari-credit-card |
 | 3 | SG | issuer | offers | MariBank | `maribank.sg` | untested |  |
-| 4 | SG | issuer | cards | Trust Bank | `trust.com.sg` | untested | https://www.trust.com.sg/ |
-| 4 | SG | issuer | offers | Trust Bank | `trust.com.sg` | untested |  |
+| 4 | SG | issuer | cards | Trust Bank | `trustbank.sg` | untested | https://trustbank.sg/credit-card/ |
+| 4 | SG | issuer | offers | Trust Bank | `trustbank.sg` | untested |  |
 | 5 | SG | issuer | cards | ICBC Singapore | `icbc.com.sg` | untested | https://www.icbc.com.sg/en/column/1438059017535897814.html |
 | 5 | SG | issuer | offers | ICBC Singapore | `icbc.com.sg` | untested |  |
 | 6 | SG | issuer | cards | Bank of China Singapore | `bankofchina.com` | untested | https://www.bankofchina.com/sg/bcservice/bc1/ |
@@ -106,6 +106,8 @@ There are 108 rows in `crawler/sources.json`. Counts by country: MY 50, SG 58. C
 | 29 | MY | issuer | offers | UOB Malaysia | `uob.com.my` | untested | https://www.uob.com.my/personal/promotions/index.page |
 | 30 | MY | issuer | cards | HSBC Malaysia | `hsbc.com.my` | untested | https://www.hsbc.com.my/credit-cards/ |
 | 30 | MY | issuer | offers | HSBC Malaysia | `hsbc.com.my` | untested | https://www.hsbc.com.my/offers/, https://www.hsbc.com.my/credit-cards/ |
+| 30 | MY | issuer | cards | HSBC Malaysia | `hsbcamanah.com.my` | untested | https://www.hsbcamanah.com.my/credit-cards/ |
+| 30 | MY | issuer | offers | HSBC Malaysia | `hsbcamanah.com.my` | untested |  |
 | 30 | MY | issuer | cards | HSBC Malaysia | `sp.hsbc.com.my` | untested |  |
 | 30 | MY | issuer | offers | HSBC Malaysia | `sp.hsbc.com.my` | untested |  |
 | 31 | MY | issuer | cards | AmBank | `ambank.com.my` | untested | https://www.ambank.com.my/cards/credit-cards |
@@ -116,8 +118,14 @@ There are 108 rows in `crawler/sources.json`. Counts by country: MY 50, SG 58. C
 | 32 | MY | issuer | offers | Standard Chartered Malaysia | `sc.com` | untested | https://www.sc.com/my/promotions/ |
 | 33 | MY | issuer | cards | RHB Bank | `rhbgroup.com` | untested | https://www.rhbgroup.com/personal/cards/credit-cards/overview/index.html |
 | 33 | MY | issuer | offers | RHB Bank | `rhbgroup.com` | untested |  |
+| 34 | MY | issuer | cards | Maybank | `maybank.com` | untested |  |
+| 34 | MY | issuer | offers | Maybank | `maybank.com` | untested |  |
 | 34 | MY | issuer | cards | Maybank | `maybank2u.com.my` | untested | https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards/index.page |
 | 34 | MY | issuer | offers | Maybank | `maybank2u.com.my` | untested |  |
+| after-34 | MY | issuer | cards | ICBC Malaysia | `icbcmy.com` | untested |  |
+| after-34 | MY | issuer | offers | ICBC Malaysia | `icbcmy.com` | untested |  |
+| after-34 | MY | issuer | cards | ICBC Malaysia | `v.icbc.com.cn` | untested |  |
+| after-34 | MY | issuer | offers | ICBC Malaysia | `v.icbc.com.cn` | untested |  |
 | C1 | MY | network | offers | Mastercard | `mastercard.com` | untested |  |
 | C1 | MY | network | offers | Mastercard | `priceless.com` | untested |  |
 | C1 | MY | network | offers | Mastercard | `specials.priceless.com` | untested | https://specials.priceless.com/ |
@@ -136,4 +144,3 @@ There are 108 rows in `crawler/sources.json`. Counts by country: MY 50, SG 58. C
 | C10 | SG | network | offers | American Express | `americanexpress.com` | untested |  |
 | C11 | MY | network | offers | Diners Club | `dinersclub.com` | untested |  |
 | C12 | SG | network | offers | Diners Club | `dinersclub.com` | untested |  |
-
