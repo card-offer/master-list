@@ -199,10 +199,26 @@ class GateTests(unittest.TestCase):
         data["fetches"].append(fetch("https://www.cimb.com.sg/page.html;jsessionid=ABC123", "issuer_promotion_page", 5))
         self.assertTrue(any("session id" in line for line in check(data, ROOT, now=NOW)[0]))
 
-    def test_robots_unreachable_is_a_blocked_reason(self):
+    def test_robots_unreachable_is_a_blocked_reason_and_flags_the_fetches(self):
+        """The host is still crawled, so the block row must not read as "nothing was read" — and each
+        page read under it has to say so."""
         data = hand_in([offer()])
         data["run"]["blocked"] = [{"url": "https://www.cimb.com.sg/robots.txt", "reason": "robots_unreachable"}]
+        for row in data["fetches"]:
+            row["robots_unreadable"] = True
         self.assertEqual(check(data, ROOT, now=NOW)[0], [])
+
+    def test_a_fetch_under_unreadable_robots_must_say_so(self):
+        data = hand_in([offer()])
+        data["run"]["blocked"] = [{"url": "https://www.cimb.com.sg/robots.txt", "reason": "robots_unreachable"}]
+        errors = check(data, ROOT, now=NOW)[0]
+        self.assertTrue(any("robots_unreadable: true" in line for line in errors), errors)
+
+    def test_the_flag_without_the_block_row_is_caught(self):
+        data = hand_in([offer()])
+        data["fetches"][0]["robots_unreadable"] = True
+        errors = check(data, ROOT, now=NOW)[0]
+        self.assertTrue(any("no robots_unreachable row" in line for line in errors), errors)
 
     def test_number_and_date_proof(self):
         self.assertTrue(number_in("capped at RM5,000", 5000))

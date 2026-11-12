@@ -378,7 +378,7 @@ def validate(root, index_dir=None):
             for err in index_validator.iter_errors(data):
                 errors.append(f"{os.path.relpath(path, index_dir)} {err.json_path}: {err.message[:200]}")
     for dirpath, dirnames, files in os.walk(root):
-        dirnames[:] = [name for name in dirnames if name not in {".git", "dist", "__pycache__"}]
+        dirnames[:] = [name for name in dirnames if name not in {".git", "dist", "__pycache__", ".venv", "venv", "node_modules"}]
         for name in files:
             if name.endswith((".json", ".md", ".yml", ".yaml")):
                 with open(os.path.join(dirpath, name), encoding="utf-8") as fh:

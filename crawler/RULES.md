@@ -1,6 +1,9 @@
 # Crawler rule for Grok Bot
 
-Version 2. Contract: `observation/1`. Schema: `schema/observation.schema.json`.
+Version 3. Contract: `observation/1`. Schema: `schema/observation.schema.json`.
+
+Version 3 changes one thing: an unreadable `robots.txt` no longer stops a host. A run reads it anyway and
+marks the pages, so a guard that hides or throttles `robots.txt` costs flags instead of a whole issuer.
 
 You crawl. The pipeline publishes. You do not write the public files, you do not make IDs, and you do not edit the merchant registry. You give one hand-in file for each issuer and each run. The gate checks it. The ingest step publishes it.
 
@@ -22,9 +25,10 @@ If the gate refuses a fact and the page does not support a correction, remove th
 3. Read `robots.txt` for each host before the first page of that host, over https. Do not fetch a disallowed path. Record it in `run.blocked` with reason `robots_disallow`. What the answer means:
    - Status 200: obey the rules for your user agent.
    - Status 404 or 410: the host has no rules. You can crawl it.
-   - Status 401, 403 or 429, a server error (500 and higher), a timeout, a TLS or connection error, more than 5 redirects, a redirect loop, or a redirect to a host that is not in `official_domains`: `robots.txt` is not readable. Do not fetch a page of that host in this run. Record the host in `run.blocked` with reason `robots_unreachable`.
+   - Status 401, 403 or 429, a server error (500 and higher), a timeout, a TLS or connection error, more than 5 redirects, a redirect loop, or a redirect to a host that is not in `official_domains`: `robots.txt` is unreadable. Crawl the host anyway. A guard that hides or throttles `robots.txt` forbids nothing, and a run must not lose a whole issuer over an answer that states no rule.
    - A redirect of `robots.txt` to a host that is in the same `official_domains` list is permitted. Log each hop.
-   - A fact from a page that was fetched after `robots.txt` was not readable is not evidence. Fetch the page again in a run where `robots.txt` is readable, or leave the fact out.
+   - When `robots.txt` was unreadable, every page fetched from that host carries `robots_unreadable: true` in its `fetches` record, and the host keeps its `run.blocked` row with reason `robots_unreachable`. `pipeline/fetcher.py` does both. The blocked row is a flag, not a statement that nothing was read.
+   - Such a page is evidence, but blind evidence. Keep the fact and let the flag stand: the maintainer re-reads the page in a run where `robots.txt` answers. Correct the fact then if the recheck contradicts it. Do not drop a fact merely because `robots.txt` was unreadable, and do not re-fetch it in the same run.
 4. Public pages only. No sign-in, no sign-up, no form, no contact, no captcha bypass.
 5. One request at a time for each host, with a minimum of 1.5 seconds between the starts of two requests. Measure the gap with a monotonic clock, and log each request with its time to the millisecond. A log with whole seconds does not prove the gap.
    - A redirect hop and a `robots.txt` request are requests.

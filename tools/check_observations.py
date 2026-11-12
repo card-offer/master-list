@@ -130,6 +130,17 @@ def check(obs, root, now=None):
                               f"Remove this fetch record and add the url to run.blocked with reason off_domain_redirect and redirect_to.")
         fetched[row["url"]] = row
         fetched.setdefault(row["final_url"], row)
+    unreadable_hosts = {host_of(row["url"]) for row in run["blocked"] if row["reason"] == "robots_unreachable"}
+    for row in obs["fetches"]:
+        host = host_of(row["url"])
+        if host in unreadable_hosts and not row.get("robots_unreadable"):
+            errors.append(
+                f"fetch {row['url']}: robots.txt for {host} is recorded as unreadable, so this fetch needs "
+                f"robots_unreadable: true.")
+        if row.get("robots_unreadable") and host not in unreadable_hosts:
+            errors.append(
+                f"fetch {row['url']}: robots_unreadable is set, but run.blocked has no robots_unreachable row "
+                f"for {host}.")
     for row in run["blocked"]:
         if host_of(row["url"]) not in official:
             errors.append(f"run.blocked {row['url']}: host is not on {owner_id} official_domains. Record only official urls that you could not read.")

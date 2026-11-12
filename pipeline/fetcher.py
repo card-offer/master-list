@@ -9,8 +9,9 @@ Use this module for every request of a crawl. Do not make a request to a crawl h
 What it enforces:
 - Only https, and only hosts in the official_domains that the caller gives.
 - robots.txt is read first for each host. 200: obey. 404 or 410: no rules. Every other answer, an error,
-  a timeout, a redirect loop, more than 5 redirects, or a redirect to a host that is not official: the host
-  is not crawled in this run.
+  a timeout, a redirect loop, more than 5 redirects, or a redirect to a host that is not official:
+  robots.txt is unreadable. The host is still crawled and every page read from it is marked
+  robots_unreadable and listed in `rechecks`, so a guard that hides robots.txt costs us flags, not data.
 - One request at a time, and 1.5 seconds or more between the starts of two requests to one host, on a
   monotonic clock. Redirect hops and robots.txt requests count.
 - No sign-in, registration or application form URLs. A session id is removed from a recorded URL.
@@ -162,7 +163,8 @@ class PoliteFetcher:
         self.allow_http_hosts = set(allow_http_hosts)
         self.lock = threading.Lock()
         self.last_start, self.robots, self.stopped = {}, {}, {}
-        self.fetches, self.blocked = [], []
+        self.fetches, self.blocked, self.rechecks = [], [], []
+        self.unreadable = set()  # hosts whose robots.txt could not be read this run
         os.makedirs(os.path.dirname(os.path.abspath(log_path)), exist_ok=True)
 
     # ---- log
@@ -208,7 +210,7 @@ class PoliteFetcher:
 
     # ---- robots
     def robots_for(self, url):
-        """Return ('rules', Robots), ('allow_all', None) or ('unreachable', reason) for the host of the URL."""
+        """Return ('rules', Robots), ('allow_all', None) or ('unreadable', reason) for the host of the URL."""
         parts = urlsplit(url)
         key = parts.netloc.lower()
         if key in self.robots:
@@ -216,12 +218,12 @@ class PoliteFetcher:
         current, seen, decision = f"{parts.scheme}://{parts.netloc}/robots.txt", set(), None
         for _hop in range(MAX_REDIRECTS + 1):
             if current in seen:
-                decision = ("unreachable", "redirect_loop")
+                decision = ("unreadable", "redirect_loop")
                 break
             seen.add(current)
             status, headers, body, _started, error = self._request(current, "robots")
             if error or status is None:
-                decision = ("unreachable", "network_error")
+                decision = ("unreadable", "network_error")
             elif status == 200:
                 decision = ("rules", Robots(body.decode("utf-8", "replace")))
             elif status in (404, 410):
@@ -229,22 +231,26 @@ class PoliteFetcher:
             elif status in (301, 302, 303, 307, 308):
                 target = urljoin(current, headers.get("Location") or headers.get("location") or "")
                 if not target or target == current:
-                    decision = ("unreachable", "redirect_without_target")
+                    decision = ("unreadable", "redirect_without_target")
                 elif host_of(target) not in self.official or not self._scheme_ok(target):
-                    decision = ("unreachable", "redirect_to_a_host_that_is_not_official")
+                    decision = ("unreadable", "redirect_to_a_host_that_is_not_official")
                 else:
                     current = target
                     continue
             else:
-                decision = ("unreachable", f"http_{status}")
+                decision = ("unreadable", f"http_{status}")
             break
         if decision is None:
-            decision = ("unreachable", "too_many_redirects")
+            decision = ("unreadable", "too_many_redirects")
         self.robots[key] = decision
         self.log(event="robots_decision", host=host_of(url), state=decision[0],
-                 reason=decision[1] if decision[0] == "unreachable" else None)
-        if decision[0] == "unreachable":
+                 reason=decision[1] if decision[0] == "unreadable" else None)
+        if decision[0] == "unreadable":
+            host = host_of(url)
+            self.unreadable.add(host)
             self._block(f"{parts.scheme}://{parts.netloc}/robots.txt", "robots_unreachable", detail=decision[1])
+            self.rechecks.append({"url": clean_url(f"{parts.scheme}://{parts.netloc}/robots.txt"), "host": host,
+                                  "reason": "robots_unreachable", "detail": decision[1]})
         return decision
 
     def may_fetch(self, url):
@@ -258,8 +264,8 @@ class PoliteFetcher:
         if host_of(url) in self.stopped:
             return self.stopped[host_of(url)]
         state, value = self.robots_for(url)
-        if state == "unreachable":
-            return "robots_unreachable"
+        if state == "unreadable":
+            return None  # read the page anyway; the record carries robots_unreadable
         if state == "rules" and not value.allowed(url):
             return "robots_disallow"
         return None
@@ -269,9 +275,10 @@ class PoliteFetcher:
         """Fetch one URL. Returns a dict: url, final_url, status, body, text, fetched_at, class, or not_fetched."""
         if urlsplit(url).scheme == "http" and urlsplit(url).netloc not in self.allow_http_hosts:
             url = "https://" + url[len("http://"):]
-        current, seen = url, set()
+        current, seen, unreadable = url, set(), False
         for _hop in range(MAX_REDIRECTS + 1):
             reason = self.may_fetch(current)
+            unreadable = unreadable or host_of(current) in self.unreadable
             if reason == "host_not_official" and current != url:
                 return self._block(url, "off_domain_redirect", redirect_to=clean_url(current))
             if reason:
@@ -297,6 +304,8 @@ class PoliteFetcher:
                 "fetched_at": started.isoformat(timespec="seconds"), "sha256": hashlib.sha256(body).hexdigest(),
                 "class": classify(status, text), "via": "http",
             }
+            if unreadable:
+                result["robots_unreadable"] = True
             self.fetches.append({key: result[key] for key in ("url", "final_url", "status", "fetched_at")})
             if status == 404:
                 self._block(current, "not_found")
@@ -364,6 +373,7 @@ class BrowserFetcher:
         reason = self.fetcher.may_fetch(url)
         if reason:
             return self.fetcher._block(url, reason)
+        unreadable = host_of(url) in self.fetcher.unreadable
         started = self.fetcher.wall()
         with sync_playwright() as play:
             browser = play.chromium.launch(args=self.launch_args, executable_path=os.environ.get("CRAWLER_CHROMIUM") or None)
@@ -397,6 +407,8 @@ class BrowserFetcher:
             "text": text, "fetched_at": started.isoformat(timespec="seconds"),
             "sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(), "class": classify(status, html), "via": "browser",
         }
+        if unreadable:
+            result["robots_unreadable"] = True
         if result["class"] == "js_shell" and len(re.findall(r"\w{2,}", text)) >= 80:
             result["class"] = "ok"
         self.fetcher.fetches.append({key: result[key] for key in ("url", "final_url", "status", "fetched_at")})
@@ -435,10 +447,13 @@ def main(argv):
         return 2
     log = os.path.join(root, "raw", "logs", f"probe-{issuer_id}-{wall_now().strftime('%Y%m%dT%H%M%S')}.jsonl")
     fetcher = PoliteFetcher(log, issuer["official_domains"], agent)
-    result = BrowserFetcher(fetcher).render(url) if "--browser" in argv else fetcher.get(url)
+    launch_args = [arg for arg in ("--disable-http2",) if arg in argv]
+    result = (BrowserFetcher(fetcher, launch_args=launch_args).render(url)
+              if "--browser" in argv else fetcher.get(url))
     shown = {key: value for key, value in result.items() if key not in ("body", "text")}
     shown["words"] = len(re.findall(r"\w{2,}", result.get("text") or ""))
-    print(json.dumps({"result": shown, "blocked": fetcher.blocked, "spacing": spacing_report(log), "log": log}, indent=1))
+    print(json.dumps({"result": shown, "blocked": fetcher.blocked, "rechecks": fetcher.rechecks,
+                      "spacing": spacing_report(log), "log": log}, indent=1))
     return 0
 
 
