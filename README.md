@@ -6,6 +6,96 @@ Every value comes from an official issuer, card network or merchant page. If a v
 
 Schema version: 0.3.0.
 
+## Quick start: use the data in your app
+
+This repository publishes static JSON for developers building card comparisons, offer searches and other tools. Reading it requires no account, API key, package installation or crawler run. Browse a linked JSON file to inspect it, or fetch it from your application. This repository does not include a consumer card-search website or a query API; your application provides the search and display.
+
+1. Open the [entry point](https://raw.githubusercontent.com/card-offer/master-list/main/index.json) to see the countries, schema version and file layout.
+2. Choose a country and read its issuers: [Malaysia](https://raw.githubusercontent.com/card-offer/master-list/main/my/issuers.json) or [Singapore](https://raw.githubusercontent.com/card-offer/master-list/main/sg/issuers.json). Records are in `items`.
+3. Choose an issuer ID, for example `my-cimb`. Remove the country prefix to get the filename: `my/cards/cimb.json` and `my/offers/cimb.json`. For `sg-dbs`, use `sg/cards/dbs.json` and `sg/offers/dbs.json`.
+4. Read the records from each file's `items` array. Check coverage, dates and eligibility before displaying an offer as usable.
+
+| What you need | Example |
+|---|---|
+| Issuer coverage and card IDs | [MY issuers](https://raw.githubusercontent.com/card-offer/master-list/main/my/issuers.json) |
+| A bank's card products | [CIMB Malaysia cards](https://raw.githubusercontent.com/card-offer/master-list/main/my/cards/cimb.json) |
+| A bank's offers | [CIMB Malaysia offers](https://raw.githubusercontent.com/card-offer/master-list/main/my/offers/cimb.json) |
+| Merchant names and aliases | [Merchant registry](https://raw.githubusercontent.com/card-offer/master-list/main/merchants/registry.json) |
+| Country currencies and time zones | [Countries](https://raw.githubusercontent.com/card-offer/master-list/main/countries.json) |
+
+### JavaScript example
+
+Run this in a modern browser console or save it as `example.mjs` and run `node example.mjs` with a Node.js version that provides `fetch`. The public files support cross-origin requests.
+
+```js
+const base = "https://raw.githubusercontent.com/card-offer/master-list/main";
+
+async function readJSON(path) {
+  const response = await fetch(`${base}/${path}`);
+  if (!response.ok) throw new Error(`${path}: HTTP ${response.status}`);
+  return response.json();
+}
+
+const [issuerFile, cardFile, offerFile] = await Promise.all([
+  readJSON("my/issuers.json"),
+  readJSON("my/cards/cimb.json"),
+  readJSON("my/offers/cimb.json"),
+]);
+const issuer = issuerFile.items.find(row => row.id === "my-cimb");
+console.log(issuer.name, issuer.crawl.status);
+console.log(`${cardFile.items.length} cards, ${offerFile.items.length} offers`);
+
+// Use the card country's calendar day, independent of the device's time zone.
+const parts = Object.fromEntries(new Intl.DateTimeFormat("en", {
+  timeZone: "Asia/Kuala_Lumpur", year: "numeric", month: "2-digit", day: "2-digit",
+}).formatToParts(new Date()).map(part => [part.type, part.value]));
+const today = `${parts.year}-${parts.month}-${parts.day}`;
+
+const currentOffers = offerFile.items.filter(offer => {
+  if (offer.start_date && offer.start_date > today) return false;
+  if (offer.status === "active") return Boolean(offer.end_date && offer.end_date >= today);
+  if (offer.status === "evergreen") return Boolean(offer.review_by && offer.review_by >= today);
+  return false;
+});
+console.table(currentOffers.map(offer => ({
+  title: offer.title,
+  merchant: offer.merchant_name ?? (offer.merchant_names?.join(", ") || null),
+  eligibility: offer.eligibility.confidence,
+  source: offer.source_url,
+})));
+```
+
+`currentOffers` is a date/status filter. It does not confirm that the user, a particular card, purchase or location meets the offer terms. Check `eligibility`, `valid_days`, booking/usage periods, redemption countries, minimum spend and limits. An `inferred` eligibility rule is not proof that a particular card qualifies. Link to `source_url` and `terms_url` so users can check the issuer's current conditions.
+
+### Coverage, freshness and reuse
+
+- An issuer's `crawl.status` is `ok`, `partial`, `blocked` or `not_covered`; read `crawl.note` too. A registry entry can exist before its card or offer file is available. A missing file, empty list or missing index match does not prove that the issuer has no cards or offers.
+- `null` means unknown or not stated, not zero. Keep `needs_review`, expired and withdrawn records out of a default current-offer display. Evergreen records past `review_by` need rechecking before being presented as current.
+- `generated_at` is a file-build time; `checked_at` is the source-check time of a record. Coverage is still being verified, and no fixed refresh schedule is promised. See [Known issues](#known-issues).
+- Cache a local copy for your application. The URLs above follow `main` and change after merges. To keep a consistent snapshot, replace `main` with the same full commit SHA in every Raw URL, or clone the repository and check out that commit. Pull-request changes are not published through `main` until merged.
+- Include this attribution in your app or accompanying credits: `Data: card-offer master-list (https://github.com/card-offer/master-list), CC BY 4.0.` The [licence scope](#licence-scope) below explains what it covers.
+
+### Find offers for one card or merchant
+
+GitHub Pages publishes generated lookup indexes:
+
+- [MY by card](https://card-offer.github.io/master-list/indexes/my/by_card.json)
+- [MY by merchant](https://card-offer.github.io/master-list/indexes/my/by_merchant.json)
+- [SG by card](https://card-offer.github.io/master-list/indexes/sg/by_card.json)
+
+Look up `entries[cardId].offer_ids` in a `by_card` file, or `entries[merchantId].offer_ids` in `by_merchant`, then join those IDs to the offer records fetched from GitHub Raw. Card indexes omit inferred eligibility rules, so they are not a complete list of offers that might apply. Apply the date/status and terms checks after joining; indexes can also reference archived offers. An absent `offer_ids` array can be treated as empty for that lookup.
+
+Pages currently serves schemas, metadata, the merchant registry and generated indexes. Issuer card/offer files are served from GitHub Raw; a Pages URL such as `/master-list/my/offers/cimb.json` is not a supported endpoint. Pages builds can lag `main`. For indexes matching a pinned repository snapshot, clone that commit and build them locally with Python 3.12 or later:
+
+```sh
+git clone https://github.com/card-offer/master-list.git
+cd master-list
+# For a pinned snapshot, run: git checkout <full-commit-sha>
+python3 tools/build_indexes.py . dist/indexes
+```
+
+This builds lookups from the checked-out data and does not crawl issuer sites. For example, the card lookup is written to `dist/indexes/my/by_card.json`.
+
 ## Licence scope
 
 The [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) licence (see `LICENSE`) covers the compiled structured data in this repository only.
@@ -32,6 +122,8 @@ Card names and trademarks belong to their issuers, networks and merchants.
 | `schema/` | JSON Schema (draft 2020-12). `$id` URLs point at GitHub Pages. |
 | `pipeline/` | The crawl and publish code. |
 | `crawler/RULES.md` | The rule for the crawler: sources, merchant name, facts and quotes. |
+| `crawler/COMPLETE_INSTRUCTION.md` | The steps for the crawler: issuer census, cards and offers of each issuer, and the offer sites of the card networks. |
+| `{cc}/offers/network-{id}.json` | Offers from a card network's own offer site for cards issued in that country. `provider.type` is `network`. |
 | `schema/observation.schema.json` | The crawler hand-in file. Private, never committed. `tools/check_observations.py` is its gate and `pipeline/ingest.py` publishes it. |
 | `tools/validate.py` | The check that runs on every pull request and on every push to `main`. |
 
@@ -53,21 +145,7 @@ Full definitions are in [`schema/`](schema/).
 
 `category`, `benefit.type` and `benefit.unit` are enums. Every object sets `additionalProperties` to false.
 
-## Using the data
-
-```
-https://raw.githubusercontent.com/card-offer/master-list/main/index.json
-https://raw.githubusercontent.com/card-offer/master-list/main/my/offers/cimb.json
-https://raw.githubusercontent.com/card-offer/master-list/main/merchants/registry.json
-```
-
 Resolve a schema 0.2.0 id by scanning `id` and `aliases`.
-
-Active offers on a date: `status` is `active`, `start_date` is null or on or before that date, and `end_date` is on or after it. Evergreen offers have no end date; use `review_by`.
-
-Check `terms_url` and the issuer page before relying on an offer. Issuers change terms without notice.
-
-Indexes, once Pages is serving them, live under the site that hosts the schema `$id` URLs (`https://card-offer.github.io/master-list/`).
 
 ## Known issues
 

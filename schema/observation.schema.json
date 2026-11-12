@@ -22,7 +22,6 @@
         "run_id",
         "crawler",
         "country",
-        "issuer_id",
         "started_at",
         "finished_at",
         "listing_urls",
@@ -45,7 +44,8 @@
         },
         "issuer_id": {
           "type": "string",
-          "pattern": "^[a-z]{2}-[a-z0-9-]+$"
+          "pattern": "^[a-z]{2}-[a-z0-9-]+$",
+          "description": "The issuer of this run. Give issuer_id or network_id, not both."
         },
         "started_at": {
           "$ref": "#/$defs/instant"
@@ -91,16 +91,40 @@
                   "captcha",
                   "app_only",
                   "not_found",
-                  "off_domain_redirect"
+                  "off_domain_redirect",
+                  "robots_unreachable",
+                  "bot_wall",
+                  "network_unreachable"
                 ]
               },
               "redirect_to": {
                 "type": "string",
                 "format": "uri",
                 "description": "Where the official URL sent the crawler, when reason is off_domain_redirect."
+              },
+              "detail": {
+                "type": "string",
+                "maxLength": 300,
+                "description": "What the site answered, in a few words."
               }
             }
           }
+        },
+        "network_id": {
+          "enum": [
+            "visa",
+            "mastercard",
+            "amex",
+            "unionpay",
+            "jcb",
+            "diners"
+          ],
+          "description": "The card network of this run, for a crawl of the network's own offer site."
+        },
+        "language": {
+          "type": "string",
+          "pattern": "^[a-z]{2}(-[A-Za-z]{2,4})?$",
+          "description": "Language of the pages, for example en, id, th, vi, ja, ko, zh-Hant."
         }
       }
     },
@@ -140,8 +164,20 @@
               "network_offer_page",
               "merchant_page",
               "issuer_product_page",
-              "issuer_listing"
+              "issuer_listing",
+              "network_offer_listing"
             ]
+          },
+          "via": {
+            "enum": [
+              "http",
+              "browser"
+            ],
+            "description": "How the page was read. browser: a headless browser rendered it, and the quotes come from the rendered text."
+          },
+          "robots_unreadable": {
+            "type": "boolean",
+            "description": "true when this page was read on a host whose robots.txt could not be read. The page is still evidence, but the maintainer rechecks it in a run where robots.txt answers."
           }
         }
       }
@@ -329,6 +365,14 @@
               ],
               "pattern": "^[a-z0-9.-]+\\.[a-z]{2,}$",
               "description": "Set only when the official page links to the merchant's own site."
+            },
+            "alt_names": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": "The same merchant in a second script or language, when the page shows both. Each must be inside name_quote."
             }
           }
         },
@@ -637,7 +681,8 @@
               "enum": [
                 "card",
                 "issuer",
-                "issuer_network"
+                "issuer_network",
+                "network"
               ]
             },
             "confidence": {
@@ -707,6 +752,14 @@
                   "type": "null"
                 }
               ]
+            },
+            "issuer_names": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": "Network runs only: the issuers that the page names, when the offer is for cards of some issuers only."
             }
           }
         },

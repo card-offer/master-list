@@ -594,7 +594,8 @@
               "issuer_promotion_listing",
               "network_offer_page",
               "merchant_page",
-              "issuer_terms_document"
+              "issuer_terms_document",
+              "network_offer_listing"
             ]
           },
           "fetched_at": {

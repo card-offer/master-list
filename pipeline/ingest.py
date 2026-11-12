@@ -15,7 +15,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from pipeline.lib.calendar import add_months, local_date, parse_instant, stamp
 from pipeline.lib.layout import write_collection, write_json
-from pipeline.lib.merchants import Registry, clean_name, load_merchant_rules, match_card, name_key
+from pipeline.lib.merchants import Registry, card_core, clean_name, load_merchant_rules, match_card, name_key
 from pipeline.lib.rules import load_rules, repo_root
 from pipeline.lib.transform import cap_view, new_card_id, new_offer_id, placement
 from tools.check_observations import check
@@ -25,6 +25,8 @@ RULE_NAMES = {
     ("issuer_network", "stated"): "issuer_cards_on_named_network(s)",
     ("issuer", "stated"): "all_issuer_cards_stated_on_official_page",
     ("issuer", "inferred"): "issuer_wide_no_card_restriction_found",
+    ("network", "stated"): "network_cards_stated_on_official_page",
+    ("network", "inferred"): "network_wide_no_restriction_found",
 }
 SOURCE_KIND = {"single": "page"}
 
@@ -72,7 +74,7 @@ def public_text(value):
     return value.replace("\u2014", "-") if isinstance(value, str) else value
 
 
-def ingest_cards(obs, cards, issuer_id, country, zone, mrules, report):
+def ingest_cards(obs, cards, issuer_id, country, zone, mrules, report, issuer_name=""):
     """Update the issuer's card list from the hand-in. Cards that the run did not see stay as they are."""
     cc, slug = country.lower(), issuer_id.split("-", 1)[1]
     fetch_by = {}
@@ -88,11 +90,26 @@ def ingest_cards(obs, cards, issuer_id, country, zone, mrules, report):
     for card in cards:
         used.update(card.get("aliases") or [])
     report["cards"] = {"new": 0, "kept": 0, "needs_review": []}
+    # A page can write "Platinum Card-i" for the card that the list has as "Platinum Credit Card-i".
+    # The core of a name has no issuer name, no country word and no "credit card". It matches only
+    # when one published card and one card of this hand-in have that core.
+    observed_cores = [card_core(item["name"], issuer_name, mrules) for item in obs.get("cards") or []]
+    by_core = {}
+    for card in cards:
+        by_core.setdefault(card_core(card["name"], issuer_name, mrules), []).append(card)
+    taken_ids = set()
     for item in obs.get("cards") or []:
         page = item["official_url"]
         old = by_key.get(name_key(item["name"], mrules))
         if old is None and len(by_url.get(page, [])) == 1 and observed_urls.count(page) == 1:
             old = by_url[page][0]
+        core = card_core(item["name"], issuer_name, mrules)
+        if old is None and core and observed_cores.count(core) == 1 and len(by_core.get(core, [])) == 1:
+            old = by_core[core][0]
+        if old is not None and old["id"] in taken_ids:
+            old = None
+        if old is not None:
+            taken_ids.add(old["id"])
         source = fetch_by[page]
         seen_day = local_date(parse_instant(source["fetched_at"]), zone["timezone"]).isoformat()
         if old:
@@ -162,8 +179,10 @@ def ingest(obs, root=None, now=None):
         raise SystemExit("hand-in failed the gate:\n" + "\n".join(errors))
     rules, mrules = load_rules(), load_merchant_rules(root)
     run = obs["run"]
-    country, issuer_id = run["country"], run["issuer_id"]
-    cc, slug = country.lower(), issuer_id.split("-", 1)[1]
+    country, issuer_id, network_id = run["country"], run.get("issuer_id"), run.get("network_id")
+    cc = country.lower()
+    slug = f"network-{network_id}" if network_id else issuer_id.split("-", 1)[1]
+    provider = {"type": "network", "id": network_id} if network_id else {"type": "issuer", "id": issuer_id}
     zone = {row["code"]: row for row in load_json(os.path.join(root, "countries.json"))["items"]}[country]
     today = local_date(now, zone["timezone"])
     offers_path = os.path.join(root, cc, "offers", f"{slug}.json")
@@ -187,9 +206,19 @@ def ingest(obs, root=None, now=None):
     used = {offer["id"] for offer in existing} | {offer["id"] for offer in archived}
     for offer in existing + archived:
         used.update(offer.get("aliases") or [])
-    issuer_name = next(row["name"] for row in load_items(os.path.join(root, cc, "issuers.json")) if row["id"] == issuer_id)
+    country_issuers = load_items(os.path.join(root, cc, "issuers.json"))
     report = {}
-    cards = ingest_cards(obs, cards, issuer_id, country, zone, mrules, report)
+    if network_id:
+        issuer_name = next(row["name"] for row in load_json(os.path.join(root, "networks.json"))["items"] if row["id"] == network_id)
+        report["cards"] = {"new": 0, "kept": 0, "needs_review": []}
+    else:
+        issuer_name = next(row["name"] for row in country_issuers if row["id"] == issuer_id)
+        cards = ingest_cards(obs, cards, issuer_id, country, zone, mrules, report, issuer_name)
+    issuer_by_key = {}
+    for row in country_issuers:
+        for text in (row["name"], row.get("legal_name")):
+            if text:
+                issuer_by_key.setdefault(name_key(text, mrules), row["id"])
     card_by_key = {}
     for card in cards:
         for text in [card["name"]] + [a for a in card.get("aliases") or [] if " " in a]:
@@ -215,7 +244,8 @@ def ingest(obs, root=None, now=None):
                 aliases = sorted(set(old.get("aliases") or []) | {old["id"]})
         merchant_id, merchant_ids = None, []
         if merchant["kind"] == "single":
-            merchant_id = registry.resolve(merchant["name"], country, item["category"], merchant["official_domain"])
+            merchant_id = registry.resolve(merchant["name"], country, item["category"], merchant["official_domain"],
+                                           merchant.get("alt_names") or ())
             merchant_ids = [merchant_id]
         elif merchant["kind"] == "multiple":
             merchant_ids = sorted({registry.resolve(name, country, item["category"]) for name in merchant["names"]})
@@ -228,6 +258,13 @@ def ingest(obs, root=None, now=None):
             else:
                 report["unmatched_card_names"].append({"offer": offer_id, "card_name": name})
                 reasons.append(f"card name not in the card list: {name}")
+        rule_issuers = [] if network_id else [issuer_id]
+        for name in rule.get("issuer_names") or []:
+            found = issuer_by_key.get(name_key(name, mrules))
+            if found:
+                rule_issuers.append(found)
+            else:
+                reasons.append(f"issuer name not in the issuer list: {name}")
         for flag in item["flags"]:
             reasons.append(f"crawler flag: {flag}")
         limits = [{key: value for key, value in limit.items() if key != "quote"} for limit in item["limits"]]
@@ -256,7 +293,7 @@ def ingest(obs, root=None, now=None):
         out.append({
             "id": offer_id, "aliases": aliases, "country": country, "currency": zone["currency"],
             "title": public_text(item["title"]), "description": None,
-            "provider": {"type": "issuer", "id": issuer_id},
+            "provider": provider,
             "merchant_kind": merchant["kind"],
             "merchant_name": clean_name(merchant["name"]) if merchant["kind"] == "single" else None,
             "merchant_names": [clean_name(name) for name in merchant["names"]],
@@ -269,7 +306,7 @@ def ingest(obs, root=None, now=None):
             "cap_source_url": (terms["url"] or item["source_url"]) if limits else None,
             "eligibility": {
                 "scope": rule["scope"], "rule": RULE_NAMES[(rule["scope"], rule["confidence"])], "confidence": rule["confidence"],
-                "issuer_ids": [issuer_id], "network_ids": rule["network_ids"], "card_ids": sorted(set(card_ids)),
+                "issuer_ids": sorted(set(rule_issuers)), "network_ids": rule["network_ids"], "card_ids": sorted(set(card_ids)),
                 "card_types": rule["card_types"], "tiers": rule["tiers"], "evidence_text": public_text(rule["quote"]),
             },
             "cross_border": {
@@ -316,8 +353,10 @@ def ingest(obs, root=None, now=None):
     to_archive = [o for o in to_archive if placement("expired", o.get("end_date"), today, rules["archive_retention_days"]) == "archive"]
     generated = stamp(now)
     header = {"schema_version": "0.3.0", "country": country, "issuer_id": issuer_id, "generated_at": generated}
+    if network_id:
+        header["network_id"] = network_id
     write_collection(offers_path, header, live)
-    if json.dumps(cards, sort_keys=True) != cards_before:
+    if not network_id and json.dumps(cards, sort_keys=True) != cards_before:
         write_collection(cards_path, header, cards)
     if to_archive:
         write_collection(archive_path, dict(header, archive=True), to_archive)
@@ -342,18 +381,24 @@ def ingest(obs, root=None, now=None):
     index = load_json(index_path)
     index["merchants"] = len(merchants)
     index["generated_at"] = generated
-    index["countries"][country]["offers"] = sum(len(load_items(os.path.join(root, cc, "offers", f))) for f in os.listdir(os.path.join(root, cc, "offers")))
-    index["countries"][country]["cards"] = sum(len(load_items(os.path.join(root, cc, "cards", f))) for f in os.listdir(os.path.join(root, cc, "cards")))
+
+    def count(kind):
+        folder = os.path.join(root, cc, kind)
+        return sum(len(load_items(os.path.join(folder, name))) for name in os.listdir(folder)) if os.path.isdir(folder) else 0
+
+    entry = index["countries"].setdefault(country, {"path": f"/{cc}/", "currency": zone["currency"], "timezone": zone["timezone"], "issuers": len(country_issuers)})
+    entry["offers"], entry["cards"] = count("offers"), count("cards")
     write_json(index_path, index)
-    issuers_path = os.path.join(root, cc, "issuers.json")
-    issuers = load_json(issuers_path)
-    for row in issuers["items"]:
-        if row["id"] == issuer_id:
-            row["offer_count"] = len(live)
-            row["card_ids"] = sorted(card["id"] for card in cards)
-    header = {key: value for key, value in issuers.items() if key not in ("items", "count")}
-    write_collection(issuers_path, header, issuers["items"])
-    report.update({"issuer": issuer_id, "live": len(live), "archived": len(to_archive), "dropped_after_retention": dropped,
+    if not network_id:
+        issuers_path = os.path.join(root, cc, "issuers.json")
+        issuers = load_json(issuers_path)
+        for row in issuers["items"]:
+            if row["id"] == issuer_id:
+                row["offer_count"] = len(live)
+                row["card_ids"] = sorted(card["id"] for card in cards)
+        issuer_header = {key: value for key, value in issuers.items() if key not in ("items", "count")}
+        write_collection(issuers_path, issuer_header, issuers["items"])
+    report.update({"provider": provider["id"], "live": len(live), "archived": len(to_archive), "dropped_after_retention": dropped,
                    "not_seen_in_this_run": len(not_seen), "warnings": warnings})
     return report
 
