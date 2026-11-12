@@ -1,18 +1,20 @@
 """The reference fetcher: robots policy, spacing, redirects, skipped URLs and the browser path. No network."""
 import ast
 import http.server
+import io
 import json
 import os
 import tempfile
 import threading
 import time
 import unittest
+from contextlib import redirect_stdout
 from types import SimpleNamespace
 from unittest.mock import patch
 
 from pipeline.fetcher import (
-    BrowserFetcher, PoliteFetcher, RealChromeError, Robots, chrome_profile_dir, classify, clean_url,
-    configured_min_gap, spacing_report,
+    BrowserFetcher, PoliteFetcher, RealChromeError, Robots, _sleep_child, chrome_profile_dir, classify, clean_url,
+    configured_min_gap, main, resolve_probe, spacing_report,
 )
 
 AGENT = "card-offer-crawler-test/1.0"
@@ -243,6 +245,7 @@ class BrowserPathTests(unittest.TestCase):
             raise
         finally:
             server.shutdown()
+            server.server_close()
         self.assertEqual(result["status"], 200)
         self.assertIn("Example Kopi | Sample Noodle Bar", result["text"])
         self.assertEqual(result["via"], "browser")
@@ -251,12 +254,16 @@ class BrowserPathTests(unittest.TestCase):
         self.assertEqual(Site.hits[0], "/robots.txt")
         report = spacing_report(log)["127.0.0.1"]
         self.assertGreaterEqual(report["requests"], 4)
-        self.assertEqual(report["gaps_under_min"], 0)
         with open(log, encoding="utf-8") as fh:
             rows = [json.loads(line) for line in fh]
         self.assertTrue(any(row.get("reason") == "robots_disallow" for row in rows))
         self.assertTrue(any(row.get("reason") in ("host_not_official", "not_https") for row in rows))
-        self.assertTrue(all(row.get("mode") == "browser" and "min_gap_s" in row and "gap_s" in row for row in rows))
+        self.assertTrue(all("mode" in row and "min_gap_s" in row and "gap_s" in row for row in rows))
+        # robots.txt is fetched with urllib, so that line is plain. The page itself is the browser.
+        self.assertTrue(any(row.get("kind") == "robots" and row.get("mode") == "plain" for row in rows))
+        self.assertTrue(any(row.get("mode") == "browser" and row.get("event") == "request" for row in rows))
+        paced = [row["start_mono"] for row in rows if row.get("event") == "request" and row.get("paced")]
+        self.assertTrue(all(b - a >= 1.5 - 0.05 for a, b in zip(paced, paced[1:])), paced)
 
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -272,15 +279,32 @@ def log_rows(path):
 class QuietPage:
     def __init__(self, url):
         self.url = url
+        self.gotos = []
+        self.contents = 0
 
     def route(self, *args, **kwargs):
         return None
 
     def goto(self, url, **kwargs):
-        return SimpleNamespace(status=200)
+        self.gotos.append(url)
+        self.url = url
+
+        def text():
+            if url.endswith("/robots.txt"):
+                return "User-agent: *\nDisallow: /secret\n"
+            return PAGE_HTML
+
+        return SimpleNamespace(status=200, url=url, headers={}, text=text)
 
     def wait_for_timeout(self, ms):
         return None
+
+    def wait_for_load_state(self, state, timeout=None):
+        return None
+
+    def content(self):
+        self.contents += 1
+        return PAGE_HTML
 
     def evaluate(self, expression, *args, **kwargs):
         return PAGE_HTML
@@ -292,40 +316,6 @@ class QuietPage:
 class QuietBrowser:
     def close(self):
         return None
-
-
-class StallBrowser:
-    """Answers 200, then waits until the fetcher closes it."""
-
-    def __init__(self):
-        self.closed = threading.Event()
-        self.page = StallPage(self)
-
-    def close(self):
-        self.closed.set()
-
-
-class StallPage:
-    def __init__(self, browser):
-        self.browser = browser
-        self.url = "https://www.bank.example/cards"
-
-    def route(self, *args, **kwargs):
-        return None
-
-    def goto(self, url, **kwargs):
-        return SimpleNamespace(status=200)
-
-    def wait_for_timeout(self, ms):
-        return None
-
-    def evaluate(self, expression, *args, **kwargs):
-        if not self.browser.closed.wait(20):
-            raise AssertionError("hard timeout did not stop the stalled page")
-        raise TimeoutError("stalled after 200")
-
-    def inner_text(self, selector, timeout=None):
-        return ""
 
 
 class PacingAndModeTests(unittest.TestCase):
@@ -374,24 +364,34 @@ class PacingAndModeTests(unittest.TestCase):
             self.assertEqual(row["min_gap_s"], 1.5)
             self.assertIn("gap_s", row)
 
-    def test_browser_and_real_chrome_modes_are_on_every_log_line(self):
-        for real_chrome, mode in ((False, "browser"), (True, "real_chrome")):
-            fetcher, _net, log = make({})
-            page = QuietPage("https://www.bank.example/cards")
-            browser = BrowserFetcher(fetcher, real_chrome=real_chrome, launcher=lambda page=page: (QuietBrowser(), page))
-            result = browser.render("https://www.bank.example/cards", settle_ms=0)
-            self.assertEqual(result["status"], 200)
-            self.assertEqual(result["via"], "browser")
-            rows = log_rows(log)
-            self.assertTrue(rows)
-            for row in rows:
-                self.assertEqual(row["mode"], mode, mode)
-                self.assertEqual(row["min_gap_s"], 1.5)
-                self.assertIn("gap_s", row)
-            fetcher.get("https://www.bank.example/after")
-            later = log_rows(log)[len(rows):]
-            self.assertTrue(later)
-            self.assertTrue(all(row["mode"] == "plain" for row in later))
+    def test_browser_and_real_chrome_modes_are_the_mode_that_fetched(self):
+        fetcher, net, log = make({})
+        page = QuietPage("https://www.bank.example/cards")
+        BrowserFetcher(fetcher, launcher=lambda: (QuietBrowser(), page)).render(
+            "https://www.bank.example/cards", settle_ms=0)
+        rows = log_rows(log)
+        self.assertTrue(any(row.get("kind") == "robots" and row["mode"] == "plain" for row in rows))
+        self.assertTrue(any("robots.txt" in url for url, _when in net.calls))
+
+        calls = []
+
+        def transport(url, timeout, user_agent):
+            calls.append(url)
+            raise AssertionError("real chrome must not read robots.txt with urllib")
+
+        log = os.path.join(tempfile.mkdtemp(prefix="fetcher-"), "log.jsonl")
+        chrome_fetcher = PoliteFetcher(log, ["bank.example"], AGENT, transport=transport, clock=time.monotonic, sleep=lambda _s: None)
+        page = QuietPage("https://www.bank.example/cards")
+        result = BrowserFetcher(chrome_fetcher, real_chrome=True, launcher=lambda: (QuietBrowser(), page)).render(
+            "https://www.bank.example/cards", settle_ms=0)
+        self.assertEqual(result["status"], 200)
+        self.assertEqual(calls, [])
+        self.assertTrue(any(url.endswith("/robots.txt") for url in page.gotos))
+        self.assertLess(page.gotos.index(next(url for url in page.gotos if url.endswith("/robots.txt"))),
+                        page.gotos.index("https://www.bank.example/cards"))
+        robots_rows = [row for row in log_rows(log) if row.get("kind") == "robots" or str(row.get("url", "")).endswith("/robots.txt")]
+        self.assertTrue(robots_rows)
+        self.assertTrue(all(row["mode"] == "real_chrome" for row in robots_rows))
 
 
 class RealChromeTests(unittest.TestCase):
@@ -480,21 +480,135 @@ class RealChromeTests(unittest.TestCase):
         with patch.dict(os.environ, {"CRAWLER_CHROME_PROFILE": "/tmp/crawler-chrome-profile"}):
             self.assertEqual(chrome_profile_dir(), "/tmp/crawler-chrome-profile")
 
-    def test_page_that_answers_200_and_then_stalls_times_out(self):
+    def test_document_is_read_when_settle_times_out(self):
+        fetcher, _net, _log = make({})
+        page = QuietPage("https://www.bank.example/cards")
+
+        def settle(_state, timeout=None):
+            raise TimeoutError("networkidle cap")
+
+        page.wait_for_load_state = settle
+        result = BrowserFetcher(fetcher, launcher=lambda: (QuietBrowser(), page)).render(
+            "https://www.bank.example/cards", settle_ms=50)
+        self.assertEqual(result["status"], 200)
+        self.assertEqual(page.contents, 1)
+        self.assertIn("offer words", result["text"])
+
+    def test_parent_returns_when_the_child_hangs(self):
         fetcher, _net, log = make({})
-        stall = StallBrowser()
+        marker = os.path.join(tempfile.mkdtemp(prefix="fetcher-hang-"), "child.pid")
+        browser = BrowserFetcher(fetcher, hard_timeout=1.0, worker_target=_sleep_child)
+        browser.worker_spec = {"marker": marker}
         started = time.monotonic()
-        result = BrowserFetcher(
-            fetcher, hard_timeout=0.4, launcher=lambda: (stall, stall.page),
-        ).render("https://www.bank.example/cards", settle_ms=0)
+        result = browser.render("https://www.bank.example/cards", settle_ms=0)
         elapsed = time.monotonic() - started
-        self.assertLess(elapsed, 4, "a page that answers 200 and then stalls must not hang the process")
+        self.assertLess(elapsed, 12, "the parent must return when the child hangs")
+        self.assertGreater(elapsed, 0.5)
         self.assertEqual(result["not_fetched"], "timeout")
-        self.assertIn("200", result["detail"])
-        self.assertIn("stalled", result["detail"])
+        self.assertEqual(result["class"], "timeout")
         rows = log_rows(log)
-        self.assertTrue(any(row.get("reason") == "timeout" and row["mode"] == "browser" for row in rows))
-        self.assertNotIn("https://www.bank.example/cards", [row.get("url") for row in fetcher.fetches])
+        self.assertTrue(any(row.get("reason") == "timeout" and row.get("mode") == "browser" for row in rows))
+        if os.path.exists(marker):
+            with open(marker, encoding="ascii") as fh:
+                pid = int(fh.read().strip())
+            deadline = time.monotonic() + 2
+            while time.monotonic() < deadline:
+                try:
+                    os.kill(pid, 0)
+                except OSError:
+                    break
+                time.sleep(0.05)
+            else:
+                self.fail(f"grandchild {pid} was still alive after the process group was killed")
+
+    def test_min_gap_is_not_applied_to_subresources(self):
+        net = FakeNet({})
+        log = os.path.join(tempfile.mkdtemp(prefix="fetcher-"), "log.jsonl")
+        fetcher = PoliteFetcher(log, ["bank.example"], AGENT, min_gap=30, transport=net.transport,
+                                clock=net.clock, sleep=net.sleep)
+        fetcher.robots["www.bank.example"] = ("allow_all", None)
+        tool = BrowserFetcher(fetcher)
+        sleeps_before = []
+
+        class Request:
+            def __init__(self, url, resource_type, navigation):
+                self.url = url
+                self.resource_type = resource_type
+                self.method = "GET"
+                self.navigation = navigation
+
+            def is_navigation_request(self):
+                return self.navigation
+
+        class Route:
+            def __init__(self):
+                self.action = None
+
+            def fetch(self, **kwargs):
+                return SimpleNamespace(status=200, headers={})
+
+            def fulfill(self, **kwargs):
+                self.action = ("fulfill", kwargs)
+
+            def abort(self):
+                self.action = ("abort",)
+
+        script = Request("https://www.bank.example/app.js", "script", False)
+        route = Route()
+        tool._route(route, script)
+        tool._route(route, Request("https://www.bank.example/data.json", "xhr", False))
+        self.assertEqual(net.now, 100.0)
+        self.assertEqual(fetcher.last_start, {})
+        document = Request("https://www.bank.example/offers", "document", True)
+        tool._route(route, document)
+        first = fetcher.last_start["bank.example"]
+        tool._route(route, Request("https://www.bank.example/next", "document", True))
+        self.assertGreaterEqual(fetcher.last_start["bank.example"] - first, 30)
+        off = Route()
+        tool._route(off, Request("https://cdn.cookielaw.org/script.js", "script", False))
+        self.assertEqual(off.action[0], "fulfill")
+        self.assertEqual(off.action[1]["status"], 204)
+        self.assertNotEqual(off.action[0], "abort")
+
+    def test_probe_url_uses_the_network_domains(self):
+        root = ROOT
+        label, url, domains = resolve_probe(root, [
+            "fetcher.py", "probe", "--url", "https://specials.priceless.com/en-my/homepage", "--country", "MY",
+        ])
+        self.assertEqual(label, "network-mastercard")
+        self.assertEqual(url, "https://specials.priceless.com/en-my/homepage")
+        normalized = {name[4:] if name.lower().startswith("www.") else name.lower() for name in domains}
+        self.assertIn("specials.priceless.com", normalized)
+        self.assertIn("priceless.com", normalized)
+        self.assertIn("mastercard.com", normalized)
+        with self.assertRaises(ValueError):
+            resolve_probe(root, ["fetcher.py", "probe", "--url", "https://example.com/", "--country", "MY"])
+        seen = {}
+
+        class FakeFetcher:
+            def __init__(self, log_path, official_domains, user_agent, min_gap=1.5, **kwargs):
+                seen["domains"] = set(official_domains)
+                seen["gap"] = min_gap
+                self.blocked, self.rechecks = [], []
+                self.mode, self.min_gap, self.log_path = "plain", min_gap, log_path
+                os.makedirs(os.path.dirname(log_path), exist_ok=True)
+                open(log_path, "a", encoding="utf-8").close()
+
+            def get(self, page):
+                seen["url"] = page
+                return {"url": page, "status": 200, "text": "offer words " * 10, "class": "ok"}
+
+        with patch.dict(os.environ, {"CRAWLER_USER_AGENT": AGENT}):
+            with patch("pipeline.fetcher.PoliteFetcher", FakeFetcher):
+                with redirect_stdout(io.StringIO()):
+                    code = main([
+                        "fetcher.py", "probe", "--url", "https://specials.priceless.com/en-my/homepage",
+                        "--country", "MY", "--min-gap", "30",
+                    ])
+        self.assertEqual(code, 0)
+        self.assertEqual(seen["url"], "https://specials.priceless.com/en-my/homepage")
+        self.assertEqual(seen["gap"], 30)
+        self.assertIn("specials.priceless.com", seen["domains"])
 
 
 class FetcherGuardTests(unittest.TestCase):

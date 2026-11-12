@@ -58,9 +58,21 @@ Go down one step at a time. Stop at the first step that gives the text. Write th
 
    `--real-chrome` (or `BrowserFetcher(fetcher, real_chrome=True)`) launches installed Google Chrome through Playwright with `channel="chrome"` and `headless=False`, using `launch_persistent_context`. On a server, run it under a virtual display such as Xvfb. The profile directory is `CRAWLER_CHROME_PROFILE`, or `.cache/chrome-profile` when that is unset. That directory is gitignored. Do not commit it, and do not point it at a person's signed-in profile.
 
-   The user agent is `CRAWLER_USER_AGENT`, the same string as every other request. Do not add a stealth plugin, a proxy, a new IP, or a captcha solver. Those stay forbidden in section 3. If Chrome or a display is missing, the probe raises `RealChromeError` instead of waiting. A page that answers and then stalls is closed at a hard timeout and logged as `timeout`, so one page cannot hang the run.
+   The user agent is `CRAWLER_USER_AGENT`, the same string as every other request. Do not add a stealth plugin, a proxy, a new IP, or a captcha solver. Those stay forbidden in section 3. If Chrome or a display is missing, the probe raises `RealChromeError` instead of waiting.
+
+   In real-Chrome mode, `robots.txt` is read with `page.goto` in that same Chrome context, and the log line says `real_chrome`. A plain urllib fetch is logged as `plain`, which is the mode that actually fetched it.
+
+   The browser runs in a child process. The parent waits at most `--hard-timeout` seconds (`CRAWLER_HARD_TIMEOUT`, default 150). If the child does not return, the parent kills the whole process group and logs `timeout`. The parent does not call Playwright, so it cannot stay blocked after the child is gone.
+
+   The per-host gap applies to plain requests and to top-level document navigations (including `robots.txt` and the page). It is not applied to each subresource inside a render. A request that must not be sent, such as a third-party script, is answered with an empty 204 so the page does not stall on an abort. The page waits for `domcontentloaded`, then for `networkidle` only up to the settle cap, and the HTML is read even if that cap elapses.
 
    `--min-gap SECONDS` or `CRAWLER_MIN_GAP` raises the per-host gap. The default stays 1.5 seconds. A slow run can use 30. The spacing report still reads the log.
+
+   A network portal (Mastercard, Visa and the other rows in `networks.json`) is probed with the country, not an issuer id:
+
+   ```bash
+   python pipeline/fetcher.py probe --url https://specials.priceless.com/en-my/homepage --country MY --real-chrome --min-gap 30
+   ```
 
    If this attempt is also a block page or a captcha, stop. Section 4.
 5. **The listing shows only a part.** Use `render(url, expand_selector=..., scroll_times=...)` for a load more button, a next page link, tabs or an endless scroll. Count the tiles before and after. Set `listing_complete` to true only when a click or a scroll adds no tile.

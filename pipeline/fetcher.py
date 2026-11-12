@@ -4,6 +4,7 @@
     python pipeline/fetcher.py probe <issuer_id> <url>       one page, with a report of what the site did
     python pipeline/fetcher.py probe <issuer_id> <url> --browser
     python pipeline/fetcher.py probe <issuer_id> <url> --real-chrome --min-gap 30
+    python pipeline/fetcher.py probe --url <url> --country <cc> --real-chrome --min-gap 30
 
 Use this module for every request of a crawl. Do not make a request to a crawl host by any other path.
 
@@ -13,9 +14,10 @@ What it enforces:
   a timeout, a redirect loop, more than 5 redirects, or a redirect to a host that is not official:
   robots.txt is unreadable. The host is still crawled and every page read from it is marked
   robots_unreadable and listed in `rechecks`, so a guard that hides robots.txt costs us flags, not data.
-- One request at a time, and 1.5 seconds or more between the starts of two requests to one host, on a
-  monotonic clock. Redirect hops and robots.txt requests count. --min-gap or CRAWLER_MIN_GAP may raise
-  the gap. It cannot go under 1.5 seconds.
+- One request at a time, and 1.5 seconds or more between the starts of two plain requests to one host,
+  on a monotonic clock. Redirect hops and robots.txt requests count. --min-gap or CRAWLER_MIN_GAP may
+  raise the gap. It cannot go under 1.5 seconds. Inside a browser render the same gap applies to
+  top-level document navigations only, not to each subresource.
 - No sign-in, registration or application form URLs. A session id is removed from a recorded URL.
 - 429 or 503 on a page stops the host for the rest of the run.
 - Every request is one line in a private JSONL log, with the wall time to the millisecond, the mode
@@ -29,10 +31,12 @@ Only the standard library is needed for plain requests. The browser path needs P
 import datetime
 import hashlib
 import json
+import multiprocessing
 import os
 import re
 import shutil
 import signal
+import subprocess
 import sys
 import threading
 import time
@@ -41,6 +45,7 @@ import urllib.request
 from urllib.parse import urljoin, urlsplit, urlunsplit
 
 MIN_GAP = 1.5
+DEFAULT_HARD_TIMEOUT = 150.0
 MAX_REDIRECTS = 5
 USER_AGENT_TOKEN = "card-offer-crawler"
 SKIP_URL = re.compile(
@@ -98,6 +103,7 @@ class Robots:
                 last_was_agent = False
         if agents or rules:
             self.groups.append((agents, rules))
+        self.source = text
 
     def _rules(self, token):
         named = [rules for agents, rules in self.groups if any(a != "*" and a in token.lower() for a in agents)]
@@ -168,7 +174,8 @@ class PoliteFetcher:
         self.user_agent, self.min_gap, self.timeout = user_agent, float(min_gap), timeout
         self.transport, self.clock, self.sleep, self.wall = transport, clock, sleep, wall
         self.allow_http_hosts = set(allow_http_hosts)
-        self.mode = "plain"  # plain, browser or real_chrome. The browser path sets this for the render.
+        self.mode = "plain"  # plain, browser or real_chrome. A request can override this with the mode it used.
+        self.robots_fetch = None  # real-Chrome sets this so robots.txt is not read with urllib
         self.lock = threading.Lock()
         self.last_start, self.robots, self.stopped = {}, {}, {}
         self.fetches, self.blocked, self.rechecks = [], [], []
@@ -186,6 +193,7 @@ class PoliteFetcher:
         }
         with open(self.log_path, "a", encoding="utf-8") as fh:
             fh.write(json.dumps(row, ensure_ascii=False) + "\n")
+            fh.flush()
         return row
 
     def _block(self, url, reason, **extra):
@@ -213,55 +221,56 @@ class PoliteFetcher:
                 error = None
             except OSError as err:
                 status, headers, body, error = None, {}, b"", f"{type(err).__name__}: {str(err)[:160]}"
-            self.log(event="request", kind=kind, host=host, url=clean_url(url), status=status, gap_s=gap, error=error,
-                     start_mono=round(start_mono, 6), start_ts=started.isoformat(timespec="milliseconds"),
+            # urllib is the plain transport. The log mode is the mode that fetched this URL.
+            self.log(event="request", kind=kind, mode="plain", paced=True, host=host, url=clean_url(url),
+                     status=status, gap_s=gap, error=error, start_mono=round(start_mono, 6),
+                     start_ts=started.isoformat(timespec="milliseconds"),
                      location=headers.get("Location") or headers.get("location"))
             return status, headers, body, started, error
+
+    def note_document_start(self, host):
+        """Wait out the per-host gap and record this start. Top-level document navigations only."""
+        with self.lock:
+            last = self.last_start.get(host)
+            gap = None
+            if last is not None:
+                wait = self.min_gap - (self.clock() - last)
+                if wait > 0:
+                    self.sleep(wait)
+                gap = round(self.clock() - last, 3)
+            start_mono = self.last_start[host] = self.clock()
+            return gap, start_mono
 
     def _scheme_ok(self, url):
         parts = urlsplit(url)
         return parts.scheme == "https" or (parts.scheme == "http" and parts.netloc in self.allow_http_hosts)
 
     # ---- robots
-    def robots_for(self, url):
-        """Return ('rules', Robots), ('allow_all', None) or ('unreadable', reason) for the host of the URL."""
+    def _robots_from_answer(self, status, headers, body, current):
+        """One robots.txt answer. ('follow', url) or a final ('rules'|'allow_all'|'unreadable', value)."""
+        if status is None:
+            return ("unreadable", "network_error")
+        if status == 200:
+            text = body.decode("utf-8", "replace") if isinstance(body, (bytes, bytearray)) else (body or "")
+            if re.match(r"(?is)\s*(?:<!doctype|<html|<head|<body)", text):
+                # An error page sent with status 200 is not a robots.txt file. It states no rule.
+                self.log(event="note", kind="robots_is_an_html_page", host=host_of(current), url=clean_url(current))
+                return ("allow_all", None)
+            return ("rules", Robots(text))
+        if status in (404, 410):
+            return ("allow_all", None)
+        if status in (301, 302, 303, 307, 308):
+            target = urljoin(current, (headers or {}).get("Location") or (headers or {}).get("location") or "")
+            if not target or target == current:
+                return ("unreadable", "redirect_without_target")
+            if host_of(target) not in self.official or not self._scheme_ok(target):
+                return ("unreadable", "redirect_to_a_host_that_is_not_official")
+            return ("follow", target)
+        return ("unreadable", f"http_{status}")
+
+    def _commit_robots(self, url, decision):
         parts = urlsplit(url)
         key = parts.netloc.lower()
-        if key in self.robots:
-            return self.robots[key]
-        current, seen, decision = f"{parts.scheme}://{parts.netloc}/robots.txt", set(), None
-        for _hop in range(MAX_REDIRECTS + 1):
-            if current in seen:
-                decision = ("unreadable", "redirect_loop")
-                break
-            seen.add(current)
-            status, headers, body, _started, error = self._request(current, "robots")
-            if error or status is None:
-                decision = ("unreadable", "network_error")
-            elif status == 200:
-                text = body.decode("utf-8", "replace")
-                if re.match(r"(?is)\s*(?:<!doctype|<html|<head|<body)", text):
-                    # An error page sent with status 200 is not a robots.txt file. It states no rule.
-                    self.log(event="note", kind="robots_is_an_html_page", host=host_of(url), url=clean_url(current))
-                    decision = ("allow_all", None)
-                else:
-                    decision = ("rules", Robots(text))
-            elif status in (404, 410):
-                decision = ("allow_all", None)
-            elif status in (301, 302, 303, 307, 308):
-                target = urljoin(current, headers.get("Location") or headers.get("location") or "")
-                if not target or target == current:
-                    decision = ("unreadable", "redirect_without_target")
-                elif host_of(target) not in self.official or not self._scheme_ok(target):
-                    decision = ("unreadable", "redirect_to_a_host_that_is_not_official")
-                else:
-                    current = target
-                    continue
-            else:
-                decision = ("unreadable", f"http_{status}")
-            break
-        if decision is None:
-            decision = ("unreadable", "too_many_redirects")
         self.robots[key] = decision
         self.log(event="robots_decision", host=host_of(url), state=decision[0],
                  reason=decision[1] if decision[0] == "unreadable" else None)
@@ -272,6 +281,37 @@ class PoliteFetcher:
             self.rechecks.append({"url": clean_url(f"{parts.scheme}://{parts.netloc}/robots.txt"), "host": host,
                                   "reason": "robots_unreachable", "detail": decision[1]})
         return decision
+
+    def robots_for(self, url, fetch=None):
+        """Return ('rules', Robots), ('allow_all', None) or ('unreadable', reason) for the host of the URL.
+
+        fetch(url) returns (status, headers, body, started, error). The default fetch is urllib,
+        which is logged as mode plain. A real-Chrome run passes a fetch that uses the Chrome page.
+        """
+        parts = urlsplit(url)
+        key = parts.netloc.lower()
+        if key in self.robots:
+            return self.robots[key]
+        fetch = fetch or self.robots_fetch or (lambda current: self._request(current, "robots"))
+        current, seen, decision = f"{parts.scheme}://{parts.netloc}/robots.txt", set(), None
+        for _hop in range(MAX_REDIRECTS + 1):
+            if current in seen:
+                decision = ("unreadable", "redirect_loop")
+                break
+            seen.add(current)
+            status, headers, body, _started, error = fetch(current)
+            if error or status is None:
+                decision = ("unreadable", "network_error")
+                break
+            outcome = self._robots_from_answer(status, headers, body, current)
+            if outcome[0] == "follow":
+                current = outcome[1]
+                continue
+            decision = outcome
+            break
+        if decision is None:
+            decision = ("unreadable", "too_many_redirects")
+        return self._commit_robots(url, decision)
 
     def may_fetch(self, url):
         """None when the URL can be requested, or the reason why not. Reads robots.txt when needed."""
@@ -341,10 +381,6 @@ class RealChromeError(RuntimeError):
     """Google Chrome or a display is missing, so real-Chrome mode cannot start."""
 
 
-class BrowserStall(Exception):
-    """The browser did not finish within the hard timeout. Not an OSError, so it is not a network timeout."""
-
-
 _DISPLAY_MISSING = re.compile(
     r"(?i)(missing x server|\$display|no display|headed browser without having a xserver|x server)"
 )
@@ -383,33 +419,17 @@ def chrome_profile_dir():
     return os.path.join(root, ".cache", "chrome-profile")
 
 
-def _descendant_pids(pid, seen=None):
-    seen = set() if seen is None else seen
-    if pid in seen:
-        return []
-    seen.add(pid)
-    path = f"/proc/{pid}/task/{pid}/children"
-    try:
-        with open(path, encoding="ascii") as fh:
-            children = [int(part) for part in fh.read().split()]
-    except OSError:
-        return []
-    found = []
-    for child in children:
-        found.append(child)
-        found.extend(_descendant_pids(child, seen))
-    return found
-
-
-def _kill_pid_tree(pid):
-    if pid <= 1 or pid == os.getpid():
+def _kill_process_group(pid):
+    """Kill a child and every process in its group. Does nothing to this process."""
+    if not pid or pid <= 1 or pid == os.getpid():
         return
-    for child in _descendant_pids(pid):
-        _kill_pid_tree(child)
     try:
-        os.kill(pid, signal.SIGKILL)
+        os.killpg(pid, signal.SIGKILL)
     except OSError:
-        pass
+        try:
+            os.kill(pid, signal.SIGKILL)
+        except OSError:
+            pass
 
 
 def _safe_close(obj):
@@ -421,6 +441,166 @@ def _safe_close(obj):
         pass
 
 
+def _response_text(response, page):
+    """Body text of a navigation. Prefer the response body over the wrapped page HTML."""
+    text_fn = getattr(response, "text", None)
+    if callable(text_fn):
+        try:
+            return text_fn()
+        except Exception:
+            pass
+    if hasattr(page, "content"):
+        try:
+            return page.content()
+        except Exception:
+            return ""
+    return ""
+
+
+def _redirect_urls(response, requested):
+    if response is None:
+        return [requested]
+    urls = []
+    req = getattr(response, "request", None)
+    while req is not None:
+        urls.append(getattr(req, "url", None) or requested)
+        req = getattr(req, "redirected_from", None)
+    if urls:
+        urls.reverse()
+        return urls
+    final = getattr(response, "url", None) or requested
+    if final != requested:
+        return [requested, final]
+    return [requested]
+
+
+def _export_payload(fetcher, result):
+    robots = []
+    for netloc, (state, value) in fetcher.robots.items():
+        if state == "rules":
+            robots.append([netloc, state, getattr(value, "source", "")])
+        else:
+            robots.append([netloc, state, value])
+    safe = dict(result)
+    body = safe.get("body")
+    if isinstance(body, str):
+        safe["body"] = body.encode("utf-8")
+    return {
+        "result": safe,
+        "blocked": list(fetcher.blocked),
+        "rechecks": list(fetcher.rechecks),
+        "fetches": list(fetcher.fetches),
+        "stopped": dict(fetcher.stopped),
+        "unreadable": list(fetcher.unreadable),
+        "last_start": dict(fetcher.last_start),
+        "robots": robots,
+    }
+
+
+def _restore_fetcher(fetcher, spec):
+    fetcher.last_start.update(spec.get("last_start") or {})
+    fetcher.stopped.update(spec.get("stopped") or {})
+    fetcher.unreadable.update(spec.get("unreadable") or [])
+    for netloc, state, extra in spec.get("robots") or []:
+        if state == "rules":
+            fetcher.robots[netloc] = ("rules", Robots(extra or ""))
+        else:
+            fetcher.robots[netloc] = (state, extra)
+
+
+def _browser_spec(browser, url, settle_ms, expand_selector, max_clicks, scroll_times):
+    fetcher = browser.fetcher
+    robots = []
+    for netloc, (state, value) in fetcher.robots.items():
+        if state == "rules":
+            robots.append([netloc, state, getattr(value, "source", "")])
+        else:
+            robots.append([netloc, state, value])
+    return {
+        "url": url,
+        "log_path": fetcher.log_path,
+        "official_domains": sorted(fetcher.official),
+        "user_agent": fetcher.user_agent,
+        "min_gap": fetcher.min_gap,
+        "timeout": fetcher.timeout,
+        "allow_http_hosts": sorted(fetcher.allow_http_hosts),
+        "real_chrome": browser.real_chrome,
+        "launch_args": list(browser.launch_args),
+        "user_data_dir": browser.user_data_dir,
+        "settle_ms": settle_ms,
+        "expand_selector": expand_selector,
+        "max_clicks": max_clicks,
+        "scroll_times": scroll_times,
+        "last_start": dict(fetcher.last_start),
+        "robots": robots,
+        "stopped": dict(fetcher.stopped),
+        "unreadable": sorted(fetcher.unreadable),
+        "marker": None,
+        "sleep": 120,
+    }
+
+
+def _browser_job(spec):
+    """Playwright session. Runs in a child process so a stalled driver cannot block the parent."""
+    fetcher = PoliteFetcher(
+        spec["log_path"], spec["official_domains"], spec["user_agent"],
+        min_gap=spec["min_gap"], timeout=spec["timeout"],
+        allow_http_hosts=spec.get("allow_http_hosts") or (),
+    )
+    fetcher.mode = "real_chrome" if spec["real_chrome"] else "browser"
+    _restore_fetcher(fetcher, spec)
+    tool = BrowserFetcher(
+        fetcher, launch_args=spec.get("launch_args") or (),
+        real_chrome=spec["real_chrome"], user_data_dir=spec.get("user_data_dir"),
+    )
+    from playwright.sync_api import sync_playwright
+    with sync_playwright() as play:
+        browser, page = tool._launch(play)
+        try:
+            result = tool._session(
+                page, spec["url"], spec["settle_ms"], spec.get("expand_selector"),
+                spec.get("max_clicks") or 0, spec.get("scroll_times") or 0,
+            )
+        finally:
+            _safe_close(browser)
+    return _export_payload(fetcher, result)
+
+
+def _browser_child(conn, spec):
+    try:
+        os.setsid()
+    except OSError:
+        pass
+    try:
+        conn.send({"ok": True, "payload": _browser_job(spec)})
+    except Exception as err:
+        conn.send({"ok": False, "error_type": type(err).__name__, "error": f"{type(err).__name__}: {err}"[:160]})
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
+
+
+def _sleep_child(conn, spec):
+    """A child that does not answer. Used to prove the parent returns when the child hangs."""
+    try:
+        os.setsid()
+    except OSError:
+        pass
+    marker = spec.get("marker")
+    if marker:
+        child = subprocess.Popen([sys.executable, "-c", "import time; time.sleep(120)"])
+        with open(marker, "w", encoding="ascii") as fh:
+            fh.write(str(child.pid))
+            fh.flush()
+    time.sleep(float(spec.get("sleep") or 120))
+    try:
+        conn.send({"ok": True, "payload": {"result": {"class": "ok"}}})
+    except Exception:
+        pass
+
+
 class BrowserFetcher:
     """A browser whose every request goes through the same robots, spacing and log as PoliteFetcher.
 
@@ -428,23 +608,28 @@ class BrowserFetcher:
     (channel chrome, headless False, a persistent profile). The user agent is the fetcher's user
     agent, unchanged. This class does not set a proxy and does not change the browser fingerprint.
 
-    Requests to hosts that are not official are stopped. Images, media and fonts are stopped: text does not need them.
-    The only permitted actions are scroll and a click on a control that shows more of the same public content
-    (load more, next page, tab, accordion, category filter). No typing, no sign-in, no form.
+    The real Playwright session runs in a child process. The parent keeps a wall-clock deadline
+    (default 150 seconds) and kills that process group if the child does not return. The parent
+    itself does not call Playwright, so a stalled driver cannot leave it blocked.
+
+    In real-Chrome mode, robots.txt is read with page.goto in that same Chrome context.
+    The per-host gap applies to top-level document navigations. Subresources are not each delayed.
+    A request that must not be sent is answered with an empty 204, not an abort.
     """
 
     DROP_TYPES = {"image", "media", "font"}
 
-    def __init__(self, fetcher, launch_args=(), real_chrome=False, user_data_dir=None, hard_timeout=None, launcher=None):
+    def __init__(self, fetcher, launch_args=(), real_chrome=False, user_data_dir=None, hard_timeout=None,
+                 launcher=None, worker_target=None):
         self.fetcher = fetcher
         self.launch_args = list(launch_args)
         self.real_chrome = real_chrome
         self.user_data_dir = user_data_dir
         self.hard_timeout = hard_timeout
         self.launcher = launcher  # tests pass a callable that returns (browser, page)
-        self._stop = threading.Event()
-        self._active = None
-        self._response_status = None
+        self.worker_target = worker_target  # tests pass a child target that hangs
+        self.worker_spec = {}
+        self._page = None
 
     def _require_real_chrome(self):
         if not display_available():
@@ -470,58 +655,126 @@ class BrowserFetcher:
             "The bundled Chromium is not used for this mode. " + text[:180]
         )
 
+    def _deadline(self):
+        if self.hard_timeout is None:
+            return DEFAULT_HARD_TIMEOUT
+        return float(self.hard_timeout)
+
+    def _is_top_document(self, request):
+        if getattr(request, "resource_type", "") != "document":
+            return False
+        is_nav = getattr(request, "is_navigation_request", None)
+        if callable(is_nav) and not is_nav():
+            return False
+        frame = getattr(request, "frame", None)
+        if frame is not None and getattr(frame, "parent_frame", None) is not None:
+            return False
+        return True
+
+    def _empty(self, route):
+        """Answer a request we will not send, so the page script is not left waiting on an abort."""
+        try:
+            return route.fulfill(status=204, body=b"", headers={"content-type": "text/plain"})
+        except TypeError:
+            return route.fulfill(status=204, body="")
+
     def _route(self, route, request):
         url = request.url
+        mode = "real_chrome" if self.real_chrome else "browser"
+        top = self._is_top_document(request)
         if request.resource_type in self.DROP_TYPES or url.startswith(("data:", "blob:", "about:")):
-            return route.abort()
-        if request.method != "GET":
-            self.fetcher.log(event="not_fetched", url=clean_url(url), host=host_of(url), reason="not_a_get_request")
-            return route.abort()
+            self.fetcher.log(event="not_fetched", url=clean_url(url), host=host_of(url), mode=mode, via="browser",
+                             reason="not_needed_for_text")
+            return self._empty(route)
+        if getattr(request, "method", "GET") != "GET":
+            self.fetcher.log(event="not_fetched", url=clean_url(url), host=host_of(url), mode=mode, via="browser",
+                             reason="not_a_get_request")
+            return self._empty(route)
         reason = self.fetcher.may_fetch(url)
         if reason:
-            self.fetcher.log(event="not_fetched", url=clean_url(url), host=host_of(url), reason=reason, via="browser")
-            return route.abort()
+            self.fetcher.log(event="not_fetched", url=clean_url(url), host=host_of(url), mode=mode, via="browser",
+                             reason=reason)
+            return self._empty(route)
         host = host_of(url)
-        with self.fetcher.lock:
-            last = self.fetcher.last_start.get(host)
-            gap = None
-            if last is not None:
-                wait = self.fetcher.min_gap - (self.fetcher.clock() - last)
-                if wait > 0:
-                    self.fetcher.sleep(wait)
-                gap = round(self.fetcher.clock() - last, 3)
-            start_mono = self.fetcher.last_start[host] = self.fetcher.clock()
-            start_ts = self.fetcher.wall().isoformat(timespec="milliseconds")
-            try:
-                response = route.fetch(max_redirects=0, timeout=self.fetcher.timeout * 1000)
-            except Exception as err:  # Playwright raises its own error types
-                self.fetcher.log(event="request", kind=request.resource_type, via="browser", host=host, url=clean_url(url),
-                                 status=None, gap_s=gap, error=str(err)[:160], start_mono=round(start_mono, 6), start_ts=start_ts)
-                return route.abort()
-            self.fetcher.log(event="request", kind=request.resource_type, via="browser", host=host, url=clean_url(url),
-                             start_mono=round(start_mono, 6), start_ts=start_ts,
-                             status=response.status, gap_s=gap, error=None, location=response.headers.get("location"))
-            if response.status in (429, 503) and request.resource_type == "document":
-                self.fetcher.stopped[host] = "http_error"
+        if top:
+            gap, start_mono = self.fetcher.note_document_start(host)
+            paced = True
+        else:
+            gap, start_mono, paced = None, self.fetcher.clock(), False
+        start_ts = self.fetcher.wall().isoformat(timespec="milliseconds")
+        try:
+            response = route.fetch(max_redirects=0, timeout=self.fetcher.timeout * 1000)
+        except Exception as err:  # Playwright raises its own error types
+            self.fetcher.log(event="request", kind=request.resource_type, via="browser", mode=mode, paced=paced,
+                             host=host, url=clean_url(url), status=None, gap_s=gap, error=str(err)[:160],
+                             start_mono=round(start_mono, 6), start_ts=start_ts)
+            return self._empty(route)
+        headers = getattr(response, "headers", {}) or {}
+        self.fetcher.log(event="request", kind=request.resource_type, via="browser", mode=mode, paced=paced,
+                         host=host, url=clean_url(url), start_mono=round(start_mono, 6), start_ts=start_ts,
+                         status=response.status, gap_s=gap, error=None, location=headers.get("location"))
+        if response.status in (429, 503) and top:
+            self.fetcher.stopped[host] = "http_error"
         return route.fulfill(response=response)
 
-    def _render_timeout(self, settle_ms, max_clicks, scroll_times, expand_selector):
-        """Seconds the whole render may take. A stalled page must not hang the process."""
-        if self.hard_timeout is not None:
-            return float(self.hard_timeout)
-        read = float(self.fetcher.timeout)
-        navigation = read * 3  # page.goto timeout is timeout * 3000 milliseconds
-        clicks = max_clicks if expand_selector else 0
-        paced = (max(settle_ms, 0) / 1000.0) * (clicks + 1) + 1.5 * max(scroll_times, 0)
-        return navigation + paced + read + 15
-
-    def _stall_block(self, url):
-        status = self._response_status
-        if status is None:
-            detail = "the page stalled past the hard timeout"
+    def _api_robots_fetch(self, page, current):
+        """Read robots.txt for another host through Chrome, without navigating the page away."""
+        context = getattr(page, "context", None)
+        api = getattr(context, "request", None) if context is not None else None
+        host = host_of(current)
+        gap, start_mono = self.fetcher.note_document_start(host)
+        started = self.fetcher.wall()
+        status, headers, body, error = None, {}, b"", None
+        if api is None or not hasattr(api, "get"):
+            error = "chrome_request_api_missing"
         else:
-            detail = f"HTTP {status} then the page stalled past the hard timeout"
-        return self.fetcher._block(url, "timeout", detail=detail)
+            try:
+                response = api.get(current, timeout=self.fetcher.timeout * 1000, max_redirects=0)
+                status = response.status
+                headers = dict(getattr(response, "headers", {}) or {})
+                raw = response.body() if hasattr(response, "body") else b""
+                body = raw if isinstance(raw, (bytes, bytearray)) else str(raw).encode("utf-8")
+            except Exception as err:
+                error = str(err)[:160]
+        self.fetcher.log(event="request", kind="robots", mode="real_chrome", via="browser", paced=True,
+                         host=host, url=clean_url(current), status=status, gap_s=gap, error=error,
+                         start_mono=round(start_mono, 6), start_ts=started.isoformat(timespec="milliseconds"),
+                         location=headers.get("location") or headers.get("Location"))
+        return status, headers, body, started, error
+
+    def _robots_via_page(self, page, url):
+        """Fetch this host's robots.txt with page.goto and apply the RULES v3 decision."""
+        parts = urlsplit(url)
+        if parts.netloc.lower() in self.fetcher.robots:
+            return self.fetcher.robots[parts.netloc.lower()]
+        robots_url = f"{parts.scheme}://{parts.netloc}/robots.txt"
+        host = host_of(robots_url)
+        gap, start_mono = self.fetcher.note_document_start(host)
+        started = self.fetcher.wall()
+        try:
+            response = page.goto(robots_url, wait_until="domcontentloaded", timeout=self.fetcher.timeout * 3000)
+        except Exception as err:
+            self.fetcher.log(event="request", kind="robots", mode="real_chrome", via="browser", paced=True,
+                             host=host, url=clean_url(robots_url), status=None, gap_s=gap, error=str(err)[:160],
+                             start_mono=round(start_mono, 6), start_ts=started.isoformat(timespec="milliseconds"))
+            return self.fetcher._commit_robots(url, ("unreadable", "network_error"))
+        status = response.status if response else None
+        text = _response_text(response, page)
+        chain = _redirect_urls(response, robots_url)
+        final = chain[-1] if chain else robots_url
+        self.fetcher.log(event="request", kind="robots", mode="real_chrome", via="browser", paced=True,
+                         host=host_of(final), url=clean_url(final), status=status, gap_s=gap, error=None,
+                         start_mono=round(start_mono, 6), start_ts=started.isoformat(timespec="milliseconds"))
+        if len(chain) - 1 > MAX_REDIRECTS:
+            decision = ("unreadable", "too_many_redirects")
+        elif any(host_of(hop) not in self.fetcher.official or not self.fetcher._scheme_ok(hop) for hop in chain):
+            decision = ("unreadable", "redirect_to_a_host_that_is_not_official")
+        elif status in (301, 302, 303, 307, 308):
+            decision = ("unreadable", "redirect_without_target")
+        else:
+            outcome = self.fetcher._robots_from_answer(status, {}, text.encode("utf-8"), final)
+            decision = ("unreadable", "too_many_redirects") if outcome[0] == "follow" else outcome
+        return self.fetcher._commit_robots(url, decision)
 
     def _launch(self, play):
         if self.real_chrome:
@@ -542,70 +795,11 @@ class BrowserFetcher:
                 raise
             except Exception as err:
                 raise self._chrome_launch_error(err) from err
-            self._active = context
             page = context.pages[0] if context.pages else context.new_page()
             return context, page
         browser = play.chromium.launch(args=self.launch_args, executable_path=os.environ.get("CRAWLER_CHROMIUM") or None)
-        self._active = browser
         page = browser.new_context(user_agent=self.fetcher.user_agent).new_page()
         return browser, page
-
-    def _close_active(self):
-        active = self._active
-        self._active = None
-        if active is None:
-            return
-        if self._stop.is_set():
-            # close() after a stall can itself hang. Do not wait on it forever.
-            thread = threading.Thread(target=_safe_close, args=(active,), daemon=True)
-            thread.start()
-            thread.join(5)
-            return
-        _safe_close(active)
-
-    def _bounded(self, url, fn, timeout):
-        """Run fn on this thread, and stop it if it is still going after timeout seconds.
-
-        A 12 Nov 2026 browser run logged HTTP 200 and then never returned. page.content() can
-        wait forever after that, and so can a route that has already logged the status. The
-        watcher closes a test double and, for a real browser, kills the browser processes so
-        the blocked call returns.
-        """
-        before = set(_descendant_pids(os.getpid()))
-        self._stop.clear()
-        finished = threading.Event()
-
-        def watch():
-            if finished.wait(timeout):
-                return
-            self._stop.set()
-            active = self._active
-            if self.launcher is not None and active is not None:
-                _safe_close(active)
-            if self.launcher is None:
-                for pid in _descendant_pids(os.getpid()):
-                    if pid not in before:
-                        _kill_pid_tree(pid)
-
-        watcher = threading.Thread(target=watch, name="fetcher-hard-timeout", daemon=True)
-        watcher.start()
-        try:
-            return fn()
-        except RealChromeError:
-            raise
-        except Exception:
-            if self._stop.is_set():
-                return self._stall_block(url)
-            raise
-        finally:
-            finished.set()
-
-    def _page_html(self, page):
-        # page.content() has no reliable timeout and hung after a 200 on 12 Nov 2026.
-        # evaluate uses the page timeout set below.
-        if hasattr(page, "evaluate"):
-            return page.evaluate("() => document.documentElement ? document.documentElement.outerHTML : ''")
-        return page.content()
 
     def _page_text(self, page, read_ms):
         try:
@@ -613,26 +807,43 @@ class BrowserFetcher:
         except TypeError:
             return page.inner_text("body")
 
+    def _read_document(self, page, read_ms):
+        """Read the document after it has loaded. A failed settle does not skip this read."""
+        if hasattr(page, "content"):
+            html = page.content()
+        elif hasattr(page, "evaluate"):
+            html = page.evaluate("() => document.documentElement ? document.documentElement.outerHTML : ''")
+        else:
+            html = ""
+        if not isinstance(html, str):
+            html = "" if html is None else str(html)
+        try:
+            text = self._page_text(page, read_ms)
+        except Exception:
+            text = ""
+        return html, text
+
     def _collect(self, url, page, unreadable, started, settle_ms, expand_selector, max_clicks, scroll_times):
         read_ms = int(float(self.fetcher.timeout) * 1000)
         if hasattr(page, "set_default_timeout"):
             page.set_default_timeout(read_ms)
         if hasattr(page, "set_default_navigation_timeout"):
             page.set_default_navigation_timeout(int(float(self.fetcher.timeout) * 3000))
+        self._page = page
         page.route("**/*", self._route)
         try:
             response = page.goto(url, wait_until="domcontentloaded", timeout=self.fetcher.timeout * 3000)
-            self._response_status = response.status if response else None
-            page.wait_for_timeout(settle_ms)
+            status = response.status if response else None
+            try:
+                if hasattr(page, "wait_for_load_state"):
+                    page.wait_for_load_state("networkidle", timeout=max(int(settle_ms), 0))
+            except Exception:
+                pass  # the settle cap elapsed; the loaded document is still read
             for _ in range(scroll_times):
-                if self._stop.is_set():
-                    raise BrowserStall("the page stalled past the hard timeout")
                 page.mouse.wheel(0, 20000)
                 page.wait_for_timeout(1500)
             clicks = 0
             while expand_selector and clicks < max_clicks:
-                if self._stop.is_set():
-                    raise BrowserStall("the page stalled past the hard timeout")
                 control = page.locator(expand_selector).first
                 if control.count() == 0 or not control.is_visible():
                     break
@@ -640,15 +851,9 @@ class BrowserFetcher:
                 clicks += 1
                 self.fetcher.log(event="action", kind="expand_click", url=clean_url(url), selector=expand_selector, n=clicks)
                 page.wait_for_timeout(settle_ms)
-            status = self._response_status
             final_url = page.url
-            html = self._page_html(page)
-            text = self._page_text(page, read_ms)
-        except BrowserStall:
-            raise
+            html, text = self._read_document(page, read_ms)
         except Exception as err:
-            if self._stop.is_set():
-                raise BrowserStall("the page stalled past the hard timeout") from err
             return self.fetcher._block(url, "timeout" if "imeout" in str(err) else "http_error", detail=str(err)[:160])
         if host_of(final_url) not in self.fetcher.official:
             return self.fetcher._block(url, "off_domain_redirect", redirect_to=clean_url(final_url))
@@ -664,48 +869,99 @@ class BrowserFetcher:
         self.fetcher.fetches.append({key: result[key] for key in ("url", "final_url", "status", "fetched_at")})
         return result
 
-    def _render_page(self, url, settle_ms, expand_selector, max_clicks, scroll_times):
-        unreadable = host_of(url) in self.fetcher.unreadable
-        started = self.fetcher.wall()
-        if self.launcher is not None:
-            browser, page = self.launcher()
-            self._active = browser
+    def _session(self, page, url, settle_ms, expand_selector, max_clicks, scroll_times):
+        previous_fetch = self.fetcher.robots_fetch
+        try:
+            if self.real_chrome:
+                self.fetcher.robots_fetch = lambda current, page=page: self._api_robots_fetch(page, current)
+                self._robots_via_page(page, url)
+            reason = self.fetcher.may_fetch(url)
+            if reason:
+                return self.fetcher._block(url, reason)
+            unreadable = host_of(url) in self.fetcher.unreadable
+            started = self.fetcher.wall()
+            return self._collect(url, page, unreadable, started, settle_ms, expand_selector, max_clicks, scroll_times)
+        finally:
+            self.fetcher.robots_fetch = previous_fetch
+
+    def _timeout_result(self, url):
+        detail = "the browser process did not finish within the hard timeout"
+        result = self.fetcher._block(url, "timeout", detail=detail)
+        result["class"] = "timeout"
+        result["via"] = "browser"
+        return result
+
+    def _accept_payload(self, payload):
+        fetcher = self.fetcher
+        for row in payload.get("blocked") or []:
+            if row not in fetcher.blocked:
+                fetcher.blocked.append(row)
+        fetcher.rechecks.extend(payload.get("rechecks") or [])
+        fetcher.fetches.extend(payload.get("fetches") or [])
+        fetcher.stopped.update(payload.get("stopped") or {})
+        fetcher.unreadable.update(payload.get("unreadable") or [])
+        fetcher.last_start.update(payload.get("last_start") or {})
+        for netloc, state, extra in payload.get("robots") or []:
+            if state == "rules":
+                fetcher.robots[netloc] = ("rules", Robots(extra or ""))
+            else:
+                fetcher.robots[netloc] = (state, extra)
+        return payload["result"]
+
+    def _render_in_child(self, url, settle_ms, expand_selector, max_clicks, scroll_times):
+        """Run the browser in a spawned child. The parent only waits on the pipe, then kills the group."""
+        spec = _browser_spec(self, url, settle_ms, expand_selector, max_clicks, scroll_times)
+        spec.update(self.worker_spec or {})
+        ctx = multiprocessing.get_context("spawn")
+        parent_conn, child_conn = ctx.Pipe(duplex=False)
+        target = self.worker_target or _browser_child
+        proc = ctx.Process(target=target, args=(child_conn, spec))
+        proc.start()
+        child_conn.close()
+        message = None
+        try:
+            if parent_conn.poll(self._deadline()):
+                try:
+                    message = parent_conn.recv()
+                except EOFError:
+                    message = None
+            else:
+                _kill_process_group(proc.pid)
+                return self._timeout_result(url)
+        finally:
             try:
-                return self._collect(url, page, unreadable, started, settle_ms, expand_selector, max_clicks, scroll_times)
-            finally:
-                self._close_active()
-        from playwright.sync_api import sync_playwright
-        with sync_playwright() as play:
-            try:
-                _browser, page = self._launch(play)
-            except RealChromeError:
-                raise
-            except Exception as err:
-                if self.real_chrome:
-                    raise self._chrome_launch_error(err) from err
-                raise
-            try:
-                return self._collect(url, page, unreadable, started, settle_ms, expand_selector, max_clicks, scroll_times)
-            finally:
-                self._close_active()
+                parent_conn.close()
+            except Exception:
+                pass
+            if proc.is_alive():
+                _kill_process_group(proc.pid)
+            proc.join(2)
+            if proc.is_alive():
+                proc.kill()
+                proc.join(1)
+        if not message or not message.get("ok"):
+            error = (message or {}).get("error") or "the browser process failed"
+            if (message or {}).get("error_type") == "RealChromeError":
+                raise RealChromeError(error)
+            if "Executable doesn't exist" in error:
+                raise RuntimeError(error)
+            return self.fetcher._block(url, "http_error", detail=error[:160])
+        return self._accept_payload(message["payload"])
 
     def render(self, url, settle_ms=3000, expand_selector=None, max_clicks=20, scroll_times=0):
         """Open one page and return its rendered text. expand_selector is a 'load more' or tab control."""
         previous = self.fetcher.mode
         self.fetcher.mode = "real_chrome" if self.real_chrome else "browser"
-        self._response_status = None
         try:
-            if self.real_chrome and self.launcher is None:
+            if self.launcher is not None:
+                browser, page = self.launcher()
+                try:
+                    return self._session(page, url, settle_ms, expand_selector, max_clicks, scroll_times)
+                finally:
+                    _safe_close(browser)
+            if self.real_chrome and self.worker_target is None:
                 self._require_real_chrome()
-            reason = self.fetcher.may_fetch(url)
-            if reason:
-                return self.fetcher._block(url, reason)
-            limit = self._render_timeout(settle_ms, max_clicks, scroll_times, expand_selector)
-            return self._bounded(
-                url,
-                lambda: self._render_page(url, settle_ms, expand_selector, max_clicks, scroll_times),
-                limit,
-            )
+            return self._render_in_child(url, settle_ms, expand_selector, max_clicks, scroll_times)
         finally:
             self.fetcher.mode = previous
 
@@ -715,6 +971,7 @@ def spacing_report(log_path):
 
     gaps_under_min counts gaps under the rule floor of 1.5 seconds. gaps_under_configured counts gaps
     under the min_gap_s written on the log lines, so a slower run (for example 30 seconds) is checked too.
+    Subresources inside a render are not paced, so a browser log can show gaps under the floor.
     """
     starts, configured = {}, {}
     with open(log_path, encoding="utf-8") as fh:
@@ -745,34 +1002,146 @@ def configured_min_gap(argv, environ=None):
     except ValueError as err:
         raise ValueError("CRAWLER_MIN_GAP must be a number of seconds, 1.5 or more") from err
     if "--min-gap" in argv:
-        index = argv.index("--min-gap")
-        if index + 1 >= len(argv):
-            raise ValueError("give --min-gap a number of seconds, 1.5 or more")
+        text = _option(argv, "--min-gap")
         try:
-            gap = float(argv[index + 1])
-        except ValueError as err:
+            gap = float(text)
+        except (TypeError, ValueError) as err:
             raise ValueError("give --min-gap a number of seconds, 1.5 or more") from err
     return gap
 
 
+def configured_hard_timeout(argv, environ=None):
+    """Wall-clock seconds for one browser process. --hard-timeout wins over CRAWLER_HARD_TIMEOUT."""
+    environ = os.environ if environ is None else environ
+    raw = environ.get("CRAWLER_HARD_TIMEOUT")
+    try:
+        value = float(raw) if raw else DEFAULT_HARD_TIMEOUT
+    except ValueError as err:
+        raise ValueError("CRAWLER_HARD_TIMEOUT must be a number of seconds") from err
+    if "--hard-timeout" in argv:
+        text = _option(argv, "--hard-timeout")
+        try:
+            value = float(text)
+        except (TypeError, ValueError) as err:
+            raise ValueError("give --hard-timeout a number of seconds") from err
+    if value <= 0:
+        raise ValueError("the hard timeout must be greater than 0 seconds")
+    return value
+
+
+_VALUE_FLAGS = {"--min-gap", "--hard-timeout", "--url", "--country"}
+
+
+def _option(argv, name):
+    if name not in argv:
+        return None
+    index = argv.index(name)
+    if index + 1 >= len(argv) or str(argv[index + 1]).startswith("--"):
+        raise ValueError(f"give {name} a value")
+    return argv[index + 1]
+
+
+def _positionals(argv):
+    skip = False
+    found = []
+    for arg in argv[2:]:
+        if skip:
+            skip = False
+            continue
+        if arg in _VALUE_FLAGS:
+            skip = True
+            continue
+        if arg.startswith("--"):
+            continue
+        found.append(arg)
+    return found
+
+
+def _country_known(root, country):
+    path = os.path.join(root, "config", "countries.json")
+    with open(path, encoding="utf-8") as fh:
+        codes = {item["code"].lower() for item in json.load(fh)["items"]}
+    return country.lower() in codes
+
+
+def _normalized_domains(domains):
+    names = []
+    for domain in domains or []:
+        name = domain.lower()
+        if name.startswith("www."):
+            name = name[4:]
+        names.append(name)
+    return names
+
+
+def _host_matches(host, domains):
+    names = _normalized_domains(domains)
+    if host in names:
+        return True
+    return any(host.endswith("." + name) for name in names)
+
+
+def _domains_for_url(root, url, country):
+    host = host_of(url)
+    with open(os.path.join(root, "networks.json"), encoding="utf-8") as fh:
+        networks = json.load(fh)["items"]
+    for item in networks:
+        domains = item.get("official_domains") or []
+        if _host_matches(host, domains):
+            return domains, f"network-{item['id']}"
+    issuer_path = os.path.join(root, country, "issuers.json")
+    if os.path.exists(issuer_path):
+        with open(issuer_path, encoding="utf-8") as fh:
+            issuers = json.load(fh)["items"]
+        for item in issuers:
+            domains = item.get("official_domains") or []
+            if _host_matches(host, domains):
+                return domains, item["id"]
+    raise ValueError(f"{host} is not an official domain for country {country}")
+
+
+def resolve_probe(root, argv):
+    """Return (label, url, official_domains) for an issuer probe or a network-portal probe."""
+    url_flag = _option(argv, "--url")
+    country_flag = _option(argv, "--country")
+    if url_flag or country_flag:
+        if not url_flag or not country_flag:
+            raise ValueError("probe --url needs --country")
+        country = country_flag.lower()
+        if not _country_known(root, country):
+            raise ValueError(f"unknown country {country_flag}")
+        domains, label = _domains_for_url(root, url_flag, country)
+        return label, url_flag, domains
+    positionals = _positionals(argv)
+    if len(positionals) < 2:
+        raise ValueError("usage: probe <issuer_id> <url> or probe --url <url> --country <cc>")
+    issuer_id, url = positionals[0], positionals[1]
+    path = os.path.join(root, issuer_id[:2], "issuers.json")
+    with open(path, encoding="utf-8") as fh:
+        issuers = json.load(fh)["items"]
+    try:
+        issuer = next(row for row in issuers if row["id"] == issuer_id)
+    except StopIteration as err:
+        raise ValueError(f"unknown issuer {issuer_id}") from err
+    return issuer_id, url, issuer["official_domains"]
+
+
 def main(argv):
-    if len(argv) < 4 or argv[1] != "probe":
+    if len(argv) < 2 or argv[1] != "probe":
         print(__doc__)
         return 2
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    issuer_id, url = argv[2], argv[3]
-    path = os.path.join(root, issuer_id[:2], "issuers.json")
-    with open(path, encoding="utf-8") as fh:
-        issuer = next(row for row in json.load(fh)["items"] if row["id"] == issuer_id)
     agent = os.environ.get("CRAWLER_USER_AGENT")
     if not agent:
         print("Set CRAWLER_USER_AGENT to the user agent that the maintainer chose.")
         return 2
     try:
+        label, url, domains = resolve_probe(root, argv)
         gap = configured_min_gap(argv)
-        log = os.path.join(root, "raw", "logs", f"probe-{issuer_id}-{wall_now().strftime('%Y%m%dT%H%M%S')}.jsonl")
-        fetcher = PoliteFetcher(log, issuer["official_domains"], agent, min_gap=gap)
-    except ValueError as err:
+        hard = configured_hard_timeout(argv)
+        log = os.path.join(root, "raw", "logs", f"probe-{label}-{wall_now().strftime('%Y%m%dT%H%M%S')}.jsonl")
+        fetcher = PoliteFetcher(log, domains, agent, min_gap=gap)
+    except (ValueError, OSError) as err:
         print(err)
         return 2
     real_chrome = "--real-chrome" in argv
@@ -783,7 +1152,9 @@ def main(argv):
     launch_args = [arg for arg in ("--disable-http2",) if arg in argv]
     try:
         if real_chrome or "--browser" in argv:
-            result = BrowserFetcher(fetcher, launch_args=launch_args, real_chrome=real_chrome).render(url)
+            result = BrowserFetcher(
+                fetcher, launch_args=launch_args, real_chrome=real_chrome, hard_timeout=hard,
+            ).render(url)
         else:
             result = fetcher.get(url)
     except RealChromeError as err:
@@ -799,3 +1170,5 @@ def main(argv):
 
 if __name__ == "__main__":
     sys.exit(main(sys.argv))
+
+
