@@ -123,6 +123,7 @@ Card names and trademarks belong to their issuers, networks and merchants.
 | `pipeline/` | The crawl and publish code. |
 | `crawler/RULES.md` | The rule for the crawler: sources, merchant name, facts and quotes. |
 | `crawler/COMPLETE_INSTRUCTION.md` | The steps for the crawler: issuer census, cards and offers of each issuer, and the offer sites of the card networks. |
+| `crawler/sources.json` | The canonical list of sites to crawl for Malaysia and Singapore. See `crawler/SOURCES.md`. |
 | `{cc}/offers/network-{id}.json` | Offers from a card network's own offer site for cards issued in that country. `provider.type` is `network`. |
 | `schema/observation.schema.json` | The crawler hand-in file. Private, never committed. `tools/check_observations.py` is its gate and `pipeline/ingest.py` publishes it. |
 | `tools/validate.py` | The check that runs on every pull request and on every push to `main`. |
@@ -160,4 +161,4 @@ Resolve a schema 0.2.0 id by scanning `id` and `aliases`.
 
 ## Report a mistake or suggest an offer
 
-Open an issue with one of the forms: incorrect data, missing card or offer, or issuer submission. See [CONTRIBUTING.md](CONTRIBUTING.md).
+Open an issue with one of the forms: incorrect data, missing card or offer, issuer submission, or [suggest a site to crawl](https://github.com/card-offer/master-list/issues/new?template=suggest-site.yml). See [CONTRIBUTING.md](CONTRIBUTING.md). The crawl sources list is in [`crawler/sources.json`](crawler/sources.json), with a short guide in [`crawler/SOURCES.md`](crawler/SOURCES.md).

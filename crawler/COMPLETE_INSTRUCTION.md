@@ -113,8 +113,9 @@ Find the sites first:
 
 1. For each network, find its official offer site or sites, and the locations that each site lists. A location is the place where the card was issued.
 2. Mastercard is ready: `https://specials.priceless.com/` lists these locations: Australia, India, Singapore, Indonesia, Malaysia, Taiwan, Japan, Hong Kong SAR, New Zealand, Thailand, Korea, Philippines, Vietnam, Sri Lanka. The host `specials.priceless.com` is in `networks.json`.
-3. For Visa, JCB, UnionPay, American Express and Diners Club, do not crawl an offer host that is not in `networks.json`. Report each official offer host with the page of the network's main site that links to it, and the locations it lists. The maintainer adds the host first.
-4. If a location's country is not in `countries.json`, report it. The maintainer adds the country first.
+3. JCB is ready: `https://www.specialoffers.jcb/` lists destinations including Malaysia and Singapore, under Southeast and South Asia. The host `specialoffers.jcb` is in `networks.json`. See `crawler/FULL_CRAWL.md` and `crawler/HARD_SITES.md`.
+4. For Visa, UnionPay, American Express and Diners Club, do not crawl an offer host that is not in `networks.json`. Report each official offer host with the page of the network's main site that links to it, and the locations it lists. The maintainer adds the host first.
+5. If a location's country is not in `countries.json`, report it. The maintainer adds the country first.
 
 Then, for each network and each location:
 

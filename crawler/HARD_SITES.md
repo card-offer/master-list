@@ -115,3 +115,4 @@ Add a line here when a run finds the method for a site. Give the fact and the da
 | `my-bank-rakyat` | Every request, `robots.txt` included, was sent to an error page. Status: blocked. | 2026-11-11 |
 | `my-maybank` | Section 5. | 2026-11-11 |
 | `sg-trust` | The correct host is `trustbank.sg` (in the census pull request). | 2026-11-11 |
+| `jcb` / specialoffers.jcb | `robots.txt` returns 404, so there are no robots rules. The home page and the Malaysia and Singapore campaign and regional-offers listings return class `ok`. Offer tiles are not in the listing HTML; they load from a public `ajax.json` file on the same host, linked as `#json_url` (`/en/campaign/output/d/{region}/{country}/ajax.json` and `/en/offers/output/d/{region}/{country}/ajax.json`). There is no `sitemap.xml`. Related links on the site point at `global.jcb`, which is not in `official_domains`. | 2026-11-12 |

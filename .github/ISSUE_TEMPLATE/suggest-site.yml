@@ -1,0 +1,68 @@
+name: Suggest a site to crawl
+description: Propose an official issuer, network, merchant or regulator page for the crawl list.
+title: "[Site] "
+labels: ["site-suggestion"]
+body:
+  - type: markdown
+    attributes:
+      value: "Suggest a public official page that should be added to the crawl sources list. A maintainer will check that the host is official, probe it, and open a pull request if it belongs on the list. Pages that collect or compare offers from other sites are not accepted."
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: The official page or host to crawl.
+      placeholder: https://
+    validations:
+      required: true
+  - type: dropdown
+    id: country
+    attributes:
+      label: Country
+      options:
+        - MY
+        - SG
+        - other
+    validations:
+      required: true
+  - type: dropdown
+    id: site_type
+    attributes:
+      label: Site type
+      options:
+        - issuer
+        - network
+        - merchant
+        - regulator
+    validations:
+      required: true
+  - type: dropdown
+    id: purpose
+    attributes:
+      label: What is there
+      options:
+        - cards
+        - offers
+    validations:
+      required: true
+  - type: textarea
+    id: why_official
+    attributes:
+      label: Why it is official
+      description: How this page belongs to the bank, card network, merchant or regulator. Link the official page that points to this host if it is not the organisation's main site.
+    validations:
+      required: true
+  - type: input
+    id: sample_url
+    attributes:
+      label: Sample offer or card URL
+      description: Optional. One official card or offer page on the same site.
+      placeholder: https://
+    validations:
+      required: false
+  - type: checkboxes
+    id: official_confirm
+    attributes:
+      label: Official source
+      options:
+        - label: This is an official bank, card network, merchant or regulator page, and not an aggregator or comparison site.
+          required: true
