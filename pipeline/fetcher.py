@@ -225,7 +225,13 @@ class PoliteFetcher:
             if error or status is None:
                 decision = ("unreadable", "network_error")
             elif status == 200:
-                decision = ("rules", Robots(body.decode("utf-8", "replace")))
+                text = body.decode("utf-8", "replace")
+                if re.match(r"(?is)\s*(?:<!doctype|<html|<head|<body)", text):
+                    # An error page sent with status 200 is not a robots.txt file. It states no rule.
+                    self.log(event="note", kind="robots_is_an_html_page", host=host_of(url), url=clean_url(current))
+                    decision = ("allow_all", None)
+                else:
+                    decision = ("rules", Robots(text))
             elif status in (404, 410):
                 decision = ("allow_all", None)
             elif status in (301, 302, 303, 307, 308):
