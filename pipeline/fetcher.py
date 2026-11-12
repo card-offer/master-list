@@ -14,17 +14,23 @@ What it enforces:
   a timeout, a redirect loop, more than 5 redirects, or a redirect to a host that is not official:
   robots.txt is unreadable. The host is still crawled and every page read from it is marked
   robots_unreadable and listed in `rechecks`, so a guard that hides robots.txt costs us flags, not data.
-- One request at a time, and 1.5 seconds or more between the starts of two plain requests to one host,
+- One request at a time, and 1.5 seconds or more between the starts of two paced requests to one host,
   on a monotonic clock. Redirect hops and robots.txt requests count. --min-gap or CRAWLER_MIN_GAP may
-  raise the gap. It cannot go under 1.5 seconds. Inside a browser render the same gap applies to
-  top-level document navigations only, not to each subresource.
+  raise the gap. It cannot go under 1.5 seconds. In every browser mode the same gap applies to
+  document loads and to xhr and fetch calls. Scripts and style sheets can go without a gap.
 - No sign-in, registration or application form URLs. A session id is removed from a recorded URL.
+  A same-origin call that the page makes itself, with a method that is not GET, is permitted after a
+  robots check, and is logged with its method and URL. The request is not changed. A non-same-origin
+  call that is not GET is not sent.
 - 429 or 503 on a page stops the host for the rest of the run.
 - Every request is one line in a private JSONL log, with the wall time to the millisecond, the mode
-  (plain, browser or real_chrome) and the configured gap.
+  (plain, browser or real_chrome) and the configured gap. fetched_at is the start time of the request
+  after the wait.
 - The headless browser, and real Chrome when asked, send each of their requests through the same checks.
-  Real Chrome is installed Google Chrome with a visible window and the given user agent. It does not
-  change the fingerprint and it does not use a proxy.
+  Real Chrome is installed Google Chrome with a visible window. In real-Chrome mode the user agent is
+  not set; Chrome sends its own. Other modes keep the configured user agent. Real Chrome does not
+  change the fingerprint and it does not use a proxy. It is only permitted for hosts in
+  config/real_chrome_hosts.json.
 
 Only the standard library is needed for plain requests. The browser path needs Playwright.
 """
@@ -63,6 +69,28 @@ BLOCK_MARKERS = (
 
 def host_of(url):
     host = (urlsplit(url).hostname or "").lower()
+    return host[4:] if host.startswith("www.") else host
+
+
+def origin_of(url):
+    """Scheme, hostname and port. Hostnames are compared as the URL gives them, including www."""
+    parts = urlsplit(url)
+    host = (parts.hostname or "").lower()
+    port = parts.port
+    if port is None:
+        if parts.scheme == "https":
+            port = 443
+        elif parts.scheme == "http":
+            port = 80
+    return (parts.scheme, host, port)
+
+
+def normalize_host(item):
+    """A host name or URL, without a leading www."""
+    text = str(item).strip()
+    if "://" in text:
+        return host_of(text)
+    host = text.lower()
     return host[4:] if host.startswith("www.") else host
 
 
@@ -228,8 +256,8 @@ class PoliteFetcher:
                      location=headers.get("Location") or headers.get("location"))
             return status, headers, body, started, error
 
-    def note_document_start(self, host):
-        """Wait out the per-host gap and record this start. Top-level document navigations only."""
+    def note_paced_start(self, host):
+        """Wait out the per-host gap and record this start. Used for documents, xhr and fetch."""
         with self.lock:
             last = self.last_start.get(host)
             gap = None
@@ -239,7 +267,8 @@ class PoliteFetcher:
                     self.sleep(wait)
                 gap = round(self.clock() - last, 3)
             start_mono = self.last_start[host] = self.clock()
-            return gap, start_mono
+            started = self.wall()
+            return gap, start_mono, started
 
     def _scheme_ok(self, url):
         parts = urlsplit(url)
@@ -410,6 +439,47 @@ def find_chrome():
     return None
 
 
+def load_real_chrome_hosts(root=None):
+    """Hosts the maintainer approved for real-Chrome mode, from config/real_chrome_hosts.json."""
+    if root is None:
+        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    path = os.path.join(root, "config", "real_chrome_hosts.json")
+    with open(path, encoding="utf-8") as fh:
+        data = json.load(fh)
+    return [normalize_host(item) for item in data.get("hosts") or []]
+
+
+def real_chrome_host_allowed(url, approved):
+    """True when the URL host is on the approved list (www. is ignored)."""
+    allowed = {normalize_host(item) for item in approved or []}
+    return host_of(url) in allowed
+
+
+def write_probe_page(root, label, result, when=None):
+    """Keep the probe page text in a private file under raw/. raw/ is gitignored."""
+    stamp = (when or wall_now()).strftime("%Y%m%dT%H%M%S")
+    folder = os.path.join(root, "raw", "probes")
+    os.makedirs(folder, exist_ok=True)
+    text_path = os.path.join(folder, f"{label}-{stamp}.txt")
+    text = result.get("text")
+    if text is None:
+        body = result.get("body") or b""
+        if isinstance(body, (bytes, bytearray)):
+            text = body.decode("utf-8", "replace")
+        else:
+            text = body if isinstance(body, str) else ""
+    with open(text_path, "w", encoding="utf-8") as fh:
+        fh.write(text if isinstance(text, str) else str(text or ""))
+    html_path = None
+    body = result.get("body")
+    if body:
+        raw = body if isinstance(body, (bytes, bytearray)) else str(body).encode("utf-8")
+        html_path = os.path.join(folder, f"{label}-{stamp}.html")
+        with open(html_path, "wb") as fh:
+            fh.write(raw)
+    return text_path, html_path
+
+
 def chrome_profile_dir():
     """Persistent Chrome profile. CRAWLER_CHROME_PROFILE, or a gitignored cache directory."""
     chosen = os.environ.get("CRAWLER_CHROME_PROFILE")
@@ -525,6 +595,7 @@ def _browser_spec(browser, url, settle_ms, expand_selector, max_clicks, scroll_t
         "timeout": fetcher.timeout,
         "allow_http_hosts": sorted(fetcher.allow_http_hosts),
         "real_chrome": browser.real_chrome,
+        "approved_hosts": list(browser._approved_host_list()),
         "launch_args": list(browser.launch_args),
         "user_data_dir": browser.user_data_dir,
         "settle_ms": settle_ms,
@@ -552,6 +623,7 @@ def _browser_job(spec):
     tool = BrowserFetcher(
         fetcher, launch_args=spec.get("launch_args") or (),
         real_chrome=spec["real_chrome"], user_data_dir=spec.get("user_data_dir"),
+        approved_hosts=spec.get("approved_hosts"),
     )
     from playwright.sync_api import sync_playwright
     with sync_playwright() as play:
@@ -605,22 +677,28 @@ class BrowserFetcher:
     """A browser whose every request goes through the same robots, spacing and log as PoliteFetcher.
 
     The default is headless Chromium. real_chrome=True launches installed Google Chrome instead
-    (channel chrome, headless False, a persistent profile). The user agent is the fetcher's user
-    agent, unchanged. This class does not set a proxy and does not change the browser fingerprint.
+    (channel chrome, headless False, a persistent profile). In real-Chrome mode the user agent is
+    not set; Chrome sends its own. Other modes use the fetcher's user agent. This class does not
+    set a proxy and does not change the browser fingerprint. Real-Chrome mode is only permitted
+    for hosts listed in config/real_chrome_hosts.json.
 
     The real Playwright session runs in a child process. The parent keeps a wall-clock deadline
     (default 150 seconds) and kills that process group if the child does not return. The parent
     itself does not call Playwright, so a stalled driver cannot leave it blocked.
 
     In real-Chrome mode, robots.txt is read with page.goto in that same Chrome context.
-    The per-host gap applies to top-level document navigations. Subresources are not each delayed.
-    A request that must not be sent is answered with an empty 204, not an abort.
+    The per-host gap applies to document loads and to xhr and fetch calls, in every browser mode.
+    Scripts and style sheets can go without a gap. A request that must not be sent is answered
+    with an empty 204, not an abort. A same-origin call that the page makes itself, with a method
+    that is not GET, is permitted after a robots check and is not changed.
     """
 
     DROP_TYPES = {"image", "media", "font"}
+    DATA_TYPES = {"xhr", "fetch"}
+    PACED_TYPES = {"document", "xhr", "fetch"}
 
     def __init__(self, fetcher, launch_args=(), real_chrome=False, user_data_dir=None, hard_timeout=None,
-                 launcher=None, worker_target=None):
+                 launcher=None, worker_target=None, approved_hosts=None):
         self.fetcher = fetcher
         self.launch_args = list(launch_args)
         self.real_chrome = real_chrome
@@ -628,9 +706,12 @@ class BrowserFetcher:
         self.hard_timeout = hard_timeout
         self.launcher = launcher  # tests pass a callable that returns (browser, page)
         self.worker_target = worker_target  # tests pass a child target that hangs
+        self.approved_hosts = approved_hosts  # None means read config/real_chrome_hosts.json
         self.worker_spec = {}
         self._page = None
-
+        self._page_url = None
+        self._document_started = None
+        self._data_problems = []
     def _require_real_chrome(self):
         if not display_available():
             raise RealChromeError(
@@ -671,6 +752,42 @@ class BrowserFetcher:
             return False
         return True
 
+    def _approved_host_list(self):
+        if self.approved_hosts is not None:
+            return [normalize_host(item) for item in self.approved_hosts]
+        return load_real_chrome_hosts()
+
+    def _require_approved_host(self, url):
+        if not real_chrome_host_allowed(url, self._approved_host_list()):
+            host = host_of(url)
+            raise RealChromeError(
+                "real-Chrome mode is only permitted for hosts the maintainer approved in "
+                f"config/real_chrome_hosts.json. {host} is not on that list."
+            )
+
+    def _should_pace(self, request):
+        kind = getattr(request, "resource_type", "") or ""
+        return kind in self.PACED_TYPES or self._is_top_document(request)
+
+    def _same_origin(self, url):
+        if not self._page_url:
+            return False
+        return origin_of(url) == origin_of(self._page_url)
+
+    def _note_data_problem(self, resource_type, how, url, method="GET"):
+        if resource_type not in self.DATA_TYPES:
+            return
+        self._data_problems.append({
+            "kind": resource_type, "how": how, "url": clean_url(url), "method": method,
+        })
+
+    def _pace(self, host, should_pace):
+        if should_pace:
+            gap, start_mono, started = self.fetcher.note_paced_start(host)
+            return gap, start_mono, started, True
+        started = self.fetcher.wall()
+        return None, self.fetcher.clock(), started, False
+
     def _empty(self, route):
         """Answer a request we will not send, so the page script is not left waiting on an abort."""
         try:
@@ -681,49 +798,60 @@ class BrowserFetcher:
     def _route(self, route, request):
         url = request.url
         mode = "real_chrome" if self.real_chrome else "browser"
+        method = getattr(request, "method", "GET") or "GET"
+        kind = request.resource_type
         top = self._is_top_document(request)
-        if request.resource_type in self.DROP_TYPES or url.startswith(("data:", "blob:", "about:")):
+        if kind in self.DROP_TYPES or url.startswith(("data:", "blob:", "about:")):
             self.fetcher.log(event="not_fetched", url=clean_url(url), host=host_of(url), mode=mode, via="browser",
-                             reason="not_needed_for_text")
+                             reason="not_needed_for_text", method=method)
             return self._empty(route)
-        if getattr(request, "method", "GET") != "GET":
+        if method != "GET" and not self._same_origin(url):
             self.fetcher.log(event="not_fetched", url=clean_url(url), host=host_of(url), mode=mode, via="browser",
-                             reason="not_a_get_request")
+                             reason="not_a_get_request", method=method)
+            self._note_data_problem(kind, "blanked", url, method)
             return self._empty(route)
         reason = self.fetcher.may_fetch(url)
         if reason:
             self.fetcher.log(event="not_fetched", url=clean_url(url), host=host_of(url), mode=mode, via="browser",
-                             reason=reason)
+                             reason=reason, method=method)
+            self._note_data_problem(kind, "blanked", url, method)
             return self._empty(route)
         host = host_of(url)
+        gap, start_mono, started, paced = self._pace(host, self._should_pace(request))
+        start_ts = started.isoformat(timespec="milliseconds")
         if top:
-            gap, start_mono = self.fetcher.note_document_start(host)
-            paced = True
-        else:
-            gap, start_mono, paced = None, self.fetcher.clock(), False
-        start_ts = self.fetcher.wall().isoformat(timespec="milliseconds")
+            self._document_started = started
+        if method != "GET":
+            # Same-origin, permitted: leave the request as the page made it.
+            self.fetcher.log(event="request", kind=kind, via="browser", mode=mode, paced=paced,
+                             host=host, url=clean_url(url), method=method, status=None, gap_s=gap,
+                             error=None, start_mono=round(start_mono, 6), start_ts=start_ts)
+            return route.continue_()
         try:
             response = route.fetch(max_redirects=0, timeout=self.fetcher.timeout * 1000)
         except Exception as err:  # Playwright raises its own error types
-            self.fetcher.log(event="request", kind=request.resource_type, via="browser", mode=mode, paced=paced,
-                             host=host, url=clean_url(url), status=None, gap_s=gap, error=str(err)[:160],
-                             start_mono=round(start_mono, 6), start_ts=start_ts)
+            self.fetcher.log(event="request", kind=kind, via="browser", mode=mode, paced=paced,
+                             host=host, url=clean_url(url), method=method, status=None, gap_s=gap,
+                             error=str(err)[:160], start_mono=round(start_mono, 6), start_ts=start_ts)
+            self._note_data_problem(kind, "failed", url, method)
             return self._empty(route)
         headers = getattr(response, "headers", {}) or {}
-        self.fetcher.log(event="request", kind=request.resource_type, via="browser", mode=mode, paced=paced,
-                         host=host, url=clean_url(url), start_mono=round(start_mono, 6), start_ts=start_ts,
-                         status=response.status, gap_s=gap, error=None, location=headers.get("location"))
-        if response.status in (429, 503) and top:
+        status = response.status
+        self.fetcher.log(event="request", kind=kind, via="browser", mode=mode, paced=paced,
+                         host=host, url=clean_url(url), method=method, start_mono=round(start_mono, 6),
+                         start_ts=start_ts, status=status, gap_s=gap, error=None,
+                         location=headers.get("location"))
+        if status in (429, 503) and top:
             self.fetcher.stopped[host] = "http_error"
+        if kind in self.DATA_TYPES and (status is None or status >= 400):
+            self._note_data_problem(kind, "failed", url, method)
         return route.fulfill(response=response)
-
     def _api_robots_fetch(self, page, current):
         """Read robots.txt for another host through Chrome, without navigating the page away."""
         context = getattr(page, "context", None)
         api = getattr(context, "request", None) if context is not None else None
         host = host_of(current)
-        gap, start_mono = self.fetcher.note_document_start(host)
-        started = self.fetcher.wall()
+        gap, start_mono, started = self.fetcher.note_paced_start(host)
         status, headers, body, error = None, {}, b"", None
         if api is None or not hasattr(api, "get"):
             error = "chrome_request_api_missing"
@@ -749,8 +877,7 @@ class BrowserFetcher:
             return self.fetcher.robots[parts.netloc.lower()]
         robots_url = f"{parts.scheme}://{parts.netloc}/robots.txt"
         host = host_of(robots_url)
-        gap, start_mono = self.fetcher.note_document_start(host)
-        started = self.fetcher.wall()
+        gap, start_mono, started = self.fetcher.note_paced_start(host)
         try:
             response = page.goto(robots_url, wait_until="domcontentloaded", timeout=self.fetcher.timeout * 3000)
         except Exception as err:
@@ -788,7 +915,6 @@ class BrowserFetcher:
                     profile,
                     channel="chrome",
                     headless=False,
-                    user_agent=self.fetcher.user_agent,
                     args=self.launch_args,
                 )
             except RealChromeError:
@@ -823,13 +949,38 @@ class BrowserFetcher:
             text = ""
         return html, text
 
-    def _collect(self, url, page, unreadable, started, settle_ms, expand_selector, max_clicks, scroll_times):
+    def _page_class(self, status, html, text):
+        page_class = classify(status, html)
+        if self._data_problems and page_class == "ok":
+            return "js_shell"
+        if page_class == "js_shell" and len(re.findall(r"\w{2,}", text or "")) >= 80:
+            if self._data_problems:
+                return "js_shell"
+            return "ok"
+        return page_class
+
+    def _collect(self, url, page, unreadable, settle_ms, expand_selector, max_clicks, scroll_times):
         read_ms = int(float(self.fetcher.timeout) * 1000)
         if hasattr(page, "set_default_timeout"):
             page.set_default_timeout(read_ms)
         if hasattr(page, "set_default_navigation_timeout"):
             page.set_default_navigation_timeout(int(float(self.fetcher.timeout) * 3000))
         self._page = page
+        self._page_url = url
+        self._document_started = None
+        self._data_problems = []
+        if hasattr(page, "on"):
+            def on_response(response, _self=self):
+                request = getattr(response, "request", None)
+                kind = getattr(request, "resource_type", "") if request is not None else ""
+                if kind not in _self.DATA_TYPES:
+                    return
+                status = getattr(response, "status", None)
+                if status is None or status >= 400:
+                    method = getattr(request, "method", "GET") if request is not None else "GET"
+                    url = getattr(request, "url", "") if request is not None else ""
+                    _self._note_data_problem(kind, "failed", url, method)
+            page.on("response", on_response)
         page.route("**/*", self._route)
         try:
             response = page.goto(url, wait_until="domcontentloaded", timeout=self.fetcher.timeout * 3000)
@@ -857,18 +1008,19 @@ class BrowserFetcher:
             return self.fetcher._block(url, "timeout" if "imeout" in str(err) else "http_error", detail=str(err)[:160])
         if host_of(final_url) not in self.fetcher.official:
             return self.fetcher._block(url, "off_domain_redirect", redirect_to=clean_url(final_url))
+        started = self._document_started or self.fetcher.wall()
         result = {
             "url": clean_url(url), "final_url": clean_url(final_url), "status": status, "body": html.encode("utf-8"),
             "text": text, "fetched_at": started.isoformat(timespec="seconds"),
-            "sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(), "class": classify(status, html), "via": "browser",
+            "sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+            "class": self._page_class(status, html, text), "via": "browser",
         }
         if unreadable:
             result["robots_unreadable"] = True
-        if result["class"] == "js_shell" and len(re.findall(r"\w{2,}", text)) >= 80:
-            result["class"] = "ok"
+        if self._data_problems:
+            result["data_calls_failed"] = list(self._data_problems)
         self.fetcher.fetches.append({key: result[key] for key in ("url", "final_url", "status", "fetched_at")})
         return result
-
     def _session(self, page, url, settle_ms, expand_selector, max_clicks, scroll_times):
         previous_fetch = self.fetcher.robots_fetch
         try:
@@ -879,8 +1031,7 @@ class BrowserFetcher:
             if reason:
                 return self.fetcher._block(url, reason)
             unreadable = host_of(url) in self.fetcher.unreadable
-            started = self.fetcher.wall()
-            return self._collect(url, page, unreadable, started, settle_ms, expand_selector, max_clicks, scroll_times)
+            return self._collect(url, page, unreadable, settle_ms, expand_selector, max_clicks, scroll_times)
         finally:
             self.fetcher.robots_fetch = previous_fetch
 
@@ -953,6 +1104,8 @@ class BrowserFetcher:
         previous = self.fetcher.mode
         self.fetcher.mode = "real_chrome" if self.real_chrome else "browser"
         try:
+            if self.real_chrome:
+                self._require_approved_host(url)
             if self.launcher is not None:
                 browser, page = self.launcher()
                 try:
@@ -967,23 +1120,32 @@ class BrowserFetcher:
 
 
 def spacing_report(log_path):
-    """Smallest and mean gap between request starts for each host, from the monotonic start times in a log.
+    """Smallest and mean gap between paced request starts for each host, in start-time order.
 
-    gaps_under_min counts gaps under the rule floor of 1.5 seconds. gaps_under_configured counts gaps
-    under the min_gap_s written on the log lines, so a slower run (for example 30 seconds) is checked too.
-    Subresources inside a render are not paced, so a browser log can show gaps under the floor.
+    Gaps are computed after sorting by start_mono, so a log written out of completion order
+    cannot show a negative gap. gaps_under_min counts gaps under the rule floor of 1.5 seconds.
+    gaps_under_configured counts gaps under the min_gap_s written on the log lines, so a slower
+    run (for example 30 seconds) is checked too. Only paced requests (documents, xhr, fetch,
+    and plain requests) are used for those gaps. Scripts and style sheets can go without a gap
+    and are counted in requests but not in the gap figures.
     """
-    starts, configured = {}, {}
+    starts, paced_starts, configured = {}, {}, {}
     with open(log_path, encoding="utf-8") as fh:
         for line in fh:
             row = json.loads(line)
-            if row.get("event") == "request":
-                starts.setdefault(row["host"], []).append(row["start_mono"])
-                if row.get("min_gap_s") is not None:
-                    configured[row["host"]] = float(row["min_gap_s"])
+            if row.get("event") != "request" or row.get("start_mono") is None:
+                continue
+            host = row["host"]
+            starts.setdefault(host, []).append(row["start_mono"])
+            # A line with no paced flag is a plain request, which is always paced.
+            if row.get("paced", True):
+                paced_starts.setdefault(host, []).append(row["start_mono"])
+            if row.get("min_gap_s") is not None:
+                configured[host] = float(row["min_gap_s"])
     report = {}
     for host, times in starts.items():
-        gaps = [round(b - a, 3) for a, b in zip(times, times[1:])]
+        ordered = sorted(paced_starts.get(host) or times)
+        gaps = [round(b - a, 3) for a, b in zip(ordered, ordered[1:])]
         floor = configured.get(host, MIN_GAP)
         report[host] = {"requests": len(times), "min_gap_s": min(gaps) if gaps else None,
                         "mean_gap_s": round(sum(gaps) / len(gaps), 3) if gaps else None,
@@ -1145,7 +1307,14 @@ def main(argv):
         print(err)
         return 2
     real_chrome = "--real-chrome" in argv
+    approved = load_real_chrome_hosts(root)
     if real_chrome:
+        if not real_chrome_host_allowed(url, approved):
+            print(
+                "real-Chrome mode is only permitted for hosts the maintainer approved in "
+                f"config/real_chrome_hosts.json. {host_of(url)} is not on that list."
+            )
+            return 2
         fetcher.mode = "real_chrome"
     elif "--browser" in argv:
         fetcher.mode = "browser"
@@ -1154,17 +1323,22 @@ def main(argv):
         if real_chrome or "--browser" in argv:
             result = BrowserFetcher(
                 fetcher, launch_args=launch_args, real_chrome=real_chrome, hard_timeout=hard,
+                approved_hosts=approved if real_chrome else None,
             ).render(url)
         else:
             result = fetcher.get(url)
     except RealChromeError as err:
         print(err)
         return 2
+    text_path, html_path = write_probe_page(root, label, result)
     shown = {key: value for key, value in result.items() if key not in ("body", "text")}
     shown["words"] = len(re.findall(r"\w{2,}", result.get("text") or ""))
+    shown["page_text"] = text_path
+    if html_path:
+        shown["page_html"] = html_path
     print(json.dumps({"result": shown, "blocked": fetcher.blocked, "rechecks": fetcher.rechecks,
                       "spacing": spacing_report(log), "mode": fetcher.mode, "min_gap_s": fetcher.min_gap,
-                      "log": log}, indent=1))
+                      "log": log, "page_text": text_path}, indent=1))
     return 0
 
 

@@ -14,7 +14,8 @@ from unittest.mock import patch
 
 from pipeline.fetcher import (
     BrowserFetcher, PoliteFetcher, RealChromeError, Robots, _sleep_child, chrome_profile_dir, classify, clean_url,
-    configured_min_gap, main, resolve_probe, spacing_report,
+    configured_min_gap, load_real_chrome_hosts, main, origin_of, real_chrome_host_allowed, resolve_probe,
+    spacing_report, write_probe_page,
 )
 
 AGENT = "card-offer-crawler-test/1.0"
@@ -382,8 +383,10 @@ class PacingAndModeTests(unittest.TestCase):
         log = os.path.join(tempfile.mkdtemp(prefix="fetcher-"), "log.jsonl")
         chrome_fetcher = PoliteFetcher(log, ["bank.example"], AGENT, transport=transport, clock=time.monotonic, sleep=lambda _s: None)
         page = QuietPage("https://www.bank.example/cards")
-        result = BrowserFetcher(chrome_fetcher, real_chrome=True, launcher=lambda: (QuietBrowser(), page)).render(
-            "https://www.bank.example/cards", settle_ms=0)
+        result = BrowserFetcher(
+            chrome_fetcher, real_chrome=True, approved_hosts=["bank.example"],
+            launcher=lambda: (QuietBrowser(), page),
+        ).render("https://www.bank.example/cards", settle_ms=0)
         self.assertEqual(result["status"], 200)
         self.assertEqual(calls, [])
         self.assertTrue(any(url.endswith("/robots.txt") for url in page.gotos))
@@ -401,7 +404,8 @@ class RealChromeTests(unittest.TestCase):
             with patch.dict(os.environ, {"DISPLAY": "", "WAYLAND_DISPLAY": ""}):
                 with patch("pipeline.fetcher.find_chrome", return_value="/usr/bin/google-chrome"):
                     with self.assertRaises(RealChromeError) as caught:
-                        BrowserFetcher(fetcher, real_chrome=True).render("https://www.bank.example/cards")
+                        BrowserFetcher(fetcher, real_chrome=True, approved_hosts=["bank.example"]).render(
+                            "https://www.bank.example/cards")
         self.assertIn("display", str(caught.exception).lower())
 
     def test_missing_chrome_raises(self):
@@ -410,10 +414,11 @@ class RealChromeTests(unittest.TestCase):
             with patch.dict(os.environ, {"DISPLAY": ":99"}):
                 with patch("pipeline.fetcher.find_chrome", return_value=None):
                     with self.assertRaises(RealChromeError) as caught:
-                        BrowserFetcher(fetcher, real_chrome=True).render("https://www.bank.example/cards")
+                        BrowserFetcher(fetcher, real_chrome=True, approved_hosts=["bank.example"]).render(
+                            "https://www.bank.example/cards")
         self.assertIn("Chrome", str(caught.exception))
 
-    def test_launch_uses_channel_chrome_headed_profile_and_the_true_user_agent(self):
+    def test_launch_uses_channel_chrome_headed_profile_and_does_not_set_a_user_agent(self):
         fetcher, _net, _log = make({})
         profile = tempfile.mkdtemp(prefix="chrome-profile-")
         captured = {}
@@ -445,7 +450,7 @@ class RealChromeTests(unittest.TestCase):
         kwargs = captured["kwargs"]
         self.assertEqual(kwargs["channel"], "chrome")
         self.assertIs(kwargs["headless"], False)
-        self.assertEqual(kwargs["user_agent"], AGENT)
+        self.assertNotIn("user_agent", kwargs)
         self.assertEqual(kwargs["args"], ["--disable-http2"])
         self.assertNotIn("proxy", kwargs)
         self.assertNotIn("executable_path", kwargs)
@@ -521,20 +526,20 @@ class RealChromeTests(unittest.TestCase):
             else:
                 self.fail(f"grandchild {pid} was still alive after the process group was killed")
 
-    def test_min_gap_is_not_applied_to_subresources(self):
+    def test_min_gap_applies_to_documents_xhr_and_fetch_but_not_to_scripts(self):
         net = FakeNet({})
         log = os.path.join(tempfile.mkdtemp(prefix="fetcher-"), "log.jsonl")
         fetcher = PoliteFetcher(log, ["bank.example"], AGENT, min_gap=30, transport=net.transport,
                                 clock=net.clock, sleep=net.sleep)
         fetcher.robots["www.bank.example"] = ("allow_all", None)
         tool = BrowserFetcher(fetcher)
-        sleeps_before = []
+        tool._page_url = "https://www.bank.example/offers"
 
         class Request:
-            def __init__(self, url, resource_type, navigation):
+            def __init__(self, url, resource_type, navigation, method="GET"):
                 self.url = url
                 self.resource_type = resource_type
-                self.method = "GET"
+                self.method = method
                 self.navigation = navigation
 
             def is_navigation_request(self):
@@ -553,17 +558,26 @@ class RealChromeTests(unittest.TestCase):
             def abort(self):
                 self.action = ("abort",)
 
+            def continue_(self, **kwargs):
+                self.action = ("continue", kwargs)
+
         script = Request("https://www.bank.example/app.js", "script", False)
         route = Route()
         tool._route(route, script)
-        tool._route(route, Request("https://www.bank.example/data.json", "xhr", False))
+        style = Route()
+        tool._route(style, Request("https://www.bank.example/app.css", "stylesheet", False))
         self.assertEqual(net.now, 100.0)
         self.assertEqual(fetcher.last_start, {})
-        document = Request("https://www.bank.example/offers", "document", True)
-        tool._route(route, document)
+        xhr = Route()
+        tool._route(xhr, Request("https://www.bank.example/data.json", "xhr", False))
+        self.assertIn("bank.example", fetcher.last_start)
         first = fetcher.last_start["bank.example"]
-        tool._route(route, Request("https://www.bank.example/next", "document", True))
+        tool._route(Route(), Request("https://www.bank.example/more.json", "fetch", False))
         self.assertGreaterEqual(fetcher.last_start["bank.example"] - first, 30)
+        document = Request("https://www.bank.example/offers", "document", True)
+        tool._route(Route(), document)
+        after_xhr = fetcher.last_start["bank.example"]
+        self.assertGreaterEqual(after_xhr - first, 30)
         off = Route()
         tool._route(off, Request("https://cdn.cookielaw.org/script.js", "script", False))
         self.assertEqual(off.action[0], "fulfill")
@@ -637,6 +651,244 @@ class FetcherGuardTests(unittest.TestCase):
                         self.fail("fetcher.py sets a proxy")
             if isinstance(node, ast.Attribute) and node.attr.lower() in {"proxy", "proxy_server"}:
                 self.fail("fetcher.py sets a proxy")
+
+
+
+
+class MergeConditionTests(unittest.TestCase):
+    """The eight conditions that must hold before real-Chrome mode can be merged."""
+
+    def _tool(self, min_gap=30):
+        net = FakeNet({})
+        log = os.path.join(tempfile.mkdtemp(prefix="fetcher-"), "log.jsonl")
+        fetcher = PoliteFetcher(log, ["bank.example"], AGENT, min_gap=min_gap, transport=net.transport,
+                                clock=net.clock, sleep=net.sleep)
+        fetcher.robots["www.bank.example"] = ("allow_all", None)
+        tool = BrowserFetcher(fetcher)
+        tool._page_url = "https://www.bank.example/offers"
+        return tool, fetcher, net, log
+
+    def _request(self, url, resource_type, navigation=False, method="GET"):
+        class Request:
+            def __init__(self):
+                self.url = url
+                self.resource_type = resource_type
+                self.method = method
+                self.navigation = navigation
+
+            def is_navigation_request(self):
+                return self.navigation
+
+        return Request()
+
+    def _route(self, status=200, error=None):
+        class Route:
+            def __init__(self):
+                self.action = None
+
+            def fetch(self, **kwargs):
+                if error:
+                    raise RuntimeError(error)
+                return SimpleNamespace(status=status, headers={})
+
+            def fulfill(self, **kwargs):
+                self.action = ("fulfill", kwargs)
+
+            def abort(self):
+                self.action = ("abort",)
+
+            def continue_(self, **kwargs):
+                self.action = ("continue", kwargs)
+
+        return Route()
+
+    def test_approved_hosts_file_starts_empty(self):
+        hosts = load_real_chrome_hosts(ROOT)
+        self.assertEqual(hosts, [])
+        self.assertFalse(real_chrome_host_allowed("https://specials.priceless.com/", hosts))
+
+    def test_real_chrome_refuses_a_host_that_is_not_approved(self):
+        fetcher, _net, _log = make({})
+        with self.assertRaises(RealChromeError) as caught:
+            BrowserFetcher(fetcher, real_chrome=True, launcher=lambda: (QuietBrowser(), QuietPage("https://www.bank.example/cards"))).render(
+                "https://www.bank.example/cards", settle_ms=0)
+        self.assertIn("real_chrome_hosts.json", str(caught.exception))
+        self.assertIn("bank.example", str(caught.exception))
+
+    def test_headless_browser_still_sets_the_configured_user_agent(self):
+        fetcher, _net, _log = make({})
+        captured = {}
+
+        class Context:
+            def new_page(self):
+                return SimpleNamespace()
+
+        class Browser:
+            def new_context(self, **kwargs):
+                captured["kwargs"] = kwargs
+                return Context()
+
+            def close(self):
+                return None
+
+        class Chromium:
+            def launch(self, **kwargs):
+                return Browser()
+
+        class Play:
+            chromium = Chromium()
+
+        _browser, _page = BrowserFetcher(fetcher)._launch(Play())
+        self.assertEqual(captured["kwargs"]["user_agent"], AGENT)
+
+    def test_same_origin_non_get_is_continued_and_logged(self):
+        tool, fetcher, _net, log = self._tool()
+        route = self._route()
+        tool._route(route, self._request("https://www.bank.example/api/offers", "fetch", method="POST"))
+        self.assertEqual(route.action[0], "continue")
+        rows = log_rows(log)
+        match = [row for row in rows if row.get("event") == "request" and row.get("method") == "POST"]
+        self.assertEqual(len(match), 1)
+        self.assertEqual(match[0]["url"], "https://www.bank.example/api/offers")
+        self.assertEqual(match[0]["method"], "POST")
+        self.assertTrue(match[0]["paced"])
+
+    def test_non_same_origin_non_get_is_blanked(self):
+        tool, fetcher, _net, log = self._tool()
+        route = self._route()
+        tool._route(route, self._request("https://other.example/collect", "xhr", method="POST"))
+        self.assertEqual(route.action[0], "fulfill")
+        self.assertEqual(route.action[1]["status"], 204)
+        rows = log_rows(log)
+        self.assertTrue(any(row.get("reason") == "not_a_get_request" and row.get("method") == "POST" for row in rows))
+        self.assertEqual(tool._data_problems[0]["how"], "blanked")
+
+    def test_page_is_not_ok_when_a_data_call_is_blanked_or_failed(self):
+        tool, fetcher, _net, _log = self._tool()
+        # Enough words that classify would otherwise return ok.
+        html = "<html><body>" + "offer words " * 60 + "</body></html>"
+        text = "offer words " * 60
+        self.assertEqual(classify(200, html), "ok")
+        tool._data_problems = [{"kind": "xhr", "how": "blanked", "url": "https://www.bank.example/data", "method": "GET"}]
+        self.assertEqual(tool._page_class(200, html, text), "js_shell")
+        tool._data_problems = [{"kind": "fetch", "how": "failed", "url": "https://www.bank.example/data", "method": "GET"}]
+        self.assertEqual(tool._page_class(200, html, text), "js_shell")
+
+    def test_js_shell_is_not_promoted_to_ok_when_a_data_call_failed(self):
+        tool, fetcher, _net, _log = self._tool()
+        html = "<html><body><div id=root></div><script src=app.js></script></body></html>"
+        text = "offer words " * 60
+        self.assertEqual(classify(200, html), "js_shell")
+        tool._data_problems = []
+        self.assertEqual(tool._page_class(200, html, text), "ok")
+        tool._data_problems = [{"kind": "xhr", "how": "failed", "url": "https://www.bank.example/data", "method": "GET"}]
+        self.assertEqual(tool._page_class(200, html, text), "js_shell")
+
+    def test_fetched_at_is_the_start_time_after_the_wait(self):
+        class Wall:
+            def __init__(self, net):
+                self.net = net
+
+            def __call__(self):
+                import datetime
+                return datetime.datetime(2026, 11, 12, 21, 0, 0, tzinfo=datetime.timezone(datetime.timedelta(hours=8))) + datetime.timedelta(seconds=self.net.now - 100)
+
+        net = FakeNet({"https://www.bank.example/robots.txt": (404, {}, b""),
+                       "https://www.bank.example/a": PAGE, "https://www.bank.example/b": PAGE})
+        log = os.path.join(tempfile.mkdtemp(prefix="fetcher-"), "log.jsonl")
+        wall = Wall(net)
+        fetcher = PoliteFetcher(log, ["bank.example"], AGENT, min_gap=30, transport=net.transport,
+                                clock=net.clock, sleep=net.sleep, wall=wall)
+        first = fetcher.get("https://www.bank.example/a")
+        second = fetcher.get("https://www.bank.example/b")
+        # robots at 100, first page after 1.5s default... min_gap is 30, so starts at 100, 130, 160
+        self.assertEqual(first["fetched_at"], "2026-11-12T21:00:30+08:00")
+        self.assertEqual(second["fetched_at"], "2026-11-12T21:01:00+08:00")
+        # Browser document start uses the same helper after the wait.
+        fetcher.robots["www.bank.example"] = ("allow_all", None)
+        tool = BrowserFetcher(fetcher)
+        tool._page_url = "https://www.bank.example/offers"
+        route = self._route()
+        before = net.now
+        tool._route(route, self._request("https://www.bank.example/offers", "document", navigation=True))
+        self.assertGreaterEqual(net.now - before, 30)
+        # The document start is after this wait, not before it.
+        self.assertIsNotNone(tool._document_started)
+        self.assertGreaterEqual(net.now, before + 30)
+
+    def test_spacing_report_orders_gaps_by_request_start(self):
+        log = os.path.join(tempfile.mkdtemp(prefix="fetcher-"), "log.jsonl")
+        # Completion order is reversed from start order, which used to print a negative min gap.
+        rows = [
+            {"event": "request", "host": "bank.example", "start_mono": 12.5, "min_gap_s": 1.5, "paced": True},
+            {"event": "request", "host": "bank.example", "start_mono": 9.438, "min_gap_s": 1.5, "paced": True},
+            {"event": "request", "host": "bank.example", "start_mono": 10.938, "min_gap_s": 1.5, "paced": True},
+        ]
+        with open(log, "w", encoding="utf-8") as fh:
+            for row in rows:
+                fh.write(__import__("json").dumps(row) + "\n")
+        report = spacing_report(log)["bank.example"]
+        self.assertEqual(report["requests"], 3)
+        self.assertGreaterEqual(report["min_gap_s"], 0)
+        self.assertEqual(report["min_gap_s"], 1.5)
+        self.assertEqual(report["gaps_under_min"], 0)
+        # Unpaced script starts are not used for the gap figure.
+        with open(log, "a", encoding="utf-8") as fh:
+            fh.write(__import__("json").dumps({
+                "event": "request", "host": "bank.example", "start_mono": 10.95, "min_gap_s": 1.5, "paced": False,
+            }) + "\n")
+        report = spacing_report(log)["bank.example"]
+        self.assertEqual(report["requests"], 4)
+        self.assertEqual(report["min_gap_s"], 1.5)
+
+    def test_probe_keeps_the_page_text_under_raw(self):
+        root = tempfile.mkdtemp(prefix="probe-root-")
+        result = {"url": "https://www.bank.example/cards", "status": 200,
+                  "text": "visible page text", "body": b"<html>visible page text</html>", "class": "ok"}
+        text_path, html_path = write_probe_page(root, "my-maybank", result, when=__import__("datetime").datetime(2026, 11, 12, 21, 45, 0))
+        self.assertTrue(text_path.startswith(os.path.join(root, "raw", "probes")))
+        self.assertIn("/raw/", text_path.replace("\\", "/"))
+        with open(text_path, encoding="utf-8") as fh:
+            self.assertEqual(fh.read(), "visible page text")
+        with open(html_path, "rb") as fh:
+            self.assertEqual(fh.read(), b"<html>visible page text</html>")
+        with open(os.path.join(ROOT, ".gitignore"), encoding="utf-8") as fh:
+            self.assertIn("raw/", fh.read())
+
+    def test_probe_main_writes_the_page_text_and_does_not_drop_it(self):
+        seen = {}
+
+        class FakeFetcher:
+            def __init__(self, log_path, official_domains, user_agent, min_gap=1.5, **kwargs):
+                self.blocked, self.rechecks = [], []
+                self.mode, self.min_gap, self.log_path = "plain", min_gap, log_path
+                os.makedirs(os.path.dirname(log_path), exist_ok=True)
+                open(log_path, "a", encoding="utf-8").close()
+
+            def get(self, page):
+                seen["url"] = page
+                return {"url": page, "status": 200, "text": "kept page text " * 8,
+                        "body": b"<html>kept page text</html>", "class": "ok"}
+
+        with patch.dict(os.environ, {"CRAWLER_USER_AGENT": AGENT}):
+            with patch("pipeline.fetcher.PoliteFetcher", FakeFetcher):
+                with patch("pipeline.fetcher.write_probe_page") as writer:
+                    writer.return_value = ("raw/probes/fake.txt", "raw/probes/fake.html")
+                    buf = io.StringIO()
+                    with redirect_stdout(buf):
+                        code = main([
+                            "fetcher.py", "probe", "--url", "https://specials.priceless.com/en-my/homepage",
+                            "--country", "MY",
+                        ])
+        self.assertEqual(code, 0)
+        self.assertTrue(writer.called)
+        _args, kwargs = (writer.call_args[0], writer.call_args[1]) if writer.call_args else ((), {})
+        result = writer.call_args[0][2]
+        self.assertEqual(result["text"], "kept page text " * 8)
+        self.assertEqual(result["body"], b"<html>kept page text</html>")
+        out = buf.getvalue()
+        self.assertIn("raw/probes/fake.txt", out)
+        self.assertIn("page_text", out)
 
 
 if __name__ == "__main__":
