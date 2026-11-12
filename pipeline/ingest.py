@@ -15,7 +15,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from pipeline.lib.calendar import add_months, local_date, parse_instant, stamp
 from pipeline.lib.layout import write_collection, write_json
-from pipeline.lib.merchants import Registry, clean_name, load_merchant_rules, match_card, name_key
+from pipeline.lib.merchants import Registry, card_core, clean_name, load_merchant_rules, match_card, name_key
 from pipeline.lib.rules import load_rules, repo_root
 from pipeline.lib.transform import cap_view, new_card_id, new_offer_id, placement
 from tools.check_observations import check
@@ -74,7 +74,7 @@ def public_text(value):
     return value.replace("\u2014", "-") if isinstance(value, str) else value
 
 
-def ingest_cards(obs, cards, issuer_id, country, zone, mrules, report):
+def ingest_cards(obs, cards, issuer_id, country, zone, mrules, report, issuer_name=""):
     """Update the issuer's card list from the hand-in. Cards that the run did not see stay as they are."""
     cc, slug = country.lower(), issuer_id.split("-", 1)[1]
     fetch_by = {}
@@ -90,11 +90,26 @@ def ingest_cards(obs, cards, issuer_id, country, zone, mrules, report):
     for card in cards:
         used.update(card.get("aliases") or [])
     report["cards"] = {"new": 0, "kept": 0, "needs_review": []}
+    # A page can write "Platinum Card-i" for the card that the list has as "Platinum Credit Card-i".
+    # The core of a name has no issuer name, no country word and no "credit card". It matches only
+    # when one published card and one card of this hand-in have that core.
+    observed_cores = [card_core(item["name"], issuer_name, mrules) for item in obs.get("cards") or []]
+    by_core = {}
+    for card in cards:
+        by_core.setdefault(card_core(card["name"], issuer_name, mrules), []).append(card)
+    taken_ids = set()
     for item in obs.get("cards") or []:
         page = item["official_url"]
         old = by_key.get(name_key(item["name"], mrules))
         if old is None and len(by_url.get(page, [])) == 1 and observed_urls.count(page) == 1:
             old = by_url[page][0]
+        core = card_core(item["name"], issuer_name, mrules)
+        if old is None and core and observed_cores.count(core) == 1 and len(by_core.get(core, [])) == 1:
+            old = by_core[core][0]
+        if old is not None and old["id"] in taken_ids:
+            old = None
+        if old is not None:
+            taken_ids.add(old["id"])
         source = fetch_by[page]
         seen_day = local_date(parse_instant(source["fetched_at"]), zone["timezone"]).isoformat()
         if old:
@@ -198,7 +213,7 @@ def ingest(obs, root=None, now=None):
         report["cards"] = {"new": 0, "kept": 0, "needs_review": []}
     else:
         issuer_name = next(row["name"] for row in country_issuers if row["id"] == issuer_id)
-        cards = ingest_cards(obs, cards, issuer_id, country, zone, mrules, report)
+        cards = ingest_cards(obs, cards, issuer_id, country, zone, mrules, report, issuer_name)
     issuer_by_key = {}
     for row in country_issuers:
         for text in (row["name"], row.get("legal_name")):

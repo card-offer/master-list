@@ -519,6 +519,27 @@ class IngestTests(unittest.TestCase):
         errors, _warnings, _stats = validate(self.tree)
         self.assertEqual(errors, [])
 
+    def test_a_card_matches_its_published_record_without_the_words_credit_card(self):
+        before = {item["id"] for item in self.items("sg", "cards", "cimb.json")}
+        data = hand_in([])
+        data["cards"] = [card(name="CIMB Visa Signature Credit Card", name_quote="CIMB Visa Signature Credit Card",
+                              networks=["visa"], network_quote="CIMB Visa Signature Credit Card", tier="signature")]
+        report = ingest(data, root=self.tree, now=NOW)
+        self.assertEqual((report["cards"]["new"], report["cards"]["kept"]), (0, 1))
+        self.assertEqual({item["id"] for item in self.items("sg", "cards", "cimb.json")}, before)
+
+    def test_two_cards_with_one_core_do_not_share_a_record(self):
+        data = hand_in([])
+        data["cards"] = [
+            card(name="CIMB Visa Signature Card", name_quote="CIMB Visa Signature Card", networks=["visa"], network_quote="Visa"),
+            card(name="CIMB Visa Signature Credit Card", name_quote="CIMB Visa Signature Credit Card", networks=["visa"],
+                 network_quote="Visa", official_url=LIST),
+        ]
+        report = ingest(data, root=self.tree, now=NOW)
+        ids = [item["id"] for item in self.items("sg", "cards", "cimb.json")]
+        self.assertEqual(len(ids), len(set(ids)))
+        self.assertEqual(report["cards"]["new"] + report["cards"]["kept"], 2)
+
     def test_a_kept_card_keeps_its_published_name(self):
         data = hand_in([])
         data["cards"] = [card(name="CIMB VISA SIGNATURE", name_quote="CIMB VISA SIGNATURE", networks=["visa"], network_quote="CIMB VISA SIGNATURE",

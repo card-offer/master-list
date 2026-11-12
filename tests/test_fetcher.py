@@ -89,6 +89,11 @@ class RobotsPolicyTests(unittest.TestCase):
         }, domains=("bank.example", "static.bank.example"))
         self.assertEqual(fetcher.get("https://www.bank.example/cards")["status"], 200)
 
+    def test_an_html_page_with_status_200_is_not_a_robots_file(self):
+        result, _fetcher, _ = self.run_with_robots((200, {}, b"<!DOCTYPE html><html><body>Disallow: / Page not found</body></html>"))
+        self.assertEqual(result["status"], 200)
+        self.assertNotIn("robots_unreadable", result)
+
     def test_robots_redirect_loop_marks_the_read_unreadable(self):
         fetcher, _, _ = make({
             "https://www.bank.example/robots.txt": (301, {"Location": "https://www.bank.example/r2"}, b""),
