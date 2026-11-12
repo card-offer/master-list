@@ -3,6 +3,7 @@
 Use this file when a site does not answer, shows no text without JavaScript, or blocks the crawler. Section 2 of `crawler/RULES.md` is the rule. This file is the method.
 
 The purpose is to read what the site shows to every visitor. The purpose is not to get past a control that the site put in place. If the site says no, the answer is no, and the issuer is recorded as blocked.
+An unreadable `robots.txt` is not a no: it states no rule, so the host is crawled and the pages are marked `robots_unreadable` for a recheck (RULES.md section 2, step 3).
 
 ## 1. The tool
 
@@ -39,7 +40,7 @@ The report gives the status, the page class, the blocked list and the measured g
 
 Go down one step at a time. Stop at the first step that gives the text. Write the step that worked in your report.
 
-1. **Plain request.** `fetcher.get(url)`. If `robots.txt` is not readable, the host is not crawled in this run. Do not go to step 2 for that host.
+1. **Plain request.** `fetcher.get(url)`. An unreadable `robots.txt` does not stop here: the page is read and its record is marked `robots_unreadable`. Go down the ladder as normal; the flag travels with the fact.
 2. **Network error, timeout or a protocol error, on `robots.txt` or on a page.** Try one time more after 10 minutes. If the browser reported an HTTP/2 protocol error, start the browser with the option `--disable-http2`. That is a normal client setting. If the plain request and the browser fail in the same way two times, go to section 4 with the class `network_unreachable`.
 3. **The page needs JavaScript (`js_shell`).** Do these in order:
    1. Look in the page source for the data: a JSON block in a script tag, or a link to a JSON file on an official host. Many listings load one public JSON file. Fetch that file with `fetcher.get`. This is the best source: it is complete and it needs no browser.
@@ -71,7 +72,7 @@ These actions get past a control. They are not permitted, for any site, for any 
 
 | Reason | Use it when |
 |---|---|
-| `robots_unreachable` | `robots.txt` did not give status 200, 404 or 410. |
+| `robots_unreachable` | `robots.txt` did not give status 200, 404 or 410. The host is still crawled, so this row flags every fact read blind. |
 | `robots_disallow` | `robots.txt` does not permit the path. |
 | `bot_wall` | The site answered with a block page. |
 | `captcha` | The site asks for a captcha. |
@@ -81,7 +82,7 @@ These actions get past a control. They are not permitted, for any site, for any 
 | `off_domain_redirect` | An official URL sends you to a host that is not official. Give `redirect_to`. |
 | `timeout`, `http_error`, `not_found` | One page failed. |
 
-2. Keep `listing_complete` false. Hand in what you read from the pages that did answer.
+2. Keep `listing_complete` false. Hand in what you read from the pages that did answer. A host read with an unreadable `robots.txt` still hands in its facts, flagged.
 3. Do not fill the gap from memory, from an old crawl or from a different site.
 4. Report the issuer in the list of issuers that are not complete, with the class and the URL.
 5. The maintainer decides the next step. The choices are: a run from the maintainer's own network in the country of the issuer, with this same tool and these same rules; a request to the issuer for a feed or for permission, with the issuer submission form of the repository; or no crawl. The crawler does not make this choice.

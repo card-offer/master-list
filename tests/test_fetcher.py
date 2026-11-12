@@ -56,14 +56,30 @@ class RobotsPolicyTests(unittest.TestCase):
             result, _, _ = self.run_with_robots((status, {}, b""))
             self.assertEqual(result["status"], 200, status)
 
-    def test_every_other_answer_stops_the_host(self):
+    def test_every_other_answer_is_read_but_marked_unreadable(self):
+        """A guard that hides robots.txt must cost flags, not data: the page is still read, the record
+        says so, and the host goes on the recheck list for the maintainer."""
         for answer in ((401, {}, b""), (403, {}, b""), (429, {}, b""), (500, {}, b""), (503, {}, b""),
                        OSError("timed out"), (302, {"Location": "https://other.example/robots.txt"}, b""),
                        (302, {}, b"")):
             result, fetcher, net = self.run_with_robots(answer)
-            self.assertEqual(result.get("not_fetched"), "robots_unreachable", answer)
-            self.assertNotIn("https://www.bank.example/cards", [url for url, _ in net.calls], answer)
+            self.assertEqual(result["status"], 200, answer)
+            self.assertTrue(result.get("robots_unreadable"), answer)
+            self.assertIn("https://www.bank.example/cards", [url for url, _ in net.calls], answer)
             self.assertEqual(fetcher.blocked[0]["reason"], "robots_unreachable")
+            self.assertEqual(fetcher.rechecks[0]["reason"], "robots_unreachable")
+            self.assertEqual(fetcher.rechecks[0]["host"], "bank.example")
+
+    def test_a_flagged_read_is_still_fetchable_and_spaced(self):
+        result, _fetcher, net = self.run_with_robots((403, {}, b""))
+        cards = [at for url, at in net.calls if url.endswith("/cards")]
+        self.assertEqual(len(cards), 1)
+        self.assertGreaterEqual(cards[0] - net.calls[0][1], 1.5, "the page must still be spaced from robots.txt")
+
+    def test_a_readable_robots_is_not_flagged(self):
+        result, fetcher, _ = self.run_with_robots((200, {}, b"User-agent: *\nDisallow: /private\n"))
+        self.assertNotIn("robots_unreadable", result)
+        self.assertEqual(fetcher.rechecks, [])
 
     def test_robots_redirect_inside_official_domains_is_followed(self):
         fetcher, net, _ = make({
@@ -73,12 +89,16 @@ class RobotsPolicyTests(unittest.TestCase):
         }, domains=("bank.example", "static.bank.example"))
         self.assertEqual(fetcher.get("https://www.bank.example/cards")["status"], 200)
 
-    def test_robots_redirect_loop_stops_the_host(self):
+    def test_robots_redirect_loop_marks_the_read_unreadable(self):
         fetcher, _, _ = make({
             "https://www.bank.example/robots.txt": (301, {"Location": "https://www.bank.example/r2"}, b""),
             "https://www.bank.example/r2": (301, {"Location": "https://www.bank.example/robots.txt"}, b""),
+            "https://www.bank.example/cards": PAGE,
         })
-        self.assertEqual(fetcher.get("https://www.bank.example/cards")["not_fetched"], "robots_unreachable")
+        result = fetcher.get("https://www.bank.example/cards")
+        self.assertEqual(result["status"], 200)
+        self.assertTrue(result.get("robots_unreadable"))
+        self.assertEqual(fetcher.rechecks[0]["detail"], "redirect_loop")
 
     def test_rule_matching(self):
         rules = Robots("User-agent: *\nDisallow: /a\nAllow: /a/public\nDisallow: /*.pdf$\n\nUser-agent: card-offer-crawler\nDisallow: /only-us\n")
