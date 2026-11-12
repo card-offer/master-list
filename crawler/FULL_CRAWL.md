@@ -160,4 +160,35 @@ Do them in this order. The small ones are first, so that a problem shows early. 
 | 33 | `my-rhb` | RHB Bank | rhbgroup.com | 12 | 166 | |
 | 34 | `my-maybank` | Maybank | maybank2u.com.my | 33 | 0 | The site did not answer before. If it fails, record it and continue. |
 
+
 New issuers from phase 1 go after number 34, after the maintainer accepts them.
+
+## Regulator sites (phase 1)
+
+These two sites are permitted in phase 1 only, to find issuers. They are not used as sources for card or offer facts.
+
+| Order | Country | Regulator | Host | Note |
+|---|---|---|---|---|
+| phase-1 | MY | Bank Negara Malaysia | bnm.gov.my | The lists of credit card issuers (banks and non-banks) and charge card issuers. |
+| phase-1 | SG | Monetary Authority of Singapore | eservices.mas.gov.sg | The Financial Institutions Directory. Read the categories listed in phase 1 above. |
+
+## Network offer sites (Track C)
+
+The work order for network offer sites is in `crawler/COMPLETE_INSTRUCTION.md`. One run is one network and one location. Crawl only hosts that are already in `config/networks.json`. Country-specific offer hosts that are not in `official_domains` must be reported first; do not crawl them.
+
+Do the Malaysia and Singapore rows in this order after the Track C test rule in the complete instruction. Other locations wait until that work is accepted.
+
+| Order | Network ID | Location | Official offer host | Entry URLs | Note |
+|---|---|---|---|---|---|
+| C1 | `mastercard` | MY | specials.priceless.com | https://specials.priceless.com/ | First Track C test. Also official: mastercard.com, priceless.com. |
+| C2 | `mastercard` | SG | specials.priceless.com | https://specials.priceless.com/ | Same host. The site lists Singapore as a location. |
+| C3 | `jcb` | MY | specialoffers.jcb | https://www.specialoffers.jcb/ , https://www.specialoffers.jcb/en/campaign/d/southeast-and-south-asia/malaysia/ , https://www.specialoffers.jcb/en/offers/d/southeast-and-south-asia/malaysia/ | JCB Special Offers. Also official: jcb.co.jp. See `crawler/HARD_SITES.md`. |
+| C4 | `jcb` | SG | specialoffers.jcb | https://www.specialoffers.jcb/ , https://www.specialoffers.jcb/en/campaign/d/southeast-and-south-asia/singapore/ , https://www.specialoffers.jcb/en/offers/d/southeast-and-south-asia/singapore/ | Same host. |
+| C5 | `visa` | MY | visa.com |  | The host is official. A country offer host that is not in `official_domains` must be reported, not crawled. |
+| C6 | `visa` | SG | visa.com |  | Same note as C5. |
+| C7 | `unionpay` | MY | unionpayintl.com | https://www.unionpayintl.com/my/ |  |
+| C8 | `unionpay` | SG | unionpayintl.com | https://www.unionpayintl.com/sg/ |  |
+| C9 | `amex` | MY | americanexpress.com |  | Network offer pages on this host, not the Singapore issuer catalogue. |
+| C10 | `amex` | SG | americanexpress.com |  | Same host as `sg-amex`. Keep network offers in a network run. |
+| C11 | `diners` | MY | dinersclub.com |  |  |
+| C12 | `diners` | SG | dinersclub.com |  |  |
