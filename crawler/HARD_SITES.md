@@ -7,7 +7,7 @@ An unreadable `robots.txt` is not a no: it states no rule, so the host is crawle
 
 ## 1. The tool
 
-Make every request with `pipeline/fetcher.py`. It reads `robots.txt` first, keeps 1.5 seconds between requests to one host, stops at hosts that are not official, and writes each request to a private log with its start time to the millisecond.
+Make every request with `pipeline/fetcher.py`. It reads `robots.txt` first, keeps 1.5 seconds between requests to one host (raise it with `--min-gap` or `CRAWLER_MIN_GAP`; do not go under 1.5), stops at hosts that are not official, and writes each request to a private log with its start time to the millisecond. Every log line includes `mode` (`plain`, `browser` or `real_chrome`) and `min_gap_s`.
 
 Set the user agent that the maintainer chose:
 
@@ -25,13 +25,17 @@ python pipeline/fetcher.py probe my-maybank https://www.maybank2u.com.my/maybank
 python pipeline/fetcher.py probe my-maybank https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page --browser
 ```
 
+```bash
+python pipeline/fetcher.py probe my-maybank https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page --real-chrome --min-gap 30
+```
+
 The report gives the status, the page class, the blocked list and the measured gaps. The page classes are:
 
 | Class | Meaning | What to do |
 |---|---|---|
 | `ok` | The page has its text. | Read it. |
 | `js_shell` | The page has scripts and almost no text. | Step 3 of the ladder. |
-| `bot_wall` | The site answered with a block page. | Stop. Section 4. |
+| `bot_wall` | The site answered with a block page. | Step 4 of the ladder, once. If it is still a block page, stop. Section 4. |
 | `captcha` | The site asks for a test that only a person can do. | Stop. Section 4. |
 | `login` | The page asks for a password. | Stop. It is not a public page. |
 | `error` | Network error or an HTTP error. | Step 1 of the ladder. |
@@ -41,17 +45,30 @@ The report gives the status, the page class, the blocked list and the measured g
 Go down one step at a time. Stop at the first step that gives the text. Write the step that worked in your report.
 
 1. **Plain request.** `fetcher.get(url)`. An unreadable `robots.txt` does not stop here: the page is read and its record is marked `robots_unreadable`. Go down the ladder as normal; the flag travels with the fact.
-2. **Network error, timeout or a protocol error, on `robots.txt` or on a page.** Try one time more after 10 minutes. If the browser reported an HTTP/2 protocol error, start the browser with the option `--disable-http2`. That is a normal client setting. If the plain request and the browser fail in the same way two times, go to section 4 with the class `network_unreachable`.
+2. **Network error, timeout or a protocol error, on `robots.txt` or on a page.** Try one time more after 10 minutes. If the browser reported an HTTP/2 protocol error, start the browser with the option `--disable-http2`. That is a normal client setting. If the plain request and the browser fail in the same way two times, go to section 4 with the class `network_unreachable`. When the site refuses the plain request and the headless browser with a block page, rather than leaving the host unreachable, the real Chrome rung below is allowed once.
 3. **The page needs JavaScript (`js_shell`).** Do these in order:
    1. Look in the page source for the data: a JSON block in a script tag, or a link to a JSON file on an official host. Many listings load one public JSON file. Fetch that file with `fetcher.get`. This is the best source: it is complete and it needs no browser.
    2. Read `sitemap.xml` on the host for the card pages and the offer pages.
    3. Render the page with `BrowserFetcher(fetcher).render(url)`. The browser sends each of its requests through the same checks.
-4. **The listing shows only a part.** Use `render(url, expand_selector=..., scroll_times=...)` for a load more button, a next page link, tabs or an endless scroll. Count the tiles before and after. Set `listing_complete` to true only when a click or a scroll adds no tile.
-5. **A second official host.** If the issuer shows the same cards or offers on a second host of its own (for example a group site or a promotions site), report the host and the official page that links to it. The maintainer adds it to `official_domains` first.
-6. **Documents.** Product disclosure sheets, fee tables and terms are often PDF files on the same host. They are official sources for card facts and offer terms.
-7. **Nothing works.** Section 4.
+4. **Plain requests and the headless browser were refused.** One real Chrome attempt is allowed. The maintainer approved this rung on 12 Nov 2026. It is a real browser and the true user agent, with no fingerprint change:
 
-Quotes from a rendered page come from the rendered text, not from the page source. Set `via` to `browser` on the fetch record.
+   ```bash
+   python pipeline/fetcher.py probe <issuer_id> <url> --real-chrome --min-gap 30
+   ```
+
+   `--real-chrome` (or `BrowserFetcher(fetcher, real_chrome=True)`) launches installed Google Chrome through Playwright with `channel="chrome"` and `headless=False`, using `launch_persistent_context`. On a server, run it under a virtual display such as Xvfb. The profile directory is `CRAWLER_CHROME_PROFILE`, or `.cache/chrome-profile` when that is unset. That directory is gitignored. Do not commit it, and do not point it at a person's signed-in profile.
+
+   The user agent is `CRAWLER_USER_AGENT`, the same string as every other request. Do not add a stealth plugin, a proxy, a new IP, or a captcha solver. Those stay forbidden in section 3. If Chrome or a display is missing, the probe raises `RealChromeError` instead of waiting. A page that answers and then stalls is closed at a hard timeout and logged as `timeout`, so one page cannot hang the run.
+
+   `--min-gap SECONDS` or `CRAWLER_MIN_GAP` raises the per-host gap. The default stays 1.5 seconds. A slow run can use 30. The spacing report still reads the log.
+
+   If this attempt is also a block page or a captcha, stop. Section 4.
+5. **The listing shows only a part.** Use `render(url, expand_selector=..., scroll_times=...)` for a load more button, a next page link, tabs or an endless scroll. Count the tiles before and after. Set `listing_complete` to true only when a click or a scroll adds no tile.
+6. **A second official host.** If the issuer shows the same cards or offers on a second host of its own (for example a group site or a promotions site), report the host and the official page that links to it. The maintainer adds it to `official_domains` first.
+7. **Documents.** Product disclosure sheets, fee tables and terms are often PDF files on the same host. They are official sources for card facts and offer terms.
+8. **Nothing works.** Section 4.
+
+Quotes from a rendered page come from the rendered text, not from the page source. Set `via` to `browser` on the fetch record, including a real Chrome run. The log line records the mode.
 
 ## 3. What you must not do
 

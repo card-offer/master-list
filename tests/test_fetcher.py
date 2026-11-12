@@ -1,12 +1,19 @@
 """The reference fetcher: robots policy, spacing, redirects, skipped URLs and the browser path. No network."""
+import ast
 import http.server
 import json
 import os
 import tempfile
 import threading
+import time
 import unittest
+from types import SimpleNamespace
+from unittest.mock import patch
 
-from pipeline.fetcher import BrowserFetcher, PoliteFetcher, Robots, classify, clean_url, spacing_report
+from pipeline.fetcher import (
+    BrowserFetcher, PoliteFetcher, RealChromeError, Robots, chrome_profile_dir, classify, clean_url,
+    configured_min_gap, spacing_report,
+)
 
 AGENT = "card-offer-crawler-test/1.0"
 
@@ -249,6 +256,273 @@ class BrowserPathTests(unittest.TestCase):
             rows = [json.loads(line) for line in fh]
         self.assertTrue(any(row.get("reason") == "robots_disallow" for row in rows))
         self.assertTrue(any(row.get("reason") in ("host_not_official", "not_https") for row in rows))
+        self.assertTrue(all(row.get("mode") == "browser" and "min_gap_s" in row and "gap_s" in row for row in rows))
+
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PAGE_HTML = "<html><body>" + "offer words " * 60 + "</body></html>"
+PAGE_TEXT = "offer words " * 60
+
+
+def log_rows(path):
+    with open(path, encoding="utf-8") as fh:
+        return [json.loads(line) for line in fh]
+
+
+class QuietPage:
+    def __init__(self, url):
+        self.url = url
+
+    def route(self, *args, **kwargs):
+        return None
+
+    def goto(self, url, **kwargs):
+        return SimpleNamespace(status=200)
+
+    def wait_for_timeout(self, ms):
+        return None
+
+    def evaluate(self, expression, *args, **kwargs):
+        return PAGE_HTML
+
+    def inner_text(self, selector, timeout=None):
+        return PAGE_TEXT
+
+
+class QuietBrowser:
+    def close(self):
+        return None
+
+
+class StallBrowser:
+    """Answers 200, then waits until the fetcher closes it."""
+
+    def __init__(self):
+        self.closed = threading.Event()
+        self.page = StallPage(self)
+
+    def close(self):
+        self.closed.set()
+
+
+class StallPage:
+    def __init__(self, browser):
+        self.browser = browser
+        self.url = "https://www.bank.example/cards"
+
+    def route(self, *args, **kwargs):
+        return None
+
+    def goto(self, url, **kwargs):
+        return SimpleNamespace(status=200)
+
+    def wait_for_timeout(self, ms):
+        return None
+
+    def evaluate(self, expression, *args, **kwargs):
+        if not self.browser.closed.wait(20):
+            raise AssertionError("hard timeout did not stop the stalled page")
+        raise TimeoutError("stalled after 200")
+
+    def inner_text(self, selector, timeout=None):
+        return ""
+
+
+class PacingAndModeTests(unittest.TestCase):
+    def test_min_gap_can_be_raised_and_the_spacing_report_still_works(self):
+        net = FakeNet({"https://www.bank.example/robots.txt": (404, {}, b""),
+                       "https://www.bank.example/a": PAGE, "https://www.bank.example/b": PAGE})
+        log = os.path.join(tempfile.mkdtemp(prefix="fetcher-"), "log.jsonl")
+        fetcher = PoliteFetcher(log, ["bank.example"], AGENT, min_gap=30, transport=net.transport,
+                                clock=net.clock, sleep=net.sleep)
+        fetcher.get("https://www.bank.example/a")
+        fetcher.get("https://www.bank.example/b")
+        times = [when for _url, when in net.calls]
+        self.assertTrue(all(b - a >= 30 for a, b in zip(times, times[1:])), times)
+        report = spacing_report(log)["bank.example"]
+        self.assertEqual(report["requests"], 3)
+        self.assertGreaterEqual(report["min_gap_s"], 30)
+        self.assertEqual(report["gaps_under_min"], 0)
+        self.assertEqual(report["configured_min_gap_s"], 30)
+        self.assertEqual(report["gaps_under_configured"], 0)
+        for row in log_rows(log):
+            self.assertEqual(row["mode"], "plain")
+            self.assertEqual(row["min_gap_s"], 30)
+            self.assertIn("gap_s", row)
+
+    def test_gap_flag_and_env_and_the_floor(self):
+        self.assertEqual(configured_min_gap(["probe", "id", "https://h"], {}), 1.5)
+        self.assertEqual(configured_min_gap(["probe", "id", "https://h"], {"CRAWLER_MIN_GAP": "30"}), 30.0)
+        self.assertEqual(configured_min_gap(
+            ["probe", "id", "https://h", "--min-gap", "45"], {"CRAWLER_MIN_GAP": "30"}), 45.0)
+        with self.assertRaises(ValueError):
+            configured_min_gap(["probe", "id", "https://h"], {"CRAWLER_MIN_GAP": "fast"})
+        with self.assertRaises(ValueError):
+            configured_min_gap(["probe", "id", "https://h", "--min-gap"], {})
+        with self.assertRaises(ValueError):
+            PoliteFetcher("/tmp/x.jsonl", ["bank.example"], AGENT, min_gap=configured_min_gap(
+                ["probe", "id", "https://h", "--min-gap", "0.4"], {}))
+
+    def test_every_plain_log_line_has_mode_and_gap(self):
+        fetcher, _net, log = make({"https://www.bank.example/robots.txt": (404, {}, b""),
+                                   "https://www.bank.example/a": PAGE})
+        fetcher.get("https://www.bank.example/a")
+        rows = log_rows(log)
+        self.assertGreaterEqual(len(rows), 2)
+        for row in rows:
+            self.assertEqual(row["mode"], "plain")
+            self.assertEqual(row["min_gap_s"], 1.5)
+            self.assertIn("gap_s", row)
+
+    def test_browser_and_real_chrome_modes_are_on_every_log_line(self):
+        for real_chrome, mode in ((False, "browser"), (True, "real_chrome")):
+            fetcher, _net, log = make({})
+            page = QuietPage("https://www.bank.example/cards")
+            browser = BrowserFetcher(fetcher, real_chrome=real_chrome, launcher=lambda page=page: (QuietBrowser(), page))
+            result = browser.render("https://www.bank.example/cards", settle_ms=0)
+            self.assertEqual(result["status"], 200)
+            self.assertEqual(result["via"], "browser")
+            rows = log_rows(log)
+            self.assertTrue(rows)
+            for row in rows:
+                self.assertEqual(row["mode"], mode, mode)
+                self.assertEqual(row["min_gap_s"], 1.5)
+                self.assertIn("gap_s", row)
+            fetcher.get("https://www.bank.example/after")
+            later = log_rows(log)[len(rows):]
+            self.assertTrue(later)
+            self.assertTrue(all(row["mode"] == "plain" for row in later))
+
+
+class RealChromeTests(unittest.TestCase):
+    def test_missing_display_raises(self):
+        fetcher, _net, _log = make({})
+        with patch("pipeline.fetcher.sys.platform", "linux"):
+            with patch.dict(os.environ, {"DISPLAY": "", "WAYLAND_DISPLAY": ""}):
+                with patch("pipeline.fetcher.find_chrome", return_value="/usr/bin/google-chrome"):
+                    with self.assertRaises(RealChromeError) as caught:
+                        BrowserFetcher(fetcher, real_chrome=True).render("https://www.bank.example/cards")
+        self.assertIn("display", str(caught.exception).lower())
+
+    def test_missing_chrome_raises(self):
+        fetcher, _net, _log = make({})
+        with patch("pipeline.fetcher.sys.platform", "linux"):
+            with patch.dict(os.environ, {"DISPLAY": ":99"}):
+                with patch("pipeline.fetcher.find_chrome", return_value=None):
+                    with self.assertRaises(RealChromeError) as caught:
+                        BrowserFetcher(fetcher, real_chrome=True).render("https://www.bank.example/cards")
+        self.assertIn("Chrome", str(caught.exception))
+
+    def test_launch_uses_channel_chrome_headed_profile_and_the_true_user_agent(self):
+        fetcher, _net, _log = make({})
+        profile = tempfile.mkdtemp(prefix="chrome-profile-")
+        captured = {}
+
+        class Context:
+            pages = []
+
+            def new_page(self):
+                return SimpleNamespace()
+
+            def close(self):
+                return None
+
+        class Chromium:
+            def launch_persistent_context(self, user_data_dir, **kwargs):
+                captured["user_data_dir"] = user_data_dir
+                captured["kwargs"] = kwargs
+                return Context()
+
+        class Play:
+            chromium = Chromium()
+
+        browser = BrowserFetcher(fetcher, launch_args=["--disable-http2"], real_chrome=True, user_data_dir=profile)
+        with patch("pipeline.fetcher.sys.platform", "linux"):
+            with patch.dict(os.environ, {"DISPLAY": ":99"}):
+                with patch("pipeline.fetcher.find_chrome", return_value="/usr/bin/google-chrome"):
+                    browser._launch(Play())
+        self.assertEqual(captured["user_data_dir"], profile)
+        kwargs = captured["kwargs"]
+        self.assertEqual(kwargs["channel"], "chrome")
+        self.assertIs(kwargs["headless"], False)
+        self.assertEqual(kwargs["user_agent"], AGENT)
+        self.assertEqual(kwargs["args"], ["--disable-http2"])
+        self.assertNotIn("proxy", kwargs)
+        self.assertNotIn("executable_path", kwargs)
+        self.assertNotIn("ignore_default_args", kwargs)
+
+    def test_a_chrome_launch_error_is_real_chrome_error(self):
+        fetcher, _net, _log = make({})
+
+        class Chromium:
+            def launch_persistent_context(self, user_data_dir, **kwargs):
+                raise RuntimeError("Missing X server or $DISPLAY")
+
+        class Play:
+            chromium = Chromium()
+
+        browser = BrowserFetcher(fetcher, real_chrome=True, user_data_dir=tempfile.mkdtemp(prefix="chrome-profile-"))
+        with patch("pipeline.fetcher.sys.platform", "linux"):
+            with patch.dict(os.environ, {"DISPLAY": ":99"}):
+                with patch("pipeline.fetcher.find_chrome", return_value="/usr/bin/google-chrome"):
+                    with self.assertRaises(RealChromeError) as caught:
+                        browser._launch(Play())
+        self.assertIn("display", str(caught.exception).lower())
+
+    def test_profile_defaults_to_the_gitignored_cache(self):
+        with patch.dict(os.environ, {}, clear=False):
+            os.environ.pop("CRAWLER_CHROME_PROFILE", None)
+            path = chrome_profile_dir()
+        self.assertEqual(path, os.path.join(ROOT, ".cache", "chrome-profile"))
+        with open(os.path.join(ROOT, ".gitignore"), encoding="utf-8") as fh:
+            ignored = fh.read()
+        self.assertIn(".cache/", ignored)
+        with patch.dict(os.environ, {"CRAWLER_CHROME_PROFILE": "/tmp/crawler-chrome-profile"}):
+            self.assertEqual(chrome_profile_dir(), "/tmp/crawler-chrome-profile")
+
+    def test_page_that_answers_200_and_then_stalls_times_out(self):
+        fetcher, _net, log = make({})
+        stall = StallBrowser()
+        started = time.monotonic()
+        result = BrowserFetcher(
+            fetcher, hard_timeout=0.4, launcher=lambda: (stall, stall.page),
+        ).render("https://www.bank.example/cards", settle_ms=0)
+        elapsed = time.monotonic() - started
+        self.assertLess(elapsed, 4, "a page that answers 200 and then stalls must not hang the process")
+        self.assertEqual(result["not_fetched"], "timeout")
+        self.assertIn("200", result["detail"])
+        self.assertIn("stalled", result["detail"])
+        rows = log_rows(log)
+        self.assertTrue(any(row.get("reason") == "timeout" and row["mode"] == "browser" for row in rows))
+        self.assertNotIn("https://www.bank.example/cards", [row.get("url") for row in fetcher.fetches])
+
+
+class FetcherGuardTests(unittest.TestCase):
+    def test_fetcher_does_not_import_a_stealth_plugin_or_set_a_proxy(self):
+        path = os.path.join(ROOT, "pipeline", "fetcher.py")
+        with open(path, encoding="utf-8") as fh:
+            source = fh.read()
+        self.assertNotIn("\u2014", source)
+        tree = ast.parse(source)
+        banned = ("stealth", "undetected_chromedriver", "puppeteer")
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Import):
+                names = [alias.name for alias in node.names]
+            elif isinstance(node, ast.ImportFrom):
+                names = [node.module or ""] + [alias.name for alias in node.names]
+            else:
+                names = []
+            for name in names:
+                lowered = name.lower().replace("-", "_")
+                self.assertFalse(any(part in lowered for part in banned), name)
+            if isinstance(node, ast.keyword) and (node.arg or "").lower() in {"proxy", "proxy_server"}:
+                self.fail("fetcher.py sets a proxy")
+            if isinstance(node, ast.Dict):
+                for key in node.keys:
+                    if isinstance(key, ast.Constant) and str(key.value).lower() in {"proxy", "proxy_server"}:
+                        self.fail("fetcher.py sets a proxy")
+            if isinstance(node, ast.Attribute) and node.attr.lower() in {"proxy", "proxy_server"}:
+                self.fail("fetcher.py sets a proxy")
 
 
 if __name__ == "__main__":

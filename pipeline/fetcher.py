@@ -3,6 +3,7 @@
 
     python pipeline/fetcher.py probe <issuer_id> <url>       one page, with a report of what the site did
     python pipeline/fetcher.py probe <issuer_id> <url> --browser
+    python pipeline/fetcher.py probe <issuer_id> <url> --real-chrome --min-gap 30
 
 Use this module for every request of a crawl. Do not make a request to a crawl host by any other path.
 
@@ -13,11 +14,15 @@ What it enforces:
   robots.txt is unreadable. The host is still crawled and every page read from it is marked
   robots_unreadable and listed in `rechecks`, so a guard that hides robots.txt costs us flags, not data.
 - One request at a time, and 1.5 seconds or more between the starts of two requests to one host, on a
-  monotonic clock. Redirect hops and robots.txt requests count.
+  monotonic clock. Redirect hops and robots.txt requests count. --min-gap or CRAWLER_MIN_GAP may raise
+  the gap. It cannot go under 1.5 seconds.
 - No sign-in, registration or application form URLs. A session id is removed from a recorded URL.
 - 429 or 503 on a page stops the host for the rest of the run.
-- Every request is one line in a private JSONL log, with the wall time to the millisecond.
-- The headless browser sends each of its requests through the same checks.
+- Every request is one line in a private JSONL log, with the wall time to the millisecond, the mode
+  (plain, browser or real_chrome) and the configured gap.
+- The headless browser, and real Chrome when asked, send each of their requests through the same checks.
+  Real Chrome is installed Google Chrome with a visible window and the given user agent. It does not
+  change the fingerprint and it does not use a proxy.
 
 Only the standard library is needed for plain requests. The browser path needs Playwright.
 """
@@ -26,6 +31,8 @@ import hashlib
 import json
 import os
 import re
+import shutil
+import signal
 import sys
 import threading
 import time
@@ -161,6 +168,7 @@ class PoliteFetcher:
         self.user_agent, self.min_gap, self.timeout = user_agent, float(min_gap), timeout
         self.transport, self.clock, self.sleep, self.wall = transport, clock, sleep, wall
         self.allow_http_hosts = set(allow_http_hosts)
+        self.mode = "plain"  # plain, browser or real_chrome. The browser path sets this for the render.
         self.lock = threading.Lock()
         self.last_start, self.robots, self.stopped = {}, {}, {}
         self.fetches, self.blocked, self.rechecks = [], [], []
@@ -169,7 +177,13 @@ class PoliteFetcher:
 
     # ---- log
     def log(self, **row):
-        row = {"ts": self.wall().isoformat(timespec="milliseconds"), "mono": round(self.clock(), 6), **row}
+        # mode and both gaps are on every line so a run can be audited without the command that started it.
+        # gap_s is the measured pause before this request (null when the line is not a request).
+        # min_gap_s is the configured per-host minimum for the run.
+        row = {
+            "ts": self.wall().isoformat(timespec="milliseconds"), "mono": round(self.clock(), 6),
+            "mode": self.mode, "min_gap_s": self.min_gap, "gap_s": None, **row,
+        }
         with open(self.log_path, "a", encoding="utf-8") as fh:
             fh.write(json.dumps(row, ensure_ascii=False) + "\n")
         return row
@@ -323,8 +337,96 @@ class PoliteFetcher:
         return self._block(url, "http_error", detail="too_many_redirects")
 
 
+class RealChromeError(RuntimeError):
+    """Google Chrome or a display is missing, so real-Chrome mode cannot start."""
+
+
+class BrowserStall(Exception):
+    """The browser did not finish within the hard timeout. Not an OSError, so it is not a network timeout."""
+
+
+_DISPLAY_MISSING = re.compile(
+    r"(?i)(missing x server|\$display|no display|headed browser without having a xserver|x server)"
+)
+
+
+def display_available():
+    """A visible Chrome window needs a display. Xvfb on a server sets DISPLAY."""
+    if sys.platform in ("win32", "darwin"):
+        return True
+    return bool(os.environ.get("DISPLAY") or os.environ.get("WAYLAND_DISPLAY"))
+
+
+def find_chrome():
+    """Path of installed Google Chrome, or None. Bundled Chromium is not accepted here."""
+    for name in ("google-chrome-stable", "google-chrome", "google-chrome-beta"):
+        found = shutil.which(name)
+        if found and os.access(found, os.X_OK):
+            return found
+    for path in (
+        "/usr/bin/google-chrome-stable",
+        "/usr/bin/google-chrome",
+        "/opt/google/chrome/chrome",
+        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    ):
+        if os.path.isfile(path) and os.access(path, os.X_OK):
+            return path
+    return None
+
+
+def chrome_profile_dir():
+    """Persistent Chrome profile. CRAWLER_CHROME_PROFILE, or a gitignored cache directory."""
+    chosen = os.environ.get("CRAWLER_CHROME_PROFILE")
+    if chosen:
+        return chosen
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(root, ".cache", "chrome-profile")
+
+
+def _descendant_pids(pid, seen=None):
+    seen = set() if seen is None else seen
+    if pid in seen:
+        return []
+    seen.add(pid)
+    path = f"/proc/{pid}/task/{pid}/children"
+    try:
+        with open(path, encoding="ascii") as fh:
+            children = [int(part) for part in fh.read().split()]
+    except OSError:
+        return []
+    found = []
+    for child in children:
+        found.append(child)
+        found.extend(_descendant_pids(child, seen))
+    return found
+
+
+def _kill_pid_tree(pid):
+    if pid <= 1 or pid == os.getpid():
+        return
+    for child in _descendant_pids(pid):
+        _kill_pid_tree(child)
+    try:
+        os.kill(pid, signal.SIGKILL)
+    except OSError:
+        pass
+
+
+def _safe_close(obj):
+    try:
+        close = getattr(obj, "close", None)
+        if close:
+            close()
+    except Exception:
+        pass
+
+
 class BrowserFetcher:
-    """A headless browser whose every request goes through the same robots, spacing and log as PoliteFetcher.
+    """A browser whose every request goes through the same robots, spacing and log as PoliteFetcher.
+
+    The default is headless Chromium. real_chrome=True launches installed Google Chrome instead
+    (channel chrome, headless False, a persistent profile). The user agent is the fetcher's user
+    agent, unchanged. This class does not set a proxy and does not change the browser fingerprint.
 
     Requests to hosts that are not official are stopped. Images, media and fonts are stopped: text does not need them.
     The only permitted actions are scroll and a click on a control that shows more of the same public content
@@ -333,9 +435,40 @@ class BrowserFetcher:
 
     DROP_TYPES = {"image", "media", "font"}
 
-    def __init__(self, fetcher, launch_args=()):
+    def __init__(self, fetcher, launch_args=(), real_chrome=False, user_data_dir=None, hard_timeout=None, launcher=None):
         self.fetcher = fetcher
         self.launch_args = list(launch_args)
+        self.real_chrome = real_chrome
+        self.user_data_dir = user_data_dir
+        self.hard_timeout = hard_timeout
+        self.launcher = launcher  # tests pass a callable that returns (browser, page)
+        self._stop = threading.Event()
+        self._active = None
+        self._response_status = None
+
+    def _require_real_chrome(self):
+        if not display_available():
+            raise RealChromeError(
+                "real-Chrome mode opens a visible Chrome window and needs a display. "
+                "On a server, start Xvfb and set DISPLAY."
+            )
+        if find_chrome() is None:
+            raise RealChromeError(
+                "real-Chrome mode needs Google Chrome (channel chrome). "
+                "The bundled Chromium is not used for this mode."
+            )
+
+    def _chrome_launch_error(self, err):
+        text = str(err)
+        if _DISPLAY_MISSING.search(text):
+            return RealChromeError(
+                "real-Chrome mode opens a visible Chrome window and needs a display. "
+                "On a server, start Xvfb and set DISPLAY. " + text[:180]
+            )
+        return RealChromeError(
+            "real-Chrome mode needs Google Chrome (channel chrome). "
+            "The bundled Chromium is not used for this mode. " + text[:180]
+        )
 
     def _route(self, route, request):
         url = request.url
@@ -372,40 +505,151 @@ class BrowserFetcher:
                 self.fetcher.stopped[host] = "http_error"
         return route.fulfill(response=response)
 
-    def render(self, url, settle_ms=3000, expand_selector=None, max_clicks=20, scroll_times=0):
-        """Open one page and return its rendered text. expand_selector is a 'load more' or tab control."""
-        from playwright.sync_api import sync_playwright
+    def _render_timeout(self, settle_ms, max_clicks, scroll_times, expand_selector):
+        """Seconds the whole render may take. A stalled page must not hang the process."""
+        if self.hard_timeout is not None:
+            return float(self.hard_timeout)
+        read = float(self.fetcher.timeout)
+        navigation = read * 3  # page.goto timeout is timeout * 3000 milliseconds
+        clicks = max_clicks if expand_selector else 0
+        paced = (max(settle_ms, 0) / 1000.0) * (clicks + 1) + 1.5 * max(scroll_times, 0)
+        return navigation + paced + read + 15
 
-        reason = self.fetcher.may_fetch(url)
-        if reason:
-            return self.fetcher._block(url, reason)
-        unreadable = host_of(url) in self.fetcher.unreadable
-        started = self.fetcher.wall()
-        with sync_playwright() as play:
-            browser = play.chromium.launch(args=self.launch_args, executable_path=os.environ.get("CRAWLER_CHROMIUM") or None)
-            page = browser.new_context(user_agent=self.fetcher.user_agent).new_page()
-            page.route("**/*", self._route)
+    def _stall_block(self, url):
+        status = self._response_status
+        if status is None:
+            detail = "the page stalled past the hard timeout"
+        else:
+            detail = f"HTTP {status} then the page stalled past the hard timeout"
+        return self.fetcher._block(url, "timeout", detail=detail)
+
+    def _launch(self, play):
+        if self.real_chrome:
+            self._require_real_chrome()
+            profile = self.user_data_dir or chrome_profile_dir()
+            os.makedirs(profile, exist_ok=True)
             try:
-                response = page.goto(url, wait_until="domcontentloaded", timeout=self.fetcher.timeout * 3000)
-                page.wait_for_timeout(settle_ms)
-                for _ in range(scroll_times):
-                    page.mouse.wheel(0, 20000)
-                    page.wait_for_timeout(1500)
-                clicks = 0
-                while expand_selector and clicks < max_clicks:
-                    control = page.locator(expand_selector).first
-                    if control.count() == 0 or not control.is_visible():
-                        break
-                    control.click()
-                    clicks += 1
-                    self.fetcher.log(event="action", kind="expand_click", url=clean_url(url), selector=expand_selector, n=clicks)
-                    page.wait_for_timeout(settle_ms)
-                status = response.status if response else None
-                final_url, html, text = page.url, page.content(), page.inner_text("body")
+                # channel chrome is installed Google Chrome, not the bundled Chromium.
+                # headless False is a visible window. No proxy and no fingerprint overrides.
+                context = play.chromium.launch_persistent_context(
+                    profile,
+                    channel="chrome",
+                    headless=False,
+                    user_agent=self.fetcher.user_agent,
+                    args=self.launch_args,
+                )
+            except RealChromeError:
+                raise
             except Exception as err:
-                browser.close()
-                return self.fetcher._block(url, "timeout" if "imeout" in str(err) else "http_error", detail=str(err)[:160])
-            browser.close()
+                raise self._chrome_launch_error(err) from err
+            self._active = context
+            page = context.pages[0] if context.pages else context.new_page()
+            return context, page
+        browser = play.chromium.launch(args=self.launch_args, executable_path=os.environ.get("CRAWLER_CHROMIUM") or None)
+        self._active = browser
+        page = browser.new_context(user_agent=self.fetcher.user_agent).new_page()
+        return browser, page
+
+    def _close_active(self):
+        active = self._active
+        self._active = None
+        if active is None:
+            return
+        if self._stop.is_set():
+            # close() after a stall can itself hang. Do not wait on it forever.
+            thread = threading.Thread(target=_safe_close, args=(active,), daemon=True)
+            thread.start()
+            thread.join(5)
+            return
+        _safe_close(active)
+
+    def _bounded(self, url, fn, timeout):
+        """Run fn on this thread, and stop it if it is still going after timeout seconds.
+
+        A 12 Nov 2026 browser run logged HTTP 200 and then never returned. page.content() can
+        wait forever after that, and so can a route that has already logged the status. The
+        watcher closes a test double and, for a real browser, kills the browser processes so
+        the blocked call returns.
+        """
+        before = set(_descendant_pids(os.getpid()))
+        self._stop.clear()
+        finished = threading.Event()
+
+        def watch():
+            if finished.wait(timeout):
+                return
+            self._stop.set()
+            active = self._active
+            if self.launcher is not None and active is not None:
+                _safe_close(active)
+            if self.launcher is None:
+                for pid in _descendant_pids(os.getpid()):
+                    if pid not in before:
+                        _kill_pid_tree(pid)
+
+        watcher = threading.Thread(target=watch, name="fetcher-hard-timeout", daemon=True)
+        watcher.start()
+        try:
+            return fn()
+        except RealChromeError:
+            raise
+        except Exception:
+            if self._stop.is_set():
+                return self._stall_block(url)
+            raise
+        finally:
+            finished.set()
+
+    def _page_html(self, page):
+        # page.content() has no reliable timeout and hung after a 200 on 12 Nov 2026.
+        # evaluate uses the page timeout set below.
+        if hasattr(page, "evaluate"):
+            return page.evaluate("() => document.documentElement ? document.documentElement.outerHTML : ''")
+        return page.content()
+
+    def _page_text(self, page, read_ms):
+        try:
+            return page.inner_text("body", timeout=read_ms)
+        except TypeError:
+            return page.inner_text("body")
+
+    def _collect(self, url, page, unreadable, started, settle_ms, expand_selector, max_clicks, scroll_times):
+        read_ms = int(float(self.fetcher.timeout) * 1000)
+        if hasattr(page, "set_default_timeout"):
+            page.set_default_timeout(read_ms)
+        if hasattr(page, "set_default_navigation_timeout"):
+            page.set_default_navigation_timeout(int(float(self.fetcher.timeout) * 3000))
+        page.route("**/*", self._route)
+        try:
+            response = page.goto(url, wait_until="domcontentloaded", timeout=self.fetcher.timeout * 3000)
+            self._response_status = response.status if response else None
+            page.wait_for_timeout(settle_ms)
+            for _ in range(scroll_times):
+                if self._stop.is_set():
+                    raise BrowserStall("the page stalled past the hard timeout")
+                page.mouse.wheel(0, 20000)
+                page.wait_for_timeout(1500)
+            clicks = 0
+            while expand_selector and clicks < max_clicks:
+                if self._stop.is_set():
+                    raise BrowserStall("the page stalled past the hard timeout")
+                control = page.locator(expand_selector).first
+                if control.count() == 0 or not control.is_visible():
+                    break
+                control.click()
+                clicks += 1
+                self.fetcher.log(event="action", kind="expand_click", url=clean_url(url), selector=expand_selector, n=clicks)
+                page.wait_for_timeout(settle_ms)
+            status = self._response_status
+            final_url = page.url
+            html = self._page_html(page)
+            text = self._page_text(page, read_ms)
+        except BrowserStall:
+            raise
+        except Exception as err:
+            if self._stop.is_set():
+                raise BrowserStall("the page stalled past the hard timeout") from err
+            return self.fetcher._block(url, "timeout" if "imeout" in str(err) else "http_error", detail=str(err)[:160])
         if host_of(final_url) not in self.fetcher.official:
             return self.fetcher._block(url, "off_domain_redirect", redirect_to=clean_url(final_url))
         result = {
@@ -420,22 +664,95 @@ class BrowserFetcher:
         self.fetcher.fetches.append({key: result[key] for key in ("url", "final_url", "status", "fetched_at")})
         return result
 
+    def _render_page(self, url, settle_ms, expand_selector, max_clicks, scroll_times):
+        unreadable = host_of(url) in self.fetcher.unreadable
+        started = self.fetcher.wall()
+        if self.launcher is not None:
+            browser, page = self.launcher()
+            self._active = browser
+            try:
+                return self._collect(url, page, unreadable, started, settle_ms, expand_selector, max_clicks, scroll_times)
+            finally:
+                self._close_active()
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as play:
+            try:
+                _browser, page = self._launch(play)
+            except RealChromeError:
+                raise
+            except Exception as err:
+                if self.real_chrome:
+                    raise self._chrome_launch_error(err) from err
+                raise
+            try:
+                return self._collect(url, page, unreadable, started, settle_ms, expand_selector, max_clicks, scroll_times)
+            finally:
+                self._close_active()
+
+    def render(self, url, settle_ms=3000, expand_selector=None, max_clicks=20, scroll_times=0):
+        """Open one page and return its rendered text. expand_selector is a 'load more' or tab control."""
+        previous = self.fetcher.mode
+        self.fetcher.mode = "real_chrome" if self.real_chrome else "browser"
+        self._response_status = None
+        try:
+            if self.real_chrome and self.launcher is None:
+                self._require_real_chrome()
+            reason = self.fetcher.may_fetch(url)
+            if reason:
+                return self.fetcher._block(url, reason)
+            limit = self._render_timeout(settle_ms, max_clicks, scroll_times, expand_selector)
+            return self._bounded(
+                url,
+                lambda: self._render_page(url, settle_ms, expand_selector, max_clicks, scroll_times),
+                limit,
+            )
+        finally:
+            self.fetcher.mode = previous
+
 
 def spacing_report(log_path):
-    """Smallest and mean gap between request starts for each host, from the monotonic start times in a log."""
-    starts = {}
+    """Smallest and mean gap between request starts for each host, from the monotonic start times in a log.
+
+    gaps_under_min counts gaps under the rule floor of 1.5 seconds. gaps_under_configured counts gaps
+    under the min_gap_s written on the log lines, so a slower run (for example 30 seconds) is checked too.
+    """
+    starts, configured = {}, {}
     with open(log_path, encoding="utf-8") as fh:
         for line in fh:
             row = json.loads(line)
             if row.get("event") == "request":
                 starts.setdefault(row["host"], []).append(row["start_mono"])
+                if row.get("min_gap_s") is not None:
+                    configured[row["host"]] = float(row["min_gap_s"])
     report = {}
     for host, times in starts.items():
         gaps = [round(b - a, 3) for a, b in zip(times, times[1:])]
+        floor = configured.get(host, MIN_GAP)
         report[host] = {"requests": len(times), "min_gap_s": min(gaps) if gaps else None,
                         "mean_gap_s": round(sum(gaps) / len(gaps), 3) if gaps else None,
-                        "gaps_under_min": sum(1 for gap in gaps if gap < MIN_GAP - 0.001)}
+                        "gaps_under_min": sum(1 for gap in gaps if gap < MIN_GAP - 0.001),
+                        "configured_min_gap_s": floor,
+                        "gaps_under_configured": sum(1 for gap in gaps if gap < floor - 0.001)}
     return report
+
+
+def configured_min_gap(argv, environ=None):
+    """The per-host gap in seconds. --min-gap wins over CRAWLER_MIN_GAP. The default is MIN_GAP."""
+    environ = os.environ if environ is None else environ
+    raw = environ.get("CRAWLER_MIN_GAP")
+    try:
+        gap = float(raw) if raw else MIN_GAP
+    except ValueError as err:
+        raise ValueError("CRAWLER_MIN_GAP must be a number of seconds, 1.5 or more") from err
+    if "--min-gap" in argv:
+        index = argv.index("--min-gap")
+        if index + 1 >= len(argv):
+            raise ValueError("give --min-gap a number of seconds, 1.5 or more")
+        try:
+            gap = float(argv[index + 1])
+        except ValueError as err:
+            raise ValueError("give --min-gap a number of seconds, 1.5 or more") from err
+    return gap
 
 
 def main(argv):
@@ -451,15 +768,32 @@ def main(argv):
     if not agent:
         print("Set CRAWLER_USER_AGENT to the user agent that the maintainer chose.")
         return 2
-    log = os.path.join(root, "raw", "logs", f"probe-{issuer_id}-{wall_now().strftime('%Y%m%dT%H%M%S')}.jsonl")
-    fetcher = PoliteFetcher(log, issuer["official_domains"], agent)
+    try:
+        gap = configured_min_gap(argv)
+        log = os.path.join(root, "raw", "logs", f"probe-{issuer_id}-{wall_now().strftime('%Y%m%dT%H%M%S')}.jsonl")
+        fetcher = PoliteFetcher(log, issuer["official_domains"], agent, min_gap=gap)
+    except ValueError as err:
+        print(err)
+        return 2
+    real_chrome = "--real-chrome" in argv
+    if real_chrome:
+        fetcher.mode = "real_chrome"
+    elif "--browser" in argv:
+        fetcher.mode = "browser"
     launch_args = [arg for arg in ("--disable-http2",) if arg in argv]
-    result = (BrowserFetcher(fetcher, launch_args=launch_args).render(url)
-              if "--browser" in argv else fetcher.get(url))
+    try:
+        if real_chrome or "--browser" in argv:
+            result = BrowserFetcher(fetcher, launch_args=launch_args, real_chrome=real_chrome).render(url)
+        else:
+            result = fetcher.get(url)
+    except RealChromeError as err:
+        print(err)
+        return 2
     shown = {key: value for key, value in result.items() if key not in ("body", "text")}
     shown["words"] = len(re.findall(r"\w{2,}", result.get("text") or ""))
     print(json.dumps({"result": shown, "blocked": fetcher.blocked, "rechecks": fetcher.rechecks,
-                      "spacing": spacing_report(log), "log": log}, indent=1))
+                      "spacing": spacing_report(log), "mode": fetcher.mode, "min_gap_s": fetcher.min_gap,
+                      "log": log}, indent=1))
     return 0
 
 
