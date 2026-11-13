@@ -150,6 +150,7 @@ Resolve a schema 0.2.0 id by scanning `id` and `aliases`.
 
 ## Known issues
 
+- Offers from a card network's site are stored by country. A network site that lists offers by the place of use (JCB) is stored under that place. A cardholder from a different country who travels there must read that country's network file. No single file lists the offers of one network for all countries.
 - 441 offers have `merchant_kind` `unknown`, and 1,094 merchant names are `legacy_title_parse`. The next crawl under `crawler/RULES.md` replaces them.
 - The 300 published cards came from the older scripts. The next crawl under `crawler/RULES.md` replaces them, with one benefit entry for each stated sentence.
 - Short weekday names such as `every Tue` are not parsed. That misses 8 DBS and POSB offers. A full name such as `every Tuesday` is parsed.

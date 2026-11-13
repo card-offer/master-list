@@ -62,7 +62,10 @@ Do not take the name from the URL, from your memory or from a guess.
 1. Write the trading name as the page writes it. Keep the page's spelling and capitals: `Trip.com`, `7-Eleven`, `B/SKIN`.
 2. Remove markup and trademark signs: `Baa Baa Sheepz<sup>®</sup>` becomes `Baa Baa Sheepz`.
 3. Give the brand only. Do not add offer words, prices, dates, card names or campaign names.
-4. Put a branch, outlet or in-hotel restaurant in `outlet`, not in `name`.
+4. Put a branch, outlet or in-hotel restaurant in `outlet`, not in `name`. The name is the brand that a cardholder searches for.
+   - A place after the brand is the outlet: `Jamal Kazura Aromatics 39 Bussorah Street` is name `Jamal Kazura Aromatics`, outlet `39 Bussorah Street`. Three branches of one brand have one name and three outlets.
+   - If the page heading is the brand only, the name is the heading. Do not add the mall, the street or the airport terminal to it. The gate refuses a name that is the heading with more words.
+   - A restaurant, bar or spa inside a hotel: if the page states the hotel, the hotel is the name and the restaurant is the outlet. `Lobby Lounge`, `The Courtyard` and `Jade` are not names that a cardholder can search for. If the page does not state the hotel, keep the heading as the name and report it.
 5. Do not translate the name. Do not expand or shorten it.
 6. Copy the text that contains the name into `name_quote`. The gate fails if the name is not inside the quote. The name must be in one part of the quote: the gate cuts the quote at each comma, semicolon and line end. An address line is not proof of a name. Quote the heading or the tile that names the merchant.
 
@@ -152,6 +155,8 @@ Hand in the issuer's cards in the `cards` list of the same file. Do the cards be
 1. A run of a card network's own offer site has `run.network_id` and no `run.issuer_id`. It has no `cards` list. Eligibility is scope `network`, with `network_ids` equal to the network of the run.
 2. Card tiers that the page names go in `tiers`. Issuers that the page names go in `issuer_names`, as the page writes them.
 3. The country of a network run is the location where the card was issued, as the site lists it. The country must be in `countries.json`.
+   - Some network sites list offers by the place of use, not by the place where the card was issued (JCB Special Offers lists by destination). For such a site, the run country is the place of use, and the run takes the offers that are for all cards of the network. Set `redeem.countries` to that place.
+   - An offer that is only for cards issued in a different country (for example "JCB cards issued in Hong Kong") does not go in the run. Leave it out and count it. The gate refuses it.
 4. Keep the title, the merchant name and each quote in the language and the script of the page. If the page shows the merchant name in two scripts, put the Latin form in `name` and the second form in `alt_names`.
 5. The gate reads amounts with the separators of the country and with number words (juta, triệu, 万, lakh), and dates with Indonesian and Thai month names and the Thai Buddhist year. The word lists are in `config/merchant_rules.json`.
 
