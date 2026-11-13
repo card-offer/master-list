@@ -1,4 +1,4 @@
-# Full crawl: Malaysia and Singapore
+# Full crawl: Malaysia, Singapore and Thailand
 
 This file is the instruction for the crawler for the first full crawl. `crawler/RULES.md` is the rule for each fact. If the two files disagree, `crawler/RULES.md` is correct.
 
@@ -8,7 +8,7 @@ Copy all the text below the line and give it to Grok Bot.
 
 ---
 
-You are the crawler for https://github.com/card-offer/master-list. This task is the first full crawl of Malaysia (MY) and Singapore (SG). The goal is: each credit card issuer, each of its cards, each of its offers, and each offer matched to the cards that can use it.
+You are the crawler for https://github.com/card-offer/master-list. This task is the first full crawl of Malaysia (MY) and Singapore (SG), and the phase 1 issuer census for Thailand (TH). The goal is: each credit card issuer, each of its cards, each of its offers, and each offer matched to the cards that can use it.
 
 Do the four phases in order. Do not start a phase before the phase before it is accepted.
 
@@ -36,6 +36,7 @@ The repository has 34 issuers now. They are in the table at the end of this file
 1. Read the regulator lists. These two sites are permitted in this phase only:
    1. Malaysia, Bank Negara Malaysia: the list "Credit Card Issuers" (banks and non-banks) and the list of charge card issuers, on bnm.gov.my.
    2. Singapore, Monetary Authority of Singapore: the Financial Institutions Directory on eservices.mas.gov.sg. Read the categories Local Bank, Qualifying Full Bank, Full Bank, Digital Full Bank, Wholesale Bank, and Credit and Charge Card Licensee.
+   3. Thailand, Bank of Thailand: the list of financial institutions and non-banks on bot.or.th (https://www.bot.or.th/th/fi-list.html). Read the commercial banks, specialized financial institutions, and licensed non-bank credit card operators (license 0700).
 2. For each entry on a regulator list, open the institution's own official site and find out if it issues a credit card or a charge card to consumers in that country.
 3. Give each entry one result:
    - `in_repository`: it is one of the 34. Give the issuer ID.
@@ -161,7 +162,24 @@ Do them in this order. The small ones are first, so that a problem shows early. 
 | 34 | `my-maybank` | Maybank | maybank2u.com.my | 33 | 0 | The site did not answer before. If it fails, record it and continue. |
 
 
-New issuers from phase 1 go after number 34, after the maintainer accepts them.
+New issuers from phase 1 go after number 34, after the maintainer accepts them. The Thailand rows below are the proposed order from the 2026-11-13 phase 1 census. They wait for the maintainer to accept each issuer and official domain. Cards and offers are not ingested yet, so the counts are 0.
+
+### Thailand
+
+| Order | Issuer ID | Name | Official domains | Cards now | Offers now | Note |
+|---|---|---|---|---|---|---|
+| 35 | `th-lotuss-money` | Lotus's Money | lotussmoney.com | 0 | 0 | Catalogue https://www.lotussmoney.com/credit-card |
+| 36 | `th-first-choice` | Krungsri First Choice | firstchoice.co.th | 0 | 0 | Legal name บริษัท อยุธยา แคปปิตอล เซอร์วิสเซส. Catalogue https://www.firstchoice.co.th/cards |
+| 37 | `th-icbc-thai` | ICBC Thai | icbcthai.com | 0 | 0 | Catalogue https://www.icbcthai.com/th/column/1438059017405874179.html |
+| 38 | `th-gsb` | Government Savings Bank | gsb.or.th | 0 | 0 | Cards category https://www.gsb.or.th/personal/card/ |
+| 39 | `th-amex` | American Express (Thai) | americanexpress.com | 0 | 0 | Thailand pages only. Compare https://www.americanexpress.com/th/th/compare-credit-cards/ |
+| 40 | `th-ttb` | ttb | ttbbank.com | 0 | 0 | Credit card promotions were found; no product catalogue URL yet. |
+| 41 | `th-cardx` | CardX | cardx.co.th | 0 | 0 | Catalogue https://www.cardx.co.th/th-TH/credit-card/catalog. Ordinary browser. A linked host info.cardx.co.th is not in official_domains. |
+| 42 | `th-aeon` | AEON Thana Sinsap | aeon.co.th | 0 | 0 | Catalogue https://www.aeon.co.th/aeon/cards/ |
+| 43 | `th-ktc` | KTC | ktc.co.th | 0 | 0 | Catalogue https://www.ktc.co.th/credit-card |
+| 44 | `th-krungsri-card` | Krungsri Card | krungsricard.com | 0 | 0 | Catalogue https://www.krungsricard.com/th/product |
+| 45 | `th-uob` | UOB Thailand | uob.co.th | 0 | 0 | Ordinary browser. Listing https://www.uob.co.th/personal/credit-cards.page |
+
 
 ## Regulator sites (phase 1)
 
@@ -171,12 +189,13 @@ These two sites are permitted in phase 1 only, to find issuers. They are not use
 |---|---|---|---|---|
 | phase-1 | MY | Bank Negara Malaysia | bnm.gov.my | The lists of credit card issuers (banks and non-banks) and charge card issuers. |
 | phase-1 | SG | Monetary Authority of Singapore | eservices.mas.gov.sg | The Financial Institutions Directory. Read the categories listed in phase 1 above. |
+| phase-1 | TH | Bank of Thailand | bot.or.th | The list of financial institutions and non-banks, including licensed non-bank credit card operators (license 0700). |
 
 ## Network offer sites (Track C)
 
 The work order for network offer sites is in `crawler/COMPLETE_INSTRUCTION.md`. One run is one network and one location. Crawl only hosts that are already in `config/networks.json`. Country-specific offer hosts that are not in `official_domains` must be reported first; do not crawl them.
 
-Do the Malaysia and Singapore rows in this order after the Track C test rule in the complete instruction. Other locations wait until that work is accepted.
+Do the Malaysia and Singapore rows in this order after the Track C test rule in the complete instruction. Other locations wait until that work is accepted. Thailand network rows C13 to C17 are on the source list so the hosts are recorded; do not start those runs until the maintainer accepts the Malaysia and Singapore network work.
 
 | Order | Network ID | Location | Official offer host | Entry URLs | Note |
 |---|---|---|---|---|---|
@@ -192,3 +211,8 @@ Do the Malaysia and Singapore rows in this order after the Track C test rule in 
 | C10 | `amex` | SG | americanexpress.com |  | Same host as `sg-amex`. Keep network offers in a network run. |
 | C11 | `diners` | MY | dinersclub.com |  |  |
 | C12 | `diners` | SG | dinersclub.com |  |  |
+| C13 | `mastercard` | TH | specials.priceless.com | https://specials.priceless.com/ | Also official: mastercard.com, priceless.com. Wait until MY and SG Track C work is accepted. |
+| C14 | `jcb` | TH | specialoffers.jcb | https://www.specialoffers.jcb/ | Also official: jcb.co.jp. No Thailand path was confirmed in this census, so only the host root is listed. |
+| C15 | `visa` | TH | visa.com |  | The host is official. A country offer host that is not in official_domains must be reported, not crawled. |
+| C16 | `unionpay` | TH | unionpayintl.com |  | No Thailand path was confirmed in this census. |
+| C17 | `amex` | TH | americanexpress.com |  | Network offer pages on this host, not the Thailand issuer catalogue. |
