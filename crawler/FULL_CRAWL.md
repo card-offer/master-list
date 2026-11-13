@@ -2,6 +2,8 @@
 
 This file is the instruction for the crawler for the first full crawl. `crawler/RULES.md` is the rule for each fact. If the two files disagree, `crawler/RULES.md` is correct.
 
+For the phase 1 review follow-up, also read [PHASE1_REVIEW.md](PHASE1_REVIEW.md). It records the reviewed source domains and the evidence gaps that remain. Phase 2 still requires phase 1 acceptance and merge.
+
 Copy all the text below the line and give it to Grok Bot.
 
 ---
@@ -39,7 +41,8 @@ The repository has 34 issuers now. They are in the table at the end of this file
    - `in_repository`: it is one of the 34. Give the issuer ID.
    - `same_group`: its cards are sold on the site of an issuer in the repository (for example the Islamic bank of a group). Give the issuer ID. Its cards go under that issuer, with `islamic: true` where the page says so.
    - `new_issuer`: it issues consumer credit or charge cards and is not in the repository.
-   - `no_consumer_card`: it has no consumer credit or charge card (for example debit cards only, or corporate cards only). Give the official URL that shows this.
+   - `no_consumer_card`: it has no consumer credit or charge card (for example debit cards only, or corporate cards only). Give the official URL that shows this. This is a product exclusion. Do not use it for a MAS Wholesale Bank that is excluded only by category or by a maintainer scope decision.
+   - `out_of_scope_wholesale`: it is listed as a MAS Wholesale Bank and is outside the Singapore consumer-card census by a maintainer decision. This is a scope exclusion, not a finding that the official site has no consumer credit or charge card. Cite the MAS category and the decision. Give an official URL if one was read.
    - `not_reached`: you could not read its site. Give the reason.
 4. Check these names with special care. They are not in the repository, and earlier work did not settle them:
    - Malaysia: Paydee, Agrobank, MBSB Bank, Kuwait Finance House, Co-opbank Pertama, GXBank, AEON Bank, Boost Bank, Ryt Bank, KAF Digital Bank, Diners Club, American Express, Citibank, Bank of China, ICBC.
@@ -120,7 +123,7 @@ Do them in this order. The small ones are first, so that a problem shows early. 
 | 1 | `sg-cimb` | CIMB Singapore | cimb.com.sg, deals.cimb.com | 5 | 3 | Run 2 is in PR 7. Finish the deals site. |
 | 2 | `sg-gxs` | GXS Bank | gxs.com.sg, cdn.prod.website-files.com | 1 | 4 | |
 | 3 | `sg-maribank` | MariBank | maribank.sg, banking-aka-storage.maribank.com.sg | 1 | 3 | |
-| 4 | `sg-trust` | Trust Bank | trust.com.sg | 0 | 0 | Not covered before. The site did not answer. |
+| 4 | `sg-trust` | Trust Bank | trustbank.sg | 0 | 0 | Phase 1 review corrected the source host. Use https://trustbank.sg/credit-card/; cards and offers are not covered yet. |
 | 5 | `sg-icbc` | ICBC Singapore | icbc.com.sg | 8 | 5 | |
 | 6 | `sg-boc` | Bank of China Singapore | bankofchina.com | 9 | 0 | No offers were found before. |
 | 7 | `sg-amex` | American Express Singapore | americanexpress.com | 7 | 4 | Singapore pages only. |
@@ -151,10 +154,41 @@ Do them in this order. The small ones are first, so that a problem shows early. 
 | 27 | `my-cimb` | CIMB Bank | cimb.com.my | 17 | 15 | If the deals are on deals.cimb.com, report it. The host is not in this issuer's domains. |
 | 28 | `my-public-bank` | Public Bank | pbebank.com | 16 | 18 | |
 | 29 | `my-uob` | UOB Malaysia | uob.com.my | 7 | 57 | |
-| 30 | `my-hsbc` | HSBC Malaysia | hsbc.com.my, sp.hsbc.com.my | 6 | 69 | |
+| 30 | `my-hsbc` | HSBC Malaysia | hsbc.com.my, sp.hsbc.com.my, hsbcamanah.com.my | 6 | 69 | Phase 1 review added the Amanah card catalogue; its cards have not been ingested yet. |
 | 31 | `my-ambank` | AmBank | ambank.com.my | 35 | 8 | 35 cards is high. Check for the same card under two names. |
 | 32 | `my-standard-chartered` | Standard Chartered Malaysia | sc.com, av.sc.com | 3 | 101 | Malaysia pages only (sc.com/my). |
 | 33 | `my-rhb` | RHB Bank | rhbgroup.com | 12 | 166 | |
 | 34 | `my-maybank` | Maybank | maybank2u.com.my | 33 | 0 | The site did not answer before. If it fails, record it and continue. |
 
+
 New issuers from phase 1 go after number 34, after the maintainer accepts them.
+
+## Regulator sites (phase 1)
+
+These two sites are permitted in phase 1 only, to find issuers. They are not used as sources for card or offer facts.
+
+| Order | Country | Regulator | Host | Note |
+|---|---|---|---|---|
+| phase-1 | MY | Bank Negara Malaysia | bnm.gov.my | The lists of credit card issuers (banks and non-banks) and charge card issuers. |
+| phase-1 | SG | Monetary Authority of Singapore | eservices.mas.gov.sg | The Financial Institutions Directory. Read the categories listed in phase 1 above. |
+
+## Network offer sites (Track C)
+
+The work order for network offer sites is in `crawler/COMPLETE_INSTRUCTION.md`. One run is one network and one location. Crawl only hosts that are already in `config/networks.json`. Country-specific offer hosts that are not in `official_domains` must be reported first; do not crawl them.
+
+Do the Malaysia and Singapore rows in this order after the Track C test rule in the complete instruction. Other locations wait until that work is accepted.
+
+| Order | Network ID | Location | Official offer host | Entry URLs | Note |
+|---|---|---|---|---|---|
+| C1 | `mastercard` | MY | specials.priceless.com | https://specials.priceless.com/ | First Track C test. Also official: mastercard.com, priceless.com. |
+| C2 | `mastercard` | SG | specials.priceless.com | https://specials.priceless.com/ | Same host. The site lists Singapore as a location. |
+| C3 | `jcb` | MY | specialoffers.jcb | https://www.specialoffers.jcb/ , https://www.specialoffers.jcb/en/campaign/d/southeast-and-south-asia/malaysia/ , https://www.specialoffers.jcb/en/offers/d/southeast-and-south-asia/malaysia/ | JCB Special Offers. Also official: jcb.co.jp. See `crawler/HARD_SITES.md`. |
+| C4 | `jcb` | SG | specialoffers.jcb | https://www.specialoffers.jcb/ , https://www.specialoffers.jcb/en/campaign/d/southeast-and-south-asia/singapore/ , https://www.specialoffers.jcb/en/offers/d/southeast-and-south-asia/singapore/ | Same host. |
+| C5 | `visa` | MY | visa.com |  | The host is official. A country offer host that is not in `official_domains` must be reported, not crawled. |
+| C6 | `visa` | SG | visa.com |  | Same note as C5. |
+| C7 | `unionpay` | MY | unionpayintl.com | https://www.unionpayintl.com/my/ |  |
+| C8 | `unionpay` | SG | unionpayintl.com | https://www.unionpayintl.com/sg/ |  |
+| C9 | `amex` | MY | americanexpress.com |  | Network offer pages on this host, not the Singapore issuer catalogue. |
+| C10 | `amex` | SG | americanexpress.com |  | Same host as `sg-amex`. Keep network offers in a network run. |
+| C11 | `diners` | MY | dinersclub.com |  |  |
+| C12 | `diners` | SG | dinersclub.com |  |  |

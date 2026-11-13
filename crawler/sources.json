@@ -1,0 +1,1650 @@
+{
+ "description": "Canonical list of sites to crawl for Malaysia and Singapore. Every official issuer or network host, and the phase 1 regulator hosts, must appear here before a crawl. See crawler/SOURCES.md.",
+ "items": [
+  {
+   "id": "my-regulator-bnm.gov.my-census",
+   "site": "Bank Negara Malaysia",
+   "host": "bnm.gov.my",
+   "country": "MY",
+   "type": "regulator",
+   "purpose": "census",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "phase-1",
+   "suggested_by": null
+  },
+  {
+   "id": "sg-regulator-eservices.mas.gov.sg-census",
+   "site": "Monetary Authority of Singapore",
+   "host": "eservices.mas.gov.sg",
+   "country": "SG",
+   "type": "regulator",
+   "purpose": "census",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "phase-1",
+   "suggested_by": null
+  },
+  {
+   "id": "sg-cimb-cimb.com.sg-cards",
+   "site": "CIMB Singapore",
+   "host": "cimb.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.cimb.com.sg/en/personal/banking-with-us/cards/credit-cards.html"
+   ],
+   "status": "untested",
+   "full_crawl_order": 1,
+   "suggested_by": null,
+   "issuer_id": "sg-cimb"
+  },
+  {
+   "id": "sg-cimb-cimb.com.sg-offers",
+   "site": "CIMB Singapore",
+   "host": "cimb.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.cimb.com.sg/en/personal/promotions.html"
+   ],
+   "status": "untested",
+   "full_crawl_order": 1,
+   "suggested_by": null,
+   "issuer_id": "sg-cimb"
+  },
+  {
+   "id": "sg-cimb-deals.cimb.com-cards",
+   "site": "CIMB Singapore",
+   "host": "deals.cimb.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 1,
+   "suggested_by": null,
+   "issuer_id": "sg-cimb"
+  },
+  {
+   "id": "sg-cimb-deals.cimb.com-offers",
+   "site": "CIMB Singapore",
+   "host": "deals.cimb.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 1,
+   "suggested_by": null,
+   "issuer_id": "sg-cimb"
+  },
+  {
+   "id": "sg-gxs-cdn.prod.website-files.com-cards",
+   "site": "GXS Bank",
+   "host": "cdn.prod.website-files.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 2,
+   "suggested_by": null,
+   "issuer_id": "sg-gxs"
+  },
+  {
+   "id": "sg-gxs-cdn.prod.website-files.com-offers",
+   "site": "GXS Bank",
+   "host": "cdn.prod.website-files.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 2,
+   "suggested_by": null,
+   "issuer_id": "sg-gxs"
+  },
+  {
+   "id": "sg-gxs-gxs.com.sg-cards",
+   "site": "GXS Bank",
+   "host": "gxs.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.gxs.com.sg/flexicard"
+   ],
+   "status": "untested",
+   "full_crawl_order": 2,
+   "suggested_by": null,
+   "issuer_id": "sg-gxs"
+  },
+  {
+   "id": "sg-gxs-gxs.com.sg-offers",
+   "site": "GXS Bank",
+   "host": "gxs.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 2,
+   "suggested_by": null,
+   "issuer_id": "sg-gxs"
+  },
+  {
+   "id": "sg-maribank-banking-aka-storage.maribank.com.sg-cards",
+   "site": "MariBank",
+   "host": "banking-aka-storage.maribank.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 3,
+   "suggested_by": null,
+   "issuer_id": "sg-maribank"
+  },
+  {
+   "id": "sg-maribank-banking-aka-storage.maribank.com.sg-offers",
+   "site": "MariBank",
+   "host": "banking-aka-storage.maribank.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 3,
+   "suggested_by": null,
+   "issuer_id": "sg-maribank"
+  },
+  {
+   "id": "sg-maribank-maribank.sg-cards",
+   "site": "MariBank",
+   "host": "maribank.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.maribank.sg/product/mari-credit-card"
+   ],
+   "status": "untested",
+   "full_crawl_order": 3,
+   "suggested_by": null,
+   "issuer_id": "sg-maribank"
+  },
+  {
+   "id": "sg-maribank-maribank.sg-offers",
+   "site": "MariBank",
+   "host": "maribank.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 3,
+   "suggested_by": null,
+   "issuer_id": "sg-maribank"
+  },
+  {
+   "id": "sg-trust-trustbank.sg-cards",
+   "site": "Trust Bank",
+   "host": "trustbank.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://trustbank.sg/credit-card/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 4,
+   "suggested_by": null,
+   "issuer_id": "sg-trust"
+  },
+  {
+   "id": "sg-trust-trustbank.sg-offers",
+   "site": "Trust Bank",
+   "host": "trustbank.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 4,
+   "suggested_by": null,
+   "issuer_id": "sg-trust"
+  },
+  {
+   "id": "sg-icbc-icbc.com.sg-cards",
+   "site": "ICBC Singapore",
+   "host": "icbc.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.icbc.com.sg/en/column/1438059017535897814.html"
+   ],
+   "status": "untested",
+   "full_crawl_order": 5,
+   "suggested_by": null,
+   "issuer_id": "sg-icbc"
+  },
+  {
+   "id": "sg-icbc-icbc.com.sg-offers",
+   "site": "ICBC Singapore",
+   "host": "icbc.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 5,
+   "suggested_by": null,
+   "issuer_id": "sg-icbc"
+  },
+  {
+   "id": "sg-boc-bankofchina.com-cards",
+   "site": "Bank of China Singapore",
+   "host": "bankofchina.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.bankofchina.com/sg/bcservice/bc1/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 6,
+   "suggested_by": null,
+   "issuer_id": "sg-boc"
+  },
+  {
+   "id": "sg-boc-bankofchina.com-offers",
+   "site": "Bank of China Singapore",
+   "host": "bankofchina.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 6,
+   "suggested_by": null,
+   "issuer_id": "sg-boc"
+  },
+  {
+   "id": "sg-amex-americanexpress.com-cards",
+   "site": "American Express Singapore",
+   "host": "americanexpress.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.americanexpress.com/sg/credit-cards/all-cards/",
+    "https://www.americanexpress.com/en-sg/credit-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 7,
+   "suggested_by": null,
+   "issuer_id": "sg-amex"
+  },
+  {
+   "id": "sg-amex-americanexpress.com-offers",
+   "site": "American Express Singapore",
+   "host": "americanexpress.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 7,
+   "suggested_by": null,
+   "issuer_id": "sg-amex"
+  },
+  {
+   "id": "sg-citi-citibank.com.sg-cards",
+   "site": "Citibank Singapore",
+   "host": "citibank.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.citibank.com.sg/credit-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 8,
+   "suggested_by": null,
+   "issuer_id": "sg-citi"
+  },
+  {
+   "id": "sg-citi-citibank.com.sg-offers",
+   "site": "Citibank Singapore",
+   "host": "citibank.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.citibank.com.sg/credit-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 8,
+   "suggested_by": null,
+   "issuer_id": "sg-citi"
+  },
+  {
+   "id": "sg-hsbc-cardpromotions.hsbc.com.sg-cards",
+   "site": "HSBC Singapore",
+   "host": "cardpromotions.hsbc.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 9,
+   "suggested_by": null,
+   "issuer_id": "sg-hsbc"
+  },
+  {
+   "id": "sg-hsbc-cardpromotions.hsbc.com.sg-offers",
+   "site": "HSBC Singapore",
+   "host": "cardpromotions.hsbc.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 9,
+   "suggested_by": null,
+   "issuer_id": "sg-hsbc"
+  },
+  {
+   "id": "sg-hsbc-hsbc.com.sg-cards",
+   "site": "HSBC Singapore",
+   "host": "hsbc.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.hsbc.com.sg/credit-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 9,
+   "suggested_by": null,
+   "issuer_id": "sg-hsbc"
+  },
+  {
+   "id": "sg-hsbc-hsbc.com.sg-offers",
+   "site": "HSBC Singapore",
+   "host": "hsbc.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.hsbc.com.sg/promotions/credit-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 9,
+   "suggested_by": null,
+   "issuer_id": "sg-hsbc"
+  },
+  {
+   "id": "sg-dcs-cards.dcscc.com-cards",
+   "site": "DCS Card Centre",
+   "host": "cards.dcscc.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://cards.dcscc.com/products"
+   ],
+   "status": "untested",
+   "full_crawl_order": 10,
+   "suggested_by": null,
+   "issuer_id": "sg-dcs"
+  },
+  {
+   "id": "sg-dcs-cards.dcscc.com-offers",
+   "site": "DCS Card Centre",
+   "host": "cards.dcscc.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 10,
+   "suggested_by": null,
+   "issuer_id": "sg-dcs"
+  },
+  {
+   "id": "sg-dcs-dcscc.com-cards",
+   "site": "DCS Card Centre",
+   "host": "dcscc.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 10,
+   "suggested_by": null,
+   "issuer_id": "sg-dcs"
+  },
+  {
+   "id": "sg-dcs-dcscc.com-offers",
+   "site": "DCS Card Centre",
+   "host": "dcscc.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 10,
+   "suggested_by": null,
+   "issuer_id": "sg-dcs"
+  },
+  {
+   "id": "sg-dcs-static.dcscc.com-cards",
+   "site": "DCS Card Centre",
+   "host": "static.dcscc.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 10,
+   "suggested_by": null,
+   "issuer_id": "sg-dcs"
+  },
+  {
+   "id": "sg-dcs-static.dcscc.com-offers",
+   "site": "DCS Card Centre",
+   "host": "static.dcscc.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 10,
+   "suggested_by": null,
+   "issuer_id": "sg-dcs"
+  },
+  {
+   "id": "sg-uob-uob.com.sg-cards",
+   "site": "UOB",
+   "host": "uob.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.uob.com.sg/personal/cards/index.page",
+    "https://www.uob.com.sg/personal/cards/compare.page"
+   ],
+   "status": "untested",
+   "full_crawl_order": 11,
+   "suggested_by": null,
+   "issuer_id": "sg-uob"
+  },
+  {
+   "id": "sg-uob-uob.com.sg-offers",
+   "site": "UOB",
+   "host": "uob.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.uob.com.sg/personal/promotions/index.page",
+    "https://www.uob.com.sg/personal/promotions/cards/jbdeals/index.page"
+   ],
+   "status": "untested",
+   "full_crawl_order": 11,
+   "suggested_by": null,
+   "issuer_id": "sg-uob"
+  },
+  {
+   "id": "sg-posb-dbs.com.sg-cards",
+   "site": "POSB",
+   "host": "dbs.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 12,
+   "suggested_by": null,
+   "issuer_id": "sg-posb"
+  },
+  {
+   "id": "sg-posb-dbs.com.sg-offers",
+   "site": "POSB",
+   "host": "dbs.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 12,
+   "suggested_by": null,
+   "issuer_id": "sg-posb"
+  },
+  {
+   "id": "sg-posb-posb.com.sg-cards",
+   "site": "POSB",
+   "host": "posb.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.posb.com.sg/personal/cards/cards-comparator.page"
+   ],
+   "status": "untested",
+   "full_crawl_order": 12,
+   "suggested_by": null,
+   "issuer_id": "sg-posb"
+  },
+  {
+   "id": "sg-posb-posb.com.sg-offers",
+   "site": "POSB",
+   "host": "posb.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 12,
+   "suggested_by": null,
+   "issuer_id": "sg-posb"
+  },
+  {
+   "id": "sg-dbs-dbs.com.sg-cards",
+   "site": "DBS Bank",
+   "host": "dbs.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.dbs.com.sg/personal/cards/cards-comparator.page",
+    "https://www.dbs.com.sg/personal/cards/default.page"
+   ],
+   "status": "untested",
+   "full_crawl_order": 13,
+   "suggested_by": null,
+   "issuer_id": "sg-dbs"
+  },
+  {
+   "id": "sg-dbs-dbs.com.sg-offers",
+   "site": "DBS Bank",
+   "host": "dbs.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.dbs.com.sg/personal/cards/promotions/default.page"
+   ],
+   "status": "untested",
+   "full_crawl_order": 13,
+   "suggested_by": null,
+   "issuer_id": "sg-dbs"
+  },
+  {
+   "id": "sg-maybank-cardspromo.maybank2u.com.sg-cards",
+   "site": "Maybank Singapore",
+   "host": "cardspromo.maybank2u.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 14,
+   "suggested_by": null,
+   "issuer_id": "sg-maybank"
+  },
+  {
+   "id": "sg-maybank-cardspromo.maybank2u.com.sg-offers",
+   "site": "Maybank Singapore",
+   "host": "cardspromo.maybank2u.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 14,
+   "suggested_by": null,
+   "issuer_id": "sg-maybank"
+  },
+  {
+   "id": "sg-maybank-maybank2u.com.sg-cards",
+   "site": "Maybank Singapore",
+   "host": "maybank2u.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.maybank2u.com.sg/en/personal/cards/credit-cards/index.page"
+   ],
+   "status": "untested",
+   "full_crawl_order": 14,
+   "suggested_by": null,
+   "issuer_id": "sg-maybank"
+  },
+  {
+   "id": "sg-maybank-maybank2u.com.sg-offers",
+   "site": "Maybank Singapore",
+   "host": "maybank2u.com.sg",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 14,
+   "suggested_by": null,
+   "issuer_id": "sg-maybank"
+  },
+  {
+   "id": "sg-standard-chartered-sc.com-cards",
+   "site": "Standard Chartered Singapore",
+   "host": "sc.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.sc.com/sg/credit-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 15,
+   "suggested_by": null,
+   "issuer_id": "sg-standard-chartered"
+  },
+  {
+   "id": "sg-standard-chartered-sc.com-offers",
+   "site": "Standard Chartered Singapore",
+   "host": "sc.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.sc.com/sg/promotions/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 15,
+   "suggested_by": null,
+   "issuer_id": "sg-standard-chartered"
+  },
+  {
+   "id": "sg-ocbc-ocbc.com-cards",
+   "site": "OCBC",
+   "host": "ocbc.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.ocbc.com/personal-banking/cards/credit-card",
+    "https://www.ocbc.com/personal-banking/cards"
+   ],
+   "status": "untested",
+   "full_crawl_order": 16,
+   "suggested_by": null,
+   "issuer_id": "sg-ocbc"
+  },
+  {
+   "id": "sg-ocbc-ocbc.com-offers",
+   "site": "OCBC",
+   "host": "ocbc.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.ocbc.com/personal-banking/cards/card-promotion.page"
+   ],
+   "status": "untested",
+   "full_crawl_order": 16,
+   "suggested_by": null,
+   "issuer_id": "sg-ocbc"
+  },
+  {
+   "id": "my-al-rajhi-alrajhibank.com.my-cards",
+   "site": "Al Rajhi Bank Malaysia",
+   "host": "alrajhibank.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.alrajhibank.com.my/news/alrajhi-bank-malaysia-expands-retail-banking-business-with-new-visa-credit-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 17,
+   "suggested_by": null,
+   "issuer_id": "my-al-rajhi"
+  },
+  {
+   "id": "my-al-rajhi-alrajhibank.com.my-offers",
+   "site": "Al Rajhi Bank Malaysia",
+   "host": "alrajhibank.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.alrajhibank.com.my/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 17,
+   "suggested_by": null,
+   "issuer_id": "my-al-rajhi"
+  },
+  {
+   "id": "my-bsn-bsn.com.my-cards",
+   "site": "BSN",
+   "host": "bsn.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.bsn.com.my/PersonalBanking/Cards/cards",
+    "https://www.bsn.com.my/page/site-map"
+   ],
+   "status": "untested",
+   "full_crawl_order": 18,
+   "suggested_by": null,
+   "issuer_id": "my-bsn"
+  },
+  {
+   "id": "my-bsn-bsn.com.my-offers",
+   "site": "BSN",
+   "host": "bsn.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 18,
+   "suggested_by": null,
+   "issuer_id": "my-bsn"
+  },
+  {
+   "id": "my-bank-rakyat-bankrakyat.com.my-cards",
+   "site": "Bank Rakyat",
+   "host": "bankrakyat.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.bankrakyat.com.my/portal-main/compare-cards"
+   ],
+   "status": "untested",
+   "full_crawl_order": 19,
+   "suggested_by": null,
+   "issuer_id": "my-bank-rakyat"
+  },
+  {
+   "id": "my-bank-rakyat-bankrakyat.com.my-offers",
+   "site": "Bank Rakyat",
+   "host": "bankrakyat.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 19,
+   "suggested_by": null,
+   "issuer_id": "my-bank-rakyat"
+  },
+  {
+   "id": "my-ocbc-ocbc.com.my-cards",
+   "site": "OCBC Malaysia",
+   "host": "ocbc.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.ocbc.com.my/personal-banking/cards/credit-cards"
+   ],
+   "status": "untested",
+   "full_crawl_order": 20,
+   "suggested_by": null,
+   "issuer_id": "my-ocbc"
+  },
+  {
+   "id": "my-ocbc-ocbc.com.my-offers",
+   "site": "OCBC Malaysia",
+   "host": "ocbc.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 20,
+   "suggested_by": null,
+   "issuer_id": "my-ocbc"
+  },
+  {
+   "id": "my-aeon-credit-myaeoncredit.com.my-cards",
+   "site": "AEON Credit Service",
+   "host": "myaeoncredit.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://myaeoncredit.com.my/cards/credit-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 21,
+   "suggested_by": null,
+   "issuer_id": "my-aeon-credit"
+  },
+  {
+   "id": "my-aeon-credit-myaeoncredit.com.my-offers",
+   "site": "AEON Credit Service",
+   "host": "myaeoncredit.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://myaeoncredit.com.my/promotions/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 21,
+   "suggested_by": null,
+   "issuer_id": "my-aeon-credit"
+  },
+  {
+   "id": "my-alliance-alliancebank.com.my-cards",
+   "site": "Alliance Bank",
+   "host": "alliancebank.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.alliancebank.com.my/personal/cards/credit-cards"
+   ],
+   "status": "untested",
+   "full_crawl_order": 22,
+   "suggested_by": null,
+   "issuer_id": "my-alliance"
+  },
+  {
+   "id": "my-alliance-alliancebank.com.my-offers",
+   "site": "Alliance Bank",
+   "host": "alliancebank.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.alliancebank.com.my/promotions"
+   ],
+   "status": "untested",
+   "full_crawl_order": 22,
+   "suggested_by": null,
+   "issuer_id": "my-alliance"
+  },
+  {
+   "id": "my-bank-islam-bankislam.com-cards",
+   "site": "Bank Islam",
+   "host": "bankislam.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.bankislam.com/personal-banking/bank-islam-cards/bank-islam-credit-card-i/",
+    "https://www.bankislam.com/personal-banking/bank-islam-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 23,
+   "suggested_by": null,
+   "issuer_id": "my-bank-islam"
+  },
+  {
+   "id": "my-bank-islam-bankislam.com-offers",
+   "site": "Bank Islam",
+   "host": "bankislam.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.bankislam.com/promotions/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 23,
+   "suggested_by": null,
+   "issuer_id": "my-bank-islam"
+  },
+  {
+   "id": "my-muamalat-muamalat.com.my-cards",
+   "site": "Bank Muamalat",
+   "host": "muamalat.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.muamalat.com.my/card/personal/credit-card-i/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 24,
+   "suggested_by": null,
+   "issuer_id": "my-muamalat"
+  },
+  {
+   "id": "my-muamalat-muamalat.com.my-offers",
+   "site": "Bank Muamalat",
+   "host": "muamalat.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.muamalat.com.my/promotions/",
+    "https://www.muamalat.com.my/promotions/card/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 24,
+   "suggested_by": null,
+   "issuer_id": "my-muamalat"
+  },
+  {
+   "id": "my-hong-leong-hlb.com.my-cards",
+   "site": "Hong Leong Bank",
+   "host": "hlb.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.hlb.com.my/en/personal-banking/credit-cards.html"
+   ],
+   "status": "untested",
+   "full_crawl_order": 25,
+   "suggested_by": null,
+   "issuer_id": "my-hong-leong"
+  },
+  {
+   "id": "my-hong-leong-hlb.com.my-offers",
+   "site": "Hong Leong Bank",
+   "host": "hlb.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.hlb.com.my/en/personal-banking/promotions.html"
+   ],
+   "status": "untested",
+   "full_crawl_order": 25,
+   "suggested_by": null,
+   "issuer_id": "my-hong-leong"
+  },
+  {
+   "id": "my-affin-affinalways.com-cards",
+   "site": "Affin Bank",
+   "host": "affinalways.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.affinalways.com/en/my-cards",
+    "https://www.affinalways.com/en/affin-duo",
+    "https://www.affinalways.com/en/affin-visa-mastercard-gold"
+   ],
+   "status": "untested",
+   "full_crawl_order": 26,
+   "suggested_by": null,
+   "issuer_id": "my-affin"
+  },
+  {
+   "id": "my-affin-affinalways.com-offers",
+   "site": "Affin Bank",
+   "host": "affinalways.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 26,
+   "suggested_by": null,
+   "issuer_id": "my-affin"
+  },
+  {
+   "id": "my-cimb-cimb.com.my-cards",
+   "site": "CIMB Bank",
+   "host": "cimb.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.cimb.com.my/en/personal/day-to-day-banking/cards/credit-card.html"
+   ],
+   "status": "untested",
+   "full_crawl_order": 27,
+   "suggested_by": null,
+   "issuer_id": "my-cimb"
+  },
+  {
+   "id": "my-cimb-cimb.com.my-offers",
+   "site": "CIMB Bank",
+   "host": "cimb.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.cimb.com.my/en/personal/promotions/latest-promotions.html"
+   ],
+   "status": "untested",
+   "full_crawl_order": 27,
+   "suggested_by": null,
+   "issuer_id": "my-cimb"
+  },
+  {
+   "id": "my-public-bank-pbebank.com-cards",
+   "site": "Public Bank",
+   "host": "pbebank.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.pbebank.com/en/cards/our-cards/",
+    "https://www.pbebank.com/en/cards/credit-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 28,
+   "suggested_by": null,
+   "issuer_id": "my-public-bank"
+  },
+  {
+   "id": "my-public-bank-pbebank.com-offers",
+   "site": "Public Bank",
+   "host": "pbebank.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.pbebank.com/en/promotions/credit-cards-promotions/",
+    "https://www.pbebank.com/en/promotions/credit-debit-cards-promotions/",
+    "https://www.pbebank.com/en/promotions/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 28,
+   "suggested_by": null,
+   "issuer_id": "my-public-bank"
+  },
+  {
+   "id": "my-uob-uob.com.my-cards",
+   "site": "UOB Malaysia",
+   "host": "uob.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.uob.com.my/personal/cards/all-cards.page",
+    "https://www.uob.com.my/personal/cards/index.page"
+   ],
+   "status": "untested",
+   "full_crawl_order": 29,
+   "suggested_by": null,
+   "issuer_id": "my-uob"
+  },
+  {
+   "id": "my-uob-uob.com.my-offers",
+   "site": "UOB Malaysia",
+   "host": "uob.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.uob.com.my/personal/promotions/index.page"
+   ],
+   "status": "untested",
+   "full_crawl_order": 29,
+   "suggested_by": null,
+   "issuer_id": "my-uob"
+  },
+  {
+   "id": "my-hsbc-hsbc.com.my-cards",
+   "site": "HSBC Malaysia",
+   "host": "hsbc.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.hsbc.com.my/credit-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 30,
+   "suggested_by": null,
+   "issuer_id": "my-hsbc"
+  },
+  {
+   "id": "my-hsbc-hsbc.com.my-offers",
+   "site": "HSBC Malaysia",
+   "host": "hsbc.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.hsbc.com.my/offers/",
+    "https://www.hsbc.com.my/credit-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 30,
+   "suggested_by": null,
+   "issuer_id": "my-hsbc"
+  },
+  {
+   "id": "my-hsbc-hsbcamanah.com.my-cards",
+   "site": "HSBC Malaysia",
+   "host": "hsbcamanah.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.hsbcamanah.com.my/credit-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 30,
+   "suggested_by": null,
+   "issuer_id": "my-hsbc"
+  },
+  {
+   "id": "my-hsbc-hsbcamanah.com.my-offers",
+   "site": "HSBC Malaysia",
+   "host": "hsbcamanah.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 30,
+   "suggested_by": null,
+   "issuer_id": "my-hsbc"
+  },
+  {
+   "id": "my-hsbc-sp.hsbc.com.my-cards",
+   "site": "HSBC Malaysia",
+   "host": "sp.hsbc.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 30,
+   "suggested_by": null,
+   "issuer_id": "my-hsbc"
+  },
+  {
+   "id": "my-hsbc-sp.hsbc.com.my-offers",
+   "site": "HSBC Malaysia",
+   "host": "sp.hsbc.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 30,
+   "suggested_by": null,
+   "issuer_id": "my-hsbc"
+  },
+  {
+   "id": "my-ambank-ambank.com.my-cards",
+   "site": "AmBank",
+   "host": "ambank.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.ambank.com.my/cards/credit-cards"
+   ],
+   "status": "untested",
+   "full_crawl_order": 31,
+   "suggested_by": null,
+   "issuer_id": "my-ambank"
+  },
+  {
+   "id": "my-ambank-ambank.com.my-offers",
+   "site": "AmBank",
+   "host": "ambank.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.ambank.com.my/promotions"
+   ],
+   "status": "untested",
+   "full_crawl_order": 31,
+   "suggested_by": null,
+   "issuer_id": "my-ambank"
+  },
+  {
+   "id": "my-standard-chartered-av.sc.com-cards",
+   "site": "Standard Chartered Malaysia",
+   "host": "av.sc.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 32,
+   "suggested_by": null,
+   "issuer_id": "my-standard-chartered"
+  },
+  {
+   "id": "my-standard-chartered-av.sc.com-offers",
+   "site": "Standard Chartered Malaysia",
+   "host": "av.sc.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 32,
+   "suggested_by": null,
+   "issuer_id": "my-standard-chartered"
+  },
+  {
+   "id": "my-standard-chartered-sc.com-cards",
+   "site": "Standard Chartered Malaysia",
+   "host": "sc.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.sc.com/my/credit-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 32,
+   "suggested_by": null,
+   "issuer_id": "my-standard-chartered"
+  },
+  {
+   "id": "my-standard-chartered-sc.com-offers",
+   "site": "Standard Chartered Malaysia",
+   "host": "sc.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.sc.com/my/promotions/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 32,
+   "suggested_by": null,
+   "issuer_id": "my-standard-chartered"
+  },
+  {
+   "id": "my-rhb-rhbgroup.com-cards",
+   "site": "RHB Bank",
+   "host": "rhbgroup.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.rhbgroup.com/personal/cards/credit-cards/overview/index.html"
+   ],
+   "status": "untested",
+   "full_crawl_order": 33,
+   "suggested_by": null,
+   "issuer_id": "my-rhb"
+  },
+  {
+   "id": "my-rhb-rhbgroup.com-offers",
+   "site": "RHB Bank",
+   "host": "rhbgroup.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 33,
+   "suggested_by": null,
+   "issuer_id": "my-rhb"
+  },
+  {
+   "id": "my-maybank-maybank.com-cards",
+   "site": "Maybank",
+   "host": "maybank.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 34,
+   "suggested_by": null,
+   "issuer_id": "my-maybank"
+  },
+  {
+   "id": "my-maybank-maybank.com-offers",
+   "site": "Maybank",
+   "host": "maybank.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 34,
+   "suggested_by": null,
+   "issuer_id": "my-maybank"
+  },
+  {
+   "id": "my-maybank-maybank2u.com.my-cards",
+   "site": "Maybank",
+   "host": "maybank2u.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards/index.page"
+   ],
+   "status": "untested",
+   "full_crawl_order": 34,
+   "suggested_by": null,
+   "issuer_id": "my-maybank"
+  },
+  {
+   "id": "my-maybank-maybank2u.com.my-offers",
+   "site": "Maybank",
+   "host": "maybank2u.com.my",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 34,
+   "suggested_by": null,
+   "issuer_id": "my-maybank"
+  },
+  {
+   "id": "my-icbc-icbcmy.com-cards",
+   "site": "ICBC Malaysia",
+   "host": "icbcmy.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "after-34",
+   "suggested_by": null,
+   "issuer_id": "my-icbc"
+  },
+  {
+   "id": "my-icbc-icbcmy.com-offers",
+   "site": "ICBC Malaysia",
+   "host": "icbcmy.com",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "after-34",
+   "suggested_by": null,
+   "issuer_id": "my-icbc"
+  },
+  {
+   "id": "my-icbc-v.icbc.com.cn-cards",
+   "site": "ICBC Malaysia",
+   "host": "v.icbc.com.cn",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "after-34",
+   "suggested_by": null,
+   "issuer_id": "my-icbc"
+  },
+  {
+   "id": "my-icbc-v.icbc.com.cn-offers",
+   "site": "ICBC Malaysia",
+   "host": "v.icbc.com.cn",
+   "country": "MY",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "after-34",
+   "suggested_by": null,
+   "issuer_id": "my-icbc"
+  },
+  {
+   "id": "my-network-mastercard-mastercard.com-offers",
+   "site": "Mastercard",
+   "host": "mastercard.com",
+   "country": "MY",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C1",
+   "suggested_by": null,
+   "network_id": "mastercard"
+  },
+  {
+   "id": "my-network-mastercard-priceless.com-offers",
+   "site": "Mastercard",
+   "host": "priceless.com",
+   "country": "MY",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C1",
+   "suggested_by": null,
+   "network_id": "mastercard"
+  },
+  {
+   "id": "my-network-mastercard-specials.priceless.com-offers",
+   "site": "Mastercard",
+   "host": "specials.priceless.com",
+   "country": "MY",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://specials.priceless.com/"
+   ],
+   "status": "untested",
+   "full_crawl_order": "C1",
+   "suggested_by": null,
+   "network_id": "mastercard"
+  },
+  {
+   "id": "sg-network-mastercard-mastercard.com-offers",
+   "site": "Mastercard",
+   "host": "mastercard.com",
+   "country": "SG",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C2",
+   "suggested_by": null,
+   "network_id": "mastercard"
+  },
+  {
+   "id": "sg-network-mastercard-priceless.com-offers",
+   "site": "Mastercard",
+   "host": "priceless.com",
+   "country": "SG",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C2",
+   "suggested_by": null,
+   "network_id": "mastercard"
+  },
+  {
+   "id": "sg-network-mastercard-specials.priceless.com-offers",
+   "site": "Mastercard",
+   "host": "specials.priceless.com",
+   "country": "SG",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://specials.priceless.com/"
+   ],
+   "status": "untested",
+   "full_crawl_order": "C2",
+   "suggested_by": null,
+   "network_id": "mastercard"
+  },
+  {
+   "id": "my-network-jcb-jcb.co.jp-offers",
+   "site": "JCB",
+   "host": "jcb.co.jp",
+   "country": "MY",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C3",
+   "suggested_by": null,
+   "network_id": "jcb"
+  },
+  {
+   "id": "my-network-jcb-specialoffers.jcb-offers",
+   "site": "JCB",
+   "host": "specialoffers.jcb",
+   "country": "MY",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.specialoffers.jcb/",
+    "https://www.specialoffers.jcb/en/campaign/d/southeast-and-south-asia/malaysia/",
+    "https://www.specialoffers.jcb/en/offers/d/southeast-and-south-asia/malaysia/"
+   ],
+   "status": "untested",
+   "full_crawl_order": "C3",
+   "suggested_by": null,
+   "network_id": "jcb"
+  },
+  {
+   "id": "sg-network-jcb-jcb.co.jp-offers",
+   "site": "JCB",
+   "host": "jcb.co.jp",
+   "country": "SG",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C4",
+   "suggested_by": null,
+   "network_id": "jcb"
+  },
+  {
+   "id": "sg-network-jcb-specialoffers.jcb-offers",
+   "site": "JCB",
+   "host": "specialoffers.jcb",
+   "country": "SG",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.specialoffers.jcb/",
+    "https://www.specialoffers.jcb/en/campaign/d/southeast-and-south-asia/singapore/",
+    "https://www.specialoffers.jcb/en/offers/d/southeast-and-south-asia/singapore/"
+   ],
+   "status": "untested",
+   "full_crawl_order": "C4",
+   "suggested_by": null,
+   "network_id": "jcb"
+  },
+  {
+   "id": "my-network-visa-visa.com-offers",
+   "site": "Visa",
+   "host": "visa.com",
+   "country": "MY",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C5",
+   "suggested_by": null,
+   "network_id": "visa"
+  },
+  {
+   "id": "sg-network-visa-visa.com-offers",
+   "site": "Visa",
+   "host": "visa.com",
+   "country": "SG",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C6",
+   "suggested_by": null,
+   "network_id": "visa"
+  },
+  {
+   "id": "my-network-unionpay-unionpayintl.com-offers",
+   "site": "UnionPay",
+   "host": "unionpayintl.com",
+   "country": "MY",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.unionpayintl.com/my/"
+   ],
+   "status": "untested",
+   "full_crawl_order": "C7",
+   "suggested_by": null,
+   "network_id": "unionpay"
+  },
+  {
+   "id": "sg-network-unionpay-unionpayintl.com-offers",
+   "site": "UnionPay",
+   "host": "unionpayintl.com",
+   "country": "SG",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.unionpayintl.com/sg/"
+   ],
+   "status": "untested",
+   "full_crawl_order": "C8",
+   "suggested_by": null,
+   "network_id": "unionpay"
+  },
+  {
+   "id": "my-network-amex-americanexpress.com-offers",
+   "site": "American Express",
+   "host": "americanexpress.com",
+   "country": "MY",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C9",
+   "suggested_by": null,
+   "network_id": "amex"
+  },
+  {
+   "id": "sg-network-amex-americanexpress.com-offers",
+   "site": "American Express",
+   "host": "americanexpress.com",
+   "country": "SG",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C10",
+   "suggested_by": null,
+   "network_id": "amex"
+  },
+  {
+   "id": "my-network-diners-dinersclub.com-offers",
+   "site": "Diners Club",
+   "host": "dinersclub.com",
+   "country": "MY",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C11",
+   "suggested_by": null,
+   "network_id": "diners"
+  },
+  {
+   "id": "sg-network-diners-dinersclub.com-offers",
+   "site": "Diners Club",
+   "host": "dinersclub.com",
+   "country": "SG",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C12",
+   "suggested_by": null,
+   "network_id": "diners"
+  }
+ ]
+}
