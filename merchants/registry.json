@@ -1,6 +1,6 @@
 {
   "count": 952,
-  "generated_at": "2026-11-12T07:37:23+00:00",
+  "generated_at": "2026-11-13T05:08:28+00:00",
   "schema_version": "0.3.0",
   "items": [
     {"aliases":[],"categories":["hotel"],"countries":["MY"],"id":"1001-night-hotel-trademark-collection-by-wyndham","name":"1001 Night Hotel, Trademark Collection By Wyndham","offer_ids":["my-rhb-042b63f82d"],"official_domain":null,"verified":false},
@@ -722,7 +722,7 @@
     {"aliases":[],"categories":["cafe"],"countries":["SG"],"id":"sg-hawker","name":"SG Hawker","offer_ids":["sg-ocbc-be1ba2b654"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["beauty"],"countries":["MY"],"id":"shakura-pigmentation-beauty","name":"Shakura Pigmentation Beauty","offer_ids":["my-rhb-131b0d0962"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["hotel"],"countries":["SG"],"id":"shama-thailand","name":"Shama Thailand","offer_ids":["sg-standard-chartered-60e8811867"],"official_domain":null,"verified":false},
-    {"aliases":[],"categories":["hotel"],"countries":["SG"],"id":"shangri-la","name":"Shangri-La Singapore","offer_ids":["sg-hsbc-ea1f6b9a8f"],"official_domain":null,"verified":false},
+    {"aliases":["Shangri-La"],"categories":["dining","hotel"],"countries":["MY","SG"],"id":"shangri-la","name":"Shangri-La Singapore","offer_ids":["my-ambank-313b2a1276","sg-hsbc-ea1f6b9a8f"],"official_domain":null,"verified":true},
     {"aliases":[],"categories":["hotel"],"countries":["SG"],"id":"shangri-la-hotels-and-resorts","name":"Shangri-La Hotels and Resorts","offer_ids":["sg-standard-chartered-e21663d4b5"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["hotel"],"countries":["SG"],"id":"shangri-la-rasa-sentosa","name":"Shangri-La Rasa Sentosa","offer_ids":["sg-standard-chartered-80340d26a2"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["dining"],"countries":["SG"],"id":"sharon-inn-rooftop-restaurant","name":"Sharon Inn Rooftop Restaurant","offer_ids":["sg-standard-chartered-cd8e0fee26"],"official_domain":null,"verified":false},
