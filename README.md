@@ -1,6 +1,6 @@
 # card-offer / master-list
 
-An open, machine-readable list of credit cards and card offers. Malaysia (MY) and Singapore (SG) are the countries published today. The layout is one folder per country, so another country is another folder, not a schema change.
+An open, machine-readable list of credit cards and card offers. Malaysia (MY) and Singapore (SG) are the countries with published cards and offers today. Indonesia (ID) issuers are listed from the phase 1 census; card and offer files for Indonesia are not published yet. The layout is one folder per country, so another country is another folder, not a schema change.
 
 Every value comes from an official issuer, card network or merchant page. If a value is not stated there, it is null. Nothing is estimated.
 
@@ -11,13 +11,13 @@ Schema version: 0.3.0.
 This repository publishes static JSON for developers building card comparisons, offer searches and other tools. Reading it requires no account, API key, package installation or crawler run. Browse a linked JSON file to inspect it, or fetch it from your application. This repository does not include a consumer card-search website or a query API; your application provides the search and display.
 
 1. Open the [entry point](https://raw.githubusercontent.com/card-offer/master-list/main/index.json) to see the countries, schema version and file layout.
-2. Choose a country and read its issuers: [Malaysia](https://raw.githubusercontent.com/card-offer/master-list/main/my/issuers.json) or [Singapore](https://raw.githubusercontent.com/card-offer/master-list/main/sg/issuers.json). Records are in `items`.
+2. Choose a country and read its issuers: [Malaysia](https://raw.githubusercontent.com/card-offer/master-list/main/my/issuers.json), [Singapore](https://raw.githubusercontent.com/card-offer/master-list/main/sg/issuers.json) or [Indonesia](https://raw.githubusercontent.com/card-offer/master-list/main/id/issuers.json). Records are in `items`. Indonesia issuers have no card or offer files yet.
 3. Choose an issuer ID, for example `my-cimb`. Remove the country prefix to get the filename: `my/cards/cimb.json` and `my/offers/cimb.json`. For `sg-dbs`, use `sg/cards/dbs.json` and `sg/offers/dbs.json`.
 4. Read the records from each file's `items` array. Check coverage, dates and eligibility before displaying an offer as usable.
 
 | What you need | Example |
 |---|---|
-| Issuer coverage and card IDs | [MY issuers](https://raw.githubusercontent.com/card-offer/master-list/main/my/issuers.json) |
+| Issuer coverage and card IDs | [MY issuers](https://raw.githubusercontent.com/card-offer/master-list/main/my/issuers.json), [SG issuers](https://raw.githubusercontent.com/card-offer/master-list/main/sg/issuers.json), [ID issuers](https://raw.githubusercontent.com/card-offer/master-list/main/id/issuers.json) |
 | A bank's card products | [CIMB Malaysia cards](https://raw.githubusercontent.com/card-offer/master-list/main/my/cards/cimb.json) |
 | A bank's offers | [CIMB Malaysia offers](https://raw.githubusercontent.com/card-offer/master-list/main/my/offers/cimb.json) |
 | Merchant names and aliases | [Merchant registry](https://raw.githubusercontent.com/card-offer/master-list/main/merchants/registry.json) |
@@ -123,7 +123,7 @@ Card names and trademarks belong to their issuers, networks and merchants.
 | `pipeline/` | The crawl and publish code. |
 | `crawler/RULES.md` | The rule for the crawler: sources, merchant name, facts and quotes. |
 | `crawler/COMPLETE_INSTRUCTION.md` | The steps for the crawler: issuer census, cards and offers of each issuer, and the offer sites of the card networks. |
-| `crawler/sources.json` | The canonical list of sites to crawl for Malaysia and Singapore. See `crawler/SOURCES.md`. |
+| `crawler/sources.json` | The canonical list of sites to crawl for Malaysia, Singapore and Indonesia. See `crawler/SOURCES.md`. |
 | `{cc}/offers/network-{id}.json` | Offers from a card network's own offer site for cards issued in that country. `provider.type` is `network`. |
 | `schema/observation.schema.json` | The crawler hand-in file. Private, never committed. `tools/check_observations.py` is its gate and `pipeline/ingest.py` publishes it. |
 | `tools/validate.py` | The check that runs on every pull request and on every push to `main`. |

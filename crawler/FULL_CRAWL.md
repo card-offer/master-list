@@ -2,6 +2,8 @@
 
 This file is the instruction for the crawler for the first full crawl. `crawler/RULES.md` is the rule for each fact. If the two files disagree, `crawler/RULES.md` is correct.
 
+A proposed Indonesia (ID) issuer table, regulator rows and Track C rows are at the end of this file. They are not part of the accepted Malaysia and Singapore first full crawl until a maintainer accepts them.
+
 For the phase 1 review follow-up, also read [PHASE1_REVIEW.md](PHASE1_REVIEW.md). It records the reviewed source domains and the evidence gaps that remain. Phase 2 still requires phase 1 acceptance and merge.
 
 Copy all the text below the line and give it to Grok Bot.
@@ -163,14 +165,40 @@ Do them in this order. The small ones are first, so that a problem shows early. 
 
 New issuers from phase 1 go after number 34, after the maintainer accepts them.
 
+Confirmed Indonesia issuers from the 2026-11-13 census are numbered 35 to 44 in the proposed section below.
+
+## Proposed Indonesia (ID) addition
+
+This section is proposed. It is not yet part of the accepted Malaysia and Singapore first full crawl. Phase 1 for Indonesia is recorded in `crawler/ISSUER_CENSUS.md`. The ten issuers below are the confirmed consumer credit card issuers from that census. Their `crawl.status` is `not_covered`. Card IDs are empty until a phase 2 run. Do them in this order after a maintainer accepts the census. The small apparent catalogues are first.
+
+Two card catalogues sit on hosts that are not in `official_domains` and must not be crawled until a maintainer accepts them: `indonesia.icbc.com.cn` for `id-icbc`, and `mandirikartukredit.com` for `id-mandiri`.
+
+### Indonesia
+
+| Order | Issuer ID | Name | Official domains | Cards now | Offers now | Note |
+|---|---|---|---|---|---|---|
+| 35 | `id-mayapada` | Bank Mayapada | bankmayapada.com | 0 | 0 | Catalogue: https://www.bankmayapada.com/id/produk/pinjaman/mycreditcard |
+| 36 | `id-icbc` | ICBC Indonesia | icbc.co.id | 0 | 0 | Homepage states Credit Card. Catalogue host indonesia.icbc.com.cn is off-domain; report it, do not crawl it yet. |
+| 37 | `id-hsbc` | HSBC Indonesia | hsbc.co.id | 0 | 0 | Catalogue: https://www.hsbc.co.id/en-id/credit-cards/ |
+| 38 | `id-sinarmas` | Bank Sinarmas | banksinarmas.com | 0 | 0 | Catalogue: https://www.banksinarmas.com/id/personal/produk/kartukredit |
+| 39 | `id-ocbc` | OCBC Indonesia | ocbc.id | 0 | 0 | Catalogue: https://www.ocbc.id/id/individu/kartu-transaksi/kartu-kredit |
+| 40 | `id-cimb` | CIMB Niaga | cimbniaga.co.id | 0 | 0 | Catalogue: https://www.cimbniaga.co.id/id/personal/kartu-kredit |
+| 41 | `id-danamon` | Bank Danamon | danamon.co.id | 0 | 0 | Catalogue: https://www.danamon.co.id/Personal/KartuTransaksi/Kartu-Kredit |
+| 42 | `id-mega` | Bank Mega | bankmega.com | 0 | 0 | Catalogue: https://bankmega.com/id/personal/kartu-kredit/. applykartukredit.bankmega.com was seen and was not added. |
+| 43 | `id-mandiri` | Bank Mandiri | bankmandiri.co.id | 0 | 0 | Homepage confirms consumer kartu kredit. Catalogue host mandirikartukredit.com is off-domain; report it, do not crawl it yet. robots.txt was unreadable. |
+| 44 | `id-bca` | BCA | bca.co.id, promo.bca.co.id | 0 | 0 | Catalogue: https://www.bca.co.id/id/individu/produk/kartu-kredit. promo.bca.co.id was added from links on that page. |
+
+
 ## Regulator sites (phase 1)
 
-These two sites are permitted in phase 1 only, to find issuers. They are not used as sources for card or offer facts.
+These regulator sites are permitted in phase 1 only, to find issuers. They are not used as sources for card or offer facts. The Indonesia rows are proposed.
 
 | Order | Country | Regulator | Host | Note |
 |---|---|---|---|---|
 | phase-1 | MY | Bank Negara Malaysia | bnm.gov.my | The lists of credit card issuers (banks and non-banks) and charge card issuers. |
 | phase-1 | SG | Monetary Authority of Singapore | eservices.mas.gov.sg | The Financial Institutions Directory. Read the categories listed in phase 1 above. |
+| phase-1 | ID | Otoritas Jasa Keuangan | ojk.go.id | Proposed. Bank-address list (Juni 2026) and finance-company directory (Juli 2026). |
+| phase-1 | ID | Bank Indonesia | bi.go.id | Proposed. PJP licensee directory. The public filter and Unduh control are forms and were not submitted in the 2026-11-13 census. |
 
 ## Network offer sites (Track C)
 
@@ -192,3 +220,14 @@ Do the Malaysia and Singapore rows in this order after the Track C test rule in 
 | C10 | `amex` | SG | americanexpress.com |  | Same host as `sg-amex`. Keep network offers in a network run. |
 | C11 | `diners` | MY | dinersclub.com |  |  |
 | C12 | `diners` | SG | dinersclub.com |  |  |
+
+The Indonesia Track C rows below are proposed. They reuse the official domains already in `config/networks.json`. Country-specific offer paths that were not confirmed on those official hosts are not listed. Diners Club Indonesia is not listed; ask before adding it.
+
+| Order | Network ID | Location | Official offer host | Entry URLs | Note |
+|---|---|---|---|---|---|
+| C13 | `mastercard` | ID | specials.priceless.com | https://specials.priceless.com/ | Same official hosts as C1 and C2: mastercard.com, priceless.com, specials.priceless.com. An Indonesia path that is not already in `official_domains` must be reported, not crawled. |
+| C14 | `jcb` | ID | specialoffers.jcb | https://www.specialoffers.jcb/ | Same official hosts as C3 and C4: specialoffers.jcb, jcb.co.jp. No Indonesia campaign path is listed until it is confirmed on the official site. |
+| C15 | `visa` | ID | visa.com |  | The host is official. A country offer host that is not in `official_domains` must be reported, not crawled. |
+| C16 | `unionpay` | ID | unionpayintl.com |  | The host is official. Do not invent a /id/ path. A country path that is not in `official_domains` must be reported, not crawled. |
+| C17 | `amex` | ID | americanexpress.com |  | Network offer pages on this host, not an issuer catalogue. |
+
