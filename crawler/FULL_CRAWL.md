@@ -163,14 +163,28 @@ Do them in this order. The small ones are first, so that a problem shows early. 
 
 New issuers from phase 1 go after number 34, after the maintainer accepts them.
 
+### Philippines (proposed, census of 13 Nov 2026)
+
+The phase 1 census is in `crawler/ISSUER_CENSUS.md`. These six issuers were confirmed on official pages to offer consumer credit cards. Do them after the maintainer accepts the census and each official domain. The small catalogues are first. Cards and offers are not covered yet (0 and 0). Other BSP-listed institutions remain `not_reached` or `no_consumer_card` in the census file, and are not in this table until their official sites can be read.
+
+| Order | Issuer ID | Name | Official domains | Cards now | Offers now | Note |
+|---|---|---|---|---|---|---|
+| PH1 | `ph-aub` | Asia United Bank | aub.com.ph | 0 | 0 | The credit card path redirected to online.aub.ph. Report that host. |
+| PH2 | `ph-rcbc` | RCBC | rcbc.com | 0 | 0 | Cards are linked at rcbccredit.com, which is not in official_domains. Promos are on rcbc.com/promos. |
+| PH3 | `ph-metrobank` | Metrobank | metrobank.com.ph | 0 | 0 | The homepage links apply.metrobank.com.ph for credit card applications. That host is not in official_domains. |
+| PH4 | `ph-hsbc` | HSBC Philippines | hsbc.com.ph | 0 | 0 | Offer links also point at offers.hsbc.com.ph. |
+| PH5 | `ph-eastwest` | EastWest Bank | eastwestbanker.com | 0 | 0 | Credit card listing and promos are on this host. |
+| PH6 | `ph-bpi` | Bank of the Philippine Islands | bpi.com.ph | 0 | 0 | Credit card listing and rewards pages are on this host. Application links go to www2.bpi.com.ph. BPI Direct BanKO is same_group on this site. |
+
 ## Regulator sites (phase 1)
 
-These two sites are permitted in phase 1 only, to find issuers. They are not used as sources for card or offer facts.
+These sites are permitted in a census only, to find issuers. They are not used as sources for card or offer facts.
 
 | Order | Country | Regulator | Host | Note |
 |---|---|---|---|---|
 | phase-1 | MY | Bank Negara Malaysia | bnm.gov.my | The lists of credit card issuers (banks and non-banks) and charge card issuers. |
 | phase-1 | SG | Monetary Authority of Singapore | eservices.mas.gov.sg | The Financial Institutions Directory. Read the categories listed in phase 1 above. |
+| phase-1 | PH | Bangko Sentral ng Pilipinas | bsp.gov.ph | Directory of Banks and Non-Bank Financial Institutions: All Banks, Digital Banks, and Credit Card Company. |
 
 ## Network offer sites (Track C)
 
@@ -192,3 +206,8 @@ Do the Malaysia and Singapore rows in this order after the Track C test rule in 
 | C10 | `amex` | SG | americanexpress.com |  | Same host as `sg-amex`. Keep network offers in a network run. |
 | C11 | `diners` | MY | dinersclub.com |  |  |
 | C12 | `diners` | SG | dinersclub.com |  |  |
+| C13 | `mastercard` | PH | specials.priceless.com | https://specials.priceless.com/ | Proposed. The site lists the Philippines as a location. Also official: mastercard.com, priceless.com. |
+| C14 | `jcb` | PH | specialoffers.jcb |  | Proposed. Also official: jcb.co.jp. A Philippines entry URL was not recorded in this census. |
+| C15 | `visa` | PH | visa.com |  | Proposed. The host is official. A country offer host that is not in official_domains must be reported, not crawled. |
+| C16 | `unionpay` | PH | unionpayintl.com |  | Proposed. |
+| C17 | `amex` | PH | americanexpress.com |  | Proposed. Network offer pages on this host. |

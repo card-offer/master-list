@@ -1,8 +1,8 @@
 # Crawl sources
 
-This file describes the canonical list of sites to crawl for Malaysia (MY) and Singapore (SG). The list itself is [`crawler/sources.json`](sources.json). Do not crawl a host that is not on the list.
+This file describes the canonical list of sites to crawl for Malaysia (MY), Singapore (SG) and the Philippines (PH). The list itself is [`crawler/sources.json`](sources.json). Do not crawl a host that is not on the list.
 
-Issuer rows are built by `tools/build_sources.py` from `{cc}/issuers.json` official domains and entry URLs, and from `pipeline/offers_config.json` seeds. Network and regulator rows are kept as they are in `crawler/sources.json`. A host also has to be in the issuer's or the network's `official_domains`, except for the two regulator sites used in the phase 1 census.
+Issuer rows are built by `tools/build_sources.py` from `{cc}/issuers.json` official domains and entry URLs, and from `pipeline/offers_config.json` seeds. Network and regulator rows are kept as they are in `crawler/sources.json`. A host also has to be in the issuer's or the network's `official_domains`, except for the regulator sites used in a phase 1 census.
 
 ## How to read a row
 
@@ -10,12 +10,12 @@ Issuer rows are built by `tools/build_sources.py` from `{cc}/issuers.json` offic
 |---|---|
 | `site` | The issuer, network or regulator name. |
 | `host` | The official host, without a leading `www.` |
-| `country` | `MY` or `SG`. |
+| `country` | `MY`, `SG` or `PH`. |
 | `type` | `issuer`, `network` or `regulator`. |
 | `purpose` | `cards` or `offers` for crawl pages, and `census` for the regulator lists. |
 | `entry_urls` | Known listing or start URLs from the repository. An empty list means the host is official but no start URL is recorded yet. |
 | `status` | Fetcher class from repository evidence only: `ok`, `js_shell`, `bot_wall`, `network_unreachable`, or `untested` when the repository has no such evidence. Do not invent a status. |
-| `full_crawl_order` | The order in `crawler/FULL_CRAWL.md`: `1` to `34` for issuers in that table, `after-34` for a phase 1 issuer not yet given a number, `C1` to `C12` for network offer sites, and `phase-1` for regulators. |
+| `full_crawl_order` | The order in `crawler/FULL_CRAWL.md`: `1` to `34` for Malaysia and Singapore issuers in that table, `after-34` for a phase 1 issuer not yet given a number, `PH1` and up for Philippines issuers in that table, `C1` and up for network offer sites, and `phase-1` for regulators. |
 | `suggested_by` | The GitHub issue that proposed the site, or `null` when the row came from the repository itself. |
 
 ## Suggesting a site
@@ -24,11 +24,12 @@ Contributors can propose a site with the "Suggest a site to crawl" issue form. T
 
 ## The list
 
-There are 116 rows in `crawler/sources.json`. Counts by country: MY 58, SG 58. Counts by type: issuer 96, network 18, regulator 2.
+There are 137 rows in `crawler/sources.json`. Counts by country: MY 58, SG 58, PH 21. Counts by type: issuer 108, network 26, regulator 3.
 
 | Order | Country | Type | Purpose | Site | Host | Status | Entry URLs |
 |---|---|---|---|---|---|---|---|
 | phase-1 | MY | regulator | census | Bank Negara Malaysia | `bnm.gov.my` | untested |  |
+| phase-1 | PH | regulator | census | Bangko Sentral ng Pilipinas | `bsp.gov.ph` | untested | https://www.bsp.gov.ph/SitePages/financialstability/Directories.aspx, https://www.bsp.gov.ph/SitePages/FinancialStability/DirBanksFIList.aspx |
 | phase-1 | SG | regulator | census | Monetary Authority of Singapore | `eservices.mas.gov.sg` | untested |  |
 | 1 | SG | issuer | cards | CIMB Singapore | `cimb.com.sg` | untested | https://www.cimb.com.sg/en/personal/banking-with-us/cards/credit-cards.html |
 | 1 | SG | issuer | offers | CIMB Singapore | `cimb.com.sg` | untested | https://www.cimb.com.sg/en/personal/promotions.html |
@@ -126,6 +127,18 @@ There are 116 rows in `crawler/sources.json`. Counts by country: MY 58, SG 58. C
 | after-34 | MY | issuer | offers | ICBC Malaysia | `icbcmy.com` | untested |  |
 | after-34 | MY | issuer | cards | ICBC Malaysia | `v.icbc.com.cn` | untested |  |
 | after-34 | MY | issuer | offers | ICBC Malaysia | `v.icbc.com.cn` | untested |  |
+| PH1 | PH | issuer | cards | Asia United Bank | `aub.com.ph` | untested |  |
+| PH1 | PH | issuer | offers | Asia United Bank | `aub.com.ph` | untested |  |
+| PH2 | PH | issuer | cards | RCBC | `rcbc.com` | untested |  |
+| PH2 | PH | issuer | offers | RCBC | `rcbc.com` | untested | https://www.rcbc.com/promos |
+| PH3 | PH | issuer | cards | Metrobank | `metrobank.com.ph` | untested |  |
+| PH3 | PH | issuer | offers | Metrobank | `metrobank.com.ph` | untested |  |
+| PH4 | PH | issuer | cards | HSBC Philippines | `hsbc.com.ph` | untested | https://www.hsbc.com.ph/credit-cards/products/ |
+| PH4 | PH | issuer | offers | HSBC Philippines | `hsbc.com.ph` | untested | https://www.hsbc.com.ph/credit-cards/offers/latest/ |
+| PH5 | PH | issuer | cards | EastWest Bank | `eastwestbanker.com` | untested | https://www.eastwestbanker.com/cards/creditcards |
+| PH5 | PH | issuer | offers | EastWest Bank | `eastwestbanker.com` | untested | https://www.eastwestbanker.com/promos |
+| PH6 | PH | issuer | cards | Bank of the Philippine Islands | `bpi.com.ph` | untested | https://www.bpi.com.ph/personal/cards, https://www.bpi.com.ph/personal/cards/credit-cards |
+| PH6 | PH | issuer | offers | Bank of the Philippine Islands | `bpi.com.ph` | untested | https://www.bpi.com.ph/personal/rewards-and-promotions, https://www.bpi.com.ph/personal/rewards-and-promotions/promos |
 | C1 | MY | network | offers | Mastercard | `mastercard.com` | untested |  |
 | C1 | MY | network | offers | Mastercard | `priceless.com` | untested |  |
 | C1 | MY | network | offers | Mastercard | `specials.priceless.com` | untested | https://specials.priceless.com/ |
@@ -144,3 +157,11 @@ There are 116 rows in `crawler/sources.json`. Counts by country: MY 58, SG 58. C
 | C10 | SG | network | offers | American Express | `americanexpress.com` | untested |  |
 | C11 | MY | network | offers | Diners Club | `dinersclub.com` | untested |  |
 | C12 | SG | network | offers | Diners Club | `dinersclub.com` | untested |  |
+| C13 | PH | network | offers | Mastercard | `mastercard.com` | untested |  |
+| C13 | PH | network | offers | Mastercard | `priceless.com` | untested |  |
+| C13 | PH | network | offers | Mastercard | `specials.priceless.com` | untested | https://specials.priceless.com/ |
+| C14 | PH | network | offers | JCB | `jcb.co.jp` | untested |  |
+| C14 | PH | network | offers | JCB | `specialoffers.jcb` | untested |  |
+| C15 | PH | network | offers | Visa | `visa.com` | untested |  |
+| C16 | PH | network | offers | UnionPay | `unionpayintl.com` | untested |  |
+| C17 | PH | network | offers | American Express | `americanexpress.com` | untested |  |

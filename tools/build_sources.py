@@ -4,12 +4,13 @@
     python3 tools/build_sources.py           write crawler/sources.json and crawler/SOURCES.md
     python3 tools/build_sources.py --check   exit 1 if the committed files differ
 
-Issuer rows come from my/issuers.json and sg/issuers.json: one cards row and one
+Issuer rows come from my/issuers.json, sg/issuers.json and ph/issuers.json: one cards row and one
 offers row for each official domain. Card entry URLs come from crawl.card_sources.
 Offer entry URLs come from crawl.offer_sources, then from pipeline/offers_config.json
 seeds for that issuer, when the URL host matches the row. full_crawl_order comes
 from the issuer table in crawler/FULL_CRAWL.md. An issuer that is in issuers.json
-but not yet in that table is marked after-34, as the file says.
+but not yet in that table is marked after-34, as the file says. Philippines issuers
+use PH1, PH2, ... when they are in that table.
 
 Network and regulator rows are kept as they are in crawler/sources.json. Status
 and suggested_by on an issuer row are kept when the same issuer, host and purpose
@@ -31,7 +32,7 @@ SOURCES_MD = ROOT / "crawler" / "SOURCES.md"
 FULL_CRAWL = ROOT / "crawler" / "FULL_CRAWL.md"
 OFFERS_CONFIG = ROOT / "pipeline" / "offers_config.json"
 
-ISSUER_ORDER_RE = re.compile(r"^\|\s*(\d+)\s*\|\s*`([^`]+)`\s*\|", re.M)
+ISSUER_ORDER_RE = re.compile(r"^\|\s*(\d+|PH\d+)\s*\|\s*`([^`]+)`\s*\|", re.M)
 AFTER_34 = "after-34"
 
 ROW_KEYS = (
@@ -59,8 +60,10 @@ def dump_json(data):
 
 def load_issuers(root):
     items = []
-    for country in ("my", "sg"):
-        items.extend(load_json(root / country / "issuers.json")["items"])
+    for country in ("my", "sg", "ph"):
+        path = root / country / "issuers.json"
+        if path.exists():
+            items.extend(load_json(path)["items"])
     return items
 
 
@@ -69,7 +72,8 @@ def issuer_orders(root):
     text = (root / "crawler" / "FULL_CRAWL.md").read_text(encoding="utf-8")
     found = {}
     for match in ISSUER_ORDER_RE.finditer(text):
-        order, issuer_id = int(match.group(1)), match.group(2)
+        raw, issuer_id = match.group(1), match.group(2)
+        order = raw if raw.startswith("PH") else int(raw)
         if issuer_id in found and found[issuer_id] != order:
             raise ValueError(f"issuer {issuer_id} has two orders in FULL_CRAWL.md")
         found[issuer_id] = order
@@ -155,6 +159,8 @@ def order_sort_key(value):
     if value == AFTER_34:
         return (2, 0, "")
     text = str(value)
+    if text.startswith("PH") and text[2:].isdigit():
+        return (2, int(text[2:]), "")
     if text.startswith("C"):
         try:
             return (3, int(text[1:]), "")
@@ -192,7 +198,7 @@ def build_sources(root=None):
     items = sort_items(kept + issuer_rows)
     return {
         "description": current.get("description") or (
-            "Canonical list of sites to crawl for Malaysia and Singapore. "
+            "Canonical list of sites to crawl for Malaysia, Singapore and the Philippines. "
             "Every official issuer or network host, and the phase 1 regulator hosts, "
             "must appear here before a crawl. See crawler/SOURCES.md."
         ),
@@ -202,9 +208,9 @@ def build_sources(root=None):
 
 GUIDE_HEAD = """# Crawl sources
 
-This file describes the canonical list of sites to crawl for Malaysia (MY) and Singapore (SG). The list itself is [`crawler/sources.json`](sources.json). Do not crawl a host that is not on the list.
+This file describes the canonical list of sites to crawl for Malaysia (MY), Singapore (SG) and the Philippines (PH). The list itself is [`crawler/sources.json`](sources.json). Do not crawl a host that is not on the list.
 
-Issuer rows are built by `tools/build_sources.py` from `{cc}/issuers.json` official domains and entry URLs, and from `pipeline/offers_config.json` seeds. Network and regulator rows are kept as they are in `crawler/sources.json`. A host also has to be in the issuer's or the network's `official_domains`, except for the two regulator sites used in the phase 1 census.
+Issuer rows are built by `tools/build_sources.py` from `{cc}/issuers.json` official domains and entry URLs, and from `pipeline/offers_config.json` seeds. Network and regulator rows are kept as they are in `crawler/sources.json`. A host also has to be in the issuer's or the network's `official_domains`, except for the regulator sites used in a phase 1 census.
 
 ## How to read a row
 
@@ -212,12 +218,12 @@ Issuer rows are built by `tools/build_sources.py` from `{cc}/issuers.json` offic
 |---|---|
 | `site` | The issuer, network or regulator name. |
 | `host` | The official host, without a leading `www.` |
-| `country` | `MY` or `SG`. |
+| `country` | `MY`, `SG` or `PH`. |
 | `type` | `issuer`, `network` or `regulator`. |
 | `purpose` | `cards` or `offers` for crawl pages, and `census` for the regulator lists. |
 | `entry_urls` | Known listing or start URLs from the repository. An empty list means the host is official but no start URL is recorded yet. |
 | `status` | Fetcher class from repository evidence only: `ok`, `js_shell`, `bot_wall`, `network_unreachable`, or `untested` when the repository has no such evidence. Do not invent a status. |
-| `full_crawl_order` | The order in `crawler/FULL_CRAWL.md`: `1` to `34` for issuers in that table, `after-34` for a phase 1 issuer not yet given a number, `C1` to `C12` for network offer sites, and `phase-1` for regulators. |
+| `full_crawl_order` | The order in `crawler/FULL_CRAWL.md`: `1` to `34` for Malaysia and Singapore issuers in that table, `after-34` for a phase 1 issuer not yet given a number, `PH1` and up for Philippines issuers in that table, `C1` and up for network offer sites, and `phase-1` for regulators. |
 | `suggested_by` | The GitHub issue that proposed the site, or `null` when the row came from the repository itself. |
 
 ## Suggesting a site
@@ -235,7 +241,7 @@ def render_sources_md(data):
     by_type = Counter(row["type"] for row in items)
     counts = (
         f"There are {len(items)} rows in `crawler/sources.json`. "
-        f"Counts by country: MY {by_country.get('MY', 0)}, SG {by_country.get('SG', 0)}. "
+        f"Counts by country: MY {by_country.get('MY', 0)}, SG {by_country.get('SG', 0)}, PH {by_country.get('PH', 0)}. "
         f"Counts by type: issuer {by_type.get('issuer', 0)}, "
         f"network {by_type.get('network', 0)}, regulator {by_type.get('regulator', 0)}.\n"
     )

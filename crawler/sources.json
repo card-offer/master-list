@@ -14,6 +14,21 @@
    "suggested_by": null
   },
   {
+   "id": "ph-regulator-bsp.gov.ph-census",
+   "site": "Bangko Sentral ng Pilipinas",
+   "host": "bsp.gov.ph",
+   "country": "PH",
+   "type": "regulator",
+   "purpose": "census",
+   "entry_urls": [
+    "https://www.bsp.gov.ph/SitePages/financialstability/Directories.aspx",
+    "https://www.bsp.gov.ph/SitePages/FinancialStability/DirBanksFIList.aspx"
+   ],
+   "status": "untested",
+   "full_crawl_order": "phase-1",
+   "suggested_by": null
+  },
+  {
    "id": "sg-regulator-eservices.mas.gov.sg-census",
    "site": "Monetary Authority of Singapore",
    "host": "eservices.mas.gov.sg",
@@ -1397,6 +1412,178 @@
    "issuer_id": "my-icbc"
   },
   {
+   "id": "ph-aub-aub.com.ph-cards",
+   "site": "Asia United Bank",
+   "host": "aub.com.ph",
+   "country": "PH",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "PH1",
+   "suggested_by": null,
+   "issuer_id": "ph-aub"
+  },
+  {
+   "id": "ph-aub-aub.com.ph-offers",
+   "site": "Asia United Bank",
+   "host": "aub.com.ph",
+   "country": "PH",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "PH1",
+   "suggested_by": null,
+   "issuer_id": "ph-aub"
+  },
+  {
+   "id": "ph-rcbc-rcbc.com-cards",
+   "site": "RCBC",
+   "host": "rcbc.com",
+   "country": "PH",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "PH2",
+   "suggested_by": null,
+   "issuer_id": "ph-rcbc"
+  },
+  {
+   "id": "ph-rcbc-rcbc.com-offers",
+   "site": "RCBC",
+   "host": "rcbc.com",
+   "country": "PH",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.rcbc.com/promos"
+   ],
+   "status": "untested",
+   "full_crawl_order": "PH2",
+   "suggested_by": null,
+   "issuer_id": "ph-rcbc"
+  },
+  {
+   "id": "ph-metrobank-metrobank.com.ph-cards",
+   "site": "Metrobank",
+   "host": "metrobank.com.ph",
+   "country": "PH",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "PH3",
+   "suggested_by": null,
+   "issuer_id": "ph-metrobank"
+  },
+  {
+   "id": "ph-metrobank-metrobank.com.ph-offers",
+   "site": "Metrobank",
+   "host": "metrobank.com.ph",
+   "country": "PH",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "PH3",
+   "suggested_by": null,
+   "issuer_id": "ph-metrobank"
+  },
+  {
+   "id": "ph-hsbc-hsbc.com.ph-cards",
+   "site": "HSBC Philippines",
+   "host": "hsbc.com.ph",
+   "country": "PH",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.hsbc.com.ph/credit-cards/products/"
+   ],
+   "status": "untested",
+   "full_crawl_order": "PH4",
+   "suggested_by": null,
+   "issuer_id": "ph-hsbc"
+  },
+  {
+   "id": "ph-hsbc-hsbc.com.ph-offers",
+   "site": "HSBC Philippines",
+   "host": "hsbc.com.ph",
+   "country": "PH",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.hsbc.com.ph/credit-cards/offers/latest/"
+   ],
+   "status": "untested",
+   "full_crawl_order": "PH4",
+   "suggested_by": null,
+   "issuer_id": "ph-hsbc"
+  },
+  {
+   "id": "ph-eastwest-eastwestbanker.com-cards",
+   "site": "EastWest Bank",
+   "host": "eastwestbanker.com",
+   "country": "PH",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.eastwestbanker.com/cards/creditcards"
+   ],
+   "status": "untested",
+   "full_crawl_order": "PH5",
+   "suggested_by": null,
+   "issuer_id": "ph-eastwest"
+  },
+  {
+   "id": "ph-eastwest-eastwestbanker.com-offers",
+   "site": "EastWest Bank",
+   "host": "eastwestbanker.com",
+   "country": "PH",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.eastwestbanker.com/promos"
+   ],
+   "status": "untested",
+   "full_crawl_order": "PH5",
+   "suggested_by": null,
+   "issuer_id": "ph-eastwest"
+  },
+  {
+   "id": "ph-bpi-bpi.com.ph-cards",
+   "site": "Bank of the Philippine Islands",
+   "host": "bpi.com.ph",
+   "country": "PH",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.bpi.com.ph/personal/cards",
+    "https://www.bpi.com.ph/personal/cards/credit-cards"
+   ],
+   "status": "untested",
+   "full_crawl_order": "PH6",
+   "suggested_by": null,
+   "issuer_id": "ph-bpi"
+  },
+  {
+   "id": "ph-bpi-bpi.com.ph-offers",
+   "site": "Bank of the Philippine Islands",
+   "host": "bpi.com.ph",
+   "country": "PH",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.bpi.com.ph/personal/rewards-and-promotions",
+    "https://www.bpi.com.ph/personal/rewards-and-promotions/promos"
+   ],
+   "status": "untested",
+   "full_crawl_order": "PH6",
+   "suggested_by": null,
+   "issuer_id": "ph-bpi"
+  },
+  {
    "id": "my-network-mastercard-mastercard.com-offers",
    "site": "Mastercard",
    "host": "mastercard.com",
@@ -1645,6 +1832,112 @@
    "full_crawl_order": "C12",
    "suggested_by": null,
    "network_id": "diners"
+  },
+  {
+   "id": "ph-network-mastercard-mastercard.com-offers",
+   "site": "Mastercard",
+   "host": "mastercard.com",
+   "country": "PH",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C13",
+   "suggested_by": null,
+   "network_id": "mastercard"
+  },
+  {
+   "id": "ph-network-mastercard-priceless.com-offers",
+   "site": "Mastercard",
+   "host": "priceless.com",
+   "country": "PH",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C13",
+   "suggested_by": null,
+   "network_id": "mastercard"
+  },
+  {
+   "id": "ph-network-mastercard-specials.priceless.com-offers",
+   "site": "Mastercard",
+   "host": "specials.priceless.com",
+   "country": "PH",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://specials.priceless.com/"
+   ],
+   "status": "untested",
+   "full_crawl_order": "C13",
+   "suggested_by": null,
+   "network_id": "mastercard"
+  },
+  {
+   "id": "ph-network-jcb-jcb.co.jp-offers",
+   "site": "JCB",
+   "host": "jcb.co.jp",
+   "country": "PH",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C14",
+   "suggested_by": null,
+   "network_id": "jcb"
+  },
+  {
+   "id": "ph-network-jcb-specialoffers.jcb-offers",
+   "site": "JCB",
+   "host": "specialoffers.jcb",
+   "country": "PH",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C14",
+   "suggested_by": null,
+   "network_id": "jcb"
+  },
+  {
+   "id": "ph-network-visa-visa.com-offers",
+   "site": "Visa",
+   "host": "visa.com",
+   "country": "PH",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C15",
+   "suggested_by": null,
+   "network_id": "visa"
+  },
+  {
+   "id": "ph-network-unionpay-unionpayintl.com-offers",
+   "site": "UnionPay",
+   "host": "unionpayintl.com",
+   "country": "PH",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C16",
+   "suggested_by": null,
+   "network_id": "unionpay"
+  },
+  {
+   "id": "ph-network-amex-americanexpress.com-offers",
+   "site": "American Express",
+   "host": "americanexpress.com",
+   "country": "PH",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C17",
+   "suggested_by": null,
+   "network_id": "amex"
   }
  ]
 }
