@@ -1,10 +1,10 @@
 {
   "countries": {
     "MY": {
-      "cards": 187,
+      "cards": 190,
       "currency": "MYR",
       "issuers": 19,
-      "offers": 542,
+      "offers": 604,
       "path": "/my/",
       "timezone": "Asia/Kuala_Lumpur"
     },
@@ -17,7 +17,7 @@
       "timezone": "Asia/Singapore"
     }
   },
-  "generated_at": "2026-11-12T07:37:23+00:00",
+  "generated_at": "2026-11-13T06:44:24+00:00",
   "indexes": "Built in CI and published to GitHub Pages. Not stored on the main branch.",
   "layout": {
     "archive": "{cc}/archive/offers/{issuer}.json",
@@ -35,7 +35,7 @@
     "scope": "Compiled structured data only. Issuer terms belong to the issuers.",
     "url": "https://creativecommons.org/licenses/by/4.0/"
   },
-  "merchants": 952,
+  "merchants": 1010,
   "name": "card-offer master list",
   "networks": 6,
   "schema_version": "0.3.0",
