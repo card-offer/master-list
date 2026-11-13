@@ -201,6 +201,10 @@ def check(obs, root, now=None):
                         errors.append(f"{where}: merchant name '{name}': {problem}")
                 if not quote_has_name(merchant["name_quote"], name):
                     errors.append(f"{where}: merchant name '{name}' is not inside name_quote. Copy the name as the page writes it.")
+                heading, full = name_key(offer["title"], mrules), name_key(name, mrules)
+                if heading and len(heading) >= 3 and full.startswith(heading + " "):
+                    errors.append(f"{where}: the page heading is '{offer['title']}' and the merchant name adds more words. "
+                                  f"Put the brand in name and the place or branch in outlet.")
                 if merchant["outlet"] and name_key(merchant["outlet"], mrules) and name_key(merchant["outlet"], mrules) in name_key(name, mrules):
                     errors.append(f"{where}: the outlet is repeated inside the merchant name. Put the brand in name and the outlet in outlet.")
             if merchant["names"]:
@@ -292,6 +296,16 @@ def check(obs, root, now=None):
             errors.append(f"{where}: stated eligibility needs a quote")
         names_of_issuers = rule.get("issuer_names") or []
         if network_id:
+            issued = re.search(r"(?i)\bissued\s+(?:in|by banks in)\s+([A-Za-z][A-Za-z ]{2,30})", rule["quote"] or "")
+            if issued:
+                place = name_key(issued.group(1), {**mrules, "country_words": []})
+                names = {name_key(row["name"], {**mrules, "country_words": []}): row["code"]
+                         for row in load_json(os.path.join(root, "countries.json"))["items"]}
+                names.update({"hong kong": "HK"})
+                other = next((code for text, code in names.items() if place.startswith(text) and code != country), None)
+                if other:
+                    errors.append(f"{where}: the offer is for cards issued in {other}, and this run is for cards issued in {country}. "
+                                  f"Leave it out of this run and count it.")
             if rule["scope"] != "network" or rule["network_ids"] != [network_id] or rule["card_names"]:
                 errors.append(f"{where}: in a network run, eligibility is scope network, network_ids [{network_id}] and no card names")
             if rule["confidence"] == "inferred" and (rule["tiers"] or names_of_issuers):

@@ -138,6 +138,14 @@ class GateTests(unittest.TestCase):
         row["merchant"]["name_quote"] = "Fairmont Singapore 80 Bras Basah Road, Level 8 Singapore 189560"
         self.assertEqual(self.errors(row), [])
 
+    def test_name_is_the_heading_without_the_place(self):
+        row = offer(title="Example Kopi", merchant__name="Example Kopi Changi Airport Terminal 2", merchant__outlet=None,
+                    merchant__name_quote="Example Kopi Changi Airport Terminal 2", source_key="tile-9", source_key_basis="page_anchor")
+        self.assert_error("Put the brand in name", row)
+        fixed = offer(title="Example Kopi", merchant__outlet="Changi Airport Terminal 2", source_key="tile-9", source_key_basis="page_anchor",
+                      merchant__name_quote="Example Kopi Changi Airport Terminal 2")
+        self.assertEqual(self.errors(fixed), [])
+
     def test_issuer_is_not_a_merchant(self):
         self.assert_error("card issuer", offer(merchant__name="CIMB", merchant__name_quote="CIMB", source_key="cimb"))
 
@@ -293,6 +301,12 @@ class NetworkAndLanguageTests(unittest.TestCase):
         data["run"]["issuer_id"] = "sg-cimb"
         self.assertTrue(any("not both" in line for line in self.errors(data)))
         self.assertTrue(any("not in countries.json" in line for line in self.errors(network_hand_in(network_offer(), country="ZZ"))))
+
+    def test_offer_for_cards_of_another_country_is_refused(self):
+        bad = network_offer(eligibility__quote="Mastercard cards issued in Hong Kong.", eligibility__tiers=[])
+        self.assertTrue(any("issued in HK" in line for line in self.errors(network_hand_in(bad))))
+        same = network_offer(eligibility__quote="Mastercard cards issued in Thailand.", eligibility__tiers=[])
+        self.assertEqual(self.errors(network_hand_in(same)), [])
 
     def test_network_host_must_be_listed(self):
         data = network_hand_in(network_offer())
