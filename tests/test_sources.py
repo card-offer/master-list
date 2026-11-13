@@ -11,7 +11,12 @@ SOURCES_MD = ROOT / "crawler" / "SOURCES.md"
 ALLOWED_STATUS = {"ok", "js_shell", "bot_wall", "network_unreachable", "untested"}
 ALLOWED_TYPES = {"issuer", "network", "regulator", "merchant"}
 ALLOWED_PURPOSES = {"cards", "offers", "census"}
-REGULATOR_HOSTS = {("MY", "bnm.gov.my"), ("SG", "eservices.mas.gov.sg")}
+REGULATOR_HOSTS = {
+    ("MY", "bnm.gov.my"),
+    ("SG", "eservices.mas.gov.sg"),
+    ("HK", "hkma.gov.hk"),
+    ("HK", "vpr.hkma.gov.hk"),
+}
 
 
 def host_of(value):
@@ -43,9 +48,11 @@ class SourcesListTests(unittest.TestCase):
         cls.data = load_json(SOURCES)
         cls.items = cls.data["items"]
         cls.issuers = []
-        for country in ("my", "sg"):
-            cls.issuers.extend(load_json(ROOT / country / "issuers.json")["items"])
+        for path in sorted(ROOT.iterdir()):
+            if path.is_dir() and len(path.name) == 2 and path.name.isalpha() and (path / "issuers.json").is_file():
+                cls.issuers.extend(load_json(path / "issuers.json")["items"])
         cls.networks = load_json(ROOT / "config" / "networks.json")["items"]
+        cls.country_codes = {row["code"] for row in load_json(ROOT / "countries.json")["items"]}
 
     def test_committed_list_matches_the_builder(self):
         builder = load_builder()
@@ -62,7 +69,7 @@ class SourcesListTests(unittest.TestCase):
             self.assertIn(row["status"], ALLOWED_STATUS, row["id"])
             self.assertIn(row["type"], ALLOWED_TYPES, row["id"])
             self.assertIn(row["purpose"], ALLOWED_PURPOSES, row["id"])
-            self.assertIn(row["country"], {"MY", "SG"}, row["id"])
+            self.assertIn(row["country"], self.country_codes, row["id"])
             self.assertIsInstance(row["entry_urls"], list)
             self.assertTrue(row["host"] and "." in row["host"], row["id"])
             self.assertFalse(row["host"].startswith("www."), row["id"])

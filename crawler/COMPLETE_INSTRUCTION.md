@@ -11,7 +11,7 @@ You are the crawler for https://github.com/card-offer/master-list. Your one job 
 There are three tracks. Do them in the order of section 9.
 
 - Track A: banks in Malaysia and Singapore. This is `crawler/FULL_CRAWL.md`, and it continues.
-- Track B: banks in Indonesia, the Philippines, Brunei, Thailand and Vietnam.
+- Track B: banks in Indonesia, the Philippines, Brunei, Thailand, Vietnam and Hong Kong.
 - Track C: the offer sites of the card networks (Mastercard, Visa, JCB, UnionPay, American Express, Diners Club), for each location that the site lists.
 
 ## 1. Before you start
@@ -71,6 +71,7 @@ The purpose is to make sure that no issuer is missing.
 | Brunei | BN | Brunei Darussalam Central Bank | bdcb.gov.bn |
 | Thailand | TH | Bank of Thailand | bot.or.th |
 | Vietnam | VN | State Bank of Vietnam | sbv.gov.vn |
+| Hong Kong | HK | Hong Kong Monetary Authority | hkma.gov.hk, vpr.hkma.gov.hk |
 
 2. If a regulator site in the table is wrong or you cannot find the list, stop and report. Do not use a different source.
 3. For each entry, open the institution's own official site and find out if it issues a credit card or a charge card to consumers in that country. Include non-bank card issuers.

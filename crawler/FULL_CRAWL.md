@@ -1,4 +1,4 @@
-# Full crawl: Malaysia and Singapore
+# Full crawl: Malaysia, Singapore and Hong Kong
 
 This file is the instruction for the crawler for the first full crawl. `crawler/RULES.md` is the rule for each fact. If the two files disagree, `crawler/RULES.md` is correct.
 
@@ -8,7 +8,7 @@ Copy all the text below the line and give it to Grok Bot.
 
 ---
 
-You are the crawler for https://github.com/card-offer/master-list. This task is the first full crawl of Malaysia (MY) and Singapore (SG). The goal is: each credit card issuer, each of its cards, each of its offers, and each offer matched to the cards that can use it.
+You are the crawler for https://github.com/card-offer/master-list. This task is the first full crawl of Malaysia (MY), Singapore (SG) and Hong Kong (HK). The goal is: each credit card issuer, each of its cards, each of its offers, and each offer matched to the cards that can use it.
 
 Do the four phases in order. Do not start a phase before the phase before it is accepted.
 
@@ -33,9 +33,10 @@ Do the four phases in order. Do not start a phase before the phase before it is 
 
 The repository has 34 issuers now. They are in the table at the end of this file. The purpose of this phase is to make sure that no issuer is missing.
 
-1. Read the regulator lists. These two sites are permitted in this phase only:
+1. Read the regulator lists. These regulator sites are permitted in this phase only:
    1. Malaysia, Bank Negara Malaysia: the list "Credit Card Issuers" (banks and non-banks) and the list of charge card issuers, on bnm.gov.my.
    2. Singapore, Monetary Authority of Singapore: the Financial Institutions Directory on eservices.mas.gov.sg. Read the categories Local Bank, Qualifying Full Bank, Full Bank, Digital Full Bank, Wholesale Bank, and Credit and Charge Card Licensee.
+   3. Hong Kong, Hong Kong Monetary Authority: the lists of Licensed Banks, Restricted Licence Banks, Deposit-taking Companies and Digital Banks, and the register of authorized institutions, on hkma.gov.hk (the interactive register is also on vpr.hkma.gov.hk).
 2. For each entry on a regulator list, open the institution's own official site and find out if it issues a credit card or a charge card to consumers in that country.
 3. Give each entry one result:
    - `in_repository`: it is one of the 34. Give the issuer ID.
@@ -161,16 +162,42 @@ Do them in this order. The small ones are first, so that a problem shows early. 
 | 34 | `my-maybank` | Maybank | maybank2u.com.my | 33 | 0 | The site did not answer before. If it fails, record it and continue. |
 
 
-New issuers from phase 1 go after number 34, after the maintainer accepts them.
+### Hong Kong (proposed)
+
+These are new issuers from the 2026-11-13 phase 1 census. They wait for the maintainer to accept each issuer and each official domain. The order is proposed only: digital issuers and the smaller local catalogues first, then the larger catalogues. Card and offer counts are 0 because no cards have been ingested yet.
+
+| Order | Issuer ID | Name | Official domains | Cards now | Offers now | Note |
+|---|---|---|---|---|---|---|
+| 35 | `hk-mox` | Mox Bank | mox.com | 0 | 0 | Digital bank. Homepage states Mox Credit Card. |
+| 36 | `hk-fubon` | Fubon Bank (Hong Kong) | fubonbank.com.hk | 0 | 0 | Use the English homepage as the entry until the products page returns a full listing. |
+| 37 | `hk-chong-hing` | Chong Hing Bank | chbank.com | 0 | 0 | Use the English homepage as the entry until a product URL returns a full listing. |
+| 38 | `hk-cmb-wing-lung` | CMB Wing Lung Bank | cmbwinglungbank.com | 0 | 0 | |
+| 39 | `hk-dah-sing` | Dah Sing Bank | dahsing.com | 0 | 0 | |
+| 40 | `hk-bocom-hk` | Bank of Communications (Hong Kong) | hk.bankcomm.com | 0 | 0 | Traditional Chinese card listing. No English listing was found. |
+| 41 | `hk-ccb-asia` | CCB Asia | asia.ccb.com | 0 | 0 | |
+| 42 | `hk-icbc-asia` | ICBC Asia | icbcasia.com | 0 | 0 | |
+| 43 | `hk-ocbc` | OCBC Bank (Hong Kong) | ocbc.com.hk | 0 | 0 | Hong Kong pages only (ocbc.com.hk), not ocbc.com. |
+| 44 | `hk-bea` | Bank of East Asia | hkbea.com | 0 | 0 | |
+| 45 | `hk-citi` | Citibank (Hong Kong) | citibank.com.hk | 0 | 0 | CITIBANK, N.A. shares the official website; its consumer cards go under this issuer. |
+| 46 | `hk-cncbi` | China CITIC Bank International | cncbinternational.com | 0 | 0 | Ordinary browser mode. robots.txt was 403 (robots_unreadable). Plain HTTP was bot_wall. |
+| 47 | `hk-standard-chartered` | Standard Chartered Hong Kong | sc.com | 0 | 0 | Hong Kong pages only (sc.com/hk). |
+| 48 | `hk-hang-seng` | Hang Seng Bank | hangseng.com | 0 | 0 | |
+| 49 | `hk-dbs` | DBS Hong Kong | dbs.com.hk | 0 | 0 | Hong Kong pages only (dbs.com.hk), not dbs.com.sg. |
+| 50 | `hk-hsbc` | HSBC Hong Kong | hsbc.com.hk | 0 | 0 | |
+| 51 | `hk-bochk` | Bank of China (Hong Kong) | bochk.com, boci.com.hk | 0 | 0 | Chiyu Bank credit cards are issued by BOC Credit Card (International) Limited and go under this issuer. |
+
+New issuers from phase 1 go after the last numbered row, after the maintainer accepts them.
+
 
 ## Regulator sites (phase 1)
 
-These two sites are permitted in phase 1 only, to find issuers. They are not used as sources for card or offer facts.
+These regulator sites are permitted in phase 1 only, to find issuers. They are not used as sources for card or offer facts.
 
 | Order | Country | Regulator | Host | Note |
 |---|---|---|---|---|
 | phase-1 | MY | Bank Negara Malaysia | bnm.gov.my | The lists of credit card issuers (banks and non-banks) and charge card issuers. |
 | phase-1 | SG | Monetary Authority of Singapore | eservices.mas.gov.sg | The Financial Institutions Directory. Read the categories listed in phase 1 above. |
+| phase-1 | HK | Hong Kong Monetary Authority | hkma.gov.hk | The lists of Licensed Banks, Restricted Licence Banks, Deposit-taking Companies and Digital Banks, and the official Excel contact list (addr.xls). The interactive register is also on vpr.hkma.gov.hk. |
 
 ## Network offer sites (Track C)
 
@@ -192,3 +219,8 @@ Do the Malaysia and Singapore rows in this order after the Track C test rule in 
 | C10 | `amex` | SG | americanexpress.com |  | Same host as `sg-amex`. Keep network offers in a network run. |
 | C11 | `diners` | MY | dinersclub.com |  |  |
 | C12 | `diners` | SG | dinersclub.com |  |  |
+| C13 | `mastercard` | HK | specials.priceless.com | https://specials.priceless.com/ | Same host. The site lists Hong Kong SAR as a location. Also official: mastercard.com, priceless.com. |
+| C14 | `jcb` | HK | specialoffers.jcb | https://www.specialoffers.jcb/ , https://www.specialoffers.jcb/en/campaign/d/east-asia/hong-kong/ , https://www.specialoffers.jcb/en/offers/d/east-asia/hong-kong/ | JCB Special Offers, East Asia / Hong Kong. Also official: jcb.co.jp. |
+| C15 | `visa` | HK | visa.com |  | The host is official. A country offer host that is not in `official_domains` must be reported, not crawled. |
+| C16 | `unionpay` | HK | unionpayintl.com | https://www.unionpayintl.com/hk/ | Official home links Hong Kong SAR at /hk/. |
+| C17 | `amex` | HK | americanexpress.com |  | Network offer pages on this host, not an issuer catalogue. |

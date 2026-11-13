@@ -1,6 +1,33 @@
 {
- "description": "Canonical list of sites to crawl for Malaysia and Singapore. Every official issuer or network host, and the phase 1 regulator hosts, must appear here before a crawl. See crawler/SOURCES.md.",
+ "description": "Canonical list of sites to crawl. Every official issuer or network host, and the phase 1 regulator hosts, must appear here before a crawl. See crawler/SOURCES.md.",
  "items": [
+  {
+   "id": "hk-regulator-hkma.gov.hk-census",
+   "site": "Hong Kong Monetary Authority",
+   "host": "hkma.gov.hk",
+   "country": "HK",
+   "type": "regulator",
+   "purpose": "census",
+   "entry_urls": [
+    "https://www.hkma.gov.hk/eng/key-functions/banking/banking-regulatory-and-supervisory-regime/the-three-tier-banking-system/",
+    "https://www.hkma.gov.hk/eng/key-functions/banking/banking-regulatory-and-supervisory-regime/digital-banks/"
+   ],
+   "status": "ok",
+   "full_crawl_order": "phase-1",
+   "suggested_by": null
+  },
+  {
+   "id": "hk-regulator-vpr.hkma.gov.hk-census",
+   "site": "Hong Kong Monetary Authority",
+   "host": "vpr.hkma.gov.hk",
+   "country": "HK",
+   "type": "regulator",
+   "purpose": "census",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "phase-1",
+   "suggested_by": null
+  },
   {
    "id": "my-regulator-bnm.gov.my-census",
    "site": "Bank Negara Malaysia",
@@ -1345,6 +1372,514 @@
    "issuer_id": "my-maybank"
   },
   {
+   "id": "hk-mox-mox.com-cards",
+   "site": "Mox Bank",
+   "host": "mox.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://mox.com/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 35,
+   "suggested_by": null,
+   "issuer_id": "hk-mox"
+  },
+  {
+   "id": "hk-mox-mox.com-offers",
+   "site": "Mox Bank",
+   "host": "mox.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 35,
+   "suggested_by": null,
+   "issuer_id": "hk-mox"
+  },
+  {
+   "id": "hk-fubon-fubonbank.com.hk-cards",
+   "site": "Fubon Bank (Hong Kong)",
+   "host": "fubonbank.com.hk",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.fubonbank.com.hk/en/home.html"
+   ],
+   "status": "untested",
+   "full_crawl_order": 36,
+   "suggested_by": null,
+   "issuer_id": "hk-fubon"
+  },
+  {
+   "id": "hk-fubon-fubonbank.com.hk-offers",
+   "site": "Fubon Bank (Hong Kong)",
+   "host": "fubonbank.com.hk",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 36,
+   "suggested_by": null,
+   "issuer_id": "hk-fubon"
+  },
+  {
+   "id": "hk-chong-hing-chbank.com-cards",
+   "site": "Chong Hing Bank",
+   "host": "chbank.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.chbank.com/en/homepage.shtml"
+   ],
+   "status": "untested",
+   "full_crawl_order": 37,
+   "suggested_by": null,
+   "issuer_id": "hk-chong-hing"
+  },
+  {
+   "id": "hk-chong-hing-chbank.com-offers",
+   "site": "Chong Hing Bank",
+   "host": "chbank.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 37,
+   "suggested_by": null,
+   "issuer_id": "hk-chong-hing"
+  },
+  {
+   "id": "hk-cmb-wing-lung-cmbwinglungbank.com-cards",
+   "site": "CMB Wing Lung Bank",
+   "host": "cmbwinglungbank.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/index.html"
+   ],
+   "status": "untested",
+   "full_crawl_order": 38,
+   "suggested_by": null,
+   "issuer_id": "hk-cmb-wing-lung"
+  },
+  {
+   "id": "hk-cmb-wing-lung-cmbwinglungbank.com-offers",
+   "site": "CMB Wing Lung Bank",
+   "host": "cmbwinglungbank.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 38,
+   "suggested_by": null,
+   "issuer_id": "hk-cmb-wing-lung"
+  },
+  {
+   "id": "hk-dah-sing-dahsing.com-cards",
+   "site": "Dah Sing Bank",
+   "host": "dahsing.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.dahsing.com/html/en/credit_card/index.html"
+   ],
+   "status": "untested",
+   "full_crawl_order": 39,
+   "suggested_by": null,
+   "issuer_id": "hk-dah-sing"
+  },
+  {
+   "id": "hk-dah-sing-dahsing.com-offers",
+   "site": "Dah Sing Bank",
+   "host": "dahsing.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 39,
+   "suggested_by": null,
+   "issuer_id": "hk-dah-sing"
+  },
+  {
+   "id": "hk-bocom-hk-hk.bankcomm.com-cards",
+   "site": "Bank of Communications (Hong Kong)",
+   "host": "hk.bankcomm.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2004980/list.shtml?channelId=2004980",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005005/2005035/list.shtml?channelId=2004980"
+   ],
+   "status": "untested",
+   "full_crawl_order": 40,
+   "suggested_by": null,
+   "issuer_id": "hk-bocom-hk"
+  },
+  {
+   "id": "hk-bocom-hk-hk.bankcomm.com-offers",
+   "site": "Bank of Communications (Hong Kong)",
+   "host": "hk.bankcomm.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 40,
+   "suggested_by": null,
+   "issuer_id": "hk-bocom-hk"
+  },
+  {
+   "id": "hk-ccb-asia-asia.ccb.com-cards",
+   "site": "CCB Asia",
+   "host": "asia.ccb.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.asia.ccb.com/hongkong/personal/credit_cards/card_list.html"
+   ],
+   "status": "untested",
+   "full_crawl_order": 41,
+   "suggested_by": null,
+   "issuer_id": "hk-ccb-asia"
+  },
+  {
+   "id": "hk-ccb-asia-asia.ccb.com-offers",
+   "site": "CCB Asia",
+   "host": "asia.ccb.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 41,
+   "suggested_by": null,
+   "issuer_id": "hk-ccb-asia"
+  },
+  {
+   "id": "hk-icbc-asia-icbcasia.com-cards",
+   "site": "ICBC Asia",
+   "host": "icbcasia.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.icbcasia.com/hk/en/personal/credit-cards/default.html"
+   ],
+   "status": "untested",
+   "full_crawl_order": 42,
+   "suggested_by": null,
+   "issuer_id": "hk-icbc-asia"
+  },
+  {
+   "id": "hk-icbc-asia-icbcasia.com-offers",
+   "site": "ICBC Asia",
+   "host": "icbcasia.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 42,
+   "suggested_by": null,
+   "issuer_id": "hk-icbc-asia"
+  },
+  {
+   "id": "hk-ocbc-ocbc.com.hk-cards",
+   "site": "OCBC Bank (Hong Kong)",
+   "host": "ocbc.com.hk",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.ocbc.com.hk/personal-banking/cards/credit-cards",
+    "https://www.ocbc.com.hk/personal-banking/cards/ocbc-credit-card"
+   ],
+   "status": "untested",
+   "full_crawl_order": 43,
+   "suggested_by": null,
+   "issuer_id": "hk-ocbc"
+  },
+  {
+   "id": "hk-ocbc-ocbc.com.hk-offers",
+   "site": "OCBC Bank (Hong Kong)",
+   "host": "ocbc.com.hk",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 43,
+   "suggested_by": null,
+   "issuer_id": "hk-ocbc"
+  },
+  {
+   "id": "hk-bea-hkbea.com-cards",
+   "site": "Bank of East Asia",
+   "host": "hkbea.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.hkbea.com/html/en/index.html"
+   ],
+   "status": "untested",
+   "full_crawl_order": 44,
+   "suggested_by": null,
+   "issuer_id": "hk-bea"
+  },
+  {
+   "id": "hk-bea-hkbea.com-offers",
+   "site": "Bank of East Asia",
+   "host": "hkbea.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html"
+   ],
+   "status": "untested",
+   "full_crawl_order": 44,
+   "suggested_by": null,
+   "issuer_id": "hk-bea"
+  },
+  {
+   "id": "hk-citi-citibank.com.hk-cards",
+   "site": "Citibank (Hong Kong)",
+   "host": "citibank.com.hk",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.citibank.com.hk/",
+    "https://www.citibank.com.hk/english/credit-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 45,
+   "suggested_by": null,
+   "issuer_id": "hk-citi"
+  },
+  {
+   "id": "hk-citi-citibank.com.hk-offers",
+   "site": "Citibank (Hong Kong)",
+   "host": "citibank.com.hk",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 45,
+   "suggested_by": null,
+   "issuer_id": "hk-citi"
+  },
+  {
+   "id": "hk-cncbi-cncbinternational.com-cards",
+   "site": "China CITIC Bank International",
+   "host": "cncbinternational.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.cncbinternational.com/home/en/index.jsp"
+   ],
+   "status": "untested",
+   "full_crawl_order": 46,
+   "suggested_by": null,
+   "issuer_id": "hk-cncbi"
+  },
+  {
+   "id": "hk-cncbi-cncbinternational.com-offers",
+   "site": "China CITIC Bank International",
+   "host": "cncbinternational.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 46,
+   "suggested_by": null,
+   "issuer_id": "hk-cncbi"
+  },
+  {
+   "id": "hk-standard-chartered-sc.com-cards",
+   "site": "Standard Chartered Hong Kong",
+   "host": "sc.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.sc.com/hk/credit-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 47,
+   "suggested_by": null,
+   "issuer_id": "hk-standard-chartered"
+  },
+  {
+   "id": "hk-standard-chartered-sc.com-offers",
+   "site": "Standard Chartered Hong Kong",
+   "host": "sc.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 47,
+   "suggested_by": null,
+   "issuer_id": "hk-standard-chartered"
+  },
+  {
+   "id": "hk-hang-seng-hangseng.com-cards",
+   "site": "Hang Seng Bank",
+   "host": "hangseng.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.hangseng.com/en-hk/personal/cards/overview/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 48,
+   "suggested_by": null,
+   "issuer_id": "hk-hang-seng"
+  },
+  {
+   "id": "hk-hang-seng-hangseng.com-offers",
+   "site": "Hang Seng Bank",
+   "host": "hangseng.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 48,
+   "suggested_by": null,
+   "issuer_id": "hk-hang-seng"
+  },
+  {
+   "id": "hk-dbs-dbs.com.hk-cards",
+   "site": "DBS Hong Kong",
+   "host": "dbs.com.hk",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.dbs.com.hk/personal/credit-cards/default.page"
+   ],
+   "status": "untested",
+   "full_crawl_order": 49,
+   "suggested_by": null,
+   "issuer_id": "hk-dbs"
+  },
+  {
+   "id": "hk-dbs-dbs.com.hk-offers",
+   "site": "DBS Hong Kong",
+   "host": "dbs.com.hk",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 49,
+   "suggested_by": null,
+   "issuer_id": "hk-dbs"
+  },
+  {
+   "id": "hk-hsbc-hsbc.com.hk-cards",
+   "site": "HSBC Hong Kong",
+   "host": "hsbc.com.hk",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.hsbc.com.hk/credit-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 50,
+   "suggested_by": null,
+   "issuer_id": "hk-hsbc"
+  },
+  {
+   "id": "hk-hsbc-hsbc.com.hk-offers",
+   "site": "HSBC Hong Kong",
+   "host": "hsbc.com.hk",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 50,
+   "suggested_by": null,
+   "issuer_id": "hk-hsbc"
+  },
+  {
+   "id": "hk-bochk-bochk.com-cards",
+   "site": "Bank of China (Hong Kong)",
+   "host": "bochk.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.bochk.com/en/creditcard.html",
+    "https://www.bochk.com/dam/boccreditcard/cardproductlisting/eng/index.html"
+   ],
+   "status": "untested",
+   "full_crawl_order": 51,
+   "suggested_by": null,
+   "issuer_id": "hk-bochk"
+  },
+  {
+   "id": "hk-bochk-bochk.com-offers",
+   "site": "Bank of China (Hong Kong)",
+   "host": "bochk.com",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 51,
+   "suggested_by": null,
+   "issuer_id": "hk-bochk"
+  },
+  {
+   "id": "hk-bochk-boci.com.hk-cards",
+   "site": "Bank of China (Hong Kong)",
+   "host": "boci.com.hk",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 51,
+   "suggested_by": null,
+   "issuer_id": "hk-bochk"
+  },
+  {
+   "id": "hk-bochk-boci.com.hk-offers",
+   "site": "Bank of China (Hong Kong)",
+   "host": "boci.com.hk",
+   "country": "HK",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 51,
+   "suggested_by": null,
+   "issuer_id": "hk-bochk"
+  },
+  {
    "id": "my-icbc-icbcmy.com-cards",
    "site": "ICBC Malaysia",
    "host": "icbcmy.com",
@@ -1645,6 +2180,118 @@
    "full_crawl_order": "C12",
    "suggested_by": null,
    "network_id": "diners"
+  },
+  {
+   "id": "hk-network-mastercard-mastercard.com-offers",
+   "site": "Mastercard",
+   "host": "mastercard.com",
+   "country": "HK",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C13",
+   "suggested_by": null,
+   "network_id": "mastercard"
+  },
+  {
+   "id": "hk-network-mastercard-priceless.com-offers",
+   "site": "Mastercard",
+   "host": "priceless.com",
+   "country": "HK",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C13",
+   "suggested_by": null,
+   "network_id": "mastercard"
+  },
+  {
+   "id": "hk-network-mastercard-specials.priceless.com-offers",
+   "site": "Mastercard",
+   "host": "specials.priceless.com",
+   "country": "HK",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://specials.priceless.com/"
+   ],
+   "status": "untested",
+   "full_crawl_order": "C13",
+   "suggested_by": null,
+   "network_id": "mastercard"
+  },
+  {
+   "id": "hk-network-jcb-jcb.co.jp-offers",
+   "site": "JCB",
+   "host": "jcb.co.jp",
+   "country": "HK",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C14",
+   "suggested_by": null,
+   "network_id": "jcb"
+  },
+  {
+   "id": "hk-network-jcb-specialoffers.jcb-offers",
+   "site": "JCB",
+   "host": "specialoffers.jcb",
+   "country": "HK",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.specialoffers.jcb/",
+    "https://www.specialoffers.jcb/en/campaign/d/east-asia/hong-kong/",
+    "https://www.specialoffers.jcb/en/offers/d/east-asia/hong-kong/"
+   ],
+   "status": "untested",
+   "full_crawl_order": "C14",
+   "suggested_by": null,
+   "network_id": "jcb"
+  },
+  {
+   "id": "hk-network-visa-visa.com-offers",
+   "site": "Visa",
+   "host": "visa.com",
+   "country": "HK",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C15",
+   "suggested_by": null,
+   "network_id": "visa"
+  },
+  {
+   "id": "hk-network-unionpay-unionpayintl.com-offers",
+   "site": "UnionPay",
+   "host": "unionpayintl.com",
+   "country": "HK",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.unionpayintl.com/hk/"
+   ],
+   "status": "untested",
+   "full_crawl_order": "C16",
+   "suggested_by": null,
+   "network_id": "unionpay"
+  },
+  {
+   "id": "hk-network-amex-americanexpress.com-offers",
+   "site": "American Express",
+   "host": "americanexpress.com",
+   "country": "HK",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C17",
+   "suggested_by": null,
+   "network_id": "amex"
   }
  ]
 }
