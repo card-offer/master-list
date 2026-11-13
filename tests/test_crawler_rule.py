@@ -16,7 +16,7 @@ from tools.validate import validate
 PAGE = "https://www.cimb.com.sg/en/personal/promotions/latest-promotions/cards/casa-x-vs.html"
 LIST = "https://www.cimb.com.sg/en/personal/promotions/dining-deals.html"
 TERMS = "https://www.cimb.com.sg/content/dam/cimbsg/personal/document/promotions/example-kopi-tnc.pdf"
-NOW = parse_instant("2026-11-12T02:00:00+08:00")
+NOW = parse_instant("2026-11-13T18:00:00+08:00")
 
 
 def fetch(url, kind, minute):
