@@ -1,8 +1,8 @@
 # Crawl sources
 
-This file describes the canonical list of sites to crawl for Malaysia (MY) and Singapore (SG). The list itself is [`crawler/sources.json`](sources.json). Do not crawl a host that is not on the list.
+This file describes the canonical list of sites to crawl for Malaysia (MY), Singapore (SG) and Thailand (TH). The list itself is [`crawler/sources.json`](sources.json). Do not crawl a host that is not on the list.
 
-Issuer rows are built by `tools/build_sources.py` from `{cc}/issuers.json` official domains and entry URLs, and from `pipeline/offers_config.json` seeds. Network and regulator rows are kept as they are in `crawler/sources.json`. A host also has to be in the issuer's or the network's `official_domains`, except for the two regulator sites used in the phase 1 census.
+Issuer rows are built by `tools/build_sources.py` from `{cc}/issuers.json` official domains and entry URLs, and from `pipeline/offers_config.json` seeds. Network and regulator rows are kept as they are in `crawler/sources.json`. A host also has to be in the issuer's or the network's `official_domains`, except for the regulator sites used in the phase 1 census.
 
 ## How to read a row
 
@@ -10,12 +10,12 @@ Issuer rows are built by `tools/build_sources.py` from `{cc}/issuers.json` offic
 |---|---|
 | `site` | The issuer, network or regulator name. |
 | `host` | The official host, without a leading `www.` |
-| `country` | `MY` or `SG`. |
+| `country` | `MY`, `SG` or `TH`. |
 | `type` | `issuer`, `network` or `regulator`. |
 | `purpose` | `cards` or `offers` for crawl pages, and `census` for the regulator lists. |
 | `entry_urls` | Known listing or start URLs from the repository. An empty list means the host is official but no start URL is recorded yet. |
 | `status` | Fetcher class from repository evidence only: `ok`, `js_shell`, `bot_wall`, `network_unreachable`, or `untested` when the repository has no such evidence. Do not invent a status. |
-| `full_crawl_order` | The order in `crawler/FULL_CRAWL.md`: `1` to `34` for issuers in that table, `after-34` for a phase 1 issuer not yet given a number, `C1` to `C12` for network offer sites, and `phase-1` for regulators. |
+| `full_crawl_order` | The order in `crawler/FULL_CRAWL.md`: an integer for issuers in that table (1 to 34 for Malaysia and Singapore, 35 to 45 for the proposed Thailand order), `after-34` for a phase 1 issuer not yet given a number, `C1` to `C17` for network offer sites, and `phase-1` for regulators. |
 | `suggested_by` | The GitHub issue that proposed the site, or `null` when the row came from the repository itself. |
 
 ## Suggesting a site
@@ -24,12 +24,13 @@ Contributors can propose a site with the "Suggest a site to crawl" issue form. T
 
 ## The list
 
-There are 116 rows in `crawler/sources.json`. Counts by country: MY 58, SG 58. Counts by type: issuer 96, network 18, regulator 2.
+There are 147 rows in `crawler/sources.json`. Counts by country: MY 58, SG 58, TH 31. Counts by type: issuer 118, network 26, regulator 3.
 
 | Order | Country | Type | Purpose | Site | Host | Status | Entry URLs |
 |---|---|---|---|---|---|---|---|
 | phase-1 | MY | regulator | census | Bank Negara Malaysia | `bnm.gov.my` | untested |  |
 | phase-1 | SG | regulator | census | Monetary Authority of Singapore | `eservices.mas.gov.sg` | untested |  |
+| phase-1 | TH | regulator | census | Bank of Thailand | `bot.or.th` | untested | https://www.bot.or.th/th/fi-list.html |
 | 1 | SG | issuer | cards | CIMB Singapore | `cimb.com.sg` | untested | https://www.cimb.com.sg/en/personal/banking-with-us/cards/credit-cards.html |
 | 1 | SG | issuer | offers | CIMB Singapore | `cimb.com.sg` | untested | https://www.cimb.com.sg/en/personal/promotions.html |
 | 1 | SG | issuer | cards | CIMB Singapore | `deals.cimb.com` | untested |  |
@@ -122,6 +123,28 @@ There are 116 rows in `crawler/sources.json`. Counts by country: MY 58, SG 58. C
 | 34 | MY | issuer | offers | Maybank | `maybank.com` | untested |  |
 | 34 | MY | issuer | cards | Maybank | `maybank2u.com.my` | untested | https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards/index.page |
 | 34 | MY | issuer | offers | Maybank | `maybank2u.com.my` | untested |  |
+| 35 | TH | issuer | cards | Lotus's Money | `lotussmoney.com` | untested | https://www.lotussmoney.com/credit-card |
+| 35 | TH | issuer | offers | Lotus's Money | `lotussmoney.com` | untested | https://www.lotussmoney.com/promotion/credit-card |
+| 36 | TH | issuer | cards | Krungsri First Choice | `firstchoice.co.th` | untested | https://www.firstchoice.co.th/cards |
+| 36 | TH | issuer | offers | Krungsri First Choice | `firstchoice.co.th` | untested | https://www.firstchoice.co.th/promotion/credit-card |
+| 37 | TH | issuer | cards | ICBC Thai | `icbcthai.com` | untested | https://www.icbcthai.com/th/column/1438059017405874179.html |
+| 37 | TH | issuer | offers | ICBC Thai | `icbcthai.com` | untested | https://www.icbcthai.com/th/column/1438059017535897643.html |
+| 38 | TH | issuer | cards | Government Savings Bank | `gsb.or.th` | untested | https://www.gsb.or.th/personal/card/ |
+| 38 | TH | issuer | offers | Government Savings Bank | `gsb.or.th` | untested | https://www.gsb.or.th/promotion/all-promotions/ |
+| 39 | TH | issuer | cards | American Express (Thai) | `americanexpress.com` | untested | https://www.americanexpress.com/th/th/compare-credit-cards/, https://www.americanexpress.com/th-th/credit-cards/compare-credit-cards/ |
+| 39 | TH | issuer | offers | American Express (Thai) | `americanexpress.com` | untested | https://www.americanexpress.com/th-th/benefits/promotions/dining.html |
+| 40 | TH | issuer | cards | ttb | `ttbbank.com` | untested |  |
+| 40 | TH | issuer | offers | ttb | `ttbbank.com` | untested | https://www.ttbbank.com/th/promotion/credit-card |
+| 41 | TH | issuer | cards | CardX | `cardx.co.th` | untested | https://www.cardx.co.th/th-TH/credit-card/catalog |
+| 41 | TH | issuer | offers | CardX | `cardx.co.th` | untested | https://www.cardx.co.th/th-TH/credit-card/promotion |
+| 42 | TH | issuer | cards | AEON Thana Sinsap | `aeon.co.th` | untested | https://www.aeon.co.th/aeon/cards/ |
+| 42 | TH | issuer | offers | AEON Thana Sinsap | `aeon.co.th` | untested | https://www.aeon.co.th/aeon/promotions/ |
+| 43 | TH | issuer | cards | KTC | `ktc.co.th` | untested | https://www.ktc.co.th/credit-card |
+| 43 | TH | issuer | offers | KTC | `ktc.co.th` | untested | https://www.ktc.co.th/promotion |
+| 44 | TH | issuer | cards | Krungsri Card | `krungsricard.com` | untested | https://www.krungsricard.com/th/product |
+| 44 | TH | issuer | offers | Krungsri Card | `krungsricard.com` | untested | https://www.krungsricard.com/th/promotion |
+| 45 | TH | issuer | cards | UOB Thailand | `uob.co.th` | untested | https://www.uob.co.th/personal/credit-cards.page, https://www.uob.co.th/personal/credit-cards/compare.page |
+| 45 | TH | issuer | offers | UOB Thailand | `uob.co.th` | untested |  |
 | after-34 | MY | issuer | cards | ICBC Malaysia | `icbcmy.com` | untested |  |
 | after-34 | MY | issuer | offers | ICBC Malaysia | `icbcmy.com` | untested |  |
 | after-34 | MY | issuer | cards | ICBC Malaysia | `v.icbc.com.cn` | untested |  |
@@ -144,3 +167,11 @@ There are 116 rows in `crawler/sources.json`. Counts by country: MY 58, SG 58. C
 | C10 | SG | network | offers | American Express | `americanexpress.com` | untested |  |
 | C11 | MY | network | offers | Diners Club | `dinersclub.com` | untested |  |
 | C12 | SG | network | offers | Diners Club | `dinersclub.com` | untested |  |
+| C13 | TH | network | offers | Mastercard | `mastercard.com` | untested |  |
+| C13 | TH | network | offers | Mastercard | `priceless.com` | untested |  |
+| C13 | TH | network | offers | Mastercard | `specials.priceless.com` | untested | https://specials.priceless.com/ |
+| C14 | TH | network | offers | JCB | `jcb.co.jp` | untested |  |
+| C14 | TH | network | offers | JCB | `specialoffers.jcb` | untested | https://www.specialoffers.jcb/ |
+| C15 | TH | network | offers | Visa | `visa.com` | untested |  |
+| C16 | TH | network | offers | UnionPay | `unionpayintl.com` | untested |  |
+| C17 | TH | network | offers | American Express | `americanexpress.com` | untested |  |

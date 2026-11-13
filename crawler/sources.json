@@ -1,5 +1,5 @@
 {
- "description": "Canonical list of sites to crawl for Malaysia and Singapore. Every official issuer or network host, and the phase 1 regulator hosts, must appear here before a crawl. See crawler/SOURCES.md.",
+ "description": "Canonical list of sites to crawl for Malaysia, Singapore and Thailand. Every official issuer or network host, and the phase 1 regulator hosts, must appear here before a crawl. See crawler/SOURCES.md.",
  "items": [
   {
    "id": "my-regulator-bnm.gov.my-census",
@@ -21,6 +21,20 @@
    "type": "regulator",
    "purpose": "census",
    "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "phase-1",
+   "suggested_by": null
+  },
+  {
+   "id": "th-regulator-bot.or.th-census",
+   "site": "Bank of Thailand",
+   "host": "bot.or.th",
+   "country": "TH",
+   "type": "regulator",
+   "purpose": "census",
+   "entry_urls": [
+    "https://www.bot.or.th/th/fi-list.html"
+   ],
    "status": "untested",
    "full_crawl_order": "phase-1",
    "suggested_by": null
@@ -1345,6 +1359,334 @@
    "issuer_id": "my-maybank"
   },
   {
+   "id": "th-lotuss-money-lotussmoney.com-cards",
+   "site": "Lotus's Money",
+   "host": "lotussmoney.com",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.lotussmoney.com/credit-card"
+   ],
+   "status": "untested",
+   "full_crawl_order": 35,
+   "suggested_by": null,
+   "issuer_id": "th-lotuss-money"
+  },
+  {
+   "id": "th-lotuss-money-lotussmoney.com-offers",
+   "site": "Lotus's Money",
+   "host": "lotussmoney.com",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.lotussmoney.com/promotion/credit-card"
+   ],
+   "status": "untested",
+   "full_crawl_order": 35,
+   "suggested_by": null,
+   "issuer_id": "th-lotuss-money"
+  },
+  {
+   "id": "th-first-choice-firstchoice.co.th-cards",
+   "site": "Krungsri First Choice",
+   "host": "firstchoice.co.th",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.firstchoice.co.th/cards"
+   ],
+   "status": "untested",
+   "full_crawl_order": 36,
+   "suggested_by": null,
+   "issuer_id": "th-first-choice"
+  },
+  {
+   "id": "th-first-choice-firstchoice.co.th-offers",
+   "site": "Krungsri First Choice",
+   "host": "firstchoice.co.th",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.firstchoice.co.th/promotion/credit-card"
+   ],
+   "status": "untested",
+   "full_crawl_order": 36,
+   "suggested_by": null,
+   "issuer_id": "th-first-choice"
+  },
+  {
+   "id": "th-icbc-thai-icbcthai.com-cards",
+   "site": "ICBC Thai",
+   "host": "icbcthai.com",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.icbcthai.com/th/column/1438059017405874179.html"
+   ],
+   "status": "untested",
+   "full_crawl_order": 37,
+   "suggested_by": null,
+   "issuer_id": "th-icbc-thai"
+  },
+  {
+   "id": "th-icbc-thai-icbcthai.com-offers",
+   "site": "ICBC Thai",
+   "host": "icbcthai.com",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.icbcthai.com/th/column/1438059017535897643.html"
+   ],
+   "status": "untested",
+   "full_crawl_order": 37,
+   "suggested_by": null,
+   "issuer_id": "th-icbc-thai"
+  },
+  {
+   "id": "th-gsb-gsb.or.th-cards",
+   "site": "Government Savings Bank",
+   "host": "gsb.or.th",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.gsb.or.th/personal/card/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 38,
+   "suggested_by": null,
+   "issuer_id": "th-gsb"
+  },
+  {
+   "id": "th-gsb-gsb.or.th-offers",
+   "site": "Government Savings Bank",
+   "host": "gsb.or.th",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.gsb.or.th/promotion/all-promotions/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 38,
+   "suggested_by": null,
+   "issuer_id": "th-gsb"
+  },
+  {
+   "id": "th-amex-americanexpress.com-cards",
+   "site": "American Express (Thai)",
+   "host": "americanexpress.com",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.americanexpress.com/th/th/compare-credit-cards/",
+    "https://www.americanexpress.com/th-th/credit-cards/compare-credit-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 39,
+   "suggested_by": null,
+   "issuer_id": "th-amex"
+  },
+  {
+   "id": "th-amex-americanexpress.com-offers",
+   "site": "American Express (Thai)",
+   "host": "americanexpress.com",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.americanexpress.com/th-th/benefits/promotions/dining.html"
+   ],
+   "status": "untested",
+   "full_crawl_order": 39,
+   "suggested_by": null,
+   "issuer_id": "th-amex"
+  },
+  {
+   "id": "th-ttb-ttbbank.com-cards",
+   "site": "ttb",
+   "host": "ttbbank.com",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 40,
+   "suggested_by": null,
+   "issuer_id": "th-ttb"
+  },
+  {
+   "id": "th-ttb-ttbbank.com-offers",
+   "site": "ttb",
+   "host": "ttbbank.com",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.ttbbank.com/th/promotion/credit-card"
+   ],
+   "status": "untested",
+   "full_crawl_order": 40,
+   "suggested_by": null,
+   "issuer_id": "th-ttb"
+  },
+  {
+   "id": "th-cardx-cardx.co.th-cards",
+   "site": "CardX",
+   "host": "cardx.co.th",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.cardx.co.th/th-TH/credit-card/catalog"
+   ],
+   "status": "untested",
+   "full_crawl_order": 41,
+   "suggested_by": null,
+   "issuer_id": "th-cardx"
+  },
+  {
+   "id": "th-cardx-cardx.co.th-offers",
+   "site": "CardX",
+   "host": "cardx.co.th",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.cardx.co.th/th-TH/credit-card/promotion"
+   ],
+   "status": "untested",
+   "full_crawl_order": 41,
+   "suggested_by": null,
+   "issuer_id": "th-cardx"
+  },
+  {
+   "id": "th-aeon-aeon.co.th-cards",
+   "site": "AEON Thana Sinsap",
+   "host": "aeon.co.th",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.aeon.co.th/aeon/cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 42,
+   "suggested_by": null,
+   "issuer_id": "th-aeon"
+  },
+  {
+   "id": "th-aeon-aeon.co.th-offers",
+   "site": "AEON Thana Sinsap",
+   "host": "aeon.co.th",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.aeon.co.th/aeon/promotions/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 42,
+   "suggested_by": null,
+   "issuer_id": "th-aeon"
+  },
+  {
+   "id": "th-ktc-ktc.co.th-cards",
+   "site": "KTC",
+   "host": "ktc.co.th",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.ktc.co.th/credit-card"
+   ],
+   "status": "untested",
+   "full_crawl_order": 43,
+   "suggested_by": null,
+   "issuer_id": "th-ktc"
+  },
+  {
+   "id": "th-ktc-ktc.co.th-offers",
+   "site": "KTC",
+   "host": "ktc.co.th",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.ktc.co.th/promotion"
+   ],
+   "status": "untested",
+   "full_crawl_order": 43,
+   "suggested_by": null,
+   "issuer_id": "th-ktc"
+  },
+  {
+   "id": "th-krungsri-card-krungsricard.com-cards",
+   "site": "Krungsri Card",
+   "host": "krungsricard.com",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.krungsricard.com/th/product"
+   ],
+   "status": "untested",
+   "full_crawl_order": 44,
+   "suggested_by": null,
+   "issuer_id": "th-krungsri-card"
+  },
+  {
+   "id": "th-krungsri-card-krungsricard.com-offers",
+   "site": "Krungsri Card",
+   "host": "krungsricard.com",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.krungsricard.com/th/promotion"
+   ],
+   "status": "untested",
+   "full_crawl_order": 44,
+   "suggested_by": null,
+   "issuer_id": "th-krungsri-card"
+  },
+  {
+   "id": "th-uob-uob.co.th-cards",
+   "site": "UOB Thailand",
+   "host": "uob.co.th",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.uob.co.th/personal/credit-cards.page",
+    "https://www.uob.co.th/personal/credit-cards/compare.page"
+   ],
+   "status": "untested",
+   "full_crawl_order": 45,
+   "suggested_by": null,
+   "issuer_id": "th-uob"
+  },
+  {
+   "id": "th-uob-uob.co.th-offers",
+   "site": "UOB Thailand",
+   "host": "uob.co.th",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 45,
+   "suggested_by": null,
+   "issuer_id": "th-uob"
+  },
+  {
    "id": "my-icbc-icbcmy.com-cards",
    "site": "ICBC Malaysia",
    "host": "icbcmy.com",
@@ -1645,6 +1987,114 @@
    "full_crawl_order": "C12",
    "suggested_by": null,
    "network_id": "diners"
+  },
+  {
+   "id": "th-network-mastercard-mastercard.com-offers",
+   "site": "Mastercard",
+   "host": "mastercard.com",
+   "country": "TH",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C13",
+   "suggested_by": null,
+   "network_id": "mastercard"
+  },
+  {
+   "id": "th-network-mastercard-priceless.com-offers",
+   "site": "Mastercard",
+   "host": "priceless.com",
+   "country": "TH",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C13",
+   "suggested_by": null,
+   "network_id": "mastercard"
+  },
+  {
+   "id": "th-network-mastercard-specials.priceless.com-offers",
+   "site": "Mastercard",
+   "host": "specials.priceless.com",
+   "country": "TH",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://specials.priceless.com/"
+   ],
+   "status": "untested",
+   "full_crawl_order": "C13",
+   "suggested_by": null,
+   "network_id": "mastercard"
+  },
+  {
+   "id": "th-network-jcb-jcb.co.jp-offers",
+   "site": "JCB",
+   "host": "jcb.co.jp",
+   "country": "TH",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C14",
+   "suggested_by": null,
+   "network_id": "jcb"
+  },
+  {
+   "id": "th-network-jcb-specialoffers.jcb-offers",
+   "site": "JCB",
+   "host": "specialoffers.jcb",
+   "country": "TH",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.specialoffers.jcb/"
+   ],
+   "status": "untested",
+   "full_crawl_order": "C14",
+   "suggested_by": null,
+   "network_id": "jcb"
+  },
+  {
+   "id": "th-network-visa-visa.com-offers",
+   "site": "Visa",
+   "host": "visa.com",
+   "country": "TH",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C15",
+   "suggested_by": null,
+   "network_id": "visa"
+  },
+  {
+   "id": "th-network-unionpay-unionpayintl.com-offers",
+   "site": "UnionPay",
+   "host": "unionpayintl.com",
+   "country": "TH",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C16",
+   "suggested_by": null,
+   "network_id": "unionpay"
+  },
+  {
+   "id": "th-network-amex-americanexpress.com-offers",
+   "site": "American Express",
+   "host": "americanexpress.com",
+   "country": "TH",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C17",
+   "suggested_by": null,
+   "network_id": "amex"
   }
  ]
 }
