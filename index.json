@@ -9,7 +9,7 @@
       "timezone": "Asia/Kuala_Lumpur"
     },
     "SG": {
-      "cards": 114,
+      "cards": 115,
       "currency": "SGD",
       "issuers": 16,
       "offers": 1017,
@@ -17,7 +17,7 @@
       "timezone": "Asia/Singapore"
     }
   },
-  "generated_at": "2026-11-12T07:37:23+00:00",
+  "generated_at": "2026-11-13T01:41:23+00:00",
   "indexes": "Built in CI and published to GitHub Pages. Not stored on the main branch.",
   "layout": {
     "archive": "{cc}/archive/offers/{issuer}.json",
