@@ -1,6 +1,6 @@
 {
-  "count": 952,
-  "generated_at": "2026-11-12T07:37:23+00:00",
+  "count": 955,
+  "generated_at": "2026-11-13T00:59:11+00:00",
   "schema_version": "0.3.0",
   "items": [
     {"aliases":[],"categories":["hotel"],"countries":["MY"],"id":"1001-night-hotel-trademark-collection-by-wyndham","name":"1001 Night Hotel, Trademark Collection By Wyndham","offer_ids":["my-rhb-042b63f82d"],"official_domain":null,"verified":false},
@@ -319,9 +319,11 @@
     {"aliases":[],"categories":["dining"],"countries":["SG"],"id":"global-dining","name":"Global Dining","offer_ids":["sg-amex-4fc7b3ad9f"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["entertainment"],"countries":["SG"],"id":"golden-village","name":"Golden Village","offer_ids":["sg-hsbc-113dcd6653"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["entertainment"],"countries":["SG"],"id":"golf","name":"Golf","offer_ids":["sg-amex-bec28693c8"],"official_domain":null,"verified":false},
+    {"aliases":[],"categories":["utilities"],"countries":["SG"],"id":"gomo","name":"GOMO","offer_ids":["sg-gxs-89688a5a25"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["shopping"],"countries":["MY"],"id":"goodnite","name":"Goodnite","offer_ids":["my-rhb-0f9d3ed16c"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["dining"],"countries":["SG"],"id":"gordon-ramsay-bar-and-grill","name":"Gordon Ramsay Bar & Grill","offer_ids":["sg-standard-chartered-529242ad60"],"official_domain":null,"verified":false},
     {"aliases":["sg-gotti-italiano"],"categories":["dining"],"countries":["SG"],"id":"gotti-italiano","name":"Gotti Italiano","offer_ids":["sg-ocbc-5f40e5883f","sg-standard-chartered-cc3bb0bb99"],"official_domain":null,"verified":true},
+    {"aliases":[],"categories":["ewallet","travel"],"countries":["SG"],"id":"grab","name":"Grab","offer_ids":["sg-gxs-7649af1817","sg-gxs-8aa1df15bc"],"official_domain":null,"verified":true},
     {"aliases":[],"categories":[],"countries":["SG"],"id":"grammarly","name":"Grammarly","offer_ids":["sg-standard-chartered-d27748e220"],"official_domain":null,"verified":false},
     {"aliases":["sg-grand-batam-mall"],"categories":["entertainment","shopping"],"countries":["SG"],"id":"grand-batam-mall","name":"Grand Batam Mall","offer_ids":["sg-standard-chartered-19f23b5b9e","sg-standard-chartered-a123481548","sg-standard-chartered-c41b9cce73"],"official_domain":null,"verified":true},
     {"aliases":[],"categories":["hotel"],"countries":["SG"],"id":"grand-copthorne-waterfront-hotel","name":"Grand Copthorne Waterfront Hotel Singapore","offer_ids":["sg-ocbc-9b424824b8"],"official_domain":null,"verified":false},
@@ -750,6 +752,7 @@
     {"aliases":[],"categories":["hotel"],"countries":["SG"],"id":"singapore-marriott-tang-plaza-hotel-crossroads-cafe","name":"Singapore Marriott Tang Plaza Hotel, Crossroads Café","offer_ids":["sg-ocbc-94e1fbab08"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["hotel"],"countries":["SG"],"id":"singapore-marriott-tang-plaza-hotel-java","name":"Singapore Marriott Tang Plaza Hotel, JAVA+","offer_ids":["sg-ocbc-5d7767ecb1"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["hotel"],"countries":["SG"],"id":"singapore-marriott-tang-plaza-hotel-lobby-lounge","name":"Singapore Marriott Tang Plaza Hotel, Lobby Lounge","offer_ids":["sg-ocbc-d3bd4a1b0e"],"official_domain":null,"verified":false},
+    {"aliases":[],"categories":["utilities"],"countries":["SG"],"id":"singtel","name":"Singtel","offer_ids":["sg-gxs-89688a5a25"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":[],"countries":["MY"],"id":"sixt","name":"SIXT","offer_ids":["my-bank-islam-d9849031fa"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["beauty"],"countries":["MY"],"id":"sk-ii","name":"SK-II","offer_ids":["my-uob-d328bf32b2"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":[],"countries":["SG"],"id":"skirt-w","name":"SKIRT @ W Singapore","offer_ids":["sg-standard-chartered-27962d8a14"],"official_domain":null,"verified":false},
