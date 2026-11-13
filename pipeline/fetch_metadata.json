@@ -3364,5 +3364,6 @@
 {"url": "https://www.maybank.com/islamic/en/cards/amex_ikhwan_platinum.page", "status": 200, "final_url": "https://www.maybank.com/islamic/en/cards/amex_ikhwan_platinum.page", "fetched_at": "2026-11-12T13:44:53+08:00"},
 {"url": "https://www.maybank.com/islamic/en/cards/mastercard_ikhwan_gold.page", "status": 200, "final_url": "https://www.maybank.com/islamic/en/cards/mastercard_ikhwan_gold.page", "fetched_at": "2026-11-12T13:44:55+08:00"},
 {"url": "https://www.maybank.com/islamic/en/cards/petronas_ikhwan_gold.page", "status": 200, "final_url": "https://www.maybank.com/islamic/en/cards/petronas_ikhwan_gold.page", "fetched_at": "2026-11-12T13:44:59+08:00"},
-{"url": "https://www.maybank.com/iwov-resources/pdf/personal/cards/credit_cards/PDS_Visa_Infinite_Ikhwan.pdf", "status": 200, "final_url": "https://www.maybank.com/iwov-resources/pdf/personal/cards/credit_cards/PDS_Visa_Infinite_Ikhwan.pdf", "fetched_at": "2026-11-12T13:46:24+08:00"}
+{"url": "https://www.maybank.com/iwov-resources/pdf/personal/cards/credit_cards/PDS_Visa_Infinite_Ikhwan.pdf", "status": 200, "final_url": "https://www.maybank.com/iwov-resources/pdf/personal/cards/credit_cards/PDS_Visa_Infinite_Ikhwan.pdf", "fetched_at": "2026-11-12T13:46:24+08:00"},
+{"url": "https://www.bankrakyat.com.my/", "status": 200, "final_url": "https://www.bankrakyat.com.my/", "fetched_at": "2026-11-13T10:09:25+08:00"}
 ]

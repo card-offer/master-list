@@ -767,7 +767,7 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.bankrakyat.com.my/portal-main/compare-cards"
+    "https://www.bankrakyat.com.my/"
    ],
    "status": "untested",
    "full_crawl_order": 19,
