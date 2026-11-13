@@ -640,6 +640,32 @@
    "issuer_id": "sg-maybank"
   },
   {
+   "id": "sg-standard-chartered-av.sc.com-cards",
+   "site": "Standard Chartered Singapore",
+   "host": "av.sc.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 15,
+   "suggested_by": null,
+   "issuer_id": "sg-standard-chartered"
+  },
+  {
+   "id": "sg-standard-chartered-av.sc.com-offers",
+   "site": "Standard Chartered Singapore",
+   "host": "av.sc.com",
+   "country": "SG",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 15,
+   "suggested_by": null,
+   "issuer_id": "sg-standard-chartered"
+  },
+  {
    "id": "sg-standard-chartered-sc.com-cards",
    "site": "Standard Chartered Singapore",
    "host": "sc.com",
