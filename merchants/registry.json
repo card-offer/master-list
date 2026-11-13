@@ -1,6 +1,6 @@
 {
   "count": 952,
-  "generated_at": "2026-11-12T07:37:23+00:00",
+  "generated_at": "2026-11-13T03:57:58+00:00",
   "schema_version": "0.3.0",
   "items": [
     {"aliases":[],"categories":["hotel"],"countries":["MY"],"id":"1001-night-hotel-trademark-collection-by-wyndham","name":"1001 Night Hotel, Trademark Collection By Wyndham","offer_ids":["my-rhb-042b63f82d"],"official_domain":null,"verified":false},
@@ -33,7 +33,7 @@
     {"aliases":[],"categories":["hotel"],"countries":["SG"],"id":"amari-asia-pacific","name":"Amari (Asia Pacific)","offer_ids":["sg-standard-chartered-f6c926fe86"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["online"],"countries":["SG"],"id":"amazon","name":"Amazon Singapore","offer_ids":["sg-ocbc-5d169283d0"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":[],"countries":["SG"],"id":"american-tourister","name":"American Tourister","offer_ids":["sg-uob-dce1412dd7"],"official_domain":null,"verified":false},
-    {"aliases":[],"categories":[],"countries":["MY"],"id":"anantara-vacation-club","name":"Anantara Vacation Club","offer_ids":["my-rhb-e06e0d6a71"],"official_domain":null,"verified":false},
+    {"aliases":[],"categories":["hotel"],"countries":["MY"],"id":"anantara-vacation-club","name":"Anantara Vacation Club","offer_ids":["my-cimb-9e0efaa423","my-rhb-e06e0d6a71"],"official_domain":null,"verified":true},
     {"aliases":["sg-and-other-stories"],"categories":["fashion","shopping"],"countries":["SG"],"id":"and-other-stories","name":"& Other Stories","offer_ids":["sg-ocbc-2799d58b51","sg-standard-chartered-ab27a9a640"],"official_domain":null,"verified":true},
     {"aliases":[],"categories":["dining"],"countries":["SG"],"id":"andaz-singapore-665f","name":"Andaz Singapore, 665°F","offer_ids":["sg-ocbc-e76b28aa2d"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["travel"],"countries":["SG"],"id":"andaz-singapore-alley-on-25","name":"Andaz Singapore, Alley on 25","offer_ids":["sg-ocbc-8f55bcf16c"],"official_domain":null,"verified":false},
