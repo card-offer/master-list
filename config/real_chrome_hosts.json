@@ -1,0 +1,4 @@
+{
+  "description": "Hosts the maintainer approved for real-Chrome mode. Real-Chrome mode is refused for any other host. This list starts empty until the maintainer adds a host.",
+  "hosts": []
+}
