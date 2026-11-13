@@ -1,6 +1,6 @@
 # Issuer census (phase 1)
 
-Phase 1 of `crawler/FULL_CRAWL.md`. Every entry on the regulator lists was checked against the institution's own official site on 2026-11-11. Sources are the regulator sites and the institutions' own sites only. `null` means not known or not applicable.
+Phase 1 of `crawler/FULL_CRAWL.md`. Every Malaysia and Singapore entry on the regulator lists was checked against the institution's own official site on 2026-11-11. Every Indonesia bank on the OJK June 2026 bank-address list was checked against the institution's own official site on 2026-11-13. Sources are the regulator sites and the institutions' own sites only. `null` means not known or not applicable.
 
 Results: `in_repository`, `same_group`, `new_issuer`, `no_consumer_card`, `out_of_scope_wholesale`, `not_reached` (see FULL_CRAWL.md, Phase 1, step 3). `out_of_scope_wholesale` is a Singapore scope exclusion for a MAS FID Wholesale Bank, by maintainer decision; it is not a confirmed product exclusion. An `off_domain_redirect` was recorded and not followed.
 
@@ -294,6 +294,130 @@ ICBC Malaysia: https robots.txt was 404 (no rules). The product page confirmed t
 
 Still flagged `robots_unreadable` where https robots.txt was again unreadable and a page was still read: PETRONAS Dagangan, RHB Singapore, Public Bank and Public Islamic Bank, Bank of China SG, and several other hosts listed in the row notes.
 
+## Indonesia (ID)
+
+Regulator lists read on 2026-11-13 (Asia/Kuala_Lumpur). Sources were official regulator pages and each bank's own official site only. Aggregators were not used.
+
+Bank list: OJK, Daftar Alamat Kantor Pusat Bank Umum Dan Syariah, Juni 2026, sheet Daftar Bank Umum, Excel file at https://www.ojk.go.id/id/kanal/perbankan/data-dan-statistik/Documents/Pages/Daftar-Alamat-Kantor-Pusat-Bank-Umum-Dan-Syariah/Daftar%20Alamat%20Kantor%20Pusat%20Bank%20Umum%20Dan%20Syariah%20-%20Juni%202026.xlsx (4 Persero, 67 Swasta, 27 BPD, 7 foreign branches; 105 banks, each with a website). Footnotes in that workbook are notes, not institutions. OJK https robots.txt was 404 (no rules).
+
+Finance-company directory: OJK, Direktori Lembaga Pembiayaan dan PMV Juli 2026, PDF at https://www.ojk.go.id/id/kanal/iknb/data-dan-statistik/direktori/lembaga-pembiayaan/Documents/Direktori%20Lembaga%20Pembiayaan%20dan%20PMV%20Juli%202026.pdf (193 firms). The directory does not state websites, and it does not label any firm as a kartu kredit issuer. Individual finance-company sites were not opened. Names that include Credit, and that should be retried if an official website is later confirmed, are AEON Credit Services Indonesia, PT Home Credit Indonesia, and Credit Saison Indonesia Finance.
+
+Bank Indonesia: robots.txt on https://www.bi.go.id/robots.txt was 200 (Allow: /, with Disallow for /_layouts, /Lists, Style Library and similar). The Daftar Lembaga Berizin page at https://www.bi.go.id/id/layanan/informasi-perizinan/sistem-pembayaran/default.aspx lists PJP licensees, but the category filter, pagination and Unduh control are ASP.NET POST forms. Those forms were not submitted. SPIP tables 5c and 2 are aggregate statistics, not an issuer list. The census therefore uses the OJK bank list plus official-site confirmation. The BI PJP list is a gap until a maintainer allows the public filter or a static list is published.
+
+Each of the 105 bank websites was opened through `pipeline/fetcher.py` only (plain, then the ordinary browser when the plain fetch was a shell, timeout or similar, including `--disable-http2` where needed). Real-Chrome was not used. Off-domain redirects were recorded and not followed. A first-pass product-keyword tag was downgraded when the official text was bill payment, meta keywords, a government-transaction news item, or a foreign-group page rather than a local consumer card catalogue.
+
+Proposed official hosts that were not added, because they are off-domain from the OJK website host and were not fetched: indonesia.icbc.com.cn (ICBC Indonesia card menu) and mandirikartukredit.com (Bank Mandiri card catalogue). applykartukredit.bankmega.com was seen on Bank Mega pages and was not added.
+
+No `in_repository` or `same_group` result was recorded. Related entities such as BCA Syariah, Bank Digital BCA and Mega Syariah were not shown to sell consumer cards on a confirmed conventional-issuer catalogue, and their own sites were not confirmed as card issuers.
+
+| regulator entry | regulator list | result | issuer ID | official URL that proves the result | date checked | note |
+|---|---|---|---|---|---|---|
+| PT BANK RAKYAT INDONESIA (PERSERO) Tbk | OJK Bank Umum Juni 2026 (Persero) | not_reached | null | https://www.bri.co.id/ | 2026-11-13 | Ordinary browser was class bot_wall. |
+| PT BANK MANDIRI (PERSERO) Tbk | OJK Bank Umum Juni 2026 (Persero) | new_issuer | `id-mandiri` | https://www.bankmandiri.co.id/ | 2026-11-13 | Reached with the ordinary browser and --disable-http2 after plain timeouts. Homepage states Jelajahi keunggulan produk mandiri kartu kredit and Kartu Kredit Mandiri Hilang, and links the catalogue to mandirikartukredit.com (off-domain, not fetched, proposed). Offer listing https://bankmandiri.co.id/promo-mandiri is on the official host. robots.txt was unreadable (robots_unreachable). |
+| PT BANK NEGARA INDONESIA (PERSERO) Tbk | OJK Bank Umum Juni 2026 (Persero) | not_reached | null | https://www.bni.co.id/id-id/ | 2026-11-13 | Ordinary browser was class bot_wall. |
+| PT BANK TABUNGAN NEGARA (PERSERO) Tbk | OJK Bank Umum Juni 2026 (Persero) | not_reached | null | https://www.btn.co.id/id | 2026-11-13 | Ordinary browser was class bot_wall. |
+| PT BANK DANAMON INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | new_issuer | `id-danamon` | https://www.danamon.co.id/Personal/KartuTransaksi/Kartu-Kredit | 2026-11-13 | Official card listing states Kartu Kredit and names several consumer cards, including Grab, JCB Precious, Mastercard Platinum, Mastercard World and Visa Platinum. |
+| PT BANK PERMATA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.permatabank.com/ | 2026-11-13 | Plain request was class bot_wall (HTTP 403). Ordinary browser with --disable-http2 was also class bot_wall (HTTP 403, 28 words). robots.txt was unreadable. |
+| PT BANK CENTRAL ASIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | new_issuer | `id-bca` | https://www.bca.co.id/id/individu/produk/kartu-kredit | 2026-11-13 | Official card listing states Kartu Kredit and product names including Mastercard World and BCA Kartu Kredit Indonesia. promo.bca.co.id added from links on that page. Fetcher class captcha was a script-text false positive; public text was used and captcha was not bypassed. |
+| PT BANK MAYBANK INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.maybank.co.id | 2026-11-13 | Plain request was class bot_wall. Ordinary browser with --disable-http2 failed with Page.content: Target crashed. |
+| PT BANK PAN INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.panin.co.id/ | 2026-11-13 | Plain request was class bot_wall (HTTP 403). Ordinary browser with --disable-http2 was also class bot_wall (HTTP 403, 29 words). robots.txt was unreadable. |
+| PT BANK CIMB NIAGA Tbk | OJK Bank Umum Juni 2026 (Swasta) | new_issuer | `id-cimb` | https://www.cimbniaga.co.id/id/personal/kartu-kredit | 2026-11-13 | Official card listing title is Kartu Kredit CIMB Niaga. |
+| PT BANK UOB INDONESIA | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.uob.co.id | 2026-11-13 | Ordinary browser returned class ok but only a very short text extract, so the page was not treated as a complete product list. |
+| PT BANK OCBC NISP Tbk | OJK Bank Umum Juni 2026 (Swasta) | new_issuer | `id-ocbc` | https://www.ocbc.id/id/individu/kartu-transaksi/kartu-kredit | 2026-11-13 | Official card listing at /id/individu/kartu-transaksi/kartu-kredit. |
+| PT BANK ARTHA GRAHA INTERNASIONAL Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.arthagraha.com/ | 2026-11-13 | Still class js_shell after the ordinary browser, and no kartu kredit text was confirmed. |
+| PT BANK BUMI ARTA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.bankbba.co.id/bumiarta/id | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. |
+| PT BANK HSBC INDONESIA | OJK Bank Umum Juni 2026 (Swasta) | new_issuer | `id-hsbc` | https://www.hsbc.co.id/en-id/credit-cards/ | 2026-11-13 | Official English card listing is at /en-id/credit-cards/. |
+| PT BANK JTRUST INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.jtrustbank.co.id/ | 2026-11-13 | Still class js_shell after the ordinary browser, and no kartu kredit text was confirmed. |
+| PT BANK MAYAPADA INTERNATIONAL Tbk | OJK Bank Umum Juni 2026 (Swasta) | new_issuer | `id-mayapada` | https://www.bankmayapada.com/id/produk/pinjaman/mycreditcard | 2026-11-13 | Official page for myCREDIT CARD. |
+| PT BANK OF INDIA INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.boiindonesia.co.id | 2026-11-13 | Homepage or product page was class captcha on the plain request. robots.txt was unreadable. |
+| PT BANK MUAMALAT INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.bankmuamalat.co.id | 2026-11-13 | Homepage redirected off-domain to validate.perfdrive.com (a bot-manager interstitial) and was not followed. |
+| PT BANK MESTIKA DHARMA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.bankmestika.co.id | 2026-11-13 | Homepage or product page was class captcha on the plain request. |
+| PT BANK SHINHAN INDONESIA | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.shinhan.co.id | 2026-11-13 | Official site was not read: TLS or protocol error. |
+| PT BANK SINARMAS Tbk | OJK Bank Umum Juni 2026 (Swasta) | new_issuer | `id-sinarmas` | https://www.banksinarmas.com/id/personal/produk/kartukredit | 2026-11-13 | Official card listing at /id/personal/produk/kartukredit. Fetcher class captcha was a script-text false positive; public title and H1 were used and captcha was not bypassed. |
+| PT BANK KASIKORN INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.kasikornbank.co.id/ | 2026-11-13 | Ordinary browser was class bot_wall. |
+| PT BANK GANESHA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.bankganesha.co.id/individuals/kartu-individu | 2026-11-13 | Downgraded from a first-pass new_issuer tag. Hits came from meta keywords and debit or ATM card wording. The individuals card page was class captcha, so it is not treated as a confirmed catalogue. |
+| PT BANK ICBC INDONESIA | OJK Bank Umum Juni 2026 (Swasta) | new_issuer | `id-icbc` | https://www.icbc.co.id | 2026-11-13 | Official homepage states Credit Card. The card menu points at indonesia.icbc.com.cn, which is off-domain and was not fetched. That host is proposed, not added. |
+| PT BANK QNB INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.qnb.co.id | 2026-11-13 | Homepage or product page was class captcha on the plain request. robots.txt was unreadable. |
+| PT BANK WOORI SAUDARA INDONESIA 1906 Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.bankwoorisaudara.com | 2026-11-13 | Official site was not read: TLS or protocol error. |
+| PT BANK MEGA Tbk | OJK Bank Umum Juni 2026 (Swasta) | new_issuer | `id-mega` | https://bankmega.com/id/personal/kartu-kredit/ | 2026-11-13 | Official card listing at /id/personal/kartu-kredit/. applykartukredit.bankmega.com was seen and was not added. |
+| PT BANK KB INDONESIA Tbk 11) | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.kbbank.co.id | 2026-11-13 | Official site was not read: TLS or protocol error. |
+| PT BANK SYARIAH INDONESIA Tbk 1) | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.bankbsi.co.id/ | 2026-11-13 | Still class js_shell after the ordinary browser, and no kartu kredit text was confirmed. |
+| PT BANK KEB HANA INDONESIA | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.hanabank.co.id | 2026-11-13 | Homepage or product page was class captcha on the plain request. |
+| PT BANK MNC INTERNASIONAL Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.mncbank.co.id/ | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. |
+| PT BANK RAYA INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.bankraya.co.id/ | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. |
+| PT BANK SBI INDONESIA | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.sbiindo.com/ | 2026-11-13 | Ordinary browser was class captcha. |
+| PT BANK MEGA SYARIAH | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.megasyariah.co.id | 2026-11-13 | Homepage was class bot_wall on the plain request. robots.txt was unreadable. |
+| PT BANK INDEX SELINDO | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.bankindex.co.id | 2026-11-13 | Official site was not read: TLS or protocol error. |
+| PT BANK HIBANK INDONESIA 8) | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.hibank.co.id | 2026-11-13 | Homepage or product page was class captcha on the plain request. |
+| PT BANK CHINA CONSTRUCTION BANK INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://bankccbi.co.id/ | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. |
+| PT BANK DBS INDONESIA | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.dbs.id/id/index-id/default.page | 2026-11-13 | Still class js_shell after the ordinary browser, and no kartu kredit text was confirmed. |
+| PT BANK RESONA PERDANIA | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.perdania.co.id/id | 2026-11-13 | Still class js_shell after the ordinary browser, and no kartu kredit text was confirmed. |
+| PT BANK MIZUHO INDONESIA | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.mizuhobank.co.id | 2026-11-13 | Official site was not read: TLS or protocol error. |
+| PT BANK CAPITAL INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.bankcapital.co.id/id | 2026-11-13 | Homepage or product page was class captcha on the plain request. |
+| PT BANK BNP PARIBAS INDONESIA | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.bnpparibas.co.id/en/ | 2026-11-13 | Still class js_shell after the ordinary browser, and no kartu kredit text was confirmed. |
+| PT BANK ANZ INDONESIA | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.anz.com | 2026-11-13 | Homepage redirected off-domain to https://www.anz.com.au/personal/ and was not followed. |
+| PT BANK IBK INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.ibk.co.id/index | 2026-11-13 | Still class js_shell after the ordinary browser, and no kartu kredit text was confirmed. |
+| PT BANK ALADIN SYARIAH Tbk 2) | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://aladinbank.id/product/kartu-aladin/ | 2026-11-13 | Homepage or product page was class captcha on the plain request. |
+| PT BANK CTBC INDONESIA | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.ctbcbank.co.id/ | 2026-11-13 | Still class js_shell after the ordinary browser, and no kartu kredit text was confirmed. |
+| PT BANK SMBC INDONESIA, Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.smbci.com | 2026-11-13 | Homepage or product page was class captcha on the plain request. |
+| PT BANK NANO SYARIAH 9) | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.nanobanksyariah.id/ | 2026-11-13 | Homepage or product page was class captcha on the plain request. |
+| PT BANK SYARIAH NASIONAL 12) | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.bankbsn.co.id/jasa-layanan/kartu-debet | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. |
+| PT BANK JABAR BANTEN SYARIAH | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.bjbsyariah.co.id/ | 2026-11-13 | Still class js_shell after the ordinary browser, and no kartu kredit text was confirmed. |
+| PT KROM BANK INDONESIA Tbk 6) | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://krom.id/ | 2026-11-13 | Downgraded from a first-pass new_issuer tag. The visible text is a bill-payment service for other issuers' credit-card bills (Bayar tagihan kartu kredit), not a Krom consumer credit or charge card. The homepage was read; the result stays not_reached because a fuller product list was not confirmed. |
+| PT BANK SAQU INDONESIA 10) | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://banksaqu.co.id/ | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. |
+| PT BANK NEO COMMERCE Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.bankneocommerce.co.id/id/home | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. |
+| PT BANK DIGITAL BCA | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://bcadigital.co.id/ | 2026-11-13 | Still class js_shell after the ordinary browser, and no kartu kredit text was confirmed. |
+| PT BANK NATIONALNOBU Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.nobubank.com/id/ | 2026-11-13 | Homepage or product page was class captcha on the plain request. |
+| PT BANK INA PERDANA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.bankina.co.id/id | 2026-11-13 | Ordinary browser was class captcha. |
+| PT BANK PANIN DUBAI SYARIAH Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.pdsb.co.id | 2026-11-13 | Homepage was class error on the plain request. robots.txt was unreadable. |
+| PT BANK KB BUKOPIN SYARIAH 4) | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.kbbukopinsyariah.com | 2026-11-13 | Official site was not read: TLS or protocol error. |
+| PT BANK SAHABAT SAMPOERNA | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.banksampoerna.com | 2026-11-13 | Homepage or product page was class captcha on the plain request. |
+| PT BANK OKE INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.okbank.co.id/id | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. |
+| PT BANK AMAR INDONESIA | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://amarbank.co.id/ | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. |
+| PT BANK SEABANK INDONESIA | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.seabank.co.id/ | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. |
+| PT BANK BCA SYARIAH | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.bcasyariah.co.id/ | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. |
+| PT BANK JAGO TBK | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.jago.com | 2026-11-13 | Homepage or product page was class captcha on the plain request. |
+| PT BANK BTPN SYARIAH Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.btpnsyariah.com/ | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. |
+| PT BANK MULTIARTA SENTOSA | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.bankmas.co.id/id/ | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. |
+| PT SUPER BANK INDONESIA 7) | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.superbank.id/ | 2026-11-13 | Still class js_shell after the ordinary browser, and no kartu kredit text was confirmed. |
+| PT BANK MANDIRI TASPEN | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.bankmandiritaspen.co.id/ | 2026-11-13 | Ordinary browser was class captcha. |
+| PT BANK VICTORIA INTERNATIONAL Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.victoriabank.co.id/ | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. |
+| PT ALLO BANK INDONESIA Tbk 3) | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.allobank.com/ | 2026-11-13 | Still class js_shell after the ordinary browser, and no kartu kredit text was confirmed. |
+| PT BPD JAWA BARAT DAN BANTEN Tbk | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.bankbjb.co.id/ | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. |
+| PT BPD DKI | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.bankdki.co.id | 2026-11-13 | Official site was not read: TLS or protocol error. |
+| PT BPD DAERAH ISTIMEWA YOGYAKARTA | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.bpddiy.co.id/ | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. |
+| PT BPD JAWA TENGAH | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.bankjateng.co.id/ | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. robots.txt was unreadable. |
+| PT BPD JAWA TIMUR Tbk | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.bankjatim.co.id/files/riplay/kartu_uang_elektronik.pdf | 2026-11-13 | Official site was not read: http_error. |
+| PT BPD JAMBI | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.bankjambi.co.id | 2026-11-13 | Official site was not read: TLS or protocol error. |
+| PT BANK ACEH SYARIAH | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.bankaceh.co.id | 2026-11-13 | Official site was not read: TLS or protocol error. |
+| PT BPD SUMATERA UTARA | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.banksumut.co.id | 2026-11-13 | Official site was not read: TLS or protocol error. |
+| PT BANK NAGARI | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.banknagari.co.id | 2026-11-13 | Official site was not read: TLS or protocol error. |
+| PT BPD RIAU KEPRI SYARIAH 5) | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.brksyariah.co.id | 2026-11-13 | Official site was not read: TLS or protocol error. |
+| PT BPD SUMATERA SELATAN DAN BANGKA BELITUNG | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.banksumselbabel.com/en/promo/2465/kartu-atm-ketinggalan | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. |
+| PT BPD LAMPUNG | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.banklampung.co.id/ | 2026-11-13 | Ordinary browser was class bot_wall. |
+| PT BPD KALIMANTAN SELATAN | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.bankkalsel.co.id/ | 2026-11-13 | Still class js_shell after the ordinary browser, and no kartu kredit text was confirmed. |
+| PT BPD KALIMANTAN BARAT | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.bankkalbar.co.id/ | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. |
+| PT BPD KALIMANTAN TIMUR DAN KALIMANTAN UTARA | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.bankaltimtara.co.id | 2026-11-13 | Official site was not read: TLS or protocol error. |
+| PT BPD KALIMANTAN TENGAH | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.bankkalteng.co.id | 2026-11-13 | Official site was not read: TLS or protocol error. |
+| PT BPD SULAWESI SELATAN DAN SULAWESI BARAT | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.banksulselbar.co.id | 2026-11-13 | Homepage or product page was class captcha on the plain request. robots.txt was unreadable. |
+| PT BPD SULAWESI UTARA DAN GORONTALO | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.banksulutgo.co.id | 2026-11-13 | Homepage or product page was class captcha on the plain request. |
+| PT BANK NTB SYARIAH | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.bankntbsyariah.co.id/ | 2026-11-13 | Still class js_shell after the ordinary browser, and no kartu kredit text was confirmed. |
+| PT BANK PEMBANGUNAN DAERAH BALI | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.bpdbali.co.id | 2026-11-13 | Homepage was class error on the plain request. robots.txt was unreadable. |
+| PT BPD NUSA TENGGARA TIMUR | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.bpdntt.co.id | 2026-11-13 | Downgraded from a first-pass new_issuer tag. The readable text is news about Kartu Kredit Indonesia for kabupaten government transactions, not a consumer card catalogue. |
+| PT BPD MALUKU DAN MALUKU UTARA | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.bankmalukumalut.co.id | 2026-11-13 | Official site was not read: TLS or protocol error. |
+| PT BPD PAPUA | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.bankpapua.co.id/ | 2026-11-13 | Still class js_shell after the ordinary browser, and no kartu kredit text was confirmed. |
+| PT BPD BENGKULU | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.bankbengkulu.co.id | 2026-11-13 | Official site was not read: TLS or protocol error. |
+| PT BPD SULAWESI TENGAH | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://banksulteng.co.id/ | 2026-11-13 | Homepage or product page was class captcha on the plain request. |
+| PT BPD SULAWESI TENGGARA | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.banksultra.co.id | 2026-11-13 | Homepage or product page was class captcha on the plain request. robots.txt was unreadable. |
+| PT BPD BANTEN Tbk | OJK Bank Umum Juni 2026 (BPD) | not_reached | null | https://www.bankbanten.co.id | 2026-11-13 | Homepage or product page was class captcha on the plain request. |
+| CITIBANK, N.A. | OJK Bank Umum Juni 2026 (foreign branch) | not_reached | null | null | 2026-11-13 | Homepage redirected off-domain to citigroup.com (https://www.citigroup.com/global/about-us/global-presence/indonesia) and was not followed. |
+| JP MORGAN CHASE BANK, NA | OJK Bank Umum Juni 2026 (foreign branch) | not_reached | null | https://www.jpmorgan.co.id/en/about-us | 2026-11-13 | Still class js_shell after the ordinary browser, and no kartu kredit text was confirmed. |
+| BANK OF AMERICA, N.A | OJK Bank Umum Juni 2026 (foreign branch) | not_reached | null | https://www.bankofamerica.co.id/en-us/content/apac-indonesia.html | 2026-11-13 | Homepage was class bot_wall on the plain request. robots.txt was unreadable. |
+| MUFG BANK, LTD | OJK Bank Umum Juni 2026 (foreign branch) | not_reached | null | https://www.mufg.co.id | 2026-11-13 | Homepage or product page was class captcha on the plain request. robots.txt was unreadable. |
+| STANDARD CHARTERED BANK | OJK Bank Umum Juni 2026 (foreign branch) | not_reached | null | https://www.sc.com/id/ | 2026-11-13 | Ordinary browser returned class ok (1008 words). Visible retail card products were Kartu Debit, Kartu Debet GPN, Kartu Debet Premium and Kartu Debet Priority, plus Suku Bunga Dasar Kredit (base lending rate). No consumer credit or charge card was stated. Result stays not_reached because a complete product tree was not confirmed. |
+| DEUTSCHE BANK AG | OJK Bank Umum Juni 2026 (foreign branch) | not_reached | null | https://www.deutsche-bank.co.id/indonesia/ | 2026-11-13 | Official site was read, but it did not state kartu kredit, credit card or charge card. |
+| BANK OF CHINA (HONG KONG) LIMITED | OJK Bank Umum Juni 2026 (foreign branch) | not_reached | null | https://www.bankofchina.co.id/en-id/home.html | 2026-11-13 | Downgraded from a first-pass new_issuer tag. Credit-card wording pointed at bochk.com Hong Kong terms. Local card pages that were reached describe debit cards. A cards path stayed js_shell after the ordinary browser. |
+
 ## Totals
 
 The counts below are recomputed from the table rows. Special-check names that are not on the BNM lists are still not counted in the MY totals. `no_consumer_card` here is a product exclusion. `out_of_scope_wholesale` is a scope exclusion and is not included in the `no_consumer_card` counts.
@@ -303,6 +427,7 @@ The counts below are recomputed from the table rows. Special-check names that ar
 | MY (list entries) | 40 | 23 | 7 | 1 | 9 | 0 | 0 |
 | MY (unique institutions) | 35 | 18 | 7 | 1 | 9 | 0 | 0 |
 | SG | 136 | 15 | 2 | 0 | 50 | 18 | 51 |
+| ID (OJK Bank Umum, Juni 2026) | 105 | 0 | 0 | 10 | 0 | 0 | 95 |
 
 Product exclusions (`no_consumer_card`), confirmed and unconfirmed, on separate lines:
 
@@ -311,6 +436,7 @@ Product exclusions (`no_consumer_card`), confirmed and unconfirmed, on separate 
 | MY (list entries) | 8 | 1 (Bank of China (Malaysia) Berhad) |
 | MY (unique institutions) | 8 | 1 (Bank of China (Malaysia) Berhad) |
 | SG | 48 | 2 (Bank of America; PT Bank Negara Indonesia) |
+| ID (OJK Bank Umum, Juni 2026) | 0 | 0 |
 
 Scope exclusions (`out_of_scope_wholesale`):
 
@@ -319,3 +445,4 @@ Scope exclusions (`out_of_scope_wholesale`):
 | MY (list entries) | 0 |
 | MY (unique institutions) | 0 |
 | SG | 18 |
+| ID (OJK Bank Umum, Juni 2026) | 0 |

@@ -1,6 +1,35 @@
 {
- "description": "Canonical list of sites to crawl for Malaysia and Singapore. Every official issuer or network host, and the phase 1 regulator hosts, must appear here before a crawl. See crawler/SOURCES.md.",
+ "description": "Canonical list of sites to crawl for Malaysia, Singapore and Indonesia. Every official issuer or network host, and the phase 1 regulator hosts, must appear here before a crawl. See crawler/SOURCES.md.",
  "items": [
+  {
+   "id": "id-regulator-bi.go.id-census",
+   "site": "Bank Indonesia",
+   "host": "bi.go.id",
+   "country": "ID",
+   "type": "regulator",
+   "purpose": "census",
+   "entry_urls": [
+    "https://www.bi.go.id/id/layanan/informasi-perizinan/sistem-pembayaran/default.aspx"
+   ],
+   "status": "untested",
+   "full_crawl_order": "phase-1",
+   "suggested_by": null
+  },
+  {
+   "id": "id-regulator-ojk.go.id-census",
+   "site": "Otoritas Jasa Keuangan",
+   "host": "ojk.go.id",
+   "country": "ID",
+   "type": "regulator",
+   "purpose": "census",
+   "entry_urls": [
+    "https://www.ojk.go.id/id/kanal/perbankan/data-dan-statistik/Documents/Pages/Daftar-Alamat-Kantor-Pusat-Bank-Umum-Dan-Syariah/Daftar%20Alamat%20Kantor%20Pusat%20Bank%20Umum%20Dan%20Syariah%20-%20Juni%202026.xlsx",
+    "https://www.ojk.go.id/id/kanal/iknb/data-dan-statistik/direktori/lembaga-pembiayaan/Documents/Direktori%20Lembaga%20Pembiayaan%20dan%20PMV%20Juli%202026.pdf"
+   ],
+   "status": "untested",
+   "full_crawl_order": "phase-1",
+   "suggested_by": null
+  },
   {
    "id": "my-regulator-bnm.gov.my-census",
    "site": "Bank Negara Malaysia",
@@ -1345,6 +1374,326 @@
    "issuer_id": "my-maybank"
   },
   {
+   "id": "id-mayapada-bankmayapada.com-cards",
+   "site": "Bank Mayapada",
+   "host": "bankmayapada.com",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.bankmayapada.com/id/produk/pinjaman/mycreditcard"
+   ],
+   "status": "untested",
+   "full_crawl_order": 35,
+   "suggested_by": null,
+   "issuer_id": "id-mayapada"
+  },
+  {
+   "id": "id-mayapada-bankmayapada.com-offers",
+   "site": "Bank Mayapada",
+   "host": "bankmayapada.com",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 35,
+   "suggested_by": null,
+   "issuer_id": "id-mayapada"
+  },
+  {
+   "id": "id-icbc-icbc.co.id-cards",
+   "site": "ICBC Indonesia",
+   "host": "icbc.co.id",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 36,
+   "suggested_by": null,
+   "issuer_id": "id-icbc"
+  },
+  {
+   "id": "id-icbc-icbc.co.id-offers",
+   "site": "ICBC Indonesia",
+   "host": "icbc.co.id",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 36,
+   "suggested_by": null,
+   "issuer_id": "id-icbc"
+  },
+  {
+   "id": "id-hsbc-hsbc.co.id-cards",
+   "site": "HSBC Indonesia",
+   "host": "hsbc.co.id",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.hsbc.co.id/en-id/credit-cards/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 37,
+   "suggested_by": null,
+   "issuer_id": "id-hsbc"
+  },
+  {
+   "id": "id-hsbc-hsbc.co.id-offers",
+   "site": "HSBC Indonesia",
+   "host": "hsbc.co.id",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.hsbc.co.id/en-id/credit-cards/offers/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 37,
+   "suggested_by": null,
+   "issuer_id": "id-hsbc"
+  },
+  {
+   "id": "id-sinarmas-banksinarmas.com-cards",
+   "site": "Bank Sinarmas",
+   "host": "banksinarmas.com",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.banksinarmas.com/id/personal/produk/kartukredit"
+   ],
+   "status": "untested",
+   "full_crawl_order": 38,
+   "suggested_by": null,
+   "issuer_id": "id-sinarmas"
+  },
+  {
+   "id": "id-sinarmas-banksinarmas.com-offers",
+   "site": "Bank Sinarmas",
+   "host": "banksinarmas.com",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.banksinarmas.com/id/personal/produk/kartukredit/promo"
+   ],
+   "status": "untested",
+   "full_crawl_order": 38,
+   "suggested_by": null,
+   "issuer_id": "id-sinarmas"
+  },
+  {
+   "id": "id-ocbc-ocbc.id-cards",
+   "site": "OCBC Indonesia",
+   "host": "ocbc.id",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.ocbc.id/id/individu/kartu-transaksi/kartu-kredit"
+   ],
+   "status": "untested",
+   "full_crawl_order": 39,
+   "suggested_by": null,
+   "issuer_id": "id-ocbc"
+  },
+  {
+   "id": "id-ocbc-ocbc.id-offers",
+   "site": "OCBC Indonesia",
+   "host": "ocbc.id",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.ocbc.id/id/promo"
+   ],
+   "status": "untested",
+   "full_crawl_order": 39,
+   "suggested_by": null,
+   "issuer_id": "id-ocbc"
+  },
+  {
+   "id": "id-cimb-cimbniaga.co.id-cards",
+   "site": "CIMB Niaga",
+   "host": "cimbniaga.co.id",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.cimbniaga.co.id/id/personal/kartu-kredit"
+   ],
+   "status": "untested",
+   "full_crawl_order": 40,
+   "suggested_by": null,
+   "issuer_id": "id-cimb"
+  },
+  {
+   "id": "id-cimb-cimbniaga.co.id-offers",
+   "site": "CIMB Niaga",
+   "host": "cimbniaga.co.id",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.cimbniaga.co.id/id/personal/promo/index"
+   ],
+   "status": "untested",
+   "full_crawl_order": 40,
+   "suggested_by": null,
+   "issuer_id": "id-cimb"
+  },
+  {
+   "id": "id-danamon-danamon.co.id-cards",
+   "site": "Bank Danamon",
+   "host": "danamon.co.id",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.danamon.co.id/Personal/KartuTransaksi/Kartu-Kredit"
+   ],
+   "status": "untested",
+   "full_crawl_order": 41,
+   "suggested_by": null,
+   "issuer_id": "id-danamon"
+  },
+  {
+   "id": "id-danamon-danamon.co.id-offers",
+   "site": "Bank Danamon",
+   "host": "danamon.co.id",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.danamon.co.id/promo"
+   ],
+   "status": "untested",
+   "full_crawl_order": 41,
+   "suggested_by": null,
+   "issuer_id": "id-danamon"
+  },
+  {
+   "id": "id-mega-bankmega.com-cards",
+   "site": "Bank Mega",
+   "host": "bankmega.com",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://bankmega.com/id/personal/kartu-kredit/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 42,
+   "suggested_by": null,
+   "issuer_id": "id-mega"
+  },
+  {
+   "id": "id-mega-bankmega.com-offers",
+   "site": "Bank Mega",
+   "host": "bankmega.com",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://bankmega.com/id/promo/"
+   ],
+   "status": "untested",
+   "full_crawl_order": 42,
+   "suggested_by": null,
+   "issuer_id": "id-mega"
+  },
+  {
+   "id": "id-mandiri-bankmandiri.co.id-cards",
+   "site": "Bank Mandiri",
+   "host": "bankmandiri.co.id",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 43,
+   "suggested_by": null,
+   "issuer_id": "id-mandiri"
+  },
+  {
+   "id": "id-mandiri-bankmandiri.co.id-offers",
+   "site": "Bank Mandiri",
+   "host": "bankmandiri.co.id",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://bankmandiri.co.id/promo-mandiri"
+   ],
+   "status": "untested",
+   "full_crawl_order": 43,
+   "suggested_by": null,
+   "issuer_id": "id-mandiri"
+  },
+  {
+   "id": "id-bca-bca.co.id-cards",
+   "site": "BCA",
+   "host": "bca.co.id",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.bca.co.id/id/individu/produk/kartu-kredit"
+   ],
+   "status": "untested",
+   "full_crawl_order": 44,
+   "suggested_by": null,
+   "issuer_id": "id-bca"
+  },
+  {
+   "id": "id-bca-bca.co.id-offers",
+   "site": "BCA",
+   "host": "bca.co.id",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.bca.co.id/id/promo-bca/2021/04/01/14/42/kartu-kredit-bca"
+   ],
+   "status": "untested",
+   "full_crawl_order": 44,
+   "suggested_by": null,
+   "issuer_id": "id-bca"
+  },
+  {
+   "id": "id-bca-promo.bca.co.id-cards",
+   "site": "BCA",
+   "host": "promo.bca.co.id",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": 44,
+   "suggested_by": null,
+   "issuer_id": "id-bca"
+  },
+  {
+   "id": "id-bca-promo.bca.co.id-offers",
+   "site": "BCA",
+   "host": "promo.bca.co.id",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://promo.bca.co.id/id/all?productType=kartu-kredit"
+   ],
+   "status": "untested",
+   "full_crawl_order": 44,
+   "suggested_by": null,
+   "issuer_id": "id-bca"
+  },
+  {
    "id": "my-icbc-icbcmy.com-cards",
    "site": "ICBC Malaysia",
    "host": "icbcmy.com",
@@ -1645,6 +1994,114 @@
    "full_crawl_order": "C12",
    "suggested_by": null,
    "network_id": "diners"
+  },
+  {
+   "id": "id-network-mastercard-mastercard.com-offers",
+   "site": "Mastercard",
+   "host": "mastercard.com",
+   "country": "ID",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C13",
+   "suggested_by": null,
+   "network_id": "mastercard"
+  },
+  {
+   "id": "id-network-mastercard-priceless.com-offers",
+   "site": "Mastercard",
+   "host": "priceless.com",
+   "country": "ID",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C13",
+   "suggested_by": null,
+   "network_id": "mastercard"
+  },
+  {
+   "id": "id-network-mastercard-specials.priceless.com-offers",
+   "site": "Mastercard",
+   "host": "specials.priceless.com",
+   "country": "ID",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://specials.priceless.com/"
+   ],
+   "status": "untested",
+   "full_crawl_order": "C13",
+   "suggested_by": null,
+   "network_id": "mastercard"
+  },
+  {
+   "id": "id-network-jcb-jcb.co.jp-offers",
+   "site": "JCB",
+   "host": "jcb.co.jp",
+   "country": "ID",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C14",
+   "suggested_by": null,
+   "network_id": "jcb"
+  },
+  {
+   "id": "id-network-jcb-specialoffers.jcb-offers",
+   "site": "JCB",
+   "host": "specialoffers.jcb",
+   "country": "ID",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.specialoffers.jcb/"
+   ],
+   "status": "untested",
+   "full_crawl_order": "C14",
+   "suggested_by": null,
+   "network_id": "jcb"
+  },
+  {
+   "id": "id-network-visa-visa.com-offers",
+   "site": "Visa",
+   "host": "visa.com",
+   "country": "ID",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C15",
+   "suggested_by": null,
+   "network_id": "visa"
+  },
+  {
+   "id": "id-network-unionpay-unionpayintl.com-offers",
+   "site": "UnionPay",
+   "host": "unionpayintl.com",
+   "country": "ID",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C16",
+   "suggested_by": null,
+   "network_id": "unionpay"
+  },
+  {
+   "id": "id-network-amex-americanexpress.com-offers",
+   "site": "American Express",
+   "host": "americanexpress.com",
+   "country": "ID",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C17",
+   "suggested_by": null,
+   "network_id": "amex"
   }
  ]
 }

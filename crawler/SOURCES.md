@@ -1,8 +1,8 @@
 # Crawl sources
 
-This file describes the canonical list of sites to crawl for Malaysia (MY) and Singapore (SG). The list itself is [`crawler/sources.json`](sources.json). Do not crawl a host that is not on the list.
+This file describes the canonical list of sites to crawl for Malaysia (MY), Singapore (SG) and Indonesia (ID). The list itself is [`crawler/sources.json`](sources.json). Do not crawl a host that is not on the list.
 
-Issuer rows are built by `tools/build_sources.py` from `{cc}/issuers.json` official domains and entry URLs, and from `pipeline/offers_config.json` seeds. Network and regulator rows are kept as they are in `crawler/sources.json`. A host also has to be in the issuer's or the network's `official_domains`, except for the two regulator sites used in the phase 1 census.
+Issuer rows are built by `tools/build_sources.py` from `{cc}/issuers.json` official domains and entry URLs, and from `pipeline/offers_config.json` seeds. Network and regulator rows are kept as they are in `crawler/sources.json`. A host also has to be in the issuer's or the network's `official_domains`, except for the regulator sites used in the phase 1 census.
 
 ## How to read a row
 
@@ -10,12 +10,12 @@ Issuer rows are built by `tools/build_sources.py` from `{cc}/issuers.json` offic
 |---|---|
 | `site` | The issuer, network or regulator name. |
 | `host` | The official host, without a leading `www.` |
-| `country` | `MY` or `SG`. |
+| `country` | `MY`, `SG` or `ID`. |
 | `type` | `issuer`, `network` or `regulator`. |
 | `purpose` | `cards` or `offers` for crawl pages, and `census` for the regulator lists. |
 | `entry_urls` | Known listing or start URLs from the repository. An empty list means the host is official but no start URL is recorded yet. |
 | `status` | Fetcher class from repository evidence only: `ok`, `js_shell`, `bot_wall`, `network_unreachable`, or `untested` when the repository has no such evidence. Do not invent a status. |
-| `full_crawl_order` | The order in `crawler/FULL_CRAWL.md`: `1` to `34` for issuers in that table, `after-34` for a phase 1 issuer not yet given a number, `C1` to `C12` for network offer sites, and `phase-1` for regulators. |
+| `full_crawl_order` | The order in `crawler/FULL_CRAWL.md`: `1` to `44` for issuers in that table, `after-34` for a phase 1 issuer not yet given a number, `C1` to `C17` for network offer sites, and `phase-1` for regulators. |
 | `suggested_by` | The GitHub issue that proposed the site, or `null` when the row came from the repository itself. |
 
 ## Suggesting a site
@@ -24,10 +24,12 @@ Contributors can propose a site with the "Suggest a site to crawl" issue form. T
 
 ## The list
 
-There are 116 rows in `crawler/sources.json`. Counts by country: MY 58, SG 58. Counts by type: issuer 96, network 18, regulator 2.
+There are 148 rows in `crawler/sources.json`. Counts by country: MY 58, SG 58, ID 32. Counts by type: issuer 118, network 26, regulator 4.
 
 | Order | Country | Type | Purpose | Site | Host | Status | Entry URLs |
 |---|---|---|---|---|---|---|---|
+| phase-1 | ID | regulator | census | Bank Indonesia | `bi.go.id` | untested | https://www.bi.go.id/id/layanan/informasi-perizinan/sistem-pembayaran/default.aspx |
+| phase-1 | ID | regulator | census | Otoritas Jasa Keuangan | `ojk.go.id` | untested | https://www.ojk.go.id/id/kanal/perbankan/data-dan-statistik/Documents/Pages/Daftar-Alamat-Kantor-Pusat-Bank-Umum-Dan-Syariah/Daftar%20Alamat%20Kantor%20Pusat%20Bank%20Umum%20Dan%20Syariah%20-%20Juni%202026.xlsx, https://www.ojk.go.id/id/kanal/iknb/data-dan-statistik/direktori/lembaga-pembiayaan/Documents/Direktori%20Lembaga%20Pembiayaan%20dan%20PMV%20Juli%202026.pdf |
 | phase-1 | MY | regulator | census | Bank Negara Malaysia | `bnm.gov.my` | untested |  |
 | phase-1 | SG | regulator | census | Monetary Authority of Singapore | `eservices.mas.gov.sg` | untested |  |
 | 1 | SG | issuer | cards | CIMB Singapore | `cimb.com.sg` | untested | https://www.cimb.com.sg/en/personal/banking-with-us/cards/credit-cards.html |
@@ -122,6 +124,28 @@ There are 116 rows in `crawler/sources.json`. Counts by country: MY 58, SG 58. C
 | 34 | MY | issuer | offers | Maybank | `maybank.com` | untested |  |
 | 34 | MY | issuer | cards | Maybank | `maybank2u.com.my` | untested | https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards/index.page |
 | 34 | MY | issuer | offers | Maybank | `maybank2u.com.my` | untested |  |
+| 35 | ID | issuer | cards | Bank Mayapada | `bankmayapada.com` | untested | https://www.bankmayapada.com/id/produk/pinjaman/mycreditcard |
+| 35 | ID | issuer | offers | Bank Mayapada | `bankmayapada.com` | untested |  |
+| 36 | ID | issuer | cards | ICBC Indonesia | `icbc.co.id` | untested |  |
+| 36 | ID | issuer | offers | ICBC Indonesia | `icbc.co.id` | untested |  |
+| 37 | ID | issuer | cards | HSBC Indonesia | `hsbc.co.id` | untested | https://www.hsbc.co.id/en-id/credit-cards/ |
+| 37 | ID | issuer | offers | HSBC Indonesia | `hsbc.co.id` | untested | https://www.hsbc.co.id/en-id/credit-cards/offers/ |
+| 38 | ID | issuer | cards | Bank Sinarmas | `banksinarmas.com` | untested | https://www.banksinarmas.com/id/personal/produk/kartukredit |
+| 38 | ID | issuer | offers | Bank Sinarmas | `banksinarmas.com` | untested | https://www.banksinarmas.com/id/personal/produk/kartukredit/promo |
+| 39 | ID | issuer | cards | OCBC Indonesia | `ocbc.id` | untested | https://www.ocbc.id/id/individu/kartu-transaksi/kartu-kredit |
+| 39 | ID | issuer | offers | OCBC Indonesia | `ocbc.id` | untested | https://www.ocbc.id/id/promo |
+| 40 | ID | issuer | cards | CIMB Niaga | `cimbniaga.co.id` | untested | https://www.cimbniaga.co.id/id/personal/kartu-kredit |
+| 40 | ID | issuer | offers | CIMB Niaga | `cimbniaga.co.id` | untested | https://www.cimbniaga.co.id/id/personal/promo/index |
+| 41 | ID | issuer | cards | Bank Danamon | `danamon.co.id` | untested | https://www.danamon.co.id/Personal/KartuTransaksi/Kartu-Kredit |
+| 41 | ID | issuer | offers | Bank Danamon | `danamon.co.id` | untested | https://www.danamon.co.id/promo |
+| 42 | ID | issuer | cards | Bank Mega | `bankmega.com` | untested | https://bankmega.com/id/personal/kartu-kredit/ |
+| 42 | ID | issuer | offers | Bank Mega | `bankmega.com` | untested | https://bankmega.com/id/promo/ |
+| 43 | ID | issuer | cards | Bank Mandiri | `bankmandiri.co.id` | untested |  |
+| 43 | ID | issuer | offers | Bank Mandiri | `bankmandiri.co.id` | untested | https://bankmandiri.co.id/promo-mandiri |
+| 44 | ID | issuer | cards | BCA | `bca.co.id` | untested | https://www.bca.co.id/id/individu/produk/kartu-kredit |
+| 44 | ID | issuer | offers | BCA | `bca.co.id` | untested | https://www.bca.co.id/id/promo-bca/2021/04/01/14/42/kartu-kredit-bca |
+| 44 | ID | issuer | cards | BCA | `promo.bca.co.id` | untested |  |
+| 44 | ID | issuer | offers | BCA | `promo.bca.co.id` | untested | https://promo.bca.co.id/id/all?productType=kartu-kredit |
 | after-34 | MY | issuer | cards | ICBC Malaysia | `icbcmy.com` | untested |  |
 | after-34 | MY | issuer | offers | ICBC Malaysia | `icbcmy.com` | untested |  |
 | after-34 | MY | issuer | cards | ICBC Malaysia | `v.icbc.com.cn` | untested |  |
@@ -144,3 +168,11 @@ There are 116 rows in `crawler/sources.json`. Counts by country: MY 58, SG 58. C
 | C10 | SG | network | offers | American Express | `americanexpress.com` | untested |  |
 | C11 | MY | network | offers | Diners Club | `dinersclub.com` | untested |  |
 | C12 | SG | network | offers | Diners Club | `dinersclub.com` | untested |  |
+| C13 | ID | network | offers | Mastercard | `mastercard.com` | untested |  |
+| C13 | ID | network | offers | Mastercard | `priceless.com` | untested |  |
+| C13 | ID | network | offers | Mastercard | `specials.priceless.com` | untested | https://specials.priceless.com/ |
+| C14 | ID | network | offers | JCB | `jcb.co.jp` | untested |  |
+| C14 | ID | network | offers | JCB | `specialoffers.jcb` | untested | https://www.specialoffers.jcb/ |
+| C15 | ID | network | offers | Visa | `visa.com` | untested |  |
+| C16 | ID | network | offers | UnionPay | `unionpayintl.com` | untested |  |
+| C17 | ID | network | offers | American Express | `americanexpress.com` | untested |  |
