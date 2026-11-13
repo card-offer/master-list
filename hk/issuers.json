@@ -1,0 +1,355 @@
+{
+  "count": 17,
+  "country": "HK",
+  "generated_at": "2026-11-13T01:12:00+00:00",
+  "schema_version": "0.3.0",
+  "items": [
+    {
+      "card_ids": [],
+      "country": "HK",
+      "crawl": {
+        "card_sources": [
+          "https://www.hkbea.com/html/en/index.html"
+        ],
+        "note": "English home names BEA Dual Credit Card, BEA GOAL Credit Card and BEA UnionPay Dual Currency DIAMOND Credit Card. The Credit Cards menu goes to the promotions listing.",
+        "offer_sources": [
+          "https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html"
+        ],
+        "status": "not_covered"
+      },
+      "id": "hk-bea",
+      "legal_name": "BANK OF EAST ASIA, LIMITED (THE)",
+      "name": "Bank of East Asia",
+      "offer_count": 0,
+      "official_domains": [
+        "hkbea.com"
+      ],
+      "website": "https://www.hkbea.com/"
+    },
+    {
+      "card_ids": [],
+      "country": "HK",
+      "crawl": {
+        "card_sources": [
+          "https://www.bochk.com/en/creditcard.html",
+          "https://www.bochk.com/dam/boccreditcard/cardproductlisting/eng/index.html"
+        ],
+        "note": "HKMA addr.xls lists www.boci.com.hk (credit card). boci.com.hk redirects to the BOCHK credit card pages. Chiyu Bank's credit card page states the cards are issued by BOC Credit Card (International) Limited.",
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "hk-bochk",
+      "legal_name": "BANK OF CHINA (HONG KONG) LIMITED",
+      "name": "Bank of China (Hong Kong)",
+      "offer_count": 0,
+      "official_domains": [
+        "bochk.com",
+        "boci.com.hk"
+      ],
+      "website": "https://www.bochk.com/"
+    },
+    {
+      "card_ids": [],
+      "country": "HK",
+      "crawl": {
+        "card_sources": [
+          "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2004980/list.shtml?channelId=2004980",
+          "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005005/2005035/list.shtml?channelId=2004980"
+        ],
+        "note": "The official site's English menu control is href=\"#\"; no English card listing was found. The Traditional Chinese personal banking and credit card introduction pages name consumer UnionPay dual-currency diamond and Visa Platinum cards.",
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "hk-bocom-hk",
+      "legal_name": "BANK OF COMMUNICATIONS (HONG KONG) LIMITED",
+      "name": "Bank of Communications (Hong Kong)",
+      "offer_count": 0,
+      "official_domains": [
+        "hk.bankcomm.com"
+      ],
+      "website": "https://www.hk.bankcomm.com/"
+    },
+    {
+      "card_ids": [],
+      "country": "HK",
+      "crawl": {
+        "card_sources": [
+          "https://www.asia.ccb.com/hongkong/personal/credit_cards/card_list.html"
+        ],
+        "note": null,
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "hk-ccb-asia",
+      "legal_name": "CHINA CONSTRUCTION BANK (ASIA) CORPORATION LIMITED",
+      "name": "CCB Asia",
+      "offer_count": 0,
+      "official_domains": [
+        "asia.ccb.com"
+      ],
+      "website": "https://www.asia.ccb.com/"
+    },
+    {
+      "card_ids": [],
+      "country": "HK",
+      "crawl": {
+        "card_sources": [
+          "https://www.chbank.com/en/homepage.shtml"
+        ],
+        "note": "The English homepage links Chong Hing Credit Card and co-branded personal credit cards. A product URL returned almost no text this run, so the homepage is the evidence URL.",
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "hk-chong-hing",
+      "legal_name": "CHONG HING BANK LIMITED",
+      "name": "Chong Hing Bank",
+      "offer_count": 0,
+      "official_domains": [
+        "chbank.com"
+      ],
+      "website": "https://www.chbank.com/"
+    },
+    {
+      "card_ids": [],
+      "country": "HK",
+      "crawl": {
+        "card_sources": [
+          "https://www.citibank.com.hk/",
+          "https://www.citibank.com.hk/english/credit-cards/"
+        ],
+        "note": "The homepage links credit cards. https://www.citibank.com.hk/english/credit-cards/ was a JavaScript shell this run. CITIBANK, N.A. is listed separately on the HKMA licensed-bank list with the same official website; consumer cards on that site are treated under this issuer.",
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "hk-citi",
+      "legal_name": "CITIBANK (HONG KONG) LIMITED",
+      "name": "Citibank (Hong Kong)",
+      "offer_count": 0,
+      "official_domains": [
+        "citibank.com.hk"
+      ],
+      "website": "https://www.citibank.com.hk/"
+    },
+    {
+      "card_ids": [],
+      "country": "HK",
+      "crawl": {
+        "card_sources": [
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/index.html"
+        ],
+        "note": null,
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "hk-cmb-wing-lung",
+      "legal_name": "CMB WING LUNG BANK LIMITED",
+      "name": "CMB Wing Lung Bank",
+      "offer_count": 0,
+      "official_domains": [
+        "cmbwinglungbank.com"
+      ],
+      "website": "https://www.cmbwinglungbank.com/"
+    },
+    {
+      "card_ids": [],
+      "country": "HK",
+      "crawl": {
+        "card_sources": [
+          "https://www.cncbinternational.com/home/en/index.jsp"
+        ],
+        "note": "Plain HTTP was bot_wall. Ordinary browser mode reached the English homepage, which has a Credit Cards menu and names the CNCBI JD Mastercard Card. robots.txt returned 403, so the fetch is flagged robots_unreadable.",
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "hk-cncbi",
+      "legal_name": "CHINA CITIC BANK INTERNATIONAL LIMITED",
+      "name": "China CITIC Bank International",
+      "offer_count": 0,
+      "official_domains": [
+        "cncbinternational.com"
+      ],
+      "website": "https://www.cncbinternational.com/"
+    },
+    {
+      "card_ids": [],
+      "country": "HK",
+      "crawl": {
+        "card_sources": [
+          "https://www.dahsing.com/html/en/credit_card/index.html"
+        ],
+        "note": null,
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "hk-dah-sing",
+      "legal_name": "DAH SING BANK, LIMITED",
+      "name": "Dah Sing Bank",
+      "offer_count": 0,
+      "official_domains": [
+        "dahsing.com"
+      ],
+      "website": "https://www.dahsing.com/"
+    },
+    {
+      "card_ids": [],
+      "country": "HK",
+      "crawl": {
+        "card_sources": [
+          "https://www.dbs.com.hk/personal/credit-cards/default.page"
+        ],
+        "note": "The official language splitter https://www.dbs.com.hk/ links the Chinese personal page, which links English at /personal/default.page. The fetcher classified the English personal and credit-card pages as captcha because the HTML contains inheritProjectCaptchaSettings; the responses were 200 and the catalogue names DBS Credit Cards, including DBS Card+, DBS Eminent Card and DBS COMPASS Visa.",
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "hk-dbs",
+      "legal_name": "DBS BANK (HONG KONG) LIMITED",
+      "name": "DBS Hong Kong",
+      "offer_count": 0,
+      "official_domains": [
+        "dbs.com.hk"
+      ],
+      "website": "https://www.dbs.com.hk/"
+    },
+    {
+      "card_ids": [],
+      "country": "HK",
+      "crawl": {
+        "card_sources": [
+          "https://www.fubonbank.com.hk/en/home.html"
+        ],
+        "note": "The English homepage links https://www.fubonbank.com.hk/en/cards/credit-card-products/index.html. That products URL returned almost no text this run, so the homepage is the evidence URL.",
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "hk-fubon",
+      "legal_name": "FUBON BANK (HONG KONG) LIMITED",
+      "name": "Fubon Bank (Hong Kong)",
+      "offer_count": 0,
+      "official_domains": [
+        "fubonbank.com.hk"
+      ],
+      "website": "https://www.fubonbank.com.hk/"
+    },
+    {
+      "card_ids": [],
+      "country": "HK",
+      "crawl": {
+        "card_sources": [
+          "https://www.hangseng.com/en-hk/personal/cards/overview/"
+        ],
+        "note": "https://www.hangseng.com/en-hk/personal/cards/ redirected to this overview.",
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "hk-hang-seng",
+      "legal_name": "HANG SENG BANK, LIMITED",
+      "name": "Hang Seng Bank",
+      "offer_count": 0,
+      "official_domains": [
+        "hangseng.com"
+      ],
+      "website": "https://www.hangseng.com/"
+    },
+    {
+      "card_ids": [],
+      "country": "HK",
+      "crawl": {
+        "card_sources": [
+          "https://www.hsbc.com.hk/credit-cards/"
+        ],
+        "note": null,
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "hk-hsbc",
+      "legal_name": "HONGKONG AND SHANGHAI BANKING CORPORATION LIMITED (THE)",
+      "name": "HSBC Hong Kong",
+      "offer_count": 0,
+      "official_domains": [
+        "hsbc.com.hk"
+      ],
+      "website": "https://www.hsbc.com.hk/"
+    },
+    {
+      "card_ids": [],
+      "country": "HK",
+      "crawl": {
+        "card_sources": [
+          "https://www.icbcasia.com/hk/en/personal/credit-cards/default.html"
+        ],
+        "note": null,
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "hk-icbc-asia",
+      "legal_name": "INDUSTRIAL AND COMMERCIAL BANK OF CHINA (ASIA) LIMITED",
+      "name": "ICBC Asia",
+      "offer_count": 0,
+      "official_domains": [
+        "icbcasia.com"
+      ],
+      "website": "https://www.icbcasia.com/"
+    },
+    {
+      "card_ids": [],
+      "country": "HK",
+      "crawl": {
+        "card_sources": [
+          "https://mox.com/"
+        ],
+        "note": "The homepage states Mox Credit Card and links https://mox.com/features/mox-credit/. The fetcher classified the homepage and that product URL as captcha because the HTML contains inheritProjectCaptchaSettings; the responses were 200 with a large official page body. The homepage is the evidence URL.",
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "hk-mox",
+      "legal_name": "MOX BANK LIMITED",
+      "name": "Mox Bank",
+      "offer_count": 0,
+      "official_domains": [
+        "mox.com"
+      ],
+      "website": "https://mox.com/"
+    },
+    {
+      "card_ids": [],
+      "country": "HK",
+      "crawl": {
+        "card_sources": [
+          "https://www.ocbc.com.hk/personal-banking/cards/credit-cards",
+          "https://www.ocbc.com.hk/personal-banking/cards/ocbc-credit-card"
+        ],
+        "note": null,
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "hk-ocbc",
+      "legal_name": "OCBC BANK (HONG KONG) LIMITED",
+      "name": "OCBC Bank (Hong Kong)",
+      "offer_count": 0,
+      "official_domains": [
+        "ocbc.com.hk"
+      ],
+      "website": "https://www.ocbc.com.hk/"
+    },
+    {
+      "card_ids": [],
+      "country": "HK",
+      "crawl": {
+        "card_sources": [
+          "https://www.sc.com/hk/credit-cards/"
+        ],
+        "note": null,
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "hk-standard-chartered",
+      "legal_name": "STANDARD CHARTERED BANK (HONG KONG) LIMITED",
+      "name": "Standard Chartered Hong Kong",
+      "offer_count": 0,
+      "official_domains": [
+        "sc.com"
+      ],
+      "website": "https://www.sc.com/hk"
+    }
+  ]
+}

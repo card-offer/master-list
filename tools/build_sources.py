@@ -4,12 +4,12 @@
     python3 tools/build_sources.py           write crawler/sources.json and crawler/SOURCES.md
     python3 tools/build_sources.py --check   exit 1 if the committed files differ
 
-Issuer rows come from my/issuers.json and sg/issuers.json: one cards row and one
+Issuer rows come from each {cc}/issuers.json file: one cards row and one
 offers row for each official domain. Card entry URLs come from crawl.card_sources.
 Offer entry URLs come from crawl.offer_sources, then from pipeline/offers_config.json
 seeds for that issuer, when the URL host matches the row. full_crawl_order comes
-from the issuer table in crawler/FULL_CRAWL.md. An issuer that is in issuers.json
-but not yet in that table is marked after-34, as the file says.
+from the issuer tables in crawler/FULL_CRAWL.md. An issuer that is in issuers.json
+but not yet in a table is marked after-34, as the file says for Malaysia and Singapore.
 
 Network and regulator rows are kept as they are in crawler/sources.json. Status
 and suggested_by on an issuer row are kept when the same issuer, host and purpose
@@ -57,9 +57,18 @@ def dump_json(data):
     return json.dumps(data, indent=1, ensure_ascii=False) + "\n"
 
 
+def country_folders(root):
+    """Two-letter country folders that contain an issuers.json file."""
+    found = []
+    for path in sorted(root.iterdir()):
+        if path.is_dir() and len(path.name) == 2 and path.name.isalpha() and (path / "issuers.json").is_file():
+            found.append(path.name)
+    return found
+
+
 def load_issuers(root):
     items = []
-    for country in ("my", "sg"):
+    for country in country_folders(root):
         items.extend(load_json(root / country / "issuers.json")["items"])
     return items
 
@@ -192,7 +201,7 @@ def build_sources(root=None):
     items = sort_items(kept + issuer_rows)
     return {
         "description": current.get("description") or (
-            "Canonical list of sites to crawl for Malaysia and Singapore. "
+            "Canonical list of sites to crawl. "
             "Every official issuer or network host, and the phase 1 regulator hosts, "
             "must appear here before a crawl. See crawler/SOURCES.md."
         ),
@@ -202,9 +211,9 @@ def build_sources(root=None):
 
 GUIDE_HEAD = """# Crawl sources
 
-This file describes the canonical list of sites to crawl for Malaysia (MY) and Singapore (SG). The list itself is [`crawler/sources.json`](sources.json). Do not crawl a host that is not on the list.
+This file describes the canonical list of sites to crawl. The list itself is [`crawler/sources.json`](sources.json). Do not crawl a host that is not on the list.
 
-Issuer rows are built by `tools/build_sources.py` from `{cc}/issuers.json` official domains and entry URLs, and from `pipeline/offers_config.json` seeds. Network and regulator rows are kept as they are in `crawler/sources.json`. A host also has to be in the issuer's or the network's `official_domains`, except for the two regulator sites used in the phase 1 census.
+Issuer rows are built by `tools/build_sources.py` from `{cc}/issuers.json` official domains and entry URLs, and from `pipeline/offers_config.json` seeds. Network and regulator rows are kept as they are in `crawler/sources.json`. A host also has to be in the issuer's or the network's `official_domains`, except for the regulator sites used in a census.
 
 ## How to read a row
 
@@ -212,12 +221,12 @@ Issuer rows are built by `tools/build_sources.py` from `{cc}/issuers.json` offic
 |---|---|
 | `site` | The issuer, network or regulator name. |
 | `host` | The official host, without a leading `www.` |
-| `country` | `MY` or `SG`. |
+| `country` | ISO 3166-1 alpha-2 code. |
 | `type` | `issuer`, `network` or `regulator`. |
 | `purpose` | `cards` or `offers` for crawl pages, and `census` for the regulator lists. |
 | `entry_urls` | Known listing or start URLs from the repository. An empty list means the host is official but no start URL is recorded yet. |
 | `status` | Fetcher class from repository evidence only: `ok`, `js_shell`, `bot_wall`, `network_unreachable`, or `untested` when the repository has no such evidence. Do not invent a status. |
-| `full_crawl_order` | The order in `crawler/FULL_CRAWL.md`: `1` to `34` for issuers in that table, `after-34` for a phase 1 issuer not yet given a number, `C1` to `C12` for network offer sites, and `phase-1` for regulators. |
+| `full_crawl_order` | The order in `crawler/FULL_CRAWL.md`: an integer for an issuer in that table, `after-34` for a phase 1 issuer not yet given a number, `C1` and following for network offer sites, and `phase-1` for regulators. |
 | `suggested_by` | The GitHub issue that proposed the site, or `null` when the row came from the repository itself. |
 
 ## Suggesting a site
@@ -233,9 +242,10 @@ def render_sources_md(data):
     items = data["items"]
     by_country = Counter(row["country"] for row in items)
     by_type = Counter(row["type"] for row in items)
+    country_bits = ", ".join(f"{code} {by_country[code]}" for code in sorted(by_country))
     counts = (
         f"There are {len(items)} rows in `crawler/sources.json`. "
-        f"Counts by country: MY {by_country.get('MY', 0)}, SG {by_country.get('SG', 0)}. "
+        f"Counts by country: {country_bits}. "
         f"Counts by type: issuer {by_type.get('issuer', 0)}, "
         f"network {by_type.get('network', 0)}, regulator {by_type.get('regulator', 0)}.\n"
     )

@@ -1,8 +1,8 @@
 # Crawl sources
 
-This file describes the canonical list of sites to crawl for Malaysia (MY) and Singapore (SG). The list itself is [`crawler/sources.json`](sources.json). Do not crawl a host that is not on the list.
+This file describes the canonical list of sites to crawl. The list itself is [`crawler/sources.json`](sources.json). Do not crawl a host that is not on the list.
 
-Issuer rows are built by `tools/build_sources.py` from `{cc}/issuers.json` official domains and entry URLs, and from `pipeline/offers_config.json` seeds. Network and regulator rows are kept as they are in `crawler/sources.json`. A host also has to be in the issuer's or the network's `official_domains`, except for the two regulator sites used in the phase 1 census.
+Issuer rows are built by `tools/build_sources.py` from `{cc}/issuers.json` official domains and entry URLs, and from `pipeline/offers_config.json` seeds. Network and regulator rows are kept as they are in `crawler/sources.json`. A host also has to be in the issuer's or the network's `official_domains`, except for the regulator sites used in a census.
 
 ## How to read a row
 
@@ -10,12 +10,12 @@ Issuer rows are built by `tools/build_sources.py` from `{cc}/issuers.json` offic
 |---|---|
 | `site` | The issuer, network or regulator name. |
 | `host` | The official host, without a leading `www.` |
-| `country` | `MY` or `SG`. |
+| `country` | ISO 3166-1 alpha-2 code. |
 | `type` | `issuer`, `network` or `regulator`. |
 | `purpose` | `cards` or `offers` for crawl pages, and `census` for the regulator lists. |
 | `entry_urls` | Known listing or start URLs from the repository. An empty list means the host is official but no start URL is recorded yet. |
 | `status` | Fetcher class from repository evidence only: `ok`, `js_shell`, `bot_wall`, `network_unreachable`, or `untested` when the repository has no such evidence. Do not invent a status. |
-| `full_crawl_order` | The order in `crawler/FULL_CRAWL.md`: `1` to `34` for issuers in that table, `after-34` for a phase 1 issuer not yet given a number, `C1` to `C12` for network offer sites, and `phase-1` for regulators. |
+| `full_crawl_order` | The order in `crawler/FULL_CRAWL.md`: an integer for an issuer in that table, `after-34` for a phase 1 issuer not yet given a number, `C1` and following for network offer sites, and `phase-1` for regulators. |
 | `suggested_by` | The GitHub issue that proposed the site, or `null` when the row came from the repository itself. |
 
 ## Suggesting a site
@@ -24,10 +24,12 @@ Contributors can propose a site with the "Suggest a site to crawl" issue form. T
 
 ## The list
 
-There are 116 rows in `crawler/sources.json`. Counts by country: MY 58, SG 58. Counts by type: issuer 96, network 18, regulator 2.
+There are 162 rows in `crawler/sources.json`. Counts by country: HK 46, MY 58, SG 58. Counts by type: issuer 132, network 26, regulator 4.
 
 | Order | Country | Type | Purpose | Site | Host | Status | Entry URLs |
 |---|---|---|---|---|---|---|---|
+| phase-1 | HK | regulator | census | Hong Kong Monetary Authority | `hkma.gov.hk` | ok | https://www.hkma.gov.hk/eng/key-functions/banking/banking-regulatory-and-supervisory-regime/the-three-tier-banking-system/, https://www.hkma.gov.hk/eng/key-functions/banking/banking-regulatory-and-supervisory-regime/digital-banks/ |
+| phase-1 | HK | regulator | census | Hong Kong Monetary Authority | `vpr.hkma.gov.hk` | untested |  |
 | phase-1 | MY | regulator | census | Bank Negara Malaysia | `bnm.gov.my` | untested |  |
 | phase-1 | SG | regulator | census | Monetary Authority of Singapore | `eservices.mas.gov.sg` | untested |  |
 | 1 | SG | issuer | cards | CIMB Singapore | `cimb.com.sg` | untested | https://www.cimb.com.sg/en/personal/banking-with-us/cards/credit-cards.html |
@@ -122,6 +124,42 @@ There are 116 rows in `crawler/sources.json`. Counts by country: MY 58, SG 58. C
 | 34 | MY | issuer | offers | Maybank | `maybank.com` | untested |  |
 | 34 | MY | issuer | cards | Maybank | `maybank2u.com.my` | untested | https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards/index.page |
 | 34 | MY | issuer | offers | Maybank | `maybank2u.com.my` | untested |  |
+| 35 | HK | issuer | cards | Mox Bank | `mox.com` | untested | https://mox.com/ |
+| 35 | HK | issuer | offers | Mox Bank | `mox.com` | untested |  |
+| 36 | HK | issuer | cards | Fubon Bank (Hong Kong) | `fubonbank.com.hk` | untested | https://www.fubonbank.com.hk/en/home.html |
+| 36 | HK | issuer | offers | Fubon Bank (Hong Kong) | `fubonbank.com.hk` | untested |  |
+| 37 | HK | issuer | cards | Chong Hing Bank | `chbank.com` | untested | https://www.chbank.com/en/homepage.shtml |
+| 37 | HK | issuer | offers | Chong Hing Bank | `chbank.com` | untested |  |
+| 38 | HK | issuer | cards | CMB Wing Lung Bank | `cmbwinglungbank.com` | untested | https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/index.html |
+| 38 | HK | issuer | offers | CMB Wing Lung Bank | `cmbwinglungbank.com` | untested |  |
+| 39 | HK | issuer | cards | Dah Sing Bank | `dahsing.com` | untested | https://www.dahsing.com/html/en/credit_card/index.html |
+| 39 | HK | issuer | offers | Dah Sing Bank | `dahsing.com` | untested |  |
+| 40 | HK | issuer | cards | Bank of Communications (Hong Kong) | `hk.bankcomm.com` | untested | https://www.hk.bankcomm.com/hk/shtml/hk/tw/2004980/list.shtml?channelId=2004980, https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005005/2005035/list.shtml?channelId=2004980 |
+| 40 | HK | issuer | offers | Bank of Communications (Hong Kong) | `hk.bankcomm.com` | untested |  |
+| 41 | HK | issuer | cards | CCB Asia | `asia.ccb.com` | untested | https://www.asia.ccb.com/hongkong/personal/credit_cards/card_list.html |
+| 41 | HK | issuer | offers | CCB Asia | `asia.ccb.com` | untested |  |
+| 42 | HK | issuer | cards | ICBC Asia | `icbcasia.com` | untested | https://www.icbcasia.com/hk/en/personal/credit-cards/default.html |
+| 42 | HK | issuer | offers | ICBC Asia | `icbcasia.com` | untested |  |
+| 43 | HK | issuer | cards | OCBC Bank (Hong Kong) | `ocbc.com.hk` | untested | https://www.ocbc.com.hk/personal-banking/cards/credit-cards, https://www.ocbc.com.hk/personal-banking/cards/ocbc-credit-card |
+| 43 | HK | issuer | offers | OCBC Bank (Hong Kong) | `ocbc.com.hk` | untested |  |
+| 44 | HK | issuer | cards | Bank of East Asia | `hkbea.com` | untested | https://www.hkbea.com/html/en/index.html |
+| 44 | HK | issuer | offers | Bank of East Asia | `hkbea.com` | untested | https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html |
+| 45 | HK | issuer | cards | Citibank (Hong Kong) | `citibank.com.hk` | untested | https://www.citibank.com.hk/, https://www.citibank.com.hk/english/credit-cards/ |
+| 45 | HK | issuer | offers | Citibank (Hong Kong) | `citibank.com.hk` | untested |  |
+| 46 | HK | issuer | cards | China CITIC Bank International | `cncbinternational.com` | untested | https://www.cncbinternational.com/home/en/index.jsp |
+| 46 | HK | issuer | offers | China CITIC Bank International | `cncbinternational.com` | untested |  |
+| 47 | HK | issuer | cards | Standard Chartered Hong Kong | `sc.com` | untested | https://www.sc.com/hk/credit-cards/ |
+| 47 | HK | issuer | offers | Standard Chartered Hong Kong | `sc.com` | untested |  |
+| 48 | HK | issuer | cards | Hang Seng Bank | `hangseng.com` | untested | https://www.hangseng.com/en-hk/personal/cards/overview/ |
+| 48 | HK | issuer | offers | Hang Seng Bank | `hangseng.com` | untested |  |
+| 49 | HK | issuer | cards | DBS Hong Kong | `dbs.com.hk` | untested | https://www.dbs.com.hk/personal/credit-cards/default.page |
+| 49 | HK | issuer | offers | DBS Hong Kong | `dbs.com.hk` | untested |  |
+| 50 | HK | issuer | cards | HSBC Hong Kong | `hsbc.com.hk` | untested | https://www.hsbc.com.hk/credit-cards/ |
+| 50 | HK | issuer | offers | HSBC Hong Kong | `hsbc.com.hk` | untested |  |
+| 51 | HK | issuer | cards | Bank of China (Hong Kong) | `bochk.com` | untested | https://www.bochk.com/en/creditcard.html, https://www.bochk.com/dam/boccreditcard/cardproductlisting/eng/index.html |
+| 51 | HK | issuer | offers | Bank of China (Hong Kong) | `bochk.com` | untested |  |
+| 51 | HK | issuer | cards | Bank of China (Hong Kong) | `boci.com.hk` | untested |  |
+| 51 | HK | issuer | offers | Bank of China (Hong Kong) | `boci.com.hk` | untested |  |
 | after-34 | MY | issuer | cards | ICBC Malaysia | `icbcmy.com` | untested |  |
 | after-34 | MY | issuer | offers | ICBC Malaysia | `icbcmy.com` | untested |  |
 | after-34 | MY | issuer | cards | ICBC Malaysia | `v.icbc.com.cn` | untested |  |
@@ -144,3 +182,11 @@ There are 116 rows in `crawler/sources.json`. Counts by country: MY 58, SG 58. C
 | C10 | SG | network | offers | American Express | `americanexpress.com` | untested |  |
 | C11 | MY | network | offers | Diners Club | `dinersclub.com` | untested |  |
 | C12 | SG | network | offers | Diners Club | `dinersclub.com` | untested |  |
+| C13 | HK | network | offers | Mastercard | `mastercard.com` | untested |  |
+| C13 | HK | network | offers | Mastercard | `priceless.com` | untested |  |
+| C13 | HK | network | offers | Mastercard | `specials.priceless.com` | untested | https://specials.priceless.com/ |
+| C14 | HK | network | offers | JCB | `jcb.co.jp` | untested |  |
+| C14 | HK | network | offers | JCB | `specialoffers.jcb` | untested | https://www.specialoffers.jcb/, https://www.specialoffers.jcb/en/campaign/d/east-asia/hong-kong/, https://www.specialoffers.jcb/en/offers/d/east-asia/hong-kong/ |
+| C15 | HK | network | offers | Visa | `visa.com` | untested |  |
+| C16 | HK | network | offers | UnionPay | `unionpayintl.com` | untested | https://www.unionpayintl.com/hk/ |
+| C17 | HK | network | offers | American Express | `americanexpress.com` | untested |  |
