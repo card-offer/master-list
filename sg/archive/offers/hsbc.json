@@ -1,0 +1,11 @@
+{
+  "archive": true,
+  "count": 1,
+  "country": "SG",
+  "generated_at": "2026-11-13T02:35:31+00:00",
+  "issuer_id": "sg-hsbc",
+  "schema_version": "0.3.0",
+  "items": [
+    {"aliases":["sg-hsbc-hsbc-promotions"],"benefit":{"source":null,"type":"other","unit":null,"up_to":false,"value":null,"value_text":null},"booking_period":null,"cap":null,"cap_null_reason":null,"cap_source_url":null,"category":"insurance","checked_at":"2026-11-09T17:43:34+08:00","checked_at_null_reason":null,"checked_fetch_url":"https://www.hsbc.com.sg/promotions/loans/","country":"SG","cross_border":{"basis":"no_foreign_signal","card_issuing_country":"SG","is_cross_border":false,"redeem_countries":["SG"]},"currency":"SGD","dates_source_url":"https://www.hsbc.com.sg/promotions/#loanpromotions","description":null,"detail_level":"structured","eligibility":{"card_ids":[],"card_types":[],"confidence":"inferred","evidence_text":null,"issuer_ids":["sg-hsbc"],"network_ids":[],"rule":"issuer_wide_no_card_restriction_found","scope":"issuer","tiers":[]},"end_date":"2026-11-10","end_date_reviewer_accepted":false,"first_seen":"2026-11-09","id":"sg-hsbc-3094d1d8dc","last_seen":"2026-11-09","limits":[],"merchant_id":null,"merchant_ids":[],"merchant_kind":"unknown","merchant_name":null,"merchant_name_source":null,"merchant_names":[],"merchant_outlet":null,"min_spend":null,"min_spend_source_url":null,"provider":{"id":"sg-hsbc","type":"issuer"},"review_by":"2026-11-10","review_reason":null,"source_url":"https://www.hsbc.com.sg/promotions/#loanpromotions","source_verified":true,"sources":[{"fetched_at":"2026-11-09T17:43:34+08:00","kind":"issuer_promotion_page","url":"https://www.hsbc.com.sg/promotions/loans/"}],"start_date":null,"start_date_null_reason":"not_stated_in_terms_or_page","stated_end_date":null,"status":"expired","terms_fetched_at":null,"terms_hash":null,"terms_hash_null_reason":"no_terms_text_in_source_record","terms_scope":null,"terms_url":null,"terms_url_null_reason":"no_deal_specific_terms_link_on_page","title":"HSBC Promotions","usage_period":{"end":"2026-11-10","start":null},"valid_days":null}
+  ]
+}
