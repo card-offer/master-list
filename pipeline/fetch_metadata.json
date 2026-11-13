@@ -3364,5 +3364,21 @@
 {"url": "https://www.maybank.com/islamic/en/cards/amex_ikhwan_platinum.page", "status": 200, "final_url": "https://www.maybank.com/islamic/en/cards/amex_ikhwan_platinum.page", "fetched_at": "2026-11-12T13:44:53+08:00"},
 {"url": "https://www.maybank.com/islamic/en/cards/mastercard_ikhwan_gold.page", "status": 200, "final_url": "https://www.maybank.com/islamic/en/cards/mastercard_ikhwan_gold.page", "fetched_at": "2026-11-12T13:44:55+08:00"},
 {"url": "https://www.maybank.com/islamic/en/cards/petronas_ikhwan_gold.page", "status": 200, "final_url": "https://www.maybank.com/islamic/en/cards/petronas_ikhwan_gold.page", "fetched_at": "2026-11-12T13:44:59+08:00"},
-{"url": "https://www.maybank.com/iwov-resources/pdf/personal/cards/credit_cards/PDS_Visa_Infinite_Ikhwan.pdf", "status": 200, "final_url": "https://www.maybank.com/iwov-resources/pdf/personal/cards/credit_cards/PDS_Visa_Infinite_Ikhwan.pdf", "fetched_at": "2026-11-12T13:46:24+08:00"}
+{"url": "https://www.maybank.com/iwov-resources/pdf/personal/cards/credit_cards/PDS_Visa_Infinite_Ikhwan.pdf", "status": 200, "final_url": "https://www.maybank.com/iwov-resources/pdf/personal/cards/credit_cards/PDS_Visa_Infinite_Ikhwan.pdf", "fetched_at": "2026-11-12T13:46:24+08:00"},
+{"url": "https://www.sc.com/my/credit-cards/", "status": 200, "final_url": "https://www.sc.com/my/credit-cards/", "fetched_at": "2026-11-13T13:10:14+08:00"},
+{"url": "https://www.sc.com/my/promotions/", "status": 200, "final_url": "https://www.sc.com/my/promotions/", "fetched_at": "2026-11-13T13:10:17+08:00"},
+{"url": "https://www.sc.com/my/credit-cards/beyond/", "status": 200, "final_url": "https://www.sc.com/my/credit-cards/beyond/", "fetched_at": "2026-11-13T13:11:02+08:00"},
+{"url": "https://www.sc.com/my/credit-cards/journey/", "status": 200, "final_url": "https://www.sc.com/my/credit-cards/journey/", "fetched_at": "2026-11-13T13:11:05+08:00"},
+{"url": "https://www.sc.com/my/credit-cards/platinum-basic-mastercard/", "status": 200, "final_url": "https://www.sc.com/my/credit-cards/platinum-basic-mastercard/", "fetched_at": "2026-11-13T13:11:08+08:00"},
+{"url": "https://www.sc.com/my/credit-cards/compare/", "status": 200, "final_url": "https://www.sc.com/my/credit-cards/compare/", "fetched_at": "2026-11-13T13:11:11+08:00"},
+{"url": "https://www.sc.com/my/fees-and-charges/", "status": 200, "final_url": "https://www.sc.com/my/fees-and-charges/", "fetched_at": "2026-11-13T13:11:14+08:00"},
+{"url": "https://www.sc.com/my/promotions/the-good-life-privileges/", "status": 200, "final_url": "https://www.sc.com/my/promotions/the-good-life-privileges/", "fetched_at": "2026-11-13T13:11:16+08:00"},
+{"url": "https://www.sc.com/my/promotions/prioritydiningprivileges/", "status": 200, "final_url": "https://www.sc.com/my/promotions/prioritydiningprivileges/", "fetched_at": "2026-11-13T13:11:19+08:00"},
+{"url": "https://www.sc.com/my/promotions/travel-perks/", "status": 200, "final_url": "https://www.sc.com/my/promotions/travel-perks/", "fetched_at": "2026-11-13T13:11:22+08:00"},
+{"url": "https://www.sc.com/my/promotions/health-and-wellness/", "status": 200, "final_url": "https://www.sc.com/my/promotions/health-and-wellness/", "fetched_at": "2026-11-13T13:11:25+08:00"},
+{"url": "https://www.sc.com/my/promotions/zero-percent-easy-payment-scheme/", "status": 200, "final_url": "https://www.sc.com/my/promotions/zero-percent-easy-payment-scheme/", "fetched_at": "2026-11-13T13:11:28+08:00"},
+{"url": "https://www.sc.com/my/promotions/balance-transfer-plus/", "status": 200, "final_url": "https://www.sc.com/my/promotions/balance-transfer-plus/", "fetched_at": "2026-11-13T13:11:30+08:00"},
+{"url": "https://www.sc.com/my/data/tgl/offers.json", "status": 200, "final_url": "https://www.sc.com/my/data/tgl/offers.json", "fetched_at": "2026-11-13T13:11:47+08:00"},
+{"url": "https://www.sc.com/my/data/wp/v2/credit-card-details.json", "status": 200, "final_url": "https://www.sc.com/my/data/wp/v2/credit-card-details.json", "fetched_at": "2026-11-13T13:11:50+08:00"},
+{"url": "https://av.sc.com/my/mock/json/tgl-categories-latest.json", "status": 200, "final_url": "https://av.sc.com/my/mock/json/tgl-categories-latest.json", "fetched_at": "2026-11-13T13:11:53+08:00"}
 ]
