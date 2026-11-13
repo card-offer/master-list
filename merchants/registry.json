@@ -1,6 +1,6 @@
 {
-  "count": 952,
-  "generated_at": "2026-11-12T07:37:23+00:00",
+  "count": 953,
+  "generated_at": "2026-11-13T00:48:14+00:00",
   "schema_version": "0.3.0",
   "items": [
     {"aliases":[],"categories":["hotel"],"countries":["MY"],"id":"1001-night-hotel-trademark-collection-by-wyndham","name":"1001 Night Hotel, Trademark Collection By Wyndham","offer_ids":["my-rhb-042b63f82d"],"official_domain":null,"verified":false},
@@ -85,6 +85,7 @@
     {"aliases":[],"categories":["cafe"],"countries":["MY"],"id":"baskin-robbins","name":"Baskin-Robbins","offer_ids":["my-hsbc-eaa9689dd9"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["online"],"countries":["MY"],"id":"bateriku-com","name":"Bateriku.Com","offer_ids":["my-rhb-30c2ff4d25"],"official_domain":null,"verified":false},
     {"aliases":["Batik Air (Travel Perks)","my-batik-air","my-batik-air-travel-perks"],"categories":["entertainment","other","travel"],"countries":["MY"],"id":"batik-air","name":"Batik Air","offer_ids":["my-rhb-790b6d4e54","my-rhb-dc11a86129","my-standard-chartered-d1262126f0"],"official_domain":null,"verified":true},
+    {"aliases":[],"categories":["fashion"],"countries":["MY"],"id":"batik-boutique","name":"BATIK BOUTIQUE","offer_ids":["my-al-rajhi-980b3b8f44"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["instalment"],"countries":["MY"],"id":"beaute-library","name":"Beaute Library","offer_ids":["my-hsbc-0eea2e8e9f"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["beauty"],"countries":["SG"],"id":"beauty-in-the-pot","name":"Beauty in The Pot","offer_ids":["sg-ocbc-c5706aeb4b"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["shopping"],"countries":["MY"],"id":"bedding-and-co","name":"Bedding & Co","offer_ids":["my-rhb-b7f939b3f6"],"official_domain":null,"verified":false},
@@ -204,7 +205,7 @@
     {"aliases":[],"categories":["dining"],"countries":["SG"],"id":"crystal-jade-palace","name":"Crystal Jade Palace","offer_ids":["sg-ocbc-bbd5b90c15"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["dining"],"countries":["SG"],"id":"crystal-jade-pavilion","name":"Crystal Jade Pavilion","offer_ids":["sg-ocbc-a84f76edb9"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["fashion"],"countries":["SG"],"id":"curious-creatures","name":"Curious Creatures","offer_ids":["sg-ocbc-22db1016fb"],"official_domain":null,"verified":false},
-    {"aliases":[],"categories":[],"countries":["MY"],"id":"curves","name":"Curves","offer_ids":["my-al-rajhi-7eaece259a"],"official_domain":null,"verified":false},
+    {"aliases":[],"categories":["health"],"countries":["MY"],"id":"curves","name":"Curves","offer_ids":["my-al-rajhi-7eaece259a"],"official_domain":"curves.com.my","verified":true},
     {"aliases":[],"categories":["dining"],"countries":["SG"],"id":"cygnet","name":"Cygnet","offer_ids":["sg-standard-chartered-5b6c1ae1e4"],"official_domain":null,"verified":false},
     {"aliases":["my-danai-medi-wellness"],"categories":["health"],"countries":["MY"],"id":"danai-medi-wellness","name":"Danai Medi-Wellness","offer_ids":["my-uob-337178882d","my-uob-9fc003731e"],"official_domain":null,"verified":true},
     {"aliases":[],"categories":["dining"],"countries":["SG"],"id":"dancing-crab","name":"Dancing Crab","offer_ids":["sg-ocbc-c498a30ddd"],"official_domain":null,"verified":false},
