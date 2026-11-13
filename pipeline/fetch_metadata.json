@@ -3364,5 +3364,19 @@
 {"url": "https://www.maybank.com/islamic/en/cards/amex_ikhwan_platinum.page", "status": 200, "final_url": "https://www.maybank.com/islamic/en/cards/amex_ikhwan_platinum.page", "fetched_at": "2026-11-12T13:44:53+08:00"},
 {"url": "https://www.maybank.com/islamic/en/cards/mastercard_ikhwan_gold.page", "status": 200, "final_url": "https://www.maybank.com/islamic/en/cards/mastercard_ikhwan_gold.page", "fetched_at": "2026-11-12T13:44:55+08:00"},
 {"url": "https://www.maybank.com/islamic/en/cards/petronas_ikhwan_gold.page", "status": 200, "final_url": "https://www.maybank.com/islamic/en/cards/petronas_ikhwan_gold.page", "fetched_at": "2026-11-12T13:44:59+08:00"},
-{"url": "https://www.maybank.com/iwov-resources/pdf/personal/cards/credit_cards/PDS_Visa_Infinite_Ikhwan.pdf", "status": 200, "final_url": "https://www.maybank.com/iwov-resources/pdf/personal/cards/credit_cards/PDS_Visa_Infinite_Ikhwan.pdf", "fetched_at": "2026-11-12T13:46:24+08:00"}
+{"url": "https://www.maybank.com/iwov-resources/pdf/personal/cards/credit_cards/PDS_Visa_Infinite_Ikhwan.pdf", "status": 200, "final_url": "https://www.maybank.com/iwov-resources/pdf/personal/cards/credit_cards/PDS_Visa_Infinite_Ikhwan.pdf", "fetched_at": "2026-11-12T13:46:24+08:00"},
+{"url": "https://www.maribank.sg/", "status": 200, "final_url": "https://www.maribank.sg/", "fetched_at": "2026-11-13T09:01:41+08:00"},
+{"url": "https://www.maribank.sg/product/mari-credit-card", "status": 200, "final_url": "https://www.maribank.sg/product/mari-credit-card", "fetched_at": "2026-11-13T09:01:42+08:00"},
+{"url": "https://www.maribank.sg/sitemap.xml", "status": 200, "final_url": "https://www.maribank.sg/sitemap.xml", "fetched_at": "2026-11-13T09:02:01+08:00"},
+{"url": "https://www.maribank.sg/promo", "status": 200, "final_url": "https://www.maribank.sg/promo", "fetched_at": "2026-11-13T09:02:03+08:00"},
+{"url": "https://www.maribank.sg/fees-rates/mari-credit-card", "status": 200, "final_url": "https://www.maribank.sg/fees-rates/mari-credit-card", "fetched_at": "2026-11-13T09:02:04+08:00"},
+{"url": "https://www.maribank.sg/fees-rates", "status": 200, "final_url": "https://www.maribank.sg/fees-rates", "fetched_at": "2026-11-13T09:02:06+08:00"},
+{"url": "https://www.maribank.sg/terms-conditions", "status": 200, "final_url": "https://www.maribank.sg/terms-conditions", "fetched_at": "2026-11-13T09:02:08+08:00"},
+{"url": "https://www.maribank.sg/promo/flights-giveaway", "status": 200, "final_url": "https://www.maribank.sg/promo/flights-giveaway", "fetched_at": "2026-11-13T09:03:22+08:00"},
+{"url": "https://www.maribank.sg/promo/earn-up-to-s80-new-user-rewards", "status": 200, "final_url": "https://www.maribank.sg/promo/earn-up-to-s80-new-user-rewards", "fetched_at": "2026-11-13T09:03:24+08:00"},
+{"url": "https://www.maribank.sg/promo/travel-easy-with-unbeatable-fx-rates", "status": 200, "final_url": "https://www.maribank.sg/promo/travel-easy-with-unbeatable-fx-rates", "fetched_at": "2026-11-13T09:03:25+08:00"},
+{"url": "https://www.maribank.sg/promo/enjoy-15-cashback-on-overseas-spend-with-mcc", "status": 200, "final_url": "https://www.maribank.sg/promo/enjoy-15-cashback-on-overseas-spend-with-mcc", "fetched_at": "2026-11-13T09:03:27+08:00"},
+{"url": "https://www.maribank.sg/terms-conditions/terms-and-conditions-governing-mari-credit-card", "status": 200, "final_url": "https://www.maribank.sg/terms-conditions/terms-and-conditions-governing-mari-credit-card", "fetched_at": "2026-11-13T09:03:28+08:00"},
+{"url": "https://www.maribank.sg/promotion-terms", "status": 200, "final_url": "https://www.maribank.sg/promotion-terms", "fetched_at": "2026-11-13T09:03:30+08:00"},
+{"url": "https://www.maribank.sg/promotion-terms/mari-credit-card-promotions-terms-conditions", "status": 200, "final_url": "https://www.maribank.sg/promotion-terms/mari-credit-card-promotions-terms-conditions", "fetched_at": "2026-11-13T09:03:31+08:00"}
 ]

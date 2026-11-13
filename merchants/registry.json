@@ -1,6 +1,6 @@
 {
   "count": 952,
-  "generated_at": "2026-11-12T07:37:23+00:00",
+  "generated_at": "2026-11-13T01:09:59+00:00",
   "schema_version": "0.3.0",
   "items": [
     {"aliases":[],"categories":["hotel"],"countries":["MY"],"id":"1001-night-hotel-trademark-collection-by-wyndham","name":"1001 Night Hotel, Trademark Collection By Wyndham","offer_ids":["my-rhb-042b63f82d"],"official_domain":null,"verified":false},
@@ -737,7 +737,7 @@
     {"aliases":[],"categories":[],"countries":["SG"],"id":"shichirin-ubud","name":"Shichirin Ubud","offer_ids":["sg-ocbc-b22e3ede4b"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["instalment"],"countries":["MY"],"id":"shine-shine-club","name":"Shine Shine Club","offer_ids":["my-rhb-bf1b8f3330"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["dining"],"countries":["SG"],"id":"shoo-loong-kan-hot-pot","name":"Shoo Loong Kan Hot Pot","offer_ids":["sg-ocbc-02d66a100f"],"official_domain":null,"verified":false},
-    {"aliases":["Fulfilled by Shopee Wednesdays","Shopee (New Customers)","Shopee 11.11","Shopee 11.11 Big Sale","Shopee Singapore","my-shopee","my-shopee-11-11","sg-fulfilled-by-shopee-wednesdays","sg-shopee","sg-shopee-11-11-big-sale","sg-shopee-new-customers","sg-shopee-singapore"],"categories":["online"],"countries":["MY","SG"],"id":"shopee","name":"Shopee","offer_ids":["my-affin-e1d0d0da60","my-bsn-a0afc2f60f","sg-dcs-e9c7f8333c","sg-hsbc-ac51928218","sg-icbc-a5db911230","sg-ocbc-371376ffe1","sg-ocbc-d7454728ba"],"official_domain":null,"verified":true},
+    {"aliases":["Fulfilled by Shopee Wednesdays","Shopee (New Customers)","Shopee 11.11","Shopee 11.11 Big Sale","Shopee Singapore","my-shopee","my-shopee-11-11","sg-fulfilled-by-shopee-wednesdays","sg-shopee","sg-shopee-11-11-big-sale","sg-shopee-new-customers","sg-shopee-singapore"],"categories":["online","shopping"],"countries":["MY","SG"],"id":"shopee","name":"Shopee","offer_ids":["my-affin-e1d0d0da60","my-bsn-a0afc2f60f","sg-dcs-e9c7f8333c","sg-hsbc-ac51928218","sg-icbc-a5db911230","sg-maribank-42c16fbb98","sg-ocbc-371376ffe1","sg-ocbc-d7454728ba"],"official_domain":null,"verified":true},
     {"aliases":[],"categories":["shopping"],"countries":["SG"],"id":"shu-da-xia-mount-austin","name":"Shu Da Xia (Mount Austin)","offer_ids":["sg-ocbc-c22d61f652"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["dining"],"countries":["SG"],"id":"siam-kitchen","name":"Siam Kitchen","offer_ids":["sg-ocbc-b1c0e6f38e"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["online"],"countries":["SG"],"id":"sigi-skin","name":"Sigi Skin","offer_ids":["sg-ocbc-76cdd5e764"],"official_domain":null,"verified":false},
