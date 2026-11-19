@@ -1,6 +1,6 @@
 {
   "count": 1720,
-  "generated_at": "2026-11-13T05:00:43+00:00",
+  "generated_at": "2026-11-13T05:08:28+00:00",
   "schema_version": "0.3.0",
   "items": [
     {"aliases":[],"categories":["dining"],"countries":["SG"],"id":"10-scotts","name":"10 Scotts","offer_ids":["sg-maybank-8f9c8c1877"],"official_domain":null,"verified":false},
@@ -1331,7 +1331,7 @@
     {"aliases":[],"categories":["shopping"],"countries":["SG"],"id":"shanghai-maglev","name":"Shanghai Maglev","offer_ids":["sg-posb-0a70e8af2a"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["travel"],"countries":["SG"],"id":"shanghai-maglev-line","name":"Shanghai Maglev Line","offer_ids":["sg-dcs-5af2752e68"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["shopping"],"countries":["SG"],"id":"shanghai-metro","name":"Shanghai Metro","offer_ids":["sg-posb-0a70e8af2a"],"official_domain":null,"verified":false},
-    {"aliases":[],"categories":["dining","hotel"],"countries":["MY","SG"],"id":"shangri-la","name":"Shangri-La Singapore","offer_ids":["my-hsbc-616a8de570","sg-hsbc-ea1f6b9a8f"],"official_domain":null,"verified":false},
+    {"aliases":["Shangri-La"],"categories":["dining","hotel"],"countries":["MY","SG"],"id":"shangri-la","name":"Shangri-La Singapore","offer_ids":["my-ambank-313b2a1276","my-hsbc-616a8de570","sg-hsbc-ea1f6b9a8f"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["hotel"],"countries":["SG"],"id":"shangri-la-hotels-and-resorts","name":"Shangri-La Hotels and Resorts","offer_ids":["sg-standard-chartered-e21663d4b5"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["hotel"],"countries":["SG"],"id":"shangri-la-rasa-sentosa","name":"Shangri-La Rasa Sentosa","offer_ids":["sg-standard-chartered-80340d26a2"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["dining"],"countries":["SG"],"id":"sharon-inn-rooftop-restaurant","name":"Sharon Inn Rooftop Restaurant","offer_ids":["sg-standard-chartered-cd8e0fee26"],"official_domain":null,"verified":false},
