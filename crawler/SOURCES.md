@@ -82,7 +82,7 @@ There are 116 rows in `crawler/sources.json`. Counts by country: MY 58, SG 58. C
 | 17 | MY | issuer | offers | Al Rajhi Bank Malaysia | `alrajhibank.com.my` | untested | https://www.alrajhibank.com.my/ |
 | 18 | MY | issuer | cards | BSN | `bsn.com.my` | untested | https://www.bsn.com.my/PersonalBanking/Cards/cards, https://www.bsn.com.my/page/site-map |
 | 18 | MY | issuer | offers | BSN | `bsn.com.my` | untested |  |
-| 19 | MY | issuer | cards | Bank Rakyat | `bankrakyat.com.my` | untested | https://www.bankrakyat.com.my/portal-main/compare-cards |
+| 19 | MY | issuer | cards | Bank Rakyat | `bankrakyat.com.my` | untested | https://www.bankrakyat.com.my/ |
 | 19 | MY | issuer | offers | Bank Rakyat | `bankrakyat.com.my` | untested |  |
 | 20 | MY | issuer | cards | OCBC Malaysia | `ocbc.com.my` | untested | https://www.ocbc.com.my/personal-banking/cards/credit-cards |
 | 20 | MY | issuer | offers | OCBC Malaysia | `ocbc.com.my` | untested |  |
