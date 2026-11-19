@@ -295,17 +295,17 @@ def check(obs, root, now=None):
         if rule["confidence"] == "stated" and not rule["quote"]:
             errors.append(f"{where}: stated eligibility needs a quote")
         names_of_issuers = rule.get("issuer_names") or []
+        issued = re.search(r"(?i)\bissued\s+(?:in|by banks in)\s+([A-Za-z][A-Za-z ,&/]{2,120})", rule["quote"] or "")
+        if issued:
+            keys = {**mrules, "country_words": []}
+            names = {name_key(row["name"], keys): row["code"] for row in load_json(os.path.join(root, "countries.json"))["items"]}
+            names.update({"hong kong": "HK", "macau": "MO", "macao": "MO", "china": "CN", "united states": "US"})
+            places = [name_key(part, keys) for part in re.split(r",|/|&|\band\b|\bor\b", issued.group(1))]
+            codes = {code for part in places for text, code in names.items() if part.startswith(text)}
+            if codes and country not in codes:
+                errors.append(f"{where}: the offer is for cards issued in {', '.join(sorted(codes))}, and this run is for cards "
+                              f"issued in {country}. Leave it out of this run and count it.")
         if network_id:
-            issued = re.search(r"(?i)\bissued\s+(?:in|by banks in)\s+([A-Za-z][A-Za-z ]{2,30})", rule["quote"] or "")
-            if issued:
-                place = name_key(issued.group(1), {**mrules, "country_words": []})
-                names = {name_key(row["name"], {**mrules, "country_words": []}): row["code"]
-                         for row in load_json(os.path.join(root, "countries.json"))["items"]}
-                names.update({"hong kong": "HK"})
-                other = next((code for text, code in names.items() if place.startswith(text) and code != country), None)
-                if other:
-                    errors.append(f"{where}: the offer is for cards issued in {other}, and this run is for cards issued in {country}. "
-                                  f"Leave it out of this run and count it.")
             if rule["scope"] != "network" or rule["network_ids"] != [network_id] or rule["card_names"]:
                 errors.append(f"{where}: in a network run, eligibility is scope network, network_ids [{network_id}] and no card names")
             if rule["confidence"] == "inferred" and (rule["tiers"] or names_of_issuers):

@@ -1,6 +1,6 @@
 # Issuer census (phase 1)
 
-Phase 1 of `crawler/FULL_CRAWL.md`. Every entry on the regulator lists was checked against the institution's own official site on 2026-11-11. Sources are the regulator sites and the institutions' own sites only. `null` means not known or not applicable.
+Phase 1 of `crawler/FULL_CRAWL.md`. Every entry on the Malaysia and Singapore regulator lists was checked against the institution's own official site on 2026-11-11. Every entry on the Hong Kong Monetary Authority authorized-institution and digital-bank lists was checked against the institution's own official site on 2026-11-13, where an official website was stated. Sources are the regulator sites and the institutions' own sites only. `null` means not known or not applicable.
 
 Results: `in_repository`, `same_group`, `new_issuer`, `no_consumer_card`, `out_of_scope_wholesale`, `not_reached` (see FULL_CRAWL.md, Phase 1, step 3). `out_of_scope_wholesale` is a Singapore scope exclusion for a MAS FID Wholesale Bank, by maintainer decision; it is not a confirmed product exclusion. An `off_domain_redirect` was recorded and not followed.
 
@@ -294,6 +294,321 @@ ICBC Malaysia: https robots.txt was 404 (no rules). The product page confirmed t
 
 Still flagged `robots_unreadable` where https robots.txt was again unreadable and a page was still read: PETRONAS Dagangan, RHB Singapore, Public Bank and Public Islamic Bank, Bank of China SG, and several other hosts listed in the row notes.
 
+## Hong Kong (HK)
+
+Regulator lists read on hkma.gov.hk, as at 31 October 2026: List of Licensed Banks (147), List of Restricted Licence Banks (17), List of Deposit-taking Companies (11), and List of Digital Banks (8). The official contact list addr.xls gives each authorized institution's official website, where stated. The eight digital banks are also on the List of Licensed Banks, so they have one row for each list. Unique authorized institutions: 175. List entries in the table: 183.
+
+The HKMA page on the three-tier banking system (last revision 02 November 2026) states that Local Representative Offices are not allowed to engage in any banking business. The List of Local Representative Offices (40 names, as at 31 October 2026) was therefore not treated as a list of potential card issuers and is not in the table.
+
+The interactive Register of AIs and LROs on vpr.hkma.gov.hk, and the registers index on hkma.gov.hk, were not read: `pipeline/fetcher.py` treats any URL containing the substring "register" as `login_required`. The Excel lists linked from the official three-tier and digital-banks pages were used instead.
+
+When a homepage was a JavaScript shell, English or card URLs written in that shell HTML were first fetched in plain mode. Where that was not enough, ordinary browser mode was used (never real-Chrome). Ant Bank's official homepage still returned no readable body in ordinary browser mode.
+
+| regulator entry | regulator list | result | issuer ID | official URL that proves the result | date checked | note |
+|---|---|---|---|---|---|---|
+| AGRICULTURAL BANK OF CHINA LIMITED | HKMA List of Licensed Banks | not_reached | null | https://www.hk.abchina.com/ | 2026-11-13 | Official site could not be read (http_error). |
+| ANT BANK (HONG KONG) LIMITED | HKMA List of Licensed Banks | not_reached | null | https://www.antbank.hk/ | 2026-11-13 | The official homepage is a JavaScript application. Plain mode and ordinary browser mode both returned no readable page body (browser class js_shell, empty text). |
+| ANT BANK (HONG KONG) LIMITED | HKMA List of Digital Banks | not_reached | null | https://www.antbank.hk/ | 2026-11-13 | The official homepage is a JavaScript application. Plain mode and ordinary browser mode both returned no readable page body (browser class js_shell, empty text). |
+| AUSTRALIA AND NEW ZEALAND BANKING GROUP LIMITED | HKMA List of Licensed Banks | no_consumer_card | null | https://www.anz.com/hongkong | 2026-11-13 | https://www.anz.com/hongkong is an institutional Hong Kong page. Credit card links on the group site are not Hong Kong consumer cards of this branch. |
+| BANCO BILBAO VIZCAYA ARGENTARIA S.A. | HKMA List of Licensed Banks | no_consumer_card | null | https://www.bbva.com/ | 2026-11-13 | The only credit card mention on the group homepage this run was a news item about a Turkey Bonus card. |
+| BANCO SANTANDER, S.A. | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| BANGKOK BANK PUBLIC COMPANY LIMITED | HKMA List of Licensed Banks | not_reached | null | https://www.bangkokbank.com/ | 2026-11-13 | Timeout on the official site. |
+| BANK J. SAFRA SARASIN AG | HKMA List of Licensed Banks | not_reached | null | https://jsafrasarasin.com/en/company/locations/country-pages/Hong-Kong.html | 2026-11-13 | The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment). |
+| BANK JULIUS BAER & CO. LTD. | HKMA List of Licensed Banks | not_reached | null | https://www.juliusbaer.com/hk | 2026-11-13 | captcha on the official site. The page was not used as evidence. |
+| BANK OF AMERICA, NATIONAL ASSOCIATION | HKMA List of Licensed Banks | no_consumer_card | null | https://www.bankofamerica.com/ | 2026-11-13 | The official website listed by HKMA shows credit cards of another country or of the parent group. No Hong Kong consumer credit or charge card of this institution was stated on the pages read. |
+| BANK OF CHINA (HONG KONG) LIMITED | HKMA List of Licensed Banks | new_issuer | hk-bochk | https://www.bochk.com/en/creditcard.html | 2026-11-13 | English credit card listing. HKMA addr.xls also lists www.boci.com.hk (credit card). |
+| BANK OF CHINA LIMITED | HKMA List of Licensed Banks | no_consumer_card | null | https://www.boc.cn/ | 2026-11-13 | boc.cn lists Bank of China Limited mainland credit cards. BANK OF CHINA (HONG KONG) LIMITED is a separate licensed bank and is recorded as hk-bochk. |
+| BANK OF COMMUNICATIONS (HONG KONG) LIMITED | HKMA List of Licensed Banks | new_issuer | hk-bocom-hk | https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005005/2005035/list.shtml?channelId=2004980 | 2026-11-13 | Traditional Chinese credit card introduction names consumer UnionPay dual-currency diamond and Visa Platinum cards. No English listing was found. |
+| BANK OF COMMUNICATIONS CO., LTD. | HKMA List of Licensed Banks | not_reached | null | https://www.bankcomm.com.hk/ | 2026-11-13 | The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment). |
+| BANK OF DONGGUAN CO., LTD. | HKMA List of Licensed Banks | no_consumer_card | null | https://hk.dongguanbank.cn/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| BANK OF DONGGUAN INTERNATIONAL LIMITED | HKMA List of Licensed Banks | no_consumer_card | null | https://www.bodintl.com/ | 2026-11-13 | Official homepage has no credit or charge card mention. |
+| BANK OF EAST ASIA, LIMITED (THE) | HKMA List of Licensed Banks | new_issuer | hk-bea | https://www.hkbea.com/html/en/index.html | 2026-11-13 | English home names BEA Dual Credit Card, BEA GOAL Credit Card and BEA UnionPay Dual Currency DIAMOND Credit Card. |
+| BANK OF INDIA | HKMA List of Licensed Banks | not_reached | null | https://www.bankofindia.com.hk/ | 2026-11-13 | captcha on the official site. The page was not used as evidence. |
+| BANK OF MONTREAL | HKMA List of Licensed Banks | not_reached | null | https://www.bmo.com/asia/speak_with_us_hk.html | 2026-11-13 | Timeout on the official site. |
+| BANK OF NEW YORK MELLON (THE) | HKMA List of Licensed Banks | not_reached | null | https://www.bnymellon.com/ | 2026-11-13 | off_domain_redirect to https://www.bny.com/corporate/global/en.html. The target was not read. |
+| BANK OF NOVA SCOTIA (THE) | HKMA List of Licensed Banks | no_consumer_card | null | https://www.scotiabank.com/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| BANK OF SINGAPORE LIMITED | HKMA List of Licensed Banks | no_consumer_card | null | https://www.bankofsingapore.com/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| BANK OF TAIWAN | HKMA List of Licensed Banks | not_reached | null | http://www.bot.com.tw/Hkbank/Pages/default.aspx | 2026-11-13 | The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment). |
+| BANK SINOPAC | HKMA List of Licensed Banks | not_reached | null | https://bank.sinopac.com/ | 2026-11-13 | The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment). |
+| BANQUE PICTET & CIE SA | HKMA List of Licensed Banks | not_reached | null | https://www.group.pictet/ | 2026-11-13 | off_domain_redirect to https://www.pictet.com. The target was not read. |
+| BARCLAYS BANK PLC | HKMA List of Licensed Banks | not_reached | null | https://barclays.com/ | 2026-11-13 | off_domain_redirect to https://home.barclays/. The target was not read. |
+| BDO UNIBANK, INC. | HKMA List of Licensed Banks | not_reached | null | https://www.bdo.com.ph/hong-kong-branch | 2026-11-13 | Timeout on the official site. |
+| BNP PARIBAS | HKMA List of Licensed Banks | no_consumer_card | null | http://www.bnpparibas.com.hk/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| CA INDOSUEZ (SWITZERLAND) SA | HKMA List of Licensed Banks | not_reached | null | https://www.ca-indosuez.com/group/en | 2026-11-13 | error |
+| CANADIAN IMPERIAL BANK OF COMMERCE | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| CATHAY BANK | HKMA List of Licensed Banks | no_consumer_card | null | https://www.cathaybank.com/ | 2026-11-13 | The official website listed by HKMA shows credit cards of another country or of the parent group. No Hong Kong consumer credit or charge card of this institution was stated on the pages read. |
+| CATHAY UNITED BANK COMPANY, LIMITED | HKMA List of Licensed Banks | no_consumer_card | null | https://www.cathaybk.com.tw/hongkong | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| CHANG HWA COMMERCIAL BANK, LTD. | HKMA List of Licensed Banks | no_consumer_card | null | https://www.chbebank.com/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| CHIBA BANK, LTD. (THE) | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| CHINA BOHAI BANK CO., LTD. | HKMA List of Licensed Banks | no_consumer_card | null | http://www.cbhb.com.cn/ | 2026-11-13 | The official website listed by HKMA shows credit cards of another country or of the parent group. No Hong Kong consumer credit or charge card of this institution was stated on the pages read. |
+| CHINA CITIC BANK CORPORATION LIMITED | HKMA List of Licensed Banks | no_consumer_card | null | https://www.citicbank.com/ | 2026-11-13 | The official website listed by HKMA shows credit cards of another country or of the parent group. No Hong Kong consumer credit or charge card of this institution was stated on the pages read. |
+| CHINA CITIC BANK INTERNATIONAL LIMITED | HKMA List of Licensed Banks | new_issuer | hk-cncbi | https://www.cncbinternational.com/home/en/index.jsp | 2026-11-13 | Plain HTTP was bot_wall. Ordinary browser mode reached the English homepage, which has a Credit Cards menu and names the CNCBI JD Mastercard Card. robots.txt returned 403 (robots_unreadable). |
+| CHINA CONSTRUCTION BANK (ASIA) CORPORATION LIMITED | HKMA List of Licensed Banks | new_issuer | hk-ccb-asia | https://www.asia.ccb.com/hongkong/personal/credit_cards/card_list.html | 2026-11-13 | English card list. |
+| CHINA CONSTRUCTION BANK CORPORATION | HKMA List of Licensed Banks | not_reached | null | http://hk.ccb.com/ | 2026-11-13 | Official site could not be read (http_error). |
+| CHINA DEVELOPMENT BANK | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| CHINA EVERBRIGHT BANK CO., LTD. | HKMA List of Licensed Banks | not_reached | null | https://www.hkg.cebbank.com/ | 2026-11-13 | Official site could not be read (http_error). |
+| CHINA GUANGFA BANK CO., LTD. | HKMA List of Licensed Banks | not_reached | null | https://www.cgbchina.hk.cn/ | 2026-11-13 | not_https: the official website field is not a usable https URL and the fetch did not complete. |
+| CHINA MERCHANTS BANK CO., LTD. | HKMA List of Licensed Banks | not_reached | null | http://hk.cmbchina.com/ | 2026-11-13 | The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment). |
+| CHINA MINSHENG BANKING CORP., LTD. | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| CHINA ZHESHANG BANK CO., LTD. | HKMA List of Licensed Banks | not_reached | null | http://hk.czbank.com/ | 2026-11-13 | Official site could not be read (http_error). |
+| CHIYU BANKING CORPORATION LIMITED | HKMA List of Licensed Banks | same_group | hk-bochk | https://www.chiyubank.com/cyben/index/gryx/klfw/xyk/index.shtml | 2026-11-13 | The Credit Card page states: "Credit Card issued by BOC Credit Card(International) Limited." |
+| CHONG HING BANK LIMITED | HKMA List of Licensed Banks | new_issuer | hk-chong-hing | https://www.chbank.com/en/homepage.shtml | 2026-11-13 | English homepage links Chong Hing Credit Card and co-branded personal credit cards. |
+| CHUGOKU BANK, LTD. (THE) | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| CIMB BANK BERHAD | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| CITIBANK (HONG KONG) LIMITED | HKMA List of Licensed Banks | new_issuer | hk-citi | https://www.citibank.com.hk/ | 2026-11-13 | Homepage links consumer credit cards. |
+| CITIBANK, N.A. | HKMA List of Licensed Banks | same_group | hk-citi | https://www.citibank.com.hk/ | 2026-11-13 | Shares the official website listed on addr.xls with CITIBANK (HONG KONG) LIMITED. The homepage refers to Citibank (Hong Kong) Limited; consumer cards go under hk-citi. |
+| CMB WING LUNG BANK LIMITED | HKMA List of Licensed Banks | new_issuer | hk-cmb-wing-lung | https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/index.html | 2026-11-13 | English Credit Card Products listing. |
+| COMMONWEALTH BANK OF AUSTRALIA | HKMA List of Licensed Banks | no_consumer_card | null | https://www.commbank.com.au/about-us/our-company/international-branches/asia.html | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| COÖPERATIEVE RABOBANK U.A. | HKMA List of Licensed Banks | not_reached | null | https://www.rabobank.com/asia/hong-kong | 2026-11-13 | error |
+| CREDIT AGRICOLE CORPORATE AND INVESTMENT BANK | HKMA List of Licensed Banks | no_consumer_card | null | http://www.ca-cib.com/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| CREDIT INDUSTRIEL ET COMMERCIAL | HKMA List of Licensed Banks | no_consumer_card | null | https://www.cic.fr/en/index.html | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| CTBC BANK CO., LTD. | HKMA List of Licensed Banks | not_reached | null | http://www.ctbcbank.com/ | 2026-11-13 | The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment). |
+| DAH SING BANK, LIMITED | HKMA List of Licensed Banks | new_issuer | hk-dah-sing | https://www.dahsing.com/html/en/credit_card/index.html | 2026-11-13 | English credit card listing. |
+| DBS BANK (HONG KONG) LIMITED | HKMA List of Licensed Banks | new_issuer | hk-dbs | https://www.dbs.com.hk/personal/credit-cards/default.page | 2026-11-13 | English catalogue names DBS Credit Cards, including DBS Card+, DBS Eminent Card and DBS COMPASS Visa. The fetcher classified the page captcha because the HTML contains inheritProjectCaptchaSettings; the response was 200. |
+| DBS BANK LTD. | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| DEUTSCHE BANK AKTIENGESELLSCHAFT | HKMA List of Licensed Banks | not_reached | null | https://www.db.com/hongkong | 2026-11-13 | off_domain_redirect to https://country.db.com/hongkong/index?kid=hongkong.redirect-en.shortcut&language_id=1. The target was not read. |
+| DZ BANK AG DEUTSCHE ZENTRAL-GENOSSENSCHAFTSBANK, FRANKFURT AM MAIN | HKMA List of Licensed Banks | no_consumer_card | null | https://www.dzbank.de/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| E.SUN COMMERCIAL BANK, LTD. | HKMA List of Licensed Banks | no_consumer_card | null | https://www.esunbank.com/hk | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| EAST WEST BANK | HKMA List of Licensed Banks | not_reached | null | https://www.eastwestbank.com.hk/ | 2026-11-13 | off_domain_redirect to https://www.eastwestbank.com/en/hk. The target was not read. |
+| EFG BANK AG | HKMA List of Licensed Banks | not_reached | null | http://www.efgbank.com/ | 2026-11-13 | off_domain_redirect to https://www.efginternational.com/. The target was not read. |
+| ELE BANK LIMITED | HKMA List of Licensed Banks | no_consumer_card | null | https://www.elebank.com/en-hk/loan.html | 2026-11-13 | The English loan page discusses consolidating credit card debts. It does not state that Ele Bank issues a credit or charge card. |
+| ELE BANK LIMITED | HKMA List of Digital Banks | no_consumer_card | null | https://www.elebank.com/en-hk/loan.html | 2026-11-13 | The English loan page discusses consolidating credit card debts. It does not state that Ele Bank issues a credit or charge card. |
+| ERSTE GROUP BANK AG | HKMA List of Licensed Banks | no_consumer_card | null | https://www.erstegroup.com/en | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| FAR EASTERN INTERNATIONAL BANK | HKMA List of Licensed Banks | not_reached | null | https://www.feib.com.hk/ | 2026-11-13 | The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment). |
+| FIRST ABU DHABI BANK PJSC | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| FIRST COMMERCIAL BANK, LTD. | HKMA List of Licensed Banks | no_consumer_card | null | http://www.firstbank.com.tw/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| FUBON BANK (HONG KONG) LIMITED | HKMA List of Licensed Banks | new_issuer | hk-fubon | https://www.fubonbank.com.hk/en/home.html | 2026-11-13 | English homepage links a credit-card products path that returned almost no text this run; the homepage is the evidence URL. |
+| FUSION BANK LIMITED | HKMA List of Licensed Banks | no_consumer_card | null | https://www.fusionbank.com/?lang=en | 2026-11-13 | Ordinary browser mode of the English homepage lists Investment, Deposit, Remittance, Exchange and Loan. It does not list a credit or charge card. |
+| FUSION BANK LIMITED | HKMA List of Digital Banks | no_consumer_card | null | https://www.fusionbank.com/?lang=en | 2026-11-13 | Ordinary browser mode of the English homepage lists Investment, Deposit, Remittance, Exchange and Loan. It does not list a credit or charge card. |
+| HANG SENG BANK, LIMITED | HKMA List of Licensed Banks | new_issuer | hk-hang-seng | https://www.hangseng.com/en-hk/personal/cards/overview/ | 2026-11-13 | Cards Overview (credit card and debit card). |
+| HDFC BANK LIMITED | HKMA List of Licensed Banks | no_consumer_card | null | https://www.hdfcbankhongkong.com/ | 2026-11-13 | The official Hong Kong site mentions credit cards only in a scam warning. No HDFC Hong Kong consumer credit or charge card is stated. |
+| HONG LEONG BANK BERHAD | HKMA List of Licensed Banks | no_consumer_card | null | https://www.hlb.com.my/ | 2026-11-13 | HKMA lists www.hlb.com.my as the official website. That site is the Malaysia consumer catalogue. No Hong Kong consumer credit or charge card is stated. |
+| HONGKONG AND SHANGHAI BANKING CORPORATION LIMITED (THE) | HKMA List of Licensed Banks | new_issuer | hk-hsbc | https://www.hsbc.com.hk/credit-cards/ | 2026-11-13 | English credit card listing. |
+| HSBC BANK PLC | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| HUA NAN COMMERCIAL BANK, LTD. | HKMA List of Licensed Banks | no_consumer_card | null | https://www.hncb.com.hk/ | 2026-11-13 | The Hong Kong branch page has a Credit Card menu item that points at hncb.com.tw (Taiwan) card pages. No Hong Kong consumer credit or charge card of the Hong Kong branch was stated. |
+| HUA XIA BANK CO., LIMITED | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| ICICI BANK LIMITED | HKMA List of Licensed Banks | no_consumer_card | null | http://www.icicibank.hk/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| INDIAN OVERSEAS BANK | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| INDUSTRIAL AND COMMERCIAL BANK OF CHINA (ASIA) LIMITED | HKMA List of Licensed Banks | new_issuer | hk-icbc-asia | https://www.icbcasia.com/hk/en/personal/credit-cards/default.html | 2026-11-13 | English credit card listing. |
+| INDUSTRIAL AND COMMERCIAL BANK OF CHINA LIMITED | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| INDUSTRIAL BANK CO., LTD. | HKMA List of Licensed Banks | not_reached | null | https://www.cibhk.com/ | 2026-11-13 | Official site could not be read (http_error). |
+| INDUSTRIAL BANK OF KOREA | HKMA List of Licensed Banks | not_reached | null | http://hk.globalibk.com/ | 2026-11-13 | The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment). |
+| ING BANK N.V. | HKMA List of Licensed Banks | no_consumer_card | null | https://www.ing.com/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| INTESA SANPAOLO SPA | HKMA List of Licensed Banks | no_consumer_card | null | https://group.intesasanpaolo.com/en/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| JPMORGAN CHASE BANK, NATIONAL ASSOCIATION | HKMA List of Licensed Banks | no_consumer_card | null | https://www.jpmorgan.com/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| KBC BANK N.V. | HKMA List of Licensed Banks | not_reached | null | https://www.kbc.com.hk/ | 2026-11-13 | Official site could not be read (http_error). |
+| KEB HANA BANK | HKMA List of Licensed Banks | not_reached | null | http://global.1qbank.com/ | 2026-11-13 | Official site could not be read (http_error). |
+| KGI BANK CO., LTD. | HKMA List of Licensed Banks | no_consumer_card | null | https://www.kgibank.com.tw/zh-hk/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| KOOKMIN BANK | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| LAND BANK OF TAIWAN CO., LTD. | HKMA List of Licensed Banks | no_consumer_card | null | https://www.landbank.com.tw/ | 2026-11-13 | The official website listed by HKMA shows credit cards of another country or of the parent group. No Hong Kong consumer credit or charge card of this institution was stated on the pages read. |
+| LGT BANK AG | HKMA List of Licensed Banks | no_consumer_card | null | https://www.lgt.com/hk-en | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| LIVI BANK LIMITED | HKMA List of Licensed Banks | no_consumer_card | null | https://www.livibank.com/ | 2026-11-13 | The official site lists savings, account opening and loans. No consumer credit or charge card is stated. |
+| LIVI BANK LIMITED | HKMA List of Digital Banks | no_consumer_card | null | https://www.livibank.com/ | 2026-11-13 | The official site lists savings, account opening and loans. No consumer credit or charge card is stated. |
+| MALAYAN BANKING BERHAD | HKMA List of Licensed Banks | not_reached | null | https://www.maybank.com.hk/ | 2026-11-13 | off_domain_redirect to https://www.maybank.com/en/worldwide/hong-kong.page. The target was not read. |
+| MASHREQ BANK - PUBLIC SHAREHOLDING COMPANY | HKMA List of Licensed Banks | not_reached | null | https://www.mashreqbank.com/ | 2026-11-13 | off_domain_redirect to https://www.mashreq.com/. The target was not read. |
+| MEGA INTERNATIONAL COMMERCIAL BANK CO., LTD. | HKMA List of Licensed Banks | no_consumer_card | null | https://www.megabank.com.tw/abroad/hong-kong/zh-tw | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| MELLI BANK PLC | HKMA List of Licensed Banks | not_reached | null | https://www.mellibank.com/ | 2026-11-13 | Official site could not be read (http_error). |
+| MITSUBISHI UFJ TRUST AND BANKING CORPORATION | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| MIZUHO BANK, LTD. | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| MORGAN STANLEY BANK ASIA LIMITED | HKMA List of Licensed Banks | no_consumer_card | null | https://www.morganstanley.com/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| MOX BANK LIMITED | HKMA List of Licensed Banks | new_issuer | hk-mox | https://mox.com/ | 2026-11-13 | Homepage states Mox Credit Card. The fetcher classified the page captcha because the HTML contains inheritProjectCaptchaSettings; the response was 200 with a large official body. |
+| MOX BANK LIMITED | HKMA List of Digital Banks | new_issuer | hk-mox | https://mox.com/ | 2026-11-13 | Homepage states Mox Credit Card. The fetcher classified the page captcha because the HTML contains inheritProjectCaptchaSettings; the response was 200 with a large official body. |
+| MUFG BANK, LTD. | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| NANYANG COMMERCIAL BANK, LIMITED | HKMA List of Licensed Banks | no_consumer_card | null | https://www.ncb.com.hk/nanyang_bank/content1.html | 2026-11-13 | The public site is thin (system-upgrade notices). The pages read name 南商提款卡 / UnionPay dual-currency ATM cards only, not a credit card. |
+| NATIONAL BANK OF PAKISTAN | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| NATIXIS | HKMA List of Licensed Banks | no_consumer_card | null | https://apme.cib.natixis.com/hong-kong-sar | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| NONGHYUP BANK | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| O-BANK CO., LTD. | HKMA List of Licensed Banks | no_consumer_card | null | https://www.o-bank.com/about/aboutmain/about-location/hk | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| OCBC BANK (HONG KONG) LIMITED | HKMA List of Licensed Banks | new_issuer | hk-ocbc | https://www.ocbc.com.hk/personal-banking/cards/credit-cards | 2026-11-13 | English credit card listing. |
+| OVERSEA-CHINESE BANKING CORPORATION LIMITED | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| PHILIPPINE NATIONAL BANK | HKMA List of Licensed Banks | not_reached | null | https://www.pnb.com.ph/hongkong/ | 2026-11-13 | bot_wall on the official site. |
+| PING AN BANK CO., LTD. | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| PING AN DIGITAL BANK (INTERNATIONAL) LIMITED | HKMA List of Licensed Banks | no_consumer_card | null | https://www.pingandb.com/en/retail-savings.html | 2026-11-13 | English retail pages cover savings. No consumer credit or charge card is stated. |
+| PING AN DIGITAL BANK (INTERNATIONAL) LIMITED | HKMA List of Digital Banks | no_consumer_card | null | https://www.pingandb.com/en/retail-savings.html | 2026-11-13 | English retail pages cover savings. No consumer credit or charge card is stated. |
+| PT. BANK NEGARA INDONESIA (PERSERO) TBK. | HKMA List of Licensed Banks | not_reached | null | https://www.bni.co.id/en-us/help-support/global-networks/bni-hong-kong | 2026-11-13 | The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment). |
+| PUBLIC BANK (HONG KONG) LIMITED | HKMA List of Licensed Banks | no_consumer_card | null | https://www.publicbank.com.hk/en/retailbanking/pbcard | 2026-11-13 | PB Card is an ATM card. The retail navigation does not list a credit card. |
+| QATAR NATIONAL BANK (Q.P.S.C.) | HKMA List of Licensed Banks | not_reached | null | https://www.qnb.com/sites/qnb/qnbhongkong/page/en/en-home.html | 2026-11-13 | captcha on the official site. The page was not used as evidence. |
+| ROYAL BANK OF CANADA | HKMA List of Licensed Banks | no_consumer_card | null | https://www.rbccm.com/en/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| SHANGHAI COMMERCIAL & SAVINGS BANK, LTD. (THE) | HKMA List of Licensed Banks | not_reached | null | https://www.scsb.com.hk/ | 2026-11-13 | The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment). |
+| SHANGHAI COMMERCIAL BANK LIMITED | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| SHANGHAI PUDONG DEVELOPMENT BANK CO., LTD. | HKMA List of Licensed Banks | not_reached | null | http://www.spdb.com.cn/ | 2026-11-13 | Official site could not be read (http_error). |
+| SHIGA BANK, LTD. (THE) | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| SHINHAN BANK | HKMA List of Licensed Banks | not_reached | null | https://hk.shinhanglobal.com/global.shinhan | 2026-11-13 | The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment). |
+| SHIZUOKA BANK, LTD. (THE) | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| SKANDINAVISKA ENSKILDA BANKEN AB | HKMA List of Licensed Banks | no_consumer_card | null | https://www.sebgroup.com/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| SOCIETE GENERALE | HKMA List of Licensed Banks | no_consumer_card | null | https://www.societegenerale.com/en | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| STANDARD CHARTERED BANK | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| STANDARD CHARTERED BANK (HONG KONG) LIMITED | HKMA List of Licensed Banks | new_issuer | hk-standard-chartered | https://www.sc.com/hk/credit-cards/ | 2026-11-13 | English credit card listing. |
+| STATE BANK OF INDIA | HKMA List of Licensed Banks | no_consumer_card | null | https://hk.statebank/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| STATE STREET BANK AND TRUST COMPANY | HKMA List of Licensed Banks | not_reached | null | https://www.statestreet.com/ | 2026-11-13 | The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment). |
+| SUMITOMO MITSUI BANKING CORPORATION | HKMA List of Licensed Banks | no_consumer_card | null | https://www.smbc.co.jp/global/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| TAI SANG BANK LIMITED | HKMA List of Licensed Banks | no_consumer_card | null | https://www.taisangbank.com.hk/en/index.php | 2026-11-13 | English homepage has no credit or charge card mention. |
+| TAI YAU BANK, LIMITED | HKMA List of Licensed Banks | not_reached | null | https://www.tybhk.com.hk/ | 2026-11-13 | Official site could not be read: TLS/network error in plain mode and net::ERR_ABORTED in ordinary browser mode with --disable-http2. robots.txt was also unreachable (robots_unreachable). |
+| TAIPEI FUBON COMMERCIAL BANK CO., LTD. | HKMA List of Licensed Banks | no_consumer_card | null | https://www.fubon.com/banking/Corporate/index.htm | 2026-11-13 | The official website listed by HKMA shows credit cards of another country or of the parent group. No Hong Kong consumer credit or charge card of this institution was stated on the pages read. |
+| TAISHIN INTERNATIONAL BANK CO., LTD | HKMA List of Licensed Banks | not_reached | null | http://www.taishinbank.com.hk/ | 2026-11-13 | Official site could not be read (http_error). |
+| TAIWAN BUSINESS BANK, LTD. | HKMA List of Licensed Banks | not_reached | null | https://www.tbb.com.tw/ | 2026-11-13 | exception: UnicodeEncodeError: 'ascii' codec can't encode characters in position 47-50: ordinal not in range(128) |
+| TAIWAN COOPERATIVE BANK, LTD. | HKMA List of Licensed Banks | not_reached | null | http://www.tcb-bank.com.hk/ | 2026-11-13 | off_domain_redirect to https://www.tcb-bank.com.tw/about-tcb/info/locations/oversea/hk. The target was not read. |
+| TAIWAN SHIN KONG COMMERCIAL BANK CO., LTD. | HKMA List of Licensed Banks | no_consumer_card | null | https://www.skbank.com.tw/ | 2026-11-13 | The official website listed by HKMA shows credit cards of another country or of the parent group. No Hong Kong consumer credit or charge card of this institution was stated on the pages read. |
+| TORONTO-DOMINION BANK | HKMA List of Licensed Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| UBS AG | HKMA List of Licensed Banks | not_reached | null | https://www.ubs.com/hk/en.html | 2026-11-13 | bot_wall on the official site. |
+| UCO BANK | HKMA List of Licensed Banks | no_consumer_card | null | https://www.ucobankhongkong.com/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| UNION BANCAIRE PRIVÉE, UBP SA | HKMA List of Licensed Banks | no_consumer_card | null | https://www.ubp.com/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| UNITED OVERSEAS BANK LIMITED | HKMA List of Licensed Banks | no_consumer_card | null | https://www.uobgroup.com/hk | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| WELAB BANK LIMITED | HKMA List of Licensed Banks | no_consumer_card | null | https://www.welab.bank/en/ | 2026-11-13 | English homepage lists WeLab Global Wallet Debit Card, deposits, investments and loans, including card debt consolidation. It does not list a credit or charge card. |
+| WELAB BANK LIMITED | HKMA List of Digital Banks | no_consumer_card | null | https://www.welab.bank/en/ | 2026-11-13 | English homepage lists WeLab Global Wallet Debit Card, deposits, investments and loans, including card debt consolidation. It does not list a credit or charge card. |
+| WELLS FARGO BANK, NATIONAL ASSOCIATION | HKMA List of Licensed Banks | not_reached | null | https://www.wellsfargo.com/ | 2026-11-13 | bot_wall on the official site. |
+| WOORI BANK | HKMA List of Licensed Banks | not_reached | null | http://hk.wooribank.com/ | 2026-11-13 | Official site could not be read (http_error). |
+| YUANTA COMMERCIAL BANK CO., LTD | HKMA List of Licensed Banks | no_consumer_card | null | https://www.yuantabank.com.hk/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| ZA BANK LIMITED | HKMA List of Licensed Banks | no_consumer_card | null | https://bank.za.group/en/za-card | 2026-11-13 | ZA Card is stated as a Visa debit card. The site also has a credit-card bill instalment programme, which is not a ZA-issued credit card. |
+| ZA BANK LIMITED | HKMA List of Digital Banks | no_consumer_card | null | https://bank.za.group/en/za-card | 2026-11-13 | ZA Card is stated as a Visa debit card. The site also has a credit-card bill instalment programme, which is not a ZA-issued credit card. |
+| ABN AMRO CLEARING BANK N.V. | HKMA List of Restricted Licence Banks | no_consumer_card | null | https://www.abnamro.com/clearing/en/home | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| ACCESS BANK UK LIMITED (THE) | HKMA List of Restricted Licence Banks | not_reached | null | https://www.theaccessbankukltd.co.uk/the-access-bank-uk-limited-hong-kong-branch/ | 2026-11-13 | captcha on the official site. The page was not used as evidence. |
+| ALLIED BANKING CORPORATION (HONG KONG) LIMITED | HKMA List of Restricted Licence Banks | no_consumer_card | null | https://www.abchkl.com.hk/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| BAKAI BANK OPEN JOINT STOCK COMPANY | HKMA List of Restricted Licence Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| BANK OF CHINA INTERNATIONAL LIMITED | HKMA List of Restricted Licence Banks | not_reached | null | http://www.bocigroup.com/PrivateBank | 2026-11-13 | not_https: the official website field is not a usable https URL and the fetch did not complete. |
+| BANK OF SHANGHAI (HONG KONG) LIMITED | HKMA List of Restricted Licence Banks | no_consumer_card | null | https://www.bosc-hk.com/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| CITICORP INTERNATIONAL LIMITED | HKMA List of Restricted Licence Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| EUROCLEAR BANK | HKMA List of Restricted Licence Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| GOLDMAN SACHS ASIA BANK LIMITED | HKMA List of Restricted Licence Banks | no_consumer_card | null | https://www.goldmansachs.com/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| HABIB BANK ZURICH (HONG KONG) LIMITED | HKMA List of Restricted Licence Banks | not_reached | null | https://www.hbzhongkong.com/ | 2026-11-13 | off_domain_redirect to https://habibbank.com:443/hk/. The target was not read. |
+| J.P. MORGAN SECURITIES (ASIA PACIFIC) LIMITED | HKMA List of Restricted Licence Banks | no_consumer_card | null | https://www.jpmorgan.com/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| KASIKORNBANK PUBLIC COMPANY LIMITED | HKMA List of Restricted Licence Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| KDB ASIA LIMITED | HKMA List of Restricted Licence Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| KOREA DEVELOPMENT BANK (THE) | HKMA List of Restricted Licence Banks | not_reached | null | https://www.kdb.co.kr/ | 2026-11-13 | The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment). |
+| ORIX ASIA LIMITED | HKMA List of Restricted Licence Banks | not_reached | null | https://www.orix.com.hk/ | 2026-11-13 | The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment). |
+| PT. BANK MANDIRI (PERSERO) TBK | HKMA List of Restricted Licence Banks | no_consumer_card | null | https://www.bankmandirihk.com/ | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| SIAM COMMERCIAL BANK PUBLIC COMPANY LIMITED (THE) | HKMA List of Restricted Licence Banks | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| BCOM FINANCE (HONG KONG) LIMITED | HKMA List of Deposit-taking Companies | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| BPI WEALTH HONG KONG LIMITED | HKMA List of Deposit-taking Companies | no_consumer_card | null | https://www.bpi.com.ph/wealth-hk | 2026-11-13 | No consumer credit or charge card was stated on the official pages read. |
+| CHAU'S BROTHERS FINANCE COMPANY LIMITED | HKMA List of Deposit-taking Companies | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| CHONG HING FINANCE LIMITED | HKMA List of Deposit-taking Companies | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| CORPORATE FINANCE (D.T.C.) LIMITED | HKMA List of Deposit-taking Companies | not_reached | null | http://www.cfldtchk.com/ | 2026-11-13 | The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment). |
+| FUBON CREDIT (HONG KONG) LIMITED | HKMA List of Deposit-taking Companies | no_consumer_card | null | https://boni.fuboncredit.com.hk/en | 2026-11-13 | Boni is a personal instalment loan brand. The official English page lists personal loans, balance transfer loans and property owner loans, not a credit or charge card. |
+| KEB HANA GLOBAL FINANCE LIMITED | HKMA List of Deposit-taking Companies | not_reached | null | https://global.1qbank.com/lounge/globalfinance/et/main.html | 2026-11-13 | The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment). |
+| KEXIM ASIA LIMITED | HKMA List of Deposit-taking Companies | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| PUBLIC FINANCE LIMITED | HKMA List of Deposit-taking Companies | no_consumer_card | null | https://www.pfl.com.hk/en/index.aspx | 2026-11-13 | The official English Products and Services menu lists personal loans, property mortgage, taxi financing, fixed deposits, overdraft, overseas contract workers loan and hire purchase / leasing. It does not list a credit or charge card. |
+| VIETNAM FINANCE COMPANY LIMITED | HKMA List of Deposit-taking Companies | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+| WOORI GLOBAL MARKETS ASIA LIMITED | HKMA List of Deposit-taking Companies | not_reached | null | null | 2026-11-13 | Official website not stated on HKMA addr.xls (as at 31 October 2026). |
+
+List-entry counts: in_repository 0, same_group 2, new_issuer 18, no_consumer_card 70, out_of_scope_wholesale 0, not_reached 93.
+
+Unique-institution counts: in_repository 0, same_group 2, new_issuer 17, no_consumer_card 64, out_of_scope_wholesale 0, not_reached 92.
+
+New issuers added to `hk/issuers.json`:
+
+- `hk-bochk`: BANK OF CHINA (HONG KONG) LIMITED
+- `hk-bocom-hk`: BANK OF COMMUNICATIONS (HONG KONG) LIMITED
+- `hk-bea`: BANK OF EAST ASIA, LIMITED (THE)
+- `hk-cncbi`: CHINA CITIC BANK INTERNATIONAL LIMITED
+- `hk-ccb-asia`: CHINA CONSTRUCTION BANK (ASIA) CORPORATION LIMITED
+- `hk-chong-hing`: CHONG HING BANK LIMITED
+- `hk-citi`: CITIBANK (HONG KONG) LIMITED
+- `hk-cmb-wing-lung`: CMB WING LUNG BANK LIMITED
+- `hk-dah-sing`: DAH SING BANK, LIMITED
+- `hk-dbs`: DBS BANK (HONG KONG) LIMITED
+- `hk-fubon`: FUBON BANK (HONG KONG) LIMITED
+- `hk-hang-seng`: HANG SENG BANK, LIMITED
+- `hk-hsbc`: HONGKONG AND SHANGHAI BANKING CORPORATION LIMITED (THE)
+- `hk-icbc-asia`: INDUSTRIAL AND COMMERCIAL BANK OF CHINA (ASIA) LIMITED
+- `hk-mox`: MOX BANK LIMITED
+- `hk-ocbc`: OCBC BANK (HONG KONG) LIMITED
+- `hk-standard-chartered`: STANDARD CHARTERED BANK (HONG KONG) LIMITED
+
+`not_reached` institutions:
+
+- AGRICULTURAL BANK OF CHINA LIMITED: Official site could not be read (http_error).
+- ANT BANK (HONG KONG) LIMITED: The official homepage is a JavaScript application. Plain mode and ordinary browser mode both returned no readable page body (browser class js_shell, empty text).
+- BANCO SANTANDER, S.A.: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- BANGKOK BANK PUBLIC COMPANY LIMITED: Timeout on the official site.
+- BANK J. SAFRA SARASIN AG: The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment).
+- BANK JULIUS BAER & CO. LTD.: captcha on the official site. The page was not used as evidence.
+- BANK OF COMMUNICATIONS CO., LTD.: The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment).
+- BANK OF INDIA: captcha on the official site. The page was not used as evidence.
+- BANK OF MONTREAL: Timeout on the official site.
+- BANK OF NEW YORK MELLON (THE): off_domain_redirect to https://www.bny.com/corporate/global/en.html. The target was not read.
+- BANK OF TAIWAN: The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment).
+- BANK SINOPAC: The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment).
+- BANQUE PICTET & CIE SA: off_domain_redirect to https://www.pictet.com. The target was not read.
+- BARCLAYS BANK PLC: off_domain_redirect to https://home.barclays/. The target was not read.
+- BDO UNIBANK, INC.: Timeout on the official site.
+- CA INDOSUEZ (SWITZERLAND) SA: error
+- CANADIAN IMPERIAL BANK OF COMMERCE: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- CHIBA BANK, LTD. (THE): Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- CHINA CONSTRUCTION BANK CORPORATION: Official site could not be read (http_error).
+- CHINA DEVELOPMENT BANK: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- CHINA EVERBRIGHT BANK CO., LTD.: Official site could not be read (http_error).
+- CHINA GUANGFA BANK CO., LTD.: not_https: the official website field is not a usable https URL and the fetch did not complete.
+- CHINA MERCHANTS BANK CO., LTD.: The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment).
+- CHINA MINSHENG BANKING CORP., LTD.: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- CHINA ZHESHANG BANK CO., LTD.: Official site could not be read (http_error).
+- CHUGOKU BANK, LTD. (THE): Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- CIMB BANK BERHAD: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- COÖPERATIEVE RABOBANK U.A.: error
+- CTBC BANK CO., LTD.: The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment).
+- DBS BANK LTD.: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- DEUTSCHE BANK AKTIENGESELLSCHAFT: off_domain_redirect to https://country.db.com/hongkong/index?kid=hongkong.redirect-en.shortcut&language_id=1. The target was not read.
+- EAST WEST BANK: off_domain_redirect to https://www.eastwestbank.com/en/hk. The target was not read.
+- EFG BANK AG: off_domain_redirect to https://www.efginternational.com/. The target was not read.
+- FAR EASTERN INTERNATIONAL BANK: The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment).
+- FIRST ABU DHABI BANK PJSC: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- HSBC BANK PLC: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- HUA XIA BANK CO., LIMITED: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- INDIAN OVERSEAS BANK: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- INDUSTRIAL AND COMMERCIAL BANK OF CHINA LIMITED: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- INDUSTRIAL BANK CO., LTD.: Official site could not be read (http_error).
+- INDUSTRIAL BANK OF KOREA: The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment).
+- KBC BANK N.V.: Official site could not be read (http_error).
+- KEB HANA BANK: Official site could not be read (http_error).
+- KOOKMIN BANK: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- MALAYAN BANKING BERHAD: off_domain_redirect to https://www.maybank.com/en/worldwide/hong-kong.page. The target was not read.
+- MASHREQ BANK - PUBLIC SHAREHOLDING COMPANY: off_domain_redirect to https://www.mashreq.com/. The target was not read.
+- MELLI BANK PLC: Official site could not be read (http_error).
+- MITSUBISHI UFJ TRUST AND BANKING CORPORATION: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- MIZUHO BANK, LTD.: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- MUFG BANK, LTD.: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- NATIONAL BANK OF PAKISTAN: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- NONGHYUP BANK: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- OVERSEA-CHINESE BANKING CORPORATION LIMITED: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- PHILIPPINE NATIONAL BANK: bot_wall on the official site.
+- PING AN BANK CO., LTD.: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- PT. BANK NEGARA INDONESIA (PERSERO) TBK.: The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment).
+- QATAR NATIONAL BANK (Q.P.S.C.): captcha on the official site. The page was not used as evidence.
+- SHANGHAI COMMERCIAL & SAVINGS BANK, LTD. (THE): The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment).
+- SHANGHAI COMMERCIAL BANK LIMITED: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- SHANGHAI PUDONG DEVELOPMENT BANK CO., LTD.: Official site could not be read (http_error).
+- SHIGA BANK, LTD. (THE): Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- SHINHAN BANK: The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment).
+- SHIZUOKA BANK, LTD. (THE): Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- STANDARD CHARTERED BANK: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- STATE STREET BANK AND TRUST COMPANY: The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment).
+- TAI YAU BANK, LIMITED: Official site could not be read: TLS/network error in plain mode and net::ERR_ABORTED in ordinary browser mode with --disable-http2. robots.txt was also unreachable (robots_unreachable).
+- TAISHIN INTERNATIONAL BANK CO., LTD: Official site could not be read (http_error).
+- TAIWAN BUSINESS BANK, LTD.: exception: UnicodeEncodeError: 'ascii' codec can't encode characters in position 47-50: ordinal not in range(128)
+- TAIWAN COOPERATIVE BANK, LTD.: off_domain_redirect to https://www.tcb-bank.com.tw/about-tcb/info/locations/oversea/hk. The target was not read.
+- TORONTO-DOMINION BANK: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- UBS AG: bot_wall on the official site.
+- WELLS FARGO BANK, NATIONAL ASSOCIATION: bot_wall on the official site.
+- WOORI BANK: Official site could not be read (http_error).
+- ACCESS BANK UK LIMITED (THE): captcha on the official site. The page was not used as evidence.
+- BAKAI BANK OPEN JOINT STOCK COMPANY: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- BANK OF CHINA INTERNATIONAL LIMITED: not_https: the official website field is not a usable https URL and the fetch did not complete.
+- CITICORP INTERNATIONAL LIMITED: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- EUROCLEAR BANK: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- HABIB BANK ZURICH (HONG KONG) LIMITED: off_domain_redirect to https://habibbank.com:443/hk/. The target was not read.
+- KASIKORNBANK PUBLIC COMPANY LIMITED: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- KDB ASIA LIMITED: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- KOREA DEVELOPMENT BANK (THE): The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment).
+- ORIX ASIA LIMITED: The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment).
+- SIAM COMMERCIAL BANK PUBLIC COMPANY LIMITED (THE): Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- BCOM FINANCE (HONG KONG) LIMITED: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- CHAU'S BROTHERS FINANCE COMPANY LIMITED: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- CHONG HING FINANCE LIMITED: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- CORPORATE FINANCE (D.T.C.) LIMITED: The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment).
+- KEB HANA GLOBAL FINANCE LIMITED: The official homepage was a JavaScript shell and the body could not be read (Playwright is not installed in this environment).
+- KEXIM ASIA LIMITED: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- VIETNAM FINANCE COMPANY LIMITED: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+- WOORI GLOBAL MARKETS ASIA LIMITED: Official website not stated on HKMA addr.xls (as at 31 October 2026).
+
 ## Totals
 
 The counts below are recomputed from the table rows. Special-check names that are not on the BNM lists are still not counted in the MY totals. `no_consumer_card` here is a product exclusion. `out_of_scope_wholesale` is a scope exclusion and is not included in the `no_consumer_card` counts.
@@ -303,6 +618,8 @@ The counts below are recomputed from the table rows. Special-check names that ar
 | MY (list entries) | 40 | 23 | 7 | 1 | 9 | 0 | 0 |
 | MY (unique institutions) | 35 | 18 | 7 | 1 | 9 | 0 | 0 |
 | SG | 136 | 15 | 2 | 0 | 50 | 18 | 51 |
+| HK (list entries) | 183 | 0 | 2 | 18 | 70 | 0 | 93 |
+| HK (unique institutions) | 175 | 0 | 2 | 17 | 64 | 0 | 92 |
 
 Product exclusions (`no_consumer_card`), confirmed and unconfirmed, on separate lines:
 
@@ -311,6 +628,8 @@ Product exclusions (`no_consumer_card`), confirmed and unconfirmed, on separate 
 | MY (list entries) | 8 | 1 (Bank of China (Malaysia) Berhad) |
 | MY (unique institutions) | 8 | 1 (Bank of China (Malaysia) Berhad) |
 | SG | 48 | 2 (Bank of America; PT Bank Negara Indonesia) |
+| HK (list entries) | 70 | 0 |
+| HK (unique institutions) | 64 | 0 |
 
 Scope exclusions (`out_of_scope_wholesale`):
 
@@ -319,3 +638,5 @@ Scope exclusions (`out_of_scope_wholesale`):
 | MY (list entries) | 0 |
 | MY (unique institutions) | 0 |
 | SG | 18 |
+| HK (list entries) | 0 |
+| HK (unique institutions) | 0 |

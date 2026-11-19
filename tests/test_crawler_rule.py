@@ -16,7 +16,7 @@ from tools.validate import validate
 PAGE = "https://www.cimb.com.sg/en/personal/promotions/latest-promotions/cards/casa-x-vs.html"
 LIST = "https://www.cimb.com.sg/en/personal/promotions/dining-deals.html"
 TERMS = "https://www.cimb.com.sg/content/dam/cimbsg/personal/document/promotions/example-kopi-tnc.pdf"
-NOW = parse_instant("2026-11-12T02:00:00+08:00")
+NOW = parse_instant("2026-11-13T18:00:00+08:00")
 
 
 def fetch(url, kind, minute):
@@ -137,6 +137,12 @@ class GateTests(unittest.TestCase):
         self.assert_error("is not inside name_quote", row)
         row["merchant"]["name_quote"] = "Fairmont Singapore 80 Bras Basah Road, Level 8 Singapore 189560"
         self.assertEqual(self.errors(row), [])
+
+    def test_issuer_run_offer_for_cards_of_another_country_is_refused(self):
+        bad = offer(eligibility__quote="Payment by a valid Mastercard card issued in India.")
+        self.assert_error("issued in IN", bad)
+        many = offer(eligibility__quote="Payment with a card issued in Indonesia, Singapore, Malaysia or Hong Kong.")
+        self.assertEqual(self.errors(many), [])
 
     def test_name_is_the_heading_without_the_place(self):
         row = offer(title="Example Kopi", merchant__name="Example Kopi Changi Airport Terminal 2", merchant__outlet=None,
