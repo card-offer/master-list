@@ -23,7 +23,7 @@ If the gate refuses a fact and the page does not support a correction, remove th
 1. Use only hosts in the issuer's `official_domains`. A merchant's own site is permitted only as fetch kind `merchant_page`, and only when the issuer page links to it.
 2. Do not use aggregator, comparison, deal, review, blog or forum sites. Do not use search engine snippets as a source.
 3. Read `robots.txt` for each host before the first page of that host, over https. Do not fetch a disallowed path. Record it in `run.blocked` with reason `robots_disallow`. What the answer means:
-   - Status 200: obey the rules for your user agent.
+   - Status 200: obey the group `card-offer-crawler`, or the group `*` when that group is not there. The crawler sends a Chrome user agent (see `crawler/HARD_SITES.md`), but the robots group stays the same.
    - Status 404 or 410: the host has no rules. You can crawl it.
    - Status 401, 403 or 429, a server error (500 and higher), a timeout, a TLS or connection error, more than 5 redirects, a redirect loop, or a redirect to a host that is not in `official_domains`: `robots.txt` is unreadable. Crawl the host anyway. A guard that hides or throttles `robots.txt` forbids nothing, and a run must not lose a whole issuer over an answer that states no rule.
    - A redirect of `robots.txt` to a host that is in the same `official_domains` list is permitted. Log each hop.

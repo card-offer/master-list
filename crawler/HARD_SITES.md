@@ -9,12 +9,9 @@ An unreadable `robots.txt` is not a no: it states no rule, so the host is crawle
 
 Make every request with `pipeline/fetcher.py`. It reads `robots.txt` first, keeps 1.5 seconds between paced requests to one host (raise it with `--min-gap` or `CRAWLER_MIN_GAP`; do not go under 1.5), stops at hosts that are not official, and writes each request to a private log with its start time to the millisecond. Every log line includes `mode` (`plain`, `browser` or `real_chrome`) and `min_gap_s`. The per-host gap applies to document loads and to xhr and fetch calls, in every browser mode. Scripts and style sheets can go without a gap. A probe also keeps the page text in a private file under `raw/`.
 
-For plain and headless-browser requests, set the user agent that the maintainer chose. In real-Chrome mode do not set a user agent; Chrome sends its own.
+The user agent is desktop Chrome. The maintainer chose it on 19 Nov 2026. Plain and headless-browser requests send `CHROME_USER_AGENT` from `pipeline/fetcher.py`. You do not need to set anything. `CRAWLER_USER_AGENT` overrides it only when the maintainer gives you a different value. In real-Chrome mode the tool does not set a user agent; Chrome sends its own.
 
-
-```bash
-export CRAWLER_USER_AGENT="<the user agent that the maintainer gave you>"
-```
+The user agent does not change the robots rule. `robots.txt` is read for the group `card-offer-crawler` first, and for `*` when that group is not there.
 
 Look at one page before you crawl a site:
 
@@ -51,7 +48,7 @@ Go down one step at a time. Stop at the first step that gives the text. Write th
    1. Look in the page source for the data: a JSON block in a script tag, or a link to a JSON file on an official host. Many listings load one public JSON file. Fetch that file with `fetcher.get`. This is the best source: it is complete and it needs no browser.
    2. Read `sitemap.xml` on the host for the card pages and the offer pages.
    3. Render the page with `BrowserFetcher(fetcher).render(url)`. The browser sends each of its requests through the same checks.
-4. **Plain requests and the headless browser were refused.** One real Chrome attempt is allowed, and only for a host in `config/real_chrome_hosts.json`. This step gets past a block page. The maintainer approved it for the listed hosts on 12 Nov 2026. It is a real browser; Chrome sends its own user agent, with no fingerprint change. If the host is not on the approved list, do not run real-Chrome mode.
+4. **Plain requests and the headless browser were refused.** One real Chrome attempt is allowed, and only for a host in `config/real_chrome_hosts.json`. This step gets past a block page. The maintainer approved real-Chrome mode on 12 Nov 2026, and added `specials.priceless.com` and `www.maybank2u.com.my` to the list on 19 Nov 2026. It is a real browser; Chrome sends its own user agent, with no fingerprint change. If the host is not on the approved list, do not run real-Chrome mode.
 
    ```bash
    python pipeline/fetcher.py probe <issuer_id> <url> --real-chrome --min-gap 30
@@ -88,7 +85,7 @@ Quotes from a rendered page come from the rendered text, not from the page sourc
 These actions get past a control. They are not permitted, for any site, for any reason.
 
 1. Do not use a proxy service, a VPN, a residential proxy or a change of IP address to get past a block.
-2. Do not use a user agent that is not true. Do not use the name of a search engine. Do not use a stealth plugin or change the browser fingerprint.
+2. Use only the Chrome user agent in the tool, or the value the maintainer gives you. Do not use the name of a search engine. Do not use a stealth plugin or change the browser fingerprint.
 3. Do not solve or pass a captcha, by yourself or with a service.
 4. Do not sign in, register, or use a session or a cookie from a person's account.
 5. Do not call an endpoint of a mobile app, or an endpoint that the public page does not load.
@@ -127,11 +124,19 @@ What is known, from the earlier runs:
 
 Do this, and stop at the first step that fails:
 
-1. Run the probe on the card listing with a plain request. Report the class and the detail.
+The maintainer decided on 19 Nov 2026: crawl Maybank with the Chrome user agent. The earlier runs used a different user agent, so their `network_unreachable` result is not final.
+
+1. Run the probe on the card listing with a plain request. The Chrome user agent is the default. Report the class and the detail.
 2. If the class is `error`, do step 2 of the ladder: one more try after 10 minutes, then one browser probe with `--disable-http2`.
-3. If a probe gives `ok` or `js_shell`, continue with the ladder for the cards, then for the offers at `https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/maybank_cards.page`.
-4. If all probes fail, record `network_unreachable` with the error text, and report. Do not try a different route to the site.
-5. Report `maybank.com` to the maintainer as a possible official host, with the official page that links to it.
+3. If the plain and browser probes fail, run one real-Chrome probe. `www.maybank2u.com.my` is on the approved list.
+
+   ```bash
+   python pipeline/fetcher.py probe my-maybank https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page --real-chrome --min-gap 30
+   ```
+
+4. If a probe gives `ok` or `js_shell`, continue with the ladder for the cards, then for the offers at `https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/maybank_cards.page`. Use the mode that worked for every page of the run, and keep the gap of that probe.
+5. If all probes fail, record `network_unreachable` with the error text of each mode, and report. Do not try a different route to the site.
+6. Report `maybank.com` to the maintainer as a possible official host, with the official page that links to it.
 
 ## 6. Notes for sites seen so far
 

@@ -28,7 +28,8 @@ What it enforces:
   after the wait.
 - The headless browser, and real Chrome when asked, send each of their requests through the same checks.
   Real Chrome is installed Google Chrome with a visible window. In real-Chrome mode the user agent is
-  not set; Chrome sends its own. Other modes keep the configured user agent. Real Chrome does not
+  not set; Chrome sends its own. Other modes send the Chrome user agent (CHROME_USER_AGENT), or
+  CRAWLER_USER_AGENT when that is set. Real Chrome does not
   change the fingerprint and it does not use a proxy. It is only permitted for hosts in
   config/real_chrome_hosts.json.
 
@@ -54,6 +55,12 @@ MIN_GAP = 1.5
 DEFAULT_HARD_TIMEOUT = 150.0
 MAX_REDIRECTS = 5
 USER_AGENT_TOKEN = "card-offer-crawler"
+# The maintainer chose a desktop Chrome user agent on 19 Nov 2026. CRAWLER_USER_AGENT overrides it.
+# robots.txt is still read for the group card-offer-crawler first, then for "*".
+CHROME_USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/153.0.0.0 Safari/537.36"
+)
 SKIP_URL = re.compile(
     r"(?i)(?:log-?in|sign-?in|sign-?on|log-?on|sign-?up|signup|register|registration|/auth\b|oauth|/sso\b"
     r"|e-?banking|internet-?banking|online-?banking|apply-?now|/apply\b|application-?form|/otp\b|password)"
@@ -1293,10 +1300,7 @@ def main(argv):
         print(__doc__)
         return 2
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    agent = os.environ.get("CRAWLER_USER_AGENT")
-    if not agent:
-        print("Set CRAWLER_USER_AGENT to the user agent that the maintainer chose.")
-        return 2
+    agent = os.environ.get("CRAWLER_USER_AGENT") or CHROME_USER_AGENT
     try:
         label, url, domains = resolve_probe(root, argv)
         gap = configured_min_gap(argv)
