@@ -702,10 +702,33 @@ class MergeConditionTests(unittest.TestCase):
 
         return Route()
 
-    def test_approved_hosts_file_starts_empty(self):
+    def test_approved_hosts_are_the_ones_the_maintainer_chose(self):
         hosts = load_real_chrome_hosts(ROOT)
-        self.assertEqual(hosts, [])
-        self.assertFalse(real_chrome_host_allowed("https://specials.priceless.com/", hosts))
+        self.assertEqual(sorted(hosts), ["maybank2u.com.my", "specials.priceless.com"])
+        self.assertTrue(real_chrome_host_allowed("https://specials.priceless.com/en-sg/", hosts))
+        self.assertTrue(real_chrome_host_allowed("https://www.maybank2u.com.my/maybank2u/malaysia/en/", hosts))
+        self.assertFalse(real_chrome_host_allowed("https://www.bank.example/cards", hosts))
+
+    def test_default_user_agent_is_chrome(self):
+        from pipeline.fetcher import CHROME_USER_AGENT
+        self.assertIn("Chrome/", CHROME_USER_AGENT)
+        self.assertNotIn("Headless", CHROME_USER_AGENT)
+        PoliteFetcher("/dev/null", ["bank.example"], CHROME_USER_AGENT)
+
+    def test_probe_sends_the_chrome_user_agent_when_none_is_set(self):
+        from pipeline.fetcher import CHROME_USER_AGENT
+        seen = {}
+
+        def capture(log, domains, agent, min_gap=1.5):
+            seen["agent"] = agent
+            raise ValueError("stop after the user agent is known")
+
+        env = {k: v for k, v in os.environ.items() if k != "CRAWLER_USER_AGENT"}
+        with patch.dict(os.environ, env, clear=True):
+            with patch("pipeline.fetcher.PoliteFetcher", capture):
+                with redirect_stdout(io.StringIO()):
+                    main(["fetcher.py", "probe", "--url", "https://specials.priceless.com/en-my/homepage", "--country", "MY"])
+        self.assertEqual(seen["agent"], CHROME_USER_AGENT)
 
     def test_real_chrome_refuses_a_host_that_is_not_approved(self):
         fetcher, _net, _log = make({})

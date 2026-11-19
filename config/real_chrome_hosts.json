@@ -1,4 +1,7 @@
 {
-  "description": "Hosts the maintainer approved for real-Chrome mode. Real-Chrome mode is refused for any other host. This list starts empty until the maintainer adds a host.",
-  "hosts": []
+  "description": "Hosts the maintainer approved for real-Chrome mode. Real-Chrome mode is refused for any other host. specials.priceless.com was approved on 19 Nov 2026: the content is public and Mastercard wants it to reach more people. www.maybank2u.com.my was approved on 19 Nov 2026 because plain and headless requests did not get an answer.",
+  "hosts": [
+    "specials.priceless.com",
+    "www.maybank2u.com.my"
+  ]
 }
