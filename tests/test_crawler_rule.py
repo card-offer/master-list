@@ -138,6 +138,12 @@ class GateTests(unittest.TestCase):
         row["merchant"]["name_quote"] = "Fairmont Singapore 80 Bras Basah Road, Level 8 Singapore 189560"
         self.assertEqual(self.errors(row), [])
 
+    def test_issuer_run_offer_for_cards_of_another_country_is_refused(self):
+        bad = offer(eligibility__quote="Payment by a valid Mastercard card issued in India.")
+        self.assert_error("issued in IN", bad)
+        many = offer(eligibility__quote="Payment with a card issued in Indonesia, Singapore, Malaysia or Hong Kong.")
+        self.assertEqual(self.errors(many), [])
+
     def test_name_is_the_heading_without_the_place(self):
         row = offer(title="Example Kopi", merchant__name="Example Kopi Changi Airport Terminal 2", merchant__outlet=None,
                     merchant__name_quote="Example Kopi Changi Airport Terminal 2", source_key="tile-9", source_key_basis="page_anchor")
