@@ -1,6 +1,6 @@
 {
   "count": 1420,
-  "generated_at": "2026-11-13T03:42:40+00:00",
+  "generated_at": "2026-11-13T03:57:58+00:00",
   "schema_version": "0.3.0",
   "items": [
     {"aliases":[],"categories":["hotel"],"countries":["MY"],"id":"1001-night-hotel-trademark-collection-by-wyndham","name":"1001 Night Hotel, Trademark Collection By Wyndham","offer_ids":["my-rhb-042b63f82d"],"official_domain":null,"verified":false},
@@ -58,7 +58,7 @@
     {"aliases":[],"categories":["online","shopping"],"countries":["SG"],"id":"amazon","name":"Amazon Singapore","offer_ids":["sg-dcs-4a5aaa7f32","sg-ocbc-5d169283d0"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["electronics"],"countries":["MY"],"id":"amee-philips","name":"AMEE PHILIPS","offer_ids":["my-ocbc-28abebbb01"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["shopping"],"countries":["SG"],"id":"american-tourister","name":"American Tourister","offer_ids":["sg-uob-dce1412dd7"],"official_domain":null,"verified":false},
-    {"aliases":[],"categories":["hotel","travel"],"countries":["MY"],"id":"anantara-vacation-club","name":"Anantara Vacation Club","offer_ids":["my-affin-deaac1f413","my-alliance-7e1ba8d3ba","my-rhb-e06e0d6a71"],"official_domain":null,"verified":false},
+    {"aliases":[],"categories":["hotel","travel"],"countries":["MY"],"id":"anantara-vacation-club","name":"Anantara Vacation Club","offer_ids":["my-affin-deaac1f413","my-alliance-7e1ba8d3ba","my-cimb-9e0efaa423","my-rhb-e06e0d6a71"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["dining","travel"],"countries":["MY"],"id":"ancasa-hotel-kuala-lumpur","name":"AnCasa Hotel Kuala Lumpur","offer_ids":["my-hong-leong-6384c29acd","my-hong-leong-be7fbf54cd"],"official_domain":null,"verified":true},
     {"aliases":[],"categories":["dining","travel"],"countries":["MY"],"id":"ancasa-resort-port-dickson","name":"AnCasa Resort Port Dickson","offer_ids":["my-hong-leong-0bc1952ec1","my-hong-leong-986bdf0421"],"official_domain":null,"verified":true},
     {"aliases":[],"categories":["dining","travel"],"countries":["MY"],"id":"ancasa-royale-pekan-pahang","name":"AnCasa Royale Pekan Pahang","offer_ids":["my-hong-leong-0937c52fe5","my-hong-leong-2b527f1dd6"],"official_domain":null,"verified":true},
