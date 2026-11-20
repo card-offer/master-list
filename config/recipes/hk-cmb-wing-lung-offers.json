@@ -1,0 +1,24 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-cmb-wing-lung-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-cmb-wing-lung"
+  },
+  "country": "HK",
+  "purpose": "offers",
+  "mode": "plain",
+  "source": "html",
+  "start_urls": [
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/promotional-offers/spending-program/index.html"
+  ],
+  "list": {
+    "item": "#inner-content h5",
+    "fields": {
+      "title": "a",
+      "url": "a@href"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "First hk-cmb-wing-lung offers recipe, written 20 Nov 2026, for the Latest Offers listing. Each tile is an h5 link. On 20 Nov 2026 the four links point at PDFs on m2.cmbwinglungbank.com:8443. pipeline/fetcher.py treats that host as not official (exact host match on official_domains, www stripped only), so the recipe has no detail fetch. Other card offers (World Mastercard, Luxe, banking services, Credit-to-Cash, merchant instalment, cash rebate) live on different official www pages and were read by hand for this first run."
+}
