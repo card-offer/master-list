@@ -1,6 +1,6 @@
 {
   "count": 1855,
-  "generated_at": "2026-11-20T02:14:04+00:00",
+  "generated_at": "2026-11-20T03:18:31+00:00",
   "schema_version": "0.3.0",
   "items": [
     {"aliases":[],"categories":["cafe","dining"],"countries":["SG"],"id":"10-scotts","name":"10 Scotts","offer_ids":["sg-maybank-8f9c8c1877","sg-network-jcb-5cddade2b0"],"official_domain":"singapore.grand.hyattrestaurants.com","verified":true},
@@ -1068,7 +1068,7 @@
     {"aliases":["MK CURTAIN"],"categories":["automotive","shopping"],"countries":["MY"],"id":"mk-curtain","name":"Mk Curtain","offer_ids":["my-rhb-3724909a96"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["cafe"],"countries":["SG"],"id":"mo-bar","name":"MO BAR","offer_ids":["sg-network-jcb-867ab760fa"],"official_domain":"mandarinoriental.com","verified":true},
     {"aliases":["my-moca-bangkok"],"categories":["cafe"],"countries":["MY"],"id":"moca-bangkok","name":"MOCA Bangkok","offer_ids":["my-uob-2430474561","my-uob-c237b9d147"],"official_domain":null,"verified":true},
-    {"aliases":[],"categories":["health"],"countries":["MY"],"id":"mog-eyewear","name":"MOG Eyewear","offer_ids":["my-aeon-credit-3dcc6e8ea8","my-ocbc-a18f52cfeb"],"official_domain":"mog.com.my","verified":true},
+    {"aliases":["MOG Eyewear Malaysia"],"categories":["health"],"countries":["MY"],"id":"mog-eyewear","name":"MOG Eyewear","offer_ids":["my-aeon-credit-3dcc6e8ea8","my-ocbc-a18f52cfeb"],"official_domain":"mog.com.my","verified":true},
     {"aliases":[],"categories":["health"],"countries":["MY"],"id":"mog-eyewear-metro-optical-group","name":"MOG eyewear (Metro Optical Group)","offer_ids":["my-public-bank-879162212d"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":[],"countries":["SG"],"id":"mokobara","name":"Mokobara","offer_ids":["sg-standard-chartered-4e7b100be4"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["shopping"],"countries":["MY"],"id":"molly-fantasy","name":"Molly Fantasy","offer_ids":["my-aeon-credit-ce689cb4f6"],"official_domain":null,"verified":false},

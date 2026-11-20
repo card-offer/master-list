@@ -1,0 +1,23 @@
+{
+  "recipe": "recipe/1",
+  "id": "my-ocbc-cards",
+  "owner": {"type": "issuer", "id": "my-ocbc"},
+  "country": "MY",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": ["https://www.ocbc.com.my/personal-banking/cards/credit-cards"],
+  "list": {
+    "item": "div.single-card__wrapper",
+    "key": "url",
+    "fields": {
+      "name": "div.card-title",
+      "url": "a.link-arrow-right@href",
+      "image_alt": "div.single-card__thumbnail img[alt]@alt",
+      "features": {"selector": "div.card-features li", "all": true, "join": " | "}
+    }
+  },
+  "detail": {"fields": {"heading": "h1", "terms": "main"}, "text_selector": "main"},
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The OCBC Malaysia credit card list. Each card is one div.single-card__wrapper with its 'Learn more' link. The Premier Voyage card page is under /personal-banking/premier-banking/. The 'Apply now' and 'Get us to contact you' buttons go to application forms, which are not read."
+}
