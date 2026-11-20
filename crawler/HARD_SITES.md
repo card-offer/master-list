@@ -118,9 +118,9 @@ These actions get past a control. They are not permitted, for any site, for any 
 
 What is known, from the earlier runs:
 
-- `maybank2u.com.my` and `maybank.com` did not answer from the crawl machine: a timeout with a plain request, and an HTTP/2 protocol error in a browser. The cause is not known. It can be the network of the crawl machine or a control of the site.
-- The repository has 33 Maybank cards from a hand copy of the listing. They are not confirmed under the rule. It has no Maybank offer.
-- The census found the Maybank Islamic card listing on `maybank.com`. That host is not in `official_domains` of `my-maybank`.
+- Before 13 Nov 2026, `maybank2u.com.my` and `maybank.com` did not answer from the crawl machine: a timeout with a plain request, and an HTTP/2 protocol error in a browser.
+- The run of 13 Nov 2026 published 37 cards and 62 offers. The offers came from the promotions pages on `www.maybank2u.com.my`. The conventional card listing was not read, so `crawl.status` is `partial`.
+- The Maybank Islamic cards came from `maybank.com`.
 
 Do this, and stop at the first step that fails:
 
