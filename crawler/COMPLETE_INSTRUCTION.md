@@ -20,6 +20,8 @@ There are three tracks. Do them in the order of section 9.
 2. Make one branch from the newest main for each pull request.
 3. Tell the maintainer if you cannot do one of these: run Python 3.12, fetch pages that need JavaScript, push a branch and open a pull request.
 
+Use the scripted crawl of `crawler/SCRIPTED_CRAWL.md` for every listing that a recipe can read. It runs the fetch and the extraction as a script, and gives you only the offers that are new or changed.
+
 ## 2. Rules for all tracks
 
 1. Official sources only: the hosts in the issuer's or the network's `official_domains`, and the regulator sites in a census. Do not use aggregator, comparison, deal, review, blog or forum sites. Do not use search engine snippets as a source.

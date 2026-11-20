@@ -1266,6 +1266,13 @@ def _domains_for_url(root, url, country):
             domains = item.get("official_domains") or []
             if _host_matches(host, domains):
                 return domains, item["id"]
+    census_path = os.path.join(root, "config", "census_hosts.json")
+    if os.path.exists(census_path):
+        with open(census_path, encoding="utf-8") as fh:
+            census = json.load(fh)["items"]
+        for item in census:
+            if item["country"].lower() == country and _host_matches(host, item["official_domains"]):
+                return item["official_domains"], f"census-{country}"
     raise ValueError(f"{host} is not an official domain for country {country}")
 
 

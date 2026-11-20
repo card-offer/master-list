@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://card-offer.github.io/master-list/schema/recipe.schema.json",
+  "title": "Crawl recipe",
+  "description": "A saved recipe of selectors for one listing of one issuer or network. pipeline/recipe.py runs it. See crawler/SCRIPTED_CRAWL.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "recipe",
+    "id",
+    "owner",
+    "country",
+    "purpose",
+    "start_urls",
+    "list"
+  ],
+  "$defs": {
+    "rule": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selector"
+          ],
+          "properties": {
+            "selector": {
+              "type": "string"
+            },
+            "output": {
+              "type": "string",
+              "pattern": "^(text|html|@[A-Za-z0-9_:-]+)$"
+            },
+            "all": {
+              "type": "boolean"
+            },
+            "regex": {
+              "type": "string"
+            },
+            "join": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "fields": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/rule"
+      }
+    }
+  },
+  "properties": {
+    "recipe": {
+      "const": "recipe/1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]{3,64}$"
+    },
+    "owner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "id"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "issuer",
+            "network"
+          ]
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "country": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "purpose": {
+      "enum": [
+        "offers",
+        "cards"
+      ]
+    },
+    "mode": {
+      "enum": [
+        "plain",
+        "browser",
+        "real_chrome"
+      ],
+      "default": "plain"
+    },
+    "source": {
+      "enum": [
+        "html",
+        "json"
+      ],
+      "default": "html",
+      "description": "json: the start URL is a public JSON file that the page loads (HARD_SITES.md ladder step 3.1)."
+    },
+    "start_urls": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "settle_ms": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 30000
+    },
+    "actions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expand_selector": {
+          "type": "string"
+        },
+        "max_clicks": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "scroll_times": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 30
+        }
+      }
+    },
+    "pagination": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "next": {
+          "$ref": "#/$defs/rule"
+        },
+        "url_template": {
+          "type": "string",
+          "pattern": "\\{n\\}"
+        },
+        "start": {
+          "type": "integer"
+        },
+        "max_pages": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 200
+        }
+      }
+    },
+    "list": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "item",
+        "fields"
+      ],
+      "properties": {
+        "item": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "fields": {
+          "$ref": "#/$defs/fields"
+        }
+      }
+    },
+    "detail": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "$ref": "#/$defs/fields"
+        },
+        "text_selector": {
+          "type": "string"
+        }
+      }
+    },
+    "listing_kind": {
+      "type": "string"
+    },
+    "detail_kind": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    }
+  }
+}
