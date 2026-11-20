@@ -20,7 +20,7 @@
       "cards": 238,
       "currency": "MYR",
       "issuers": 19,
-      "offers": 1282,
+      "offers": 1303,
       "path": "/my/",
       "timezone": "Asia/Kuala_Lumpur"
     },
@@ -36,7 +36,7 @@
       "cards": 126,
       "currency": "SGD",
       "issuers": 16,
-      "offers": 1468,
+      "offers": 1534,
       "path": "/sg/",
       "timezone": "Asia/Singapore"
     },
@@ -49,7 +49,7 @@
       "timezone": "Asia/Bangkok"
     }
   },
-  "generated_at": "2026-11-20T00:14:43+00:00",
+  "generated_at": "2026-11-20T00:20:45+00:00",
   "indexes": "Built in CI and published to GitHub Pages. Not stored on the main branch.",
   "layout": {
     "archive": "{cc}/archive/offers/{issuer}.json",
@@ -67,7 +67,7 @@
     "scope": "Compiled structured data only. Issuer terms belong to the issuers.",
     "url": "https://creativecommons.org/licenses/by/4.0/"
   },
-  "merchants": 1780,
+  "merchants": 1848,
   "name": "card-offer master list",
   "networks": 6,
   "schema_version": "0.3.0",

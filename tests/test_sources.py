@@ -16,6 +16,10 @@ REGULATOR_HOSTS = {
     ("SG", "eservices.mas.gov.sg"),
     ("HK", "hkma.gov.hk"),
     ("HK", "vpr.hkma.gov.hk"),
+    ("TH", "bot.or.th"),
+    ("ID", "ojk.go.id"),
+    ("ID", "bi.go.id"),
+    ("PH", "bsp.gov.ph"),
 }
 
 

@@ -24,7 +24,7 @@ Contributors can propose a site with the "Suggest a site to crawl" issue form. T
 
 ## The list
 
-There are 246 rows in `crawler/sources.json`. Counts by country: HK 46, ID 32, MY 58, PH 21, SG 58, TH 31. Counts by type: issuer 188, network 50, regulator 8.
+There are 248 rows in `crawler/sources.json`. Counts by country: HK 46, ID 32, MY 58, PH 21, SG 60, TH 31. Counts by type: issuer 190, network 50, regulator 8.
 
 | Order | Country | Type | Purpose | Site | Host | Status | Entry URLs |
 |---|---|---|---|---|---|---|---|
@@ -80,6 +80,8 @@ There are 246 rows in `crawler/sources.json`. Counts by country: HK 46, ID 32, M
 | 14 | SG | issuer | offers | Maybank Singapore | `cardspromo.maybank2u.com.sg` | untested |  |
 | 14 | SG | issuer | cards | Maybank Singapore | `maybank2u.com.sg` | untested | https://www.maybank2u.com.sg/en/personal/cards/credit-cards/index.page |
 | 14 | SG | issuer | offers | Maybank Singapore | `maybank2u.com.sg` | untested |  |
+| 15 | SG | issuer | cards | Standard Chartered Singapore | `av.sc.com` | untested |  |
+| 15 | SG | issuer | offers | Standard Chartered Singapore | `av.sc.com` | untested |  |
 | 15 | SG | issuer | cards | Standard Chartered Singapore | `sc.com` | untested | https://www.sc.com/sg/credit-cards/ |
 | 15 | SG | issuer | offers | Standard Chartered Singapore | `sc.com` | untested | https://www.sc.com/sg/promotions/ |
 | 16 | SG | issuer | cards | OCBC | `ocbc.com` | untested | https://www.ocbc.com/personal-banking/cards/credit-card, https://www.ocbc.com/personal-banking/cards |
