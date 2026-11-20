@@ -1,0 +1,28 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-mox-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-mox"
+  },
+  "country": "HK",
+  "purpose": "offers",
+  "mode": "plain",
+  "source": "json",
+  "start_urls": [
+    "https://mox.com/page-data/promotions/page-data.json"
+  ],
+  "list": {
+    "item": "result.data.allContentfulPromotionHubListingTemplate.edges[0].node.promoHub",
+    "key": "path",
+    "fields": {
+      "title": "title",
+      "category": "categories[0].title",
+      "content": "pageContent.childMarkdownRemark.html",
+      "envs": "envs",
+      "path": "buttonLink"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "First hk-mox promotions-hub recipe, written 20 Nov 2026. The public /promotions/ page is a Gatsby site. The official listing body is the same-origin page-data JSON at /page-data/promotions/page-data.json, which the page loads. Plain HTML already contains the current tiles, but the JSON is complete and stable. The list includes Contentful entries whose envs do not contain PROD; those are not shown on the production hub. Individual Mox Earn merchant offers are not in this hub (they live in the Mox app). Year-round merchant offers have their own recipe, hk-mox-year-round."
+}

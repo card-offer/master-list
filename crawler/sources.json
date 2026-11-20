@@ -1471,7 +1471,7 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://mox.com/"
+    "https://mox.com/features/mox-credit/"
    ],
    "status": "untested",
    "full_crawl_order": 35,
@@ -1485,7 +1485,12 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://mox.com/promotions/",
+    "https://mox.com/promotions/year-round-offers/",
+    "https://mox.com/page-data/promotions/page-data.json",
+    "https://mox.com/page-data/promotions/year-round-offers/page-data.json"
+   ],
    "status": "untested",
    "full_crawl_order": 35,
    "suggested_by": null,
