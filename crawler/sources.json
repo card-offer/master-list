@@ -1708,7 +1708,7 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.icbcasia.com/hk/en/personal/credit-cards/default.html"
+    "https://www.icbcasia.com/hk/en/personal/credit-cards/type-of-cards/default.html"
    ],
    "status": "untested",
    "full_crawl_order": 42,
@@ -1722,7 +1722,9 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.icbcasia.com/hk/en/personal/credit-cards/latest-promotions/default.html"
+   ],
    "status": "untested",
    "full_crawl_order": 42,
    "suggested_by": null,

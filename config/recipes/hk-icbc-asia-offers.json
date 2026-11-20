@@ -1,0 +1,32 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-icbc-asia-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-icbc-asia"
+  },
+  "country": "HK",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.icbcasia.com/hk/en/personal/credit-cards/latest-promotions/default.html"
+  ],
+  "list": {
+    "item": "section.col-link-list a.col-link-list__link",
+    "key": "url",
+    "fields": {
+      "title": "p.col-link-list__item",
+      "url": ":scope@href"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": ".inner-main-sl__title",
+      "terms": "section.remark-txt"
+    },
+    "text_selector": "main"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "English Latest Promotions listing for credit cards. Nine live tiles (plus one commented-out personal instalment loan tile that is not in the live list) in section.col-link-list as a.col-link-list__link, with the title in p.col-link-list__item. Deal terms on each offer page are in section.remark-txt. Some terms PDFs linked from these pages sit on v.icbc.com.cn, which is not an official_domain; the recipe stays on icbcasia.com."
+}

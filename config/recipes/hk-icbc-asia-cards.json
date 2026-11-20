@@ -1,0 +1,25 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-icbc-asia-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-icbc-asia"
+  },
+  "country": "HK",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.icbcasia.com/hk/en/personal/credit-cards/type-of-cards/default.html"
+  ],
+  "list": {
+    "item": "section.credit-card-sl",
+    "key": "name",
+    "fields": {
+      "name": ".credit-card-sl__title",
+      "url": "a@href",
+      "desc": ".credit-card-sl__desc"
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "note": "English Type of Cards listing at /hk/en/personal/credit-cards/type-of-cards/default.html. 16 product tiles in section.credit-card-sl, each with the product name in .credit-card-sl__title and a Learn More (and sometimes Apply Now) link. ICBC Essence Credit Card in this listing points at /hk/en/private/icbc-essence-card/default.html. The Virtual Card products are not in this listing; they have a separate product page at /hk/en/personal/credit-cards/virtual-digital-credit-card/default.html, which is not a tile listing."
+}

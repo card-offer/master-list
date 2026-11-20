@@ -365,20 +365,57 @@
       "website": "https://www.hsbc.com.hk/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-icbc-asia-icbc-axa-credit-card-platinum-mastercard",
+        "hk-icbc-asia-icbc-axa-credit-card-platinum-mastercard-virtual-card",
+        "hk-icbc-asia-icbc-axa-dual-currency-credit-card-unionpay-platinum-card",
+        "hk-icbc-asia-icbc-axa-dual-currency-credit-card-unionpay-platinum-virtual-card",
+        "hk-icbc-asia-icbc-caritas-hk-credit-card-classic-mastercard",
+        "hk-icbc-asia-icbc-caritas-hk-credit-card-gold-mastercard",
+        "hk-icbc-asia-icbc-caritas-hk-credit-card-platinum-mastercard",
+        "hk-icbc-asia-icbc-chimelong-credit-card-visa-platinum-card",
+        "hk-icbc-asia-icbc-chimelong-dual-currency-credit-card-unionpay-platinum-card",
+        "hk-icbc-asia-icbc-china-overseas-dual-currency-credit-card-unionpay-diamond-card",
+        "hk-icbc-asia-icbc-china-overseas-dual-currency-credit-card-unionpay-platinum-card",
+        "hk-icbc-asia-icbc-credit-card-platinum-mastercard",
+        "hk-icbc-asia-icbc-credit-card-platinum-mastercard-virtual-card",
+        "hk-icbc-asia-icbc-credit-card-visa-platinum-card",
+        "hk-icbc-asia-icbc-credit-card-visa-platinum-virtual-card",
+        "hk-icbc-asia-icbc-credit-card-visa-signature-card",
+        "hk-icbc-asia-icbc-dual-currency-credit-card-unionpay-diamond-card",
+        "hk-icbc-asia-icbc-dual-currency-credit-card-unionpay-platinum-virtual-card",
+        "hk-icbc-asia-icbc-elite-club-credit-card-platinum-mastercard",
+        "hk-icbc-asia-icbc-essence-ceramic-credit-card",
+        "hk-icbc-asia-icbc-essence-credit-card",
+        "hk-icbc-asia-icbc-greater-bay-area-credit-card-platinum-mastercard",
+        "hk-icbc-asia-icbc-greater-bay-area-credit-card-world-mastercard",
+        "hk-icbc-asia-icbc-greater-bay-area-dual-currency-credit-card-unionpay-diamond-card",
+        "hk-icbc-asia-icbc-greater-bay-area-dual-currency-credit-card-unionpay-platinum-card",
+        "hk-icbc-asia-icbc-horoscope-credit-card-visa-signature-card",
+        "hk-icbc-asia-icbc-horoscope-dual-currency-credit-card-unionpay-diamond-card",
+        "hk-icbc-asia-icbc-horoscope-dual-currency-credit-card-unionpay-platinum-card",
+        "hk-icbc-asia-icbc-sup-credit-card-visa-signature-card",
+        "hk-icbc-asia-icbc-sup-dual-currency-credit-card-unionpay-diamond-card",
+        "hk-icbc-asia-icbc-sup-dual-currency-credit-card-unionpay-platinum-card",
+        "hk-icbc-asia-icbc-swiss-privilege-dual-currency-credit-card-unionpay-diamond-card",
+        "hk-icbc-asia-icbc-wise-gold-credit-card-world-mastercard",
+        "hk-icbc-asia-icbc-wise-gold-dual-currency-credit-card-unionpay-diamond-card"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
-          "https://www.icbcasia.com/hk/en/personal/credit-cards/default.html"
+          "https://www.icbcasia.com/hk/en/personal/credit-cards/type-of-cards/default.html"
         ],
-        "note": null,
-        "offer_sources": [],
-        "status": "not_covered"
+        "note": "First card and offer run on 20 Nov 2026. The Type of Cards listing has 16 product tiles; 34 consumer credit cards were handed in from those pages plus the separate Virtual Card product page and the ICBC Essence Credit Card / Ceramic page under /hk/en/private/. Annual fees and Key Facts Statements are linked only as PDFs on v.icbc.com.cn, which is not in official_domains, so most annual_fee values are null except Essence (HK$6,800 / HK$3,000) and the SUP first-3-years waiver (amount not stated). The Latest Promotions listing had 9 tiles; the WeChat Pay HK instant discount ended 31 October 2026 and was left out. Eight live listing offers plus six dated product-page offers were handed in. Year-round merchant offer lists and spending-rewards / fee / cardholder-agreement PDFs also sit on v.icbc.com.cn and were not fetched, so listing_complete is false and crawl.status is partial. A card named ICBC SUP Credit Card - UnionPay Platinum Virtual Card appears on the SUP dining offer but has no product page and was not handed in as a card. Corporate credit cards appear only on the fee page and were excluded. Two recipes: hk-icbc-asia-cards.json and hk-icbc-asia-offers.json.",
+        "offer_sources": [
+          "https://www.icbcasia.com/hk/en/personal/credit-cards/latest-promotions/default.html"
+        ],
+        "status": "partial"
       },
       "id": "hk-icbc-asia",
       "legal_name": "INDUSTRIAL AND COMMERCIAL BANK OF CHINA (ASIA) LIMITED",
       "name": "ICBC Asia",
-      "offer_count": 0,
+      "offer_count": 14,
       "official_domains": [
         "icbcasia.com"
       ],
