@@ -37,6 +37,9 @@ The repository has 34 issuers now. They are in the table at the end of this file
    1. Malaysia, Bank Negara Malaysia: the list "Credit Card Issuers" (banks and non-banks) and the list of charge card issuers, on bnm.gov.my.
    2. Singapore, Monetary Authority of Singapore: the Financial Institutions Directory on eservices.mas.gov.sg. Read the categories Local Bank, Qualifying Full Bank, Full Bank, Digital Full Bank, Wholesale Bank, and Credit and Charge Card Licensee.
    3. Hong Kong, Hong Kong Monetary Authority: the lists of Licensed Banks, Restricted Licence Banks, Deposit-taking Companies and Digital Banks, and the register of authorized institutions, on hkma.gov.hk (the interactive register is also on vpr.hkma.gov.hk).
+   4. Thailand, Bank of Thailand: the list of financial institutions and non-banks on bot.or.th (https://www.bot.or.th/th/fi-list.html). Read the commercial banks, specialized financial institutions, and licensed non-bank credit card operators (license 0700).
+   5. Indonesia, Otoritas Jasa Keuangan: the bank-address list (Juni 2026) and the finance-company directory (Juli 2026) on ojk.go.id. Bank Indonesia: the PJP licensee directory on bi.go.id. Do not submit its filter or download forms.
+   6. Philippines, Bangko Sentral ng Pilipinas: the Directory of Banks and Non-Bank Financial Institutions on bsp.gov.ph. Read All Banks, Digital Banks, and Credit Card Company.
 2. For each entry on a regulator list, open the institution's own official site and find out if it issues a credit card or a charge card to consumers in that country.
 3. Give each entry one result:
    - `in_repository`: it is one of the 34. Give the issuer ID.
@@ -186,6 +189,54 @@ These are new issuers from the 2026-11-13 phase 1 census. They wait for the main
 | 50 | `hk-hsbc` | HSBC Hong Kong | hsbc.com.hk | 0 | 0 | |
 | 51 | `hk-bochk` | Bank of China (Hong Kong) | bochk.com, boci.com.hk | 0 | 0 | Chiyu Bank credit cards are issued by BOC Credit Card (International) Limited and go under this issuer. |
 
+### Thailand (proposed)
+
+These are new issuers from the 2026-11-13 phase 1 census in `crawler/ISSUER_CENSUS.md`. They wait for the maintainer to accept each issuer and each official domain. The order is proposed only. Card and offer counts are 0 because no cards have been ingested yet.
+
+| Order | Issuer ID | Name | Official domains | Cards now | Offers now | Note |
+|---|---|---|---|---|---|---|
+| 52 | `th-lotuss-money` | Lotus's Money | lotussmoney.com | 0 | 0 | Catalogue https://www.lotussmoney.com/credit-card |
+| 53 | `th-first-choice` | Krungsri First Choice | firstchoice.co.th | 0 | 0 | Legal name บริษัท อยุธยา แคปปิตอล เซอร์วิสเซส. Catalogue https://www.firstchoice.co.th/cards |
+| 54 | `th-icbc-thai` | ICBC Thai | icbcthai.com | 0 | 0 | Catalogue https://www.icbcthai.com/th/column/1438059017405874179.html |
+| 55 | `th-gsb` | Government Savings Bank | gsb.or.th | 0 | 0 | Cards category https://www.gsb.or.th/personal/card/ |
+| 56 | `th-amex` | American Express (Thai) | americanexpress.com | 0 | 0 | Thailand pages only. Compare https://www.americanexpress.com/th/th/compare-credit-cards/ |
+| 57 | `th-ttb` | ttb | ttbbank.com | 0 | 0 | Credit card promotions were found; no product catalogue URL yet. |
+| 58 | `th-cardx` | CardX | cardx.co.th | 0 | 0 | Catalogue https://www.cardx.co.th/th-TH/credit-card/catalog. Ordinary browser. A linked host info.cardx.co.th is not in official_domains. |
+| 59 | `th-aeon` | AEON Thana Sinsap | aeon.co.th | 0 | 0 | Catalogue https://www.aeon.co.th/aeon/cards/ |
+| 60 | `th-ktc` | KTC | ktc.co.th | 0 | 0 | Catalogue https://www.ktc.co.th/credit-card |
+| 61 | `th-krungsri-card` | Krungsri Card | krungsricard.com | 0 | 0 | Catalogue https://www.krungsricard.com/th/product |
+| 62 | `th-uob` | UOB Thailand | uob.co.th | 0 | 0 | Ordinary browser. Listing https://www.uob.co.th/personal/credit-cards.page |
+
+### Indonesia (proposed)
+
+These are new issuers from the 2026-11-13 phase 1 census in `crawler/ISSUER_CENSUS.md`. They wait for the maintainer to accept each issuer and each official domain. The order is proposed only. Card and offer counts are 0 because no cards have been ingested yet.
+
+| Order | Issuer ID | Name | Official domains | Cards now | Offers now | Note |
+|---|---|---|---|---|---|---|
+| 63 | `id-mayapada` | Bank Mayapada | bankmayapada.com | 0 | 0 | Catalogue: https://www.bankmayapada.com/id/produk/pinjaman/mycreditcard |
+| 64 | `id-icbc` | ICBC Indonesia | icbc.co.id | 0 | 0 | Homepage states Credit Card. Catalogue host indonesia.icbc.com.cn is off-domain; report it, do not crawl it yet. |
+| 65 | `id-hsbc` | HSBC Indonesia | hsbc.co.id | 0 | 0 | Catalogue: https://www.hsbc.co.id/en-id/credit-cards/ |
+| 66 | `id-sinarmas` | Bank Sinarmas | banksinarmas.com | 0 | 0 | Catalogue: https://www.banksinarmas.com/id/personal/produk/kartukredit |
+| 67 | `id-ocbc` | OCBC Indonesia | ocbc.id | 0 | 0 | Catalogue: https://www.ocbc.id/id/individu/kartu-transaksi/kartu-kredit |
+| 68 | `id-cimb` | CIMB Niaga | cimbniaga.co.id | 0 | 0 | Catalogue: https://www.cimbniaga.co.id/id/personal/kartu-kredit |
+| 69 | `id-danamon` | Bank Danamon | danamon.co.id | 0 | 0 | Catalogue: https://www.danamon.co.id/Personal/KartuTransaksi/Kartu-Kredit |
+| 70 | `id-mega` | Bank Mega | bankmega.com | 0 | 0 | Catalogue: https://bankmega.com/id/personal/kartu-kredit/. applykartukredit.bankmega.com was seen and was not added. |
+| 71 | `id-mandiri` | Bank Mandiri | bankmandiri.co.id | 0 | 0 | Homepage confirms consumer kartu kredit. Catalogue host mandirikartukredit.com is off-domain; report it, do not crawl it yet. robots.txt was unreadable. |
+| 72 | `id-bca` | BCA | bca.co.id, promo.bca.co.id | 0 | 0 | Catalogue: https://www.bca.co.id/id/individu/produk/kartu-kredit. promo.bca.co.id was added from links on that page. |
+
+### Philippines (proposed)
+
+These are new issuers from the 2026-11-13 phase 1 census in `crawler/ISSUER_CENSUS.md`. They wait for the maintainer to accept each issuer and each official domain. The order is proposed only. Card and offer counts are 0 because no cards have been ingested yet.
+
+| Order | Issuer ID | Name | Official domains | Cards now | Offers now | Note |
+|---|---|---|---|---|---|---|
+| 73 | `ph-aub` | Asia United Bank | aub.com.ph | 0 | 0 | The credit card path redirected to online.aub.ph. Report that host. |
+| 74 | `ph-rcbc` | RCBC | rcbc.com | 0 | 0 | Cards are linked at rcbccredit.com, which is not in official_domains. Promos are on rcbc.com/promos. |
+| 75 | `ph-metrobank` | Metrobank | metrobank.com.ph | 0 | 0 | The homepage links apply.metrobank.com.ph for credit card applications. That host is not in official_domains. |
+| 76 | `ph-hsbc` | HSBC Philippines | hsbc.com.ph | 0 | 0 | Offer links also point at offers.hsbc.com.ph. |
+| 77 | `ph-eastwest` | EastWest Bank | eastwestbanker.com | 0 | 0 | Credit card listing and promos are on this host. |
+| 78 | `ph-bpi` | Bank of the Philippine Islands | bpi.com.ph | 0 | 0 | Credit card listing and rewards pages are on this host. Application links go to www2.bpi.com.ph. BPI Direct BanKO is same_group on this site. |
+
 New issuers from phase 1 go after the last numbered row, after the maintainer accepts them.
 
 
@@ -198,6 +249,10 @@ These regulator sites are permitted in phase 1 only, to find issuers. They are n
 | phase-1 | MY | Bank Negara Malaysia | bnm.gov.my | The lists of credit card issuers (banks and non-banks) and charge card issuers. |
 | phase-1 | SG | Monetary Authority of Singapore | eservices.mas.gov.sg | The Financial Institutions Directory. Read the categories listed in phase 1 above. |
 | phase-1 | HK | Hong Kong Monetary Authority | hkma.gov.hk | The lists of Licensed Banks, Restricted Licence Banks, Deposit-taking Companies and Digital Banks, and the official Excel contact list (addr.xls). The interactive register is also on vpr.hkma.gov.hk. |
+| phase-1 | TH | Bank of Thailand | bot.or.th | The list of financial institutions and non-banks, including licensed non-bank credit card operators (license 0700). |
+| phase-1 | ID | Otoritas Jasa Keuangan | ojk.go.id | Proposed. Bank-address list (Juni 2026) and finance-company directory (Juli 2026). |
+| phase-1 | ID | Bank Indonesia | bi.go.id | Proposed. PJP licensee directory. The public filter and Unduh control are forms and were not submitted in the 2026-11-13 census. |
+| phase-1 | PH | Bangko Sentral ng Pilipinas | bsp.gov.ph | Directory of Banks and Non-Bank Financial Institutions: All Banks, Digital Banks, and Credit Card Company. |
 
 ## Network offer sites (Track C)
 
@@ -224,3 +279,18 @@ Do the Malaysia and Singapore rows in this order after the Track C test rule in 
 | C15 | `visa` | HK | visa.com |  | The host is official. A country offer host that is not in `official_domains` must be reported, not crawled. |
 | C16 | `unionpay` | HK | unionpayintl.com | https://www.unionpayintl.com/hk/ | Official home links Hong Kong SAR at /hk/. |
 | C17 | `amex` | HK | americanexpress.com |  | Network offer pages on this host, not an issuer catalogue. |
+| C18 | `mastercard` | TH | specials.priceless.com | https://specials.priceless.com/ | Also official: mastercard.com, priceless.com. Wait until MY and SG Track C work is accepted. |
+| C19 | `jcb` | TH | specialoffers.jcb | https://www.specialoffers.jcb/ | Also official: jcb.co.jp. No Thailand path was confirmed in this census, so only the host root is listed. |
+| C20 | `visa` | TH | visa.com |  | The host is official. A country offer host that is not in official_domains must be reported, not crawled. |
+| C21 | `unionpay` | TH | unionpayintl.com |  | No Thailand path was confirmed in this census. |
+| C22 | `amex` | TH | americanexpress.com |  | Network offer pages on this host, not the Thailand issuer catalogue. |
+| C23 | `mastercard` | ID | specials.priceless.com | https://specials.priceless.com/ | Same official hosts as C1 and C2: mastercard.com, priceless.com, specials.priceless.com. An Indonesia path that is not already in `official_domains` must be reported, not crawled. |
+| C24 | `jcb` | ID | specialoffers.jcb | https://www.specialoffers.jcb/ | Same official hosts as C3 and C4: specialoffers.jcb, jcb.co.jp. No Indonesia campaign path is listed until it is confirmed on the official site. |
+| C25 | `visa` | ID | visa.com |  | The host is official. A country offer host that is not in `official_domains` must be reported, not crawled. |
+| C26 | `unionpay` | ID | unionpayintl.com |  | The host is official. Do not invent a /id/ path. A country path that is not in `official_domains` must be reported, not crawled. |
+| C27 | `amex` | ID | americanexpress.com |  | Network offer pages on this host, not an issuer catalogue. |
+| C28 | `mastercard` | PH | specials.priceless.com | https://specials.priceless.com/ | Proposed. The site lists the Philippines as a location. Also official: mastercard.com, priceless.com. |
+| C29 | `jcb` | PH | specialoffers.jcb |  | Proposed. Also official: jcb.co.jp. A Philippines entry URL was not recorded in this census. |
+| C30 | `visa` | PH | visa.com |  | Proposed. The host is official. A country offer host that is not in official_domains must be reported, not crawled. |
+| C31 | `unionpay` | PH | unionpayintl.com |  | Proposed. |
+| C32 | `amex` | PH | americanexpress.com |  | Proposed. Network offer pages on this host. |

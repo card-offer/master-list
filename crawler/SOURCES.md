@@ -24,14 +24,18 @@ Contributors can propose a site with the "Suggest a site to crawl" issue form. T
 
 ## The list
 
-There are 162 rows in `crawler/sources.json`. Counts by country: HK 46, MY 58, SG 58. Counts by type: issuer 132, network 26, regulator 4.
+There are 246 rows in `crawler/sources.json`. Counts by country: HK 46, ID 32, MY 58, PH 21, SG 58, TH 31. Counts by type: issuer 188, network 50, regulator 8.
 
 | Order | Country | Type | Purpose | Site | Host | Status | Entry URLs |
 |---|---|---|---|---|---|---|---|
 | phase-1 | HK | regulator | census | Hong Kong Monetary Authority | `hkma.gov.hk` | ok | https://www.hkma.gov.hk/eng/key-functions/banking/banking-regulatory-and-supervisory-regime/the-three-tier-banking-system/, https://www.hkma.gov.hk/eng/key-functions/banking/banking-regulatory-and-supervisory-regime/digital-banks/ |
 | phase-1 | HK | regulator | census | Hong Kong Monetary Authority | `vpr.hkma.gov.hk` | untested |  |
+| phase-1 | ID | regulator | census | Bank Indonesia | `bi.go.id` | untested | https://www.bi.go.id/id/layanan/informasi-perizinan/sistem-pembayaran/default.aspx |
+| phase-1 | ID | regulator | census | Otoritas Jasa Keuangan | `ojk.go.id` | untested | https://www.ojk.go.id/id/kanal/perbankan/data-dan-statistik/Documents/Pages/Daftar-Alamat-Kantor-Pusat-Bank-Umum-Dan-Syariah/Daftar%20Alamat%20Kantor%20Pusat%20Bank%20Umum%20Dan%20Syariah%20-%20Juni%202026.xlsx, https://www.ojk.go.id/id/kanal/iknb/data-dan-statistik/direktori/lembaga-pembiayaan/Documents/Direktori%20Lembaga%20Pembiayaan%20dan%20PMV%20Juli%202026.pdf |
 | phase-1 | MY | regulator | census | Bank Negara Malaysia | `bnm.gov.my` | untested |  |
+| phase-1 | PH | regulator | census | Bangko Sentral ng Pilipinas | `bsp.gov.ph` | untested | https://www.bsp.gov.ph/SitePages/financialstability/Directories.aspx, https://www.bsp.gov.ph/SitePages/FinancialStability/DirBanksFIList.aspx |
 | phase-1 | SG | regulator | census | Monetary Authority of Singapore | `eservices.mas.gov.sg` | untested |  |
+| phase-1 | TH | regulator | census | Bank of Thailand | `bot.or.th` | untested | https://www.bot.or.th/th/fi-list.html |
 | 1 | SG | issuer | cards | CIMB Singapore | `cimb.com.sg` | untested | https://www.cimb.com.sg/en/personal/banking-with-us/cards/credit-cards.html |
 | 1 | SG | issuer | offers | CIMB Singapore | `cimb.com.sg` | untested | https://www.cimb.com.sg/en/personal/promotions.html |
 | 1 | SG | issuer | cards | CIMB Singapore | `deals.cimb.com` | untested |  |
@@ -160,6 +164,62 @@ There are 162 rows in `crawler/sources.json`. Counts by country: HK 46, MY 58, S
 | 51 | HK | issuer | offers | Bank of China (Hong Kong) | `bochk.com` | untested |  |
 | 51 | HK | issuer | cards | Bank of China (Hong Kong) | `boci.com.hk` | untested |  |
 | 51 | HK | issuer | offers | Bank of China (Hong Kong) | `boci.com.hk` | untested |  |
+| 52 | TH | issuer | cards | Lotus's Money | `lotussmoney.com` | untested | https://www.lotussmoney.com/credit-card |
+| 52 | TH | issuer | offers | Lotus's Money | `lotussmoney.com` | untested | https://www.lotussmoney.com/promotion/credit-card |
+| 53 | TH | issuer | cards | Krungsri First Choice | `firstchoice.co.th` | untested | https://www.firstchoice.co.th/cards |
+| 53 | TH | issuer | offers | Krungsri First Choice | `firstchoice.co.th` | untested | https://www.firstchoice.co.th/promotion/credit-card |
+| 54 | TH | issuer | cards | ICBC Thai | `icbcthai.com` | untested | https://www.icbcthai.com/th/column/1438059017405874179.html |
+| 54 | TH | issuer | offers | ICBC Thai | `icbcthai.com` | untested | https://www.icbcthai.com/th/column/1438059017535897643.html |
+| 55 | TH | issuer | cards | Government Savings Bank | `gsb.or.th` | untested | https://www.gsb.or.th/personal/card/ |
+| 55 | TH | issuer | offers | Government Savings Bank | `gsb.or.th` | untested | https://www.gsb.or.th/promotion/all-promotions/ |
+| 56 | TH | issuer | cards | American Express (Thai) | `americanexpress.com` | untested | https://www.americanexpress.com/th/th/compare-credit-cards/, https://www.americanexpress.com/th-th/credit-cards/compare-credit-cards/ |
+| 56 | TH | issuer | offers | American Express (Thai) | `americanexpress.com` | untested | https://www.americanexpress.com/th-th/benefits/promotions/dining.html |
+| 57 | TH | issuer | cards | ttb | `ttbbank.com` | untested |  |
+| 57 | TH | issuer | offers | ttb | `ttbbank.com` | untested | https://www.ttbbank.com/th/promotion/credit-card |
+| 58 | TH | issuer | cards | CardX | `cardx.co.th` | untested | https://www.cardx.co.th/th-TH/credit-card/catalog |
+| 58 | TH | issuer | offers | CardX | `cardx.co.th` | untested | https://www.cardx.co.th/th-TH/credit-card/promotion |
+| 59 | TH | issuer | cards | AEON Thana Sinsap | `aeon.co.th` | untested | https://www.aeon.co.th/aeon/cards/ |
+| 59 | TH | issuer | offers | AEON Thana Sinsap | `aeon.co.th` | untested | https://www.aeon.co.th/aeon/promotions/ |
+| 60 | TH | issuer | cards | KTC | `ktc.co.th` | untested | https://www.ktc.co.th/credit-card |
+| 60 | TH | issuer | offers | KTC | `ktc.co.th` | untested | https://www.ktc.co.th/promotion |
+| 61 | TH | issuer | cards | Krungsri Card | `krungsricard.com` | untested | https://www.krungsricard.com/th/product |
+| 61 | TH | issuer | offers | Krungsri Card | `krungsricard.com` | untested | https://www.krungsricard.com/th/promotion |
+| 62 | TH | issuer | cards | UOB Thailand | `uob.co.th` | untested | https://www.uob.co.th/personal/credit-cards.page, https://www.uob.co.th/personal/credit-cards/compare.page |
+| 62 | TH | issuer | offers | UOB Thailand | `uob.co.th` | untested |  |
+| 63 | ID | issuer | cards | Bank Mayapada | `bankmayapada.com` | untested | https://www.bankmayapada.com/id/produk/pinjaman/mycreditcard |
+| 63 | ID | issuer | offers | Bank Mayapada | `bankmayapada.com` | untested |  |
+| 64 | ID | issuer | cards | ICBC Indonesia | `icbc.co.id` | untested |  |
+| 64 | ID | issuer | offers | ICBC Indonesia | `icbc.co.id` | untested |  |
+| 65 | ID | issuer | cards | HSBC Indonesia | `hsbc.co.id` | untested | https://www.hsbc.co.id/en-id/credit-cards/ |
+| 65 | ID | issuer | offers | HSBC Indonesia | `hsbc.co.id` | untested | https://www.hsbc.co.id/en-id/credit-cards/offers/ |
+| 66 | ID | issuer | cards | Bank Sinarmas | `banksinarmas.com` | untested | https://www.banksinarmas.com/id/personal/produk/kartukredit |
+| 66 | ID | issuer | offers | Bank Sinarmas | `banksinarmas.com` | untested | https://www.banksinarmas.com/id/personal/produk/kartukredit/promo |
+| 67 | ID | issuer | cards | OCBC Indonesia | `ocbc.id` | untested | https://www.ocbc.id/id/individu/kartu-transaksi/kartu-kredit |
+| 67 | ID | issuer | offers | OCBC Indonesia | `ocbc.id` | untested | https://www.ocbc.id/id/promo |
+| 68 | ID | issuer | cards | CIMB Niaga | `cimbniaga.co.id` | untested | https://www.cimbniaga.co.id/id/personal/kartu-kredit |
+| 68 | ID | issuer | offers | CIMB Niaga | `cimbniaga.co.id` | untested | https://www.cimbniaga.co.id/id/personal/promo/index |
+| 69 | ID | issuer | cards | Bank Danamon | `danamon.co.id` | untested | https://www.danamon.co.id/Personal/KartuTransaksi/Kartu-Kredit |
+| 69 | ID | issuer | offers | Bank Danamon | `danamon.co.id` | untested | https://www.danamon.co.id/promo |
+| 70 | ID | issuer | cards | Bank Mega | `bankmega.com` | untested | https://bankmega.com/id/personal/kartu-kredit/ |
+| 70 | ID | issuer | offers | Bank Mega | `bankmega.com` | untested | https://bankmega.com/id/promo/ |
+| 71 | ID | issuer | cards | Bank Mandiri | `bankmandiri.co.id` | untested |  |
+| 71 | ID | issuer | offers | Bank Mandiri | `bankmandiri.co.id` | untested | https://bankmandiri.co.id/promo-mandiri |
+| 72 | ID | issuer | cards | BCA | `bca.co.id` | untested | https://www.bca.co.id/id/individu/produk/kartu-kredit |
+| 72 | ID | issuer | offers | BCA | `bca.co.id` | untested | https://www.bca.co.id/id/promo-bca/2021/04/01/14/42/kartu-kredit-bca |
+| 72 | ID | issuer | cards | BCA | `promo.bca.co.id` | untested |  |
+| 72 | ID | issuer | offers | BCA | `promo.bca.co.id` | untested | https://promo.bca.co.id/id/all?productType=kartu-kredit |
+| 73 | PH | issuer | cards | Asia United Bank | `aub.com.ph` | untested |  |
+| 73 | PH | issuer | offers | Asia United Bank | `aub.com.ph` | untested |  |
+| 74 | PH | issuer | cards | RCBC | `rcbc.com` | untested |  |
+| 74 | PH | issuer | offers | RCBC | `rcbc.com` | untested | https://www.rcbc.com/promos |
+| 75 | PH | issuer | cards | Metrobank | `metrobank.com.ph` | untested |  |
+| 75 | PH | issuer | offers | Metrobank | `metrobank.com.ph` | untested |  |
+| 76 | PH | issuer | cards | HSBC Philippines | `hsbc.com.ph` | untested | https://www.hsbc.com.ph/credit-cards/products/ |
+| 76 | PH | issuer | offers | HSBC Philippines | `hsbc.com.ph` | untested | https://www.hsbc.com.ph/credit-cards/offers/latest/ |
+| 77 | PH | issuer | cards | EastWest Bank | `eastwestbanker.com` | untested | https://www.eastwestbanker.com/cards/creditcards |
+| 77 | PH | issuer | offers | EastWest Bank | `eastwestbanker.com` | untested | https://www.eastwestbanker.com/promos |
+| 78 | PH | issuer | cards | Bank of the Philippine Islands | `bpi.com.ph` | untested | https://www.bpi.com.ph/personal/cards, https://www.bpi.com.ph/personal/cards/credit-cards |
+| 78 | PH | issuer | offers | Bank of the Philippine Islands | `bpi.com.ph` | untested | https://www.bpi.com.ph/personal/rewards-and-promotions, https://www.bpi.com.ph/personal/rewards-and-promotions/promos |
 | after-34 | MY | issuer | cards | ICBC Malaysia | `icbcmy.com` | untested |  |
 | after-34 | MY | issuer | offers | ICBC Malaysia | `icbcmy.com` | untested |  |
 | after-34 | MY | issuer | cards | ICBC Malaysia | `v.icbc.com.cn` | untested |  |
@@ -190,3 +250,27 @@ There are 162 rows in `crawler/sources.json`. Counts by country: HK 46, MY 58, S
 | C15 | HK | network | offers | Visa | `visa.com` | untested |  |
 | C16 | HK | network | offers | UnionPay | `unionpayintl.com` | untested | https://www.unionpayintl.com/hk/ |
 | C17 | HK | network | offers | American Express | `americanexpress.com` | untested |  |
+| C18 | TH | network | offers | Mastercard | `mastercard.com` | untested |  |
+| C18 | TH | network | offers | Mastercard | `priceless.com` | untested |  |
+| C18 | TH | network | offers | Mastercard | `specials.priceless.com` | untested | https://specials.priceless.com/ |
+| C19 | TH | network | offers | JCB | `jcb.co.jp` | untested |  |
+| C19 | TH | network | offers | JCB | `specialoffers.jcb` | untested | https://www.specialoffers.jcb/ |
+| C20 | TH | network | offers | Visa | `visa.com` | untested |  |
+| C21 | TH | network | offers | UnionPay | `unionpayintl.com` | untested |  |
+| C22 | TH | network | offers | American Express | `americanexpress.com` | untested |  |
+| C23 | ID | network | offers | Mastercard | `mastercard.com` | untested |  |
+| C23 | ID | network | offers | Mastercard | `priceless.com` | untested |  |
+| C23 | ID | network | offers | Mastercard | `specials.priceless.com` | untested | https://specials.priceless.com/ |
+| C24 | ID | network | offers | JCB | `jcb.co.jp` | untested |  |
+| C24 | ID | network | offers | JCB | `specialoffers.jcb` | untested | https://www.specialoffers.jcb/ |
+| C25 | ID | network | offers | Visa | `visa.com` | untested |  |
+| C26 | ID | network | offers | UnionPay | `unionpayintl.com` | untested |  |
+| C27 | ID | network | offers | American Express | `americanexpress.com` | untested |  |
+| C28 | PH | network | offers | Mastercard | `mastercard.com` | untested |  |
+| C28 | PH | network | offers | Mastercard | `priceless.com` | untested |  |
+| C28 | PH | network | offers | Mastercard | `specials.priceless.com` | untested | https://specials.priceless.com/ |
+| C29 | PH | network | offers | JCB | `jcb.co.jp` | untested |  |
+| C29 | PH | network | offers | JCB | `specialoffers.jcb` | untested |  |
+| C30 | PH | network | offers | Visa | `visa.com` | untested |  |
+| C31 | PH | network | offers | UnionPay | `unionpayintl.com` | untested |  |
+| C32 | PH | network | offers | American Express | `americanexpress.com` | untested |  |

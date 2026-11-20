@@ -8,6 +8,14 @@
       "path": "/hk/",
       "timezone": "Asia/Hong_Kong"
     },
+    "ID": {
+      "cards": 0,
+      "currency": "IDR",
+      "issuers": 10,
+      "offers": 0,
+      "path": "/id/",
+      "timezone": "Asia/Jakarta"
+    },
     "MY": {
       "cards": 238,
       "currency": "MYR",
@@ -16,6 +24,14 @@
       "path": "/my/",
       "timezone": "Asia/Kuala_Lumpur"
     },
+    "PH": {
+      "cards": 0,
+      "currency": "PHP",
+      "issuers": 6,
+      "offers": 0,
+      "path": "/ph/",
+      "timezone": "Asia/Manila"
+    },
     "SG": {
       "cards": 126,
       "currency": "SGD",
@@ -23,9 +39,17 @@
       "offers": 1468,
       "path": "/sg/",
       "timezone": "Asia/Singapore"
+    },
+    "TH": {
+      "cards": 0,
+      "currency": "THB",
+      "issuers": 11,
+      "offers": 0,
+      "path": "/th/",
+      "timezone": "Asia/Bangkok"
     }
   },
-  "generated_at": "2026-11-19T14:28:28+00:00",
+  "generated_at": "2026-11-20T00:14:43+00:00",
   "indexes": "Built in CI and published to GitHub Pages. Not stored on the main branch.",
   "layout": {
     "archive": "{cc}/archive/offers/{issuer}.json",
