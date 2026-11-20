@@ -65,6 +65,7 @@ Do not take the name from the URL, from your memory or from a guess.
 3. Give the brand only. Do not add offer words, prices, dates, card names or campaign names.
 4. Put a branch, outlet or in-hotel restaurant in `outlet`, not in `name`. The name is the brand that a cardholder searches for.
    - A place after the brand is the outlet: `Jamal Kazura Aromatics 39 Bussorah Street` is name `Jamal Kazura Aromatics`, outlet `39 Bussorah Street`. Three branches of one brand have one name and three outlets.
+   - A bracket after the brand is not part of the name. A place in the bracket is the outlet: `Hotels.com (Hong Kong)` is name `Hotels.com`, outlet `Hong Kong`. A label of the bank's page, such as `(Travel Perks)` or `(Healthcare)`, is left out. A short form, such as `SP Mobility (SPM)`, goes in `alt_names`. The gate refuses a name that ends with a bracket, unless `name_checked` is true because the bracket is part of the trading name.
    - If the page heading is the brand only, the name is the heading. Do not add the mall, the street or the airport terminal to it. The gate refuses a name that is the heading with more words.
    - A restaurant, bar or spa inside a hotel: if the page states the hotel, the hotel is the name and the restaurant is the outlet. `Lobby Lounge`, `The Courtyard` and `Jade` are not names that a cardholder can search for. If the page does not state the hotel, keep the heading as the name and report it.
 5. Do not translate the name. Do not expand or shorten it.

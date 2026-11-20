@@ -166,6 +166,18 @@ class GateTests(unittest.TestCase):
                       merchant__name_quote="Example Kopi Changi Airport Terminal 2")
         self.assertEqual(self.errors(fixed), [])
 
+    def test_name_with_a_bracket_is_refused(self):
+        row = offer(title="Example Kopi", merchant__name="Example Kopi (Johor Bahru)", merchant__outlet=None,
+                    merchant__name_quote="Example Kopi (Johor Bahru)", source_key="tile-9", source_key_basis="page_anchor")
+        self.assert_error("ends with a bracket", row)
+        fixed = offer(title="Example Kopi", merchant__outlet="Johor Bahru", source_key="tile-9", source_key_basis="page_anchor",
+                      merchant__name_quote="Example Kopi (Johor Bahru)")
+        self.assertEqual(self.errors(fixed), [])
+        kept = offer(title="Example Kopi (Original)", merchant__name="Example Kopi (Original)", merchant__outlet=None,
+                     merchant__name_checked=True, merchant__name_quote="Example Kopi (Original)", source_key="tile-9",
+                     source_key_basis="page_anchor")
+        self.assertEqual(self.errors(kept), [])
+
     def test_issuer_is_not_a_merchant(self):
         self.assert_error("card issuer", offer(merchant__name="CIMB", merchant__name_quote="CIMB", source_key="cimb"))
 

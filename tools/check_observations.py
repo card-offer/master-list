@@ -205,6 +205,10 @@ def check(obs, root, now=None):
                 if heading and len(heading) >= 3 and full.startswith(heading + " "):
                     errors.append(f"{where}: the page heading is '{offer['title']}' and the merchant name adds more words. "
                                   f"Put the brand in name and the place or branch in outlet.")
+                if re.search(r"\([^()]+\)\s*$", name) and not merchant["name_checked"]:
+                    errors.append(f"{where}: merchant name '{name}' ends with a bracket. Put a place in outlet, leave out a page "
+                                  f"label such as (Travel Perks), and give a short form of the name in alt_names. If the bracket "
+                                  f"is part of the trading name, set name_checked to true.")
                 if merchant["outlet"] and name_key(merchant["outlet"], mrules) and name_key(merchant["outlet"], mrules) in name_key(name, mrules):
                     errors.append(f"{where}: the outlet is repeated inside the merchant name. Put the brand in name and the outlet in outlet.")
             if merchant["names"]:
