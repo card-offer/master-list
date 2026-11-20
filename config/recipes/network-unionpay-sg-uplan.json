@@ -1,0 +1,34 @@
+{
+  "recipe": "recipe/1",
+  "id": "network-unionpay-sg-uplan",
+  "owner": {
+    "type": "network",
+    "id": "unionpay"
+  },
+  "country": "SG",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.unionpayintl.com/u-plan/index?language=en"
+  ],
+  "list": {
+    "item": "#uplanDiv2 > li",
+    "key": "url",
+    "fields": {
+      "merchant": "p.p1",
+      "title": "p.p2",
+      "url": "a@href"
+    }
+  },
+  "detail": {
+    "text_selector": "div.product-box",
+    "fields": {
+      "heading": "div.product_header h6",
+      "region": "div.product_header p",
+      "terms": "div.product_r"
+    }
+  },
+  "listing_kind": "network_offer_listing",
+  "detail_kind": "network_offer_page",
+  "note": "Linked from the English UnionPay International homepage u-plan section, which is reachable from the Singapore site family. The u-plan country list on this page has only Japan, Thailand and Taiwan, China; Singapore is not a filter option. The default HTML shows two featured tiles. A More control calls getMore and is not followed in plain mode."
+}
