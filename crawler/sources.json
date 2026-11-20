@@ -1537,7 +1537,16 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.chbank.com/en/homepage.shtml"
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/index.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/personal-credit-cards/index.shtml",
+    "https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/chong-hing-platinum/index.shtml",
+    "https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/chong-hing/index.shtml",
+    "https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/man/index.shtml",
+    "https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/chong-hing-unionpay-dual-currency/index.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/personal-credit-cards/students/index.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/co-branded-credit-card/wah-yan-one-family/index.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/co-branded-credit-card/chiu-chow-chamber/index.shtml",
+    "https://www.chbank.com/data/media/document/key_fact_statement.pdf"
    ],
    "status": "untested",
    "full_crawl_order": 37,
@@ -1551,7 +1560,14 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/index.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/visa.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/master.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/unionpay.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/index2.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/point-to-gift-redemption/index.shtml"
+   ],
    "status": "untested",
    "full_crawl_order": 37,
    "suggested_by": null,
