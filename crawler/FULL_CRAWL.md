@@ -269,8 +269,8 @@ Do the Malaysia and Singapore rows in this order after the Track C test rule in 
 | C2 | `mastercard` | SG | specials.priceless.com | https://specials.priceless.com/ | Same host. The site lists Singapore as a location. |
 | C3 | `jcb` | MY | specialoffers.jcb | https://www.specialoffers.jcb/ , https://www.specialoffers.jcb/en/campaign/d/southeast-and-south-asia/malaysia/ , https://www.specialoffers.jcb/en/offers/d/southeast-and-south-asia/malaysia/ | JCB Special Offers. Also official: jcb.co.jp. See `crawler/HARD_SITES.md`. |
 | C4 | `jcb` | SG | specialoffers.jcb | https://www.specialoffers.jcb/ , https://www.specialoffers.jcb/en/campaign/d/southeast-and-south-asia/singapore/ , https://www.specialoffers.jcb/en/offers/d/southeast-and-south-asia/singapore/ | Same host. |
-| C5 | `visa` | MY | visa.com |  | The host is official. A country offer host that is not in `official_domains` must be reported, not crawled. |
-| C6 | `visa` | SG | visa.com |  | Same note as C5. |
+| C5 | `visa` | MY | visa.com.my | https://www.visa.com.my/ | visa.com redirects here. visa.com.my is in the Visa official_domains. |
+| C6 | `visa` | SG | visa.com.sg | https://www.visa.com.sg/ | visa.com.sg is in the Visa official_domains. |
 | C7 | `unionpay` | MY | unionpayintl.com | https://www.unionpayintl.com/my/ |  |
 | C8 | `unionpay` | SG | unionpayintl.com | https://www.unionpayintl.com/sg/ |  |
 | C9 | `amex` | MY | americanexpress.com |  | Network offer pages on this host, not the Singapore issuer catalogue. |

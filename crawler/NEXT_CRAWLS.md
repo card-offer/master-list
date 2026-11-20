@@ -89,13 +89,11 @@ Done on 20 Nov 2026: JCB (C3, C4), UnionPay (C7, C8), American Express (C9, C10)
 Still to do:
 
 1. C1 and C2, Mastercard Priceless for Malaysia and Singapore. `specials.priceless.com` is approved for real-Chrome mode. Use plain, then browser, then real Chrome with `--min-gap 30` if the site refuses the first two. Do the Malaysia run first.
-2. C5 and C6, Visa for Malaysia and Singapore. A country offer host that is not in `official_domains` must be reported first, not crawled.
+2. C5 and C6, Visa for Malaysia and Singapore. Start at `https://www.visa.com.my/` and `https://www.visa.com.sg/`. These hosts were in the published `networks.json` and are now in `config/networks.json` too. The runs of 20 Nov 2026 (PRs 76 and 77) stopped at the redirect from visa.com and found 0 offers. They were closed with no merge.
 
 ## 7. Census rechecks
 
-The rechecks of 20 Nov 2026 are done (PRs 69, 70 and 71). They found three new issuers: `th-bangkok-bank`, `ph-pnb` and `id-permata`. These are now in `crawler/FULL_CRAWL.md` as 79, 80 and 81. One task is left:
-
-1. Krung Thai Bank: probe `https://www.ktb.co.th/` with `--url --country TH`. The maintainer accepted `krungthai.com` on 20 Nov 2026, after the recheck ran. The probe follows the redirect, and `www.krungthai.com` is on the real-Chrome list.
+The rechecks of 20 Nov 2026 are done (PRs 69, 70 and 71), including the Krung Thai Bank follow-up after the maintainer accepted `krungthai.com`. They found three new issuers: `th-bangkok-bank`, `ph-pnb` and `id-permata`. These are now in `crawler/FULL_CRAWL.md` as 79, 80 and 81. Krung Thai Bank is `same_group` with the existing issuer `th-ktc`: the official `krungthai.com` site presents consumer credit cards as KTC products and links to `ktc.co.th`, which was not crawled.
 
 The other banks stay `not_reached` after real Chrome: BDO (Akamai challenge), Chinabank, Security Bank, Citibank PH, Standard Chartered PH, UnionBank, Kasikornbank, SCB, BRI, BNI and Maybank Indonesia. Do not try them again until the maintainer says so.
 

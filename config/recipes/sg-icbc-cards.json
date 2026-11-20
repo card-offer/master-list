@@ -1,0 +1,31 @@
+{
+  "recipe": "recipe/1",
+  "id": "sg-icbc-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "sg-icbc"
+  },
+  "country": "SG",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.icbc.com.sg/en/column/1438058489829539941.html"
+  ],
+  "list": {
+    "item": "a.LinkSec[href='/en/column/1143510810581213185.html'], a.LinkSec[href='/en/column/1438059017468788896.html'], a.LinkSec[href='/en/column/1438059017535897814.html'], a.LinkSec[href='/en/column/1438059017535897692.html'], a.LinkSec[href='/en/column/1438059017603006505.html'], a.LinkSec[href='/en/column/1438059017535897823.html'], a.LinkSec[href='/en/column/1438059017468788827.html'], a.LinkSec[href='/en/column/1438059017468788837.html']",
+    "fields": {
+      "name": ":scope",
+      "url": ":scope@href"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": ".TextTitle_style",
+      "terms": "#mypagehtmlcontent"
+    },
+    "text_selector": "#mypagehtmlcontent"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The Introduction page has eight credit card links in the menu. The card details are in #mypagehtmlcontent. Several fee and product terms documents are on v.icbc.com.cn, which is not in official_domains; the fetcher must not follow them."
+}

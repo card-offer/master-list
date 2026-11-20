@@ -1416,7 +1416,9 @@
    "country": "MY",
    "type": "issuer",
    "purpose": "cards",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.maybank.com/islamic/en/cards/islamic_cards_listing.page"
+   ],
    "status": "untested",
    "full_crawl_order": 34,
    "suggested_by": null,
@@ -1443,7 +1445,8 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards/index.page"
+    "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+    "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/charge_card_listing.page"
    ],
    "status": "untested",
    "full_crawl_order": 34,
@@ -1457,7 +1460,9 @@
    "country": "MY",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/maybank_cards.page"
+   ],
    "status": "untested",
    "full_crawl_order": 34,
    "suggested_by": null,
@@ -3161,6 +3166,21 @@
    "network_id": "visa"
   },
   {
+   "id": "my-network-visa-visa.com.my-offers",
+   "site": "Visa",
+   "host": "visa.com.my",
+   "country": "MY",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.visa.com.my/"
+   ],
+   "status": "untested",
+   "full_crawl_order": "C5",
+   "suggested_by": null,
+   "network_id": "visa"
+  },
+  {
    "id": "sg-network-visa-visa.com-offers",
    "site": "Visa",
    "host": "visa.com",
@@ -3168,6 +3188,21 @@
    "type": "network",
    "purpose": "offers",
    "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C6",
+   "suggested_by": null,
+   "network_id": "visa"
+  },
+  {
+   "id": "sg-network-visa-visa.com.sg-offers",
+   "site": "Visa",
+   "host": "visa.com.sg",
+   "country": "SG",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.visa.com.sg/"
+   ],
    "status": "untested",
    "full_crawl_order": "C6",
    "suggested_by": null,

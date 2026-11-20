@@ -1,0 +1,34 @@
+{
+  "recipe": "recipe/1",
+  "id": "my-maybank-cards",
+  "owner": {"type": "issuer", "id": "my-maybank"},
+  "country": "MY",
+  "purpose": "cards",
+  "mode": "browser",
+  "start_urls": [
+    "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+    "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/charge_card_listing.page"
+  ],
+  "settle_ms": 3000,
+  "list": {
+    "item": ".box-default.account-box",
+    "key": "url",
+    "fields": {
+      "name": "h3",
+      "url": "a[title=DISCOVER]@href",
+      "image_alt": "img@alt",
+      "income_and_features": ".info-1"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "fees": {"selector": "p, li, td", "all": true, "regex": "(?i)(annual fee.*)", "join": " "},
+      "income": {"selector": "p, li, td", "all": true, "regex": "(?i)(.*annual income.*)", "join": " "}
+    },
+    "text_selector": "main, body"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "Plain requests time out on maybank2u.com.my; headless browser with --disable-http2 reads both listings (20 Nov 2026). On 20 Nov 2026 the Visa Signature, Visa Gold and Visa Classic product pages render a FreeMarker TemplateException; use the listing tile and the Credit Card Fees & Charges page for those. Islamic World Mastercard Ikhwan is on maybank.com only."
+}
