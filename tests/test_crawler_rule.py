@@ -19,6 +19,20 @@ TERMS = "https://www.cimb.com.sg/content/dam/cimbsg/personal/document/promotions
 NOW = parse_instant("2026-11-13T18:00:00+08:00")
 
 
+def ingest_now(tree):
+    """The ingest clock for a test tree: NOW, or one hour after the newest checked_at in the tree.
+    A copy of the real data can hold records checked after NOW, and generated_at must not be earlier."""
+    import datetime
+    import glob
+    newest = NOW
+    for path in glob.glob(os.path.join(tree, "*", "cards", "*.json")) + glob.glob(os.path.join(tree, "*", "offers", "*.json")):
+        with open(path, encoding="utf-8") as fh:
+            for row in json.load(fh)["items"]:
+                if row.get("checked_at"):
+                    newest = max(newest, parse_instant(row["checked_at"]))
+    return newest if newest == NOW else newest + datetime.timedelta(hours=1)
+
+
 def fetch(url, kind, minute):
     return {"url": url, "final_url": url, "status": 200, "fetched_at": f"2026-11-12T01:{minute:02d}:00+08:00", "kind": kind}
 
@@ -339,7 +353,7 @@ class NetworkAndLanguageTests(unittest.TestCase):
         self.assertEqual(name_key("Uniqlo Hong Kong", rules), "uniqlo")
 
     def test_network_ingest_makes_a_new_country_and_validates(self):
-        report = ingest(network_hand_in(network_offer()), root=self.tree, now=NOW)
+        report = ingest(network_hand_in(network_offer()), root=self.tree, now=ingest_now(self.tree))
         self.assertEqual((report["new"], report["provider"]), (1, "mastercard"))
         path = os.path.join(self.tree, "th", "offers", "network-mastercard.json")
         with open(path, encoding="utf-8") as fh:
@@ -363,7 +377,7 @@ class NetworkAndLanguageTests(unittest.TestCase):
         row = network_offer(eligibility__issuer_names=["CIMB Singapore", "Example Bank"], redeem__countries=["SG"],
                             min_spend=None)
         data = network_hand_in(row, country="SG")
-        report = ingest(data, root=self.tree, now=NOW)
+        report = ingest(data, root=self.tree, now=ingest_now(self.tree))
         with open(os.path.join(self.tree, "sg", "offers", "network-mastercard.json"), encoding="utf-8") as fh:
             new = json.load(fh)["items"][0]
         self.assertEqual(new["eligibility"]["issuer_ids"], ["sg-cimb"])
@@ -440,7 +454,7 @@ class IngestTests(unittest.TestCase):
 
     def test_ingest_keeps_ids_links_merchant_and_validates(self):
         before = {row["id"]: row for row in self.items("sg", "offers", "cimb.json")}
-        report = ingest(hand_in([offer(), bundle()]), root=self.tree, now=NOW)
+        report = ingest(hand_in([offer(), bundle()]), root=self.tree, now=ingest_now(self.tree))
         after = {row["id"]: row for row in self.items("sg", "offers", "cimb.json")}
         self.assertEqual(report["exact"], 1)
         self.assertEqual(report["new"], 1)
@@ -463,10 +477,10 @@ class IngestTests(unittest.TestCase):
         self.assertEqual(errors, [])
 
     def test_title_change_on_a_shared_page_keeps_the_id(self):
-        ingest(hand_in([offer()]), root=self.tree, now=NOW)
+        ingest(hand_in([offer()]), root=self.tree, now=ingest_now(self.tree))
         first = [row for row in self.items("sg", "offers", "cimb.json") if row["merchant_name"] == "Example Kopi"][0]
         again = offer(title="Example Kopi: weekend treat", source_key="tile-12", source_key_basis="page_anchor")
-        report = ingest(hand_in([again]), root=self.tree, now=NOW)
+        report = ingest(hand_in([again]), root=self.tree, now=ingest_now(self.tree))
         second = [row for row in self.items("sg", "offers", "cimb.json") if row["merchant_name"] == "Example Kopi"]
         self.assertEqual(report["page_and_merchant"], 1)
         self.assertEqual([row["id"] for row in second], [first["id"]])
@@ -474,7 +488,7 @@ class IngestTests(unittest.TestCase):
     def test_ingest_adds_a_card_and_an_offer_can_name_it(self):
         data = hand_in([offer(eligibility__card_names=["CIMB Example Travel Card"], eligibility__quote="Valid for CIMB Example Travel Card.")])
         data["cards"] = [card()]
-        report = ingest(data, root=self.tree, now=NOW)
+        report = ingest(data, root=self.tree, now=ingest_now(self.tree))
         self.assertEqual(report["cards"]["new"], 1)
         cards = {row["id"]: row for row in self.items("sg", "cards", "cimb.json")}
         new = cards["sg-cimb-example-travel-card"]
@@ -485,7 +499,7 @@ class IngestTests(unittest.TestCase):
         linked = [row for row in self.items("sg", "offers", "cimb.json") if row["merchant_name"] == "Example Kopi"][0]
         self.assertEqual(linked["eligibility"]["card_ids"], ["sg-cimb-example-travel-card"])
         self.assertEqual(report["unmatched_card_names"], [])
-        again = ingest(data, root=self.tree, now=NOW)
+        again = ingest(data, root=self.tree, now=ingest_now(self.tree))
         self.assertEqual((again["cards"]["new"], again["cards"]["kept"]), (0, 1))
         errors, _warnings, _stats = validate(self.tree)
         self.assertEqual(errors, [])
@@ -493,14 +507,14 @@ class IngestTests(unittest.TestCase):
     def test_card_with_no_network_goes_to_review(self):
         data = hand_in([])
         data["cards"] = [card(networks=[], network_quote=None, flags=["network_not_stated"])]
-        report = ingest(data, root=self.tree, now=NOW)
+        report = ingest(data, root=self.tree, now=ingest_now(self.tree))
         self.assertEqual(len(report["cards"]["needs_review"]), 1)
         errors, _warnings, _stats = validate(self.tree)
         self.assertEqual(errors, [])
 
     def test_em_dash_in_a_quote_does_not_stop_the_ingest(self):
         row = offer(eligibility__quote="Valid for CIMB Visa Signature cardmembers \u2014 principal only.")
-        ingest(hand_in([row]), root=self.tree, now=NOW)
+        ingest(hand_in([row]), root=self.tree, now=ingest_now(self.tree))
         new = [item for item in self.items("sg", "offers", "cimb.json") if item["merchant_name"] == "Example Kopi"][0]
         self.assertEqual(new["eligibility"]["evidence_text"], "Valid for CIMB Visa Signature cardmembers - principal only.")
         errors, _warnings, _stats = validate(self.tree)
@@ -510,7 +524,7 @@ class IngestTests(unittest.TestCase):
         path = os.path.join(self.tree, "pipeline", "fetch_metadata.json")
         with open(path, encoding="utf-8") as fh:
             before = fh.read().splitlines()
-        ingest(hand_in([offer()]), root=self.tree, now=NOW)
+        ingest(hand_in([offer()]), root=self.tree, now=ingest_now(self.tree))
         with open(path, encoding="utf-8") as fh:
             after = fh.read().splitlines()
         self.assertEqual(len(after) - len(before), 4)
@@ -519,7 +533,7 @@ class IngestTests(unittest.TestCase):
     def test_card_names_match_without_the_issuer_or_country_word(self):
         row = offer(eligibility__card_names=["Visa Infinite", "CIMB Singapore Visa Signature", "CIMB VISA Infinite"],
                     eligibility__quote="Valid for CIMB Singapore Visa Signature and Visa Infinite.")
-        report = ingest(hand_in([row]), root=self.tree, now=NOW)
+        report = ingest(hand_in([row]), root=self.tree, now=ingest_now(self.tree))
         new = [item for item in self.items("sg", "offers", "cimb.json") if item["merchant_name"] == "Example Kopi"][0]
         self.assertEqual(report["unmatched_card_names"], [])
         self.assertEqual(new["eligibility"]["card_ids"], ["sg-cimb-visa-infinite", "sg-cimb-visa-signature"])
@@ -530,7 +544,7 @@ class IngestTests(unittest.TestCase):
                     merchant={"kind": "multiple", "name": None, "names": ["Example Kopi", "Sample Noodle Bar"], "outlet": None,
                               "name_source": "page_heading", "name_quote": "Example Kopi: T1, Sample Noodle Bar: T3",
                               "name_checked": False, "official_domain": None})
-        ingest(hand_in([row]), root=self.tree, now=NOW)
+        ingest(hand_in([row]), root=self.tree, now=ingest_now(self.tree))
         new = [item for item in self.items("sg", "offers", "cimb.json") if item["source_url"].endswith("#airport-dining")][0]
         self.assertEqual(new["merchant_ids"], ["example-kopi", "sample-noodle-bar"])
         self.assertIsNone(new["merchant_id"])
@@ -544,7 +558,7 @@ class IngestTests(unittest.TestCase):
         data = hand_in([])
         data["cards"] = [card(name="CIMB Visa Signature Credit Card", name_quote="CIMB Visa Signature Credit Card",
                               networks=["visa"], network_quote="CIMB Visa Signature Credit Card", tier="signature")]
-        report = ingest(data, root=self.tree, now=NOW)
+        report = ingest(data, root=self.tree, now=ingest_now(self.tree))
         self.assertEqual((report["cards"]["new"], report["cards"]["kept"]), (0, 1))
         self.assertEqual({item["id"] for item in self.items("sg", "cards", "cimb.json")}, before)
 
@@ -555,7 +569,7 @@ class IngestTests(unittest.TestCase):
             card(name="CIMB Visa Signature Credit Card", name_quote="CIMB Visa Signature Credit Card", networks=["visa"],
                  network_quote="Visa", official_url=LIST),
         ]
-        report = ingest(data, root=self.tree, now=NOW)
+        report = ingest(data, root=self.tree, now=ingest_now(self.tree))
         ids = [item["id"] for item in self.items("sg", "cards", "cimb.json")]
         self.assertEqual(len(ids), len(set(ids)))
         self.assertEqual(report["cards"]["new"] + report["cards"]["kept"], 2)
@@ -564,7 +578,7 @@ class IngestTests(unittest.TestCase):
         data = hand_in([])
         data["cards"] = [card(name="CIMB VISA SIGNATURE", name_quote="CIMB VISA SIGNATURE", networks=["visa"], network_quote="CIMB VISA SIGNATURE",
                               official_url=CARD_PAGE)]
-        ingest(data, root=self.tree, now=NOW)
+        ingest(data, root=self.tree, now=ingest_now(self.tree))
         names = [item["name"] for item in self.items("sg", "cards", "cimb.json")]
         self.assertIn("CIMB Visa Signature", names)
         self.assertNotIn("CIMB VISA SIGNATURE", names)
@@ -572,7 +586,7 @@ class IngestTests(unittest.TestCase):
     def test_bad_hand_in_changes_nothing(self):
         before = self.items("sg", "offers", "cimb.json")
         with self.assertRaises(SystemExit):
-            ingest(hand_in([offer(benefit__value=99)]), root=self.tree, now=NOW)
+            ingest(hand_in([offer(benefit__value=99)]), root=self.tree, now=ingest_now(self.tree))
         self.assertEqual(self.items("sg", "offers", "cimb.json"), before)
 
 
