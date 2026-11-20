@@ -1,0 +1,28 @@
+{
+  "recipe": "recipe/1",
+  "id": "my-rhb-cards",
+  "owner": {"type": "issuer", "id": "my-rhb"},
+  "country": "MY",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.rhbgroup.com/personal/cards/credit-cards/overview/index.html",
+    "https://www.rhbgroup.com/islamic/cards/credit-cards/overview/index.html"
+  ],
+  "list": {
+    "item": "div.product-card-listing div.card-root",
+    "key": "url",
+    "fields": {
+      "name": "h3",
+      "url": "a.flex.flex-col@href",
+      "category": "span.absolute",
+      "image_alt": "img@alt",
+      "features": {"selector": "div.rte li", "all": true, "join": " | "},
+      "eligibility_text": {"selector": "div.grid p", "all": true, "join": " "}
+    }
+  },
+  "detail": {"fields": {"heading": "h1", "terms": "main"}, "text_selector": "main"},
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The RHB credit card lists, conventional and Islamic. Each card is one div.card-root inside div.product-card-listing, with its h3 name and a link to the card page. The tiles are all in the HTML; the category tabs only show or hide them with Alpine x-show. The fees and income come from the fees accordion on each card page. Apply buttons go to product.apply.rhbgroup.com forms, which are not read."
+}

@@ -1,0 +1,37 @@
+{
+  "recipe": "recipe/1",
+  "id": "my-rhb-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "my-rhb"
+  },
+  "country": "MY",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.rhbgroup.com/cards/promotions-privileges/index.html"
+  ],
+  "list": {
+    "item": "div.card-root[x-on\\:click\\.prevent]",
+    "key": "popup_id",
+    "fields": {
+      "popup_id": {
+        "selector": ":scope",
+        "output": "html",
+        "regex": "activePopUp = '\\{([0-9A-Fa-f-]+)\\}'"
+      },
+      "merchant": "h3",
+      "offer": "p.text-gray-2",
+      "period_label": "h4.text-xs",
+      "period": "h4.text-primary",
+      "image_alt": "img@alt",
+      "category_filter": {
+        "selector": ":scope",
+        "output": "html",
+        "regex": "selected === 'All' \\|\\| '([^']+)'"
+      }
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "note": "RHB Cards Promotions and Privileges. Each merchant offer is one div.card-root with an x-on:click popup id; the key is that id (a GUID). The popup with the offer terms (eligibility, campaign period, outlets) is in the same page, in the element whose x-show tests activePopUp against that id, so no detail fetch is needed. The 35 tiles without a popup id are the merchant list of the Smart Instalment Payment Plan (0% IPP), which is a standing card feature, not a dated offer, so the item selector leaves them out. The final URL can carry a ?p= query; the hand-in uses the plain index.html URL. Mastercard offers are in my-rhb-mastercard-offers."
+}
