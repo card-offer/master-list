@@ -1,0 +1,27 @@
+{
+  "recipe": "recipe/1",
+  "id": "sg-maybank-offers",
+  "owner": {"type": "issuer", "id": "sg-maybank"},
+  "country": "SG",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": ["https://cardspromo.maybank2u.com.sg/promotions"],
+  "pagination": {"url_template": "https://cardspromo.maybank2u.com.sg/promotions?page={n}", "start": 1, "max_pages": 60},
+  "list": {
+    "item": "#data-wrapper > div[id^=promotion-]",
+    "fields": {
+      "merchant": "a h4",
+      "url": "a[href^='/promotions/']@href",
+      "benefit": "a p",
+      "end": {"selector": "a span", "regex": "Valid till (.+)$"},
+      "tile_date": "a span"
+    }
+  },
+  "detail": {
+    "fields": {"heading": "main h2", "terms": "section#terms"},
+    "text_selector": "main"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_detail",
+  "note": "Written for the sg-maybank run of 20 Nov 2026. The listing had 42 pages (455 tiles) on 20 Nov 2026; a page with no tiles ends the run. The campaign pages /bonanza, /petscampaign and /unlockwaiver are not tiles on this listing and were read by hand."
+}

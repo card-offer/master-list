@@ -36,7 +36,7 @@
       "cards": 130,
       "currency": "SGD",
       "issuers": 16,
-      "offers": 1532,
+      "offers": 1647,
       "path": "/sg/",
       "timezone": "Asia/Singapore"
     },
@@ -49,7 +49,7 @@
       "timezone": "Asia/Bangkok"
     }
   },
-  "generated_at": "2026-11-20T02:14:04+00:00",
+  "generated_at": "2026-11-20T02:33:32+00:00",
   "indexes": "Built in CI and published to GitHub Pages. Not stored on the main branch.",
   "layout": {
     "archive": "{cc}/archive/offers/{issuer}.json",
@@ -67,7 +67,7 @@
     "scope": "Compiled structured data only. Issuer terms belong to the issuers.",
     "url": "https://creativecommons.org/licenses/by/4.0/"
   },
-  "merchants": 1855,
+  "merchants": 1951,
   "name": "card-offer master list",
   "networks": 6,
   "schema_version": "0.3.0",
