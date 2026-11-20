@@ -17,7 +17,7 @@ from jsonschema import Draft202012Validator, FormatChecker
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from pipeline.lib.calendar import add_months, parse_instant
-from pipeline.lib.merchants import load_merchant_rules, name_key, name_problems, quote_has_name, slug
+from pipeline.lib.merchants import card_core, load_merchant_rules, name_key, name_problems, quote_has_name, slug
 from pipeline.lib.rules import load_rules
 from pipeline.lib.transform import host_of
 
@@ -321,6 +321,11 @@ def check(obs, root, now=None):
                 errors.append(f"{where}: inferred eligibility must be scope issuer with no card names and no networks")
         if rule["scope"] == "card" and not rule["card_names"]:
             errors.append(f"{where}: scope card needs card_names")
+        if not network_id:
+            for card_name in rule["card_names"]:
+                if not card_core(card_name, issuer["name"], mrules):
+                    errors.append(f"{where}: card name '{card_name}' names no card. If the page means every card of the "
+                                  f"issuer, use scope issuer with no card names.")
         if rule["scope"] == "issuer_network" and not rule["network_ids"]:
             errors.append(f"{where}: scope issuer_network needs network_ids")
         terms = offer["terms"]

@@ -152,6 +152,10 @@ class GateTests(unittest.TestCase):
         row["merchant"]["name_quote"] = "Fairmont Singapore 80 Bras Basah Road, Level 8 Singapore 189560"
         self.assertEqual(self.errors(row), [])
 
+    def test_card_name_that_names_no_card_is_refused(self):
+        row = offer(eligibility__scope="card", eligibility__card_names=["CIMB Credit Cards"])
+        self.assert_error("names no card", row)
+
     def test_issuer_run_offer_for_cards_of_another_country_is_refused(self):
         bad = offer(eligibility__quote="Payment by a valid Mastercard card issued in India.")
         self.assert_error("issued in IN", bad)

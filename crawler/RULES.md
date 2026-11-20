@@ -167,7 +167,7 @@ Hand in the issuer's cards in the `cards` list of the same file. Do the cards be
 - It keeps the published ID when the page and key are the same, or when the page and the merchant are the same. A new title does not make a new ID.
 - It links each `single` merchant to one global record in `merchants/registry.json`. `Shopee Singapore`, `SHOPEE` and `Shopee Pte Ltd` become one brand. A brand with one offer and no official domain is published with `verified: false`.
 - It keeps a card ID when the card name is the same. A card with no network goes to review.
-- It maps `card_names` to card IDs. Write each card name as the page writes it. The pipeline ignores the issuer name, the country and the words credit card when it matches. A name that is not in the card list sends the offer to review. Report these names. Do not change them to fit.
+- It maps `card_names` to card IDs. Write each card name as the page writes it. The pipeline ignores the issuer name, the country and the words credit card when it matches. A name that is not in the card list sends the offer to review. Report these names. Do not change them to fit. A phrase that names no card, such as `BEA Credit Cards` or `all HSBC Credit Cards`, means every card of the issuer: use scope `issuer` with no card names. The gate refuses it as a card name.
 - It sets `first_seen`, `last_seen`, `status` and `review_by`.
 - After a complete listing run, an offer that was not seen for 14 days becomes `withdrawn`.
 - Expired offers move to the archive.
