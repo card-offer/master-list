@@ -6649,5 +6649,6 @@
 {"url": "https://www.specialoffers.jcb/en/offers/detail/A-00050590-05/", "status": 200, "final_url": "https://www.specialoffers.jcb/en/offers/detail/A-00050590-05/", "fetched_at": "2026-11-12T21:45:46+08:00"},
 {"url": "https://www.specialoffers.jcb/en/offers/detail/A-00048789-05/", "status": 200, "final_url": "https://www.specialoffers.jcb/en/offers/detail/A-00048789-05/", "fetched_at": "2026-11-12T21:45:34+08:00"},
 {"url": "https://www.specialoffers.jcb/en/offers/detail/A-00014336-05/", "status": 200, "final_url": "https://www.specialoffers.jcb/en/offers/detail/A-00014336-05/", "fetched_at": "2026-11-12T21:44:22+08:00"},
-{"url": "https://www.specialoffers.jcb/en/offers/detail/A-00042335-05/", "status": 200, "final_url": "https://www.specialoffers.jcb/en/offers/detail/A-00042335-05/", "fetched_at": "2026-11-12T21:44:59+08:00"}
+{"url": "https://www.specialoffers.jcb/en/offers/detail/A-00042335-05/", "status": 200, "final_url": "https://www.specialoffers.jcb/en/offers/detail/A-00042335-05/", "fetched_at": "2026-11-12T21:44:59+08:00"},
+{"url": "https://www.visa.com/", "status": 301, "final_url": "https://www.visa.com/", "fetched_at": "2026-11-20T10:14:00+08:00"}
 ]

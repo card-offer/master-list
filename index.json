@@ -49,7 +49,7 @@
       "timezone": "Asia/Bangkok"
     }
   },
-  "generated_at": "2026-11-20T00:20:45+00:00",
+  "generated_at": "2026-11-20T02:15:41+00:00",
   "indexes": "Built in CI and published to GitHub Pages. Not stored on the main branch.",
   "layout": {
     "archive": "{cc}/archive/offers/{issuer}.json",
