@@ -49,21 +49,33 @@
       "website": "https://www.bochk.com/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-bocom-hk-fwd-credit-card",
+        "hk-bocom-hk-fwd-cup-dual-currency-credit-card",
+        "hk-bocom-hk-go-goal-platinum-card",
+        "hk-bocom-hk-greater-bay-area-cup-diamond-card",
+        "hk-bocom-hk-mi-credit-card",
+        "hk-bocom-hk-yan-chai-cup-dual-currency-credit-card"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
-          "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2004980/list.shtml?channelId=2004980",
-          "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005005/2005035/list.shtml?channelId=2004980"
+          "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2005615/list.shtml?channelId=2005575"
         ],
-        "note": "The official site's English menu control is href=\"#\"; no English card listing was found. The Traditional Chinese personal banking and credit card introduction pages name consumer UnionPay dual-currency diamond and Visa Platinum cards.",
-        "offer_sources": [],
-        "status": "not_covered"
+        "note": "First full crawl run 20261120-1249-hk-bocom-hk. English pages exist under personal banking channel 2005575 and Credit Cards Introduction channel 2005615; the English menu control is still href=# and was not posted. The Traditional Chinese census paths were not used as quote sources once English was found. The same-id English home and the issuers.json short Traditional Chinese intro path are 404, as is /sitemap.xml. Six consumer credit cards are on the introduction listing (Greater Bay Area CUP Diamond Card, Go-Goal Platinum Card, MI Credit Card, FWD CUP Dual Currency Credit Card, FWD Credit Card, Yan Chai CUP Dual Currency Credit Card). Gift Cards are prepaid and were excluded. MI has no network stated on the official pages. Annual fee amounts for Visa Platinum and CUP Diamond come from the June 2025 fee schedules; UnionPay Diamond Prestige (HKD3,800) was not mapped to a listing product. The privilege page names SplendorPlus CUP Diamond Prestige Card, which is not one of the six listing tiles and was not published as a seventh card. Pacific Credit Card and Pacific Internet Card appear only as exclusions in programme text; no product page was found. 43 live offers were handed in (merchant shopping privileges, issuer campaigns, and welcome gifts). China Duty Free International and New Yaohan were on the official merchant listing but were not handed in because the merchant-name test rejects names that contain Free or start with New. Avolta was published as the listing name for the Hong Kong Duty Free, FREE DUTY and Macau Duty Free T&C pack. Lotte, Shilla, Shinsegae and King Power were published under the brand name that sits inside the T&C title, without the words Duty Free. Several merchant T&Cs exclude Pacific Internet cards and gift cards, so those offers are flagged eligibility_unclear. listing_complete is false because the Greater Bay Area and MI product pages are largely image-only, UnionPay lounge and limousine full T&Cs sit on off-config hosts, and the Prestige product is not on the six-tile listing. Two JSON recipes were committed (hk-bocom-hk-cards.json, hk-bocom-hk-offers.json). Merchant T&C links on the English pages use previewPdf.html?filePath=; those viewers were opened in headless browser, then the embedded /hk/uploadhk PDFs were fetched with a plain GET. Real Chrome was not used.",
+        "offer_sources": [
+          "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/list.shtml?channelId=2005575",
+          "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046371/list.shtml?channelId=2005575",
+          "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046373/list.shtml?channelId=2005575",
+          "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046376/list.shtml?channelId=2005575",
+          "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046378/list.shtml?channelId=2005575"
+        ],
+        "status": "partial"
       },
       "id": "hk-bocom-hk",
       "legal_name": "BANK OF COMMUNICATIONS (HONG KONG) LIMITED",
       "name": "Bank of Communications (Hong Kong)",
-      "offer_count": 0,
+      "offer_count": 43,
       "official_domains": [
         "hk.bankcomm.com"
       ],

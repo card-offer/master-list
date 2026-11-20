@@ -140,8 +140,8 @@ There are 254 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 38 | HK | issuer | offers | CMB Wing Lung Bank | `cmbwinglungbank.com` | untested |  |
 | 39 | HK | issuer | cards | Dah Sing Bank | `dahsing.com` | untested | https://www.dahsing.com/html/en/credit_card/index.html |
 | 39 | HK | issuer | offers | Dah Sing Bank | `dahsing.com` | untested |  |
-| 40 | HK | issuer | cards | Bank of Communications (Hong Kong) | `hk.bankcomm.com` | untested | https://www.hk.bankcomm.com/hk/shtml/hk/tw/2004980/list.shtml?channelId=2004980, https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005005/2005035/list.shtml?channelId=2004980 |
-| 40 | HK | issuer | offers | Bank of Communications (Hong Kong) | `hk.bankcomm.com` | untested |  |
+| 40 | HK | issuer | cards | Bank of Communications (Hong Kong) | `hk.bankcomm.com` | untested | https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2005615/list.shtml?channelId=2005575 |
+| 40 | HK | issuer | offers | Bank of Communications (Hong Kong) | `hk.bankcomm.com` | untested | https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/list.shtml?channelId=2005575, https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046371/list.shtml?channelId=2005575, https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046373/list.shtml?channelId=2005575, https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046376/list.shtml?channelId=2005575, https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046378/list.shtml?channelId=2005575 |
 | 41 | HK | issuer | cards | CCB Asia | `asia.ccb.com` | untested | https://www.asia.ccb.com/hongkong/personal/credit_cards/card_list.html |
 | 41 | HK | issuer | offers | CCB Asia | `asia.ccb.com` | untested |  |
 | 42 | HK | issuer | cards | ICBC Asia | `icbcasia.com` | untested | https://www.icbcasia.com/hk/en/personal/credit-cards/default.html |
