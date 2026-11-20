@@ -93,9 +93,7 @@ Still to do:
 
 ## 7. Census rechecks
 
-The rechecks of 20 Nov 2026 are done (PRs 69, 70 and 71). They found three new issuers: `th-bangkok-bank`, `ph-pnb` and `id-permata`. These are now in `crawler/FULL_CRAWL.md` as 79, 80 and 81. One task is left:
-
-1. Krung Thai Bank: probe `https://www.ktb.co.th/` with `--url --country TH`. The maintainer accepted `krungthai.com` on 20 Nov 2026, after the recheck ran. The probe follows the redirect, and `www.krungthai.com` is on the real-Chrome list.
+The rechecks of 20 Nov 2026 are done (PRs 69, 70 and 71), including the Krung Thai Bank follow-up after the maintainer accepted `krungthai.com`. They found three new issuers: `th-bangkok-bank`, `ph-pnb` and `id-permata`. These are now in `crawler/FULL_CRAWL.md` as 79, 80 and 81. Krung Thai Bank is `same_group` with the existing issuer `th-ktc`: the official `krungthai.com` site presents consumer credit cards as KTC products and links to `ktc.co.th`, which was not crawled.
 
 The other banks stay `not_reached` after real Chrome: BDO (Akamai challenge), Chinabank, Security Bank, Citibank PH, Standard Chartered PH, UnionBank, Kasikornbank, SCB, BRI, BNI and Maybank Indonesia. Do not try them again until the maintainer says so.
 
