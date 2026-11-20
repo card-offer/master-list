@@ -55,7 +55,7 @@ There are 254 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 6 | SG | issuer | cards | Bank of China Singapore | `bankofchina.com` | untested | https://www.bankofchina.com/sg/bcservice/bc1/ |
 | 6 | SG | issuer | offers | Bank of China Singapore | `bankofchina.com` | untested |  |
 | 7 | SG | issuer | cards | American Express Singapore | `americanexpress.com` | untested | https://www.americanexpress.com/sg/credit-cards/all-cards/, https://www.americanexpress.com/en-sg/credit-cards/ |
-| 7 | SG | issuer | offers | American Express Singapore | `americanexpress.com` | untested |  |
+| 7 | SG | issuer | offers | American Express Singapore | `americanexpress.com` | untested | https://www.americanexpress.com/en-sg/benefits/promotions/index.html, https://www.americanexpress.com/sg/benefits/promotions/chillax/, https://www.americanexpress.com/en-sg/campaigns/the-platinum-card/ |
 | 8 | SG | issuer | cards | Citibank Singapore | `citibank.com.sg` | untested | https://www.citibank.com.sg/credit-cards/ |
 | 8 | SG | issuer | offers | Citibank Singapore | `citibank.com.sg` | untested | https://www.citibank.com.sg/credit-cards/ |
 | 9 | SG | issuer | cards | HSBC Singapore | `cardpromotions.hsbc.com.sg` | untested |  |
