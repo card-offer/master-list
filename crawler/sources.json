@@ -1547,7 +1547,8 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/index.html"
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/index.html",
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/wlb-affinity-card/index.html"
    ],
    "status": "untested",
    "full_crawl_order": 38,
@@ -1561,7 +1562,17 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/promotional-offers/index.html",
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/promotional-offers/spending-program/index.html",
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/other-privileges-and-information/wing-lung-bank-credit-card-special-banking-offers.html",
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/other-privileges-and-information/cash-rebate-program.html",
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-instalment-products/index.html",
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-instalment-products/credit-to-cash-program.html",
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-instalment-products/merchant-interest-free-instalment-loan-program.html",
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/CMBWLBWorldMastercard.html",
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/luxe-visa-infinite-card/index.html"
+   ],
    "status": "untested",
    "full_crawl_order": 38,
    "suggested_by": null,

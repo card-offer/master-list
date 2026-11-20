@@ -131,20 +131,44 @@
       "website": "https://www.citibank.com.hk/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-cmb-wing-lung-bebe-dream-visa-card",
+        "hk-cmb-wing-lung-credit-card",
+        "hk-cmb-wing-lung-evangelization-platinum-card",
+        "hk-cmb-wing-lung-hong-kong-chu-hai-college-visa-card",
+        "hk-cmb-wing-lung-luxe-visa-infinite",
+        "hk-cmb-wing-lung-pet-line-visa-card",
+        "hk-cmb-wing-lung-the-hong-kong-jockey-club-staff-social-club-visa-platinum-card",
+        "hk-cmb-wing-lung-the-hong-kong-medical-association-visa-platinum-card",
+        "hk-cmb-wing-lung-tien-dao-visa-card",
+        "hk-cmb-wing-lung-unionpay-dual-currency-platinum-card",
+        "hk-cmb-wing-lung-world-mastercard",
+        "hk-cmb-wing-lung-xcite-visa-platinum-card"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
-          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/index.html"
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/index.html",
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/wlb-affinity-card/index.html"
         ],
-        "note": null,
-        "offer_sources": [],
-        "status": "not_covered"
+        "offer_sources": [
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/promotional-offers/index.html",
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/promotional-offers/spending-program/index.html",
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/other-privileges-and-information/wing-lung-bank-credit-card-special-banking-offers.html",
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/other-privileges-and-information/cash-rebate-program.html",
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-instalment-products/index.html",
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-instalment-products/credit-to-cash-program.html",
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-instalment-products/merchant-interest-free-instalment-loan-program.html",
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/CMBWLBWorldMastercard.html",
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/luxe-visa-infinite-card/index.html"
+        ],
+        "status": "partial",
+        "note": "2026-11-20 first crawl: 12 consumer credit cards and 33 live offers handed in. The English Credit Card Products listing has 7 tiles; 1 is the Corporate Card (excluded) and 1 is the Affinity Card hub (8 tiles, of which Hong Kong Sanatorium & Hospital Affinity Corporate Mastercard was excluded). listing_complete is false: the Latest Offers listing has 4 tiles whose terms PDFs are on m2.cmbwinglungbank.com:8443, which pipeline/fetcher.py treats as host_not_official (exact-host official_domains match, www stripped only), so those 4 deals were not handed in. World Mastercard and UnionPay Dual Currency Program Incentives T&C PDFs under an apply-now path were blocked as login_required. The Luxe Visa Infinite or Corporate Card Special Reward Program ended on 31 Dec 2024 and was not handed in. Gift Redemption and Asia Miles catalogues require NET Banking login."
       },
       "id": "hk-cmb-wing-lung",
       "legal_name": "CMB WING LUNG BANK LIMITED",
       "name": "CMB Wing Lung Bank",
-      "offer_count": 0,
+      "offer_count": 33,
       "official_domains": [
         "cmbwinglungbank.com"
       ],
