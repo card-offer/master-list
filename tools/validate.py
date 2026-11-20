@@ -257,6 +257,22 @@ def validate(root, index_dir=None):
                     if "archive" in rel.replace("\\", "/") and item.get("status") != "expired":
                         errors.append(f"{item.get('id')}: archive offer status must be expired")
     cards, offers, issuers, merchants = load_tree(root)
+    live_offer_ids = set()
+    for country in sorted(os.listdir(root)):
+        live = os.path.join(root, country, "offers")
+        if len(country) == 2 and os.path.isdir(live):
+            for name in sorted(os.listdir(live)):
+                if name.endswith(".json"):
+                    live_offer_ids |= {item.get("id") for item in load_json(os.path.join(live, name)).get("items", [])}
+    for country in sorted(os.listdir(root)):
+        archive = os.path.join(root, country, "archive", "offers")
+        if len(country) != 2 or not os.path.isdir(archive):
+            continue
+        for name in sorted(os.listdir(archive)):
+            if name.endswith(".json"):
+                for item in load_json(os.path.join(archive, name)).get("items", []):
+                    if item.get("id") in live_offer_ids:
+                        errors.append(f"{item['id']}: offer is in the live file and in the archive. Keep one copy.")
     issuer_by = {row["id"]: row for row in issuers}
     merchant_by = {row["id"]: row for row in merchants}
     networks = {}

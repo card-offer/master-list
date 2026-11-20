@@ -55,7 +55,7 @@ There are 254 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 6 | SG | issuer | cards | Bank of China Singapore | `bankofchina.com` | untested | https://www.bankofchina.com/sg/bcservice/bc1/ |
 | 6 | SG | issuer | offers | Bank of China Singapore | `bankofchina.com` | untested |  |
 | 7 | SG | issuer | cards | American Express Singapore | `americanexpress.com` | untested | https://www.americanexpress.com/sg/credit-cards/all-cards/, https://www.americanexpress.com/en-sg/credit-cards/ |
-| 7 | SG | issuer | offers | American Express Singapore | `americanexpress.com` | untested |  |
+| 7 | SG | issuer | offers | American Express Singapore | `americanexpress.com` | untested | https://www.americanexpress.com/en-sg/benefits/promotions/index.html, https://www.americanexpress.com/sg/benefits/promotions/chillax/, https://www.americanexpress.com/en-sg/campaigns/the-platinum-card/ |
 | 8 | SG | issuer | cards | Citibank Singapore | `citibank.com.sg` | untested | https://www.citibank.com.sg/credit-cards/ |
 | 8 | SG | issuer | offers | Citibank Singapore | `citibank.com.sg` | untested | https://www.citibank.com.sg/credit-cards/ |
 | 9 | SG | issuer | cards | HSBC Singapore | `cardpromotions.hsbc.com.sg` | untested |  |
@@ -91,7 +91,7 @@ There are 254 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 18 | MY | issuer | cards | BSN | `bsn.com.my` | untested | https://www.bsn.com.my/PersonalBanking/Cards/cards, https://www.bsn.com.my/page/site-map |
 | 18 | MY | issuer | offers | BSN | `bsn.com.my` | untested |  |
 | 19 | MY | issuer | cards | Bank Rakyat | `bankrakyat.com.my` | untested | https://www.bankrakyat.com.my/ |
-| 19 | MY | issuer | offers | Bank Rakyat | `bankrakyat.com.my` | untested |  |
+| 19 | MY | issuer | offers | Bank Rakyat | `bankrakyat.com.my` | untested | https://www.bankrakyat.com.my/ |
 | 20 | MY | issuer | cards | OCBC Malaysia | `ocbc.com.my` | untested | https://www.ocbc.com.my/personal-banking/cards/credit-cards |
 | 20 | MY | issuer | offers | OCBC Malaysia | `ocbc.com.my` | untested |  |
 | 21 | MY | issuer | cards | AEON Credit Service | `myaeoncredit.com.my` | untested | https://myaeoncredit.com.my/cards/credit-cards/ |
@@ -117,7 +117,7 @@ There are 254 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 30 | MY | issuer | cards | HSBC Malaysia | `hsbcamanah.com.my` | untested | https://www.hsbcamanah.com.my/credit-cards/ |
 | 30 | MY | issuer | offers | HSBC Malaysia | `hsbcamanah.com.my` | untested |  |
 | 30 | MY | issuer | cards | HSBC Malaysia | `sp.hsbc.com.my` | untested |  |
-| 30 | MY | issuer | offers | HSBC Malaysia | `sp.hsbc.com.my` | untested |  |
+| 30 | MY | issuer | offers | HSBC Malaysia | `sp.hsbc.com.my` | untested | https://sp.hsbc.com.my/category/all |
 | 31 | MY | issuer | cards | AmBank | `ambank.com.my` | untested | https://www.ambank.com.my/cards/credit-cards |
 | 31 | MY | issuer | offers | AmBank | `ambank.com.my` | untested | https://www.ambank.com.my/promotions |
 | 32 | MY | issuer | cards | Standard Chartered Malaysia | `av.sc.com` | untested |  |
@@ -130,26 +130,26 @@ There are 254 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 34 | MY | issuer | offers | Maybank | `maybank.com` | untested |  |
 | 34 | MY | issuer | cards | Maybank | `maybank2u.com.my` | untested | https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards/index.page |
 | 34 | MY | issuer | offers | Maybank | `maybank2u.com.my` | untested |  |
-| 35 | HK | issuer | cards | Mox Bank | `mox.com` | untested | https://mox.com/ |
-| 35 | HK | issuer | offers | Mox Bank | `mox.com` | untested |  |
-| 36 | HK | issuer | cards | Fubon Bank (Hong Kong) | `fubonbank.com.hk` | untested | https://www.fubonbank.com.hk/en/home.html |
-| 36 | HK | issuer | offers | Fubon Bank (Hong Kong) | `fubonbank.com.hk` | untested |  |
-| 37 | HK | issuer | cards | Chong Hing Bank | `chbank.com` | untested | https://www.chbank.com/en/homepage.shtml |
-| 37 | HK | issuer | offers | Chong Hing Bank | `chbank.com` | untested |  |
-| 38 | HK | issuer | cards | CMB Wing Lung Bank | `cmbwinglungbank.com` | untested | https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/index.html |
-| 38 | HK | issuer | offers | CMB Wing Lung Bank | `cmbwinglungbank.com` | untested |  |
+| 35 | HK | issuer | cards | Mox Bank | `mox.com` | untested | https://mox.com/features/mox-credit/ |
+| 35 | HK | issuer | offers | Mox Bank | `mox.com` | untested | https://mox.com/promotions/, https://mox.com/promotions/year-round-offers/, https://mox.com/page-data/promotions/page-data.json, https://mox.com/page-data/promotions/year-round-offers/page-data.json |
+| 36 | HK | issuer | cards | Fubon Bank (Hong Kong) | `fubonbank.com.hk` | untested | https://www.fubonbank.com.hk/en/cards/credit-card-products/home.html |
+| 36 | HK | issuer | offers | Fubon Bank (Hong Kong) | `fubonbank.com.hk` | untested | https://www.fubonbank.com.hk/en/cards/monthly-special-offers/home.html, https://www.fubonbank.com.hk/en/cards/oversea-offers/home.html, https://www.fubonbank.com.hk/en/cards/bonus-points-program/home.html, https://www.fubonbank.com.hk/en/home.html |
+| 37 | HK | issuer | cards | Chong Hing Bank | `chbank.com` | untested | https://www.chbank.com/en/personal/banking-services/credit-cards/index.shtml, https://www.chbank.com/en/personal/banking-services/credit-cards/personal-credit-cards/index.shtml, https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/chong-hing-platinum/index.shtml, https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/chong-hing/index.shtml, https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/man/index.shtml, https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/chong-hing-unionpay-dual-currency/index.shtml, https://www.chbank.com/en/personal/banking-services/credit-cards/personal-credit-cards/students/index.shtml, https://www.chbank.com/en/personal/banking-services/credit-cards/co-branded-credit-card/wah-yan-one-family/index.shtml, https://www.chbank.com/en/personal/banking-services/credit-cards/co-branded-credit-card/chiu-chow-chamber/index.shtml, https://www.chbank.com/data/media/document/key_fact_statement.pdf |
+| 37 | HK | issuer | offers | Chong Hing Bank | `chbank.com` | untested | https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/index.shtml, https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/visa.shtml, https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/master.shtml, https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/unionpay.shtml, https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/index2.shtml, https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/point-to-gift-redemption/index.shtml |
+| 38 | HK | issuer | cards | CMB Wing Lung Bank | `cmbwinglungbank.com` | untested | https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/index.html, https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/wlb-affinity-card/index.html |
+| 38 | HK | issuer | offers | CMB Wing Lung Bank | `cmbwinglungbank.com` | untested | https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/promotional-offers/index.html, https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/promotional-offers/spending-program/index.html, https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/other-privileges-and-information/wing-lung-bank-credit-card-special-banking-offers.html, https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/other-privileges-and-information/cash-rebate-program.html, https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-instalment-products/index.html, https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-instalment-products/credit-to-cash-program.html, https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-instalment-products/merchant-interest-free-instalment-loan-program.html, https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/CMBWLBWorldMastercard.html, https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/luxe-visa-infinite-card/index.html |
 | 39 | HK | issuer | cards | Dah Sing Bank | `dahsing.com` | untested | https://www.dahsing.com/html/en/credit_card/index.html |
-| 39 | HK | issuer | offers | Dah Sing Bank | `dahsing.com` | untested |  |
-| 40 | HK | issuer | cards | Bank of Communications (Hong Kong) | `hk.bankcomm.com` | untested | https://www.hk.bankcomm.com/hk/shtml/hk/tw/2004980/list.shtml?channelId=2004980, https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005005/2005035/list.shtml?channelId=2004980 |
-| 40 | HK | issuer | offers | Bank of Communications (Hong Kong) | `hk.bankcomm.com` | untested |  |
+| 39 | HK | issuer | offers | Dah Sing Bank | `dahsing.com` | untested | https://www.dahsing.com/html/en/credit_card/latest_offers/index.html, https://www.dahsing.com/html/en/credit_card/year_round_offer/year_round_offer_listing.html |
+| 40 | HK | issuer | cards | Bank of Communications (Hong Kong) | `hk.bankcomm.com` | untested | https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2005615/list.shtml?channelId=2005575 |
+| 40 | HK | issuer | offers | Bank of Communications (Hong Kong) | `hk.bankcomm.com` | untested | https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/list.shtml?channelId=2005575, https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046371/list.shtml?channelId=2005575, https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046373/list.shtml?channelId=2005575, https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046376/list.shtml?channelId=2005575, https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046378/list.shtml?channelId=2005575 |
 | 41 | HK | issuer | cards | CCB Asia | `asia.ccb.com` | untested | https://www.asia.ccb.com/hongkong/personal/credit_cards/card_list.html |
-| 41 | HK | issuer | offers | CCB Asia | `asia.ccb.com` | untested |  |
-| 42 | HK | issuer | cards | ICBC Asia | `icbcasia.com` | untested | https://www.icbcasia.com/hk/en/personal/credit-cards/default.html |
-| 42 | HK | issuer | offers | ICBC Asia | `icbcasia.com` | untested |  |
-| 43 | HK | issuer | cards | OCBC Bank (Hong Kong) | `ocbc.com.hk` | untested | https://www.ocbc.com.hk/personal-banking/cards/credit-cards, https://www.ocbc.com.hk/personal-banking/cards/ocbc-credit-card |
-| 43 | HK | issuer | offers | OCBC Bank (Hong Kong) | `ocbc.com.hk` | untested |  |
-| 44 | HK | issuer | cards | Bank of East Asia | `hkbea.com` | untested | https://www.hkbea.com/html/en/index.html |
-| 44 | HK | issuer | offers | Bank of East Asia | `hkbea.com` | untested | https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html |
+| 41 | HK | issuer | offers | CCB Asia | `asia.ccb.com` | untested | https://www.asia.ccb.com/hongkong/personal/credit_cards/year_round_and_latest_promotions.html, https://www.asia.ccb.com/hongkong/personal/credit_cards/year_round_promotions.html, https://www.asia.ccb.com/hongkong/personal/credit_cards/yearroundoffers/index.html |
+| 42 | HK | issuer | cards | ICBC Asia | `icbcasia.com` | untested | https://www.icbcasia.com/hk/en/personal/credit-cards/type-of-cards/default.html |
+| 42 | HK | issuer | offers | ICBC Asia | `icbcasia.com` | untested | https://www.icbcasia.com/hk/en/personal/credit-cards/latest-promotions/default.html |
+| 43 | HK | issuer | cards | OCBC Bank (Hong Kong) | `ocbc.com.hk` | untested | https://www.ocbc.com.hk/personal-banking/cards/credit-cards, https://www.ocbc.com.hk/premier-banking/our-solutions/cards/premier-voyage-card, https://www.ocbc.com.hk/premier-banking/our-solutions/cards/premier-credit-card, https://www.ocbc.com.hk/personal-banking/cards/ocbc-credit-card |
+| 43 | HK | issuer | offers | OCBC Bank (Hong Kong) | `ocbc.com.hk` | untested | https://www.ocbc.com.hk/personal-banking/cards/card-promotions, https://www.ocbc.com.hk/iwov-resources/hk/ocbc/personal/data/card-promotions.json, https://www.ocbc.com.hk/personal-banking/campaign/sem-promotion, https://www.ocbc.com.hk/personal-banking/cards/flexi-money-interest-free-instalment-plan, https://www.ocbc.com.hk/personal-banking/cards/easy-spending-interest-free-instalment-plan |
+| 44 | HK | issuer | cards | Bank of East Asia | `hkbea.com` | untested | https://www.hkbea.com/html/en/bea-credit-card-world-mc.html, https://www.hkbea.com/html/en/bea-credit-card-world-mastercard.html, https://www.hkbea.com/html/en/bea-unionpay-dual-currency-diamond-card.html, https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-diamond-student-card.html, https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-goal-student-card.html, https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-jcb-card.html, https://www.hkbea.com/html/en/bea-aia-credit-card.html, https://www.hkbea.com/html/en/bea-personal-banking-key-facts-statement.html |
+| 44 | HK | issuer | offers | Bank of East Asia | `hkbea.com` | untested | https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html, https://www.hkbea.com/html/en/bea-credit-card-dining-offer-yro.html, https://www.hkbea.com/html/en/bea-credit-card-shopping-offer-yro.html |
 | 45 | HK | issuer | cards | Citibank (Hong Kong) | `citibank.com.hk` | untested | https://www.citibank.com.hk/, https://www.citibank.com.hk/english/credit-cards/ |
 | 45 | HK | issuer | offers | Citibank (Hong Kong) | `citibank.com.hk` | untested |  |
 | 46 | HK | issuer | cards | China CITIC Bank International | `cncbinternational.com` | untested | https://www.cncbinternational.com/home/en/index.jsp |
@@ -228,7 +228,7 @@ There are 254 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 80 | ID | issuer | offers | Permata Bank | `permatabank.com` | untested | https://www.permatabank.com/id/promotions |
 | 81 | PH | issuer | cards | PNB | `pnb.com.ph` | untested | https://www.pnb.com.ph/cards |
 | 81 | PH | issuer | offers | PNB | `pnb.com.ph` | untested | https://www.pnb.com.ph/promos |
-| after-34 | MY | issuer | cards | ICBC Malaysia | `icbcmy.com` | untested |  |
+| after-34 | MY | issuer | cards | ICBC Malaysia | `icbcmy.com` | untested | https://www.icbcmy.com/en/column/1438058793715253368.html |
 | after-34 | MY | issuer | offers | ICBC Malaysia | `icbcmy.com` | untested |  |
 | after-34 | MY | issuer | cards | ICBC Malaysia | `v.icbc.com.cn` | untested |  |
 | after-34 | MY | issuer | offers | ICBC Malaysia | `v.icbc.com.cn` | untested |  |

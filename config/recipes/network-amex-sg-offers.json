@@ -1,0 +1,37 @@
+{
+  "recipe": "recipe/1",
+  "id": "network-amex-sg-offers",
+  "owner": {
+    "type": "network",
+    "id": "amex"
+  },
+  "country": "SG",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.americanexpress.com/en-sg/network/offers/explore-vietnam/dining.html",
+    "https://www.americanexpress.com/en-sg/network/offers/explore-vietnam/retail.html",
+    "https://www.americanexpress.com/en-sg/network/offers/explore-vietnam/entertainment.html"
+  ],
+  "list": {
+    "item": "div.list-items > div.col-md-3",
+    "key": "url",
+    "fields": {
+      "merchant": "div.offer-header p",
+      "title": "div.offer-header p",
+      "benefit": "p.offer-desc",
+      "dates": "div.offer-dates",
+      "url": "a.btn.btn-block@href"
+    }
+  },
+  "detail": {
+    "text_selector": "div.offer, main, div.main",
+    "fields": {
+      "heading": "h1, div.heading-1, div.offer-header p",
+      "terms": "div.offer-content, div.terms, div.legal, #offer-panel-content"
+    }
+  },
+  "listing_kind": "network_offer_listing",
+  "detail_kind": "network_offer_page",
+  "note": "Singapore network offer listings on americanexpress.com under /en-sg/network/offers/explore-vietnam/. These are tourist / travel merchant offers in Vietnam, not the proprietary sg-amex promotions at /en-sg/benefits/promotions/. Tiles are in div.list-items. The en-sg sitemap listed only the dining listing; retail and entertainment are linked from that page. Partner-bank card catalogues under /en-sg/network/credit-cards/ are not offer listings."
+}

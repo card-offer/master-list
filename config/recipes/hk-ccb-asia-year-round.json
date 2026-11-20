@@ -1,0 +1,27 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-ccb-asia-year-round",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-ccb-asia"
+  },
+  "country": "HK",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.asia.ccb.com/hongkong/personal/credit_cards/yearroundoffers/index.html"
+  ],
+  "list": {
+    "item": "div.content-row",
+    "key": "name",
+    "fields": {
+      "name": "h3",
+      "benefit": "div.content-col > ul > li",
+      "end": "p.icoPromo",
+      "cards": "p.icoCard",
+      "terms": "div.terms"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "Thirty merchant rows in div.content-row. Each row has the merchant heading in h3, benefit bullets, a p.icoPromo date line, a p.icoCard acceptance line, and a terms popup in div.terms (the Terms and Conditions control is javascript:void(0), not a separate URL). Contact details sit in a sibling table cell, not inside the content-row."
+}

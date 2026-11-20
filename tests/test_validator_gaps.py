@@ -30,6 +30,18 @@ class ValidatorGapTests(unittest.TestCase):
         shutil.copytree(self.base, dest)
         return dest
 
+    def test_offer_in_live_file_and_archive_is_rejected(self):
+        tmp = self.clone()
+        live = self.load(self.offer_path(tmp))
+        path = os.path.join(tmp, "sg", "archive", "offers", "cimb.json")
+        copy = dict(live["items"][0], status="expired")
+        archive = {k: v for k, v in live.items() if k != "items"}
+        archive.update(archive=True, count=1, items=[copy])
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        self.save(path, archive)
+        errors, _warnings, _stats = validate(tmp)
+        self.assertTrue(any("in the live file and in the archive" in e for e in errors), errors[:5])
+
     def offer_path(self, tmp):
         return os.path.join(tmp, "sg", "offers", "cimb.json")
 

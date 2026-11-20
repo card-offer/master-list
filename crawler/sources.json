@@ -381,7 +381,11 @@
    "country": "SG",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.americanexpress.com/en-sg/benefits/promotions/index.html",
+    "https://www.americanexpress.com/sg/benefits/promotions/chillax/",
+    "https://www.americanexpress.com/en-sg/campaigns/the-platinum-card/"
+   ],
    "status": "untested",
    "full_crawl_order": 7,
    "suggested_by": null,
@@ -892,7 +896,9 @@
    "country": "MY",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.bankrakyat.com.my/"
+   ],
    "status": "untested",
    "full_crawl_order": 19,
    "suggested_by": null,
@@ -1281,7 +1287,9 @@
    "country": "MY",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://sp.hsbc.com.my/category/all"
+   ],
    "status": "untested",
    "full_crawl_order": 30,
    "suggested_by": null,
@@ -1463,7 +1471,7 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://mox.com/"
+    "https://mox.com/features/mox-credit/"
    ],
    "status": "untested",
    "full_crawl_order": 35,
@@ -1477,7 +1485,12 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://mox.com/promotions/",
+    "https://mox.com/promotions/year-round-offers/",
+    "https://mox.com/page-data/promotions/page-data.json",
+    "https://mox.com/page-data/promotions/year-round-offers/page-data.json"
+   ],
    "status": "untested",
    "full_crawl_order": 35,
    "suggested_by": null,
@@ -1491,7 +1504,7 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.fubonbank.com.hk/en/home.html"
+    "https://www.fubonbank.com.hk/en/cards/credit-card-products/home.html"
    ],
    "status": "untested",
    "full_crawl_order": 36,
@@ -1505,7 +1518,12 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.fubonbank.com.hk/en/cards/monthly-special-offers/home.html",
+    "https://www.fubonbank.com.hk/en/cards/oversea-offers/home.html",
+    "https://www.fubonbank.com.hk/en/cards/bonus-points-program/home.html",
+    "https://www.fubonbank.com.hk/en/home.html"
+   ],
    "status": "untested",
    "full_crawl_order": 36,
    "suggested_by": null,
@@ -1519,7 +1537,16 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.chbank.com/en/homepage.shtml"
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/index.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/personal-credit-cards/index.shtml",
+    "https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/chong-hing-platinum/index.shtml",
+    "https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/chong-hing/index.shtml",
+    "https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/man/index.shtml",
+    "https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/chong-hing-unionpay-dual-currency/index.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/personal-credit-cards/students/index.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/co-branded-credit-card/wah-yan-one-family/index.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/co-branded-credit-card/chiu-chow-chamber/index.shtml",
+    "https://www.chbank.com/data/media/document/key_fact_statement.pdf"
    ],
    "status": "untested",
    "full_crawl_order": 37,
@@ -1533,7 +1560,14 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/index.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/visa.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/master.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/unionpay.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/index2.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/point-to-gift-redemption/index.shtml"
+   ],
    "status": "untested",
    "full_crawl_order": 37,
    "suggested_by": null,
@@ -1547,7 +1581,8 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/index.html"
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/index.html",
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/wlb-affinity-card/index.html"
    ],
    "status": "untested",
    "full_crawl_order": 38,
@@ -1561,7 +1596,17 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/promotional-offers/index.html",
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/promotional-offers/spending-program/index.html",
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/other-privileges-and-information/wing-lung-bank-credit-card-special-banking-offers.html",
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/other-privileges-and-information/cash-rebate-program.html",
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-instalment-products/index.html",
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-instalment-products/credit-to-cash-program.html",
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-instalment-products/merchant-interest-free-instalment-loan-program.html",
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/CMBWLBWorldMastercard.html",
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/luxe-visa-infinite-card/index.html"
+   ],
    "status": "untested",
    "full_crawl_order": 38,
    "suggested_by": null,
@@ -1589,7 +1634,10 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.dahsing.com/html/en/credit_card/latest_offers/index.html",
+    "https://www.dahsing.com/html/en/credit_card/year_round_offer/year_round_offer_listing.html"
+   ],
    "status": "untested",
    "full_crawl_order": 39,
    "suggested_by": null,
@@ -1603,8 +1651,7 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2004980/list.shtml?channelId=2004980",
-    "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005005/2005035/list.shtml?channelId=2004980"
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2005615/list.shtml?channelId=2005575"
    ],
    "status": "untested",
    "full_crawl_order": 40,
@@ -1618,7 +1665,13 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046371/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046373/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046376/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046378/list.shtml?channelId=2005575"
+   ],
    "status": "untested",
    "full_crawl_order": 40,
    "suggested_by": null,
@@ -1646,7 +1699,11 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.asia.ccb.com/hongkong/personal/credit_cards/year_round_and_latest_promotions.html",
+    "https://www.asia.ccb.com/hongkong/personal/credit_cards/year_round_promotions.html",
+    "https://www.asia.ccb.com/hongkong/personal/credit_cards/yearroundoffers/index.html"
+   ],
    "status": "untested",
    "full_crawl_order": 41,
    "suggested_by": null,
@@ -1660,7 +1717,7 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.icbcasia.com/hk/en/personal/credit-cards/default.html"
+    "https://www.icbcasia.com/hk/en/personal/credit-cards/type-of-cards/default.html"
    ],
    "status": "untested",
    "full_crawl_order": 42,
@@ -1674,7 +1731,9 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.icbcasia.com/hk/en/personal/credit-cards/latest-promotions/default.html"
+   ],
    "status": "untested",
    "full_crawl_order": 42,
    "suggested_by": null,
@@ -1689,6 +1748,8 @@
    "purpose": "cards",
    "entry_urls": [
     "https://www.ocbc.com.hk/personal-banking/cards/credit-cards",
+    "https://www.ocbc.com.hk/premier-banking/our-solutions/cards/premier-voyage-card",
+    "https://www.ocbc.com.hk/premier-banking/our-solutions/cards/premier-credit-card",
     "https://www.ocbc.com.hk/personal-banking/cards/ocbc-credit-card"
    ],
    "status": "untested",
@@ -1703,7 +1764,13 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.ocbc.com.hk/personal-banking/cards/card-promotions",
+    "https://www.ocbc.com.hk/iwov-resources/hk/ocbc/personal/data/card-promotions.json",
+    "https://www.ocbc.com.hk/personal-banking/campaign/sem-promotion",
+    "https://www.ocbc.com.hk/personal-banking/cards/flexi-money-interest-free-instalment-plan",
+    "https://www.ocbc.com.hk/personal-banking/cards/easy-spending-interest-free-instalment-plan"
+   ],
    "status": "untested",
    "full_crawl_order": 43,
    "suggested_by": null,
@@ -1717,7 +1784,14 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.hkbea.com/html/en/index.html"
+    "https://www.hkbea.com/html/en/bea-credit-card-world-mc.html",
+    "https://www.hkbea.com/html/en/bea-credit-card-world-mastercard.html",
+    "https://www.hkbea.com/html/en/bea-unionpay-dual-currency-diamond-card.html",
+    "https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-diamond-student-card.html",
+    "https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-goal-student-card.html",
+    "https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-jcb-card.html",
+    "https://www.hkbea.com/html/en/bea-aia-credit-card.html",
+    "https://www.hkbea.com/html/en/bea-personal-banking-key-facts-statement.html"
    ],
    "status": "untested",
    "full_crawl_order": 44,
@@ -1732,7 +1806,9 @@
    "type": "issuer",
    "purpose": "offers",
    "entry_urls": [
-    "https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html"
+    "https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html",
+    "https://www.hkbea.com/html/en/bea-credit-card-dining-offer-yro.html",
+    "https://www.hkbea.com/html/en/bea-credit-card-shopping-offer-yro.html"
    ],
    "status": "untested",
    "full_crawl_order": 44,
@@ -2882,7 +2958,9 @@
    "country": "MY",
    "type": "issuer",
    "purpose": "cards",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.icbcmy.com/en/column/1438058793715253368.html"
+   ],
    "status": "untested",
    "full_crawl_order": "after-34",
    "suggested_by": null,

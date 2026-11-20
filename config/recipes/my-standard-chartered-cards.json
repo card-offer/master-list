@@ -1,0 +1,40 @@
+{
+  "recipe": "recipe/1",
+  "id": "my-standard-chartered-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "my-standard-chartered"
+  },
+  "country": "MY",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.sc.com/my/credit-cards/"
+  ],
+  "list": {
+    "item": "div.product-action",
+    "key": "name",
+    "fields": {
+      "name": "p.img-text",
+      "image_alt": "img@alt",
+      "url": "a[href*='/credit-cards/']@href",
+      "heading": ".heading",
+      "eligibility": ".remarks"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "fees": {
+        "selector": "td, p, li",
+        "all": true,
+        "regex": "(?i)(annual fee.*)",
+        "join": " "
+      }
+    },
+    "text_selector": "main, body"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "Plain mode reads sc.com/my (20 Nov 2026). The listing shows Beyond, Journey and Platinum Mastercard Basic. Priority Banking Visa Infinite has a product page (/my/credit-cards/priority-banking-visa-infinite/) that the listing does not link; add it by hand. av.sc.com robots.txt disallows the PDF documents."
+}

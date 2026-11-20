@@ -1,0 +1,31 @@
+{
+  "recipe": "recipe/1",
+  "id": "my-ocbc-offers",
+  "owner": {"type": "issuer", "id": "my-ocbc"},
+  "country": "MY",
+  "purpose": "offers",
+  "mode": "plain",
+  "source": "json",
+  "start_urls": [
+    "https://www.ocbc.com.my/iwov-resources/my/ocbc/personal/data/promotions-v1.json",
+    "https://www.ocbc.com.my/iwov-resources/my/ocbc/personal/data/promotions-v1-extra.json"
+  ],
+  "list": {
+    "item": "visiblePromo",
+    "key": "id",
+    "fields": {
+      "id": "id",
+      "title": "title",
+      "benefit": "link",
+      "href": "href",
+      "main_cat": "main_cat",
+      "sub_cat": "sub_cat",
+      "listing_start": "date.start",
+      "listing_end": "date.end",
+      "popup_text": "popup.FreeText",
+      "terms": "popup.terms"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "The promotions page https://www.ocbc.com.my/personal-banking/promotion loads its tiles from these two public JSON files. Each item of visiblePromo is one tile; the offer is the popup (FreeText and terms) at https://www.ocbc.com.my/personal-banking/promotion#<id>. date.start and date.end are the listing window of the tile, not the offer period: take the offer dates from the 'Promotion period' line of the popup text (NEXT_CRAWLS section 3.1). Items whose listing window has ended are expired and are not handed in."
+}

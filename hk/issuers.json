@@ -5,22 +5,39 @@
   "schema_version": "0.3.0",
   "items": [
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-bea-aia-credit-card",
+        "hk-bea-goal-credit-card-exclusively-for-tertiary-students",
+        "hk-bea-jcb-platinum-card",
+        "hk-bea-supremegold-world-mastercard",
+        "hk-bea-unionpay-dual-currency-diamond-credit-card",
+        "hk-bea-unionpay-dual-currency-diamond-credit-card-exclusively-for-tertiary-students",
+        "hk-bea-world-mastercard"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
-          "https://www.hkbea.com/html/en/index.html"
+          "https://www.hkbea.com/html/en/bea-credit-card-world-mc.html",
+          "https://www.hkbea.com/html/en/bea-credit-card-world-mastercard.html",
+          "https://www.hkbea.com/html/en/bea-unionpay-dual-currency-diamond-card.html",
+          "https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-diamond-student-card.html",
+          "https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-goal-student-card.html",
+          "https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-jcb-card.html",
+          "https://www.hkbea.com/html/en/bea-aia-credit-card.html",
+          "https://www.hkbea.com/html/en/bea-personal-banking-key-facts-statement.html"
         ],
-        "note": "English home names BEA Dual Credit Card, BEA GOAL Credit Card and BEA UnionPay Dual Currency DIAMOND Credit Card. The Credit Cards menu goes to the promotions listing.",
+        "note": "First full crawl on 20 Nov 2026. No consumer card catalogue: the Credit Cards menu and the sitemap only point to the promotions listing. 7 cards have a product-page heading. The 17 Sep 2026 Key Facts Statement also names Classic, Gold, Titanium or GOAL (standard), PLATINUM, UnionPay Dual Currency PLATINUM, Visa Signature and CENTENNIAL World Elite, which have no dedicated product page and were not handed in. Corporate cards were excluded. 140 live offers from official pages and T&C PDFs. listing_complete is false because some campaign pages and the shopping year-round merchant list are image-only, the travel Mastercard offer page has no T&C PDF, and linked off-config hosts were not fetched.",
         "offer_sources": [
-          "https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html"
+          "https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html",
+          "https://www.hkbea.com/html/en/bea-credit-card-dining-offer-yro.html",
+          "https://www.hkbea.com/html/en/bea-credit-card-shopping-offer-yro.html"
         ],
-        "status": "not_covered"
+        "status": "partial"
       },
       "id": "hk-bea",
       "legal_name": "BANK OF EAST ASIA, LIMITED (THE)",
       "name": "Bank of East Asia",
-      "offer_count": 0,
+      "offer_count": 140,
       "official_domains": [
         "hkbea.com"
       ],
@@ -49,61 +66,122 @@
       "website": "https://www.bochk.com/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-bocom-hk-fwd-credit-card",
+        "hk-bocom-hk-fwd-cup-dual-currency-credit-card",
+        "hk-bocom-hk-go-goal-platinum-card",
+        "hk-bocom-hk-greater-bay-area-cup-diamond-card",
+        "hk-bocom-hk-mi-credit-card",
+        "hk-bocom-hk-yan-chai-cup-dual-currency-credit-card"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
-          "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2004980/list.shtml?channelId=2004980",
-          "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005005/2005035/list.shtml?channelId=2004980"
+          "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2005615/list.shtml?channelId=2005575"
         ],
-        "note": "The official site's English menu control is href=\"#\"; no English card listing was found. The Traditional Chinese personal banking and credit card introduction pages name consumer UnionPay dual-currency diamond and Visa Platinum cards.",
-        "offer_sources": [],
-        "status": "not_covered"
+        "note": "First full crawl run 20261120-1249-hk-bocom-hk. English pages exist under personal banking channel 2005575 and Credit Cards Introduction channel 2005615; the English menu control is still href=# and was not posted. The Traditional Chinese census paths were not used as quote sources once English was found. The same-id English home and the issuers.json short Traditional Chinese intro path are 404, as is /sitemap.xml. Six consumer credit cards are on the introduction listing (Greater Bay Area CUP Diamond Card, Go-Goal Platinum Card, MI Credit Card, FWD CUP Dual Currency Credit Card, FWD Credit Card, Yan Chai CUP Dual Currency Credit Card). Gift Cards are prepaid and were excluded. MI has no network stated on the official pages. Annual fee amounts for Visa Platinum and CUP Diamond come from the June 2025 fee schedules; UnionPay Diamond Prestige (HKD3,800) was not mapped to a listing product. The privilege page names SplendorPlus CUP Diamond Prestige Card, which is not one of the six listing tiles and was not published as a seventh card. Pacific Credit Card and Pacific Internet Card appear only as exclusions in programme text; no product page was found. 43 live offers were handed in (merchant shopping privileges, issuer campaigns, and welcome gifts). China Duty Free International and New Yaohan were on the official merchant listing but were not handed in because the merchant-name test rejects names that contain Free or start with New. Avolta was published as the listing name for the Hong Kong Duty Free, FREE DUTY and Macau Duty Free T&C pack. Lotte, Shilla, Shinsegae and King Power were published under the brand name that sits inside the T&C title, without the words Duty Free. Several merchant T&Cs exclude Pacific Internet cards and gift cards, so those offers are flagged eligibility_unclear. listing_complete is false because the Greater Bay Area and MI product pages are largely image-only, UnionPay lounge and limousine full T&Cs sit on off-config hosts, and the Prestige product is not on the six-tile listing. Two JSON recipes were committed (hk-bocom-hk-cards.json, hk-bocom-hk-offers.json). Merchant T&C links on the English pages use previewPdf.html?filePath=; those viewers were opened in headless browser, then the embedded /hk/uploadhk PDFs were fetched with a plain GET. Real Chrome was not used.",
+        "offer_sources": [
+          "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/list.shtml?channelId=2005575",
+          "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046371/list.shtml?channelId=2005575",
+          "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046373/list.shtml?channelId=2005575",
+          "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046376/list.shtml?channelId=2005575",
+          "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046378/list.shtml?channelId=2005575"
+        ],
+        "status": "partial"
       },
       "id": "hk-bocom-hk",
       "legal_name": "BANK OF COMMUNICATIONS (HONG KONG) LIMITED",
       "name": "Bank of Communications (Hong Kong)",
-      "offer_count": 0,
+      "offer_count": 43,
       "official_domains": [
         "hk.bankcomm.com"
       ],
       "website": "https://www.hk.bankcomm.com/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-ccb-asia-aia-mastercard-credit-card",
+        "hk-ccb-asia-aia-unionpay-diamond-credit-card",
+        "hk-ccb-asia-aia-visa-credit-card",
+        "hk-ccb-asia-construction-industry-unionpay-dual-currency-credit-card",
+        "hk-ccb-asia-eye-plus-visa-infinite-card",
+        "hk-ccb-asia-eye-plus-visa-signature-card",
+        "hk-ccb-asia-gba-virtual-unionpay-credit-card",
+        "hk-ccb-asia-octopus-auto-living-unionpay-diamond-credit-card",
+        "hk-ccb-asia-octopus-unionpay-dual-currency-credit-card",
+        "hk-ccb-asia-pui-ching-unionpay-dual-currency-credit-card",
+        "hk-ccb-asia-travo-mastercard",
+        "hk-ccb-asia-unionpay-diamond-prestige-credit-card",
+        "hk-ccb-asia-unionpay-dual-currency-credit-card",
+        "hk-ccb-asia-visa-infinite-credit-card",
+        "hk-ccb-asia-visa-platinum-credit-card"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
           "https://www.asia.ccb.com/hongkong/personal/credit_cards/card_list.html"
         ],
-        "note": null,
-        "offer_sources": [],
-        "status": "not_covered"
+        "note": "First full crawl on 20 Nov 2026 (KL). Plain mode. The card list has 14 product tiles; the eye+ product page covers Visa Signature and Visa Infinite, handed in as two cards. Year-round merchant offers are on yearroundoffers/index.html (30 tiles, T&C in on-page popups). Latest campaigns are on year_round_and_latest_promotions.html. listing_complete is false: the e-banking service tile was blocked as login_required, some menu URLs returned 404 (platinum hub, octopus eatplus, sitemap, root ocean-park and 3x-10x banners), and UnionPay worldwide / Greater Bay 'Learn More' links go through official external_disclaimer.html to off-config hosts that were not crawled. 26 offers are in needs_review, mainly because year-round tiles name CCB Long Credit Card, which is not on the consumer card list. Chinese Mainland merchant tiers on the Greater Bay page name UnionPay International as the terms host and were not handed in as individual offers.",
+        "offer_sources": [
+          "https://www.asia.ccb.com/hongkong/personal/credit_cards/year_round_and_latest_promotions.html",
+          "https://www.asia.ccb.com/hongkong/personal/credit_cards/year_round_promotions.html",
+          "https://www.asia.ccb.com/hongkong/personal/credit_cards/yearroundoffers/index.html"
+        ],
+        "status": "partial"
       },
       "id": "hk-ccb-asia",
       "legal_name": "CHINA CONSTRUCTION BANK (ASIA) CORPORATION LIMITED",
       "name": "CCB Asia",
-      "offer_count": 0,
+      "offer_count": 48,
       "official_domains": [
         "asia.ccb.com"
       ],
       "website": "https://www.asia.ccb.com/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-chong-hing-hong-kong-chiu-chow-chamber-of-commerce-visa-card",
+        "hk-chong-hing-mastercard",
+        "hk-chong-hing-platinum-card",
+        "hk-chong-hing-platinum-card-exclusively-for-local-tertiary-institution-students",
+        "hk-chong-hing-platinum-mastercard",
+        "hk-chong-hing-titanium-mastercard",
+        "hk-chong-hing-titanium-mastercard-exclusively-for-local-tertiary-institution-students",
+        "hk-chong-hing-unionpay-credit-card",
+        "hk-chong-hing-unionpay-diamond-credit-card",
+        "hk-chong-hing-unionpay-dual-currency-diamond-card-exclusively-for-local-tertiary-institution-students",
+        "hk-chong-hing-visa-card",
+        "hk-chong-hing-wah-yan-one-family-visa-platinum-card-centennial-edition"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
-          "https://www.chbank.com/en/homepage.shtml"
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/index.shtml",
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/personal-credit-cards/index.shtml",
+          "https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/chong-hing-platinum/index.shtml",
+          "https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/chong-hing/index.shtml",
+          "https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/man/index.shtml",
+          "https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/chong-hing-unionpay-dual-currency/index.shtml",
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/personal-credit-cards/students/index.shtml",
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/co-branded-credit-card/wah-yan-one-family/index.shtml",
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/co-branded-credit-card/chiu-chow-chamber/index.shtml",
+          "https://www.chbank.com/data/media/document/key_fact_statement.pdf"
         ],
-        "note": "The English homepage links Chong Hing Credit Card and co-branded personal credit cards. A product URL returned almost no text this run, so the homepage is the evidence URL.",
-        "offer_sources": [],
-        "status": "not_covered"
+        "offer_sources": [
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/index.shtml",
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/visa.shtml",
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/master.shtml",
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/unionpay.shtml",
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/index2.shtml",
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/point-to-gift-redemption/index.shtml"
+        ],
+        "status": "ok",
+        "note": "First full run 20 Nov 2026. The English Credit Cards listing has 7 consumer tiles; 12 card records after splitting Visa and Mastercard, Platinum and Titanium Mastercard, and the three student cards, and after naming UnionPay Diamond Credit Card from the UnionPay product page. Chong Hing Platinum Card and the student Platinum Card have no network sentence on the product page (network_not_stated). Standard Visa/Mastercard and the UnionPay family fee in the shared KFS are unclear. 26 offers from the Visa, Mastercard and UnionPay latest promotions, the year-round Point-to-Gift scheme, and the 2026 mobile banking e-voucher. The Agoda Visa 7% offer ends 31 March 2029 (end_date_past_horizon). Promo Details links go to visa.com.hk, visa.com.sg, specials.priceless.com, unionpayintl.com, premium.unionpayintl.com and article.95516.com and were not crawled. The Logon_Mobile_Banking_Reward_TNC26_EN.pdf path was blocked by the fetcher login filter. Welcome-gift T&C pages under the older /card/ path were JS shells. robots.txt at www.chbank.com/robots.txt is an HTML page; the fetcher treated the host as allow_all. Chong Hing Card under /chong-hing-cards/ is a debit or ATM product and was left out."
       },
       "id": "hk-chong-hing",
       "legal_name": "CHONG HING BANK LIMITED",
       "name": "Chong Hing Bank",
-      "offer_count": 0,
+      "offer_count": 26,
       "official_domains": [
         "chbank.com"
       ],
@@ -131,20 +209,44 @@
       "website": "https://www.citibank.com.hk/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-cmb-wing-lung-bebe-dream-visa-card",
+        "hk-cmb-wing-lung-credit-card",
+        "hk-cmb-wing-lung-evangelization-platinum-card",
+        "hk-cmb-wing-lung-hong-kong-chu-hai-college-visa-card",
+        "hk-cmb-wing-lung-luxe-visa-infinite",
+        "hk-cmb-wing-lung-pet-line-visa-card",
+        "hk-cmb-wing-lung-the-hong-kong-jockey-club-staff-social-club-visa-platinum-card",
+        "hk-cmb-wing-lung-the-hong-kong-medical-association-visa-platinum-card",
+        "hk-cmb-wing-lung-tien-dao-visa-card",
+        "hk-cmb-wing-lung-unionpay-dual-currency-platinum-card",
+        "hk-cmb-wing-lung-world-mastercard",
+        "hk-cmb-wing-lung-xcite-visa-platinum-card"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
-          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/index.html"
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/index.html",
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/wlb-affinity-card/index.html"
         ],
-        "note": null,
-        "offer_sources": [],
-        "status": "not_covered"
+        "offer_sources": [
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/promotional-offers/index.html",
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/promotional-offers/spending-program/index.html",
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/other-privileges-and-information/wing-lung-bank-credit-card-special-banking-offers.html",
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/other-privileges-and-information/cash-rebate-program.html",
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-instalment-products/index.html",
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-instalment-products/credit-to-cash-program.html",
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-instalment-products/merchant-interest-free-instalment-loan-program.html",
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/CMBWLBWorldMastercard.html",
+          "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/luxe-visa-infinite-card/index.html"
+        ],
+        "status": "partial",
+        "note": "2026-11-20 first crawl: 12 consumer credit cards and 33 live offers handed in. The English Credit Card Products listing has 7 tiles; 1 is the Corporate Card (excluded) and 1 is the Affinity Card hub (8 tiles, of which Hong Kong Sanatorium & Hospital Affinity Corporate Mastercard was excluded). listing_complete is false: the Latest Offers listing has 4 tiles whose terms PDFs are on m2.cmbwinglungbank.com:8443, which pipeline/fetcher.py treats as host_not_official (exact-host official_domains match, www stripped only), so those 4 deals were not handed in. World Mastercard and UnionPay Dual Currency Program Incentives T&C PDFs under an apply-now path were blocked as login_required. The Luxe Visa Infinite or Corporate Card Special Reward Program ended on 31 Dec 2024 and was not handed in. Gift Redemption and Asia Miles catalogues require NET Banking login."
       },
       "id": "hk-cmb-wing-lung",
       "legal_name": "CMB WING LUNG BANK LIMITED",
       "name": "CMB Wing Lung Bank",
-      "offer_count": 0,
+      "offer_count": 33,
       "official_domains": [
         "cmbwinglungbank.com"
       ],
@@ -171,20 +273,50 @@
       "website": "https://www.cncbinternational.com/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-dah-sing-acca-credit-card",
+        "hk-dah-sing-altruist-credit-card",
+        "hk-dah-sing-ana-world-mastercard",
+        "hk-dah-sing-apita-uny-card",
+        "hk-dah-sing-astro-boy-credit-card",
+        "hk-dah-sing-autotoll-e-serve-credit-card",
+        "hk-dah-sing-batman-platinum-card",
+        "hk-dah-sing-british-airways-platinum-card",
+        "hk-dah-sing-distinction-platinum-card",
+        "hk-dah-sing-doraemon-platinum-card",
+        "hk-dah-sing-dsoba-centennial-world-mastercard",
+        "hk-dah-sing-gundam-credit-card",
+        "hk-dah-sing-hello-kitty-visa-platinum-card",
+        "hk-dah-sing-international-student-identity-mastercard",
+        "hk-dah-sing-international-teacher-identity-mastercard",
+        "hk-dah-sing-lscoba-visa-platinum-card",
+        "hk-dah-sing-maryknoll-convent-school-platinum-visa-card",
+        "hk-dah-sing-minna-no-tabo-platinum-card",
+        "hk-dah-sing-moomin-credit-card",
+        "hk-dah-sing-myauto-credit-card",
+        "hk-dah-sing-okashi-land-visa-paywave-credit-card",
+        "hk-dah-sing-one-plus-credit-card",
+        "hk-dah-sing-titanium-mastercard",
+        "hk-dah-sing-unionpay-dual-currency-credit-card",
+        "hk-dah-sing-united-mileageplus-world-mastercard",
+        "hk-dah-sing-vip-banking-visa-infinite-card"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
           "https://www.dahsing.com/html/en/credit_card/index.html"
         ],
-        "note": null,
-        "offer_sources": [],
-        "status": "not_covered"
+        "note": "First card and offer run on 20 Nov 2026. 26 consumer credit cards (25 on the English Credit Card listing plus Doraemon Platinum, which is in the sitemap and says the Bank is no longer accepting new applications). Autotoll E-Serve Business Card and Dah Sing Business Card were left out. 81 live offers handed in from the Latest Offers and Year-round listings, including the Priority Pass Airport Lounges campaign (1 Jan to 31 Dec 2026). That offer also names Dah Sing Private Banking Visa Infinite Credit Card and Dah Sing Visa Infinite Card, which have no product page on the current card listing. listing_complete is false because two Latest Offers UnionPay tiles (transport and taxi) only open an official disclaimer; Agree was not clicked, and the destinations named in assets/js/external_link_disclaimer_link_en.js are unionpayintl.com, which is off-config. Other Latest Offers tiles left as standing product pages rather than dated campaigns: Octopus AAVS, merchant interest-free installment, and the bonus-point hub. Card-page welcome offers and cash-in or balance-transfer loan pages were not ingested in this run. 13 cards have network_not_stated: the product name and the card terms do not name Visa, Mastercard, or UnionPay for that product (the shared KFS foreign-currency clause that says Visa / MasterCard was not used as proof). Annual fees were taken from the official fee leaflet only when the card name states a fee-table tier. No CSS recipe was written: the Credit Card, Latest Offers, and Year-round listings keep their tiles in JavaScript arrays (itemArray or offerListingJSON) in the page source, with no static tile markup and no public JSON file for recipe.py to read (SCRIPTED_CRAWL.md section 4, item 4).",
+        "offer_sources": [
+          "https://www.dahsing.com/html/en/credit_card/latest_offers/index.html",
+          "https://www.dahsing.com/html/en/credit_card/year_round_offer/year_round_offer_listing.html"
+        ],
+        "status": "partial"
       },
       "id": "hk-dah-sing",
       "legal_name": "DAH SING BANK, LIMITED",
       "name": "Dah Sing Bank",
-      "offer_count": 0,
+      "offer_count": 81,
       "official_domains": [
         "dahsing.com"
       ],
@@ -211,20 +343,31 @@
       "website": "https://www.dbs.com.hk/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-fubon-in-shopback-visa-platinum-card",
+        "hk-fubon-in-visa-platinum-card",
+        "hk-fubon-visa-infinite-card",
+        "hk-fubon-visa-platinum-card",
+        "hk-fubon-yata-visa-platinum-card"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
+          "https://www.fubonbank.com.hk/en/cards/credit-card-products/home.html"
+        ],
+        "note": "The Credit Cards Application menu URL /en/cards/credit-card-products/index.html is a meta refresh to home.html, which returns the full 5-card listing. The same index-to-home pattern applies to Latest Local Promotions, Credit Card Privileges and Forms and Terms. First card and offer run: 5 Visa consumer cards and the live English listing offers. The King Fook Jewellery offer ended 30 September 2026 and was left out. The Exclusive Priority Booking page currently says stay tuned and has no campaign. The Key Facts Statement still lists fees for Mastercard, Gold and classic cards; those products have no page on the current listing and were not handed in.",
+        "offer_sources": [
+          "https://www.fubonbank.com.hk/en/cards/monthly-special-offers/home.html",
+          "https://www.fubonbank.com.hk/en/cards/oversea-offers/home.html",
+          "https://www.fubonbank.com.hk/en/cards/bonus-points-program/home.html",
           "https://www.fubonbank.com.hk/en/home.html"
         ],
-        "note": "The English homepage links https://www.fubonbank.com.hk/en/cards/credit-card-products/index.html. That products URL returned almost no text this run, so the homepage is the evidence URL.",
-        "offer_sources": [],
-        "status": "not_covered"
+        "status": "ok"
       },
       "id": "hk-fubon",
       "legal_name": "FUBON BANK (HONG KONG) LIMITED",
       "name": "Fubon Bank (Hong Kong)",
-      "offer_count": 0,
+      "offer_count": 49,
       "official_domains": [
         "fubonbank.com.hk"
       ],
@@ -271,61 +414,119 @@
       "website": "https://www.hsbc.com.hk/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-icbc-asia-icbc-axa-credit-card-platinum-mastercard",
+        "hk-icbc-asia-icbc-axa-credit-card-platinum-mastercard-virtual-card",
+        "hk-icbc-asia-icbc-axa-dual-currency-credit-card-unionpay-platinum-card",
+        "hk-icbc-asia-icbc-axa-dual-currency-credit-card-unionpay-platinum-virtual-card",
+        "hk-icbc-asia-icbc-caritas-hk-credit-card-classic-mastercard",
+        "hk-icbc-asia-icbc-caritas-hk-credit-card-gold-mastercard",
+        "hk-icbc-asia-icbc-caritas-hk-credit-card-platinum-mastercard",
+        "hk-icbc-asia-icbc-chimelong-credit-card-visa-platinum-card",
+        "hk-icbc-asia-icbc-chimelong-dual-currency-credit-card-unionpay-platinum-card",
+        "hk-icbc-asia-icbc-china-overseas-dual-currency-credit-card-unionpay-diamond-card",
+        "hk-icbc-asia-icbc-china-overseas-dual-currency-credit-card-unionpay-platinum-card",
+        "hk-icbc-asia-icbc-credit-card-platinum-mastercard",
+        "hk-icbc-asia-icbc-credit-card-platinum-mastercard-virtual-card",
+        "hk-icbc-asia-icbc-credit-card-visa-platinum-card",
+        "hk-icbc-asia-icbc-credit-card-visa-platinum-virtual-card",
+        "hk-icbc-asia-icbc-credit-card-visa-signature-card",
+        "hk-icbc-asia-icbc-dual-currency-credit-card-unionpay-diamond-card",
+        "hk-icbc-asia-icbc-dual-currency-credit-card-unionpay-platinum-virtual-card",
+        "hk-icbc-asia-icbc-elite-club-credit-card-platinum-mastercard",
+        "hk-icbc-asia-icbc-essence-ceramic-credit-card",
+        "hk-icbc-asia-icbc-essence-credit-card",
+        "hk-icbc-asia-icbc-greater-bay-area-credit-card-platinum-mastercard",
+        "hk-icbc-asia-icbc-greater-bay-area-credit-card-world-mastercard",
+        "hk-icbc-asia-icbc-greater-bay-area-dual-currency-credit-card-unionpay-diamond-card",
+        "hk-icbc-asia-icbc-greater-bay-area-dual-currency-credit-card-unionpay-platinum-card",
+        "hk-icbc-asia-icbc-horoscope-credit-card-visa-signature-card",
+        "hk-icbc-asia-icbc-horoscope-dual-currency-credit-card-unionpay-diamond-card",
+        "hk-icbc-asia-icbc-horoscope-dual-currency-credit-card-unionpay-platinum-card",
+        "hk-icbc-asia-icbc-sup-credit-card-visa-signature-card",
+        "hk-icbc-asia-icbc-sup-dual-currency-credit-card-unionpay-diamond-card",
+        "hk-icbc-asia-icbc-sup-dual-currency-credit-card-unionpay-platinum-card",
+        "hk-icbc-asia-icbc-swiss-privilege-dual-currency-credit-card-unionpay-diamond-card",
+        "hk-icbc-asia-icbc-wise-gold-credit-card-world-mastercard",
+        "hk-icbc-asia-icbc-wise-gold-dual-currency-credit-card-unionpay-diamond-card"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
-          "https://www.icbcasia.com/hk/en/personal/credit-cards/default.html"
+          "https://www.icbcasia.com/hk/en/personal/credit-cards/type-of-cards/default.html"
         ],
-        "note": null,
-        "offer_sources": [],
-        "status": "not_covered"
+        "note": "First card and offer run on 20 Nov 2026. The Type of Cards listing has 16 product tiles; 34 consumer credit cards were handed in from those pages plus the separate Virtual Card product page and the ICBC Essence Credit Card / Ceramic page under /hk/en/private/. Annual fees and Key Facts Statements are linked only as PDFs on v.icbc.com.cn, which is not in official_domains, so most annual_fee values are null except Essence (HK$6,800 / HK$3,000) and the SUP first-3-years waiver (amount not stated). The Latest Promotions listing had 9 tiles; the WeChat Pay HK instant discount ended 31 October 2026 and was left out. Eight live listing offers plus six dated product-page offers were handed in. Year-round merchant offer lists and spending-rewards / fee / cardholder-agreement PDFs also sit on v.icbc.com.cn and were not fetched, so listing_complete is false and crawl.status is partial. A card named ICBC SUP Credit Card - UnionPay Platinum Virtual Card appears on the SUP dining offer but has no product page and was not handed in as a card. Corporate credit cards appear only on the fee page and were excluded. Two recipes: hk-icbc-asia-cards.json and hk-icbc-asia-offers.json.",
+        "offer_sources": [
+          "https://www.icbcasia.com/hk/en/personal/credit-cards/latest-promotions/default.html"
+        ],
+        "status": "partial"
       },
       "id": "hk-icbc-asia",
       "legal_name": "INDUSTRIAL AND COMMERCIAL BANK OF CHINA (ASIA) LIMITED",
       "name": "ICBC Asia",
-      "offer_count": 0,
+      "offer_count": 14,
       "official_domains": [
         "icbcasia.com"
       ],
       "website": "https://www.icbcasia.com/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-mox-credit-card"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
-          "https://mox.com/"
+          "https://mox.com/features/mox-credit/"
         ],
-        "note": "The homepage states Mox Credit Card and links https://mox.com/features/mox-credit/. The fetcher classified the homepage and that product URL as captcha because the HTML contains inheritProjectCaptchaSettings; the responses were 200 with a large official page body. The homepage is the evidence URL.",
-        "offer_sources": [],
-        "status": "not_covered"
+        "offer_sources": [
+          "https://mox.com/promotions/",
+          "https://mox.com/promotions/year-round-offers/",
+          "https://mox.com/page-data/promotions/page-data.json",
+          "https://mox.com/page-data/promotions/year-round-offers/page-data.json"
+        ],
+        "note": "First full crawl run 20261120-1215-hk-mox. One consumer credit card, Mox Credit Card (Mastercard; annual membership fee HKD0 per the 30 January 2026 KFS). 100 live offers handed in: 86 year-round merchant offers (1 January to 31 December 2026, shared terms at /static/2026YRO-TnC.pdf) and 14 campaign offers (0% FX fee waiver, phone, Samsung, Xiaomi, Emirates, Trip.com, HKT/csl plans, CLUBLINK, MOXTRIP25, MOXHKT25, MOXBILL26, MOXTRAVEL, and tax split purchase). One live year-round tile (New Youth) was left out because the published merchant name test rejects names that start with New. listing_complete is false because Mox Earn merchant offers (500+ deals advertised on /promotions/mox-earn/) are only in the Mox app. The promotions hub and year-round listing were read in full from official same-origin page-data JSON. English pages only; /zh/ and /cn/ exist and were not crawled. Fetcher classify() marks most mox.com HTML as captcha because of a hidden .grecaptcha-badge CSS rule; the responses were HTTP 200 with large official bodies, and no real Chrome was used. https://mox.com/sitemap.xml is 404; robots.txt points to https://mox.com/sitemap-index.xml (child https://mox.com/sitemap-0.xml). Accounts and Cards Schedule and Mox Credit Schedule PDFs were truncated at the fetcher 5MB cap; KFS, fees, and rewards documents were complete. Instant Clear and Split Purchase are standing card features, not dated offers. The Mox Exclusive Offers listing still exists but every production tile had already ended. Linked off-config hosts (not crawled) include images.ctfassets.net, app.adjust.com, www.sc.com, www.facebook.com, www.instagram.com, www.linkedin.com, www.youtube.com, www.pccw.com, www.hkt.com, www.trip.com, www.emirates.com, www.dps.org.hk, and mstr.cd.",
+        "status": "partial"
       },
       "id": "hk-mox",
       "legal_name": "MOX BANK LIMITED",
       "name": "Mox Bank",
-      "offer_count": 0,
+      "offer_count": 100,
       "official_domains": [
         "mox.com"
       ],
       "website": "https://mox.com/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-ocbc-premier-credit-card",
+        "hk-ocbc-premier-voyage-card",
+        "hk-ocbc-unionpay-platinum-card",
+        "hk-ocbc-visa-platinum-card",
+        "hk-ocbc-world-mastercard"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
           "https://www.ocbc.com.hk/personal-banking/cards/credit-cards",
+          "https://www.ocbc.com.hk/premier-banking/our-solutions/cards/premier-voyage-card",
+          "https://www.ocbc.com.hk/premier-banking/our-solutions/cards/premier-credit-card",
           "https://www.ocbc.com.hk/personal-banking/cards/ocbc-credit-card"
         ],
-        "note": null,
-        "offer_sources": [],
-        "status": "not_covered"
+        "offer_sources": [
+          "https://www.ocbc.com.hk/personal-banking/cards/card-promotions",
+          "https://www.ocbc.com.hk/iwov-resources/hk/ocbc/personal/data/card-promotions.json",
+          "https://www.ocbc.com.hk/personal-banking/campaign/sem-promotion",
+          "https://www.ocbc.com.hk/personal-banking/cards/flexi-money-interest-free-instalment-plan",
+          "https://www.ocbc.com.hk/personal-banking/cards/easy-spending-interest-free-instalment-plan"
+        ],
+        "status": "partial",
+        "note": "First full run on 20 Nov 2026. The credit card listing has three product tiles; the OCBC Credit Card tile is a shared page for OCBC World Mastercard, VISA Platinum Card and UnionPay Platinum Card. Premier VOYAGE Card and Premier Credit Card product pages and the shared Key Facts Statement do not state those two cards' networks; both are flagged network_not_stated. The Merchant Promotions page is a JavaScript shell; the listing is the public JSON file card-promotions.json (21 items, 7 English). English terms dates were used where they differ from the JSON date object. The overseas spending reward (1 June to 31 August 2026) had already ended and was left out. zh and sc rows are the same deals and were not handed in again. C45.pdf (online platforms T&C), C50.pdf (a Fullerton Health annex) and C59.pdf (expired overseas reward T&C) were truncated at the fetcher 5MB body cap and were not used as terms. The mass 6% extra rebate, HK$200 app application offer and HK$300 welcome offer were taken from the SEM campaign page, which has complete terms. Personal welcome-gift PDF text extraction was poor; Premier welcome T&C C10 was used for the HK$600 Premier welcome offer, which states no end date. The Key Facts Statement also lists Classic, Gold, Titanium, Infinite and co-branded Sun Life cards that have no current product page and were not handed in. Eligible-card PDFs for merchant offers also list those legacy cards plus OCBC Bank (Macau) Limited cards and Business Debit Cards; merchant offers were recorded as issuer-scope with the general OCBC Credit Card or Business Debit Card sentence. listing_complete is false."
       },
       "id": "hk-ocbc",
       "legal_name": "OCBC BANK (HONG KONG) LIMITED",
       "name": "OCBC Bank (Hong Kong)",
-      "offer_count": 0,
+      "offer_count": 11,
       "official_domains": [
         "ocbc.com.hk"
       ],

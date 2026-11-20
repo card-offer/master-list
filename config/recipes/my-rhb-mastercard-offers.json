@@ -1,0 +1,35 @@
+{
+  "recipe": "recipe/1",
+  "id": "my-rhb-mastercard-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "my-rhb"
+  },
+  "country": "MY",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.rhbgroup.com/cards/mastercard-offers/index.html"
+  ],
+  "list": {
+    "item": "div#home-tab-pane div.col:has(a[href*=\"mastercard-offers/pdf/\"]), div#profile-tab-pane div.col:has(a[href*=\"mastercard-offers/pdf/\"])",
+    "key": "merchant",
+    "fields": {
+      "merchant": "h5.card-title",
+      "offer": "div.card-text",
+      "url": "div.card-body a[href*=\"mastercard-offers/pdf/\"]@href",
+      "terms_file": {
+        "selector": "div.card-body a[href*=\"mastercard-offers/pdf/\"]",
+        "output": "@href",
+        "regex": "([^/]+)\\.pdf$"
+      }
+    }
+  },
+  "detail": {
+    "fields": {},
+    "text_selector": ""
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "terms_document",
+  "note": "RHB Mastercard offers. Tiles are div.col cards in the home and profile tab panes; each has an h5.card-title merchant name and a Learn more link. Only tiles whose link is an on-domain terms PDF under mastercard-offers/pdf/ (the folder is Microsites or microsites) are offers, and the item selector keeps only those; the key is the tile name (h5.card-title), which is unique on the page, and the dates and eligibility are read from the PDF. The links are page-relative (-/media/...), so they resolve under /cards/mastercard-offers/; on 2026-11-20 that path served the same file as the root /-/media/... path (checked for tnc-bens.pdf). Four GL Play tiles share tnc-mc-glplay.pdf, so the PDF alone does not identify a tile. Profile tab tiles that link to specials.priceless.com and every contact tab tile (mtr.mastercardservices.com) are Mastercard network offers on off-config hosts; they are not fetched and not handed in."
+}

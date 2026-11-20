@@ -1,0 +1,27 @@
+{
+  "recipe": "recipe/1",
+  "id": "my-standard-chartered-offers",
+  "owner": {"type": "issuer", "id": "my-standard-chartered"},
+  "country": "MY",
+  "purpose": "offers",
+  "mode": "plain",
+  "source": "json",
+  "start_urls": ["https://www.sc.com/my/data/tgl/offers.json"],
+  "list": {
+    "item": "offers.offer",
+    "key": "id",
+    "fields": {
+      "id": "id",
+      "merchant": "name",
+      "title": "otitle",
+      "description": "odesc",
+      "start": "sd",
+      "end": "ed",
+      "terms": "tnc",
+      "category": "cat",
+      "visa_cards": "visa_card_list"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "The Good Life Privileges page (https://www.sc.com/my/promotions/the-good-life-privileges/) loads this public JSON file. Each offer has its terms in the tnc field, so no detail page is needed. The hand-in source_key is offer-<id> on the TGL page. Read in plain mode on 20 Nov 2026. Priority Dining Privileges (/my/promotions/prioritydiningprivileges/) is a separate single-offer page."
+}

@@ -1,0 +1,24 @@
+{
+  "recipe": "recipe/1",
+  "id": "my-bank-rakyat-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "my-bank-rakyat"
+  },
+  "country": "MY",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.bankrakyat.com.my/"
+  ],
+  "list": {
+    "item": ".promotioncarousel .owl-item:not(.cloned)",
+    "key": "title",
+    "fields": {
+      "title": "img@alt",
+      "link": "a.promotionreadmore@href"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "Read on 20 Nov 2026 in plain mode (the headless browser gives the same 9): the OUR CAMPAIGNS carousel has 9 items (the slider adds cloned copies; :not(.cloned) skips them). Each item is one inline poster image; #/campaigns?c=<n> only opens that image in a popup. There is no campaign text, no dates and no terms document. Two items are card campaigns: 'Petrol Khami5! - 5% Pulangan Tunai' and 'Kad Kredit-i Cikgu'. Their details are only inside the image, so no offer can be handed in until the bank publishes the text or a terms PDF. Key on the image alt text."
+}

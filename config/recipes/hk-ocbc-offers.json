@@ -1,0 +1,32 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-ocbc-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-ocbc"
+  },
+  "country": "HK",
+  "purpose": "offers",
+  "mode": "plain",
+  "source": "json",
+  "start_urls": [
+    "https://www.ocbc.com.hk/iwov-resources/hk/ocbc/personal/data/card-promotions.json"
+  ],
+  "list": {
+    "item": ".",
+    "key": "id",
+    "fields": {
+      "id": "id",
+      "title": "title",
+      "benefit": "link",
+      "language": "language",
+      "start": "date.start",
+      "end": "date.end",
+      "category": "main_cat",
+      "terms": "popup.terms",
+      "freetext": "popup.FreeText"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "The Merchant Promotions page https://www.ocbc.com.hk/personal-banking/cards/card-promotions is a JavaScript shell. cardpromotions-v1.js loads this public JSON file (the ?prod= file promotions-prod-v1.json is only used when the URL has a prod query and is not the default listing). The file is a top-level array. Keep items with language en only; zh and sc are the same deals in Traditional and Simplified Chinese. Take dates from popup.terms, not from the date object, when they differ (the date.end value is often 31/01/27, past the terms end date). Leave out offers whose terms end date is before the run date. Tiles have no href; terms are in the listing popup, with further PDFs under /iwov-resources/hk/ocbc/personal/pdf/. Sign-up and spending offers for the mass OCBC Credit Card also appear on https://www.ocbc.com.hk/personal-banking/campaign/sem-promotion and must be read with this listing. Do not use an em dash in a title or a published quote."
+}

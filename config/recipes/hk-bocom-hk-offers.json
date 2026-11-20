@@ -1,0 +1,30 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-bocom-hk-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-bocom-hk"
+  },
+  "country": "HK",
+  "purpose": "offers",
+  "mode": "plain",
+  "source": "html",
+  "start_urls": [
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046371/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046373/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046376/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046378/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7052927/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7056441/list.shtml?channelId=2005575"
+  ],
+  "list": {
+    "item": ".m_s_c_con a[href*=\"uploadhk\"], .m_s_c_con a[href*=\"getContentPath\"]",
+    "key": "url",
+    "fields": {
+      "url": ":scope@href",
+      "label": ":scope"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "First hk-bocom-hk offers recipe, written 20 Nov 2026. Merchant offer T&Cs are linked from the English Merchant Offers country pages (Hong Kong and Macau, Japan, Korea, Thailand) plus the HKT and Imperial Patisserie pages. The visible control text is usually click here. The href on the English merchant pages is /hk/hk/cn/file/previewPdf.html?filePath=/hk/uploadhk/....pdf (a JS PDF viewer on the official host). Some other pages use getContentPath.html?fileId=. A later run should open the viewer in headless browser (not real-chrome) and then fetch the embedded /hk/uploadhk PDF with a plain GET. This recipe does not cover issuer campaigns on other category pages (Fabulous Rewards, Apple Pay, GBA travel, RMB and MOP rebate, Fortune Friends, FX rebate, Trip.com, instalment, Northbound, or card welcome T&Cs). Those pages also use getContentPath or uploadhk links and can be added as start_urls in a later recipe if the listing stays stable. Country tab links at the top of each merchant page are .shtml paths and are not matched by this item selector."
+}

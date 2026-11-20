@@ -1,0 +1,33 @@
+{
+  "recipe": "recipe/1",
+  "id": "my-hong-leong-cards",
+  "owner": {"type": "issuer", "id": "my-hong-leong"},
+  "country": "MY",
+  "purpose": "cards",
+  "mode": "plain",
+  "source": "json",
+  "start_urls": ["https://www.hlb.com.my/bin/hlb/compareCards?creditCardRootPath=/content/hlb/my/en/personal-banking/credit-cards&locale=en"],
+  "list": {
+    "item": ".",
+    "key": "id",
+    "fields": {
+      "id": "id",
+      "name": "name",
+      "type": "type",
+      "url": "page_url",
+      "image_alt": "image_url_alt",
+      "description": "description"
+    }
+  },
+  "detail": {
+    "fields": {
+      "title": "title",
+      "heading": "h1",
+      "terms": {"selector": "a[href$='.pdf']", "output": "@href", "all": true, "join": " "}
+    },
+    "text_selector": "main, body"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The credit card listing (https://www.hlb.com.my/en/personal-banking/credit-cards.html) and its compare tool load this public JSON. Plain mode read it on 20 Nov 2026: 9 products (the GSC Gold & Platinum page is two cards). The product page title gives the current card name, for example 'HLB Infinite Credit Card'. Fees: /en/personal-banking/help-support/fees-and-charges/credit-cards.html and the PDS PDF."
+}

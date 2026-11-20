@@ -1,0 +1,31 @@
+{
+  "recipe": "recipe/1",
+  "id": "sg-amex-cards",
+  "owner": {"type": "issuer", "id": "sg-amex"},
+  "country": "SG",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.americanexpress.com/en-sg/credit-cards/",
+    "https://www.americanexpress.com/en-sg/credit-cards/singapore-airlines-credit-cards/"
+  ],
+  "list": {
+    "item": "div.card-art",
+    "key": "url",
+    "fields": {
+      "name": "a.links-item",
+      "url": {"selector": "a.links-item", "output": "@href"},
+      "image_alt": "img@alt"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "terms": {"selector": "a[href$='.pdf']", "output": "@href", "all": true, "join": " "}
+    },
+    "text_selector": "main, body"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "Plain mode reads the card-art tiles on 20 Nov 2026: /en-sg/credit-cards/ has 7 tiles (Platinum Card, Platinum Reserve, Platinum Credit Card, KrisFlyer, KrisFlyer Ascend, PPS Club, and the Singapore Airlines Business Credit Card, which is a business card and is skipped). The Singapore Airlines listing adds the Solitaire PPS tile. The True Cashback Card has no tile on either listing; it is linked only from the Cards menu ('Cashback Card'), so read /sg/credit-cards/true-cashback-card/ directly. /sg/credit-cards/all-cards/ renders its tiles with JavaScript and the plain HTML holds only 2 product links. Product pages state the fee as 'Annual Fee S$x (incl. of 9% GST)' under Key Information."
+}

@@ -1,0 +1,33 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-mox-year-round",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-mox"
+  },
+  "country": "HK",
+  "purpose": "offers",
+  "mode": "plain",
+  "source": "json",
+  "start_urls": [
+    "https://mox.com/page-data/promotions/year-round-offers/page-data.json"
+  ],
+  "list": {
+    "item": "result.data.allContentfulOffer.edges",
+    "key": "slug",
+    "fields": {
+      "title": "node.title",
+      "slug": "node.slug",
+      "merchant": "node.merchant.merchantTitle",
+      "merchant_category": "node.merchant.merchantCategory.categoryTitle",
+      "offer_type": "node.offerTypes[0].title",
+      "description": "node.description.childMarkdownRemark.html",
+      "date_range": "node.dateRange",
+      "end_date": "node.endDate",
+      "envs": "node.enVs",
+      "kind": "node.kind"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "First hk-mox year-round offers recipe, written 20 Nov 2026. The public /promotions/year-round-offers/ page is a Gatsby filter UI. Plain HTML does not contain the merchant tiles. The official listing body is the same-origin page-data JSON at /page-data/promotions/year-round-offers/page-data.json, which the page loads. The JSON includes ended offers (endDate before the run day) and live offers. Shared terms are https://mox.com/static/2026YRO-TnC.pdf. There is no per-merchant terms document in the JSON."
+}

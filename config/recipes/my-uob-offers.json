@@ -1,0 +1,44 @@
+{
+  "recipe": "recipe/1",
+  "id": "my-uob-offers",
+  "owner": {"type": "issuer", "id": "my-uob"},
+  "country": "MY",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.uob.com.my/personal/promotions/dining-deals.page",
+    "https://www.uob.com.my/personal/promotions/shopping-deals.page",
+    "https://www.uob.com.my/personal/promotions/travel-deals.page",
+    "https://www.uob.com.my/personal/promotions/lifestyle-deals.page",
+    "https://www.uob.com.my/personal/promotions/other-deals.page",
+    "https://www.uob.com.my/personal/promotions/kuala-lumpur-deals.page",
+    "https://www.uob.com.my/personal/promotions/pulau-pinang-deals.page",
+    "https://www.uob.com.my/personal/promotions/johor-bahru-deals.page",
+    "https://www.uob.com.my/personal/promotions/others-east-malaysia-deals.page",
+    "https://www.uob.com.my/personal/promotions/worldwide-deals.page",
+    "https://www.uob.com.my/personal/promotions/complimentary-items-instant-rebates-deals.page",
+    "https://www.uob.com.my/personal/promotions/discounts.page"
+  ],
+  "list": {
+    "item": "div.category-item",
+    "key": "url",
+    "fields": {
+      "merchant": "h4.card-title",
+      "tile_id": "div.card-id",
+      "category_label": "h6.card-subtitle",
+      "url": "div.content a[href*='.page']@href",
+      "benefit": "div.content",
+      "period": {"selector": "div.content", "regex": "Offer period:\\s*(.+?)(?:For full terms|$)"}
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "terms": "main"
+    },
+    "text_selector": "main"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_detail",
+  "note": "First my-uob offers recipe, written 20 Nov 2026 from plain saved listing pages. Each category and location listing server-renders at most six tiles (data-max=6). The Load more control posts to /revamp/personal/ajax-category-page-filter.page, and robots.txt Disallow: /revamp/* blocks that path, so this recipe stays in plain mode and does not use actions.expand_selector. Query filters such as dining-deals.page?filter=asian also render the same unfiltered first six tiles. other-deals.page is complete at three of data-total=3; the Avis Car Rental tile has no dedicated .page link (terms PDF on the tile). A merchant that appears on more than one listing is one offer. Featured pages japanese-cuisine.page and tinkermen-collective.page are linked from the promotions index and are read by hand, not as tiles on these listings."
+}

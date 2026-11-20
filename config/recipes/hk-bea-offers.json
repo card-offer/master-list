@@ -1,0 +1,24 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-bea-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-bea"
+  },
+  "country": "HK",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html"
+  ],
+  "list": {
+    "item": ".update-discover-offer-list-source .image-title-card",
+    "key": "url",
+    "fields": {
+      "url": "a@href",
+      "image": "img@src"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "The English Hot Offers page groups tiles in 7 .update-discover-offer-list-source[data-tag] buckets (Welcome Offers, Dining, Travel, Entertainment, Shopping, Rewards & Spending, Cash from Card). Each tile is .image-title-card. The card-title block and image alt are empty, so do not add a title field; use the tile href as the item key. The same href can appear in more than one category. This run had 35 tiles and 29 unique hrefs, all on hkbea.com. There is no consumer card catalogue (the Credit Cards menu and the sitemap only point to this promotions listing), so no cards recipe is written."
+}

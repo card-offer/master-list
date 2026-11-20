@@ -1,0 +1,27 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-cmb-wing-lung-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-cmb-wing-lung"
+  },
+  "country": "HK",
+  "purpose": "cards",
+  "mode": "plain",
+  "source": "html",
+  "start_urls": [
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/index.html",
+    "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/wlb-affinity-card/index.html"
+  ],
+  "list": {
+    "item": "#inner-content .inner-content_landing-entry-block li",
+    "fields": {
+      "name": "h2.inner-content_landing-entry-block-title",
+      "url": "a.inner-content_landing-entry-block-more@href",
+      "image_alt": ".inner-content_landing-entry-block-img img@alt"
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "First hk-cmb-wing-lung cards recipe, written 20 Nov 2026. The English Credit Card Products listing is plain HTML tiles (7 items, including CMB Wing Lung Corporate Card, which is excluded from the consumer hand-in). The Affinity Card tile is a hub; the second start URL is that hub (8 affinity product tiles, including one corporate Mastercard). Selectors read the landing-entry-block list item, the h2 title and the more link."
+}

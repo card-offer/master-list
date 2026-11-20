@@ -1,0 +1,18 @@
+{
+  "recipe": "recipe/1",
+  "id": "sg-trust-cards",
+  "owner": {"type": "issuer", "id": "sg-trust"},
+  "country": "SG",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": ["https://trustbank.sg/credit-card/"],
+  "list": {
+    "item": "main a[href^='/'][href$='-credit-card/']:not([href^='/legal/'])",
+    "key": "url",
+    "fields": {"name": {"selector": ":scope", "regex": "^Explore (.+)$"}, "url": ":scope@href"}
+  },
+  "detail": {"fields": {"heading": "title", "terms": "main"}, "text_selector": "main"},
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The Trust credit cards page. Each card has one 'Explore <card name>' link in main that ends with -credit-card/; the Key Facts Sheet link under /legal/ is left out. The page is server-rendered Next.js, so plain mode reads it. Apply links go to trust.onelink.me, which is not in official_domains; the fetcher must not follow them."
+}

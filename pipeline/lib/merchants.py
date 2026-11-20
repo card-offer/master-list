@@ -200,7 +200,9 @@ class Registry:
 
 def card_core(name, issuer_name, rules):
     """The part of a card name that tells it apart: no issuer name, no country word, no 'credit card'."""
-    drop = set(_flat(issuer_name).split()) | set(rules["country_words"]) | {"credit", "card", "cards", "the"}
+    words = _flat(issuer_name).split()
+    initials = {"".join(w[0] for w in words if w not in {"of", "the", "and"}), "".join(w[0] for w in words)}
+    drop = set(words) | {i for i in initials if len(i) >= 2} | set(rules["country_words"]) | {"credit", "card", "cards", "the"}
     return " ".join(word for word in _flat(clean_name(name)).split() if word not in drop)
 
 

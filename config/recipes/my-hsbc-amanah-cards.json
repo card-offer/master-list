@@ -1,0 +1,29 @@
+{
+  "recipe": "recipe/1",
+  "id": "my-hsbc-amanah-cards",
+  "owner": {"type": "issuer", "id": "my-hsbc"},
+  "country": "MY",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": ["https://www.hsbcamanah.com.my/credit-cards/"],
+  "list": {
+    "item": "div.advancedProductModule[id^='listing_main_creditCardProductModule']",
+    "key": "url",
+    "fields": {
+      "name": "h2",
+      "url": "a[href*='/credit-cards/products/']@href",
+      "image_alt": "img@alt",
+      "features": {"selector": "ul.main-list li", "all": true, "join": "; "}
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "terms": {"selector": "a[href$='.pdf']", "output": "@href", "all": true, "join": " "}
+    },
+    "text_selector": "main, body"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "Plain mode reads the HSBC Amanah Credit Card-i catalogue on 20 Nov 2026: 3 tiles (MPower Platinum, Premier World Mastercard, MPower), the same 3 product pages as sitemaps-pages.xml. Fees: /content/dam/hsbc/hbms/documents/tariffs-and-charges.pdf section 5.1 (text PDF). The Credit Card-i PDS, mpower-cashback-terms.pdf and annual-fee-waiver.pdf have no text layer, so they cannot be quoted. The MPower networks (Visa) are stated in Table 1 of the sp.hsbc.com.my DUO promotion terms, not on the product pages. The Amanah 'Offers' links go to www.hsbc.com.my/offers/ (the conventional hub); /premier/rewards-and-offers/ has Premier relationship offers, not card offers. The conventional catalogue is www.hsbc.com.my/credit-cards/ and is a separate listing."
+}
