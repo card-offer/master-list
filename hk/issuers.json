@@ -311,21 +311,35 @@
       "website": "https://mox.com/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-ocbc-premier-credit-card",
+        "hk-ocbc-premier-voyage-card",
+        "hk-ocbc-unionpay-platinum-card",
+        "hk-ocbc-visa-platinum-card",
+        "hk-ocbc-world-mastercard"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
           "https://www.ocbc.com.hk/personal-banking/cards/credit-cards",
+          "https://www.ocbc.com.hk/premier-banking/our-solutions/cards/premier-voyage-card",
+          "https://www.ocbc.com.hk/premier-banking/our-solutions/cards/premier-credit-card",
           "https://www.ocbc.com.hk/personal-banking/cards/ocbc-credit-card"
         ],
-        "note": null,
-        "offer_sources": [],
-        "status": "not_covered"
+        "offer_sources": [
+          "https://www.ocbc.com.hk/personal-banking/cards/card-promotions",
+          "https://www.ocbc.com.hk/iwov-resources/hk/ocbc/personal/data/card-promotions.json",
+          "https://www.ocbc.com.hk/personal-banking/campaign/sem-promotion",
+          "https://www.ocbc.com.hk/personal-banking/cards/flexi-money-interest-free-instalment-plan",
+          "https://www.ocbc.com.hk/personal-banking/cards/easy-spending-interest-free-instalment-plan"
+        ],
+        "status": "partial",
+        "note": "First full run on 20 Nov 2026. The credit card listing has three product tiles; the OCBC Credit Card tile is a shared page for OCBC World Mastercard, VISA Platinum Card and UnionPay Platinum Card. Premier VOYAGE Card and Premier Credit Card product pages and the shared Key Facts Statement do not state those two cards' networks; both are flagged network_not_stated. The Merchant Promotions page is a JavaScript shell; the listing is the public JSON file card-promotions.json (21 items, 7 English). English terms dates were used where they differ from the JSON date object. The overseas spending reward (1 June to 31 August 2026) had already ended and was left out. zh and sc rows are the same deals and were not handed in again. C45.pdf (online platforms T&C), C50.pdf (a Fullerton Health annex) and C59.pdf (expired overseas reward T&C) were truncated at the fetcher 5MB body cap and were not used as terms. The mass 6% extra rebate, HK$200 app application offer and HK$300 welcome offer were taken from the SEM campaign page, which has complete terms. Personal welcome-gift PDF text extraction was poor; Premier welcome T&C C10 was used for the HK$600 Premier welcome offer, which states no end date. The Key Facts Statement also lists Classic, Gold, Titanium, Infinite and co-branded Sun Life cards that have no current product page and were not handed in. Eligible-card PDFs for merchant offers also list those legacy cards plus OCBC Bank (Macau) Limited cards and Business Debit Cards; merchant offers were recorded as issuer-scope with the general OCBC Credit Card or Business Debit Card sentence. listing_complete is false."
       },
       "id": "hk-ocbc",
       "legal_name": "OCBC BANK (HONG KONG) LIMITED",
       "name": "OCBC Bank (Hong Kong)",
-      "offer_count": 0,
+      "offer_count": 11,
       "official_domains": [
         "ocbc.com.hk"
       ],

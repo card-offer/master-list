@@ -146,8 +146,8 @@ There are 254 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 41 | HK | issuer | offers | CCB Asia | `asia.ccb.com` | untested |  |
 | 42 | HK | issuer | cards | ICBC Asia | `icbcasia.com` | untested | https://www.icbcasia.com/hk/en/personal/credit-cards/default.html |
 | 42 | HK | issuer | offers | ICBC Asia | `icbcasia.com` | untested |  |
-| 43 | HK | issuer | cards | OCBC Bank (Hong Kong) | `ocbc.com.hk` | untested | https://www.ocbc.com.hk/personal-banking/cards/credit-cards, https://www.ocbc.com.hk/personal-banking/cards/ocbc-credit-card |
-| 43 | HK | issuer | offers | OCBC Bank (Hong Kong) | `ocbc.com.hk` | untested |  |
+| 43 | HK | issuer | cards | OCBC Bank (Hong Kong) | `ocbc.com.hk` | untested | https://www.ocbc.com.hk/personal-banking/cards/credit-cards, https://www.ocbc.com.hk/premier-banking/our-solutions/cards/premier-voyage-card, https://www.ocbc.com.hk/premier-banking/our-solutions/cards/premier-credit-card, https://www.ocbc.com.hk/personal-banking/cards/ocbc-credit-card |
+| 43 | HK | issuer | offers | OCBC Bank (Hong Kong) | `ocbc.com.hk` | untested | https://www.ocbc.com.hk/personal-banking/cards/card-promotions, https://www.ocbc.com.hk/iwov-resources/hk/ocbc/personal/data/card-promotions.json, https://www.ocbc.com.hk/personal-banking/campaign/sem-promotion, https://www.ocbc.com.hk/personal-banking/cards/flexi-money-interest-free-instalment-plan, https://www.ocbc.com.hk/personal-banking/cards/easy-spending-interest-free-instalment-plan |
 | 44 | HK | issuer | cards | Bank of East Asia | `hkbea.com` | untested | https://www.hkbea.com/html/en/index.html |
 | 44 | HK | issuer | offers | Bank of East Asia | `hkbea.com` | untested | https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html |
 | 45 | HK | issuer | cards | Citibank (Hong Kong) | `citibank.com.hk` | untested | https://www.citibank.com.hk/, https://www.citibank.com.hk/english/credit-cards/ |
