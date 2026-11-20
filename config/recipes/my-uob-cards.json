@@ -1,0 +1,24 @@
+{
+  "recipe": "recipe/1",
+  "id": "my-uob-cards",
+  "owner": {"type": "issuer", "id": "my-uob"},
+  "country": "MY",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.uob.com.my/personal/cards/all-cards.page"
+  ],
+  "list": {
+    "item": "div.category-item",
+    "key": "name",
+    "fields": {
+      "name": "h4.card-title",
+      "tile_id": "div.card-id",
+      "category_label": "h6.card-subtitle",
+      "url": "div.card-footer a[href*='credit-cards']@href",
+      "summary": "div.content"
+    }
+  },
+  "listing_kind": "issuer_card_listing",
+  "note": "First my-uob cards recipe, written 20 Nov 2026 from the plain all-cards.page. The listing reports data-total=15 and data-max=6, so only six tiles are in the server-rendered HTML. The Load more control posts to /revamp/personal/ajax-category-page-filter.page, and robots.txt Disallow: /revamp/* blocks that path, so this recipe stays in plain mode and does not use actions.expand_selector. Query filters such as all-cards.page?filter=cashback render the same unfiltered first six tiles. Some More details links include i_cid=, which robots.txt Disallow: /*i_cid=* blocks; this recipe has no detail block so those query strings are not fetched. Clean product URLs (query stripped) and sitemap product URLs, plus names in the terms table on all-cards.page, are read by hand."
+}
