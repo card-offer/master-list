@@ -892,7 +892,9 @@
    "country": "MY",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.bankrakyat.com.my/"
+   ],
    "status": "untested",
    "full_crawl_order": 19,
    "suggested_by": null,

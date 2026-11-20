@@ -91,7 +91,7 @@ There are 254 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 18 | MY | issuer | cards | BSN | `bsn.com.my` | untested | https://www.bsn.com.my/PersonalBanking/Cards/cards, https://www.bsn.com.my/page/site-map |
 | 18 | MY | issuer | offers | BSN | `bsn.com.my` | untested |  |
 | 19 | MY | issuer | cards | Bank Rakyat | `bankrakyat.com.my` | untested | https://www.bankrakyat.com.my/ |
-| 19 | MY | issuer | offers | Bank Rakyat | `bankrakyat.com.my` | untested |  |
+| 19 | MY | issuer | offers | Bank Rakyat | `bankrakyat.com.my` | untested | https://www.bankrakyat.com.my/ |
 | 20 | MY | issuer | cards | OCBC Malaysia | `ocbc.com.my` | untested | https://www.ocbc.com.my/personal-banking/cards/credit-cards |
 | 20 | MY | issuer | offers | OCBC Malaysia | `ocbc.com.my` | untested |  |
 | 21 | MY | issuer | cards | AEON Credit Service | `myaeoncredit.com.my` | untested | https://myaeoncredit.com.my/cards/credit-cards/ |
