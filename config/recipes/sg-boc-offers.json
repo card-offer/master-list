@@ -1,0 +1,21 @@
+{
+  "recipe": "recipe/1",
+  "id": "sg-boc-offers",
+  "owner": {"type": "issuer", "id": "sg-boc"},
+  "country": "SG",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.bankofchina.com/sg/bcservice/bc3/",
+    "https://www.bankofchina.com/sg/bcservice/bc4/",
+    "https://www.bankofchina.com/sg/bocinfo/bi2/"
+  ],
+  "list": {
+    "item": "a.fsm[href^='./']",
+    "fields": {"title": ":scope", "url": ":scope@href", "period": {"selector": ":scope", "regex": "\\(([^)]*\\d{4}[^)]*)\\)"}}
+  },
+  "detail": {"fields": {"heading": "title", "terms": "body"}, "text_selector": "body"},
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "The Rewards (bc3), card Promotions (bc4) and bank Promotions (bi2) lists. Each entry is one a.fsm link that starts with ./ . On 20 Nov 2026 the lists held only entries from 2010 to 2023 and no current card offer."
+}

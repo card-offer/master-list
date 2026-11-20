@@ -1,0 +1,17 @@
+{
+  "recipe": "recipe/1",
+  "id": "sg-boc-cards",
+  "owner": {"type": "issuer", "id": "sg-boc"},
+  "country": "SG",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": ["https://www.bankofchina.com/sg/bcservice/bc1/"],
+  "list": {
+    "item": "a.fsm[href^='./']",
+    "fields": {"name": ":scope", "url": ":scope@href"}
+  },
+  "detail": {"fields": {"heading": "title", "terms": "body"}, "text_selector": "body"},
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The Credit Cards list of Bank of China Singapore. Each card is one a.fsm link that starts with ./ (the side menu links start with ../). robots.txt and the sitemaps redirect to www.boc.cn, which is not in official_domains. Apply links go to branch.ap.ebs.bankofchina.com and some terms PDFs to pic.bankofchina.com; the fetcher must not follow them."
+}
