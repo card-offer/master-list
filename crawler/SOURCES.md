@@ -148,8 +148,8 @@ There are 254 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 42 | HK | issuer | offers | ICBC Asia | `icbcasia.com` | untested | https://www.icbcasia.com/hk/en/personal/credit-cards/latest-promotions/default.html |
 | 43 | HK | issuer | cards | OCBC Bank (Hong Kong) | `ocbc.com.hk` | untested | https://www.ocbc.com.hk/personal-banking/cards/credit-cards, https://www.ocbc.com.hk/personal-banking/cards/ocbc-credit-card |
 | 43 | HK | issuer | offers | OCBC Bank (Hong Kong) | `ocbc.com.hk` | untested |  |
-| 44 | HK | issuer | cards | Bank of East Asia | `hkbea.com` | untested | https://www.hkbea.com/html/en/index.html |
-| 44 | HK | issuer | offers | Bank of East Asia | `hkbea.com` | untested | https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html |
+| 44 | HK | issuer | cards | Bank of East Asia | `hkbea.com` | untested | https://www.hkbea.com/html/en/bea-credit-card-world-mc.html, https://www.hkbea.com/html/en/bea-credit-card-world-mastercard.html, https://www.hkbea.com/html/en/bea-unionpay-dual-currency-diamond-card.html, https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-diamond-student-card.html, https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-goal-student-card.html, https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-jcb-card.html, https://www.hkbea.com/html/en/bea-aia-credit-card.html, https://www.hkbea.com/html/en/bea-personal-banking-key-facts-statement.html |
+| 44 | HK | issuer | offers | Bank of East Asia | `hkbea.com` | untested | https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html, https://www.hkbea.com/html/en/bea-credit-card-dining-offer-yro.html, https://www.hkbea.com/html/en/bea-credit-card-shopping-offer-yro.html |
 | 45 | HK | issuer | cards | Citibank (Hong Kong) | `citibank.com.hk` | untested | https://www.citibank.com.hk/, https://www.citibank.com.hk/english/credit-cards/ |
 | 45 | HK | issuer | offers | Citibank (Hong Kong) | `citibank.com.hk` | untested |  |
 | 46 | HK | issuer | cards | China CITIC Bank International | `cncbinternational.com` | untested | https://www.cncbinternational.com/home/en/index.jsp |

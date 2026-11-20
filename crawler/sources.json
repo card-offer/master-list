@@ -1784,7 +1784,14 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.hkbea.com/html/en/index.html"
+    "https://www.hkbea.com/html/en/bea-credit-card-world-mc.html",
+    "https://www.hkbea.com/html/en/bea-credit-card-world-mastercard.html",
+    "https://www.hkbea.com/html/en/bea-unionpay-dual-currency-diamond-card.html",
+    "https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-diamond-student-card.html",
+    "https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-goal-student-card.html",
+    "https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-jcb-card.html",
+    "https://www.hkbea.com/html/en/bea-aia-credit-card.html",
+    "https://www.hkbea.com/html/en/bea-personal-banking-key-facts-statement.html"
    ],
    "status": "untested",
    "full_crawl_order": 44,
@@ -1799,7 +1806,9 @@
    "type": "issuer",
    "purpose": "offers",
    "entry_urls": [
-    "https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html"
+    "https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html",
+    "https://www.hkbea.com/html/en/bea-credit-card-dining-offer-yro.html",
+    "https://www.hkbea.com/html/en/bea-credit-card-shopping-offer-yro.html"
    ],
    "status": "untested",
    "full_crawl_order": 44,
