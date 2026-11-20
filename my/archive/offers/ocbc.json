@@ -1,0 +1,11 @@
+{
+  "archive": true,
+  "count": 1,
+  "country": "MY",
+  "generated_at": "2026-11-20T03:18:31+00:00",
+  "issuer_id": "my-ocbc",
+  "schema_version": "0.3.0",
+  "items": [
+    {"aliases":[],"benefit":{"source":"offer_text","type":"discount_pct","unit":"percent","up_to":true,"value":25,"value_text":null},"booking_period":null,"cap":null,"cap_null_reason":null,"cap_source_url":null,"category":"travel","checked_at":"2026-11-13T10:00:21+08:00","checked_at_null_reason":null,"checked_fetch_url":"https://www.ocbc.com.my/personal-banking/promotion","country":"MY","cross_border":{"basis":"no_foreign_signal","card_issuing_country":"MY","is_cross_border":false,"redeem_countries":["MY"]},"currency":"MYR","dates_source_url":"https://www.ocbc.com.my/personal-banking/promotion","description":null,"detail_level":"structured","eligibility":{"card_ids":[],"card_types":["credit","debit"],"confidence":"stated","evidence_text":"Payment must be made with an eligible OCBC Mastercard card.","issuer_ids":["my-ocbc"],"network_ids":["mastercard"],"rule":"issuer_cards_on_named_network(s)","scope":"issuer_network","tiers":[]},"end_date":"2026-11-14","end_date_reviewer_accepted":false,"first_seen":"2026-11-13","id":"my-ocbc-b950801969","last_seen":"2026-11-13","limits":[],"merchant_id":"batik-air","merchant_ids":["batik-air"],"merchant_kind":"single","merchant_name":"Batik Air","merchant_name_source":"listing_tile","merchant_names":[],"merchant_outlet":null,"min_spend":null,"min_spend_source_url":null,"provider":{"id":"my-ocbc","type":"issuer"},"review_by":"2026-11-14","review_reason":null,"source_url":"https://www.ocbc.com.my/personal-banking/promotion#batik-air","source_verified":true,"sources":[{"fetched_at":"2026-11-13T10:00:21+08:00","kind":"issuer_promotion_listing","url":"https://www.ocbc.com.my/personal-banking/promotion"}],"start_date":"2026-08-26","start_date_null_reason":null,"stated_end_date":null,"status":"expired","terms_fetched_at":"2026-11-13T10:00:21+08:00","terms_hash":"1ab8ab3ff8d4ff48aa5c06d57a79f18043f35eb5de86c70e398c823529c0ea5c","terms_hash_null_reason":null,"terms_scope":"listing_popup","terms_url":null,"terms_url_null_reason":"terms_are_a_popup_on_the_listing","title":"Batik Air: Enjoy up to 25% off tickets with Mastercard","usage_period":{"end":"2026-11-14","start":"2026-08-26"},"valid_days":null}
+  ]
+}
