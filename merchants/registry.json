@@ -1,6 +1,6 @@
 {
-  "count": 1848,
-  "generated_at": "2026-11-20T00:20:45+00:00",
+  "count": 1849,
+  "generated_at": "2026-11-20T01:07:02+00:00",
   "schema_version": "0.3.0",
   "items": [
     {"aliases":[],"categories":["cafe","dining"],"countries":["SG"],"id":"10-scotts","name":"10 Scotts","offer_ids":["sg-maybank-8f9c8c1877","sg-network-jcb-5cddade2b0"],"official_domain":"singapore.grand.hyattrestaurants.com","verified":true},
@@ -1479,6 +1479,7 @@
     {"aliases":[],"categories":["travel"],"countries":["MY","SG"],"id":"singapore-airlines","name":"Singapore Airlines","offer_ids":["my-maybank-7d1cabcb5b","sg-dbs-1cb4f790f1"],"official_domain":null,"verified":true},
     {"aliases":[],"categories":["travel"],"countries":["MY"],"id":"singapore-airlines-by-mayflower-holidays-travel-perks","name":"Singapore Airlines by Mayflower Holidays (Travel Perks)","offer_ids":["my-standard-chartered-a4db4df46b"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["entertainment"],"countries":["SG"],"id":"singapore-cable-car","name":"Singapore Cable Car","offer_ids":["sg-ocbc-e19c8a43f1"],"official_domain":"mfleisure.com","verified":true},
+    {"aliases":[],"categories":["hotel"],"countries":["SG"],"id":"singapore-marriott-tang-plaza-hotel-christmas-2026","name":"Singapore Marriott Tang Plaza Hotel Christmas 2026","offer_ids":["sg-standard-chartered-7b361e02a5"],"official_domain":null,"verified":false},
     {"aliases":["sg-singapore-marriott-tang-plaza-hotel-crossroads-buffet"],"categories":["hotel","travel"],"countries":["SG"],"id":"singapore-marriott-tang-plaza-hotel-crossroads-buffet","name":"Singapore Marriott Tang Plaza Hotel, Crossroads Buffet","offer_ids":["sg-dcs-235f462a4f","sg-ocbc-688f050025","sg-ocbc-8b39369d26","sg-ocbc-ce0f1197d7","sg-ocbc-e267179619","sg-ocbc-e5024a116d","sg-ocbc-f29189c8d0"],"official_domain":"crossroadssg.com","verified":true},
     {"aliases":["Singapore Marriott Tang Plaza Hotel, Crossroads Cafe"],"categories":["hotel","travel"],"countries":["SG"],"id":"singapore-marriott-tang-plaza-hotel-crossroads-cafe","name":"Singapore Marriott Tang Plaza Hotel, Crossroads Café","offer_ids":["sg-dcs-f009f6e0ac","sg-ocbc-94e1fbab08"],"official_domain":null,"verified":true},
     {"aliases":["Singapore Marriott Tang Plaza Hotel, Java+"],"categories":["hotel","travel"],"countries":["SG"],"id":"singapore-marriott-tang-plaza-hotel-java","name":"Singapore Marriott Tang Plaza Hotel, JAVA+","offer_ids":["sg-dcs-dd2ba6160c","sg-ocbc-5d7767ecb1"],"official_domain":null,"verified":true},
