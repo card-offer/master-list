@@ -1,0 +1,11 @@
+{
+  "archive": true,
+  "count": 1,
+  "country": "SG",
+  "generated_at": "2026-11-20T02:33:32+00:00",
+  "issuer_id": "sg-maybank",
+  "schema_version": "0.3.0",
+  "items": [
+    {"aliases":["sg-maybank-batik-air"],"benefit":{"source":"offer_text","type":"discount_pct","unit":"percent","up_to":true,"value":25,"value_text":"up to 25% off"},"booking_period":null,"cap":null,"cap_null_reason":null,"cap_source_url":null,"category":"travel","checked_at":"2026-11-13T11:51:12+08:00","checked_at_null_reason":null,"checked_fetch_url":"https://cardspromo.maybank2u.com.sg/promotions/batik-air-1","country":"SG","cross_border":{"basis":"place_name","card_issuing_country":"SG","is_cross_border":true,"redeem_countries":["MY"]},"currency":"SGD","dates_source_url":"https://cardspromo.maybank2u.com.sg/promotions/batik-air-1","description":null,"detail_level":"structured","eligibility":{"card_ids":[],"card_types":[],"confidence":"stated","evidence_text":"For Maybank Cardmembers","issuer_ids":["sg-maybank"],"network_ids":[],"rule":"all_issuer_cards_stated_on_official_page","scope":"issuer","tiers":[]},"end_date":"2026-11-14","end_date_reviewer_accepted":false,"first_seen":"2026-11-09","id":"sg-maybank-4f777bce65","last_seen":"2026-11-13","limits":[],"merchant_id":"batik-air","merchant_ids":["batik-air"],"merchant_kind":"single","merchant_name":"Batik Air","merchant_name_source":"page_heading","merchant_names":[],"merchant_outlet":null,"min_spend":null,"min_spend_source_url":null,"provider":{"id":"sg-maybank","type":"issuer"},"review_by":"2026-11-14","review_reason":null,"source_url":"https://cardspromo.maybank2u.com.sg/promotions/batik-air-1","source_verified":true,"sources":[{"fetched_at":"2026-11-13T11:51:12+08:00","kind":"issuer_promotion_page","url":"https://cardspromo.maybank2u.com.sg/promotions/batik-air-1"}],"start_date":"2026-06-01","start_date_null_reason":null,"stated_end_date":null,"status":"expired","terms_fetched_at":"2026-11-13T11:51:12+08:00","terms_hash":"ded02e971adb3222b2972b23479a3dc332f711a8dea610d4c56e9f7b56148082","terms_hash_null_reason":null,"terms_scope":"deal_page_section","terms_url":"https://cardspromo.maybank2u.com.sg/promotions/batik-air-1","terms_url_null_reason":null,"title":"Batik Air","usage_period":{"end":"2026-11-14","start":"2026-06-01"},"valid_days":null}
+  ]
+}
