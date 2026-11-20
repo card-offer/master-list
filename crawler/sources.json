@@ -381,7 +381,11 @@
    "country": "SG",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.americanexpress.com/en-sg/benefits/promotions/index.html",
+    "https://www.americanexpress.com/sg/benefits/promotions/chillax/",
+    "https://www.americanexpress.com/en-sg/campaigns/the-platinum-card/"
+   ],
    "status": "untested",
    "full_crawl_order": 7,
    "suggested_by": null,

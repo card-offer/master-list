@@ -1,0 +1,49 @@
+{
+  "recipe": "recipe/1",
+  "id": "sg-amex-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "sg-amex"
+  },
+  "country": "SG",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.americanexpress.com/en-sg/benefits/promotions/index.html",
+    "https://www.americanexpress.com/en-sg/benefits/promotions/dining/index.html",
+    "https://www.americanexpress.com/en-sg/benefits/promotions/shopping/index.html",
+    "https://www.americanexpress.com/en-sg/benefits/promotions/travel/index.html",
+    "https://www.americanexpress.com/en-sg/benefits/promotions/lifestyle/index.html",
+    "https://www.americanexpress.com/en-sg/benefits/promotions/festive/index.html",
+    "https://www.americanexpress.com/en-sg/benefits/promotions/explore-sg/index.html",
+    "https://www.americanexpress.com/en-sg/benefits/promotions/transit/index.html"
+  ],
+  "list": {
+    "item": "div.offer-card, div.col-md-12.margin-0-tb:has(a.btn[href*='/benefits/promotions/'])",
+    "key": "url",
+    "fields": {
+      "merchant": "span.heading-5, div.pad p b, div.pad p strong, div.pad h4.offer-header",
+      "headline": "div.offer-desc p, div.richtext.parbase + div.richtext.parbase p",
+      "url": {
+        "selector": "a.btn[href*='/benefits/promotions/']",
+        "output": "@href"
+      },
+      "image_alt": "img@alt"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "terms": {
+        "selector": "a[href$='.pdf']",
+        "output": "@href",
+        "all": true,
+        "join": " "
+      }
+    },
+    "text_selector": "main, body"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "Plain mode reads the offer tiles on 20 Nov 2026: the index uses richtext tiles (span.heading-5 merchant name) and the category listings use div.offer-card tiles (bold merchant name, div.offer-desc headline); both have, a one-line headline and a 'View Offer Details' button. The promotions index has 17 tiles; the category listings hold the rest (49 distinct offer links in all). Detail pages hold 'Offer Detail', 'Validity' and 'Offer Terms & Conditions'. Dead tiles on 20 Nov 2026 (404): lifestyle/regional-golf-programme/enhancedgolfprogramme.html and shopping/10Xcelerator/10Xcelerator.html. Proof Living (ended 30 Sep 2026) and travel/singapore-airlines (a standing card earn rate, no offer dates) are not offers. Card welcome offers and Platinum privileges (wine credit, dining credit, Regional Golf Programme) live on /en-sg/campaigns/the-platinum-card/ and the campaign PDFs, not on these tiles. /en-sg/network/offers/ pages belong to network-amex (Track C C10)."
+}
