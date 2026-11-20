@@ -757,14 +757,14 @@ No `in_repository` or `same_group` result was recorded. Related entities such as
 
 | regulator entry | regulator list | result | issuer ID | official URL that proves the result | date checked | note |
 |---|---|---|---|---|---|---|
-| PT BANK RAKYAT INDONESIA (PERSERO) Tbk | OJK Bank Umum Juni 2026 (Persero) | not_reached | null | https://www.bri.co.id/ | 2026-11-13 | Ordinary browser was class bot_wall. |
+| PT BANK RAKYAT INDONESIA (PERSERO) Tbk | OJK Bank Umum Juni 2026 (Persero) | not_reached | null | https://www.bri.co.id/ | 2026-11-20 | Recheck 2026-11-20: a plain request returned class js_shell (HTTP 200, 18 words). Ordinary browser mode returned class bot_wall (HTTP 200, Incapsula 'Request unsuccessful'). Real-Chrome mode timed out (Page.goto exceeded 90 seconds). |
 | PT BANK MANDIRI (PERSERO) Tbk | OJK Bank Umum Juni 2026 (Persero) | new_issuer | `id-mandiri` | https://www.bankmandiri.co.id/ | 2026-11-13 | Reached with the ordinary browser and --disable-http2 after plain timeouts. Homepage states Jelajahi keunggulan produk mandiri kartu kredit and Kartu Kredit Mandiri Hilang, and links the catalogue to mandirikartukredit.com (off-domain, not fetched, proposed). Offer listing https://bankmandiri.co.id/promo-mandiri is on the official host. robots.txt was unreadable (robots_unreachable). |
-| PT BANK NEGARA INDONESIA (PERSERO) Tbk | OJK Bank Umum Juni 2026 (Persero) | not_reached | null | https://www.bni.co.id/id-id/ | 2026-11-13 | Ordinary browser was class bot_wall. |
+| PT BANK NEGARA INDONESIA (PERSERO) Tbk | OJK Bank Umum Juni 2026 (Persero) | not_reached | null | https://www.bni.co.id/ | 2026-11-20 | Recheck 2026-11-20: a plain request returned class js_shell (HTTP 200, 18 words). Ordinary browser mode returned class bot_wall (HTTP 200, Incapsula 'Request unsuccessful'). Real-Chrome mode timed out (Page.goto exceeded 90 seconds). |
 | PT BANK TABUNGAN NEGARA (PERSERO) Tbk | OJK Bank Umum Juni 2026 (Persero) | not_reached | null | https://www.btn.co.id/id | 2026-11-13 | Ordinary browser was class bot_wall. |
 | PT BANK DANAMON INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | new_issuer | `id-danamon` | https://www.danamon.co.id/Personal/KartuTransaksi/Kartu-Kredit | 2026-11-13 | Official card listing states Kartu Kredit and names several consumer cards, including Grab, JCB Precious, Mastercard Platinum, Mastercard World and Visa Platinum. |
-| PT BANK PERMATA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.permatabank.com/ | 2026-11-13 | Plain request was class bot_wall (HTTP 403). Ordinary browser with --disable-http2 was also class bot_wall (HTTP 403, 28 words). robots.txt was unreadable. |
+| PT BANK PERMATA Tbk | OJK Bank Umum Juni 2026 (Swasta) | new_issuer | `id-permata` | https://www.permatabank.com/id/consumer | 2026-11-20 | Recheck 2026-11-20: plain and ordinary browser requests returned HTTP 403 bot_wall (robots.txt unreadable on the plain request). Real-Chrome mode reached the official site. The consumer page https://www.permatabank.com/id/consumer and Permata Store https://www.permatabank.com/id/permatastore/ list Kartu Kredit and name consumer cards including Permata Shopping Card, Permata ME Credit and Permata Ultimate Card. The promotions listing https://www.permatabank.com/id/promotions has a Semua Kartu Kredit filter that names AirAsia Card, Permata Infinite Card, Permata Black Card, Permata Cashback Card, Permata ME Credit, Permata Reward Card, Permata Shopping Card, Permata Kartu Kredit Platinum and Permata Ultimate Card. A public article at https://www.permatabank.com/id/article/permatakartukredit-dan-permatadebit-plus-contactless describes Permata Kartu Kredit. |
 | PT BANK CENTRAL ASIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | new_issuer | `id-bca` | https://www.bca.co.id/id/individu/produk/kartu-kredit | 2026-11-13 | Official card listing states Kartu Kredit and product names including Mastercard World and BCA Kartu Kredit Indonesia. promo.bca.co.id added from links on that page. Fetcher class captcha was a script-text false positive; public text was used and captcha was not bypassed. |
-| PT BANK MAYBANK INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.maybank.co.id | 2026-11-13 | Plain request was class bot_wall. Ordinary browser with --disable-http2 failed with Page.content: Target crashed. |
+| PT BANK MAYBANK INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.maybank.co.id | 2026-11-20 | Recheck 2026-11-20: a plain request returned HTTP 403 bot_wall. Ordinary browser and browser with --disable-http2 failed with Page.content: Target crashed. Real-Chrome mode failed with Page crashed. |
 | PT BANK PAN INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.panin.co.id/ | 2026-11-13 | Plain request was class bot_wall (HTTP 403). Ordinary browser with --disable-http2 was also class bot_wall (HTTP 403, 29 words). robots.txt was unreadable. |
 | PT BANK CIMB NIAGA Tbk | OJK Bank Umum Juni 2026 (Swasta) | new_issuer | `id-cimb` | https://www.cimbniaga.co.id/id/personal/kartu-kredit | 2026-11-13 | Official card listing title is Kartu Kredit CIMB Niaga. |
 | PT BANK UOB INDONESIA | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.uob.co.id | 2026-11-13 | Ordinary browser returned class ok but only a very short text extract, so the page was not treated as a complete product list. |
@@ -779,7 +779,7 @@ No `in_repository` or `same_group` result was recorded. Related entities such as
 | PT BANK MESTIKA DHARMA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.bankmestika.co.id | 2026-11-13 | Homepage or product page was class captcha on the plain request. |
 | PT BANK SHINHAN INDONESIA | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.shinhan.co.id | 2026-11-13 | Official site was not read: TLS or protocol error. |
 | PT BANK SINARMAS Tbk | OJK Bank Umum Juni 2026 (Swasta) | new_issuer | `id-sinarmas` | https://www.banksinarmas.com/id/personal/produk/kartukredit | 2026-11-13 | Official card listing at /id/personal/produk/kartukredit. Fetcher class captcha was a script-text false positive; public title and H1 were used and captcha was not bypassed. |
-| PT BANK KASIKORN INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.kasikornbank.co.id/ | 2026-11-13 | Ordinary browser was class bot_wall. |
+| PT BANK KASIKORN INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | no_consumer_card | null | https://www.kasikornbank.co.id/personal | 2026-11-20 | Recheck 2026-11-20: a plain request reached the official site (class ok). The personal product pages were read: https://www.kasikornbank.co.id/personal, /personal/account, /personal/loan, /personal/digital-banking, /personal/services and /programs/promotions. The personal catalogue lists savings and deposit accounts, Payroll Loan, KBank Mobile Indonesia, Priority Banking and Safe Deposit Box. It does not list a consumer credit or charge card. The only 'kartu kredit' wording is a bill-payment feature of the mobile app on the digital banking page. |
 | PT BANK GANESHA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.bankganesha.co.id/individuals/kartu-individu | 2026-11-13 | Downgraded from a first-pass new_issuer tag. Hits came from meta keywords and debit or ATM card wording. The individuals card page was class captcha, so it is not treated as a confirmed catalogue. |
 | PT BANK ICBC INDONESIA | OJK Bank Umum Juni 2026 (Swasta) | new_issuer | `id-icbc` | https://www.icbc.co.id | 2026-11-13 | Official homepage states Credit Card. The card menu points at indonesia.icbc.com.cn, which is off-domain and was not fetched. That host is proposed, not added. |
 | PT BANK QNB INDONESIA Tbk | OJK Bank Umum Juni 2026 (Swasta) | not_reached | null | https://www.qnb.co.id | 2026-11-13 | Homepage or product page was class captcha on the plain request. robots.txt was unreadable. |
@@ -1363,7 +1363,7 @@ The counts below are recomputed from the table rows. Special-check names that ar
 | HK (list entries) | 183 | 0 | 2 | 18 | 70 | 0 | 93 |
 | HK (unique institutions) | 175 | 0 | 2 | 17 | 64 | 0 | 92 |
 | TH | 119 | 0 | 0 | 11 | 79 | 0 | 29 |
-| ID (OJK Bank Umum, Juni 2026) | 105 | 0 | 0 | 10 | 0 | 0 | 95 |
+| ID (OJK Bank Umum, Juni 2026) | 105 | 0 | 0 | 11 | 1 | 0 | 93 |
 | PH | 462 | 0 | 1 | 6 | 2 | 0 | 453 |
 
 Product exclusions (`no_consumer_card`), confirmed and unconfirmed, on separate lines:
@@ -1376,7 +1376,7 @@ Product exclusions (`no_consumer_card`), confirmed and unconfirmed, on separate 
 | HK (list entries) | 70 | 0 |
 | HK (unique institutions) | 64 | 0 |
 | TH | 79 | 0 |
-| ID (OJK Bank Umum, Juni 2026) | 0 | 0 |
+| ID (OJK Bank Umum, Juni 2026) | 1 (PT BANK KASIKORN INDONESIA Tbk) | 0 |
 | PH | 2 (CIMB Bank Philippines Inc.; CTBC Bank (Philippines) Corporation) | 0 |
 
 Scope exclusions (`out_of_scope_wholesale`):
