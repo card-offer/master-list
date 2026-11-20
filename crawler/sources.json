@@ -2784,6 +2784,37 @@
    "issuer_id": "ph-bpi"
   },
   {
+   "id": "id-permata-permatabank.com-cards",
+   "site": "Permata Bank",
+   "host": "permatabank.com",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.permatabank.com/id/consumer",
+    "https://www.permatabank.com/id/permatastore/"
+   ],
+   "status": "untested",
+   "full_crawl_order": "after-34",
+   "suggested_by": null,
+   "issuer_id": "id-permata"
+  },
+  {
+   "id": "id-permata-permatabank.com-offers",
+   "site": "Permata Bank",
+   "host": "permatabank.com",
+   "country": "ID",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.permatabank.com/id/promotions"
+   ],
+   "status": "untested",
+   "full_crawl_order": "after-34",
+   "suggested_by": null,
+   "issuer_id": "id-permata"
+  },
+  {
    "id": "my-icbc-icbcmy.com-cards",
    "site": "ICBC Malaysia",
    "host": "icbcmy.com",
