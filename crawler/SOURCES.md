@@ -126,10 +126,10 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 32 | MY | issuer | offers | Standard Chartered Malaysia | `sc.com` | untested | https://www.sc.com/my/promotions/ |
 | 33 | MY | issuer | cards | RHB Bank | `rhbgroup.com` | untested | https://www.rhbgroup.com/personal/cards/credit-cards/overview/index.html |
 | 33 | MY | issuer | offers | RHB Bank | `rhbgroup.com` | untested |  |
-| 34 | MY | issuer | cards | Maybank | `maybank.com` | untested |  |
+| 34 | MY | issuer | cards | Maybank | `maybank.com` | untested | https://www.maybank.com/islamic/en/cards/islamic_cards_listing.page |
 | 34 | MY | issuer | offers | Maybank | `maybank.com` | untested |  |
-| 34 | MY | issuer | cards | Maybank | `maybank2u.com.my` | untested | https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards/index.page |
-| 34 | MY | issuer | offers | Maybank | `maybank2u.com.my` | untested |  |
+| 34 | MY | issuer | cards | Maybank | `maybank2u.com.my` | untested | https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page, https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/charge_card_listing.page |
+| 34 | MY | issuer | offers | Maybank | `maybank2u.com.my` | untested | https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/maybank_cards.page |
 | 35 | HK | issuer | cards | Mox Bank | `mox.com` | untested | https://mox.com/features/mox-credit/ |
 | 35 | HK | issuer | offers | Mox Bank | `mox.com` | untested | https://mox.com/promotions/, https://mox.com/promotions/year-round-offers/, https://mox.com/page-data/promotions/page-data.json, https://mox.com/page-data/promotions/year-round-offers/page-data.json |
 | 36 | HK | issuer | cards | Fubon Bank (Hong Kong) | `fubonbank.com.hk` | untested | https://www.fubonbank.com.hk/en/cards/credit-card-products/home.html |
