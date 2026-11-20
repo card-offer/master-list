@@ -117,7 +117,7 @@ There are 254 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 30 | MY | issuer | cards | HSBC Malaysia | `hsbcamanah.com.my` | untested | https://www.hsbcamanah.com.my/credit-cards/ |
 | 30 | MY | issuer | offers | HSBC Malaysia | `hsbcamanah.com.my` | untested |  |
 | 30 | MY | issuer | cards | HSBC Malaysia | `sp.hsbc.com.my` | untested |  |
-| 30 | MY | issuer | offers | HSBC Malaysia | `sp.hsbc.com.my` | untested |  |
+| 30 | MY | issuer | offers | HSBC Malaysia | `sp.hsbc.com.my` | untested | https://sp.hsbc.com.my/category/all |
 | 31 | MY | issuer | cards | AmBank | `ambank.com.my` | untested | https://www.ambank.com.my/cards/credit-cards |
 | 31 | MY | issuer | offers | AmBank | `ambank.com.my` | untested | https://www.ambank.com.my/promotions |
 | 32 | MY | issuer | cards | Standard Chartered Malaysia | `av.sc.com` | untested |  |
