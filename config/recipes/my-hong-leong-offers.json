@@ -1,0 +1,25 @@
+{
+  "recipe": "recipe/1",
+  "id": "my-hong-leong-offers",
+  "owner": {"type": "issuer", "id": "my-hong-leong"},
+  "country": "MY",
+  "purpose": "offers",
+  "mode": "plain",
+  "source": "json",
+  "start_urls": ["https://www.hlb.com.my/bin/hlb/card-offer?locale=en&category="],
+  "list": {
+    "item": "result[0].cardOffer",
+    "fields": {
+      "merchant": "promoTitle",
+      "description": "promoDescription",
+      "validity": "validationDate",
+      "end": "endDate",
+      "category": "category",
+      "terms": "tncLink",
+      "cta": "ctaLink",
+      "image_alt": "altTextImage"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "The HLB Card Offers page (https://www.hlb.com.my/en/personal-banking/promotions/cards-hlb-card-offers.html) loads this public JSON: 286 tiles on 20 Nov 2026, read in plain mode. No tile has an id, so the hand-in key is tile-<sha1 of promoTitle|promoDescription|validationDate>[:12]; the recipe falls back to the position. tncLink is on www.hlb.com.my (81 tiles, read) or www.visa.com.my (205 tiles, off-config, not read). Campaign pages come from /bin/hlb/PromotionTeaserUtil (Cards pillar) and are read one by one."
+}
