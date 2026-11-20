@@ -1,0 +1,33 @@
+{
+  "recipe": "recipe/1",
+  "id": "network-jcb-sg-campaign",
+  "owner": {"type": "network", "id": "jcb"},
+  "country": "SG",
+  "purpose": "offers",
+  "mode": "plain",
+  "source": "json",
+  "start_urls": [
+    "https://www.specialoffers.jcb/en/campaign/output/d/southeast-and-south-asia/singapore/ajax.json"
+  ],
+  "list": {
+    "item": "entries",
+    "fields": {
+      "id": "id",
+      "title": "title",
+      "url": "link",
+      "cat1": "cat1",
+      "cat2": "cat2"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "sections": {"selector": "h2.ttl", "all": true, "join": " | "},
+      "terms": "main"
+    },
+    "text_selector": "main"
+  },
+  "listing_kind": "network_offer_listing",
+  "detail_kind": "network_offer_page",
+  "note": "The Singapore campaign page https://www.specialoffers.jcb/en/campaign/d/southeast-and-south-asia/singapore/ loads its tiles from this public JSON file. Each entry is one campaign page /en/campaign/detail/<name>/<id>/. Take eligibility from the 'Eligible members' section. Campaigns whose eligible members are only JCB cards issued in another country (on 20 Nov 2026: Agoda 94117 and Expedia 93355, Hong Kong) are left out and counted. One campaign page can hold more than one deal (Mandai 87723 has benefit-1 and benefit-2), so read it by hand when it changes."
+}
