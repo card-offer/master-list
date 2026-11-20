@@ -1748,6 +1748,8 @@
    "purpose": "cards",
    "entry_urls": [
     "https://www.ocbc.com.hk/personal-banking/cards/credit-cards",
+    "https://www.ocbc.com.hk/premier-banking/our-solutions/cards/premier-voyage-card",
+    "https://www.ocbc.com.hk/premier-banking/our-solutions/cards/premier-credit-card",
     "https://www.ocbc.com.hk/personal-banking/cards/ocbc-credit-card"
    ],
    "status": "untested",
@@ -1762,7 +1764,13 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.ocbc.com.hk/personal-banking/cards/card-promotions",
+    "https://www.ocbc.com.hk/iwov-resources/hk/ocbc/personal/data/card-promotions.json",
+    "https://www.ocbc.com.hk/personal-banking/campaign/sem-promotion",
+    "https://www.ocbc.com.hk/personal-banking/cards/flexi-money-interest-free-instalment-plan",
+    "https://www.ocbc.com.hk/personal-banking/cards/easy-spending-interest-free-instalment-plan"
+   ],
    "status": "untested",
    "full_crawl_order": 43,
    "suggested_by": null,
