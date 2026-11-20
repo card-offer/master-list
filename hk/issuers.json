@@ -5,22 +5,39 @@
   "schema_version": "0.3.0",
   "items": [
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-bea-aia-credit-card",
+        "hk-bea-goal-credit-card-exclusively-for-tertiary-students",
+        "hk-bea-jcb-platinum-card",
+        "hk-bea-supremegold-world-mastercard",
+        "hk-bea-unionpay-dual-currency-diamond-credit-card",
+        "hk-bea-unionpay-dual-currency-diamond-credit-card-exclusively-for-tertiary-students",
+        "hk-bea-world-mastercard"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
-          "https://www.hkbea.com/html/en/index.html"
+          "https://www.hkbea.com/html/en/bea-credit-card-world-mc.html",
+          "https://www.hkbea.com/html/en/bea-credit-card-world-mastercard.html",
+          "https://www.hkbea.com/html/en/bea-unionpay-dual-currency-diamond-card.html",
+          "https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-diamond-student-card.html",
+          "https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-goal-student-card.html",
+          "https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-jcb-card.html",
+          "https://www.hkbea.com/html/en/bea-aia-credit-card.html",
+          "https://www.hkbea.com/html/en/bea-personal-banking-key-facts-statement.html"
         ],
-        "note": "English home names BEA Dual Credit Card, BEA GOAL Credit Card and BEA UnionPay Dual Currency DIAMOND Credit Card. The Credit Cards menu goes to the promotions listing.",
+        "note": "First full crawl on 20 Nov 2026. No consumer card catalogue: the Credit Cards menu and the sitemap only point to the promotions listing. 7 cards have a product-page heading. The 17 Sep 2026 Key Facts Statement also names Classic, Gold, Titanium or GOAL (standard), PLATINUM, UnionPay Dual Currency PLATINUM, Visa Signature and CENTENNIAL World Elite, which have no dedicated product page and were not handed in. Corporate cards were excluded. 140 live offers from official pages and T&C PDFs. listing_complete is false because some campaign pages and the shopping year-round merchant list are image-only, the travel Mastercard offer page has no T&C PDF, and linked off-config hosts were not fetched.",
         "offer_sources": [
-          "https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html"
+          "https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html",
+          "https://www.hkbea.com/html/en/bea-credit-card-dining-offer-yro.html",
+          "https://www.hkbea.com/html/en/bea-credit-card-shopping-offer-yro.html"
         ],
-        "status": "not_covered"
+        "status": "partial"
       },
       "id": "hk-bea",
       "legal_name": "BANK OF EAST ASIA, LIMITED (THE)",
       "name": "Bank of East Asia",
-      "offer_count": 0,
+      "offer_count": 140,
       "official_domains": [
         "hkbea.com"
       ],
