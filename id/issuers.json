@@ -1,7 +1,7 @@
 {
-  "count": 10,
+  "count": 11,
   "country": "ID",
-  "generated_at": "2026-11-13T01:15:32+00:00",
+  "generated_at": "2026-11-20T09:37:00+08:00",
   "schema_version": "0.3.0",
   "items": [
     {
@@ -195,6 +195,29 @@
         "ocbc.id"
       ],
       "website": "https://www.ocbc.id"
+    },
+    {
+      "card_ids": [],
+      "country": "ID",
+      "crawl": {
+        "card_sources": [
+          "https://www.permatabank.com/id/consumer",
+          "https://www.permatabank.com/id/permatastore/"
+        ],
+        "note": "Real-Chrome mode reached the official site after plain and ordinary browser requests returned HTTP 403 bot_wall. The consumer page and Permata Store list Kartu Kredit and name consumer cards including Permata Shopping Card, Permata ME Credit and Permata Ultimate Card. The promotions listing names AirAsia Card, Permata Infinite Card, Permata Black Card, Permata Cashback Card, Permata ME Credit, Permata Reward Card, Permata Shopping Card, Permata Kartu Kredit Platinum and Permata Ultimate Card.",
+        "offer_sources": [
+          "https://www.permatabank.com/id/promotions"
+        ],
+        "status": "not_covered"
+      },
+      "id": "id-permata",
+      "legal_name": "PT BANK PERMATA Tbk",
+      "name": "Permata Bank",
+      "offer_count": 0,
+      "official_domains": [
+        "permatabank.com"
+      ],
+      "website": "https://www.permatabank.com"
     },
     {
       "card_ids": [],

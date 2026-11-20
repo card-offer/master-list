@@ -4,6 +4,7 @@ import http.server
 import io
 import json
 import os
+import shutil
 import tempfile
 import threading
 import time
@@ -421,6 +422,7 @@ class RealChromeTests(unittest.TestCase):
     def test_launch_uses_channel_chrome_headed_profile_and_does_not_set_a_user_agent(self):
         fetcher, _net, _log = make({})
         profile = tempfile.mkdtemp(prefix="chrome-profile-")
+        self.addCleanup(shutil.rmtree, profile, True)
         captured = {}
 
         class Context:
@@ -870,6 +872,7 @@ class MergeConditionTests(unittest.TestCase):
 
     def test_probe_keeps_the_page_text_under_raw(self):
         root = tempfile.mkdtemp(prefix="probe-root-")
+        self.addCleanup(shutil.rmtree, root, True)
         result = {"url": "https://www.bank.example/cards", "status": 200,
                   "text": "visible page text", "body": b"<html>visible page text</html>", "class": "ok"}
         text_path, html_path = write_probe_page(root, "my-maybank", result, when=__import__("datetime").datetime(2026, 11, 12, 21, 45, 0))

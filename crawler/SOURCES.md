@@ -24,7 +24,7 @@ Contributors can propose a site with the "Suggest a site to crawl" issue form. T
 
 ## The list
 
-There are 248 rows in `crawler/sources.json`. Counts by country: HK 46, ID 32, MY 58, PH 21, SG 60, TH 31. Counts by type: issuer 190, network 50, regulator 8.
+There are 254 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, MY 58, PH 23, SG 60, TH 33. Counts by type: issuer 196, network 50, regulator 8.
 
 | Order | Country | Type | Purpose | Site | Host | Status | Entry URLs |
 |---|---|---|---|---|---|---|---|
@@ -222,6 +222,12 @@ There are 248 rows in `crawler/sources.json`. Counts by country: HK 46, ID 32, M
 | 77 | PH | issuer | offers | EastWest Bank | `eastwestbanker.com` | untested | https://www.eastwestbanker.com/promos |
 | 78 | PH | issuer | cards | Bank of the Philippine Islands | `bpi.com.ph` | untested | https://www.bpi.com.ph/personal/cards, https://www.bpi.com.ph/personal/cards/credit-cards |
 | 78 | PH | issuer | offers | Bank of the Philippine Islands | `bpi.com.ph` | untested | https://www.bpi.com.ph/personal/rewards-and-promotions, https://www.bpi.com.ph/personal/rewards-and-promotions/promos |
+| 79 | TH | issuer | cards | Bangkok Bank | `bangkokbank.com` | untested | https://www.bangkokbank.com/en/personal/cards/credit-cards, https://www.bangkokbank.com/en/personal/cards/credit-cards/bangkok-bank-airasia-credit-card |
+| 79 | TH | issuer | offers | Bangkok Bank | `bangkokbank.com` | untested | https://www.bangkokbank.com/en/personal/cards/credit-cards/promotions |
+| 80 | ID | issuer | cards | Permata Bank | `permatabank.com` | untested | https://www.permatabank.com/id/consumer, https://www.permatabank.com/id/permatastore/ |
+| 80 | ID | issuer | offers | Permata Bank | `permatabank.com` | untested | https://www.permatabank.com/id/promotions |
+| 81 | PH | issuer | cards | PNB | `pnb.com.ph` | untested | https://www.pnb.com.ph/cards |
+| 81 | PH | issuer | offers | PNB | `pnb.com.ph` | untested | https://www.pnb.com.ph/promos |
 | after-34 | MY | issuer | cards | ICBC Malaysia | `icbcmy.com` | untested |  |
 | after-34 | MY | issuer | offers | ICBC Malaysia | `icbcmy.com` | untested |  |
 | after-34 | MY | issuer | cards | ICBC Malaysia | `v.icbc.com.cn` | untested |  |

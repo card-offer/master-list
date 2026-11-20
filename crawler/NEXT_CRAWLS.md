@@ -33,11 +33,8 @@ These offers are `needs_review` because the offer names a card that is not in th
 | Issuer | Card names in the offers | Offers in review |
 |---|---|---|
 | `my-standard-chartered` | Priority Banking Visa Infinite credit card; Priority Worldmiles Mastercard | 43 |
-| `sg-standard-chartered` | Visa Infinite Credit Card | 33 |
 | `my-aeon-credit` | AEON Platinum Visa Card; AEON Platinum Mastercard; AEON Member Plus Visa Card; AEON Member Plus Credit Card | 4 |
 | `my-hong-leong` | HLB Infinite P Credit Card; HLB Infinite Credit Card; HLB Infinite Doctor's Edition Credit Card | 1 |
-| `sg-ocbc` | OCBC 90°N Visa Card; OCBC 90°N Mastercard | 1 |
-| `sg-cimb` | CIMB World Mastercard | 1 |
 
 A card can be for Priority or private banking clients only. It is still a card. Hand it in with the eligibility that the page states. If the issuer has no page for the card, or the page says that the card is no longer offered, report the card name and the page you checked. Do not make a card record without a page.
 
@@ -48,12 +45,8 @@ Re-read the terms of these offers. The most frequent flags:
 | Issuer | Flag | Offers |
 |---|---|---|
 | `my-ocbc` | `date_conflict` | 68 |
-| `sg-ocbc` | `date_conflict` | 55 |
-| `sg-ocbc` | `end_date_past_horizon` | 43 |
 | `my-hong-leong` | `amount_unclear` | 29 |
 | `sg-maybank` | `end_date_past_horizon` | 18 |
-| `sg-ocbc` | `merchant_not_stated` | 19 |
-| `sg-standard-chartered` | `date_conflict` or `end_date_past_horizon` | 20 |
 
 1. `date_conflict`: the listing and the terms state different dates. Take the dates from the offer's own terms document. If the terms state a booking period and a stay or usage period, give both (`booking_period` and `usage_period`). Keep the flag only when the terms themselves state two different end dates for one offer, and quote both.
 2. `end_date_past_horizon`: an end date more than 24 months ahead. Check that the date is the end of the offer and not a card fee date, a programme date or a rate change date. Quote the sentence that gives the end date.
@@ -86,7 +79,6 @@ If the offer is no longer on the listing, do not hand it in. The ingest withdraw
 | `my-icbc` | not_covered | The census read the product page on `icbcmy.com`: ICBC UnionPay Dual Currency Credit Card and ICBC Visa Credit Card, each as Classic, Gold and Platinum. Do a card run and an offer run. |
 | `my-hsbc` | partial | Do a card run on the Amanah catalogue on `hsbcamanah.com.my`. That host is in `official_domains`. |
 | `sg-boc` | partial | Cards are in. The listings had no current card offers. Read the Treats, Rewards and Promotions listings again. If they still have no offer, report it, and the run is complete. |
-| `sg-cimb` | partial | The merchant deals are on `deals.cimb.com/sg`. That host is in `official_domains`. Do an offer run on it. |
 | `sg-trust` | partial | Partner coupons are images or CMS data on hosts that are not official. Do not crawl those hosts. Report the hosts with the official page that links to them. |
 
 ## 6. Network offer sites (track C)
@@ -97,21 +89,17 @@ Follow section 7 of `crawler/COMPLETE_INSTRUCTION.md` and the Track C table in `
 2. C3 and C4, JCB Malaysia and Singapore: run them again. Many published JCB offers have the eligibility quote "All members object". That text looks like a page label or script value, not a sentence of the offer. Quote the eligibility sentence of each offer exactly as the page shows it. If the page states no eligibility sentence, give null with the reason. Leave out offers for JCB cards issued in another country, and count them in the report.
 3. C5 to C12: Visa, UnionPay, American Express and Diners Club for Malaysia and Singapore. Do one run for each row. A country offer host that is not in `official_domains` must be reported first, not crawled.
 
-## 7. Census rechecks with the Chrome user agent
+## 7. Census rechecks
 
-The census of 13 Nov did not reach these banks. Most were a timeout or a block page with the old user agent. Probe each official homepage again with `python pipeline/fetcher.py probe --url <homepage> --country <cc>`: plain, then browser, then one real-Chrome attempt. `config/census_hosts.json` gives the probe the official hosts of these banks. The maintainer put these homepages on the real-Chrome list on 20 Nov 2026. If a probe reads the site, find the consumer credit card page and give the census result. Hand in one census update for each country.
+The rechecks of 20 Nov 2026 are done (PRs 69, 70 and 71). They found three new issuers: `th-bangkok-bank`, `ph-pnb` and `id-permata`. These are now in `crawler/FULL_CRAWL.md` as 79, 80 and 81. One task is left:
 
-| Country | Banks |
-|---|---|
-| PH | BDO Unibank (www.bdo.com.ph), China Banking Corporation (www.chinabank.com.ph), Security Bank (www.securitybank.com.ph), Philippine National Bank (www.pnb.com.ph), Union Bank of the Philippines (www.unionbankph.com), Citibank N.A. Philippines (www.citibank.com.ph), Standard Chartered Philippines (www.standardchartered.com.ph) |
-| TH | Bangkok Bank (www.bangkokbank.com), Kasikornbank (www.kasikornbank.com), Siam Commercial Bank (www.scb.co.th, the website on the MAS directory row). Krung Thai Bank (www.ktb.co.th, which redirects to www.krungthai.com). The maintainer accepted krungthai.com as official on 20 Nov 2026, so follow the redirect. |
-| ID | Bank Rakyat Indonesia (www.bri.co.id), Bank Negara Indonesia (www.bni.co.id), Bank Permata (www.permatabank.com), Maybank Indonesia (www.maybank.co.id), Bank Kasikorn Indonesia (www.kasikornbank.co.id) |
+1. Krung Thai Bank: probe `https://www.ktb.co.th/` with `--url --country TH`. The maintainer accepted `krungthai.com` on 20 Nov 2026, after the recheck ran. The probe follows the redirect, and `www.krungthai.com` is on the real-Chrome list.
 
-Land Bank and Bank of Commerce showed a captcha. Do not try them again. If real Chrome also gives `bot_wall` or a captcha, stop for that site and list it in the report as `not_reached`. If a bank becomes a `new_issuer`, add it with its official domains in the census update.
+The other banks stay `not_reached` after real Chrome: BDO (Akamai challenge), Chinabank, Security Bank, Citibank PH, Standard Chartered PH, UnionBank, Kasikornbank, SCB, BRI, BNI and Maybank Indonesia. Do not try them again until the maintainer says so.
 
 ## 8. Cards and offers for Hong Kong, Thailand, Indonesia and the Philippines
 
-These issuers are in the repository from the census, with no cards and no offers. The maintainer accepted all of them and their `official_domains` on 20 Nov 2026. Do the issuers in the order of `crawler/FULL_CRAWL.md`, after tasks 1 to 6: Hong Kong 35 to 51, Thailand 52 to 62, Indonesia 63 to 72, Philippines 73 to 78. Pages that are not in English follow section 4 of `crawler/COMPLETE_INSTRUCTION.md`.
+These issuers are in the repository from the census, with no cards and no offers. The maintainer accepted all of them and their `official_domains` on 20 Nov 2026. Do the issuers in the order of `crawler/FULL_CRAWL.md`, after tasks 1 to 6: Hong Kong 35 to 51, Thailand 52 to 62, Indonesia 63 to 72, Philippines 73 to 78, then 79 to 81. Pages that are not in English follow section 4 of `crawler/COMPLETE_INSTRUCTION.md`.
 
 ## 9. When to stop and ask
 

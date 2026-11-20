@@ -13,6 +13,7 @@ import json
 import os
 import re
 import sys
+import shutil
 import tempfile
 from urllib.parse import urlparse
 
@@ -365,20 +366,26 @@ def validate(root, index_dir=None):
         if card.get("status") == "active" and not card.get("networks"):
             errors.append(f"{card['id']}: active card has an empty networks list")
         check_fetch_log(card, fetch_pairs, errors)
-    if index_dir is None:
+    own_index_dir = index_dir is None
+    if own_index_dir:
         index_dir = tempfile.mkdtemp(prefix="card-offer-indexes-")
-        write_indexes(root, index_dir)
-    index_validator = validator(root, reg, "index.schema.json")
-    for dirpath, _dirs, files in os.walk(index_dir):
-        for name in files:
-            if not name.endswith(".json"):
-                continue
-            path = os.path.join(dirpath, name)
-            data = load_json(path)
-            for err in index_validator.iter_errors(data):
-                errors.append(f"{os.path.relpath(path, index_dir)} {err.json_path}: {err.message[:200]}")
+    try:
+        if own_index_dir:
+            write_indexes(root, index_dir)
+        index_validator = validator(root, reg, "index.schema.json")
+        for dirpath, _dirs, files in os.walk(index_dir):
+            for name in files:
+                if not name.endswith(".json"):
+                    continue
+                path = os.path.join(dirpath, name)
+                data = load_json(path)
+                for err in index_validator.iter_errors(data):
+                    errors.append(f"{os.path.relpath(path, index_dir)} {err.json_path}: {err.message[:200]}")
+    finally:
+        if own_index_dir:
+            shutil.rmtree(index_dir, ignore_errors=True)
     for dirpath, dirnames, files in os.walk(root):
-        dirnames[:] = [name for name in dirnames if name not in {".git", "dist", "__pycache__", ".venv", "venv", "node_modules"}]
+        dirnames[:] = [name for name in dirnames if name not in {".git", "dist", "__pycache__", ".venv", "venv", "node_modules", "raw"}]
         for name in files:
             if name.endswith((".json", ".md", ".yml", ".yaml")):
                 with open(os.path.join(dirpath, name), encoding="utf-8") as fh:

@@ -206,6 +206,7 @@ These are new issuers from the 2026-11-13 phase 1 census in `crawler/ISSUER_CENS
 | 60 | `th-ktc` | KTC | ktc.co.th | 0 | 0 | Catalogue https://www.ktc.co.th/credit-card |
 | 61 | `th-krungsri-card` | Krungsri Card | krungsricard.com | 0 | 0 | Catalogue https://www.krungsricard.com/th/product |
 | 62 | `th-uob` | UOB Thailand | uob.co.th | 0 | 0 | Ordinary browser. Listing https://www.uob.co.th/personal/credit-cards.page |
+| 79 | `th-bangkok-bank` | Bangkok Bank | bangkokbank.com | 0 | 0 | Census recheck 2026-11-20. Ordinary browser read the catalogue after plain requests timed out. |
 
 ### Indonesia
 
@@ -223,6 +224,7 @@ These are new issuers from the 2026-11-13 phase 1 census in `crawler/ISSUER_CENS
 | 70 | `id-mega` | Bank Mega | bankmega.com | 0 | 0 | Catalogue: https://bankmega.com/id/personal/kartu-kredit/. applykartukredit.bankmega.com was seen and was not added. |
 | 71 | `id-mandiri` | Bank Mandiri | bankmandiri.co.id | 0 | 0 | Homepage confirms consumer kartu kredit. Catalogue host mandirikartukredit.com is off-domain; report it, do not crawl it yet. robots.txt was unreadable. |
 | 72 | `id-bca` | BCA | bca.co.id, promo.bca.co.id | 0 | 0 | Catalogue: https://www.bca.co.id/id/individu/produk/kartu-kredit. promo.bca.co.id was added from links on that page. |
+| 80 | `id-permata` | Permata Bank | permatabank.com | 0 | 0 | Census recheck 2026-11-20. Real-Chrome mode only; plain and browser were bot_wall. |
 
 ### Philippines
 
@@ -236,6 +238,7 @@ These are new issuers from the 2026-11-13 phase 1 census in `crawler/ISSUER_CENS
 | 76 | `ph-hsbc` | HSBC Philippines | hsbc.com.ph | 0 | 0 | Offer links also point at offers.hsbc.com.ph. |
 | 77 | `ph-eastwest` | EastWest Bank | eastwestbanker.com | 0 | 0 | Credit card listing and promos are on this host. |
 | 78 | `ph-bpi` | Bank of the Philippine Islands | bpi.com.ph | 0 | 0 | Credit card listing and rewards pages are on this host. Application links go to www2.bpi.com.ph. BPI Direct BanKO is same_group on this site. |
+| 81 | `ph-pnb` | PNB | pnb.com.ph | 0 | 0 | Census recheck 2026-11-20. Real-Chrome mode only; plain and browser were bot_wall. |
 
 New issuers from phase 1 go after the last numbered row, after the maintainer accepts them.
 
