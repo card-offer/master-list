@@ -1,0 +1,35 @@
+{
+  "recipe": "recipe/1",
+  "id": "network-jcb-sg-offers",
+  "owner": {"type": "network", "id": "jcb"},
+  "country": "SG",
+  "purpose": "offers",
+  "mode": "plain",
+  "source": "json",
+  "start_urls": [
+    "https://www.specialoffers.jcb/en/offers/output/d/southeast-and-south-asia/singapore/ajax.json"
+  ],
+  "list": {
+    "item": "entries",
+    "fields": {
+      "id": "id",
+      "merchant": "title",
+      "url": "link",
+      "benefit": "disc",
+      "cat1": "cat1",
+      "cat2": "cat2",
+      "cat3": "cat3"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1.entry-title",
+      "coupon": "div.coupon-Layout",
+      "terms": "div.text-Layout div.text"
+    },
+    "text_selector": "main"
+  },
+  "listing_kind": "network_offer_listing",
+  "detail_kind": "network_offer_page",
+  "note": "The Singapore regional offers page https://www.specialoffers.jcb/en/offers/d/southeast-and-south-asia/singapore/ loads its tiles from this public JSON file. Each entry is one offer page /en/offers/detail/A-xxxxxxxx-05/; the item key is the last path part, which is the source_key of the hand-in. The Note text on these pages starts with the CMS label 'All members object'. It is not an eligibility sentence: give eligibility confidence inferred with a null quote unless the page states one. Leave out offers only for JCB cards issued in another country and count them."
+}
