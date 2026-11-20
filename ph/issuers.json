@@ -1,8 +1,8 @@
 {
   "schema_version": "0.3.0",
   "country": "PH",
-  "generated_at": "2026-11-13T01:06:00+00:00",
-  "count": 6,
+  "generated_at": "2026-11-20T09:37:00+08:00",
+  "count": 7,
   "items": [
     {
       "id": "ph-aub",
@@ -101,6 +101,27 @@
         "offer_sources": [],
         "status": "not_covered",
         "note": "The official homepage states Apply for a credit card and links to https://apply.metrobank.com.ph/creditcard. That host is not in official_domains. No on-host card listing URL was found on the homepage."
+      }
+    },
+    {
+      "id": "ph-pnb",
+      "name": "PNB",
+      "legal_name": "Philippine National Bank",
+      "country": "PH",
+      "website": "https://www.pnb.com.ph",
+      "official_domains": [
+        "pnb.com.ph"
+      ],
+      "card_ids": [],
+      "crawl": {
+        "card_sources": [
+          "https://www.pnb.com.ph/cards"
+        ],
+        "offer_sources": [
+          "https://www.pnb.com.ph/promos"
+        ],
+        "status": "not_covered",
+        "note": "Real-Chrome mode reached the official cards catalogue, which lists Credit, Debit and Prepaid categories and names PNB Credit Cards and the PNB-PAL Mabuhay Miles Mastercard Credit Card. The fetcher classed the homepage and catalogue captcha because the HTML includes a reCAPTCHA v3 script and badge; the public catalogue text was present and was used. No challenge was interacted with. The cards page links to https://www.pnb.com.ph/promos; this run did not return readable promo listing text."
       }
     },
     {

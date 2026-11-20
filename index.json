@@ -27,7 +27,7 @@
     "PH": {
       "cards": 0,
       "currency": "PHP",
-      "issuers": 6,
+      "issuers": 7,
       "offers": 0,
       "path": "/ph/",
       "timezone": "Asia/Manila"
@@ -49,7 +49,7 @@
       "timezone": "Asia/Bangkok"
     }
   },
-  "generated_at": "2026-11-20T00:20:45+00:00",
+  "generated_at": "2026-11-20T09:37:00+08:00",
   "indexes": "Built in CI and published to GitHub Pages. Not stored on the main branch.",
   "layout": {
     "archive": "{cc}/archive/offers/{issuer}.json",
