@@ -291,20 +291,27 @@
       "website": "https://www.icbcasia.com/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-mox-credit-card"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
-          "https://mox.com/"
+          "https://mox.com/features/mox-credit/"
         ],
-        "note": "The homepage states Mox Credit Card and links https://mox.com/features/mox-credit/. The fetcher classified the homepage and that product URL as captcha because the HTML contains inheritProjectCaptchaSettings; the responses were 200 with a large official page body. The homepage is the evidence URL.",
-        "offer_sources": [],
-        "status": "not_covered"
+        "offer_sources": [
+          "https://mox.com/promotions/",
+          "https://mox.com/promotions/year-round-offers/",
+          "https://mox.com/page-data/promotions/page-data.json",
+          "https://mox.com/page-data/promotions/year-round-offers/page-data.json"
+        ],
+        "note": "First full crawl run 20261120-1215-hk-mox. One consumer credit card, Mox Credit Card (Mastercard; annual membership fee HKD0 per the 30 January 2026 KFS). 100 live offers handed in: 86 year-round merchant offers (1 January to 31 December 2026, shared terms at /static/2026YRO-TnC.pdf) and 14 campaign offers (0% FX fee waiver, phone, Samsung, Xiaomi, Emirates, Trip.com, HKT/csl plans, CLUBLINK, MOXTRIP25, MOXHKT25, MOXBILL26, MOXTRAVEL, and tax split purchase). One live year-round tile (New Youth) was left out because the published merchant name test rejects names that start with New. listing_complete is false because Mox Earn merchant offers (500+ deals advertised on /promotions/mox-earn/) are only in the Mox app. The promotions hub and year-round listing were read in full from official same-origin page-data JSON. English pages only; /zh/ and /cn/ exist and were not crawled. Fetcher classify() marks most mox.com HTML as captcha because of a hidden .grecaptcha-badge CSS rule; the responses were HTTP 200 with large official bodies, and no real Chrome was used. https://mox.com/sitemap.xml is 404; robots.txt points to https://mox.com/sitemap-index.xml (child https://mox.com/sitemap-0.xml). Accounts and Cards Schedule and Mox Credit Schedule PDFs were truncated at the fetcher 5MB cap; KFS, fees, and rewards documents were complete. Instant Clear and Split Purchase are standing card features, not dated offers. The Mox Exclusive Offers listing still exists but every production tile had already ended. Linked off-config hosts (not crawled) include images.ctfassets.net, app.adjust.com, www.sc.com, www.facebook.com, www.instagram.com, www.linkedin.com, www.youtube.com, www.pccw.com, www.hkt.com, www.trip.com, www.emirates.com, www.dps.org.hk, and mstr.cd.",
+        "status": "partial"
       },
       "id": "hk-mox",
       "legal_name": "MOX BANK LIMITED",
       "name": "Mox Bank",
-      "offer_count": 0,
+      "offer_count": 100,
       "official_domains": [
         "mox.com"
       ],
