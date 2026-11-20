@@ -1634,7 +1634,10 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.dahsing.com/html/en/credit_card/latest_offers/index.html",
+    "https://www.dahsing.com/html/en/credit_card/year_round_offer/year_round_offer_listing.html"
+   ],
    "status": "untested",
    "full_crawl_order": 39,
    "suggested_by": null,
