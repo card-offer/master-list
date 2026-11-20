@@ -1,0 +1,20 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-chong-hing-cards",
+  "owner": {"type": "issuer", "id": "hk-chong-hing"},
+  "country": "HK",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": ["https://www.chbank.com/en/personal/banking-services/credit-cards/index.shtml"],
+  "list": {
+    "item": "#tab_content_41 a.tab-card",
+    "key": "name",
+    "fields": {
+      "name": "div.title",
+      "url": ":scope@href",
+      "image": "img@src"
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "note": "The English Credit Cards listing at /en/personal/banking-services/credit-cards/index.shtml is the complete consumer list. Personal cards are the seven a.tab-card tiles in #tab_content_41. The same page has Corporate Credit Cards and Merchant Acquiring Services in other tabs; do not treat those tiles as consumer cards. Several product hrefs still use the older /card/credit-cards/ path, which returns the product page. The same path without /card/ can be a 404. The listing names seven families. This run split some families into more than one card record where the product page writes more than one product name (Chong Hing Visa Card and Chong Hing Mastercard on the Chong Hing Credit Card page; Chong Hing Platinum Mastercard and Chong Hing Titanium Mastercard on the man page; three student cards on the student page). UnionPay Gold and Diamond appear on the UnionPay product page as designs of Chong Hing UnionPay Credit Card; they were kept as one card with fee_unclear. Chong Hing Card under /chong-hing-cards/ is an ATM or debit product and is out of scope."
+}

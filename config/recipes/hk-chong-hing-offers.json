@@ -1,0 +1,26 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-chong-hing-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-chong-hing"
+  },
+  "country": "HK",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/visa.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/master.shtml",
+    "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/unionpay.shtml"
+  ],
+  "list": {
+    "item": "div.plan-item",
+    "key": "title",
+    "fields": {
+      "title": "div.title",
+      "body": "div.plan-item-right"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "Visa, Mastercard and UnionPay latest promotions are three plain HTML listings of div.plan-item tiles. Do not fetch the Details links; they go to visa.com.hk, visa.com.sg, specials.priceless.com, unionpayintl.com, premium.unionpayintl.com and article.95516.com, which are not in official_domains. Extract dates and amounts from the tile text on chbank.com. The last Visa tile (Services Provided by Visa / Visa Click to Pay) is a service link, not an offer. Year-round Point-to-Gift or Cash Rebate is on credit-cards-benefits/index2.shtml, not on these three listings. Some older /card/credit-cards/credit-cards-benefits/*.shtml paths are meta-refresh stubs; use the /credit-cards/credit-cards-benefits/ paths."
+}

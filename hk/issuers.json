@@ -90,20 +90,49 @@
       "website": "https://www.asia.ccb.com/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-chong-hing-hong-kong-chiu-chow-chamber-of-commerce-visa-card",
+        "hk-chong-hing-mastercard",
+        "hk-chong-hing-platinum-card",
+        "hk-chong-hing-platinum-card-exclusively-for-local-tertiary-institution-students",
+        "hk-chong-hing-platinum-mastercard",
+        "hk-chong-hing-titanium-mastercard",
+        "hk-chong-hing-titanium-mastercard-exclusively-for-local-tertiary-institution-students",
+        "hk-chong-hing-unionpay-credit-card",
+        "hk-chong-hing-unionpay-diamond-credit-card",
+        "hk-chong-hing-unionpay-dual-currency-diamond-card-exclusively-for-local-tertiary-institution-students",
+        "hk-chong-hing-visa-card",
+        "hk-chong-hing-wah-yan-one-family-visa-platinum-card-centennial-edition"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
-          "https://www.chbank.com/en/homepage.shtml"
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/index.shtml",
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/personal-credit-cards/index.shtml",
+          "https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/chong-hing-platinum/index.shtml",
+          "https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/chong-hing/index.shtml",
+          "https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/man/index.shtml",
+          "https://www.chbank.com/en/personal/banking-services/card/credit-cards/personal-credit-cards/chong-hing-credit-card/chong-hing-unionpay-dual-currency/index.shtml",
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/personal-credit-cards/students/index.shtml",
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/co-branded-credit-card/wah-yan-one-family/index.shtml",
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/co-branded-credit-card/chiu-chow-chamber/index.shtml",
+          "https://www.chbank.com/data/media/document/key_fact_statement.pdf"
         ],
-        "note": "The English homepage links Chong Hing Credit Card and co-branded personal credit cards. A product URL returned almost no text this run, so the homepage is the evidence URL.",
-        "offer_sources": [],
-        "status": "not_covered"
+        "offer_sources": [
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/index.shtml",
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/visa.shtml",
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/master.shtml",
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/unionpay.shtml",
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/index2.shtml",
+          "https://www.chbank.com/en/personal/banking-services/credit-cards/credit-cards-benefits/point-to-gift-redemption/index.shtml"
+        ],
+        "status": "ok",
+        "note": "First full run 20 Nov 2026. The English Credit Cards listing has 7 consumer tiles; 12 card records after splitting Visa and Mastercard, Platinum and Titanium Mastercard, and the three student cards, and after naming UnionPay Diamond Credit Card from the UnionPay product page. Chong Hing Platinum Card and the student Platinum Card have no network sentence on the product page (network_not_stated). Standard Visa/Mastercard and the UnionPay family fee in the shared KFS are unclear. 26 offers from the Visa, Mastercard and UnionPay latest promotions, the year-round Point-to-Gift scheme, and the 2026 mobile banking e-voucher. The Agoda Visa 7% offer ends 31 March 2029 (end_date_past_horizon). Promo Details links go to visa.com.hk, visa.com.sg, specials.priceless.com, unionpayintl.com, premium.unionpayintl.com and article.95516.com and were not crawled. The Logon_Mobile_Banking_Reward_TNC26_EN.pdf path was blocked by the fetcher login filter. Welcome-gift T&C pages under the older /card/ path were JS shells. robots.txt at www.chbank.com/robots.txt is an HTML page; the fetcher treated the host as allow_all. Chong Hing Card under /chong-hing-cards/ is a debit or ATM product and was left out."
       },
       "id": "hk-chong-hing",
       "legal_name": "CHONG HING BANK LIMITED",
       "name": "Chong Hing Bank",
-      "offer_count": 0,
+      "offer_count": 26,
       "official_domains": [
         "chbank.com"
       ],
