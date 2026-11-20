@@ -1408,7 +1408,9 @@
    "country": "MY",
    "type": "issuer",
    "purpose": "cards",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.maybank.com/islamic/en/cards/islamic_cards_listing.page"
+   ],
    "status": "untested",
    "full_crawl_order": 34,
    "suggested_by": null,
@@ -1435,7 +1437,8 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards/index.page"
+    "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/credit_cards_listing.page",
+    "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/cards/charge_card_listing.page"
    ],
    "status": "untested",
    "full_crawl_order": 34,
@@ -1449,7 +1452,9 @@
    "country": "MY",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/maybank_cards.page"
+   ],
    "status": "untested",
    "full_crawl_order": 34,
    "suggested_by": null,

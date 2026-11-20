@@ -1,0 +1,52 @@
+{
+  "recipe": "recipe/1",
+  "id": "my-maybank-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "my-maybank"
+  },
+  "country": "MY",
+  "purpose": "offers",
+  "mode": "browser",
+  "start_urls": [
+    "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/maybank_cards.page"
+  ],
+  "settle_ms": 3000,
+  "list": {
+    "item": "#promo .tile_bl",
+    "key": "url",
+    "fields": {
+      "title": "h3",
+      "url": "a.btn@href",
+      "teaser": ".info",
+      "country": {
+        "selector": ":scope",
+        "output": "@data-urlparam-sub_type"
+      },
+      "category": {
+        "selector": ":scope",
+        "output": "@data-urlparam-sub_sub_type"
+      }
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1:not(.title-primary)",
+      "teaser": {
+        "selector": "h1:not(.title-primary) + *"
+      },
+      "period": {
+        "selector": "p, li",
+        "all": true,
+        "regex": "(?i)((?:promotion|campaign|offer) period.*)",
+        "join": " "
+      },
+      "offer": "#promo-sgm-1 article.content",
+      "terms": "#promo-sgm-2 article.content"
+    },
+    "text_selector": "main, body"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "maybank2u.com.my plain requests time out (robots.txt and pages); headless browser with --disable-http2 reads it (HARD_SITES section 5, 20 Nov 2026). All 1,083 tiles are in the rendered DOM; the country filter is client side, so take tiles with country Malaysia. robots.txt is unreadable, so every page is robots_unreadable."
+}
