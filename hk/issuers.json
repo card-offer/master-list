@@ -171,20 +171,50 @@
       "website": "https://www.cncbinternational.com/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-dah-sing-acca-credit-card",
+        "hk-dah-sing-altruist-credit-card",
+        "hk-dah-sing-ana-world-mastercard",
+        "hk-dah-sing-apita-uny-card",
+        "hk-dah-sing-astro-boy-credit-card",
+        "hk-dah-sing-autotoll-e-serve-credit-card",
+        "hk-dah-sing-batman-platinum-card",
+        "hk-dah-sing-british-airways-platinum-card",
+        "hk-dah-sing-distinction-platinum-card",
+        "hk-dah-sing-doraemon-platinum-card",
+        "hk-dah-sing-dsoba-centennial-world-mastercard",
+        "hk-dah-sing-gundam-credit-card",
+        "hk-dah-sing-hello-kitty-visa-platinum-card",
+        "hk-dah-sing-international-student-identity-mastercard",
+        "hk-dah-sing-international-teacher-identity-mastercard",
+        "hk-dah-sing-lscoba-visa-platinum-card",
+        "hk-dah-sing-maryknoll-convent-school-platinum-visa-card",
+        "hk-dah-sing-minna-no-tabo-platinum-card",
+        "hk-dah-sing-moomin-credit-card",
+        "hk-dah-sing-myauto-credit-card",
+        "hk-dah-sing-okashi-land-visa-paywave-credit-card",
+        "hk-dah-sing-one-plus-credit-card",
+        "hk-dah-sing-titanium-mastercard",
+        "hk-dah-sing-unionpay-dual-currency-credit-card",
+        "hk-dah-sing-united-mileageplus-world-mastercard",
+        "hk-dah-sing-vip-banking-visa-infinite-card"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
           "https://www.dahsing.com/html/en/credit_card/index.html"
         ],
-        "note": null,
-        "offer_sources": [],
-        "status": "not_covered"
+        "note": "First card and offer run on 20 Nov 2026. 26 consumer credit cards (25 on the English Credit Card listing plus Doraemon Platinum, which is in the sitemap and says the Bank is no longer accepting new applications). Autotoll E-Serve Business Card and Dah Sing Business Card were left out. 81 live offers handed in from the Latest Offers and Year-round listings, including the Priority Pass Airport Lounges campaign (1 Jan to 31 Dec 2026). That offer also names Dah Sing Private Banking Visa Infinite Credit Card and Dah Sing Visa Infinite Card, which have no product page on the current card listing. listing_complete is false because two Latest Offers UnionPay tiles (transport and taxi) only open an official disclaimer; Agree was not clicked, and the destinations named in assets/js/external_link_disclaimer_link_en.js are unionpayintl.com, which is off-config. Other Latest Offers tiles left as standing product pages rather than dated campaigns: Octopus AAVS, merchant interest-free installment, and the bonus-point hub. Card-page welcome offers and cash-in or balance-transfer loan pages were not ingested in this run. 13 cards have network_not_stated: the product name and the card terms do not name Visa, Mastercard, or UnionPay for that product (the shared KFS foreign-currency clause that says Visa / MasterCard was not used as proof). Annual fees were taken from the official fee leaflet only when the card name states a fee-table tier. No CSS recipe was written: the Credit Card, Latest Offers, and Year-round listings keep their tiles in JavaScript arrays (itemArray or offerListingJSON) in the page source, with no static tile markup and no public JSON file for recipe.py to read (SCRIPTED_CRAWL.md section 4, item 4).",
+        "offer_sources": [
+          "https://www.dahsing.com/html/en/credit_card/latest_offers/index.html",
+          "https://www.dahsing.com/html/en/credit_card/year_round_offer/year_round_offer_listing.html"
+        ],
+        "status": "partial"
       },
       "id": "hk-dah-sing",
       "legal_name": "DAH SING BANK, LIMITED",
       "name": "Dah Sing Bank",
-      "offer_count": 0,
+      "offer_count": 81,
       "official_domains": [
         "dahsing.com"
       ],

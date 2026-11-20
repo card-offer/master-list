@@ -139,7 +139,7 @@ There are 254 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 38 | HK | issuer | cards | CMB Wing Lung Bank | `cmbwinglungbank.com` | untested | https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/index.html |
 | 38 | HK | issuer | offers | CMB Wing Lung Bank | `cmbwinglungbank.com` | untested |  |
 | 39 | HK | issuer | cards | Dah Sing Bank | `dahsing.com` | untested | https://www.dahsing.com/html/en/credit_card/index.html |
-| 39 | HK | issuer | offers | Dah Sing Bank | `dahsing.com` | untested |  |
+| 39 | HK | issuer | offers | Dah Sing Bank | `dahsing.com` | untested | https://www.dahsing.com/html/en/credit_card/latest_offers/index.html, https://www.dahsing.com/html/en/credit_card/year_round_offer/year_round_offer_listing.html |
 | 40 | HK | issuer | cards | Bank of Communications (Hong Kong) | `hk.bankcomm.com` | untested | https://www.hk.bankcomm.com/hk/shtml/hk/tw/2004980/list.shtml?channelId=2004980, https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005005/2005035/list.shtml?channelId=2004980 |
 | 40 | HK | issuer | offers | Bank of Communications (Hong Kong) | `hk.bankcomm.com` | untested |  |
 | 41 | HK | issuer | cards | CCB Asia | `asia.ccb.com` | untested | https://www.asia.ccb.com/hongkong/personal/credit_cards/card_list.html |
