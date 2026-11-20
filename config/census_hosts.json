@@ -1,0 +1,118 @@
+{
+  "description": "Official hosts of census banks that are not issuers in the repository yet. pipeline/fetcher.py accepts them for a census probe with --url and --country. They are not sources for card or offer facts. The maintainer accepted these hosts on 20 Nov 2026, including krungthai.com for Krung Thai Bank (ktb.co.th redirects to it). A bank that becomes an issuer moves to {cc}/issuers.json.",
+  "items": [
+    {
+      "country": "PH",
+      "name": "BDO Unibank",
+      "official_domains": [
+        "bdo.com.ph"
+      ]
+    },
+    {
+      "country": "PH",
+      "name": "China Banking Corporation",
+      "official_domains": [
+        "chinabank.com.ph"
+      ]
+    },
+    {
+      "country": "PH",
+      "name": "Security Bank",
+      "official_domains": [
+        "securitybank.com.ph"
+      ]
+    },
+    {
+      "country": "PH",
+      "name": "Philippine National Bank",
+      "official_domains": [
+        "pnb.com.ph"
+      ]
+    },
+    {
+      "country": "PH",
+      "name": "Union Bank of the Philippines",
+      "official_domains": [
+        "unionbankph.com"
+      ]
+    },
+    {
+      "country": "PH",
+      "name": "Citibank N.A. Philippines",
+      "official_domains": [
+        "citibank.com.ph"
+      ]
+    },
+    {
+      "country": "PH",
+      "name": "Standard Chartered Philippines",
+      "official_domains": [
+        "standardchartered.com.ph"
+      ]
+    },
+    {
+      "country": "TH",
+      "name": "Bangkok Bank",
+      "official_domains": [
+        "bangkokbank.com"
+      ]
+    },
+    {
+      "country": "TH",
+      "name": "Kasikornbank",
+      "official_domains": [
+        "kasikornbank.com"
+      ]
+    },
+    {
+      "country": "TH",
+      "name": "Siam Commercial Bank",
+      "official_domains": [
+        "scb.co.th"
+      ]
+    },
+    {
+      "country": "TH",
+      "name": "Krung Thai Bank",
+      "official_domains": [
+        "ktb.co.th",
+        "krungthai.com"
+      ]
+    },
+    {
+      "country": "ID",
+      "name": "Bank Rakyat Indonesia",
+      "official_domains": [
+        "bri.co.id"
+      ]
+    },
+    {
+      "country": "ID",
+      "name": "Bank Negara Indonesia",
+      "official_domains": [
+        "bni.co.id"
+      ]
+    },
+    {
+      "country": "ID",
+      "name": "Bank Permata",
+      "official_domains": [
+        "permatabank.com"
+      ]
+    },
+    {
+      "country": "ID",
+      "name": "Maybank Indonesia",
+      "official_domains": [
+        "maybank.co.id"
+      ]
+    },
+    {
+      "country": "ID",
+      "name": "Bank Kasikorn Indonesia",
+      "official_domains": [
+        "kasikornbank.co.id"
+      ]
+    }
+  ]
+}

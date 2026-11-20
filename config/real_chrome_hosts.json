@@ -1,5 +1,5 @@
 {
-  "description": "Hosts the maintainer approved for real-Chrome mode. Real-Chrome mode is refused for any other host. specials.priceless.com was approved on 19 Nov 2026: the content is public and Mastercard wants it to reach more people. www.maybank2u.com.my was approved on 19 Nov 2026 because plain and headless requests did not get an answer. On 20 Nov 2026 the maintainer added the official homepages of the census banks that timed out or gave a block page: 7 in the Philippines, 3 in Thailand and 5 in Indonesia. Hosts with a captcha (Land Bank, Bank of Commerce) are not on the list.",
+  "description": "Hosts the maintainer approved for real-Chrome mode. Real-Chrome mode is refused for any other host. specials.priceless.com was approved on 19 Nov 2026: the content is public and Mastercard wants it to reach more people. www.maybank2u.com.my was approved on 19 Nov 2026 because plain and headless requests did not get an answer. On 20 Nov 2026 the maintainer added the official homepages of the census banks that timed out or gave a block page: 7 in the Philippines, 3 in Thailand and 5 in Indonesia. Hosts with a captcha (Land Bank, Bank of Commerce) are not on the list. www.krungthai.com was added on 20 Nov 2026 when the maintainer accepted it as the official domain of Krung Thai Bank.",
   "hosts": [
     "specials.priceless.com",
     "www.maybank2u.com.my",
@@ -17,6 +17,7 @@
     "www.bni.co.id",
     "www.permatabank.com",
     "www.maybank.co.id",
-    "www.kasikornbank.co.id"
+    "www.kasikornbank.co.id",
+    "www.krungthai.com"
   ]
 }

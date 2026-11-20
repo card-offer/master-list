@@ -15,7 +15,8 @@ You are the crawler for https://github.com/card-offer/master-list. Do the tasks 
 3. Real-Chrome mode is permitted only for the hosts in `config/real_chrome_hosts.json`. On 20 Nov 2026 these are `specials.priceless.com`, `www.maybank2u.com.my` and the 15 census bank homepages in section 7. For every other host, use plain and headless-browser mode only. Use real Chrome only after plain and browser mode fail, one attempt per host, with `--min-gap 30`.
 4. Use only hosts in the issuer's or the network's `official_domains`. If an official page links to a host that is not on that list, report the host. Do not crawl it.
 5. After each run: `python tools/check_observations.py <file>` until exit 0, then `python pipeline/ingest.py <file>`, then `python tools/validate.py .`, then the pull request. Give the report in section 11 of `crawler/COMPLETE_INSTRUCTION.md`.
-6. A run that only finds what was already published is still a run. Hand it in, so `last_seen` and `checked_at` move forward.
+6. Use the scripted crawl of `crawler/SCRIPTED_CRAWL.md` for every listing. Write the recipe at the first run of a listing and commit it with the run. From the second run on, read only the items that `diff` and `carry` give you.
+7. A run that only finds what was already published is still a run. Hand it in, so `last_seen` and `checked_at` move forward.
 
 ## 1. Maybank Malaysia (`my-maybank`)
 
@@ -98,12 +99,12 @@ Follow section 7 of `crawler/COMPLETE_INSTRUCTION.md` and the Track C table in `
 
 ## 7. Census rechecks with the Chrome user agent
 
-The census of 13 Nov did not reach these banks. Most were a timeout or a block page with the old user agent. Probe each official homepage again: plain, then browser, then one real-Chrome attempt. The maintainer put these homepages on the real-Chrome list on 20 Nov 2026. If a probe reads the site, find the consumer credit card page and give the census result. Hand in one census update for each country.
+The census of 13 Nov did not reach these banks. Most were a timeout or a block page with the old user agent. Probe each official homepage again with `python pipeline/fetcher.py probe --url <homepage> --country <cc>`: plain, then browser, then one real-Chrome attempt. `config/census_hosts.json` gives the probe the official hosts of these banks. The maintainer put these homepages on the real-Chrome list on 20 Nov 2026. If a probe reads the site, find the consumer credit card page and give the census result. Hand in one census update for each country.
 
 | Country | Banks |
 |---|---|
 | PH | BDO Unibank (www.bdo.com.ph), China Banking Corporation (www.chinabank.com.ph), Security Bank (www.securitybank.com.ph), Philippine National Bank (www.pnb.com.ph), Union Bank of the Philippines (www.unionbankph.com), Citibank N.A. Philippines (www.citibank.com.ph), Standard Chartered Philippines (www.standardchartered.com.ph) |
-| TH | Bangkok Bank (www.bangkokbank.com), Kasikornbank (www.kasikornbank.com), Siam Commercial Bank (www.scb.co.th, the website on the MAS directory row). Krung Thai: ktb.co.th redirects to krungthai.com; report that host for the maintainer, do not follow it. |
+| TH | Bangkok Bank (www.bangkokbank.com), Kasikornbank (www.kasikornbank.com), Siam Commercial Bank (www.scb.co.th, the website on the MAS directory row). Krung Thai Bank (www.ktb.co.th, which redirects to www.krungthai.com). The maintainer accepted krungthai.com as official on 20 Nov 2026, so follow the redirect. |
 | ID | Bank Rakyat Indonesia (www.bri.co.id), Bank Negara Indonesia (www.bni.co.id), Bank Permata (www.permatabank.com), Maybank Indonesia (www.maybank.co.id), Bank Kasikorn Indonesia (www.kasikornbank.co.id) |
 
 Land Bank and Bank of Commerce showed a captcha. Do not try them again. If real Chrome also gives `bot_wall` or a captcha, stop for that site and list it in the report as `not_reached`. If a bank becomes a `new_issuer`, add it with its official domains in the census update.
