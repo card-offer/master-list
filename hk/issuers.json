@@ -211,20 +211,31 @@
       "website": "https://www.dbs.com.hk/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-fubon-in-shopback-visa-platinum-card",
+        "hk-fubon-in-visa-platinum-card",
+        "hk-fubon-visa-infinite-card",
+        "hk-fubon-visa-platinum-card",
+        "hk-fubon-yata-visa-platinum-card"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
+          "https://www.fubonbank.com.hk/en/cards/credit-card-products/home.html"
+        ],
+        "note": "The Credit Cards Application menu URL /en/cards/credit-card-products/index.html is a meta refresh to home.html, which returns the full 5-card listing. The same index-to-home pattern applies to Latest Local Promotions, Credit Card Privileges and Forms and Terms. First card and offer run: 5 Visa consumer cards and the live English listing offers. The King Fook Jewellery offer ended 30 September 2026 and was left out. The Exclusive Priority Booking page currently says stay tuned and has no campaign. The Key Facts Statement still lists fees for Mastercard, Gold and classic cards; those products have no page on the current listing and were not handed in.",
+        "offer_sources": [
+          "https://www.fubonbank.com.hk/en/cards/monthly-special-offers/home.html",
+          "https://www.fubonbank.com.hk/en/cards/oversea-offers/home.html",
+          "https://www.fubonbank.com.hk/en/cards/bonus-points-program/home.html",
           "https://www.fubonbank.com.hk/en/home.html"
         ],
-        "note": "The English homepage links https://www.fubonbank.com.hk/en/cards/credit-card-products/index.html. That products URL returned almost no text this run, so the homepage is the evidence URL.",
-        "offer_sources": [],
-        "status": "not_covered"
+        "status": "ok"
       },
       "id": "hk-fubon",
       "legal_name": "FUBON BANK (HONG KONG) LIMITED",
       "name": "Fubon Bank (Hong Kong)",
-      "offer_count": 0,
+      "offer_count": 49,
       "official_domains": [
         "fubonbank.com.hk"
       ],

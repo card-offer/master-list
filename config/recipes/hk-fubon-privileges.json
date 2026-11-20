@@ -1,0 +1,24 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-fubon-privileges",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-fubon"
+  },
+  "country": "HK",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.fubonbank.com.hk/en/cards/bonus-points-program/home.html"
+  ],
+  "list": {
+    "item": "div.article > ul.module-thumb-list > li",
+    "key": "name",
+    "fields": {
+      "name": "p.product-name",
+      "url": "a@href"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "The menu item /en/cards/bonus-points-program/index.html is a meta refresh to home.html. The listing is programme tiles in div.article > ul.module-thumb-list. Use the home.html URL, not index.html."
+}

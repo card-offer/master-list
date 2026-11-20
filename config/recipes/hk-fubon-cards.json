@@ -1,0 +1,25 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-fubon-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-fubon"
+  },
+  "country": "HK",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.fubonbank.com.hk/en/cards/credit-card-products/home.html"
+  ],
+  "list": {
+    "item": "div.article > ul.module-product-list > li",
+    "key": "name",
+    "fields": {
+      "name": "p.product-title",
+      "url": "a@href",
+      "image": "img@src"
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "note": "The menu item /en/cards/credit-card-products/index.html is a meta refresh to home.html. The listing is five product tiles in div.article > ul.module-product-list. Each tile has the product name in p.product-title and a Details link to the product page. Use the home.html URL, not index.html."
+}
