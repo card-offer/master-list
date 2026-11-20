@@ -1651,8 +1651,7 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2004980/list.shtml?channelId=2004980",
-    "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005005/2005035/list.shtml?channelId=2004980"
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2005615/list.shtml?channelId=2005575"
    ],
    "status": "untested",
    "full_crawl_order": 40,
@@ -1666,7 +1665,13 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046371/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046373/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046376/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046378/list.shtml?channelId=2005575"
+   ],
    "status": "untested",
    "full_crawl_order": 40,
    "suggested_by": null,

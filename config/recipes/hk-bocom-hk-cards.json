@@ -1,0 +1,25 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-bocom-hk-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-bocom-hk"
+  },
+  "country": "HK",
+  "purpose": "cards",
+  "mode": "plain",
+  "source": "html",
+  "start_urls": [
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2005615/list.shtml?channelId=2005575"
+  ],
+  "list": {
+    "item": ".m_s_c_con .col-md-4",
+    "key": "url",
+    "fields": {
+      "name": "p.d-none.d-sm-block",
+      "url": "a[href*=\"list.shtml\"]@href"
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "note": "First hk-bocom-hk cards recipe, written 20 Nov 2026. The English Credit Cards Introduction page at channel 2005615 lists six consumer credit cards in .col-md-4 tiles. Each tile heading is p.d-none.d-sm-block (the mobile heading p.d-block.d-sm-none is the same name). The Learn more control is the same-origin list.shtml link under /2005615/2500605/<id>/. Apply now goes to eb.hk.bankcomm.com and is a login or application gateway, so the recipe does not use it. Gift Cards are a separate page under 2500946 and are prepaid, not in these six tiles. The English listing uses channel ids that are not the Traditional Chinese census paths. The English homepage menu language control is href=# and was not posted."
+}
