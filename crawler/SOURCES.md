@@ -132,8 +132,8 @@ There are 254 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 34 | MY | issuer | offers | Maybank | `maybank2u.com.my` | untested |  |
 | 35 | HK | issuer | cards | Mox Bank | `mox.com` | untested | https://mox.com/ |
 | 35 | HK | issuer | offers | Mox Bank | `mox.com` | untested |  |
-| 36 | HK | issuer | cards | Fubon Bank (Hong Kong) | `fubonbank.com.hk` | untested | https://www.fubonbank.com.hk/en/home.html |
-| 36 | HK | issuer | offers | Fubon Bank (Hong Kong) | `fubonbank.com.hk` | untested |  |
+| 36 | HK | issuer | cards | Fubon Bank (Hong Kong) | `fubonbank.com.hk` | untested | https://www.fubonbank.com.hk/en/cards/credit-card-products/home.html |
+| 36 | HK | issuer | offers | Fubon Bank (Hong Kong) | `fubonbank.com.hk` | untested | https://www.fubonbank.com.hk/en/cards/monthly-special-offers/home.html, https://www.fubonbank.com.hk/en/cards/oversea-offers/home.html, https://www.fubonbank.com.hk/en/cards/bonus-points-program/home.html, https://www.fubonbank.com.hk/en/home.html |
 | 37 | HK | issuer | cards | Chong Hing Bank | `chbank.com` | untested | https://www.chbank.com/en/homepage.shtml |
 | 37 | HK | issuer | offers | Chong Hing Bank | `chbank.com` | untested |  |
 | 38 | HK | issuer | cards | CMB Wing Lung Bank | `cmbwinglungbank.com` | untested | https://www.cmbwinglungbank.com/wlb_corporate/en/personal/credit-card/credit-card-products/index.html |
