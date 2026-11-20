@@ -1,0 +1,38 @@
+{
+  "recipe": "recipe/1",
+  "id": "network-amex-my-offers",
+  "owner": {
+    "type": "network",
+    "id": "amex"
+  },
+  "country": "MY",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.americanexpress.com/en-my/network/benefits/offers/dining.html",
+    "https://www.americanexpress.com/en-my/network/benefits/offers/retail.html",
+    "https://www.americanexpress.com/en-my/network/benefits/offers/accommodation.html",
+    "https://www.americanexpress.com/en-my/network/benefits/offers/lifestyle.html"
+  ],
+  "list": {
+    "item": "div.list-items > div.col-md-3",
+    "key": "url",
+    "fields": {
+      "merchant": "div.offer-header p",
+      "title": "div.offer-header p",
+      "benefit": "p.offer-desc",
+      "dates": "div.offer-dates",
+      "url": "a.btn.btn-block@href"
+    }
+  },
+  "detail": {
+    "text_selector": "div.offer, main, div.main",
+    "fields": {
+      "heading": "h1, div.heading-1, div.offer-header p",
+      "terms": "div.offer-content, div.terms, div.legal"
+    }
+  },
+  "listing_kind": "network_offer_listing",
+  "detail_kind": "network_offer_page",
+  "note": "Malaysia network offer listings on americanexpress.com under /en-my/network/benefits/offers/. Tiles are in div.list-items. The lifestyle start URL is included because the other listings link to it. The en-my sitemap is stale compared with these live listings."
+}
