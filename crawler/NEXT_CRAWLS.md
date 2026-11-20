@@ -28,66 +28,68 @@ Follow `crawler/HARD_SITES.md` section 5. The 13 Nov run read the promotions pag
 
 ## 2. Cards that are missing from a card list
 
-These offers are `needs_review` because the offer names a card that is not in the issuer's card file. Do a card run for the issuer and find each card on its official domains. Then do an offer run, so the ingest matches the offers again. Do not change the eligibility quote of an offer to make it match.
+These offers are `needs_review` because the offer names a card that is not in the issuer's card file. Do a card run for the issuer and find each card on its official domains. Then do an offer run, so the ingest matches the offers again. Do not change the eligibility quote of an offer to make it match. Counts are from 20 Nov 2026.
 
 | Issuer | Card names in the offers | Offers in review |
 |---|---|---|
-| `my-standard-chartered` | Priority Banking Visa Infinite credit card; Priority Worldmiles Mastercard | 43 |
-| `my-aeon-credit` | AEON Platinum Visa Card; AEON Platinum Mastercard; AEON Member Plus Visa Card; AEON Member Plus Credit Card | 4 |
-| `my-hong-leong` | HLB Infinite P Credit Card; HLB Infinite Credit Card; HLB Infinite Doctor's Edition Credit Card | 1 |
+| `my-standard-chartered` | Priority Worldmiles Mastercard | 33 |
+| `hk-ccb-asia` | CCB Long Credit Card; CCB (Asia) UnionPay Credit Card | 25 |
+| `my-aeon-credit` | AEON Member Plus Visa Card; AEON Platinum Visa Card; AEON Platinum Mastercard | 8 |
+| `hk-cmb-wing-lung` | World Card; Affinity Card; RMB Credit Card | 6 |
+| `hk-icbc-asia` | ICBC SUP Credit Card; ICBC Wise Gold Credit Card; ICBC Wise Gold Dual Currency Credit Card | 5 |
+| `hk-bea` | BEA GOAL Credit Card; Platinum card or above; Supplementary Card of BEA Credit Card | 5 |
 
 A card can be for Priority or private banking clients only. It is still a card. Hand it in with the eligibility that the page states. If the issuer has no page for the card, or the page says that the card is no longer offered, report the card name and the page you checked. Do not make a card record without a page.
 
+A debit card or a corporate card is not in scope. If an offer names only debit or corporate cards, leave it out of the run and count it in the report.
+
+A phrase that names no card, such as `BEA Credit Cards`, means every card of the issuer. Use scope `issuer`. The gate refuses it as a card name.
+
 ## 3. Offers with crawler flags
 
-Re-read the terms of these offers. The most frequent flags:
+Re-read the terms of these offers in the next full run of each issuer. Do not make a run for one flag.
 
 | Issuer | Flag | Offers |
 |---|---|---|
-| `my-ocbc` | `date_conflict` | 68 |
-| `my-hong-leong` | `amount_unclear` | 29 |
+| `hk-dah-sing` | `eligibility_unclear` | 73 |
+| `hk-bocom-hk` | `eligibility_unclear` | 32 |
+| `sg-ocbc` | `date_conflict` | 29 |
+| `my-hong-leong` | `amount_unclear` | 21 |
+| `sg-ocbc` | `end_date_past_horizon` | 19 |
 | `sg-maybank` | `end_date_past_horizon` | 18 |
 
-1. `date_conflict`: the listing and the terms state different dates. Take the dates from the offer's own terms document. If the terms state a booking period and a stay or usage period, give both (`booking_period` and `usage_period`). Keep the flag only when the terms themselves state two different end dates for one offer, and quote both.
-2. `end_date_past_horizon`: an end date more than 24 months ahead. Check that the date is the end of the offer and not a card fee date, a programme date or a rate change date. Quote the sentence that gives the end date.
-3. `amount_unclear`: give the amount and the currency only when the quote states them. Otherwise give null with the reason.
-4. `merchant_not_stated`: find the merchant in the terms or on the offer page. If no page states a merchant, keep the flag.
-
-Do these as part of the next full run of each issuer. Do not make a run for one flag.
+1. `eligibility_unclear`: find the sentence in the terms that says which cards can use the offer. If it says all cards of the bank, use scope `issuer`. If it names cards, use scope `card`. Quote the sentence.
+2. `date_conflict`: take the dates from the offer's own terms document. If the terms state a booking period and a stay or usage period, give both. Keep the flag only when the terms themselves state two different end dates for one offer, and quote both.
+3. `end_date_past_horizon`: an end date more than 24 months ahead. Check that the date is the end of the offer and not a card fee date, a programme date or a rate change date.
+4. `amount_unclear`: give the amount and the currency only when the quote states them. Otherwise give null with the reason.
 
 ## 4. Merchant names from the old data
 
-These offers still have `merchant_name_source: legacy_title_parse`. The name came from an old title parse and was not read on a page. In the next run of each issuer, read the name from the page heading, the listing tile or the terms document, as `crawler/RULES.md` section 3 says.
+These offers still have `merchant_name_source: legacy_title_parse`. In the next run of each issuer, read the name from the page heading, the listing tile or the terms document, as `crawler/RULES.md` section 3 says.
 
 | Issuer | Offers |
 |---|---|
-| `sg-ocbc` | 77 |
-| `my-rhb` | 22 |
+| `sg-ocbc` | 74 |
 | `my-uob` | 20 |
-| `my-hong-leong` | 5 |
+| `my-rhb` | 17 |
+| `my-hong-leong` | 4 |
 | `sg-icbc` | 3 |
-| `sg-amex` | 1 |
 | `my-standard-chartered` | 1 |
 
 If the offer is no longer on the listing, do not hand it in. The ingest withdraws it after 14 days.
 
 ## 5. Issuers that are not covered or partly covered
 
-| Issuer | Status | What to do |
-|---|---|---|
-| `my-bank-rakyat` | not_covered | The compare-cards URL is a 404. The card menu needs JavaScript. Use the ladder of `crawler/HARD_SITES.md` section 2, step 3: find the data source in the page source or sitemap first, then render. The reCAPTCHA is on a contact form only. Do not submit any form. |
-| `my-icbc` | not_covered | The census read the product page on `icbcmy.com`: ICBC UnionPay Dual Currency Credit Card and ICBC Visa Credit Card, each as Classic, Gold and Platinum. Do a card run and an offer run. |
-| `my-hsbc` | partial | Do a card run on the Amanah catalogue on `hsbcamanah.com.my`. That host is in `official_domains`. |
-| `sg-boc` | partial | Cards are in. The listings had no current card offers. Read the Treats, Rewards and Promotions listings again. If they still have no offer, report it, and the run is complete. |
-| `sg-trust` | partial | Partner coupons are images or CMS data on hosts that are not official. Do not crawl those hosts. Report the hosts with the official page that links to them. |
+Malaysia and Singapore: `my-bank-rakyat`, `my-icbc`, `my-hsbc`, `sg-boc` and `sg-trust` were done on 20 Nov 2026 (PRs 84 to 97). `my-icbc` has 2 cards and no offers. `sg-boc` and `sg-trust` stay `partial` with the reasons in their issuer records. `my-aeon-credit` was offline on 20 Nov 2026: run it again when the site answers.
 
 ## 6. Network offer sites (track C)
 
-Follow section 7 of `crawler/COMPLETE_INSTRUCTION.md` and the Track C table in `crawler/FULL_CRAWL.md`.
+Done on 20 Nov 2026: JCB (C3, C4), UnionPay (C7, C8), American Express (C9, C10) and Diners Club (C11, C12, no Malaysia or Singapore listing). The JCB runs replaced the "All members object" text.
 
-1. C1 and C2, Mastercard Priceless for Malaysia and Singapore. `specials.priceless.com` is approved for real-Chrome mode. Use plain, then browser, then real Chrome with `--min-gap 30` if the site refuses the first two. Do the Malaysia run first. Stop after it, and continue to Singapore when the maintainer accepts it.
-2. C3 and C4, JCB Malaysia and Singapore: run them again. Many published JCB offers have the eligibility quote "All members object". That text looks like a page label or script value, not a sentence of the offer. Quote the eligibility sentence of each offer exactly as the page shows it. If the page states no eligibility sentence, give null with the reason. Leave out offers for JCB cards issued in another country, and count them in the report.
-3. C5 to C12: Visa, UnionPay, American Express and Diners Club for Malaysia and Singapore. Do one run for each row. A country offer host that is not in `official_domains` must be reported first, not crawled.
+Still to do:
+
+1. C1 and C2, Mastercard Priceless for Malaysia and Singapore. `specials.priceless.com` is approved for real-Chrome mode. Use plain, then browser, then real Chrome with `--min-gap 30` if the site refuses the first two. Do the Malaysia run first.
+2. C5 and C6, Visa for Malaysia and Singapore. A country offer host that is not in `official_domains` must be reported first, not crawled.
 
 ## 7. Census rechecks
 
@@ -99,7 +101,9 @@ The other banks stay `not_reached` after real Chrome: BDO (Akamai challenge), Ch
 
 ## 8. Cards and offers for Hong Kong, Thailand, Indonesia and the Philippines
 
-These issuers are in the repository from the census, with no cards and no offers. The maintainer accepted all of them and their `official_domains` on 20 Nov 2026. Do the issuers in the order of `crawler/FULL_CRAWL.md`, after tasks 1 to 6: Hong Kong 35 to 51, Thailand 52 to 62, Indonesia 63 to 72, Philippines 73 to 78, then 79 to 81. Pages that are not in English follow section 4 of `crawler/COMPLETE_INSTRUCTION.md`.
+The maintainer accepted all census issuers and their `official_domains` on 20 Nov 2026. Do the issuers in the order of `crawler/FULL_CRAWL.md`. Pages that are not in English follow section 4 of `crawler/COMPLETE_INSTRUCTION.md`.
+
+Hong Kong: 10 issuers were done on 20 Nov 2026 (PRs 102 to 111). Still to do: `hk-citi`, `hk-cncbi`, `hk-standard-chartered`, `hk-hang-seng`, `hk-dbs`, `hk-hsbc` and `hk-bochk` (orders 45 to 51). Then Thailand 52 to 62, Indonesia 63 to 72, the Philippines 73 to 78, then 79 to 81.
 
 ## 9. When to stop and ask
 
