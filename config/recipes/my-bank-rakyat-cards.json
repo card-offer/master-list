@@ -1,0 +1,27 @@
+{
+  "recipe": "recipe/1",
+  "id": "my-bank-rakyat-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "my-bank-rakyat"
+  },
+  "country": "MY",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.bankrakyat.com.my/"
+  ],
+  "list": {
+    "item": "#navbarText a.dropdown-item[data-level='2'][href*='card'], #navbarText a.dropdown-item[data-level='2'][href*='explorer']",
+    "key": "url",
+    "fields": {
+      "name": ".",
+      "url": {
+        "selector": ".",
+        "output": "@href"
+      }
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "note": "Read on 20 Nov 2026. The homepage is a one-page app (it calls itself the 'Corporate Website Rebuild' prototype); card routes are #/article/<slug> fragments of the homepage, so there is no detail page to fetch. Plain mode gets the 7 Credit Card-i menu entries under Cards (Debit Card-i is level 1 and is left out); the headless browser gives the same 7. Each card route only shows its Product Disclosure Sheet. window.SITE_DATA.docList, about 7.3 MB into the page, so only in the browser copy (plain reads stop at 5 MB), names the PDF: /PDS/Personal%20Banking/Cards/Credit%20Card-i/<folder>/PDS%20Credit%20Card-i%20-%20Eng.PDF. On 20 Nov 2026 all 7 PDFs were the same file (sha256 f24fdcb7..., 'Date: 1 June 2026'). robots.txt and sitemap.xml are 404; /portal-main/compare-cards is 404."
+}
