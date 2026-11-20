@@ -1,0 +1,48 @@
+{
+  "recipe": "recipe/1",
+  "id": "sg-icbc-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "sg-icbc"
+  },
+  "country": "SG",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.icbc.com.sg/en/column/799319390964264961.html",
+    "https://www.icbc.com.sg/en/column/799319530601488385.html",
+    "https://www.icbc.com.sg/en/column/799319589879054337.html",
+    "https://www.icbc.com.sg/en/column/799319643138326529.html",
+    "https://www.icbc.com.sg/en/column/678757812016021504.html",
+    "https://www.icbc.com.sg/en/column/1143510810581213185.html",
+    "https://www.icbc.com.sg/en/column/1438059017603006505.html",
+    "https://www.icbc.com.sg/en/page/1079067426748747776.html",
+    "https://www.icbc.com.sg/en/page/721854315529797676.html",
+    "https://www.icbc.com.sg/en/page/721853665454620706.html",
+    "https://www.icbc.com.sg/en/page/1078982397007839232.html",
+    "https://www.icbc.com.sg/en/page/1269243644578537472.html"
+  ],
+  "list": {
+    "item": "body",
+    "key": "title",
+    "fields": {
+      "title": ".TextTitle_style",
+      "offers": {
+        "selector": "#mypagehtmlcontent",
+        "output": "text",
+        "regex": "★\\s*(.{8,160}?)(?:\\s*Promotion Period|\\s*Applicable Cards|\\s*Promotion Details|$)"
+      },
+      "periods": {
+        "selector": "#mypagehtmlcontent",
+        "regex": "(?i)(valid (?:from|till|while) [^.]{0,100}|\\d{1,2} \\w+ 20\\d\\d (?:to|till|until) \\d{1,2} \\w+ 20\\d\\d)"
+      },
+      "redirect": {
+        "selector": "#mypagehtmlcontent script",
+        "regex": "window\\.location=\"([^\"]+)\""
+      },
+      "terms": "#mypagehtmlcontent"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "ICBC Singapore has no offer tiles on icbc.com.sg. Each credit card promotion page holds one or more offers in one content cell (#mypagehtmlcontent), so one item is one page: the four Cards Privileges category pages, Mastercard Travel Rewards, the Friendship and CEA Friends card pages and five promotion pages. diff then shows which page changed. Two promotion pages only redirect by script to singapore.icbc.com.cn; the redirect field keeps that target. The Promotions list (/en/column/1438058492253847697.html) loads from papi.icbc.com.cn and the Cards Privileges icons link to singapore.icbc.com.cn; neither host is in official_domains."
+}

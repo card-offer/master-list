@@ -1,6 +1,6 @@
 {
-  "count": 1855,
-  "generated_at": "2026-11-20T02:14:04+00:00",
+  "count": 1854,
+  "generated_at": "2026-11-20T02:36:34+00:00",
   "schema_version": "0.3.0",
   "items": [
     {"aliases":[],"categories":["cafe","dining"],"countries":["SG"],"id":"10-scotts","name":"10 Scotts","offer_ids":["sg-maybank-8f9c8c1877","sg-network-jcb-5cddade2b0"],"official_domain":"singapore.grand.hyattrestaurants.com","verified":true},
@@ -1695,7 +1695,6 @@
     {"aliases":["TRADERS HOTEL, KUALA LUMPUR"],"categories":["hotel","travel"],"countries":["MY"],"id":"traders-hotel-kuala-lumpur","name":"Traders Hotel, Kuala Lumpur","offer_ids":["my-rhb-e31a9cec93"],"official_domain":"shangri-la.com","verified":true},
     {"aliases":[],"categories":["entertainment"],"countries":["SG"],"id":"trafalgar","name":"Trafalgar","offer_ids":["sg-maybank-688c822d20"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["travel"],"countries":["SG"],"id":"trafalgar-tours","name":"Trafalgar Tours","offer_ids":["sg-standard-chartered-2a3246df05"],"official_domain":null,"verified":false},
-    {"aliases":[],"categories":[],"countries":["SG"],"id":"transactions-made-in-mainland-china","name":"transactions made in Mainland China","offer_ids":["sg-icbc-0466f95520"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["automotive","online"],"countries":["MY"],"id":"trapo","name":"Trapo","offer_ids":["my-rhb-a825ec9daa"],"official_domain":"my.trapo.asia","verified":true},
     {"aliases":[],"categories":["travel"],"countries":["SG"],"id":"travel-21","name":"Travel 21","offer_ids":["sg-ocbc-d6d27e9937"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["travel"],"countries":["SG"],"id":"travel-apps","name":"Travel Apps","offer_ids":["sg-ocbc-f4351926cc"],"official_domain":null,"verified":false},
