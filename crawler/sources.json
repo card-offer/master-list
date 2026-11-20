@@ -2886,7 +2886,9 @@
    "country": "MY",
    "type": "issuer",
    "purpose": "cards",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.icbcmy.com/en/column/1438058793715253368.html"
+   ],
    "status": "untested",
    "full_crawl_order": "after-34",
    "suggested_by": null,

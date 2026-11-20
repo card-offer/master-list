@@ -228,7 +228,7 @@ There are 254 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 80 | ID | issuer | offers | Permata Bank | `permatabank.com` | untested | https://www.permatabank.com/id/promotions |
 | 81 | PH | issuer | cards | PNB | `pnb.com.ph` | untested | https://www.pnb.com.ph/cards |
 | 81 | PH | issuer | offers | PNB | `pnb.com.ph` | untested | https://www.pnb.com.ph/promos |
-| after-34 | MY | issuer | cards | ICBC Malaysia | `icbcmy.com` | untested |  |
+| after-34 | MY | issuer | cards | ICBC Malaysia | `icbcmy.com` | untested | https://www.icbcmy.com/en/column/1438058793715253368.html |
 | after-34 | MY | issuer | offers | ICBC Malaysia | `icbcmy.com` | untested |  |
 | after-34 | MY | issuer | cards | ICBC Malaysia | `v.icbc.com.cn` | untested |  |
 | after-34 | MY | issuer | offers | ICBC Malaysia | `v.icbc.com.cn` | untested |  |
