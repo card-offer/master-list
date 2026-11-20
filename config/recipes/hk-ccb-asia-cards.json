@@ -1,0 +1,25 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-ccb-asia-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-ccb-asia"
+  },
+  "country": "HK",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.asia.ccb.com/hongkong/personal/credit_cards/card_list.html"
+  ],
+  "list": {
+    "item": "div.promoFrame",
+    "key": "name",
+    "fields": {
+      "name": "h2.card_name",
+      "url": "a@href",
+      "image": "img@src"
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "note": "The official card list is 14 product tiles in div.promoFrame. The product name is in h2.card_name and the details link is the tile anchor. The eye+ tile points at one product page that describes both the eye+ Visa Signature Card and the eye+ Visa Infinite Card."
+}

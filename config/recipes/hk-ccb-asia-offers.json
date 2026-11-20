@@ -1,0 +1,25 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-ccb-asia-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-ccb-asia"
+  },
+  "country": "HK",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.asia.ccb.com/hongkong/personal/credit_cards/year_round_and_latest_promotions.html"
+  ],
+  "list": {
+    "item": "div.promoFrame",
+    "key": "url",
+    "fields": {
+      "title": "p",
+      "url": "a@href",
+      "image": "img@src"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "Latest and year-round tiles share this listing. Each tile is a div.promoFrame with a title in p and a link to a campaign page, a card page, or yearroundoffers/index.html. The year-round merchant catalogue itself is covered by hk-ccb-asia-year-round.json."
+}

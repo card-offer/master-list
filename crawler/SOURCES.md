@@ -143,7 +143,7 @@ There are 254 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 40 | HK | issuer | cards | Bank of Communications (Hong Kong) | `hk.bankcomm.com` | untested | https://www.hk.bankcomm.com/hk/shtml/hk/tw/2004980/list.shtml?channelId=2004980, https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005005/2005035/list.shtml?channelId=2004980 |
 | 40 | HK | issuer | offers | Bank of Communications (Hong Kong) | `hk.bankcomm.com` | untested |  |
 | 41 | HK | issuer | cards | CCB Asia | `asia.ccb.com` | untested | https://www.asia.ccb.com/hongkong/personal/credit_cards/card_list.html |
-| 41 | HK | issuer | offers | CCB Asia | `asia.ccb.com` | untested |  |
+| 41 | HK | issuer | offers | CCB Asia | `asia.ccb.com` | untested | https://www.asia.ccb.com/hongkong/personal/credit_cards/year_round_and_latest_promotions.html, https://www.asia.ccb.com/hongkong/personal/credit_cards/year_round_promotions.html, https://www.asia.ccb.com/hongkong/personal/credit_cards/yearroundoffers/index.html |
 | 42 | HK | issuer | cards | ICBC Asia | `icbcasia.com` | untested | https://www.icbcasia.com/hk/en/personal/credit-cards/default.html |
 | 42 | HK | issuer | offers | ICBC Asia | `icbcasia.com` | untested |  |
 | 43 | HK | issuer | cards | OCBC Bank (Hong Kong) | `ocbc.com.hk` | untested | https://www.ocbc.com.hk/personal-banking/cards/credit-cards, https://www.ocbc.com.hk/personal-banking/cards/ocbc-credit-card |
