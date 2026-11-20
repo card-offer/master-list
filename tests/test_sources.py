@@ -140,3 +140,11 @@ class SourcesListTests(unittest.TestCase):
         for row in self.items:
             self.assertIn(f"`{row['host']}`", text, row["id"])
         self.assertIn(str(len(self.items)), text)
+
+
+class NetworkConfigTests(unittest.TestCase):
+    def test_crawler_network_domains_match_the_published_networks(self):
+        def domains(path):
+            with open(path, encoding="utf-8") as fh:
+                return {row["id"]: sorted(row["official_domains"]) for row in json.load(fh)["items"]}
+        self.assertEqual(domains(ROOT / "config" / "networks.json"), domains(ROOT / "networks.json"))

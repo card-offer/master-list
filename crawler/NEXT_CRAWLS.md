@@ -89,7 +89,7 @@ Done on 20 Nov 2026: JCB (C3, C4), UnionPay (C7, C8), American Express (C9, C10)
 Still to do:
 
 1. C1 and C2, Mastercard Priceless for Malaysia and Singapore. `specials.priceless.com` is approved for real-Chrome mode. Use plain, then browser, then real Chrome with `--min-gap 30` if the site refuses the first two. Do the Malaysia run first.
-2. C5 and C6, Visa for Malaysia and Singapore. A country offer host that is not in `official_domains` must be reported first, not crawled.
+2. C5 and C6, Visa for Malaysia and Singapore. Start at `https://www.visa.com.my/` and `https://www.visa.com.sg/`. These hosts were in the published `networks.json` and are now in `config/networks.json` too. The runs of 20 Nov 2026 (PRs 76 and 77) stopped at the redirect from visa.com and found 0 offers. They were closed with no merge.
 
 ## 7. Census rechecks
 

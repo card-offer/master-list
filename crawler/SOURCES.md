@@ -24,7 +24,7 @@ Contributors can propose a site with the "Suggest a site to crawl" issue form. T
 
 ## The list
 
-There are 254 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, MY 58, PH 23, SG 60, TH 33. Counts by type: issuer 196, network 50, regulator 8.
+There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, MY 59, PH 23, SG 61, TH 33. Counts by type: issuer 196, network 52, regulator 8.
 
 | Order | Country | Type | Purpose | Site | Host | Status | Entry URLs |
 |---|---|---|---|---|---|---|---|
@@ -243,7 +243,9 @@ There are 254 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | C4 | SG | network | offers | JCB | `jcb.co.jp` | untested |  |
 | C4 | SG | network | offers | JCB | `specialoffers.jcb` | untested | https://www.specialoffers.jcb/, https://www.specialoffers.jcb/en/campaign/d/southeast-and-south-asia/singapore/, https://www.specialoffers.jcb/en/offers/d/southeast-and-south-asia/singapore/ |
 | C5 | MY | network | offers | Visa | `visa.com` | untested |  |
+| C5 | MY | network | offers | Visa | `visa.com.my` | untested | https://www.visa.com.my/ |
 | C6 | SG | network | offers | Visa | `visa.com` | untested |  |
+| C6 | SG | network | offers | Visa | `visa.com.sg` | untested | https://www.visa.com.sg/ |
 | C7 | MY | network | offers | UnionPay | `unionpayintl.com` | untested | https://www.unionpayintl.com/my/ |
 | C8 | SG | network | offers | UnionPay | `unionpayintl.com` | untested | https://www.unionpayintl.com/sg/ |
 | C9 | MY | network | offers | American Express | `americanexpress.com` | untested |  |

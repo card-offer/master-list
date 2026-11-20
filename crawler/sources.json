@@ -3161,6 +3161,21 @@
    "network_id": "visa"
   },
   {
+   "id": "my-network-visa-visa.com.my-offers",
+   "site": "Visa",
+   "host": "visa.com.my",
+   "country": "MY",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.visa.com.my/"
+   ],
+   "status": "untested",
+   "full_crawl_order": "C5",
+   "suggested_by": null,
+   "network_id": "visa"
+  },
+  {
    "id": "sg-network-visa-visa.com-offers",
    "site": "Visa",
    "host": "visa.com",
@@ -3168,6 +3183,21 @@
    "type": "network",
    "purpose": "offers",
    "entry_urls": [],
+   "status": "untested",
+   "full_crawl_order": "C6",
+   "suggested_by": null,
+   "network_id": "visa"
+  },
+  {
+   "id": "sg-network-visa-visa.com.sg-offers",
+   "site": "Visa",
+   "host": "visa.com.sg",
+   "country": "SG",
+   "type": "network",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.visa.com.sg/"
+   ],
    "status": "untested",
    "full_crawl_order": "C6",
    "suggested_by": null,
