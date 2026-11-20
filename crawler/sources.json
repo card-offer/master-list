@@ -1694,7 +1694,11 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.asia.ccb.com/hongkong/personal/credit_cards/year_round_and_latest_promotions.html",
+    "https://www.asia.ccb.com/hongkong/personal/credit_cards/year_round_promotions.html",
+    "https://www.asia.ccb.com/hongkong/personal/credit_cards/yearroundoffers/index.html"
+   ],
    "status": "untested",
    "full_crawl_order": 41,
    "suggested_by": null,

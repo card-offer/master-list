@@ -70,20 +70,40 @@
       "website": "https://www.hk.bankcomm.com/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-ccb-asia-aia-mastercard-credit-card",
+        "hk-ccb-asia-aia-unionpay-diamond-credit-card",
+        "hk-ccb-asia-aia-visa-credit-card",
+        "hk-ccb-asia-construction-industry-unionpay-dual-currency-credit-card",
+        "hk-ccb-asia-eye-plus-visa-infinite-card",
+        "hk-ccb-asia-eye-plus-visa-signature-card",
+        "hk-ccb-asia-gba-virtual-unionpay-credit-card",
+        "hk-ccb-asia-octopus-auto-living-unionpay-diamond-credit-card",
+        "hk-ccb-asia-octopus-unionpay-dual-currency-credit-card",
+        "hk-ccb-asia-pui-ching-unionpay-dual-currency-credit-card",
+        "hk-ccb-asia-travo-mastercard",
+        "hk-ccb-asia-unionpay-diamond-prestige-credit-card",
+        "hk-ccb-asia-unionpay-dual-currency-credit-card",
+        "hk-ccb-asia-visa-infinite-credit-card",
+        "hk-ccb-asia-visa-platinum-credit-card"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
           "https://www.asia.ccb.com/hongkong/personal/credit_cards/card_list.html"
         ],
-        "note": null,
-        "offer_sources": [],
-        "status": "not_covered"
+        "note": "First full crawl on 20 Nov 2026 (KL). Plain mode. The card list has 14 product tiles; the eye+ product page covers Visa Signature and Visa Infinite, handed in as two cards. Year-round merchant offers are on yearroundoffers/index.html (30 tiles, T&C in on-page popups). Latest campaigns are on year_round_and_latest_promotions.html. listing_complete is false: the e-banking service tile was blocked as login_required, some menu URLs returned 404 (platinum hub, octopus eatplus, sitemap, root ocean-park and 3x-10x banners), and UnionPay worldwide / Greater Bay 'Learn More' links go through official external_disclaimer.html to off-config hosts that were not crawled. 26 offers are in needs_review, mainly because year-round tiles name CCB Long Credit Card, which is not on the consumer card list. Chinese Mainland merchant tiers on the Greater Bay page name UnionPay International as the terms host and were not handed in as individual offers.",
+        "offer_sources": [
+          "https://www.asia.ccb.com/hongkong/personal/credit_cards/year_round_and_latest_promotions.html",
+          "https://www.asia.ccb.com/hongkong/personal/credit_cards/year_round_promotions.html",
+          "https://www.asia.ccb.com/hongkong/personal/credit_cards/yearroundoffers/index.html"
+        ],
+        "status": "partial"
       },
       "id": "hk-ccb-asia",
       "legal_name": "CHINA CONSTRUCTION BANK (ASIA) CORPORATION LIMITED",
       "name": "CCB Asia",
-      "offer_count": 0,
+      "offer_count": 48,
       "official_domains": [
         "asia.ccb.com"
       ],
