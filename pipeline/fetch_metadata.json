@@ -7188,5 +7188,7 @@
 {"url": "https://www.americanexpress.com/en-sg/network/offers/explore-vietnam/retail.techmall.html", "status": 200, "final_url": "https://www.americanexpress.com/en-sg/network/offers/explore-vietnam/retail.techmall.html", "fetched_at": "2026-11-20T11:22:22+08:00"},
 {"url": "https://www.americanexpress.com/en-sg/network/offers/explore-vietnam/retail.vua-nem.html", "status": 200, "final_url": "https://www.americanexpress.com/en-sg/network/offers/explore-vietnam/retail.vua-nem.html", "fetched_at": "2026-11-20T11:22:26+08:00"},
 {"url": "https://www.americanexpress.com/en-sg/network/offers/explore-vietnam/entertainment.jump-arena.html", "status": 200, "final_url": "https://www.americanexpress.com/en-sg/network/offers/explore-vietnam/entertainment.jump-arena.html", "fetched_at": "2026-11-20T11:22:28+08:00"},
-{"url": "https://www.americanexpress.com/en-sg/network/offers/explore-vietnam/entertainment.sen-spa.html", "status": 200, "final_url": "https://www.americanexpress.com/en-sg/network/offers/explore-vietnam/entertainment.sen-spa.html", "fetched_at": "2026-11-20T11:22:31+08:00"}
+{"url": "https://www.americanexpress.com/en-sg/network/offers/explore-vietnam/entertainment.sen-spa.html", "status": 200, "final_url": "https://www.americanexpress.com/en-sg/network/offers/explore-vietnam/entertainment.sen-spa.html", "fetched_at": "2026-11-20T11:22:31+08:00"},
+{"url": "https://www.dinersclub.com/", "status": 200, "final_url": "https://www.dinersclub.com/", "fetched_at": "2026-11-20T11:27:02+08:00"},
+{"url": "https://www.dinersclub.com/cardmembers/", "status": 200, "final_url": "https://www.dinersclub.com/cardmembers/", "fetched_at": "2026-11-20T11:27:45+08:00"}
 ]
