@@ -300,6 +300,7 @@ def network_offer(**changes):
 class NetworkAndLanguageTests(unittest.TestCase):
     def setUp(self):
         parent = tempfile.mkdtemp(prefix="card-offer-net-")
+        self.addCleanup(shutil.rmtree, parent, True)
         self.tree = os.path.join(parent, "tree")
         shutil.copytree(ROOT, self.tree, ignore=shutil.ignore_patterns(".git", "dist", "__pycache__", "raw"))
 
@@ -445,6 +446,7 @@ class MerchantNameTests(unittest.TestCase):
 class IngestTests(unittest.TestCase):
     def setUp(self):
         parent = tempfile.mkdtemp(prefix="card-offer-ingest-")
+        self.addCleanup(shutil.rmtree, parent, True)
         self.tree = os.path.join(parent, "tree")
         shutil.copytree(ROOT, self.tree, ignore=shutil.ignore_patterns(".git", "dist", "__pycache__", "raw"))
 

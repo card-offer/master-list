@@ -24,13 +24,6 @@
     },
     {
       "country": "PH",
-      "name": "Philippine National Bank",
-      "official_domains": [
-        "pnb.com.ph"
-      ]
-    },
-    {
-      "country": "PH",
       "name": "Union Bank of the Philippines",
       "official_domains": [
         "unionbankph.com"
@@ -48,13 +41,6 @@
       "name": "Standard Chartered Philippines",
       "official_domains": [
         "standardchartered.com.ph"
-      ]
-    },
-    {
-      "country": "TH",
-      "name": "Bangkok Bank",
-      "official_domains": [
-        "bangkokbank.com"
       ]
     },
     {
@@ -91,13 +77,6 @@
       "name": "Bank Negara Indonesia",
       "official_domains": [
         "bni.co.id"
-      ]
-    },
-    {
-      "country": "ID",
-      "name": "Bank Permata",
-      "official_domains": [
-        "permatabank.com"
       ]
     },
     {

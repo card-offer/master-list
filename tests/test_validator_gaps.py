@@ -11,7 +11,7 @@ from tools.validate import validate
 
 
 def _ignore(path, names):
-    skip = {".git", "dist", "__pycache__", ".pytest_cache"}
+    skip = {".git", "dist", "__pycache__", ".pytest_cache", "raw"}
     return [name for name in names if name in skip]
 
 
@@ -19,11 +19,13 @@ class ValidatorGapTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         parent = tempfile.mkdtemp(prefix="card-offer-gap-")
+        cls.addClassCleanup(shutil.rmtree, parent, True)
         cls.base = os.path.join(parent, "base")
         shutil.copytree(ROOT, cls.base, ignore=_ignore)
 
     def clone(self):
         parent = tempfile.mkdtemp(prefix="card-offer-case-")
+        self.addCleanup(shutil.rmtree, parent, True)
         dest = os.path.join(parent, "tree")
         shutil.copytree(self.base, dest)
         return dest

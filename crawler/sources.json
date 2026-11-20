@@ -2784,6 +2784,37 @@
    "issuer_id": "ph-bpi"
   },
   {
+   "id": "th-bangkok-bank-bangkokbank.com-cards",
+   "site": "Bangkok Bank",
+   "host": "bangkokbank.com",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.bangkokbank.com/en/personal/cards/credit-cards",
+    "https://www.bangkokbank.com/en/personal/cards/credit-cards/bangkok-bank-airasia-credit-card"
+   ],
+   "status": "untested",
+   "full_crawl_order": 79,
+   "suggested_by": null,
+   "issuer_id": "th-bangkok-bank"
+  },
+  {
+   "id": "th-bangkok-bank-bangkokbank.com-offers",
+   "site": "Bangkok Bank",
+   "host": "bangkokbank.com",
+   "country": "TH",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.bangkokbank.com/en/personal/cards/credit-cards/promotions"
+   ],
+   "status": "untested",
+   "full_crawl_order": 79,
+   "suggested_by": null,
+   "issuer_id": "th-bangkok-bank"
+  },
+  {
    "id": "id-permata-permatabank.com-cards",
    "site": "Permata Bank",
    "host": "permatabank.com",
@@ -2795,7 +2826,7 @@
     "https://www.permatabank.com/id/permatastore/"
    ],
    "status": "untested",
-   "full_crawl_order": "after-34",
+   "full_crawl_order": 80,
    "suggested_by": null,
    "issuer_id": "id-permata"
   },
@@ -2810,9 +2841,39 @@
     "https://www.permatabank.com/id/promotions"
    ],
    "status": "untested",
-   "full_crawl_order": "after-34",
+   "full_crawl_order": 80,
    "suggested_by": null,
    "issuer_id": "id-permata"
+  },
+  {
+   "id": "ph-pnb-pnb.com.ph-cards",
+   "site": "PNB",
+   "host": "pnb.com.ph",
+   "country": "PH",
+   "type": "issuer",
+   "purpose": "cards",
+   "entry_urls": [
+    "https://www.pnb.com.ph/cards"
+   ],
+   "status": "untested",
+   "full_crawl_order": 81,
+   "suggested_by": null,
+   "issuer_id": "ph-pnb"
+  },
+  {
+   "id": "ph-pnb-pnb.com.ph-offers",
+   "site": "PNB",
+   "host": "pnb.com.ph",
+   "country": "PH",
+   "type": "issuer",
+   "purpose": "offers",
+   "entry_urls": [
+    "https://www.pnb.com.ph/promos"
+   ],
+   "status": "untested",
+   "full_crawl_order": 81,
+   "suggested_by": null,
+   "issuer_id": "ph-pnb"
   },
   {
    "id": "my-icbc-icbcmy.com-cards",
@@ -2865,37 +2926,6 @@
    "full_crawl_order": "after-34",
    "suggested_by": null,
    "issuer_id": "my-icbc"
-  },
-  {
-   "id": "th-bangkok-bank-bangkokbank.com-cards",
-   "site": "Bangkok Bank",
-   "host": "bangkokbank.com",
-   "country": "TH",
-   "type": "issuer",
-   "purpose": "cards",
-   "entry_urls": [
-    "https://www.bangkokbank.com/en/personal/cards/credit-cards",
-    "https://www.bangkokbank.com/en/personal/cards/credit-cards/bangkok-bank-airasia-credit-card"
-   ],
-   "status": "untested",
-   "full_crawl_order": "after-34",
-   "suggested_by": null,
-   "issuer_id": "th-bangkok-bank"
-  },
-  {
-   "id": "th-bangkok-bank-bangkokbank.com-offers",
-   "site": "Bangkok Bank",
-   "host": "bangkokbank.com",
-   "country": "TH",
-   "type": "issuer",
-   "purpose": "offers",
-   "entry_urls": [
-    "https://www.bangkokbank.com/en/personal/cards/credit-cards/promotions"
-   ],
-   "status": "untested",
-   "full_crawl_order": "after-34",
-   "suggested_by": null,
-   "issuer_id": "th-bangkok-bank"
   },
   {
    "id": "my-network-mastercard-mastercard.com-offers",

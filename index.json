@@ -11,7 +11,7 @@
     "ID": {
       "cards": 0,
       "currency": "IDR",
-      "issuers": 10,
+      "issuers": 11,
       "offers": 0,
       "path": "/id/",
       "timezone": "Asia/Jakarta"
@@ -27,29 +27,29 @@
     "PH": {
       "cards": 0,
       "currency": "PHP",
-      "issuers": 6,
+      "issuers": 7,
       "offers": 0,
       "path": "/ph/",
       "timezone": "Asia/Manila"
     },
     "SG": {
-      "cards": 128,
+      "cards": 130,
       "currency": "SGD",
       "issuers": 16,
-      "offers": 1534,
+      "offers": 1532,
       "path": "/sg/",
       "timezone": "Asia/Singapore"
     },
     "TH": {
       "cards": 0,
       "currency": "THB",
-      "issuers": 11,
+      "issuers": 12,
       "offers": 0,
       "path": "/th/",
       "timezone": "Asia/Bangkok"
     }
   },
-  "generated_at": "2026-11-20T01:07:02+00:00",
+  "generated_at": "2026-11-20T02:14:04+00:00",
   "indexes": "Built in CI and published to GitHub Pages. Not stored on the main branch.",
   "layout": {
     "archive": "{cc}/archive/offers/{issuer}.json",
@@ -67,7 +67,7 @@
     "scope": "Compiled structured data only. Issuer terms belong to the issuers.",
     "url": "https://creativecommons.org/licenses/by/4.0/"
   },
-  "merchants": 1849,
+  "merchants": 1855,
   "name": "card-offer master list",
   "networks": 6,
   "schema_version": "0.3.0",
