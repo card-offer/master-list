@@ -12,7 +12,7 @@ You are the crawler for https://github.com/card-offer/master-list. Do the tasks 
 
 1. Pull `main`. Read `crawler/RULES.md`, `crawler/HARD_SITES.md` and this file again. They change.
 2. The user agent is desktop Chrome. `pipeline/fetcher.py` sends it by default. Do not set `CRAWLER_USER_AGENT` unless the maintainer gives you a value.
-3. Real-Chrome mode is permitted only for the hosts in `config/real_chrome_hosts.json`: `specials.priceless.com` and `www.maybank2u.com.my` at this time. For every other host, use plain and headless-browser mode only.
+3. Real-Chrome mode is permitted only for the hosts in `config/real_chrome_hosts.json`. On 20 Nov 2026 these are `specials.priceless.com`, `www.maybank2u.com.my` and the 15 census bank homepages in section 7. For every other host, use plain and headless-browser mode only. Use real Chrome only after plain and browser mode fail, one attempt per host, with `--min-gap 30`.
 4. Use only hosts in the issuer's or the network's `official_domains`. If an official page links to a host that is not on that list, report the host. Do not crawl it.
 5. After each run: `python tools/check_observations.py <file>` until exit 0, then `python pipeline/ingest.py <file>`, then `python tools/validate.py .`, then the pull request. Give the report in section 11 of `crawler/COMPLETE_INSTRUCTION.md`.
 6. A run that only finds what was already published is still a run. Hand it in, so `last_seen` and `checked_at` move forward.
@@ -98,19 +98,19 @@ Follow section 7 of `crawler/COMPLETE_INSTRUCTION.md` and the Track C table in `
 
 ## 7. Census rechecks with the Chrome user agent
 
-The census of 13 Nov did not reach these banks. Most were a timeout or a block page with the old user agent. Probe each official homepage again, with plain and then browser mode. Real Chrome is not permitted for these hosts. If a probe reads the site, find the consumer credit card page and give the census result. Hand in one census update for each country.
+The census of 13 Nov did not reach these banks. Most were a timeout or a block page with the old user agent. Probe each official homepage again: plain, then browser, then one real-Chrome attempt. The maintainer put these homepages on the real-Chrome list on 20 Nov 2026. If a probe reads the site, find the consumer credit card page and give the census result. Hand in one census update for each country.
 
 | Country | Banks |
 |---|---|
-| PH | BDO Unibank, China Banking Corporation, Security Bank, Philippine National Bank, Union Bank of the Philippines, Land Bank of the Philippines, Bank of Commerce, Citibank N.A. Philippines, Standard Chartered Philippines |
-| TH | Bangkok Bank (bangkokbank.com), Kasikornbank (kasikornbank.com), Siam Commercial Bank. Krung Thai: ktb.co.th redirects to krungthai.com; report that host for the maintainer, do not follow it. |
-| ID | Bank Rakyat Indonesia, Bank Negara Indonesia, Bank Permata, Maybank Indonesia, Bank Kasikorn Indonesia |
+| PH | BDO Unibank (www.bdo.com.ph), China Banking Corporation (www.chinabank.com.ph), Security Bank (www.securitybank.com.ph), Philippine National Bank (www.pnb.com.ph), Union Bank of the Philippines (www.unionbankph.com), Citibank N.A. Philippines (www.citibank.com.ph), Standard Chartered Philippines (www.standardchartered.com.ph) |
+| TH | Bangkok Bank (www.bangkokbank.com), Kasikornbank (www.kasikornbank.com), Siam Commercial Bank (www.scb.co.th, the website on the MAS directory row). Krung Thai: ktb.co.th redirects to krungthai.com; report that host for the maintainer, do not follow it. |
+| ID | Bank Rakyat Indonesia (www.bri.co.id), Bank Negara Indonesia (www.bni.co.id), Bank Permata (www.permatabank.com), Maybank Indonesia (www.maybank.co.id), Bank Kasikorn Indonesia (www.kasikornbank.co.id) |
 
-Land Bank and Bank of Commerce showed a captcha. Do not try them again. If a site still gives `bot_wall`, stop for that site and list it in the report. The maintainer decides if the host goes on the real-Chrome list.
+Land Bank and Bank of Commerce showed a captcha. Do not try them again. If real Chrome also gives `bot_wall` or a captcha, stop for that site and list it in the report as `not_reached`. If a bank becomes a `new_issuer`, add it with its official domains in the census update.
 
 ## 8. Cards and offers for Hong Kong, Thailand, Indonesia and the Philippines
 
-These issuers are in the repository from the census, with no cards and no offers. Do not start until the maintainer accepts the issuers and their `official_domains` for that country. Then do the issuers in the order of `crawler/FULL_CRAWL.md`: Hong Kong 35 to 51, Thailand 52 to 62, Indonesia 63 to 72, Philippines 73 to 78. Pages that are not in English follow section 4 of `crawler/COMPLETE_INSTRUCTION.md`.
+These issuers are in the repository from the census, with no cards and no offers. The maintainer accepted all of them and their `official_domains` on 20 Nov 2026. Do the issuers in the order of `crawler/FULL_CRAWL.md`, after tasks 1 to 6: Hong Kong 35 to 51, Thailand 52 to 62, Indonesia 63 to 72, Philippines 73 to 78. Pages that are not in English follow section 4 of `crawler/COMPLETE_INSTRUCTION.md`.
 
 ## 9. When to stop and ask
 

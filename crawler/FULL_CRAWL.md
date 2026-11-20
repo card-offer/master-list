@@ -165,9 +165,9 @@ Do them in this order. The small ones are first, so that a problem shows early. 
 | 34 | `my-maybank` | Maybank | maybank2u.com.my | 33 | 0 | The site did not answer before. If it fails, record it and continue. |
 
 
-### Hong Kong (proposed)
+### Hong Kong
 
-These are new issuers from the 2026-11-13 phase 1 census. They wait for the maintainer to accept each issuer and each official domain. The order is proposed only: digital issuers and the smaller local catalogues first, then the larger catalogues. Card and offer counts are 0 because no cards have been ingested yet.
+These are new issuers from the 2026-11-13 phase 1 census. The maintainer accepted each issuer and each official domain on 20 Nov 2026. The order: digital issuers and the smaller local catalogues first, then the larger catalogues. Card and offer counts are 0 because no cards have been ingested yet.
 
 | Order | Issuer ID | Name | Official domains | Cards now | Offers now | Note |
 |---|---|---|---|---|---|---|
@@ -189,9 +189,9 @@ These are new issuers from the 2026-11-13 phase 1 census. They wait for the main
 | 50 | `hk-hsbc` | HSBC Hong Kong | hsbc.com.hk | 0 | 0 | |
 | 51 | `hk-bochk` | Bank of China (Hong Kong) | bochk.com, boci.com.hk | 0 | 0 | Chiyu Bank credit cards are issued by BOC Credit Card (International) Limited and go under this issuer. |
 
-### Thailand (proposed)
+### Thailand
 
-These are new issuers from the 2026-11-13 phase 1 census in `crawler/ISSUER_CENSUS.md`. They wait for the maintainer to accept each issuer and each official domain. The order is proposed only. Card and offer counts are 0 because no cards have been ingested yet.
+These are new issuers from the 2026-11-13 phase 1 census in `crawler/ISSUER_CENSUS.md`. The maintainer accepted each issuer and each official domain on 20 Nov 2026. Card and offer counts are 0 because no cards have been ingested yet.
 
 | Order | Issuer ID | Name | Official domains | Cards now | Offers now | Note |
 |---|---|---|---|---|---|---|
@@ -207,9 +207,9 @@ These are new issuers from the 2026-11-13 phase 1 census in `crawler/ISSUER_CENS
 | 61 | `th-krungsri-card` | Krungsri Card | krungsricard.com | 0 | 0 | Catalogue https://www.krungsricard.com/th/product |
 | 62 | `th-uob` | UOB Thailand | uob.co.th | 0 | 0 | Ordinary browser. Listing https://www.uob.co.th/personal/credit-cards.page |
 
-### Indonesia (proposed)
+### Indonesia
 
-These are new issuers from the 2026-11-13 phase 1 census in `crawler/ISSUER_CENSUS.md`. They wait for the maintainer to accept each issuer and each official domain. The order is proposed only. Card and offer counts are 0 because no cards have been ingested yet.
+These are new issuers from the 2026-11-13 phase 1 census in `crawler/ISSUER_CENSUS.md`. The maintainer accepted each issuer and each official domain on 20 Nov 2026. Card and offer counts are 0 because no cards have been ingested yet.
 
 | Order | Issuer ID | Name | Official domains | Cards now | Offers now | Note |
 |---|---|---|---|---|---|---|
@@ -224,9 +224,9 @@ These are new issuers from the 2026-11-13 phase 1 census in `crawler/ISSUER_CENS
 | 71 | `id-mandiri` | Bank Mandiri | bankmandiri.co.id | 0 | 0 | Homepage confirms consumer kartu kredit. Catalogue host mandirikartukredit.com is off-domain; report it, do not crawl it yet. robots.txt was unreadable. |
 | 72 | `id-bca` | BCA | bca.co.id, promo.bca.co.id | 0 | 0 | Catalogue: https://www.bca.co.id/id/individu/produk/kartu-kredit. promo.bca.co.id was added from links on that page. |
 
-### Philippines (proposed)
+### Philippines
 
-These are new issuers from the 2026-11-13 phase 1 census in `crawler/ISSUER_CENSUS.md`. They wait for the maintainer to accept each issuer and each official domain. The order is proposed only. Card and offer counts are 0 because no cards have been ingested yet.
+These are new issuers from the 2026-11-13 phase 1 census in `crawler/ISSUER_CENSUS.md`. The maintainer accepted each issuer and each official domain on 20 Nov 2026. Card and offer counts are 0 because no cards have been ingested yet.
 
 | Order | Issuer ID | Name | Official domains | Cards now | Offers now | Note |
 |---|---|---|---|---|---|---|
@@ -250,8 +250,8 @@ These regulator sites are permitted in phase 1 only, to find issuers. They are n
 | phase-1 | SG | Monetary Authority of Singapore | eservices.mas.gov.sg | The Financial Institutions Directory. Read the categories listed in phase 1 above. |
 | phase-1 | HK | Hong Kong Monetary Authority | hkma.gov.hk | The lists of Licensed Banks, Restricted Licence Banks, Deposit-taking Companies and Digital Banks, and the official Excel contact list (addr.xls). The interactive register is also on vpr.hkma.gov.hk. |
 | phase-1 | TH | Bank of Thailand | bot.or.th | The list of financial institutions and non-banks, including licensed non-bank credit card operators (license 0700). |
-| phase-1 | ID | Otoritas Jasa Keuangan | ojk.go.id | Proposed. Bank-address list (Juni 2026) and finance-company directory (Juli 2026). |
-| phase-1 | ID | Bank Indonesia | bi.go.id | Proposed. PJP licensee directory. The public filter and Unduh control are forms and were not submitted in the 2026-11-13 census. |
+| phase-1 | ID | Otoritas Jasa Keuangan | ojk.go.id | Bank-address list (Juni 2026) and finance-company directory (Juli 2026). |
+| phase-1 | ID | Bank Indonesia | bi.go.id | PJP licensee directory. The public filter and Unduh control are forms and were not submitted in the 2026-11-13 census. |
 | phase-1 | PH | Bangko Sentral ng Pilipinas | bsp.gov.ph | Directory of Banks and Non-Bank Financial Institutions: All Banks, Digital Banks, and Credit Card Company. |
 
 ## Network offer sites (Track C)
