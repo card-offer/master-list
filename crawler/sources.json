@@ -1281,7 +1281,9 @@
    "country": "MY",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://sp.hsbc.com.my/category/all"
+   ],
    "status": "untested",
    "full_crawl_order": 30,
    "suggested_by": null,
