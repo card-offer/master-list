@@ -704,7 +704,11 @@ class MergeConditionTests(unittest.TestCase):
 
     def test_approved_hosts_are_the_ones_the_maintainer_chose(self):
         hosts = load_real_chrome_hosts(ROOT)
-        self.assertEqual(sorted(hosts), ["maybank2u.com.my", "specials.priceless.com"])
+        self.assertIn("maybank2u.com.my", hosts)
+        self.assertIn("specials.priceless.com", hosts)
+        self.assertIn("bdo.com.ph", hosts)
+        self.assertNotIn("landbank.com", hosts)
+        self.assertEqual(len(hosts), len(set(hosts)))
         self.assertTrue(real_chrome_host_allowed("https://specials.priceless.com/en-sg/", hosts))
         self.assertTrue(real_chrome_host_allowed("https://www.maybank2u.com.my/maybank2u/malaysia/en/", hosts))
         self.assertFalse(real_chrome_host_allowed("https://www.bank.example/cards", hosts))

@@ -48,7 +48,7 @@ Go down one step at a time. Stop at the first step that gives the text. Write th
    1. Look in the page source for the data: a JSON block in a script tag, or a link to a JSON file on an official host. Many listings load one public JSON file. Fetch that file with `fetcher.get`. This is the best source: it is complete and it needs no browser.
    2. Read `sitemap.xml` on the host for the card pages and the offer pages.
    3. Render the page with `BrowserFetcher(fetcher).render(url)`. The browser sends each of its requests through the same checks.
-4. **Plain requests and the headless browser were refused.** One real Chrome attempt is allowed, and only for a host in `config/real_chrome_hosts.json`. This step gets past a block page. The maintainer approved real-Chrome mode on 12 Nov 2026, and added `specials.priceless.com` and `www.maybank2u.com.my` to the list on 19 Nov 2026. It is a real browser; Chrome sends its own user agent, with no fingerprint change. If the host is not on the approved list, do not run real-Chrome mode.
+4. **Plain requests and the headless browser were refused.** One real Chrome attempt is allowed, and only for a host in `config/real_chrome_hosts.json`. This step gets past a block page. The maintainer approved real-Chrome mode on 12 Nov 2026, added `specials.priceless.com` and `www.maybank2u.com.my` to the list on 19 Nov 2026, and added 15 census bank homepages in the Philippines, Thailand and Indonesia on 20 Nov 2026. It is a real browser; Chrome sends its own user agent, with no fingerprint change. If the host is not on the approved list, do not run real-Chrome mode.
 
    ```bash
    python pipeline/fetcher.py probe <issuer_id> <url> --real-chrome --min-gap 30
@@ -118,9 +118,9 @@ These actions get past a control. They are not permitted, for any site, for any 
 
 What is known, from the earlier runs:
 
-- `maybank2u.com.my` and `maybank.com` did not answer from the crawl machine: a timeout with a plain request, and an HTTP/2 protocol error in a browser. The cause is not known. It can be the network of the crawl machine or a control of the site.
-- The repository has 33 Maybank cards from a hand copy of the listing. They are not confirmed under the rule. It has no Maybank offer.
-- The census found the Maybank Islamic card listing on `maybank.com`. That host is not in `official_domains` of `my-maybank`.
+- Before 13 Nov 2026, `maybank2u.com.my` and `maybank.com` did not answer from the crawl machine: a timeout with a plain request, and an HTTP/2 protocol error in a browser.
+- The run of 13 Nov 2026 published 37 cards and 62 offers. The offers came from the promotions pages on `www.maybank2u.com.my`. The conventional card listing was not read, so `crawl.status` is `partial`.
+- The Maybank Islamic cards came from `maybank.com`.
 
 Do this, and stop at the first step that fails:
 

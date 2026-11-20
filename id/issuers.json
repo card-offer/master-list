@@ -1,0 +1,222 @@
+{
+  "count": 10,
+  "country": "ID",
+  "generated_at": "2026-11-13T01:15:32+00:00",
+  "schema_version": "0.3.0",
+  "items": [
+    {
+      "card_ids": [],
+      "country": "ID",
+      "crawl": {
+        "card_sources": [
+          "https://www.bca.co.id/id/individu/produk/kartu-kredit"
+        ],
+        "note": "promo.bca.co.id is included because the official card listing links there. The fetcher class on the card listing was captcha because the page scripts mention recaptcha; the public heading and product names were present and were used. Captcha was not bypassed.",
+        "offer_sources": [
+          "https://promo.bca.co.id/id/all?productType=kartu-kredit",
+          "https://www.bca.co.id/id/promo-bca/2021/04/01/14/42/kartu-kredit-bca"
+        ],
+        "status": "not_covered"
+      },
+      "id": "id-bca",
+      "legal_name": "PT BANK CENTRAL ASIA Tbk",
+      "name": "BCA",
+      "offer_count": 0,
+      "official_domains": [
+        "bca.co.id",
+        "promo.bca.co.id"
+      ],
+      "website": "https://www.bca.co.id"
+    },
+    {
+      "card_ids": [],
+      "country": "ID",
+      "crawl": {
+        "card_sources": [
+          "https://www.cimbniaga.co.id/id/personal/kartu-kredit"
+        ],
+        "note": null,
+        "offer_sources": [
+          "https://www.cimbniaga.co.id/id/personal/promo/index"
+        ],
+        "status": "not_covered"
+      },
+      "id": "id-cimb",
+      "legal_name": "PT BANK CIMB NIAGA Tbk",
+      "name": "CIMB Niaga",
+      "offer_count": 0,
+      "official_domains": [
+        "cimbniaga.co.id"
+      ],
+      "website": "https://www.cimbniaga.co.id"
+    },
+    {
+      "card_ids": [],
+      "country": "ID",
+      "crawl": {
+        "card_sources": [
+          "https://www.danamon.co.id/Personal/KartuTransaksi/Kartu-Kredit"
+        ],
+        "note": null,
+        "offer_sources": [
+          "https://www.danamon.co.id/promo"
+        ],
+        "status": "not_covered"
+      },
+      "id": "id-danamon",
+      "legal_name": "PT BANK DANAMON INDONESIA Tbk",
+      "name": "Bank Danamon",
+      "offer_count": 0,
+      "official_domains": [
+        "danamon.co.id"
+      ],
+      "website": "https://www.danamon.co.id"
+    },
+    {
+      "card_ids": [],
+      "country": "ID",
+      "crawl": {
+        "card_sources": [
+          "https://www.hsbc.co.id/en-id/credit-cards/"
+        ],
+        "note": null,
+        "offer_sources": [
+          "https://www.hsbc.co.id/en-id/credit-cards/offers/"
+        ],
+        "status": "not_covered"
+      },
+      "id": "id-hsbc",
+      "legal_name": "PT BANK HSBC INDONESIA",
+      "name": "HSBC Indonesia",
+      "offer_count": 0,
+      "official_domains": [
+        "hsbc.co.id"
+      ],
+      "website": "https://www.hsbc.co.id"
+    },
+    {
+      "card_ids": [],
+      "country": "ID",
+      "crawl": {
+        "card_sources": [],
+        "note": "The official homepage states Credit Card. The card menu points at indonesia.icbc.com.cn, which is off-domain and was not fetched.",
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "id-icbc",
+      "legal_name": "PT BANK ICBC INDONESIA",
+      "name": "ICBC Indonesia",
+      "offer_count": 0,
+      "official_domains": [
+        "icbc.co.id"
+      ],
+      "website": "https://www.icbc.co.id"
+    },
+    {
+      "card_ids": [],
+      "country": "ID",
+      "crawl": {
+        "card_sources": [],
+        "note": "The official homepage states mandiri kartu kredit and links the product catalogue to mandirikartukredit.com, which is off-domain and was not fetched. https robots.txt was unreadable.",
+        "offer_sources": [
+          "https://bankmandiri.co.id/promo-mandiri"
+        ],
+        "status": "not_covered"
+      },
+      "id": "id-mandiri",
+      "legal_name": "PT BANK MANDIRI (PERSERO) Tbk",
+      "name": "Bank Mandiri",
+      "offer_count": 0,
+      "official_domains": [
+        "bankmandiri.co.id"
+      ],
+      "website": "https://www.bankmandiri.co.id"
+    },
+    {
+      "card_ids": [],
+      "country": "ID",
+      "crawl": {
+        "card_sources": [
+          "https://www.bankmayapada.com/id/produk/pinjaman/mycreditcard"
+        ],
+        "note": null,
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "id-mayapada",
+      "legal_name": "PT BANK MAYAPADA INTERNATIONAL Tbk",
+      "name": "Bank Mayapada",
+      "offer_count": 0,
+      "official_domains": [
+        "bankmayapada.com"
+      ],
+      "website": "https://www.bankmayapada.com"
+    },
+    {
+      "card_ids": [],
+      "country": "ID",
+      "crawl": {
+        "card_sources": [
+          "https://bankmega.com/id/personal/kartu-kredit/"
+        ],
+        "note": "applykartukredit.bankmega.com was seen on official pages and was not added.",
+        "offer_sources": [
+          "https://bankmega.com/id/promo/"
+        ],
+        "status": "not_covered"
+      },
+      "id": "id-mega",
+      "legal_name": "PT BANK MEGA Tbk",
+      "name": "Bank Mega",
+      "offer_count": 0,
+      "official_domains": [
+        "bankmega.com"
+      ],
+      "website": "https://bankmega.com"
+    },
+    {
+      "card_ids": [],
+      "country": "ID",
+      "crawl": {
+        "card_sources": [
+          "https://www.ocbc.id/id/individu/kartu-transaksi/kartu-kredit"
+        ],
+        "note": null,
+        "offer_sources": [
+          "https://www.ocbc.id/id/promo"
+        ],
+        "status": "not_covered"
+      },
+      "id": "id-ocbc",
+      "legal_name": "PT BANK OCBC NISP Tbk",
+      "name": "OCBC Indonesia",
+      "offer_count": 0,
+      "official_domains": [
+        "ocbc.id"
+      ],
+      "website": "https://www.ocbc.id"
+    },
+    {
+      "card_ids": [],
+      "country": "ID",
+      "crawl": {
+        "card_sources": [
+          "https://www.banksinarmas.com/id/personal/produk/kartukredit"
+        ],
+        "note": "The fetcher class on the card listing was captcha because the page scripts mention recaptcha; the public heading was the card catalogue. Captcha was not bypassed.",
+        "offer_sources": [
+          "https://www.banksinarmas.com/id/personal/produk/kartukredit/promo"
+        ],
+        "status": "not_covered"
+      },
+      "id": "id-sinarmas",
+      "legal_name": "PT BANK SINARMAS Tbk",
+      "name": "Bank Sinarmas",
+      "offer_count": 0,
+      "official_domains": [
+        "banksinarmas.com"
+      ],
+      "website": "https://www.banksinarmas.com"
+    }
+  ]
+}

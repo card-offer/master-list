@@ -1,0 +1,126 @@
+{
+  "schema_version": "0.3.0",
+  "country": "PH",
+  "generated_at": "2026-11-13T01:06:00+00:00",
+  "count": 6,
+  "items": [
+    {
+      "id": "ph-aub",
+      "name": "Asia United Bank",
+      "legal_name": "Asia United Bank Corporation",
+      "country": "PH",
+      "website": "https://www.aub.com.ph",
+      "official_domains": [
+        "aub.com.ph"
+      ],
+      "card_ids": [],
+      "crawl": {
+        "card_sources": [],
+        "offer_sources": [],
+        "status": "not_covered",
+        "note": "The homepage names Credit Cards and links to https://www.aub.com.ph/creditcards/, which redirected to https://online.aub.ph/creditcards (host not in official_domains). The listing was not read."
+      }
+    },
+    {
+      "id": "ph-bpi",
+      "name": "Bank of the Philippine Islands",
+      "legal_name": "Bank of the Philippine Islands",
+      "country": "PH",
+      "website": "https://www.bpi.com.ph",
+      "official_domains": [
+        "bpi.com.ph"
+      ],
+      "card_ids": [],
+      "crawl": {
+        "card_sources": [
+          "https://www.bpi.com.ph/personal/cards",
+          "https://www.bpi.com.ph/personal/cards/credit-cards"
+        ],
+        "offer_sources": [
+          "https://www.bpi.com.ph/personal/rewards-and-promotions",
+          "https://www.bpi.com.ph/personal/rewards-and-promotions/promos"
+        ],
+        "status": "not_covered",
+        "note": "The official cards page also links to https://www2.bpi.com.ph/cards/pq/landing and to https://www.banko.com.ph/ for BanKo. Those hosts are not in official_domains."
+      }
+    },
+    {
+      "id": "ph-eastwest",
+      "name": "EastWest Bank",
+      "legal_name": "East West Banking Corporation",
+      "country": "PH",
+      "website": "https://www.eastwestbanker.com",
+      "official_domains": [
+        "eastwestbanker.com"
+      ],
+      "card_ids": [],
+      "crawl": {
+        "card_sources": [
+          "https://www.eastwestbanker.com/cards/creditcards"
+        ],
+        "offer_sources": [
+          "https://www.eastwestbanker.com/promos"
+        ],
+        "status": "not_covered",
+        "note": null
+      }
+    },
+    {
+      "id": "ph-hsbc",
+      "name": "HSBC Philippines",
+      "legal_name": "The Hongkong & Shanghai Banking Corporation",
+      "country": "PH",
+      "website": "https://www.hsbc.com.ph",
+      "official_domains": [
+        "hsbc.com.ph"
+      ],
+      "card_ids": [],
+      "crawl": {
+        "card_sources": [
+          "https://www.hsbc.com.ph/credit-cards/products/"
+        ],
+        "offer_sources": [
+          "https://www.hsbc.com.ph/credit-cards/offers/latest/"
+        ],
+        "status": "not_covered",
+        "note": "Offer links also point at offers.hsbc.com.ph and www.homeandaway.hsbc.com, which are not in official_domains."
+      }
+    },
+    {
+      "id": "ph-metrobank",
+      "name": "Metrobank",
+      "legal_name": "Metropolitan Bank and Trust Company",
+      "country": "PH",
+      "website": "https://www.metrobank.com.ph",
+      "official_domains": [
+        "metrobank.com.ph"
+      ],
+      "card_ids": [],
+      "crawl": {
+        "card_sources": [],
+        "offer_sources": [],
+        "status": "not_covered",
+        "note": "The official homepage states Apply for a credit card and links to https://apply.metrobank.com.ph/creditcard. That host is not in official_domains. No on-host card listing URL was found on the homepage."
+      }
+    },
+    {
+      "id": "ph-rcbc",
+      "name": "RCBC",
+      "legal_name": "Rizal Commercial Banking Corporation",
+      "country": "PH",
+      "website": "https://www.rcbc.com",
+      "official_domains": [
+        "rcbc.com"
+      ],
+      "card_ids": [],
+      "crawl": {
+        "card_sources": [],
+        "offer_sources": [
+          "https://www.rcbc.com/promos"
+        ],
+        "status": "not_covered",
+        "note": "The official site has a RCBC Credit Cards link to https://rcbccredit.com/, which is not in official_domains. The listing was not read."
+      }
+    }
+  ]
+}
