@@ -1,0 +1,20 @@
+{
+  "recipe": "recipe/1",
+  "id": "my-icbc-cards",
+  "owner": {"type": "issuer", "id": "my-icbc"},
+  "country": "MY",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": ["https://www.icbcmy.com/en/column/1438058793715253368.html"],
+  "list": {
+    "item": "td#mypagehtmlcontent p[align=center]",
+    "key": "name",
+    "fields": {
+      "name": "strong",
+      "image": "img@src",
+      "variants": {"selector": ":scope", "output": "text", "regex": "((?:Classic|Gold|Platinum) Card.*)$"}
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "note": "ICBC Malaysia has one Credit Card page (Products & Services > Personal Banking > Credit Card). Each product is one centred paragraph in td#mypagehtmlcontent: the product name in strong (ICBC UNIONPAY DUAL CURRENCY CREDIT CARD, ICBC VISA CREDIT CARD), the card image and the variant labels Classic Card, Gold Card and Platinum Card. The features of each product follow its paragraph; Bonus Points and the annual fee waiver below the Visa block apply to both products (both cardmember agreements have the Bonus Point Rewards Programme clause). Fees by variant are in the product disclosure sheets and the minimum income by variant in the cardmember agreements, all on v.icbc.com.cn. The page is plain HTML; there is no detail page."
+}
