@@ -1,0 +1,33 @@
+{
+  "recipe": "recipe/1",
+  "id": "network-unionpay-sg-offers",
+  "owner": {
+    "type": "network",
+    "id": "unionpay"
+  },
+  "country": "SG",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.unionpayintl.com/cardholderServ/serviceCenter/merchant?language=en&countryId=10060012&offerFlag=1"
+  ],
+  "list": {
+    "item": "#offerArea > li",
+    "key": "url",
+    "fields": {
+      "title": "div.img-tit span",
+      "url": "a.img-box@href"
+    }
+  },
+  "detail": {
+    "text_selector": "div.product-box",
+    "fields": {
+      "heading": "div.product_header h6",
+      "region": "div.product_header p",
+      "terms": "div.product_r"
+    }
+  },
+  "listing_kind": "network_offer_listing",
+  "detail_kind": "network_offer_page",
+  "note": "The start URL sets countryId=10060012 (Singapore) and offerFlag=1. The server fills the hidden countryId field and returns nine Global featured tiles, the same set seen with Malaysia or Japan country IDs. A GET without a countryId returns a worldwide catalog of 376 offers; that catalog was not used as the Singapore listing. A further country-filtered set would need the on-page Search form POST, which this recipe does not submit. total and merchantPage are both 1 on the saved page, so there is no further GET page."
+}
