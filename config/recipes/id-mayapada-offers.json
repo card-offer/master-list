@@ -1,0 +1,19 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-mayapada-offers",
+  "owner": {"type": "issuer", "id": "id-mayapada"},
+  "country": "ID",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": ["https://www.bankmayapada.com/en/our-program/"],
+  "list": {
+    "item": "div.sppb-addon-article",
+    "fields": {
+      "title": "h5 a",
+      "url": "h5 a@href",
+      "benefit": "div.sppb-article-introtext"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "English Our Program hub of currently running programs. The Loan Program section is empty (the page prints No item found!). Tiles on this listing are savings and digital-channel programs, not credit-card merchant offers, and were not handed in. Year-round credit-card cashback programs are stated on the myCREDIT CARD product page. Merchant promotion links on that page load from myapps.bankmayapada.com, which is not in official_domains, so this recipe cannot read them until the maintainer accepts that host."
+}

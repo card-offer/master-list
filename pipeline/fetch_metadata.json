@@ -9108,5 +9108,9 @@
 {"url": "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/maybank_cards/tampopo.page", "status": 200, "final_url": "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/maybank_cards/tampopo.page", "fetched_at": "2026-11-20T10:20:52+08:00"},
 {"url": "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/maybank_cards/wanhoi-noodle-house.page", "status": 200, "final_url": "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/maybank_cards/wanhoi-noodle-house.page", "fetched_at": "2026-11-20T10:21:03+08:00"},
 {"url": "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/maybank_cards/wanhoi-yamcha.page", "status": 200, "final_url": "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/maybank_cards/wanhoi-yamcha.page", "fetched_at": "2026-11-20T10:21:15+08:00"},
-{"url": "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/maybank_cards/samtai-yamcha.page", "status": 200, "final_url": "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/maybank_cards/samtai-yamcha.page", "fetched_at": "2026-11-20T10:21:27+08:00"}
+{"url": "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/maybank_cards/samtai-yamcha.page", "status": 200, "final_url": "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/maybank_cards/samtai-yamcha.page", "fetched_at": "2026-11-20T10:21:27+08:00"},
+{"url": "https://www.bankmayapada.com/en/", "status": 200, "final_url": "https://www.bankmayapada.com/en/", "fetched_at": "2026-11-24T08:54:11+08:00"},
+{"url": "https://www.bankmayapada.com/en/product/loan/mycreditcard", "status": 200, "final_url": "https://www.bankmayapada.com/en/product/loan/mycreditcard", "fetched_at": "2026-11-24T08:54:39+08:00"},
+{"url": "https://www.bankmayapada.com/en/sitemap", "status": 200, "final_url": "https://www.bankmayapada.com/en/sitemap", "fetched_at": "2026-11-24T09:04:29+08:00"},
+{"url": "https://www.bankmayapada.com/en/our-program/", "status": 200, "final_url": "https://www.bankmayapada.com/en/our-program/", "fetched_at": "2026-11-24T09:05:46+08:00"}
 ]
