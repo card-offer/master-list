@@ -1,0 +1,40 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-danamon-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "id-danamon"
+  },
+  "country": "ID",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.danamon.co.id/en/promo"
+  ],
+  "list": {
+    "item": "div.dcw-filter-content[data-filter=\"all\"] a.dcw-content-card-second-row",
+    "fields": {
+      "title": ".dcw-card-title",
+      "subtitle": ".dcw-card-subtitle",
+      "url": ":scope@href",
+      "period": ".dcw-card-time"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1.dcw-promodetail-title, h1",
+      "title": "title",
+      "period": ".dcw-promodetail-date",
+      "tags": {
+        "selector": ".promodetail-tags-item",
+        "all": true,
+        "join": " | "
+      },
+      "body": ".dcw-section, #content, main, body"
+    },
+    "text_selector": ".dcw-promodetail-header, .dcw-section"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_offer_page",
+  "note": "The English promo listing is at /en/promo (html lang=en). The first plain HTML response shows 6 tiles under the All filter plus 5 hero slides. Further tiles load through a same-origin POST to /api/v1/promo/GetFilteredPromoByCategory (datasourceId from #list-filterpromo-source, take/skip from hidden fields, filterCategory for Credit Card is {8E736BA3-4B84-45E8-B9E3-C8709C74DA0D}). A GET recipe cannot follow that POST pagination, so this recipe records the first-page selectors only. The complete English promo set is listed in sitemap.xml (275 /en/promo/... URLs on the day of the run). Tile and hero hrefs are written without the /en/ prefix; English detail pages exist at the same path under /en/. Filter /promo to credit card and charge card promos using the detail page tags (.promodetail-tags-item) and the eligibility terms; drop debit-only, e-banking, mortgage and other non-card programmes. Official English card and offer pages were fetched with the /en/ prefix."
+}

@@ -2554,7 +2554,7 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.danamon.co.id/Personal/KartuTransaksi/Kartu-Kredit"
+    "https://www.danamon.co.id/en/Personal/KartuTransaksi/Kartu-Kredit"
    ],
    "status": "untested",
    "full_crawl_order": 69,
@@ -2569,7 +2569,7 @@
    "type": "issuer",
    "purpose": "offers",
    "entry_urls": [
-    "https://www.danamon.co.id/promo"
+    "https://www.danamon.co.id/en/promo"
    ],
    "status": "untested",
    "full_crawl_order": 69,

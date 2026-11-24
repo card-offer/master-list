@@ -51,22 +51,38 @@
       "website": "https://www.cimbniaga.co.id"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "id-danamon-american-express-credit-card",
+        "id-danamon-american-express-gold-card",
+        "id-danamon-american-express-green-card",
+        "id-danamon-classic",
+        "id-danamon-gold",
+        "id-danamon-grab-credit-card",
+        "id-danamon-jcb-precious-credit-card",
+        "id-danamon-jcb-treasure-credit-card",
+        "id-danamon-mastercard-platinum-credit-card",
+        "id-danamon-mastercard-world-credit-card",
+        "id-danamon-paylight-card",
+        "id-danamon-platinum-card",
+        "id-danamon-visa-infinite-credit-card",
+        "id-danamon-visa-platinum-credit-card",
+        "id-danamon-world-elite-mastercard-credit-card"
+      ],
       "country": "ID",
       "crawl": {
         "card_sources": [
-          "https://www.danamon.co.id/Personal/KartuTransaksi/Kartu-Kredit"
+          "https://www.danamon.co.id/en/Personal/KartuTransaksi/Kartu-Kredit"
         ],
-        "note": null,
+        "note": "First full crawl on 24 Nov 2026, English only. The unprefixed paths are Indonesian; English credit card and promo pages exist under /en/ and were the only language crawled. The Credit Card filter on the English listing has 18 tiles. Four corporate or business cards were excluded (Mastercard Corporate, American Express Corporate, American Express Gold Business, Mastercard World Business). Classic and Gold share one product page and were handed in as two cards with shared_product_page. 15 consumer credit and charge cards were handed in. 181 live English promo offers were handed in from the sitemap of 275 /en/promo URLs after dropping non-credit promotions (debit, mortgage, e-banking, QRIS and similar) and 4 expired credit offers. listing_complete is false because the promo listing Load More path is a same-origin POST that the GET recipe does not follow, one sitemap promo URL was not requested because the path contains apply (fetcher class login_required), the English Visa Platinum RIPLAY PDF returns not_found, and official pages link off-config hosts dbankpro.onelink.me and bdi.co.id which were not fetched. Two JSON recipes were committed (id-danamon-cards.json, id-danamon-offers.json).",
         "offer_sources": [
-          "https://www.danamon.co.id/promo"
+          "https://www.danamon.co.id/en/promo"
         ],
-        "status": "not_covered"
+        "status": "partial"
       },
       "id": "id-danamon",
       "legal_name": "PT BANK DANAMON INDONESIA Tbk",
       "name": "Bank Danamon",
-      "offer_count": 0,
+      "offer_count": 181,
       "official_domains": [
         "danamon.co.id"
       ],
