@@ -1,6 +1,6 @@
 {
   "count": 2606,
-  "generated_at": "2026-11-20T08:39:06+00:00",
+  "generated_at": "2026-11-24T02:16:49+00:00",
   "schema_version": "0.3.0",
   "items": [
     {"aliases":["10|SCOTTS"],"categories":["cafe","dining"],"countries":["SG"],"id":"10-scotts","name":"10 Scotts","offer_ids":["sg-maybank-8f9c8c1877","sg-network-jcb-5cddade2b0"],"official_domain":"singapore.grand.hyattrestaurants.com","verified":true},
@@ -776,7 +776,7 @@
     {"aliases":[],"categories":["hotel"],"countries":["SG"],"id":"fullerton-hotel-singapore-jade","name":"The Fullerton Hotel Singapore, Jade","offer_ids":["sg-ocbc-33cd941ece"],"official_domain":"fullertonhotels.com","verified":true},
     {"aliases":[],"categories":["hotel"],"countries":["SG"],"id":"fullerton-hotel-singapore-the-courtyard","name":"The Fullerton Hotel Singapore, The Courtyard","offer_ids":["sg-ocbc-881cdfe54b"],"official_domain":"fullertonhotels.com","verified":true},
     {"aliases":[],"categories":["hotel"],"countries":["SG"],"id":"fullerton-hotel-singapore-town-restaurant","name":"The Fullerton Hotel Singapore, Town Restaurant","offer_ids":["sg-ocbc-c87e8812b3"],"official_domain":"fullertonhotels.com","verified":true},
-    {"aliases":[],"categories":["dining","hotel"],"countries":["HK"],"id":"fullerton-ocean-park-hotel","name":"The Fullerton Ocean Park Hotel Hong Kong","offer_ids":["hk-ccb-asia-3c099bbd6d","hk-ccb-asia-3df77bc08a","hk-ccb-asia-e550e1c756","hk-ccb-asia-f3c52748ea","hk-fubon-5a72de3b44"],"official_domain":null,"verified":true},
+    {"aliases":["The Fullerton Ocean Park Hotel"],"categories":["dining","hotel"],"countries":["HK"],"id":"fullerton-ocean-park-hotel","name":"The Fullerton Ocean Park Hotel Hong Kong","offer_ids":["hk-ccb-asia-3c099bbd6d","hk-ccb-asia-3df77bc08a","hk-ccb-asia-e550e1c756","hk-ccb-asia-f3c52748ea","hk-fubon-5a72de3b44"],"official_domain":null,"verified":true},
     {"aliases":[],"categories":["beauty"],"countries":["SG"],"id":"fullerton-spa","name":"The Fullerton Spa","offer_ids":["sg-network-jcb-f8834e900b"],"official_domain":"fullertonhotels.com","verified":true},
     {"aliases":[],"categories":["entertainment"],"countries":["MY"],"id":"fun-car-street","name":"Fun Car Street","offer_ids":["my-aeon-credit-db8ec14b89"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["dining"],"countries":["MY"],"id":"funnow","name":"FunNow","offer_ids":["my-hong-leong-197e2a1716","my-hong-leong-a4edaaf33a"],"official_domain":null,"verified":true},
@@ -949,7 +949,7 @@
     {"aliases":[],"categories":["dining"],"countries":["MY"],"id":"he-and-she-coffee","name":"He & She Coffee","offer_ids":["my-maybank-20123e471f"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["dining"],"countries":["MY"],"id":"headbangers-hub","name":"Headbanger's Hub","offer_ids":["my-maybank-d5c7566f43"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["health"],"countries":["SG"],"id":"healing-touch","name":"Healing Touch","offer_ids":["sg-maybank-de239889e6"],"official_domain":null,"verified":false},
-    {"aliases":[],"categories":["beauty","health"],"countries":["HK"],"id":"health-esdlife","name":"health.ESDlife","offer_ids":["hk-bea-73ea8a33b4","hk-ccb-asia-1890590923","hk-dah-sing-db79db9c33"],"official_domain":"furmomo.com","verified":true},
+    {"aliases":["Health.ESDlife"],"categories":["beauty","health"],"countries":["HK"],"id":"health-esdlife","name":"health.ESDlife","offer_ids":["hk-bea-73ea8a33b4","hk-ccb-asia-1890590923","hk-dah-sing-db79db9c33"],"official_domain":"furmomo.com","verified":true},
     {"aliases":[],"categories":["health"],"countries":["MY"],"id":"health-land","name":"Health Land","offer_ids":["my-uob-3be0d0bbf6"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["health"],"countries":["MY"],"id":"health-lane","name":"Health Lane","offer_ids":["my-bank-islam-74f0f1e8a3"],"official_domain":null,"verified":false},
     {"aliases":["HEALTH LANE FAMILY PHARMACY"],"categories":["health"],"countries":["MY"],"id":"health-lane-family-pharmacy","name":"Health Lane Family Pharmacy","offer_ids":["my-affin-c0ac045aec","my-hong-leong-c248edd26d","my-network-amex-9d7b448720","my-rhb-3f0efcc93c"],"official_domain":"estore.healthlane.com.my","verified":true},
