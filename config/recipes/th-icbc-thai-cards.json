@@ -1,0 +1,31 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-icbc-thai-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "th-icbc-thai"
+  },
+  "country": "TH",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.icbcthai.com/en/column/1438059017468788825.html"
+  ],
+  "list": {
+    "item": "a.LastChannel[href='/en/column/1438059017468788825.html'], a.LinkSec[href='/en/column/1438059017468788863.html'], a.LinkSec[href='/en/column/1438059017535897672.html'], a.LinkSec[href='/en/column/1035483201709551617.html'], a.LinkSec[href='/en/column/1221037460197322753.html']",
+    "fields": {
+      "name": ":scope",
+      "url": ":scope@href"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": ".TextTitle_style",
+      "body": "#mypagehtmlcontent"
+    },
+    "text_selector": "#mypagehtmlcontent"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The English Credit Card menu on icbcthai.com lists five product entries: UnionPay Credit Card and VISA Credit Card (one shared page), Global Travel Credit Card, Horoscope UnionPay Credit Card (Platinum), ANY MasterCard Credit Card (Platinum), and Shine Future UnionPay Credit Card. The Thai menu also names ICBC-F.T.I., which is not in the English menu. Fee and product terms PDFs are on v.icbc.com.cn, which is not in official_domains; the fetcher must not follow them. The site has an English version, so this recipe starts from the English catalogue only."
+}

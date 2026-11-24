@@ -386,7 +386,7 @@ class NetworkAndLanguageTests(unittest.TestCase):
         self.assertEqual(len(brand["aliases"]), 1)
         self.assertEqual(brand["countries"], ["TH"])
         with open(os.path.join(self.tree, "index.json"), encoding="utf-8") as fh:
-            self.assertEqual(json.load(fh)["countries"]["TH"]["offers"], 1)
+            self.assertEqual(json.load(fh)["countries"]["TH"]["offers"], 2)
         errors, _warnings, _stats = validate(self.tree)
         self.assertEqual(errors, [])
 

@@ -1,0 +1,32 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-icbc-thai-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "th-icbc-thai"
+  },
+  "country": "TH",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.icbcthai.com/en/column/1438059017603006470.html"
+  ],
+  "list": {
+    "item": "#mypagehtmlcontent a[href*='/en/column/']",
+    "fields": {
+      "url": ":scope@href",
+      "image": "img@src"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": ".TextTitle_style",
+      "crumb": ".CrumbLastDisplayChannel",
+      "body": "#mypagehtmlcontent"
+    },
+    "text_selector": "#mypagehtmlcontent"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_listing",
+  "note": "The English Credit Card Promotions page has nine category tiles (Department Store, Supermarket, Online Shopping, Food Delivery and Transport, Dining and Hotel, Hospital, Acquisition Program, Installment Plan, Others). The tiles are images with no alt text, so the recipe keeps the category URL and image. Each category page then loads its offer list from papi.icbc.com.cn (channelSummaryList). That host is not in official_domains, so the recipe cannot read the offers inside a category. Miracle Lounge Privilege is a standalone page under Credit Card, not in this tile grid. The issuers.json offer URL on the Thai site is the debit promotions page; this recipe uses the English credit card promotions page."
+}
