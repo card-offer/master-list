@@ -1,0 +1,17 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-mayapada-cards",
+  "owner": {"type": "issuer", "id": "id-mayapada"},
+  "country": "ID",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": ["https://www.bankmayapada.com/en/product/loan/mycreditcard"],
+  "list": {
+    "item": "ul.sppb-nav a[href^='#sppb-tab-']",
+    "fields": {"name": ":scope", "url": ":scope@href"}
+  },
+  "detail": {"fields": {"heading": "h1", "terms": ".item-page"}, "text_selector": ".item-page"},
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "English myCREDIT CARD product page (real English pages exist, so this run crawls English only). Two on-page tabs: Wellness Credit Card and myCREDIT CARD. The second tab names Signature, Platinum and Gold types of Mayapada Credit Card. Tab links are page anchors, not separate product URLs. The page does not state a card network. Each tab has a PROMOTION list loaded from https://myapps.bankmayapada.com/WebBMIAPI/api/v1/link (kategori_link_id 1 and 2, language EN), which is not in official_domains."
+}

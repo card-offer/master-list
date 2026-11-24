@@ -188,8 +188,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 61 | TH | issuer | offers | Krungsri Card | `krungsricard.com` | untested | https://www.krungsricard.com/th/promotion |
 | 62 | TH | issuer | cards | UOB Thailand | `uob.co.th` | untested | https://www.uob.co.th/personal/credit-cards.page, https://www.uob.co.th/personal/credit-cards/compare.page |
 | 62 | TH | issuer | offers | UOB Thailand | `uob.co.th` | untested |  |
-| 63 | ID | issuer | cards | Bank Mayapada | `bankmayapada.com` | untested | https://www.bankmayapada.com/id/produk/pinjaman/mycreditcard |
-| 63 | ID | issuer | offers | Bank Mayapada | `bankmayapada.com` | untested |  |
+| 63 | ID | issuer | cards | Bank Mayapada | `bankmayapada.com` | untested | https://www.bankmayapada.com/en/product/loan/mycreditcard |
+| 63 | ID | issuer | offers | Bank Mayapada | `bankmayapada.com` | untested | https://www.bankmayapada.com/en/product/loan/mycreditcard, https://www.bankmayapada.com/en/our-program/ |
 | 64 | ID | issuer | cards | ICBC Indonesia | `icbc.co.id` | untested |  |
 | 64 | ID | issuer | offers | ICBC Indonesia | `icbc.co.id` | untested |  |
 | 65 | ID | issuer | cards | HSBC Indonesia | `hsbc.co.id` | untested | https://www.hsbc.co.id/en-id/credit-cards/ |
