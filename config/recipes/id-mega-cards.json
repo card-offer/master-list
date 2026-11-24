@@ -1,0 +1,40 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-mega-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "id-mega"
+  },
+  "country": "ID",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://bankmega.com/id/personal/kartu-kredit/"
+  ],
+  "list": {
+    "item": "#ccard-section .ccard-card-wrapper",
+    "key": "url",
+    "fields": {
+      "name": "h3.ccard-card-name",
+      "url": "a.ccard-btn-detail@href",
+      "benefits": {
+        "selector": ".ccard-benefits li",
+        "all": true,
+        "join": " | "
+      }
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h2.jbn-header-title, h1",
+      "income": ".jbn-feature-item:has(h2)",
+      "features": ".jbn-feature-layout",
+      "benefits_title": "h2.jbn-benefit-title",
+      "costs_title": "h2.jbn-cost-title"
+    },
+    "text_selector": "main, body"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "Indonesian only. https://bankmega.com/en/personal/kartu-kredit/ redirects to the Indonesian catalogue. https://bankmega.com/en/personal/kartu-kredit-bank-mega/ is an older mixed-language page and its See all link redirects to Indonesian. https://bankmega.com/en/personal/creditcard/mega-travel-card/ is HTTP 404. The English sitemap has no current English product pages. The listing section #ccard-section names nine products; Mega Corporate Card is a corporate card and is not handed in. Apply links go to applykartukredit.bankmega.com or other hosts that are not in official_domains and were not fetched. robots.txt allows these paths (only /admin/ is disallowed)."
+}
