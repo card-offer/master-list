@@ -176,8 +176,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 55 | TH | issuer | offers | Government Savings Bank | `gsb.or.th` | untested | https://www.gsb.or.th/promotion/all-promotions/ |
 | 56 | TH | issuer | cards | American Express (Thai) | `americanexpress.com` | untested | https://www.americanexpress.com/th/th/compare-credit-cards/, https://www.americanexpress.com/th-th/credit-cards/compare-credit-cards/ |
 | 56 | TH | issuer | offers | American Express (Thai) | `americanexpress.com` | untested | https://www.americanexpress.com/th-th/benefits/promotions/dining.html |
-| 57 | TH | issuer | cards | ttb | `ttbbank.com` | untested |  |
-| 57 | TH | issuer | offers | ttb | `ttbbank.com` | untested | https://www.ttbbank.com/th/promotion/credit-card |
+| 57 | TH | issuer | cards | ttb | `ttbbank.com` | untested | https://www.ttbbank.com/en/personal/credit-cards |
+| 57 | TH | issuer | offers | ttb | `ttbbank.com` | untested | https://www.ttbbank.com/en/personal/credit-cards/card-type/ttb-disney-credit-cards |
 | 58 | TH | issuer | cards | CardX | `cardx.co.th` | untested | https://www.cardx.co.th/th-TH/credit-card/catalog |
 | 58 | TH | issuer | offers | CardX | `cardx.co.th` | untested | https://www.cardx.co.th/th-TH/credit-card/promotion |
 | 59 | TH | issuer | cards | AEON Thana Sinsap | `aeon.co.th` | untested | https://www.aeon.co.th/aeon/cards/ |

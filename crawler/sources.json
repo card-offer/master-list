@@ -2202,7 +2202,9 @@
    "country": "TH",
    "type": "issuer",
    "purpose": "cards",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.ttbbank.com/en/personal/credit-cards"
+   ],
    "status": "untested",
    "full_crawl_order": 57,
    "suggested_by": null,
@@ -2216,7 +2218,7 @@
    "type": "issuer",
    "purpose": "offers",
    "entry_urls": [
-    "https://www.ttbbank.com/th/promotion/credit-card"
+    "https://www.ttbbank.com/en/personal/credit-cards/card-type/ttb-disney-credit-cards"
    ],
    "status": "untested",
    "full_crawl_order": 57,

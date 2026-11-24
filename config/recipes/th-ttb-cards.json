@@ -1,0 +1,32 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-ttb-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "th-ttb"
+  },
+  "country": "TH",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.ttbbank.com/en/personal/credit-cards"
+  ],
+  "list": {
+    "item": ".card-articles .card a.stretched-link",
+    "fields": {
+      "name": "h3.card-title",
+      "url": ":scope@href"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "title": "title",
+      "body": "main, .card-body, body"
+    },
+    "text_selector": "h1"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The English credit card catalogue on ttbbank.com lists six consumer cards: ttb Disney Credit Card, ttb absolute, So Fast Credit Card, ttb so smart, ttb so chill credit card, and ttb Global House credit card. The site has an English locale, so this recipe starts from the English catalogue only. Fact sheets and the product catalogue are linked as /link/... shortcuts on ttbbank.com, but those URLs redirect to media.ttbbank.com, which is not in official_domains. The English Promotion accordion on product pages is set not to show (display.en.show is false). English /en/promotion/credit-card returns 404; /en/promotion, /en/reward and /en/ttb-reserve redirect to the Thai site."
+}
