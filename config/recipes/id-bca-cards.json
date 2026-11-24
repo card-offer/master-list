@@ -1,0 +1,46 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-bca-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "id-bca"
+  },
+  "country": "ID",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Everyday-Card",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Card-Platinum",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/kartu-kredit-indonesia",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Sq-Visa-Signature",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Sq-Visa-infinite",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Singapore-Airlines-PPS-Club-Visa-Infinite-Card",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Visa-Batman",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Visa-Black-Signature",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Mastercard-Black",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/bca-blibli-tiket-mastercard",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Mastercard-Platinum",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Mastercard-World",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/JCB-Black",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Union-Pay",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/American-Express"
+  ],
+  "list": {
+    "item": "html",
+    "key": "url",
+    "fields": {
+      "name": "h2.right-side-banner__title",
+      "url": "link[rel=canonical]@href"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h2.right-side-banner__title",
+      "body": "main, body"
+    },
+    "text_selector": "main, body"
+  },
+  "listing_kind": "issuer_product_page",
+  "detail_kind": "issuer_product_page",
+  "note": "English site exists, so this run crawls English only. The complete consumer catalogue is the tabbed Credit Card Options page at /en/Individu/produk/Kartu-Kredit/pilihan-kartu (BCA Card, Visa, Mastercard, JCB, UnionPay, American Express). Plain HTML of that page shows only the first tab; all 15 product URLs and names are in the page payload and match the English product pages listed here. The /id/individu sitemap lists the same 15 product slugs (plus feature pages, welcome packs, corporate welcome-pack material, and older cobrand slugs kartu-kredit-cobrand-blibli and kartu-kredit-cobrand-tiket, which are not on the current catalogue). Product pages are plain HTML. Terms PDFs linked from the pages live on pustaka.bca.co.id, which is not in official_domains and was not fetched."
+}

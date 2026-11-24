@@ -2642,7 +2642,23 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.bca.co.id/id/individu/produk/kartu-kredit"
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/pilihan-kartu",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Everyday-Card",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Card-Platinum",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/kartu-kredit-indonesia",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Sq-Visa-Signature",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Sq-Visa-infinite",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Singapore-Airlines-PPS-Club-Visa-Infinite-Card",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Visa-Batman",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Visa-Black-Signature",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Mastercard-Black",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/bca-blibli-tiket-mastercard",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Mastercard-Platinum",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Mastercard-World",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/JCB-Black",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Union-Pay",
+    "https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/American-Express"
    ],
    "status": "untested",
    "full_crawl_order": 72,
@@ -2656,9 +2672,7 @@
    "country": "ID",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [
-    "https://www.bca.co.id/id/promo-bca/2021/04/01/14/42/kartu-kredit-bca"
-   ],
+   "entry_urls": [],
    "status": "untested",
    "full_crawl_order": 72,
    "suggested_by": null,
@@ -2685,7 +2699,7 @@
    "type": "issuer",
    "purpose": "offers",
    "entry_urls": [
-    "https://promo.bca.co.id/id/all?productType=kartu-kredit"
+    "https://promo.bca.co.id/en/all?productType=kartu-kredit"
    ],
    "status": "untested",
    "full_crawl_order": 72,

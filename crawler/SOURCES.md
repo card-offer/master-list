@@ -206,10 +206,10 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 70 | ID | issuer | offers | Bank Mega | `bankmega.com` | untested | https://bankmega.com/id/promo/ |
 | 71 | ID | issuer | cards | Bank Mandiri | `bankmandiri.co.id` | untested |  |
 | 71 | ID | issuer | offers | Bank Mandiri | `bankmandiri.co.id` | untested | https://bankmandiri.co.id/promo-mandiri |
-| 72 | ID | issuer | cards | BCA | `bca.co.id` | untested | https://www.bca.co.id/id/individu/produk/kartu-kredit |
-| 72 | ID | issuer | offers | BCA | `bca.co.id` | untested | https://www.bca.co.id/id/promo-bca/2021/04/01/14/42/kartu-kredit-bca |
+| 72 | ID | issuer | cards | BCA | `bca.co.id` | untested | https://www.bca.co.id/en/Individu/produk/Kartu-Kredit, https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/pilihan-kartu, https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Everyday-Card, https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Card-Platinum, https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/kartu-kredit-indonesia, https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Sq-Visa-Signature, https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Sq-Visa-infinite, https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Singapore-Airlines-PPS-Club-Visa-Infinite-Card, https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Visa-Batman, https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Visa-Black-Signature, https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Mastercard-Black, https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/bca-blibli-tiket-mastercard, https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Mastercard-Platinum, https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Mastercard-World, https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/JCB-Black, https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/Union-Pay, https://www.bca.co.id/en/Individu/produk/Kartu-Kredit/American-Express |
+| 72 | ID | issuer | offers | BCA | `bca.co.id` | untested |  |
 | 72 | ID | issuer | cards | BCA | `promo.bca.co.id` | untested |  |
-| 72 | ID | issuer | offers | BCA | `promo.bca.co.id` | untested | https://promo.bca.co.id/id/all?productType=kartu-kredit |
+| 72 | ID | issuer | offers | BCA | `promo.bca.co.id` | untested | https://promo.bca.co.id/en/all?productType=kartu-kredit |
 | 73 | PH | issuer | cards | Asia United Bank | `aub.com.ph` | untested |  |
 | 73 | PH | issuer | offers | Asia United Bank | `aub.com.ph` | untested |  |
 | 74 | PH | issuer | cards | RCBC | `rcbc.com` | untested |  |
