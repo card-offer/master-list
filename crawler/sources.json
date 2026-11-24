@@ -2261,7 +2261,7 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.aeon.co.th/aeon/cards/"
+    "https://www.aeon.co.th/aeon/cards/?language_id=1"
    ],
    "status": "untested",
    "full_crawl_order": 59,
@@ -2276,7 +2276,8 @@
    "type": "issuer",
    "purpose": "offers",
    "entry_urls": [
-    "https://www.aeon.co.th/aeon/promotions/"
+    "https://www.aeon.co.th/aeon/promotions/?language_id=1",
+    "https://www.aeon.co.th/aeon/promotions/credit-card?language_id=1"
    ],
    "status": "untested",
    "full_crawl_order": 59,
