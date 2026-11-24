@@ -1,0 +1,32 @@
+{
+  "recipe": "recipe/1",
+  "id": "network-visa-my-offers",
+  "owner": {
+    "type": "network",
+    "id": "visa"
+  },
+  "country": "MY",
+  "purpose": "offers",
+  "mode": "browser",
+  "settle_ms": 30000,
+  "actions": {
+    "scroll_times": 4
+  },
+  "start_urls": [
+    "https://www.visa.com.my/en_my/visa-offers-and-perks/"
+  ],
+  "list": {
+    "item": "vs-perk-card",
+    "key": "url",
+    "fields": {
+      "merchant": "h3",
+      "title": "a[data-tracking=view_offer_link] p",
+      "url": "a[data-tracking=view_offer_link]@href",
+      "offer_id": "a[data-tracking=view_offer_link]@data-offer-tracking",
+      "category": "a[data-tracking=view_offer_link]@data-offer-category-name"
+    }
+  },
+  "listing_kind": "network_offer_listing",
+  "detail_kind": "network_offer_page",
+  "note": "The Malaysia Visa Offers + Perks listing at https://www.visa.com.my/en_my/visa-offers-and-perks/ is an Angular app. The HTML shell has no tiles until the page posts to the same-origin list at /offers/api/portal/portal/perks/. Use browser mode with a 30 second settle so that post can finish. Each tile is a vs-perk-card. The public detail JSON for one offer is /offers/api/offer/{id}?locale=en_my&siteId=www.visa.com.my on the same host. Off-domain hosts linked from these pages (including destinations.visa.com and cdn.visa.com) are reported and not crawled."
+}
