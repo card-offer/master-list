@@ -1,0 +1,25 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-bea-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-bea"
+  },
+  "country": "HK",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.hkbea.com/html/en/bea-credit-card-choose-your-card.html"
+  ],
+  "list": {
+    "item": "main .image-title-card",
+    "key": "url",
+    "fields": {
+      "url": "a@href",
+      "image": "img@src"
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The English Choose Your Card page lists consumer credit cards as .image-title-card tiles in main. Image alt and title text are empty, so use the tile href as the item key. The same href is repeated across filter groups (All Cards and each category). Corporate Card is on this listing but is out of scope. BEA Virtual Card and Supplementary Card tiles are issuance or supplementary-card pages, not distinct KFS card types. Classic Card and Gold Card have no live product page on this listing. Show More is a javascript filter, not pagination."
+}

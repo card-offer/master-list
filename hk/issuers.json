@@ -7,16 +7,29 @@
     {
       "card_ids": [
         "hk-bea-aia-credit-card",
+        "hk-bea-centennial-world-elite-mastercard",
+        "hk-bea-goal-credit-card",
         "hk-bea-goal-credit-card-exclusively-for-tertiary-students",
+        "hk-bea-i-titanium-card",
         "hk-bea-jcb-platinum-card",
+        "hk-bea-platinum-card",
         "hk-bea-supremegold-world-mastercard",
         "hk-bea-unionpay-dual-currency-diamond-credit-card",
         "hk-bea-unionpay-dual-currency-diamond-credit-card-exclusively-for-tertiary-students",
+        "hk-bea-unionpay-dual-currency-platinum-credit-card",
+        "hk-bea-visa-signature-card",
         "hk-bea-world-mastercard"
       ],
       "country": "HK",
       "crawl": {
         "card_sources": [
+          "https://www.hkbea.com/html/en/bea-credit-card-choose-your-card.html",
+          "https://www.hkbea.com/html/en/bea-goal-credit-card.html",
+          "https://www.hkbea.com/html/en/bea-credit-card-platinum-card.html",
+          "https://www.hkbea.com/html/en/bea-i-titanium-card.html",
+          "https://www.hkbea.com/html/en/visa-signature.html",
+          "https://www.hkbea.com/html/en/bea-unionpay-dual-currency-platinum-card.html",
+          "https://www.hkbea.com/html/en/bea-credit-card-world-elite.html",
           "https://www.hkbea.com/html/en/bea-credit-card-world-mc.html",
           "https://www.hkbea.com/html/en/bea-credit-card-world-mastercard.html",
           "https://www.hkbea.com/html/en/bea-unionpay-dual-currency-diamond-card.html",
@@ -26,11 +39,14 @@
           "https://www.hkbea.com/html/en/bea-aia-credit-card.html",
           "https://www.hkbea.com/html/en/bea-personal-banking-key-facts-statement.html"
         ],
-        "note": "First full crawl on 20 Nov 2026. No consumer card catalogue: the Credit Cards menu and the sitemap only point to the promotions listing. 7 cards have a product-page heading. The 17 Sep 2026 Key Facts Statement also names Classic, Gold, Titanium or GOAL (standard), PLATINUM, UnionPay Dual Currency PLATINUM, Visa Signature and CENTENNIAL World Elite, which have no dedicated product page and were not handed in. Corporate cards were excluded. 140 live offers from official pages and T&C PDFs. listing_complete is false because some campaign pages and the shopping year-round merchant list are image-only, the travel Mastercard offer page has no T&C PDF, and linked off-config hosts were not fetched.",
+        "note": "Card re-crawl on 24 Nov 2026 for Section 2 missing card names. The official Choose Your Card catalogue at /html/en/bea-credit-card-choose-your-card.html is live. Product pages were handed in for BEA GOAL Credit Card, BEA PLATINUM Card, BEA i-Titanium Card, BEA Visa Signature Card, BEA UnionPay Dual Currency PLATINUM Credit Card and BEA CENTENNIAL World Elite Mastercard. The 17 Sep 2026 Key Facts Statement still names Classic Card and Gold Card: the sitemap Classic Card URL returned 404, and no Gold Card product page was found on official domains, so those two were not handed in. Corporate Card was excluded. Co-branded and education-institution credit cards appear on the catalogue and were not handed in this run. BEA Virtual Card is an issuance channel for a physical credit card, not a distinct KFS card type. 5 previously unmatched offers were re-read: Platinum card or above is a tier rule, the Supplementary Card welcome offer is for World Mastercard or GOAL supplementary cards, and BEA GOAL Credit Card now matches the new product page. listing_complete is false because co-branded catalogue tiles, some image-only campaign pages, and the shopping year-round merchant list were not fully read, and the dining general T&C PDF did not yield extractable text.",
         "offer_sources": [
           "https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html",
           "https://www.hkbea.com/html/en/bea-credit-card-dining-offer-yro.html",
-          "https://www.hkbea.com/html/en/bea-credit-card-shopping-offer-yro.html"
+          "https://www.hkbea.com/html/en/bea-credit-card-shopping-offer-yro.html",
+          "https://www.hkbea.com/html/en/suppcard.html",
+          "https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-bea-dual-card.html",
+          "https://www.hkbea.com/html/en/bea-credit-card-pay-my-way-auto-instalment.html"
         ],
         "status": "partial"
       },
