@@ -160,8 +160,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 48 | HK | issuer | offers | Hang Seng Bank | `hangseng.com` | untested |  |
 | 49 | HK | issuer | cards | DBS Hong Kong | `dbs.com.hk` | untested | https://www.dbs.com.hk/personal/credit-cards/default.page |
 | 49 | HK | issuer | offers | DBS Hong Kong | `dbs.com.hk` | untested |  |
-| 50 | HK | issuer | cards | HSBC Hong Kong | `hsbc.com.hk` | untested | https://www.hsbc.com.hk/credit-cards/ |
-| 50 | HK | issuer | offers | HSBC Hong Kong | `hsbc.com.hk` | untested |  |
+| 50 | HK | issuer | cards | HSBC Hong Kong | `hsbc.com.hk` | untested | https://www.hsbc.com.hk/credit-cards/, https://www.hsbc.com.hk/credit-cards/compare/, https://www.hsbc.com.hk/credit-cards/products/everymile/, https://www.hsbc.com.hk/credit-cards/products/red/, https://www.hsbc.com.hk/credit-cards/products/visa-signature/, https://www.hsbc.com.hk/credit-cards/products/visa-platinum/, https://www.hsbc.com.hk/credit-cards/products/premier-mastercard/, https://www.hsbc.com.hk/credit-cards/products/unionpay-dual-currency-diamond/, https://www.hsbc.com.hk/credit-cards/products/student-visa-gold/, https://www.hsbc.com.hk/credit-cards/products/visa-gold/, https://www.hsbc.com.hk/credit-cards/products/unionpay-dual-currency-classic/ |
+| 50 | HK | issuer | offers | HSBC Hong Kong | `hsbc.com.hk` | untested | https://www.hsbc.com.hk/offers/, https://www.hsbc.com.hk/credit-cards/features/cash-advance/, https://www.hsbc.com.hk/credit-cards/use-your-card/spending-instalment/, https://www.hsbc.com.hk/credit-cards/use-your-card/spending-instalment/all-you-can-split/, https://www.hsbc.com.hk/transfer-payments/products/merchants/, https://www.hsbc.com.hk/investments/products/foreign-exchange/ |
 | 51 | HK | issuer | cards | Bank of China (Hong Kong) | `bochk.com` | untested | https://www.bochk.com/en/creditcard.html, https://www.bochk.com/dam/boccreditcard/cardproductlisting/eng/index.html |
 | 51 | HK | issuer | offers | Bank of China (Hong Kong) | `bochk.com` | untested |  |
 | 51 | HK | issuer | cards | Bank of China (Hong Kong) | `boci.com.hk` | untested |  |

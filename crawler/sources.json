@@ -1969,7 +1969,17 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.hsbc.com.hk/credit-cards/"
+    "https://www.hsbc.com.hk/credit-cards/",
+    "https://www.hsbc.com.hk/credit-cards/compare/",
+    "https://www.hsbc.com.hk/credit-cards/products/everymile/",
+    "https://www.hsbc.com.hk/credit-cards/products/red/",
+    "https://www.hsbc.com.hk/credit-cards/products/visa-signature/",
+    "https://www.hsbc.com.hk/credit-cards/products/visa-platinum/",
+    "https://www.hsbc.com.hk/credit-cards/products/premier-mastercard/",
+    "https://www.hsbc.com.hk/credit-cards/products/unionpay-dual-currency-diamond/",
+    "https://www.hsbc.com.hk/credit-cards/products/student-visa-gold/",
+    "https://www.hsbc.com.hk/credit-cards/products/visa-gold/",
+    "https://www.hsbc.com.hk/credit-cards/products/unionpay-dual-currency-classic/"
    ],
    "status": "untested",
    "full_crawl_order": 50,
@@ -1983,7 +1993,14 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.hsbc.com.hk/offers/",
+    "https://www.hsbc.com.hk/credit-cards/features/cash-advance/",
+    "https://www.hsbc.com.hk/credit-cards/use-your-card/spending-instalment/",
+    "https://www.hsbc.com.hk/credit-cards/use-your-card/spending-instalment/all-you-can-split/",
+    "https://www.hsbc.com.hk/transfer-payments/products/merchants/",
+    "https://www.hsbc.com.hk/investments/products/foreign-exchange/"
+   ],
    "status": "untested",
    "full_crawl_order": 50,
    "suggested_by": null,
