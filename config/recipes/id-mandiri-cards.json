@@ -1,0 +1,15 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-mandiri-cards",
+  "owner": {"type": "issuer", "id": "id-mandiri"},
+  "country": "ID",
+  "purpose": "cards",
+  "mode": "browser",
+  "start_urls": ["https://www.bankmandiri.co.id/en/home"],
+  "list": {
+    "item": "a[href*='mandirikartukredit.com']",
+    "fields": {"name": ":scope", "url": ":scope@href"}
+  },
+  "listing_kind": "issuer_listing",
+  "note": "English homepage (real English pages exist, so this run crawls English only). Plain HTTP timed out twice, 10 minutes apart; the headless browser returned class ok. robots.txt on www.bankmandiri.co.id timed out (robots_unreachable). The three extracted links are the Individual Credit card menu item, the Corporate Card menu item, and Find my perfect credit card. All point at mandirikartukredit.com, which is not in official_domains and was not fetched. No consumer credit-card product page was found on bankmandiri.co.id. The English loans page /en/pinjaman lists personal loans and mortgages only."
+}
