@@ -95,12 +95,35 @@
       "official_domains": [
         "metrobank.com.ph"
       ],
-      "card_ids": [],
+      "card_ids": [
+        "ph-metrobank-cashback-card",
+        "ph-metrobank-dollar-platinum-card",
+        "ph-metrobank-hype-card",
+        "ph-metrobank-icon",
+        "ph-metrobank-m-free-mastercard",
+        "ph-metrobank-platinum-mastercard",
+        "ph-metrobank-psbank-credit-mastercard",
+        "ph-metrobank-rewards-plus-card",
+        "ph-metrobank-titanium-card",
+        "ph-metrobank-toyota-mastercard",
+        "ph-metrobank-toyota-platinum-mastercard",
+        "ph-metrobank-travel-signature-visa",
+        "ph-metrobank-vantage-mastercard",
+        "ph-metrobank-world-mastercard"
+      ],
+      "offer_count": 282,
       "crawl": {
-        "card_sources": [],
-        "offer_sources": [],
-        "status": "not_covered",
-        "note": "The official homepage states Apply for a credit card and links to https://apply.metrobank.com.ph/creditcard. That host is not in official_domains. No on-host card listing URL was found on the homepage."
+        "card_sources": [
+          "https://www.metrobank.com.ph/personal/cards/credit-cards",
+          "https://www.metrobank.com.ph/personal/cards/credit-cards/comparison-page"
+        ],
+        "offer_sources": [
+          "https://www.metrobank.com.ph/promos",
+          "https://www.metrobank.com.ph/personal/cards/credit-cards/rewards-offers",
+          "https://www.metrobank.com.ph/personal/cards/credit-cards/zero-percent-installment-partners"
+        ],
+        "status": "partial",
+        "note": "First full crawl 2026-11-24. Cards were read from https://www.metrobank.com.ph/personal/cards/credit-cards and the comparison page. Offers were read from https://www.metrobank.com.ph/promos (plain HTTP; the listing response was truncated at the fetcher 5,000,000-byte cap). Apply links point at https://apply.metrobank.com.ph/creditcard; rewards and some PDFs point at www.metrobankcard.com and web-assets.metrobank.com.ph. Those hosts are not in official_domains and were not added. The rewards-offers and zero-percent-installment-partners catalogues have no end dates and were not handed in. listing_complete is false because of the 300-offer cap, the truncated /promos listing, and those two catalogues."
       }
     },
     {

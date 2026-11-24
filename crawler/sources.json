@@ -2753,7 +2753,10 @@
    "country": "PH",
    "type": "issuer",
    "purpose": "cards",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.metrobank.com.ph/personal/cards/credit-cards",
+    "https://www.metrobank.com.ph/personal/cards/credit-cards/comparison-page"
+   ],
    "status": "untested",
    "full_crawl_order": 75,
    "suggested_by": null,
@@ -2766,7 +2769,11 @@
    "country": "PH",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.metrobank.com.ph/promos",
+    "https://www.metrobank.com.ph/personal/cards/credit-cards/rewards-offers",
+    "https://www.metrobank.com.ph/personal/cards/credit-cards/zero-percent-installment-partners"
+   ],
    "status": "untested",
    "full_crawl_order": 75,
    "suggested_by": null,

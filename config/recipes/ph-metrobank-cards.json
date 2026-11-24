@@ -1,0 +1,28 @@
+{
+  "recipe": "recipe/1",
+  "id": "ph-metrobank-cards",
+  "owner": {"type": "issuer", "id": "ph-metrobank"},
+  "country": "PH",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": ["https://www.metrobank.com.ph/personal/cards/credit-cards"],
+  "list": {
+    "item": "div.styles_productContainer__Duxrm",
+    "key": "url",
+    "fields": {
+      "name": "p.styles_productCardTitle__Sy437",
+      "url": "a@href",
+      "image_alt": "img@alt"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "title": "title"
+    },
+    "text_selector": "body"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The English credit card listing at /personal/cards/credit-cards is a Next.js page that also embeds the same tiles in HTML. Each featured product is one div.styles_productContainer__Duxrm with a p.styles_productCardTitle__Sy437 name and a Learn More link. On 2026-11-24 the carousel had 9 cards. The comparison page at /personal/cards/credit-cards/comparison-page adds Toyota Mastercard, Metrobank Rewards Plus Card, and Metrobank Platinum Mastercard (World Mastercard is already on the listing). Metrobank ICON at /personal/cards/credit-cards/icon and Vantage Mastercard at /personal/cards/credit-cards/vantage-mastercard also have official product pages and were handed in. The Secured Credit Card page is an application path (holdout deposit, 99 percent approval) and was not handed in as a separate product. Apply Now buttons go to apply.metrobank.com.ph, which is a subdomain not in official_domains and is not fetched. The official host robots.txt allows these paths. There is no language switcher; pages are in English."
+}
