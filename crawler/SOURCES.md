@@ -154,8 +154,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 45 | HK | issuer | offers | Citibank (Hong Kong) | `citibank.com.hk` | untested |  |
 | 46 | HK | issuer | cards | China CITIC Bank International | `cncbinternational.com` | untested | https://www.cncbinternational.com/home/en/index.jsp |
 | 46 | HK | issuer | offers | China CITIC Bank International | `cncbinternational.com` | untested |  |
-| 47 | HK | issuer | cards | Standard Chartered Hong Kong | `sc.com` | untested | https://www.sc.com/hk/credit-cards/ |
-| 47 | HK | issuer | offers | Standard Chartered Hong Kong | `sc.com` | untested |  |
+| 47 | HK | issuer | cards | Standard Chartered Hong Kong | `sc.com` | untested | https://www.sc.com/hk/credit-cards/, https://www.sc.com/hk/credit-cards/compare/, https://www.sc.com/hk/credit-cards/compare/_jcr_content/root/container-top/container-top/container/container_03b9da99-ded5-41da-bc8e-659a9944f53a/offer_listing_produc.products.json, https://www.sc.com/hk/credit-cards/credit-card-all-benefits/, https://www.sc.com/hk/sitemap/ |
+| 47 | HK | issuer | offers | Standard Chartered Hong Kong | `sc.com` | untested | https://www.sc.com/hk/credit-cards/offers/, https://www.sc.com/hk/promotions/the-good-life-year-round-offers/, https://www.sc.com/hk/data/tgl/offers.json |
 | 48 | HK | issuer | cards | Hang Seng Bank | `hangseng.com` | untested | https://www.hangseng.com/en-hk/personal/cards/overview/ |
 | 48 | HK | issuer | offers | Hang Seng Bank | `hangseng.com` | untested |  |
 | 49 | HK | issuer | cards | DBS Hong Kong | `dbs.com.hk` | untested | https://www.dbs.com.hk/personal/credit-cards/default.page |

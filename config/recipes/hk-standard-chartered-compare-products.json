@@ -1,0 +1,30 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-standard-chartered-compare-products",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-standard-chartered"
+  },
+  "country": "HK",
+  "purpose": "cards",
+  "mode": "plain",
+  "source": "json",
+  "start_urls": [
+    "https://www.sc.com/hk/credit-cards/compare/_jcr_content/root/container-top/container-top/container/container_03b9da99-ded5-41da-bc8e-659a9944f53a/offer_listing_produc.products.json"
+  ],
+  "list": {
+    "item": "offer-products",
+    "key": "name",
+    "fields": {
+      "name": "name",
+      "description": "description",
+      "cvp1": "cvp1",
+      "cvp2": "cvp2",
+      "cvp3": "cvp3",
+      "eligibility": "productEligibility",
+      "url": "applyNowCTAURL"
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "note": "Public comparator JSON for the Credit Cards comparator on /hk/credit-cards/compare/ (24 Nov 2026). Six products: cathay-mastercard, cathay-mastercard-priority-banking, cathay-mastercard-priority-private, simply-cash, a-point-card, smart-card. Fee, welcome offer and income text is in cvp3 and productEligibility. This file does not list the Other Credit Cards catalogue."
+}

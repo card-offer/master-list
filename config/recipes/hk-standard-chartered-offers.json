@@ -1,0 +1,34 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-standard-chartered-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-standard-chartered"
+  },
+  "country": "HK",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.sc.com/hk/credit-cards/offers/"
+  ],
+  "list": {
+    "item": "main li.sc-card-tile",
+    "key": "url",
+    "fields": {
+      "merchant": ".sc-card-tile__content > p, .sc-card-tile__title, img@alt",
+      "title": ".sc-card-tile__title",
+      "benefit": ".sc-card-tile__description .sc-rte",
+      "url": "a@href"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "terms": "main"
+    },
+    "text_selector": "main"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "The Hot Promotions listing uses li.sc-card-tile. The first four tiles are section anchors (Hot offers, Financial Flexibility, Exclusive offers, Rewards) with hash hrefs, not deals. Remaining tiles include Standard Chartered promotion pages plus off-domain merchant and network links (harbourcity.com.hk, rentsmart.com.hk, hotels.com, lg.com, agoda.com, expedia.com.hk, trip.com, visa.com.hk, mastercard, unionpayintl.com, mtr.mastercardservices.com). Do not fetch hosts outside official_domains (sc.com only; av.sc.com is not listed for this issuer). Year-round Good Life merchant deals are in hk-standard-chartered-tgl-offers, not in these tiles."
+}

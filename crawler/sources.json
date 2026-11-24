@@ -1885,7 +1885,11 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.sc.com/hk/credit-cards/"
+    "https://www.sc.com/hk/credit-cards/",
+    "https://www.sc.com/hk/credit-cards/compare/",
+    "https://www.sc.com/hk/credit-cards/compare/_jcr_content/root/container-top/container-top/container/container_03b9da99-ded5-41da-bc8e-659a9944f53a/offer_listing_produc.products.json",
+    "https://www.sc.com/hk/credit-cards/credit-card-all-benefits/",
+    "https://www.sc.com/hk/sitemap/"
    ],
    "status": "untested",
    "full_crawl_order": 47,
@@ -1899,7 +1903,11 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.sc.com/hk/credit-cards/offers/",
+    "https://www.sc.com/hk/promotions/the-good-life-year-round-offers/",
+    "https://www.sc.com/hk/data/tgl/offers.json"
+   ],
    "status": "untested",
    "full_crawl_order": 47,
    "suggested_by": null,
