@@ -1,0 +1,34 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-sinarmas-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "id-sinarmas"
+  },
+  "country": "ID",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.banksinarmas.com/id/personal/produk/kartukredit/promo"
+  ],
+  "list": {
+    "item": "div.list-thumb-promo",
+    "fields": {
+      "title": "span.ppromo",
+      "url": "a@href",
+      "end": "span.sp2",
+      "label": "span.sp1"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "title": "title",
+      "body": "body"
+    },
+    "text_selector": "body"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "Indonesian credit-card promo listing at /id/personal/produk/kartukredit/promo. Category tabs (All, Dining, Lifestyle, Traveling, Hotel, Entertainment) are filters of this listing. The All / default listing already contains the tiles in HTML (71 tiles on 2026-11-24). There is no English promo listing."
+}

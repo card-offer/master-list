@@ -220,22 +220,28 @@
       "website": "https://www.permatabank.com"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "id-sinarmas-kartu-kredit-visa-indigo",
+        "id-sinarmas-kartu-kredit-visa-platinum",
+        "id-sinarmas-nanovest-elite-card",
+        "id-sinarmas-red-diamond-infinite-card",
+        "id-sinarmas-the-kings-card"
+      ],
       "country": "ID",
       "crawl": {
         "card_sources": [
           "https://www.banksinarmas.com/id/personal/produk/kartukredit"
         ],
-        "note": "The fetcher class on the card listing was captcha because the page scripts mention recaptcha; the public heading was the card catalogue. Captcha was not bypassed.",
+        "note": "Indonesian first-run 2026-11-24. No English credit-card or promo catalogue exists (/en/ returns 403; /en/personal/produk/kartukredit returns 404; &lang=en only changes nav chrome). The fetcher class on public pages was captcha because a newsletter form and page text mention captcha; the public HTML of the card catalogue and promo listing was present and was used. Captcha was not bypassed. The catalogue lists Visa Platinum, a hidden Alfamart tile whose product URL is not found, Visa INDIGO, and Kartu Kredit Korporat (corporate, not handed in). Red Diamond Infinite Card is on the catalogue area as an Infinite product. Nanovest Elite Card and The Kings Card were found in the official sitemap and handed in; they are not on the catalogue tiles. The promo listing had 71 tiles (listing_complete true). The corporate-only offer and the hemat-kuliner-asia hub were left out; Fajar Chinese Restaurant (linked from that hub) and a second Sleep & Co instalment deal were added.",
         "offer_sources": [
           "https://www.banksinarmas.com/id/personal/produk/kartukredit/promo"
         ],
-        "status": "not_covered"
+        "status": "ok"
       },
       "id": "id-sinarmas",
       "legal_name": "PT BANK SINARMAS Tbk",
       "name": "Bank Sinarmas",
-      "offer_count": 0,
+      "offer_count": 71,
       "official_domains": [
         "banksinarmas.com"
       ],
