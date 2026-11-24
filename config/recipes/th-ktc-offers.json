@@ -1,0 +1,31 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-ktc-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "th-ktc"
+  },
+  "country": "TH",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.ktc.co.th/en/promotion"
+  ],
+  "list": {
+    "item": "a[gtm-event='promotion_list']",
+    "fields": {
+      "url": ":scope@href",
+      "title": "img@title",
+      "dates": "span.typo-remark"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1"
+    },
+    "text_selector": "main"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "The English promotions index lists category tiles and a few featured offers. Individual current and past offer pages are listed in sitemap-promotions-1.xml through sitemap-promotions-12.xml and sitemap-special-promotions.xml (English paths only). Query-string pagination on /promotion is disallowed by robots.txt (Disallow: */promotion/*?). Paths under /en/promotion/store-list are also disallowed. This recipe reads the index tiles; a complete offer run should also walk the promotion sitemaps. The site has an English version, so this recipe starts from the English promotions index only."
+}

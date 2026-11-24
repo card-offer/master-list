@@ -182,8 +182,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 58 | TH | issuer | offers | CardX | `cardx.co.th` | untested | https://www.cardx.co.th/th-TH/credit-card/promotion |
 | 59 | TH | issuer | cards | AEON Thana Sinsap | `aeon.co.th` | untested | https://www.aeon.co.th/aeon/cards/ |
 | 59 | TH | issuer | offers | AEON Thana Sinsap | `aeon.co.th` | untested | https://www.aeon.co.th/aeon/promotions/ |
-| 60 | TH | issuer | cards | KTC | `ktc.co.th` | untested | https://www.ktc.co.th/credit-card |
-| 60 | TH | issuer | offers | KTC | `ktc.co.th` | untested | https://www.ktc.co.th/promotion |
+| 60 | TH | issuer | cards | KTC | `ktc.co.th` | untested | https://www.ktc.co.th/en/credit-card |
+| 60 | TH | issuer | offers | KTC | `ktc.co.th` | untested | https://www.ktc.co.th/en/promotion |
 | 61 | TH | issuer | cards | Krungsri Card | `krungsricard.com` | untested | https://www.krungsricard.com/th/product |
 | 61 | TH | issuer | offers | Krungsri Card | `krungsricard.com` | untested | https://www.krungsricard.com/th/promotion |
 | 62 | TH | issuer | cards | UOB Thailand | `uob.co.th` | untested | https://www.uob.co.th/personal/credit-cards.page, https://www.uob.co.th/personal/credit-cards/compare.page |

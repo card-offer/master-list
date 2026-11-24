@@ -2291,7 +2291,7 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.ktc.co.th/credit-card"
+    "https://www.ktc.co.th/en/credit-card"
    ],
    "status": "untested",
    "full_crawl_order": 60,
@@ -2306,7 +2306,7 @@
    "type": "issuer",
    "purpose": "offers",
    "entry_urls": [
-    "https://www.ktc.co.th/promotion"
+    "https://www.ktc.co.th/en/promotion"
    ],
    "status": "untested",
    "full_crawl_order": 60,
