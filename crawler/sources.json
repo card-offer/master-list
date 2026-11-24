@@ -2172,8 +2172,8 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.americanexpress.com/th/th/compare-credit-cards/",
-    "https://www.americanexpress.com/th-th/credit-cards/compare-credit-cards/"
+    "https://www.americanexpress.com/en-th/credit-cards/compare-credit-cards/index.html",
+    "https://www.americanexpress.com/th/en/compare-credit-cards/"
    ],
    "status": "untested",
    "full_crawl_order": 56,
@@ -2188,7 +2188,13 @@
    "type": "issuer",
    "purpose": "offers",
    "entry_urls": [
-    "https://www.americanexpress.com/th-th/benefits/promotions/dining.html"
+    "https://www.americanexpress.com/en-th/benefits/promotions/dining.html",
+    "https://www.americanexpress.com/en-th/benefits/promotions/travel.html",
+    "https://www.americanexpress.com/en-th/benefits/promotions/lifestyle.html",
+    "https://www.americanexpress.com/en-th/benefits/promotions/explore-asia.html",
+    "https://www.americanexpress.com/th/en/campaigns/platinum-card/bonus-rewards.html",
+    "https://www.americanexpress.com/th/en/campaigns/thai-platinum-credit-card/bonus-rewards.html",
+    "https://www.americanexpress.com/th/en/benefits/platinum-card/"
    ],
    "status": "untested",
    "full_crawl_order": 56,

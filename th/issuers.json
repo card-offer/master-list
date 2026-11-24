@@ -93,23 +93,35 @@
       "website": "https://www.gsb.or.th"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "th-amex-american-express-card",
+        "th-amex-american-express-credit-card",
+        "th-amex-gold-card",
+        "th-amex-thai-american-express-platinum-credit-card",
+        "th-amex-the-american-express-platinum-card"
+      ],
       "country": "TH",
       "crawl": {
         "card_sources": [
-          "https://www.americanexpress.com/th/th/compare-credit-cards/",
-          "https://www.americanexpress.com/th-th/credit-cards/compare-credit-cards/"
+          "https://www.americanexpress.com/en-th/credit-cards/compare-credit-cards/index.html",
+          "https://www.americanexpress.com/th/en/compare-credit-cards/"
         ],
-        "note": "The official Thailand site lists consumer credit and charge cards, including Gold, Green, Platinum and Thai Airways Platinum.",
+        "note": "2026-11-24 run 20261124-0839-th-amex: first English Thailand card and offer run, plain mode, recipes config/recipes/th-amex-cards.json and th-amex-offers.json. Cards come from the compare table and Cards menu. Offers come from dining, travel and lifestyle Explore Thailand listings, the Platinum and THAI Platinum welcome campaign pages, and the Platinum benefits EM DISTRICT coupon. listing_complete is false: /en-th/benefits/promotions/index.html is 404; 7 Explore Thailand detail pages and explore-asia.explore-korea.html failed IncompleteRead after a 10-minute retry; the American Express Credit Card product page failed IncompleteRead and a headless Header overflow (facts taken from the compare listing); Explore Asia tiles link off official_domains to go.amex. americanexpress.com is not in config/real_chrome_hosts.json, so real Chrome was not used. Status is partial, not blocked.",
         "offer_sources": [
-          "https://www.americanexpress.com/th-th/benefits/promotions/dining.html"
+          "https://www.americanexpress.com/en-th/benefits/promotions/dining.html",
+          "https://www.americanexpress.com/en-th/benefits/promotions/travel.html",
+          "https://www.americanexpress.com/en-th/benefits/promotions/lifestyle.html",
+          "https://www.americanexpress.com/en-th/benefits/promotions/explore-asia.html",
+          "https://www.americanexpress.com/th/en/campaigns/platinum-card/bonus-rewards.html",
+          "https://www.americanexpress.com/th/en/campaigns/thai-platinum-credit-card/bonus-rewards.html",
+          "https://www.americanexpress.com/th/en/benefits/platinum-card/"
         ],
-        "status": "not_covered"
+        "status": "partial"
       },
       "id": "th-amex",
       "legal_name": "AMERICAN EXPRESS (THAI) CO., LTD.",
       "name": "American Express (Thai)",
-      "offer_count": 0,
+      "offer_count": 43,
       "official_domains": [
         "americanexpress.com"
       ],
