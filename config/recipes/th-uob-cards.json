@@ -1,0 +1,37 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-uob-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "th-uob"
+  },
+  "country": "TH",
+  "purpose": "cards",
+  "mode": "plain",
+  "source": "json",
+  "start_urls": [
+    "https://www.uob.co.th/assets/web-resources/personal/credit-cards/credit-cards-en.json"
+  ],
+  "list": {
+    "item": ".",
+    "key": "url",
+    "fields": {
+      "name": "CardName",
+      "alt": "CardAlt",
+      "category": "Category",
+      "url": "DetailURL",
+      "highlight": "HighlightText",
+      "description": "Description"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "body": "main"
+    },
+    "text_selector": "main"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The English credit card catalogue at /personal-en/credit-cards.page loads this public JSON file (credit-cards-en.json). The file is a top-level array of 17 cards. UOB Lady's Solitaire and UOB Lady's Platinum share one product page (uob-ladys-credit-card.page). The compare tool loads a second official file, /assets/web-resources/dt/credit-cards/card_en.json, which adds UOB YOLO Platinum Credit Card (also in credit-cards-en-sitemap.xml). The English sitemap also lists uob-tmrw-credit-card.page, which is not in either JSON file and is read by hand. Apply forms are on forms.uobthailand.com, which is not in official_domains and must not be fetched. The site has an English version under /personal-en/, so this recipe crawls English only. robots.txt Disallow: /revamp/, /*.pdf$, /*.PDF$, and /*.txt$. Do not use an em dash in a title or a published quote."
+}

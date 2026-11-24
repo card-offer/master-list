@@ -2351,8 +2351,9 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.uob.co.th/personal/credit-cards.page",
-    "https://www.uob.co.th/personal/credit-cards/compare.page"
+    "https://www.uob.co.th/personal-en/credit-cards.page",
+    "https://www.uob.co.th/personal-en/credit-cards/compare.page",
+    "https://www.uob.co.th/personal-en/credit-cards/cash-back/uob-tmrw-credit-card.page"
    ],
    "status": "untested",
    "full_crawl_order": 62,
@@ -2366,7 +2367,10 @@
    "country": "TH",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.uob.co.th/personal-en/credit-cards/promotions.page",
+    "https://www.uob.co.th/personal-en/credit-cards/welcome-offers.page"
+   ],
    "status": "untested",
    "full_crawl_order": 62,
    "suggested_by": null,
