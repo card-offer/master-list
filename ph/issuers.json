@@ -30,7 +30,22 @@
       "official_domains": [
         "bpi.com.ph"
       ],
-      "card_ids": [],
+      "card_ids": [
+        "ph-bpi-amore-cashback-card",
+        "ph-bpi-amore-platinum-cashback-card",
+        "ph-bpi-ecredit-card",
+        "ph-bpi-edge-card",
+        "ph-bpi-free-plus-card",
+        "ph-bpi-gold-rewards-card",
+        "ph-bpi-omni-card",
+        "ph-bpi-petron-bpi-card",
+        "ph-bpi-platinum-rewards-card",
+        "ph-bpi-rewards-card",
+        "ph-bpi-robinsons-cashback-card",
+        "ph-bpi-signature-card",
+        "ph-bpi-signature-wealth-card"
+      ],
+      "offer_count": 267,
       "crawl": {
         "card_sources": [
           "https://www.bpi.com.ph/personal/cards",
@@ -40,8 +55,8 @@
           "https://www.bpi.com.ph/personal/rewards-and-promotions",
           "https://www.bpi.com.ph/personal/rewards-and-promotions/promos"
         ],
-        "status": "not_covered",
-        "note": "The official cards page also links to https://www2.bpi.com.ph/cards/pq/landing and to https://www.banko.com.ph/ for BanKo. Those hosts are not in official_domains."
+        "status": "partial",
+        "note": "First full crawl 2026-11-24: 13 consumer credit cards and 267 credit-card offers from the official Credit cards promo tab (284 unique tiles: 14 expired before the run date, 1 official URL hit a redirect loop, 2 hub pages skipped, 267 handed in). listing_complete is false because the rewards catalogue under /personal/rewards-and-promotions (points redemption hubs) was not fully read as offer pages, and https://www.bpi.com.ph/personal/rewards-and-promotions/promos/robinsons-appliances-flexipayzero returned a redirect loop. The official cards page also links to https://www2.bpi.com.ph/cards/pq/landing and to https://www.banko.com.ph/ for BanKo; those hosts are not in official_domains. Corporate was excluded. BPI Family Credit Card is named only on the rates table (no product page). BPI DOS Card appears in offer eligibility (Robinsons Bank merger) but has no consumer product page. eCredit is closed to new applications from 30 Nov 2024. Amore Platinum Cashback is being rebranded to Robinsons Cashback effective 24 Jun 2026."
       }
     },
     {

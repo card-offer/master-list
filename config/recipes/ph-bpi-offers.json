@@ -1,0 +1,35 @@
+{
+  "recipe": "recipe/1",
+  "id": "ph-bpi-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "ph-bpi"
+  },
+  "country": "PH",
+  "purpose": "offers",
+  "mode": "plain",
+  "source": "json",
+  "start_urls": [
+    "https://www.bpi.com.ph/content/bpi/ph/en/personal/rewards-and-promotions/promos/jcr:content/root/container/tabshorizontal.model.json?sort=newest&page=1"
+  ],
+  "pagination": {
+    "url_template": "https://www.bpi.com.ph/content/bpi/ph/en/personal/rewards-and-promotions/promos/jcr:content/root/container/tabshorizontal.model.json?sort=newest&page={n}",
+    "start": 2,
+    "max_pages": 30
+  },
+  "list": {
+    "item": "mapArticle.Credit cards[0].listPage",
+    "key": "url",
+    "fields": {
+      "title": "heading",
+      "url": "viewArticleLink",
+      "benefit": "description",
+      "end": "promoExpiryDate",
+      "tags": "primaryTags",
+      "chips": "chips"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "First ph-bpi offers recipe, written 24 Nov 2026. The Promos listing at /personal/rewards-and-promotions/promos is a tabbed AEM list. Load more calls the public model.json on the official host, 12 items per page, Credit cards tab 284 results on 24 Nov 2026. Page 1 of that JSON matches the first Credit cards tiles in the HTML. Debit, deposits, loans, digital, and other tabs are in the same JSON under mapArticle and were read, but this recipe extracts the Credit cards tab only."
+}

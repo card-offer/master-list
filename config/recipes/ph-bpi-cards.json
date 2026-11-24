@@ -1,0 +1,26 @@
+{
+  "recipe": "recipe/1",
+  "id": "ph-bpi-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "ph-bpi"
+  },
+  "country": "PH",
+  "purpose": "cards",
+  "mode": "plain",
+  "source": "html",
+  "start_urls": [
+    "https://www.bpi.com.ph/personal/cards/credit-cards"
+  ],
+  "list": {
+    "item": ".mediaCard:has(a[href*='/credit-cards/'])",
+    "fields": {
+      "name": "h2.heading",
+      "url": "a[href*='/credit-cards/']@href",
+      "description": ".description"
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "First ph-bpi cards recipe, written 24 Nov 2026. The Credit Cards listing is plain HTML. The item selector keeps the 11 credit-card product tiles (including BPI Corporate Card, which is excluded from the consumer hand-in) and drops promo, debit, prepaid, and savings tiles on the same page. Sitemap product pages that are not on this listing, including BPI Amore Platinum Cashback Card, BPI Free+ Card, and BPI Omni Card, were still fetched and handed in where they remain consumer credit cards. BPI Auto Charge Bill Payment is a bill-pay facility, not a card. BPI Family Credit Card appears on the rates and fees table but has no product page in the sitemap or listing."
+}
