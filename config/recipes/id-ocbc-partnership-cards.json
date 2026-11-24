@@ -1,0 +1,33 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-ocbc-partnership-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "id-ocbc"
+  },
+  "country": "ID",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.ocbc.id/en/individu/kartu-transaksi/kartu-partnership"
+  ],
+  "list": {
+    "item": "div.on-with-card.on-with-card--rounded.on-with-card--bordered",
+    "fields": {
+      "name": "h3.on-with-card__title",
+      "url": "a.on-stretched-link@href",
+      "benefit": {"selector": "div.on-content-reading li", "all": true, "join": " | "}
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h2",
+      "title": "title",
+      "body": "main, body"
+    },
+    "text_selector": "h2"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "English co-brand (Partnership) catalogue. The page lists OCBC FTL Platinum (a consumer credit card, handed in) and Tokocrypto Global Debit (a debit card, not handed in)."
+}

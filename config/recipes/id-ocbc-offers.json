@@ -1,0 +1,44 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-ocbc-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "id-ocbc"
+  },
+  "country": "ID",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.ocbc.id/en/individu/kartu-transaksi/kartu-kredit"
+  ],
+  "list": {
+    "item": "section.on-section .on-promo-card-page",
+    "fields": {
+      "title": "h3.on-promo-card-page__title",
+      "url": "a@href",
+      "dates": ".on-promo-card-page__date",
+      "category": {
+        "selector": ".on-card__category-label",
+        "all": true,
+        "join": " | "
+      },
+      "related": {
+        "selector": ".on-promo-card-page__related-item",
+        "all": true,
+        "join": " | "
+      }
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "title": "title",
+      "period": "p.on-text-gray-500",
+      "terms": ".on-content-detail, .on-content-reading, article"
+    },
+    "text_selector": "h1, .on-content-detail, .on-content-reading"
+  },
+  "listing_kind": "issuer_offer_listing",
+  "detail_kind": "issuer_offer_page",
+  "note": "English credit-card catalogue special-offer tiles on ocbc.id (six tiles in plain HTML). The /en/promo All Promo grid is loaded by a same-origin POST to /api/sitecore/OPromoOCBC/GetPromo, but that call is made by JavaScript hosted on cdn1.ocbc.id, which is not in official_domains. Query-string filter URLs on /en/promo are disallowed by robots.txt (Disallow: /*?). This recipe therefore reads the special-offer tiles that are present in the English card catalogue HTML. Additional English promo pages from the official sitemap were read one by one."
+}

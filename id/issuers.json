@@ -175,22 +175,33 @@
       "website": "https://bankmega.com"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "id-ocbc-1-st",
+        "id-ocbc-90n",
+        "id-ocbc-ftl-platinum-credit-card",
+        "id-ocbc-nyala-platinum",
+        "id-ocbc-pet-lovers-platinum",
+        "id-ocbc-platinum",
+        "id-ocbc-star-wars-platinum",
+        "id-ocbc-titanium",
+        "id-ocbc-voyage"
+      ],
       "country": "ID",
       "crawl": {
         "card_sources": [
-          "https://www.ocbc.id/id/individu/kartu-transaksi/kartu-kredit"
+          "https://www.ocbc.id/en/individu/kartu-transaksi/kartu-kredit",
+          "https://www.ocbc.id/en/individu/kartu-transaksi/kartu-partnership"
         ],
-        "note": null,
+        "note": "English credit-card and promo pages exist under /en/, so this run crawled English only. Card sources are the English consumer catalogue and the English partnership catalogue. The /en/promo All Promo grid is loaded by JavaScript on cdn1.ocbc.id, which is not in official_domains, and robots.txt Disallow: /*? blocks filtered promo GETs. English promo pages were read from sitemap slugs mapped onto /en/promo/...; 2020-2025 sitemap pages were not fully fetched, so listing_complete is false.",
         "offer_sources": [
-          "https://www.ocbc.id/id/promo"
+          "https://www.ocbc.id/en/promo"
         ],
-        "status": "not_covered"
+        "status": "partial"
       },
       "id": "id-ocbc",
       "legal_name": "PT BANK OCBC NISP Tbk",
       "name": "OCBC Indonesia",
-      "offer_count": 0,
+      "offer_count": 115,
       "official_domains": [
         "ocbc.id"
       ],

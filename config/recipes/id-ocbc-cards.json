@@ -1,0 +1,33 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-ocbc-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "id-ocbc"
+  },
+  "country": "ID",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.ocbc.id/en/individu/kartu-transaksi/kartu-kredit"
+  ],
+  "list": {
+    "item": "div.on-with-card.on-with-card--rounded.on-with-card--bordered",
+    "fields": {
+      "name": "h3.on-with-card__title",
+      "url": "a.on-stretched-link@href",
+      "benefit": {"selector": "div.on-content-reading li", "all": true, "join": " | "}
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h2",
+      "title": "title",
+      "body": "main, body"
+    },
+    "text_selector": "h2"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "English credit card catalogue on ocbc.id (lang=en, language switcher en is active). The catalogue lists eight consumer cards. Co-brand cards are on a separate listing at /en/individu/kartu-transaksi/kartu-partnership and are not in this recipe's item selector. The site also has an Indonesian locale at /id/; only English was crawled."
+}
