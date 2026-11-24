@@ -184,8 +184,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 59 | TH | issuer | offers | AEON Thana Sinsap | `aeon.co.th` | untested | https://www.aeon.co.th/aeon/promotions/ |
 | 60 | TH | issuer | cards | KTC | `ktc.co.th` | untested | https://www.ktc.co.th/credit-card |
 | 60 | TH | issuer | offers | KTC | `ktc.co.th` | untested | https://www.ktc.co.th/promotion |
-| 61 | TH | issuer | cards | Krungsri Card | `krungsricard.com` | untested | https://www.krungsricard.com/th/product |
-| 61 | TH | issuer | offers | Krungsri Card | `krungsricard.com` | untested | https://www.krungsricard.com/th/promotion |
+| 61 | TH | issuer | cards | Krungsri Card | `krungsricard.com` | untested | https://www.krungsricard.com/en/product |
+| 61 | TH | issuer | offers | Krungsri Card | `krungsricard.com` | untested | https://www.krungsricard.com/en/promotion |
 | 62 | TH | issuer | cards | UOB Thailand | `uob.co.th` | untested | https://www.uob.co.th/personal/credit-cards.page, https://www.uob.co.th/personal/credit-cards/compare.page |
 | 62 | TH | issuer | offers | UOB Thailand | `uob.co.th` | untested |  |
 | 63 | ID | issuer | cards | Bank Mayapada | `bankmayapada.com` | untested | https://www.bankmayapada.com/id/produk/pinjaman/mycreditcard |

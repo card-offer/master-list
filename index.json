@@ -41,7 +41,7 @@
       "timezone": "Asia/Singapore"
     },
     "TH": {
-      "cards": 0,
+      "cards": 17,
       "currency": "THB",
       "issuers": 12,
       "offers": 0,
@@ -49,7 +49,7 @@
       "timezone": "Asia/Bangkok"
     }
   },
-  "generated_at": "2026-11-20T08:39:06+00:00",
+  "generated_at": "2026-11-24T00:51:51+00:00",
   "indexes": "Built in CI and published to GitHub Pages. Not stored on the main branch.",
   "layout": {
     "archive": "{cc}/archive/offers/{issuer}.json",
