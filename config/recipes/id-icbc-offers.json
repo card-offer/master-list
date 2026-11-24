@@ -1,0 +1,23 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-icbc-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "id-icbc"
+  },
+  "country": "ID",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.icbc.co.id/en/column/893542908433969153.html"
+  ],
+  "list": {
+    "item": "#mypagehtmlcontent a[href*='/indonesia/photo/2023/ad'][href$='.pdf']:not(:empty)",
+    "fields": {
+      "title": ":scope",
+      "url": ":scope@href"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "The English Promotions page lists three ICBC UnionPay promo tiles. Each tile and the View More UnionPay Promo link points at v.icbc.com.cn or marketing.unionpayintl.com, which are not in official_domains. This recipe reads only the official listing text. Do not set detail pages that would follow those off-domain hrefs. The announcement list is loaded from papi.icbc.com.cn (window.appConfig.papi.host in /Portal_Resources/Common/config.js) and is not covered by this recipe."
+}

@@ -95,13 +95,19 @@
       "website": "https://www.hsbc.co.id"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "id-icbc-credit-card-icbc"
+      ],
       "country": "ID",
       "crawl": {
-        "card_sources": [],
-        "note": "The official homepage states Credit Card. The card menu points at indonesia.icbc.com.cn, which is off-domain and was not fetched.",
-        "offer_sources": [],
-        "status": "not_covered"
+        "card_sources": [
+          "https://www.icbc.co.id/en/column/1438058791093813429.html"
+        ],
+        "note": "English first-run 2026-11-24. robots.txt on www.icbc.co.id returned 404 (allow_all). The homepage Credit Card menu still points at indonesia.icbc.com.cn, which is not in official_domains and was not fetched. The same column id is published on icbc.co.id at /en/column/1438058791093813429.html (Credit Card ICBC) and was read there. That official product page names UnionPay and VISA and also names ICBC Gold Credit Card, ICBC Credit Card, ICBC UnionPay Credit Card and ICBC Supplementary Credit Card, so the record is shared_product_page. Annual fee and interest, RIPLAY, the guidebook and the supplementary form are PDFs on v.icbc.com.cn and were not fetched, so annual fee is null (fee_unclear). ICBC ATM Card on the official site is a savings ATM/debit product and was not handed in as a credit card. The English Promotions page lists three ICBC UnionPay tiles, but each detail PDF is on v.icbc.com.cn and View More UnionPay Promo goes to marketing.unionpayintl.com; no end date is stated on the official listing, so 0 offers were handed in. The Announcement list is loaded from papi.icbc.com.cn (window.appConfig.papi.host). No sitemap was published. /en/, /id/, /cn/ and /zh/ folder roots return 404. listing_complete is false.",
+        "offer_sources": [
+          "https://www.icbc.co.id/en/column/893542908433969153.html"
+        ],
+        "status": "partial"
       },
       "id": "id-icbc",
       "legal_name": "PT BANK ICBC INDONESIA",

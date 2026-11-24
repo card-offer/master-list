@@ -2407,7 +2407,9 @@
    "country": "ID",
    "type": "issuer",
    "purpose": "cards",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.icbc.co.id/en/column/1438058791093813429.html"
+   ],
    "status": "untested",
    "full_crawl_order": 64,
    "suggested_by": null,
@@ -2420,7 +2422,9 @@
    "country": "ID",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.icbc.co.id/en/column/893542908433969153.html"
+   ],
    "status": "untested",
    "full_crawl_order": 64,
    "suggested_by": null,

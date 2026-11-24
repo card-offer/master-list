@@ -190,8 +190,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 62 | TH | issuer | offers | UOB Thailand | `uob.co.th` | untested |  |
 | 63 | ID | issuer | cards | Bank Mayapada | `bankmayapada.com` | untested | https://www.bankmayapada.com/id/produk/pinjaman/mycreditcard |
 | 63 | ID | issuer | offers | Bank Mayapada | `bankmayapada.com` | untested |  |
-| 64 | ID | issuer | cards | ICBC Indonesia | `icbc.co.id` | untested |  |
-| 64 | ID | issuer | offers | ICBC Indonesia | `icbc.co.id` | untested |  |
+| 64 | ID | issuer | cards | ICBC Indonesia | `icbc.co.id` | untested | https://www.icbc.co.id/en/column/1438058791093813429.html |
+| 64 | ID | issuer | offers | ICBC Indonesia | `icbc.co.id` | untested | https://www.icbc.co.id/en/column/893542908433969153.html |
 | 65 | ID | issuer | cards | HSBC Indonesia | `hsbc.co.id` | untested | https://www.hsbc.co.id/en-id/credit-cards/ |
 | 65 | ID | issuer | offers | HSBC Indonesia | `hsbc.co.id` | untested | https://www.hsbc.co.id/en-id/credit-cards/offers/ |
 | 66 | ID | issuer | cards | Bank Sinarmas | `banksinarmas.com` | untested | https://www.banksinarmas.com/id/personal/produk/kartukredit |
