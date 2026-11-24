@@ -214,8 +214,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 73 | PH | issuer | offers | Asia United Bank | `aub.com.ph` | untested |  |
 | 74 | PH | issuer | cards | RCBC | `rcbc.com` | untested |  |
 | 74 | PH | issuer | offers | RCBC | `rcbc.com` | untested | https://www.rcbc.com/promos |
-| 75 | PH | issuer | cards | Metrobank | `metrobank.com.ph` | untested |  |
-| 75 | PH | issuer | offers | Metrobank | `metrobank.com.ph` | untested |  |
+| 75 | PH | issuer | cards | Metrobank | `metrobank.com.ph` | untested | https://www.metrobank.com.ph/personal/cards/credit-cards, https://www.metrobank.com.ph/personal/cards/credit-cards/comparison-page |
+| 75 | PH | issuer | offers | Metrobank | `metrobank.com.ph` | untested | https://www.metrobank.com.ph/promos, https://www.metrobank.com.ph/personal/cards/credit-cards/rewards-offers, https://www.metrobank.com.ph/personal/cards/credit-cards/zero-percent-installment-partners |
 | 76 | PH | issuer | cards | HSBC Philippines | `hsbc.com.ph` | untested | https://www.hsbc.com.ph/credit-cards/products/ |
 | 76 | PH | issuer | offers | HSBC Philippines | `hsbc.com.ph` | untested | https://www.hsbc.com.ph/credit-cards/offers/latest/ |
 | 77 | PH | issuer | cards | EastWest Bank | `eastwestbanker.com` | untested | https://www.eastwestbanker.com/cards/creditcards |

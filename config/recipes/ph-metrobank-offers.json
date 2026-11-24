@@ -1,0 +1,23 @@
+{
+  "recipe": "recipe/1",
+  "id": "ph-metrobank-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "ph-metrobank"
+  },
+  "country": "PH",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.metrobank.com.ph/promos"
+  ],
+  "list": {
+    "item": "script#__NEXT_DATA__",
+    "fields": {
+      "payload": ":scope"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "The official English Card Promos listing is https://www.metrobank.com.ph/promos (title Metrobank Card Promos). Promo tiles are not in the server-rendered HTML before the data script. The catalog is inside script#__NEXT_DATA__ as PromosDetailsPageV2Record objects (pageName, slug, startDate, expirationDate, categories, cards). A later recipe run must parse that JSON, not CSS tiles. pipeline/fetcher.py reads at most 5,000,000 bytes, so a full /promos response is truncated; this run recovered 1,026 complete promo records plus one truncated tail. Each current credit-card promo was then read from its official detail page at https://www.metrobank.com.ph/promos plus the slug (for example /promos/discounts-at-rhinoshield). Rewards at /personal/cards/credit-cards/rewards-offers and 0 percent installment partners at /personal/cards/credit-cards/zero-percent-installment-partners have no offer end dates on the listing records and were not handed in. Apply and rewards-redemption links to apply.metrobank.com.ph and metrobankcard.com are not fetched. Pages are in English."
+}
