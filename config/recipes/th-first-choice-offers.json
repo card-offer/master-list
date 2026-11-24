@@ -1,0 +1,39 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-first-choice-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "th-first-choice"
+  },
+  "country": "TH",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.firstchoice.co.th/promotion/credit-card"
+  ],
+  "list": {
+    "item": "div.promotionContentBox",
+    "fields": {
+      "title": "h2.topicPromoCutText",
+      "url": "a@href",
+      "tag": "div.tagPromotion",
+      "benefit": "p.pPromoCutText",
+      "period": "div.wrapTextPromotionContentBox span"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "banner": "div.wrapTextBannerPromotionDetail p",
+      "period": {
+        "selector": "div.wrapTextBannerPromotionDetail, section.promotionDetailContentSection, section.promotionDetailConditionSection",
+        "regex": "(\\d{1,2}\\s+(?:ม\\.ค\\.|ก\\.พ\\.|มี\\.ค\\.|เม\\.ย\\.|พ\\.ค\\.|มิ\\.ย\\.|ก\\.ค\\.|ส\\.ค\\.|ก\\.ย\\.|ต\\.ค\\.|พ\\.ย\\.|ธ\\.ค\\.)\\s+\\d{2,4}\\s*[-]\\s*\\d{1,2}\\s+(?:ม\\.ค\\.|ก\\.พ\\.|มี\\.ค\\.|เม\\.ย\\.|พ\\.ค\\.|มิ\\.ย\\.|ก\\.ค\\.|ส\\.ค\\.|ก\\.ย\\.|ต\\.ค\\.|พ\\.ย\\.|ธ\\.ค\\.)\\s+\\d{2,4})"
+      },
+      "terms": "section.promotionDetailConditionSection, #condition"
+    },
+    "text_selector": "section.bannerPromotionDetailSection, section.promotionDetailContentSection, section.promotionDetailConditionSection"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "The public promotion listings at /promotion, /promotion/credit-card, /promotion/installment, /promotion/cash and /promotion/featured-promotions all return the same 220 tiles in plain HTML. Filters are client-side or form posts and are not used. Terms sit in section.promotionDetailConditionSection (anchor #condition) on the offer page. PDF and /getmedia/ paths are disallowed by robots.txt and are not fetched. /promotion/apply-card is not used as a start URL because the fetcher treats /apply in the path as an application form. The source_key is the last path segment of each offer URL (single_offer_page)."
+}
