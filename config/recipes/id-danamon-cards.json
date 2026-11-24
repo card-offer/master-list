@@ -1,0 +1,32 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-danamon-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "id-danamon"
+  },
+  "country": "ID",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.danamon.co.id/en/Personal/KartuTransaksi/Kartu-Kredit"
+  ],
+  "list": {
+    "item": "div.dcw-filter-content[data-filter=\"{C9B57A44-D6F3-4E63-A44E-95AE1ED1D7AE}\"] a.dcw-content-card-second-row",
+    "fields": {
+      "name": ".dcw-card-title",
+      "url": ":scope@href"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": ".hero-product-title, .dcw-product-herobanner, title",
+      "title": "title",
+      "body": ".dcw-faq-richtext, .dcw-alter-content, main, body"
+    },
+    "text_selector": ".dcw-faq-richtext, .dcw-alter-content, main"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The English credit card catalogue is at /en/Personal/KartuTransaksi/Kartu-Kredit (html lang=en, language switcher EN is active). The Credit Card filter group (data-filter {C9B57A44-D6F3-4E63-A44E-95AE1ED1D7AE}) lists 18 product tiles, including corporate and business cards that this run does not hand in. Tile hrefs are written without the /en/ prefix; English product pages exist at the same path under /en/ and are the pages this run fetches. Debit cards and the Others (features and terms) group are separate filters on the same listing. JCB Treasure uses a different product layout (.dcw-alter-content) than the accordion used by the other cards (.dcw-faq-richtext)."
+}

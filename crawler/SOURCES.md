@@ -200,8 +200,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 67 | ID | issuer | offers | OCBC Indonesia | `ocbc.id` | untested | https://www.ocbc.id/id/promo |
 | 68 | ID | issuer | cards | CIMB Niaga | `cimbniaga.co.id` | untested | https://www.cimbniaga.co.id/id/personal/kartu-kredit |
 | 68 | ID | issuer | offers | CIMB Niaga | `cimbniaga.co.id` | untested | https://www.cimbniaga.co.id/id/personal/promo/index |
-| 69 | ID | issuer | cards | Bank Danamon | `danamon.co.id` | untested | https://www.danamon.co.id/Personal/KartuTransaksi/Kartu-Kredit |
-| 69 | ID | issuer | offers | Bank Danamon | `danamon.co.id` | untested | https://www.danamon.co.id/promo |
+| 69 | ID | issuer | cards | Bank Danamon | `danamon.co.id` | untested | https://www.danamon.co.id/en/Personal/KartuTransaksi/Kartu-Kredit |
+| 69 | ID | issuer | offers | Bank Danamon | `danamon.co.id` | untested | https://www.danamon.co.id/en/promo |
 | 70 | ID | issuer | cards | Bank Mega | `bankmega.com` | untested | https://bankmega.com/id/personal/kartu-kredit/ |
 | 70 | ID | issuer | offers | Bank Mega | `bankmega.com` | untested | https://bankmega.com/id/promo/ |
 | 71 | ID | issuer | cards | Bank Mandiri | `bankmandiri.co.id` | untested |  |
