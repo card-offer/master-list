@@ -1,14 +1,19 @@
 {
   "recipe": "recipe/1",
   "id": "my-aeon-credit-offers",
-  "owner": {"type": "issuer", "id": "my-aeon-credit"},
+  "owner": {
+    "type": "issuer",
+    "id": "my-aeon-credit"
+  },
   "country": "MY",
   "purpose": "offers",
   "mode": "plain",
-  "start_urls": ["https://myaeoncredit.com.my/promotions/"],
+  "start_urls": [
+    "https://myaeoncredit.com.my/promotions/"
+  ],
   "pagination": {
     "url_template": "https://myaeoncredit.com.my/promotions/?_pagination_page_numbers_and_buttons={n}",
-    "start": 2,
+    "start": 1,
     "max_pages": 20
   },
   "list": {
@@ -23,11 +28,16 @@
   "detail": {
     "fields": {
       "heading": "h1",
-      "terms": {"selector": "a[href$='.pdf']", "output": "@href", "all": true, "join": " "}
+      "terms": {
+        "selector": "a[href$='.pdf']",
+        "output": "@href",
+        "all": true,
+        "join": " "
+      }
     },
     "text_selector": "main"
   },
   "listing_kind": "issuer_promotion_listing",
   "detail_kind": "issuer_promotion_page",
-  "note": "Written on 20 Nov 2026. That day every URL on myaeoncredit.com.my served the same 'Notice of Temporary Service Unavailability' page (HTTP 200, 665 bytes, PHP security suspension), so this recipe was checked against the official listing saved on 13 Nov 2026 by the plain run 20261113-0854-my-aeon-credit (9 tiles on page 1, pages up to 9). Recheck it on the first run after the site is back. Terms are PDFs under /wp-content/uploads/. Do not follow forms.office.com links (off-config). robots.txt disallows /merchant/."
+  "note": "Rechecked on 24 Nov 2026 after the 20 Nov outage. pagination.start is 1 because the recipe runner increments n before filling url_template, so start 2 skipped page 2. Terms are PDFs under /wp-content/uploads/. Do not follow forms.office.com links (off-config). robots.txt disallows /merchant/. The fetcher classify() labels every page captcha because Bricks theme i18n strings mention reCAPTCHA (recaptchaIds is empty; no challenge is shown). Public listing and promotion pages return HTTP 200 with full text."
 }
