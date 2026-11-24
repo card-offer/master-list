@@ -136,22 +136,37 @@
       "website": "https://www.ttbbank.com"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "th-cardx-beyond",
+        "th-cardx-family-plus",
+        "th-cardx-jcb-platinum",
+        "th-cardx-king-power-platinum-mastercard",
+        "th-cardx-king-power-platinum-visa",
+        "th-cardx-my-travel",
+        "th-cardx-scb-first",
+        "th-cardx-scb-prime",
+        "th-cardx-scb-private-banking",
+        "th-cardx-toyota-platinum",
+        "th-cardx-ultra",
+        "th-cardx-up2me"
+      ],
       "country": "TH",
       "crawl": {
         "card_sources": [
-          "https://www.cardx.co.th/th-TH/credit-card/catalog"
+          "https://www.cardx.co.th/en/credit-card/catalog",
+          "https://www.cardx.co.th/en/credit-card/wealth"
         ],
-        "note": "Ordinary browser mode reached the official site. The credit card catalogue lists consumer cards including CardX Beyond, JCB Platinum, King Power Platinum, UP2ME, Family Plus and Ultra Platinum. The site states CardX is in the SCBX group; SCB itself has no website on the BOT list, so this is recorded as its own issuer, not same_group. A linked host info.cardx.co.th was not added to official_domains.",
+        "note": "2026-11-24 run 20261124-0842-th-cardx: first cards and offers run, plain HTTP via pipeline/fetcher.py, English site only (/en/). robots.txt returned 200 Allow: /. sitemap.xml listed the English catalogue, wealth listing, product pages and 1108 English credit-card promotion URLs (many expired or off the current listing). The catalogue has 9 consumer credit cards. The Product menu also lists SCB WEALTH by CardX with 3 cards (SCB PRIVATE BANKING, SCB FIRST, SCB PRIME), handed in from /en/credit-card/details/{first,prime,private}. CardX FLEX, Speedy Cash and Speedy Loan are under /loan/details and were not handed in as cards. The promotions listing had 515 current offers; the first 300 in listing order were handed in and listing_complete is false (215 remain). Promotion CMS text on the English URLs is often still Thai; quotes were kept in the page language. Registration deep links go to info.cardx.co.th, which was not added to official_domains and was not fetched. Product sales-sheet PDFs on cdx-prod-ssc-frontend.cardx.co.th were not fetched: the fetcher matches official hosts exactly. Recipes: config/recipes/th-cardx-cards.json and config/recipes/th-cardx-offers.json. crawl.status is partial.",
         "offer_sources": [
-          "https://www.cardx.co.th/th-TH/credit-card/promotion"
+          "https://www.cardx.co.th/en/credit-card/promotion",
+          "https://www.cardx.co.th/en/credit-card/promotion/acquisition"
         ],
-        "status": "not_covered"
+        "status": "partial"
       },
       "id": "th-cardx",
       "legal_name": "CARD X CO., LTD.",
       "name": "CardX",
-      "offer_count": 0,
+      "offer_count": 300,
       "official_domains": [
         "cardx.co.th"
       ],

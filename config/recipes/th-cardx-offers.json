@@ -1,0 +1,40 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-cardx-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "th-cardx"
+  },
+  "country": "TH",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.cardx.co.th/en/credit-card/promotion",
+    "https://www.cardx.co.th/en/credit-card/promotion/acquisition"
+  ],
+  "list": {
+    "item": "promotions",
+    "key": "slug",
+    "fields": {
+      "title": "title.en",
+      "slug": "slugName",
+      "url": "slugName",
+      "start": "effectiveDate",
+      "end": "expireDate",
+      "group": "promotionGroup",
+      "tag": "promotion_tag"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "initialDetailData.page.title.en",
+      "start": "initialDetailData.page.effectiveDate",
+      "end": "initialDetailData.page.expireDate",
+      "terms": "initialDetailData.sections[id=tnc].detail"
+    },
+    "text_selector": "initialDetailData"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "The English credit-card promotions listing at /en/credit-card/promotion embeds a promotions array in the official Next.js RSC payload (515 current items on 24 Nov 2026). Tiles are not in the first HTML shell. The listing object has no official detail URL (destination_url is often empty; deep_link_url goes to info.cardx.co.th, which is not in official_domains and must not be fetched). list.fields.url records slugName; official detail pages are at /en/credit-card/promotion/{slugName}. The current recipe runner does not assemble that path automatically, and it cannot yet parse RSC out of the HTML shell. Terms are the tnc section of initialDetailData, often as RSC T-chunks. Loan promotions live under /en/loan/promotion and are outside this recipe. The first run handed in the first 300 listing items in order and left listing_complete false."
+}

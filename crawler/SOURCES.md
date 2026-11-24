@@ -178,8 +178,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 56 | TH | issuer | offers | American Express (Thai) | `americanexpress.com` | untested | https://www.americanexpress.com/th-th/benefits/promotions/dining.html |
 | 57 | TH | issuer | cards | ttb | `ttbbank.com` | untested |  |
 | 57 | TH | issuer | offers | ttb | `ttbbank.com` | untested | https://www.ttbbank.com/th/promotion/credit-card |
-| 58 | TH | issuer | cards | CardX | `cardx.co.th` | untested | https://www.cardx.co.th/th-TH/credit-card/catalog |
-| 58 | TH | issuer | offers | CardX | `cardx.co.th` | untested | https://www.cardx.co.th/th-TH/credit-card/promotion |
+| 58 | TH | issuer | cards | CardX | `cardx.co.th` | untested | https://www.cardx.co.th/en/credit-card/catalog, https://www.cardx.co.th/en/credit-card/wealth |
+| 58 | TH | issuer | offers | CardX | `cardx.co.th` | untested | https://www.cardx.co.th/en/credit-card/promotion, https://www.cardx.co.th/en/credit-card/promotion/acquisition |
 | 59 | TH | issuer | cards | AEON Thana Sinsap | `aeon.co.th` | untested | https://www.aeon.co.th/aeon/cards/ |
 | 59 | TH | issuer | offers | AEON Thana Sinsap | `aeon.co.th` | untested | https://www.aeon.co.th/aeon/promotions/ |
 | 60 | TH | issuer | cards | KTC | `ktc.co.th` | untested | https://www.ktc.co.th/credit-card |

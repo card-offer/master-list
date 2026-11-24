@@ -1,0 +1,35 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-cardx-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "th-cardx"
+  },
+  "country": "TH",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.cardx.co.th/en/credit-card/catalog",
+    "https://www.cardx.co.th/en/credit-card/wealth"
+  ],
+  "list": {
+    "item": "productListSection.products",
+    "key": "slug",
+    "fields": {
+      "name": "name",
+      "slug": "slugName",
+      "url": "slugName",
+      "tagline": "tagline"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "hero_banner.title",
+      "product_name": "product.name",
+      "qualification": "qualification_section"
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The English site is at /en/. The catalogue (9 consumer cards) and SCB WEALTH by CardX listing (SCB PRIVATE BANKING, SCB FIRST, SCB PRIME) are Next.js pages. Product tiles are not in the first HTML shell; they are in the official RSC payload as productListSection.products (catalogue) and strapiData.products (wealth). The listing object has no official product URL (apply_url is cardx.onelink.me and must not be fetched). list.fields.url records slugName; official detail pages are at /en/credit-card/details/{slugName}. The current recipe runner does not assemble that path automatically, and it cannot yet parse RSC out of the HTML shell. Detail payload fields used on this run: hero_banner.title, product.name, qualification_section. Product sales-sheet PDFs are on cdx-prod-ssc-frontend.cardx.co.th; PoliteFetcher treats that host as not official because official_domains is cardx.co.th with exact-host matching. The site has an English version, so this recipe starts from the English listings only."
+}

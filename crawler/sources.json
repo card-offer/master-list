@@ -2231,7 +2231,8 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.cardx.co.th/th-TH/credit-card/catalog"
+    "https://www.cardx.co.th/en/credit-card/catalog",
+    "https://www.cardx.co.th/en/credit-card/wealth"
    ],
    "status": "untested",
    "full_crawl_order": 58,
@@ -2246,7 +2247,8 @@
    "type": "issuer",
    "purpose": "offers",
    "entry_urls": [
-    "https://www.cardx.co.th/th-TH/credit-card/promotion"
+    "https://www.cardx.co.th/en/credit-card/promotion",
+    "https://www.cardx.co.th/en/credit-card/promotion/acquisition"
    ],
    "status": "untested",
    "full_crawl_order": 58,
