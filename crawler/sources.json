@@ -2142,7 +2142,7 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.gsb.or.th/personal/card/"
+    "https://www.gsb.or.th/personal/credit-cash/"
    ],
    "status": "untested",
    "full_crawl_order": 55,
@@ -2157,7 +2157,17 @@
    "type": "issuer",
    "purpose": "offers",
    "entry_urls": [
-    "https://www.gsb.or.th/promotion/all-promotions/"
+    "https://www.gsb.or.th/promotion/shopping/",
+    "https://www.gsb.or.th/promotion/restaurant/",
+    "https://www.gsb.or.th/promotion/travel/",
+    "https://www.gsb.or.th/promotion/health/",
+    "https://www.gsb.or.th/promotion/home-decor/",
+    "https://www.gsb.or.th/promotion/automotive/",
+    "https://www.gsb.or.th/promotion/lifestyle/",
+    "https://www.gsb.or.th/promotion/reward-point/",
+    "https://www.gsb.or.th/promotion/installments0per/",
+    "https://www.gsb.or.th/promotion/etc/",
+    "https://www.gsb.or.th/promotion/rgtc/"
    ],
    "status": "untested",
    "full_crawl_order": 55,
