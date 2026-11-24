@@ -2699,7 +2699,10 @@
    "country": "PH",
    "type": "issuer",
    "purpose": "cards",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.aub.com.ph/",
+    "https://www.aub.com.ph/creditcards/"
+   ],
    "status": "untested",
    "full_crawl_order": 73,
    "suggested_by": null,
@@ -2712,7 +2715,9 @@
    "country": "PH",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.aub.com.ph/announce"
+   ],
    "status": "untested",
    "full_crawl_order": 73,
    "suggested_by": null,
