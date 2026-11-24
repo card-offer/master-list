@@ -196,8 +196,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 65 | ID | issuer | offers | HSBC Indonesia | `hsbc.co.id` | untested | https://www.hsbc.co.id/en-id/credit-cards/offers/ |
 | 66 | ID | issuer | cards | Bank Sinarmas | `banksinarmas.com` | untested | https://www.banksinarmas.com/id/personal/produk/kartukredit |
 | 66 | ID | issuer | offers | Bank Sinarmas | `banksinarmas.com` | untested | https://www.banksinarmas.com/id/personal/produk/kartukredit/promo |
-| 67 | ID | issuer | cards | OCBC Indonesia | `ocbc.id` | untested | https://www.ocbc.id/id/individu/kartu-transaksi/kartu-kredit |
-| 67 | ID | issuer | offers | OCBC Indonesia | `ocbc.id` | untested | https://www.ocbc.id/id/promo |
+| 67 | ID | issuer | cards | OCBC Indonesia | `ocbc.id` | untested | https://www.ocbc.id/en/individu/kartu-transaksi/kartu-kredit, https://www.ocbc.id/en/individu/kartu-transaksi/kartu-partnership |
+| 67 | ID | issuer | offers | OCBC Indonesia | `ocbc.id` | untested | https://www.ocbc.id/en/promo |
 | 68 | ID | issuer | cards | CIMB Niaga | `cimbniaga.co.id` | untested | https://www.cimbniaga.co.id/id/personal/kartu-kredit |
 | 68 | ID | issuer | offers | CIMB Niaga | `cimbniaga.co.id` | untested | https://www.cimbniaga.co.id/id/personal/promo/index |
 | 69 | ID | issuer | cards | Bank Danamon | `danamon.co.id` | untested | https://www.danamon.co.id/Personal/KartuTransaksi/Kartu-Kredit |

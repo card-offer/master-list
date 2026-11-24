@@ -2494,7 +2494,8 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.ocbc.id/id/individu/kartu-transaksi/kartu-kredit"
+    "https://www.ocbc.id/en/individu/kartu-transaksi/kartu-kredit",
+    "https://www.ocbc.id/en/individu/kartu-transaksi/kartu-partnership"
    ],
    "status": "untested",
    "full_crawl_order": 67,
@@ -2509,7 +2510,7 @@
    "type": "issuer",
    "purpose": "offers",
    "entry_urls": [
-    "https://www.ocbc.id/id/promo"
+    "https://www.ocbc.id/en/promo"
    ],
    "status": "untested",
    "full_crawl_order": 67,
