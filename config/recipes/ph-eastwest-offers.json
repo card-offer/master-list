@@ -1,0 +1,42 @@
+{
+  "recipe": "recipe/1",
+  "id": "ph-eastwest-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "ph-eastwest"
+  },
+  "country": "PH",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.eastwestbanker.com/promos"
+  ],
+  "pagination": {
+    "next": "li.pager__item--next a@href",
+    "max_pages": 40
+  },
+  "list": {
+    "item": "div.promo-card",
+    "key": "url",
+    "fields": {
+      "title": "h3",
+      "url": "div.card-img a@href",
+      "benefit": "div.excerpt",
+      "categories": {
+        "selector": "span.pill-category",
+        "all": true,
+        "join": " | "
+      }
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "terms": "main"
+    },
+    "text_selector": "main"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "The All Promos listing at /promos is a Drupal view (inner_pages_promos_grid) with nine promo-card tiles per page and a pager that went to ?page=28 (29 pages) on 2026-11-24. Category filters (Dining, Shopping, Travel, Horizons, Home Loan, Komo, and others) are subsets of this list. Horizons is a magazine path (/promos/horizons) and is not this grid. Some tiles are not credit-card offers; filter after reading the detail page. The first page of the listing does not include every current Cards Promos slide from the credit cards page (for example /promos/php-4-unioil-0); later listing pages or the sitemap may."
+}
