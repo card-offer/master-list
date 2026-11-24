@@ -1,0 +1,30 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-first-choice-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "th-first-choice"
+  },
+  "country": "TH",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.firstchoice.co.th/cards"
+  ],
+  "list": {
+    "item": "div.wrapSliderCardBox",
+    "key": "url",
+    "fields": {
+      "name": "h3",
+      "url": "a[href*='/cards/']@href",
+      "highlights": {
+        "selector": "div.wrapTextCardSliderDetail li",
+        "all": true,
+        "join": " | "
+      },
+      "tag": "div.wrapTagRecommend"
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "note": "Catalogue at /cards (same tiles as /all-cards). The site splits products into credit cards (บัตรเครดิต, path /cards/credit-card/), cash cards (บัตรกดเงินสด, path /cards/cash-card/) and partner cards also under /cards/cash-card/. This recipe extracts every catalogue tile. The hand-in keeps only the three consumer credit cards. Apply and app links are ignored. Plain HTTP is enough."
+}
