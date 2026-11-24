@@ -257,11 +257,14 @@
       "country": "HK",
       "crawl": {
         "card_sources": [
-          "https://www.cncbinternational.com/home/en/index.jsp"
+          "https://www.cncbinternational.com/home/en/index.jsp",
+          "https://www.cncbinternational.com/personal/credit-cards/en/index.jsp"
         ],
-        "note": "Plain HTTP was bot_wall. Ordinary browser mode reached the English homepage, which has a Credit Cards menu and names the CNCBI JD Mastercard Card. robots.txt returned 403, so the fetch is flagged robots_unreadable.",
-        "offer_sources": [],
-        "status": "not_covered"
+        "note": "Run 20261124-0819-hk-cncbi. robots.txt is HTTP 404 (allow_all). Plain HTTP with the Chrome user agent read the English homepage (class ok), which has a Credit Cards menu and a banner that names Brand new CNCBI JD Mastercard Card. The credit cards listing, the promotions listing, the HTML sitemap, and sitemap.xml returned a Tencent EdgeOne JS challenge (gcaptcha.eo.gtimg.com TEOJsChallengeSdk, class captcha, HTTP 200, no page text). Real-Chrome mode is not approved for cncbinternational.com. No further requests were sent. No cards or offers were handed in. listing_complete is false.",
+        "offer_sources": [
+          "https://www.cncbinternational.com/personal/promotions/en/index.jsp"
+        ],
+        "status": "blocked"
       },
       "id": "hk-cncbi",
       "legal_name": "CHINA CITIC BANK INTERNATIONAL LIMITED",

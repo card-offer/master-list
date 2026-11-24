@@ -152,8 +152,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 44 | HK | issuer | offers | Bank of East Asia | `hkbea.com` | untested | https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html, https://www.hkbea.com/html/en/bea-credit-card-dining-offer-yro.html, https://www.hkbea.com/html/en/bea-credit-card-shopping-offer-yro.html |
 | 45 | HK | issuer | cards | Citibank (Hong Kong) | `citibank.com.hk` | untested | https://www.citibank.com.hk/, https://www.citibank.com.hk/english/credit-cards/ |
 | 45 | HK | issuer | offers | Citibank (Hong Kong) | `citibank.com.hk` | untested |  |
-| 46 | HK | issuer | cards | China CITIC Bank International | `cncbinternational.com` | untested | https://www.cncbinternational.com/home/en/index.jsp |
-| 46 | HK | issuer | offers | China CITIC Bank International | `cncbinternational.com` | untested |  |
+| 46 | HK | issuer | cards | China CITIC Bank International | `cncbinternational.com` | untested | https://www.cncbinternational.com/home/en/index.jsp, https://www.cncbinternational.com/personal/credit-cards/en/index.jsp |
+| 46 | HK | issuer | offers | China CITIC Bank International | `cncbinternational.com` | untested | https://www.cncbinternational.com/personal/promotions/en/index.jsp |
 | 47 | HK | issuer | cards | Standard Chartered Hong Kong | `sc.com` | untested | https://www.sc.com/hk/credit-cards/ |
 | 47 | HK | issuer | offers | Standard Chartered Hong Kong | `sc.com` | untested |  |
 | 48 | HK | issuer | cards | Hang Seng Bank | `hangseng.com` | untested | https://www.hangseng.com/en-hk/personal/cards/overview/ |

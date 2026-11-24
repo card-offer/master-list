@@ -1857,7 +1857,8 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.cncbinternational.com/home/en/index.jsp"
+    "https://www.cncbinternational.com/home/en/index.jsp",
+    "https://www.cncbinternational.com/personal/credit-cards/en/index.jsp"
    ],
    "status": "untested",
    "full_crawl_order": 46,
@@ -1871,7 +1872,9 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.cncbinternational.com/personal/promotions/en/index.jsp"
+   ],
    "status": "untested",
    "full_crawl_order": 46,
    "suggested_by": null,
