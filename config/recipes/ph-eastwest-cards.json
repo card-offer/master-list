@@ -1,0 +1,33 @@
+{
+  "recipe": "recipe/1",
+  "id": "ph-eastwest-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "ph-eastwest"
+  },
+  "country": "PH",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.eastwestbanker.com/cards/creditcards"
+  ],
+  "list": {
+    "item": ".block-views-blockcredit-card-travel-pages-slider-block-1 li.splide__slide, .block-views-blockcredit-card-cash-back-pages-slider-block-1 li.splide__slide, .block-views-blockcredit-card-rewards-pages-slider-block-1 li.splide__slide",
+    "key": "url",
+    "fields": {
+      "name": "h3",
+      "url": "a@href",
+      "description": "p.description"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "terms": "main"
+    },
+    "text_selector": "main"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The official credit card listing at /cards/creditcards has three category sliders (Travel, Cashback, Rewards). Each consumer credit card is one li.splide__slide in those three blocks (15 cards). Debit, prepaid, recommended-service, and Cards Promos slides on the same page are outside these blocks and are not card items. The EveryDay Titanium Mastercard tile links to /creditcards/everyday-titanium-mastercard (no /cards prefix). Do not treat sitemap URLs with numeric suffixes (platinum-mastercard-1 and similar) or eastwest-jcb-reward as extra listing tiles; they are not in these sliders."
+}

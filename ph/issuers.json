@@ -53,7 +53,23 @@
       "official_domains": [
         "eastwestbanker.com"
       ],
-      "card_ids": [],
+      "card_ids": [
+        "ph-eastwest-dolce-vita-titanium-mastercard",
+        "ph-eastwest-everyday-titanium-mastercard",
+        "ph-eastwest-foodpanda-visa",
+        "ph-eastwest-gold-mastercard",
+        "ph-eastwest-gold-visa",
+        "ph-eastwest-jcb-gold",
+        "ph-eastwest-jcb-platinum",
+        "ph-eastwest-platinum-mastercard",
+        "ph-eastwest-priority-visa-infinite",
+        "ph-eastwest-privilege-mastercard",
+        "ph-eastwest-privilege-visa",
+        "ph-eastwest-puregold-always-panalo-visa",
+        "ph-eastwest-singapore-airlines-krisflyer-platinum-mastercard",
+        "ph-eastwest-singapore-airlines-krisflyer-world-mastercard",
+        "ph-eastwest-visa-platinum"
+      ],
       "crawl": {
         "card_sources": [
           "https://www.eastwestbanker.com/cards/creditcards"
@@ -61,9 +77,10 @@
         "offer_sources": [
           "https://www.eastwestbanker.com/promos"
         ],
-        "status": "not_covered",
+        "status": "ok",
         "note": null
-      }
+      },
+      "offer_count": 131
     },
     {
       "id": "ph-hsbc",
