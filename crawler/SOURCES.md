@@ -158,8 +158,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 47 | HK | issuer | offers | Standard Chartered Hong Kong | `sc.com` | untested |  |
 | 48 | HK | issuer | cards | Hang Seng Bank | `hangseng.com` | untested | https://www.hangseng.com/en-hk/personal/cards/overview/ |
 | 48 | HK | issuer | offers | Hang Seng Bank | `hangseng.com` | untested |  |
-| 49 | HK | issuer | cards | DBS Hong Kong | `dbs.com.hk` | untested | https://www.dbs.com.hk/personal/credit-cards/default.page |
-| 49 | HK | issuer | offers | DBS Hong Kong | `dbs.com.hk` | untested |  |
+| 49 | HK | issuer | cards | DBS Hong Kong | `dbs.com.hk` | untested | https://www.dbs.com.hk/personal/credit-cards/default.page, https://www.dbs.com.hk/personal/credit-cards/credit-cards/default.page, https://www.dbs.com.hk/personal/credit-cards/credit-cards/black-mc, https://www.dbs.com.hk/personal/credit-cards/credit-cards/black-ae, https://www.dbs.com.hk/personal/credit-cards/credit-cards/compass-visa-platinum, https://www.dbs.com.hk/personal/credit-cards/credit-cards/eminent-card, https://www.dbs.com.hk/personal/credit-cards/credit-cards/livefresh, https://www.dbs.com.hk/personal/credit-cards/key-statement-tnc.htm |
+| 49 | HK | issuer | offers | DBS Hong Kong | `dbs.com.hk` | untested | https://www.dbs.com.hk/personal/YRO/YROOfferList.xml, https://www.dbs.com.hk/personal/YRO/index.html, https://www.dbs.com.hk/personal/credit-cards/promotions/default.page, https://www.dbs.com.hk/iwov-resources/pdf/creditcards/welcome-tnc-en26Q4.pdf |
 | 50 | HK | issuer | cards | HSBC Hong Kong | `hsbc.com.hk` | untested | https://www.hsbc.com.hk/credit-cards/ |
 | 50 | HK | issuer | offers | HSBC Hong Kong | `hsbc.com.hk` | untested |  |
 | 51 | HK | issuer | cards | Bank of China (Hong Kong) | `bochk.com` | untested | https://www.bochk.com/en/creditcard.html, https://www.bochk.com/dam/boccreditcard/cardproductlisting/eng/index.html |

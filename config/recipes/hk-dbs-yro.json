@@ -1,0 +1,28 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-dbs-yro",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-dbs"
+  },
+  "country": "HK",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.dbs.com.hk/personal/YRO/YROOfferList.xml"
+  ],
+  "list": {
+    "item": "offer",
+    "key": "name",
+    "fields": {
+      "name": "offername",
+      "title": "title_en",
+      "url": "link_en",
+      "benefit": "description_en",
+      "category": "category"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "Year-round treats (YRO) are not in the FindLatestOffers HTML. OfferDetailXMLRequest.js issues GET YROOfferList.xml relative to https://www.dbs.com.hk/personal/YRO/index.html, so the listing is this public XML file (22 Offer records on 24 Nov 2026). recipe.py parses it with html.parser, which lowercases the tags; use offer, offername, title_en, link_en and description_en. Link_en values are relative (Shop/MiMingMart.html) and resolve under https://www.dbs.com.hk/personal/YRO/. Category tokens such as eminent, MC, CV, plat and other mark which cards the tile is shown to; confirm eligibility from the English detail page, not from the token list alone. A tile can hold more than one deal (Mi Ming Mart is an instant discount plus gifts). Leave out a detail page whose terms end date is before the run date. Order Now buttons may point at dbslifestyle.vocohub.com, which is off-config and must not be fetched. The FindLatestOffers page at /personal/credit-cards/promotions/default.page is a JavaScript filter UI with no static tiles and no public JSON file, so it has no CSS recipe."
+}
