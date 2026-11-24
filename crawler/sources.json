@@ -1625,7 +1625,9 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.dahsing.com/html/en/credit_card/index.html"
+    "https://www.dahsing.com/html/en/credit_card/index.html",
+    "https://www.dahsing.com/html/en/credit_card/card_products/generic/private_banking_visa_infinite_card.html",
+    "https://www.dahsing.com/html/en/credit_card/card_products/generic/visa_infinite_card.html"
    ],
    "status": "untested",
    "full_crawl_order": 39,
