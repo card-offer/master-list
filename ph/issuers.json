@@ -1,147 +1,151 @@
 {
-  "schema_version": "0.3.0",
+  "count": 7,
   "country": "PH",
   "generated_at": "2026-11-20T09:37:00+08:00",
-  "count": 7,
+  "schema_version": "0.3.0",
   "items": [
     {
-      "id": "ph-aub",
-      "name": "Asia United Bank",
-      "legal_name": "Asia United Bank Corporation",
+      "card_ids": [],
       "country": "PH",
-      "website": "https://www.aub.com.ph",
+      "crawl": {
+        "card_sources": [],
+        "note": "The homepage names Credit Cards and links to https://www.aub.com.ph/creditcards/, which redirected to https://online.aub.ph/creditcards (host not in official_domains). The listing was not read.",
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "ph-aub",
+      "legal_name": "Asia United Bank Corporation",
+      "name": "Asia United Bank",
       "official_domains": [
         "aub.com.ph"
       ],
-      "card_ids": [],
-      "crawl": {
-        "card_sources": [],
-        "offer_sources": [],
-        "status": "not_covered",
-        "note": "The homepage names Credit Cards and links to https://www.aub.com.ph/creditcards/, which redirected to https://online.aub.ph/creditcards (host not in official_domains). The listing was not read."
-      }
+      "website": "https://www.aub.com.ph"
     },
     {
-      "id": "ph-bpi",
-      "name": "Bank of the Philippine Islands",
-      "legal_name": "Bank of the Philippine Islands",
-      "country": "PH",
-      "website": "https://www.bpi.com.ph",
-      "official_domains": [
-        "bpi.com.ph"
-      ],
       "card_ids": [],
+      "country": "PH",
       "crawl": {
         "card_sources": [
           "https://www.bpi.com.ph/personal/cards",
           "https://www.bpi.com.ph/personal/cards/credit-cards"
         ],
+        "note": "The official cards page also links to https://www2.bpi.com.ph/cards/pq/landing and to https://www.banko.com.ph/ for BanKo. Those hosts are not in official_domains.",
         "offer_sources": [
           "https://www.bpi.com.ph/personal/rewards-and-promotions",
           "https://www.bpi.com.ph/personal/rewards-and-promotions/promos"
         ],
-        "status": "not_covered",
-        "note": "The official cards page also links to https://www2.bpi.com.ph/cards/pq/landing and to https://www.banko.com.ph/ for BanKo. Those hosts are not in official_domains."
-      }
+        "status": "not_covered"
+      },
+      "id": "ph-bpi",
+      "legal_name": "Bank of the Philippine Islands",
+      "name": "Bank of the Philippine Islands",
+      "official_domains": [
+        "bpi.com.ph"
+      ],
+      "website": "https://www.bpi.com.ph"
     },
     {
-      "id": "ph-eastwest",
-      "name": "EastWest Bank",
-      "legal_name": "East West Banking Corporation",
-      "country": "PH",
-      "website": "https://www.eastwestbanker.com",
-      "official_domains": [
-        "eastwestbanker.com"
-      ],
       "card_ids": [],
+      "country": "PH",
       "crawl": {
         "card_sources": [
           "https://www.eastwestbanker.com/cards/creditcards"
         ],
+        "note": null,
         "offer_sources": [
           "https://www.eastwestbanker.com/promos"
         ],
-        "status": "not_covered",
-        "note": null
-      }
+        "status": "not_covered"
+      },
+      "id": "ph-eastwest",
+      "legal_name": "East West Banking Corporation",
+      "name": "EastWest Bank",
+      "official_domains": [
+        "eastwestbanker.com"
+      ],
+      "website": "https://www.eastwestbanker.com"
     },
     {
-      "id": "ph-hsbc",
-      "name": "HSBC Philippines",
-      "legal_name": "The Hongkong & Shanghai Banking Corporation",
-      "country": "PH",
-      "website": "https://www.hsbc.com.ph",
-      "official_domains": [
-        "hsbc.com.ph"
-      ],
       "card_ids": [],
+      "country": "PH",
       "crawl": {
         "card_sources": [
           "https://www.hsbc.com.ph/credit-cards/products/"
         ],
+        "note": "Offer links also point at offers.hsbc.com.ph and www.homeandaway.hsbc.com, which are not in official_domains.",
         "offer_sources": [
           "https://www.hsbc.com.ph/credit-cards/offers/latest/"
         ],
-        "status": "not_covered",
-        "note": "Offer links also point at offers.hsbc.com.ph and www.homeandaway.hsbc.com, which are not in official_domains."
-      }
+        "status": "not_covered"
+      },
+      "id": "ph-hsbc",
+      "legal_name": "The Hongkong & Shanghai Banking Corporation",
+      "name": "HSBC Philippines",
+      "official_domains": [
+        "hsbc.com.ph"
+      ],
+      "website": "https://www.hsbc.com.ph"
     },
     {
-      "id": "ph-metrobank",
-      "name": "Metrobank",
-      "legal_name": "Metropolitan Bank and Trust Company",
+      "card_ids": [],
       "country": "PH",
-      "website": "https://www.metrobank.com.ph",
+      "crawl": {
+        "card_sources": [],
+        "note": "The official homepage states Apply for a credit card and links to https://apply.metrobank.com.ph/creditcard. That host is not in official_domains. No on-host card listing URL was found on the homepage.",
+        "offer_sources": [],
+        "status": "not_covered"
+      },
+      "id": "ph-metrobank",
+      "legal_name": "Metropolitan Bank and Trust Company",
+      "name": "Metrobank",
       "official_domains": [
         "metrobank.com.ph"
       ],
-      "card_ids": [],
-      "crawl": {
-        "card_sources": [],
-        "offer_sources": [],
-        "status": "not_covered",
-        "note": "The official homepage states Apply for a credit card and links to https://apply.metrobank.com.ph/creditcard. That host is not in official_domains. No on-host card listing URL was found on the homepage."
-      }
+      "website": "https://www.metrobank.com.ph"
     },
     {
-      "id": "ph-pnb",
-      "name": "PNB",
-      "legal_name": "Philippine National Bank",
-      "country": "PH",
-      "website": "https://www.pnb.com.ph",
-      "official_domains": [
-        "pnb.com.ph"
-      ],
       "card_ids": [],
+      "country": "PH",
       "crawl": {
         "card_sources": [
           "https://www.pnb.com.ph/cards"
         ],
+        "note": "Real-Chrome mode reached the official cards catalogue, which lists Credit, Debit and Prepaid categories and names PNB Credit Cards and the PNB-PAL Mabuhay Miles Mastercard Credit Card. The fetcher classed the homepage and catalogue captcha because the HTML includes a reCAPTCHA v3 script and badge; the public catalogue text was present and was used. No challenge was interacted with. The cards page links to https://www.pnb.com.ph/promos; this run did not return readable promo listing text.",
         "offer_sources": [
           "https://www.pnb.com.ph/promos"
         ],
-        "status": "not_covered",
-        "note": "Real-Chrome mode reached the official cards catalogue, which lists Credit, Debit and Prepaid categories and names PNB Credit Cards and the PNB-PAL Mabuhay Miles Mastercard Credit Card. The fetcher classed the homepage and catalogue captcha because the HTML includes a reCAPTCHA v3 script and badge; the public catalogue text was present and was used. No challenge was interacted with. The cards page links to https://www.pnb.com.ph/promos; this run did not return readable promo listing text."
-      }
+        "status": "not_covered"
+      },
+      "id": "ph-pnb",
+      "legal_name": "Philippine National Bank",
+      "name": "PNB",
+      "official_domains": [
+        "pnb.com.ph"
+      ],
+      "website": "https://www.pnb.com.ph"
     },
     {
-      "id": "ph-rcbc",
-      "name": "RCBC",
-      "legal_name": "Rizal Commercial Banking Corporation",
+      "card_ids": [],
       "country": "PH",
-      "website": "https://www.rcbc.com",
+      "crawl": {
+        "card_sources": [
+          "https://www.rcbc.com/"
+        ],
+        "note": "First full crawl 2026-11-24. The site is English (html lang=en, no language switcher). robots.txt on www.rcbc.com returns HTTP 200 and Disallow: /cgi-bin/, /tmp/, /admin/, and /search*. sitemap.xml lists 792 on-host URLs and was used as a second list. The Cards menu, the Credit Cards product tile, and Learn More all point at https://rcbccredit.com/, which is not in official_domains. Apply Now on the same tile points at https://applications.rcbccredit.com/, also not in official_domains. No credit card product pages were found on rcbc.com, so 0 cards were handed in. The official promotions listing https://www.rcbc.com/promos had 15 pages and 88 tiles (6 per page, 4 on the last page). 36 current credit-card offers were handed in (mostly Hexagon Club merchant discounts that also apply to Hexagon Club credit cards, plus Lazada, Shop and Share, Feta Mediterranean, and Red Planet). 8 credit-eligible offers were left out as expired as of 2026-11-24. Debit-only, deposit, loan, Pulz, remittance, and Hexagon Club notices that did not name a credit card were not handed in. Three listing tiles had an empty detail URL and could not be opened (Home for the Holidays 2024, RCBC Telemoney HK Remittance Promo, RCBC Pulz Free InstaPay Promo). listing_complete is false. Please consider adding rcbccredit.com if that host is accepted as official.",
+        "offer_sources": [
+          "https://www.rcbc.com/promos",
+          "https://www.rcbc.com/mastercard-debit-deals"
+        ],
+        "status": "partial"
+      },
+      "id": "ph-rcbc",
+      "legal_name": "Rizal Commercial Banking Corporation",
+      "name": "RCBC",
+      "offer_count": 36,
       "official_domains": [
         "rcbc.com"
       ],
-      "card_ids": [],
-      "crawl": {
-        "card_sources": [],
-        "offer_sources": [
-          "https://www.rcbc.com/promos"
-        ],
-        "status": "not_covered",
-        "note": "The official site has a RCBC Credit Cards link to https://rcbccredit.com/, which is not in official_domains. The listing was not read."
-      }
+      "website": "https://www.rcbc.com"
     }
   ]
 }

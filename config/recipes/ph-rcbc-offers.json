@@ -1,0 +1,40 @@
+{
+  "recipe": "recipe/1",
+  "id": "ph-rcbc-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "ph-rcbc"
+  },
+  "country": "PH",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.rcbc.com/promos"
+  ],
+  "pagination": {
+    "next": "div.pagination ul > li:last-child a@href",
+    "max_pages": 40
+  },
+  "list": {
+    "item": "div.promo-listing-wrap li.card-item",
+    "key": "url",
+    "fields": {
+      "title": "section.article__title h4",
+      "url": "a.read-more@href",
+      "category_label": "p.article__category a",
+      "image_alt": "section.article__image img@alt"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "section.generic-template-content h4",
+      "terms": "section.generic-template-content",
+      "mechanics_image": "section.generic-template-content img[src*='Details']@src",
+      "page_title": "title"
+    },
+    "text_selector": "section.generic-template-content"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_detail",
+  "note": "The official promotions listing is https://www.rcbc.com/promos (page title Find Great Bank Promos in the Philippines Today, heading RCBC Promos). It is in English. Each page server-renders six li.card-item tiles. Pagination links use /Promos/page/{n}. Both Previous and Next use the class prev, so the recipe follows div.pagination ul > li:last-child a (the Next control). A first-run test that used li.prev a stopped after page 2 because that selector matches Previous first. On 24 Nov 2026 the pager showed pages 1 to 15. Many tiles are Hexagon Club merchant discounts; some are MyDebit (debit) campaigns. Detail pages often put promo mechanics in an image and terms in section.generic-template-content. Credit card product and offer pages on rcbccredit.com are not in official_domains and must not be fetched."
+}
