@@ -1,0 +1,46 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-cimb-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "id-cimb"
+  },
+  "country": "ID",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.cimbniaga.co.id/id/personal/promo/index/jcr:content/responsivegrid/penawaran_terkini_la.get-data-api?pos=1&type=Kartu%20Kredit&kategori=&city=&edisi=&search=&sort=%7B%22newest_promo%22%3A%22t%22%2C%22ending_soonest%22%3A%22f%22%2C%22highest_discount%22%3A%22f%22%2C%22a-z%22%3A%22f%22%7D"
+  ],
+  "pagination": {
+    "url_template": "https://www.cimbniaga.co.id/id/personal/promo/index/jcr:content/responsivegrid/penawaran_terkini_la.get-data-api?pos={n}&type=Kartu%20Kredit&kategori=&city=&edisi=&search=&sort=%7B%22newest_promo%22%3A%22t%22%2C%22ending_soonest%22%3A%22f%22%2C%22highest_discount%22%3A%22f%22%2C%22a-z%22%3A%22f%22%7D",
+    "start": 1,
+    "max_pages": 50
+  },
+  "list": {
+    "item": "div.penawaran-terkini-list.ptl-api",
+    "key": "code",
+    "fields": {
+      "title": "span.body-text-2",
+      "url": "a@href",
+      "dates": "span.body-text-r-4",
+      "code": {
+        "selector": "a",
+        "output": "@href",
+        "regex": "(PRM-\\d{6}-\\d+)"
+      }
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1.promo-title",
+      "period": ".promo-period span",
+      "description": ".promo-desc",
+      "types": "input.iframe-promo-autocomplete-type@value",
+      "terms": ".promo-desc"
+    },
+    "text_selector": ".penawaran-terkini-detail"
+  },
+  "listing_kind": "issuer_offer_listing",
+  "detail_kind": "issuer_offer_page",
+  "note": "Indonesian Kartu Kredit tab of the CIMB Niaga promo listing. The visible index page loads tiles from this same-origin get-data-api path (6 tiles per pos). There is no English promo catalogue: /en/personal/promo/index is 404. The listing had 407 Kartu Kredit promos; max_pages 50 keeps the first 300 (the 300-offer cap). Default sort is newest_promo. Expired offers are dropped at hand-in."
+}
