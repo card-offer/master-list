@@ -1,0 +1,35 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-aeon-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "th-aeon"
+  },
+  "country": "TH",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.aeon.co.th/aeon/promotions/credit-card?language_id=1"
+  ],
+  "list": {
+    "item": "form#f862dee028390a457ebb5d7e9511e8a5 a.package",
+    "key": "url",
+    "fields": {
+      "title": "div.package__content-heading",
+      "url": ":scope@href",
+      "body": "div.package__content",
+      "image": "img@src"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "div.pro-card-details__heading",
+      "period": "div.pro-card-details",
+      "body": "div.pro-card-details, div.newDetails"
+    },
+    "text_selector": "div.pro-card-details"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "Use the English credit-card promotions tab at /aeon/promotions/credit-card?language_id=1. Tiles are a.package inside form#f862dee028390a457ebb5d7e9511e8a5 (147 tiles on 24 Nov 2026). The same promotions page has other forms for installment, insurance, hire-purchase and personal-loan products; do not treat those tabs as credit-card offers. The /aeon/promotions/ index mixes tabs. Discount Shops at /aeon/privileges/aeon-discount-shops/ load through official GET /aeon/privileges/aeon-discount-shops/ajax and need a province plus all-districts filter; they are not covered by this listing recipe. Start from the English tab only."
+}

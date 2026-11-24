@@ -180,8 +180,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 57 | TH | issuer | offers | ttb | `ttbbank.com` | untested | https://www.ttbbank.com/th/promotion/credit-card |
 | 58 | TH | issuer | cards | CardX | `cardx.co.th` | untested | https://www.cardx.co.th/th-TH/credit-card/catalog |
 | 58 | TH | issuer | offers | CardX | `cardx.co.th` | untested | https://www.cardx.co.th/th-TH/credit-card/promotion |
-| 59 | TH | issuer | cards | AEON Thana Sinsap | `aeon.co.th` | untested | https://www.aeon.co.th/aeon/cards/ |
-| 59 | TH | issuer | offers | AEON Thana Sinsap | `aeon.co.th` | untested | https://www.aeon.co.th/aeon/promotions/ |
+| 59 | TH | issuer | cards | AEON Thana Sinsap | `aeon.co.th` | untested | https://www.aeon.co.th/aeon/cards/?language_id=1 |
+| 59 | TH | issuer | offers | AEON Thana Sinsap | `aeon.co.th` | untested | https://www.aeon.co.th/aeon/promotions/?language_id=1, https://www.aeon.co.th/aeon/promotions/credit-card?language_id=1 |
 | 60 | TH | issuer | cards | KTC | `ktc.co.th` | untested | https://www.ktc.co.th/credit-card |
 | 60 | TH | issuer | offers | KTC | `ktc.co.th` | untested | https://www.ktc.co.th/promotion |
 | 61 | TH | issuer | cards | Krungsri Card | `krungsricard.com` | untested | https://www.krungsricard.com/th/product |

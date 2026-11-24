@@ -1,0 +1,33 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-aeon-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "th-aeon"
+  },
+  "country": "TH",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.aeon.co.th/aeon/cards/?language_id=1"
+  ],
+  "list": {
+    "item": ".card-container",
+    "key": "url",
+    "fields": {
+      "name": "h3.cardname",
+      "url": "a.bton-detail@href",
+      "image": "img@src"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1, .pro-card-details__heading, h3.cardname",
+      "body": ".pro-card-details, .container-sub.card-details"
+    },
+    "text_selector": ".container-sub.card-details, main, body"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "English catalogue at /aeon/cards/?language_id=1 (html lang=en). The listing has 17 .card-container tiles with h3.cardname and a.bton-detail. One tile is AEON Corporate Visa Card, which is out of scope. English product URLs for Big C World Mastercard, Big C Platinum Visa and big-c-exclusive-card redirect to this catalogue, so they are not handed in from this listing. The fetcher may class the pages login_required because a header password field is present; the public catalogue is still readable. Start from the English listing only; do not also crawl the Thai catalogue."
+}
