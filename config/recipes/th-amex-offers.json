@@ -1,0 +1,46 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-amex-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "th-amex"
+  },
+  "country": "TH",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.americanexpress.com/en-th/benefits/promotions/dining.html",
+    "https://www.americanexpress.com/en-th/benefits/promotions/travel.html",
+    "https://www.americanexpress.com/en-th/benefits/promotions/lifestyle.html",
+    "https://www.americanexpress.com/en-th/benefits/promotions/explore-asia.html"
+  ],
+  "list": {
+    "item": "div.offer.parbase div.card",
+    "key": "url",
+    "fields": {
+      "merchant": "div.heading-4.offer-header p",
+      "headline": "p.offer-desc",
+      "dates": "div.offer-dates",
+      "url": {
+        "selector": "a.btn[href*='/benefits/promotions/']",
+        "output": "@href"
+      },
+      "image_alt": "img@alt"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1, h2, div.heading-2, div.heading-1",
+      "terms": {
+        "selector": "a[href$='.pdf']",
+        "output": "@href",
+        "all": true,
+        "join": " "
+      }
+    },
+    "text_selector": "main, body"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "Plain mode reads the Explore Thailand tiles on 24 Nov 2026. Category listings use div.offer.parbase div.card tiles (heading-4 merchant name, p.offer-desc headline, div.offer-dates Validity, and a Learn more button). Dining has 25 tiles, travel 13 and lifestyle 9 (47 distinct Explore Thailand offer links). /en-th/benefits/promotions/index.html is 404. Shared terms are TC_Explore_Thailand_25_Phase_1.pdf (Eligible Card is any valid American Express Card, including Cards issued worldwide). Seven Explore Thailand detail pages and explore-asia.explore-korea.html failed plain IncompleteRead after a 10-minute retry; those tiles were not handed in. Explore Asia tiles (except Korea) link off official_domains to go.amex and were not fetched. Welcome offers and the EM DISTRICT coupon live on /th/en/campaigns/platinum-card/bonus-rewards.html, /th/en/campaigns/thai-platinum-credit-card/bonus-rewards.html and /th/en/benefits/platinum-card/, not on these tiles. The expired Gold welcome (2021-2022) and AIS Samsonite (2019) campaign pages were not handed in."
+}

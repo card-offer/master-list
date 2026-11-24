@@ -1,0 +1,44 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-amex-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "th-amex"
+  },
+  "country": "TH",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.americanexpress.com/en-th/credit-cards/compare-credit-cards/index.html",
+    "https://www.americanexpress.com/th/en/compare-credit-cards/"
+  ],
+  "list": {
+    "item": "a[href*='/th/en/platinum-card/'], a[href*='/th/en/thai-amex-card/'], a[href*='/th/en/charge-cards/american-express-gold-card/'], a[href*='/th/en/charge-cards/american-express-green-card/'], a[href*='/th/en/credit-cards/american-express-credit-card/']",
+    "key": "url",
+    "fields": {
+      "name": {
+        "selector": ":scope",
+        "output": "text"
+      },
+      "url": {
+        "selector": ":scope",
+        "output": "@href"
+      }
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "terms": {
+        "selector": "a[href$='.pdf']",
+        "output": "@href",
+        "all": true,
+        "join": " "
+      }
+    },
+    "text_selector": "main, body"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The English Thailand compare table (h2 Compare by each Card privileges) lists five consumer cards and their fees and earn rates, but the cells have no product links. Product URLs come from the Cards menu on the same pages: /th/en/platinum-card/ (The American Express Platinum Card; also published at /th/en/charge-cards/thai-platinum-card/), /th/en/thai-amex-card/ (THAI American Express Platinum Credit Card; also /th/en/credit-cards/thai-platinum-credit-card/), /th/en/charge-cards/american-express-gold-card/, /th/en/charge-cards/american-express-green-card/ (American Express Card), and /th/en/credit-cards/american-express-credit-card/. Fees appear as 'Annual fee x Baht (inclusive of VAT)' or 'x Baht (VAT included)' on the compare table and on product pages that load. Corporate cards are skipped. The Credit Card product page failed plain IncompleteRead and a headless Header overflow on 24 Nov 2026, so its facts were taken from the compare listing. New Platinum applications from 28 Oct 2024 are credit cards; legacy charge BIN 376319 and credit BINs 376315/377382 share the same 40,000 Baht fee and are one card record. /en-th/credit-cards/ is 404."
+}

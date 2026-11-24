@@ -370,6 +370,8 @@ class NetworkAndLanguageTests(unittest.TestCase):
         self.assertEqual(name_key("Uniqlo Hong Kong", rules), "uniqlo")
 
     def test_network_ingest_makes_a_new_country_and_validates(self):
+        with open(os.path.join(self.tree, "index.json"), encoding="utf-8") as fh:
+            before_th_offers = json.load(fh)["countries"].get("TH", {}).get("offers", 0)
         report = ingest(network_hand_in(network_offer()), root=self.tree, now=ingest_now(self.tree))
         self.assertEqual((report["new"], report["provider"]), (1, "mastercard"))
         path = os.path.join(self.tree, "th", "offers", "network-mastercard.json")
@@ -386,7 +388,7 @@ class NetworkAndLanguageTests(unittest.TestCase):
         self.assertEqual(len(brand["aliases"]), 1)
         self.assertEqual(brand["countries"], ["TH"])
         with open(os.path.join(self.tree, "index.json"), encoding="utf-8") as fh:
-            self.assertEqual(json.load(fh)["countries"]["TH"]["offers"], 1)
+            self.assertEqual(json.load(fh)["countries"]["TH"]["offers"], before_th_offers + 1)
         errors, _warnings, _stats = validate(self.tree)
         self.assertEqual(errors, [])
 
