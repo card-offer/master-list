@@ -310,7 +310,7 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.icbc.com.sg/en/column/1438059017535897814.html"
+    "https://www.icbc.com.sg/en/column/1438058489829539941.html"
    ],
    "status": "untested",
    "full_crawl_order": 5,
@@ -324,7 +324,14 @@
    "country": "SG",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.icbc.com.sg/en/column/799319390964264961.html",
+    "https://www.icbc.com.sg/en/column/799319530601488385.html",
+    "https://www.icbc.com.sg/en/column/799319589879054337.html",
+    "https://www.icbc.com.sg/en/column/799319643138326529.html",
+    "https://www.icbc.com.sg/en/column/678757812016021504.html",
+    "https://www.icbc.com.sg/en/column/1438058791228030995.html"
+   ],
    "status": "untested",
    "full_crawl_order": 5,
    "suggested_by": null,

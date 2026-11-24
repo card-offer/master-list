@@ -50,8 +50,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 3 | SG | issuer | offers | MariBank | `maribank.sg` | untested |  |
 | 4 | SG | issuer | cards | Trust Bank | `trustbank.sg` | untested | https://trustbank.sg/credit-card/ |
 | 4 | SG | issuer | offers | Trust Bank | `trustbank.sg` | untested |  |
-| 5 | SG | issuer | cards | ICBC Singapore | `icbc.com.sg` | untested | https://www.icbc.com.sg/en/column/1438059017535897814.html |
-| 5 | SG | issuer | offers | ICBC Singapore | `icbc.com.sg` | untested |  |
+| 5 | SG | issuer | cards | ICBC Singapore | `icbc.com.sg` | untested | https://www.icbc.com.sg/en/column/1438058489829539941.html |
+| 5 | SG | issuer | offers | ICBC Singapore | `icbc.com.sg` | untested | https://www.icbc.com.sg/en/column/799319390964264961.html, https://www.icbc.com.sg/en/column/799319530601488385.html, https://www.icbc.com.sg/en/column/799319589879054337.html, https://www.icbc.com.sg/en/column/799319643138326529.html, https://www.icbc.com.sg/en/column/678757812016021504.html, https://www.icbc.com.sg/en/column/1438058791228030995.html |
 | 6 | SG | issuer | cards | Bank of China Singapore | `bankofchina.com` | untested | https://www.bankofchina.com/sg/bcservice/bc1/ |
 | 6 | SG | issuer | offers | Bank of China Singapore | `bankofchina.com` | untested |  |
 | 7 | SG | issuer | cards | American Express Singapore | `americanexpress.com` | untested | https://www.americanexpress.com/sg/credit-cards/all-cards/, https://www.americanexpress.com/en-sg/credit-cards/ |
