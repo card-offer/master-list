@@ -1,0 +1,33 @@
+{
+  "recipe": "recipe/1",
+  "id": "network-visa-sg-offers",
+  "owner": {
+    "type": "network",
+    "id": "visa"
+  },
+  "country": "SG",
+  "purpose": "offers",
+  "mode": "browser",
+  "settle_ms": 20000,
+  "actions": {
+    "scroll_times": 2
+  },
+  "start_urls": [
+    "https://www.visa.com.sg/en_sg/visa-offers-and-perks/"
+  ],
+  "list": {
+    "item": "vs-perk-card",
+    "key": "url",
+    "fields": {
+      "merchant": "h3",
+      "title": "h3",
+      "benefit": "p.vs-description",
+      "url": "a.vs-link-cta[data-offer-tracking]@href",
+      "offer_id": "a.vs-link-cta[data-offer-tracking]@data-offer-tracking",
+      "category": "a.vs-link-cta[data-offer-tracking]@data-offer-category-name"
+    }
+  },
+  "listing_kind": "network_offer_listing",
+  "detail_kind": "network_offer_page",
+  "note": "The Singapore homepage links to https://www.visa.com.sg/en_sg/visa-offers-and-perks/ (the sitemap path /pay-with-visa/visa-offers-and-perks.html redirects here). The listing is an Angular app. Plain HTTP is a js_shell. A headless browser with settle_ms 20000 loads site-config, the AEM locale configuration, locale ids, and POST /offers/api/portal/portal/perks/. Tiles are vs-perk-card. Detail facts come from the public GET https://www.visa.com.sg/offers/api/offer/{id}?locale=en_sg&siteId=www.visa.com.sg, which is the same payload the offer page uses. Scripts and CSS on cdn.visa.com are not fetched: the fetcher treats that host as outside official_domains even though visa.com is listed. The listing still renders from visa.com.sg."
+}
