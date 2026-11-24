@@ -158,23 +158,43 @@
       "website": "https://www.cardx.co.th"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "th-bangkok-bank-airasia-credit-card",
+        "th-bangkok-bank-american-express-credit-card",
+        "th-bangkok-bank-m-legend-visa-infinite",
+        "th-bangkok-bank-m-live-visa-platinum",
+        "th-bangkok-bank-m-luxe-visa-signature",
+        "th-bangkok-bank-mastercard-platinum-travel-credit-card",
+        "th-bangkok-bank-platinum-bumrungrad-hospital-credit-card",
+        "th-bangkok-bank-platinum-leader-card",
+        "th-bangkok-bank-platinum-sawadee-credit-card",
+        "th-bangkok-bank-private-bank-pinnacle-credit-card",
+        "th-bangkok-bank-titanium-credit-card",
+        "th-bangkok-bank-titanium-piyavate-hospital-credit-card",
+        "th-bangkok-bank-titanium-ramathibodi-hospital-credit-card",
+        "th-bangkok-bank-toyota-credit-card",
+        "th-bangkok-bank-unionpay-platinum-credit-card",
+        "th-bangkok-bank-visa-infinite-card",
+        "th-bangkok-bank-visa-platinum-credit-card",
+        "th-bangkok-bank-visa-platinum-siriraj-credit-card",
+        "th-bangkok-bank-visa-platinum-travel-credit-card"
+      ],
       "country": "TH",
       "crawl": {
         "card_sources": [
-          "https://www.bangkokbank.com/en/personal/cards/credit-cards",
-          "https://www.bangkokbank.com/en/personal/cards/credit-cards/bangkok-bank-airasia-credit-card"
+          "https://www.bangkokbank.com/en/personal/cards/credit-cards"
         ],
-        "note": "Ordinary browser mode reached the official homepage and credit card catalogue after plain requests timed out. The catalogue and the AirAsia product page name the Bangkok Bank AirAsia Credit Card. robots.txt timed out (robots_unreadable). Apply form paths were not fetched.",
+        "note": "2026-11-24 run 20261124-0950-th-bangkok-bank: first card and offer run, English only, real Chrome (www.bangkokbank.com is in config/real_chrome_hosts.json). Recipes: config/recipes/th-bangkok-bank-cards.json and config/recipes/th-bangkok-bank-offers.json. The English catalogue https://www.bangkokbank.com/en/personal/cards/credit-cards lists 19 consumer credit cards, all handed in. The suggestor JSON also has JCB Ultimate, JCB Platinum and a Test New CC row without English product pages; those were not invented as cards. The complete official promotions listing is https://www.bangkokbank.com/apiaem/content/bangkokbank/en/personal/cards/credit-cards/promotions.allpromo.json (238 promotions: 157 still active and 81 expired as of 2026-11-24). The tabbed HTML promotions page is incomplete (paginated tiles). A time cap mid-run read 43 of the 157 active detail pages (listing_complete is false). Expired promotions were not handed in. 113 active promotions were not read. English product pages often state a spend-based waiver of entrance and annual fees but not the fee amount; Pinnacle and Visa Infinite do not state a card fee in the English text. GraphQL income figures were not used because they are not quoted on the product pages. robots.txt was read with real Chrome (200).",
         "offer_sources": [
-          "https://www.bangkokbank.com/en/personal/cards/credit-cards/promotions"
+          "https://www.bangkokbank.com/en/personal/cards/credit-cards/promotions",
+          "https://www.bangkokbank.com/apiaem/content/bangkokbank/en/personal/cards/credit-cards/promotions.allpromo.json"
         ],
-        "status": "not_covered"
+        "status": "partial"
       },
       "id": "th-bangkok-bank",
       "legal_name": "BANGKOK BANK PUBLIC COMPANY LIMITED",
       "name": "Bangkok Bank",
-      "offer_count": 0,
+      "offer_count": 43,
       "official_domains": [
         "bangkokbank.com"
       ],

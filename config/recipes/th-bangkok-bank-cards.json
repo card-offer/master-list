@@ -1,0 +1,37 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-bangkok-bank-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "th-bangkok-bank"
+  },
+  "country": "TH",
+  "purpose": "cards",
+  "mode": "real_chrome",
+  "start_urls": [
+    "https://www.bangkokbank.com/en/personal/cards/credit-cards"
+  ],
+  "settle_ms": 25000,
+  "actions": {
+    "scroll_times": 4
+  },
+  "list": {
+    "item": "div.credit-card-results div.cards-list-item",
+    "key": "url",
+    "fields": {
+      "name": "h3",
+      "url": "a.button-m.primary@href",
+      "summary": "div.cards-list-description"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h3.hero-banner-desktop-break",
+      "privileges": ".accordion-block"
+    },
+    "text_selector": "main"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "Read on 24 Nov 2026. English catalogue https://www.bangkokbank.com/en/personal/cards/credit-cards lists 19 consumer credit cards in div.cards-list-item inside div.credit-card-results. Plain HTTP timed out twice, 10 minutes apart. Headless browser returned js_shell (hero only). Real Chrome with settle_ms 25000 returned class ok. The same page also loads https://www.bangkokbank.com/apiaem/graphql/execute.json/bangkokbank/get-credit-cards-by-language;language=en (19 cards) and https://www.bangkokbank.com/credit-card-suggestor.json (22 rows, including Bangkok Bank JCB Ultimate credit card, Bangkok Bank JCB Platinum credit card, and a Test New CC row that are not on the English catalogue). This recipe uses the rendered English catalogue. Debit, prepaid, travel-card (non-credit), wallet and apply-form paths are out of scope. robots.txt was unreadable on plain and headless requests; Real Chrome read it with status 200."
+}

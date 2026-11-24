@@ -1,0 +1,46 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-bangkok-bank-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "th-bangkok-bank"
+  },
+  "country": "TH",
+  "purpose": "offers",
+  "mode": "real_chrome",
+  "source": "json",
+  "start_urls": [
+    "https://www.bangkokbank.com/apiaem/content/bangkokbank/en/personal/cards/credit-cards/promotions.allpromo.json"
+  ],
+  "settle_ms": 15000,
+  "list": {
+    "item": "cards",
+    "key": "id",
+    "fields": {
+      "id": "id",
+      "title": "title",
+      "url": "ctaLink",
+      "start": "promotionStartDate",
+      "end": "promotionEndDate",
+      "category": "category",
+      "card_types": "cardTypes",
+      "summary": "cardShortDescription",
+      "detail_html": "detailDescription"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h2.promo-detail-title",
+      "body": "div.promo-detail-description",
+      "period": {
+        "selector": "div.promo-detail-content",
+        "regex": "Promotion period\\s*:\\s*(.+)$"
+      },
+      "terms": "div.promo-detail-description"
+    },
+    "text_selector": "div.promotional-details"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "Read on 24 Nov 2026. The English promotions page https://www.bangkokbank.com/en/personal/cards/credit-cards/promotions is tabbed and paginated (12 tiles per page). It loads the complete public listing https://www.bangkokbank.com/apiaem/content/bangkokbank/en/personal/cards/credit-cards/promotions.allpromo.json (238 items on 24 Nov 2026). That JSON is the recipe start URL. Offer detail pages use h2.promo-detail-title and div.promo-detail-description; the period often appears as Promotion period : Month D, YYYY - Month D, YYYY. Offers whose end date is before the run day are left out of the hand-in. Plain HTTP timed out; Real Chrome is required."
+}
