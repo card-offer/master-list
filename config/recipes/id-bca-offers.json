@@ -1,0 +1,39 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-bca-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "id-bca"
+  },
+  "country": "ID",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://promo.bca.co.id/en/all?productType=kartu-kredit"
+  ],
+  "pagination": {
+    "url_template": "https://promo.bca.co.id/en/all?productType=kartu-kredit&page={n}",
+    "start": 1,
+    "max_pages": 25
+  },
+  "list": {
+    "item": "div.promo_cardPromo__8jE6l",
+    "key": "url",
+    "fields": {
+      "merchant": "h3.promo_cardPromo__title__bBTRL a",
+      "url": "h3.promo_cardPromo__title__bBTRL a@href",
+      "title": "h3.promo_cardPromo__title__bBTRL a",
+      "end": "span.promo_cardPromo__date__0zyfG"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "terms": "main, body"
+    },
+    "text_selector": "main, body"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "English credit-card promo listing at /en/all?productType=kartu-kredit (plain HTML). The page reports 829 results across 70 pages of 12 tiles (pageInfo.totalResult=829, totalPage=70, language=EN). This recipe stops at 25 pages (300 offers) under the 300-offer cap; listing_complete is false and about 529 offers remain. Pagination is ?page={n}. Tile titles are English. The Bahasa listing at /id/all was not crawled. promo.bca.co.id robots.txt allows / and disallows /*/search."
+}
