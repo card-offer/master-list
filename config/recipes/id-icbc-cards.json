@@ -1,0 +1,22 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-icbc-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "id-icbc"
+  },
+  "country": "ID",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.icbc.co.id/en/column/1438058791093813429.html"
+  ],
+  "list": {
+    "item": ".TextTitle_style",
+    "fields": {
+      "name": ":scope"
+    }
+  },
+  "listing_kind": "issuer_product_page",
+  "note": "The English site has one consumer credit card product page, Credit Card ICBC. The start URL is that product page. The heading is .TextTitle_style and the body is #mypagehtmlcontent. The Retail Banking and Products and Services folder URLs open the first child product, not a card tile list, so this recipe starts on the product page itself. Fee and Interest, RIPLAY, the guidebook and the supplementary form are on v.icbc.com.cn, which is not in official_domains; the fetcher must not follow them. The homepage Credit Card menu also points at indonesia.icbc.com.cn; the same column id on icbc.co.id was used as the official product page."
+}
