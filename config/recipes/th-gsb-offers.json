@@ -1,0 +1,47 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-gsb-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "th-gsb"
+  },
+  "country": "TH",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.gsb.or.th/promotion/shopping/",
+    "https://www.gsb.or.th/promotion/restaurant/",
+    "https://www.gsb.or.th/promotion/travel/",
+    "https://www.gsb.or.th/promotion/health/",
+    "https://www.gsb.or.th/promotion/home-decor/",
+    "https://www.gsb.or.th/promotion/automotive/",
+    "https://www.gsb.or.th/promotion/lifestyle/",
+    "https://www.gsb.or.th/promotion/reward-point/",
+    "https://www.gsb.or.th/promotion/installments0per/",
+    "https://www.gsb.or.th/promotion/etc/",
+    "https://www.gsb.or.th/promotion/rgtc/"
+  ],
+  "list": {
+    "item": "div.category-content.promotion-item a[href*='/promotions/']",
+    "key": "url",
+    "fields": {
+      "title": "h3",
+      "url": {
+        "selector": ".",
+        "output": "@href"
+      },
+      "period": "div.period-date"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1.post-header__title",
+      "period": "div.date-promotaion",
+      "terms": "div.content_detail"
+    },
+    "text_selector": "div.content_detail"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "Read on 24 Nov 2026. Credit-card promotions are the category-menu under h1 บัตรเครดิต: shopping, restaurant, travel, health, home-decor, automotive, lifestyle, reward-point, installments0per, etc, and rgtc (card application). /promotion/credit-card/ redirects to /promotion/shopping/. lifestyle and reward-point had 0 current tiles on 24 Nov 2026 and are kept so a later run can pick up new items. Debit categories and savings/loan/insurance listings are out of scope. /promotion/all-promotions/ is only a category index. Pages include a recaptcha script for a form, so pipeline/fetcher.py classes them captcha; the public listing and offer text is present in plain HTTP. Offer terms sit in div.content_detail on each /promotions/<slug>/ page."
+}

@@ -1,0 +1,41 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-gsb-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "th-gsb"
+  },
+  "country": "TH",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.gsb.or.th/personal/credit-cash/"
+  ],
+  "list": {
+    "item": "div.category-lists.category-0 a.category-item-box",
+    "key": "url",
+    "fields": {
+      "name": "h3",
+      "url": {
+        "selector": ".",
+        "output": "@href"
+      },
+      "summary": "p"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "fee_panel_title": ".vc_tta-panel-title",
+      "download_names": {
+        "selector": "section.download-section a",
+        "all": true,
+        "join": " | "
+      }
+    },
+    "text_selector": "main"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "Read on 24 Nov 2026. The consumer credit catalogue is https://www.gsb.or.th/personal/credit-cash/. The /personal/card/ page is a category landing that also lists debit cards. div.category-lists.category-0 holds the 5 consumer credit cards; category-1 holds cash cards (PEOPLE CARD, PRIMA CARD) and is left out. An English /en/personal/card/ page exists but lists only GSB Debit Card and has no credit-card catalogue or promotions, so this run uses Thai. Pages include a recaptcha script for a form, so pipeline/fetcher.py classes them captcha; the public catalogue text is present in plain HTTP. Fees and qualifications are in images and PDFs linked from each product page."
+}

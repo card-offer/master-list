@@ -9,88 +9,22 @@
       "country": "TH",
       "crawl": {
         "card_sources": [
-          "https://www.lotussmoney.com/credit-card"
+          "https://www.aeon.co.th/aeon/cards/"
         ],
-        "note": "Official catalogue lists consumer credit cards, including Lotus's Platinum Beyond and Platinum Reward.",
+        "note": "The official cards page lists consumer credit cards (for example AEON Gold, Visa Platinum, World Mastercard, J Premier Platinum). The fetcher classed the pages login_required because a password field is present; the public catalogue was still readable.",
         "offer_sources": [
-          "https://www.lotussmoney.com/promotion/credit-card"
+          "https://www.aeon.co.th/aeon/promotions/"
         ],
         "status": "not_covered"
       },
-      "id": "th-lotuss-money",
-      "legal_name": "LOTUS'S MONEY SERVICES LIMITED",
-      "name": "Lotus's Money",
+      "id": "th-aeon",
+      "legal_name": "AEON THANA SINSAP (THAILAND) PUBLIC COMPANY LIMITED",
+      "name": "AEON Thana Sinsap",
       "offer_count": 0,
       "official_domains": [
-        "lotussmoney.com"
+        "aeon.co.th"
       ],
-      "website": "https://www.lotussmoney.com"
-    },
-    {
-      "card_ids": [],
-      "country": "TH",
-      "crawl": {
-        "card_sources": [
-          "https://www.firstchoice.co.th/cards"
-        ],
-        "note": "Official cards page lists consumer credit cards (for example Krungsri First Choice Visa Platinum and XU) and cash cards. Apply paths were not fetched.",
-        "offer_sources": [
-          "https://www.firstchoice.co.th/promotion/credit-card"
-        ],
-        "status": "not_covered"
-      },
-      "id": "th-first-choice",
-      "legal_name": "บริษัท อยุธยา แคปปิตอล เซอร์วิสเซส",
-      "name": "Krungsri First Choice",
-      "offer_count": 0,
-      "official_domains": [
-        "firstchoice.co.th"
-      ],
-      "website": "https://www.firstchoice.co.th"
-    },
-    {
-      "card_ids": [],
-      "country": "TH",
-      "crawl": {
-        "card_sources": [
-          "https://www.icbcthai.com/th/column/1438059017405874179.html"
-        ],
-        "note": "The official credit card page names UnionPay, Visa, Global Travel, ICBC-F.T.I., Horoscope, ANY Mastercard and Shine Future cards.",
-        "offer_sources": [
-          "https://www.icbcthai.com/th/column/1438059017535897643.html"
-        ],
-        "status": "not_covered"
-      },
-      "id": "th-icbc-thai",
-      "legal_name": "INDUSTRIAL AND COMMERCIAL BANK OF CHINA (THAI) PUBLIC COMPANY LIMITED",
-      "name": "ICBC Thai",
-      "offer_count": 0,
-      "official_domains": [
-        "icbcthai.com"
-      ],
-      "website": "https://www.icbcthai.com"
-    },
-    {
-      "card_ids": [],
-      "country": "TH",
-      "crawl": {
-        "card_sources": [
-          "https://www.gsb.or.th/personal/card/"
-        ],
-        "note": "The cards category page names GSB credit cards and cash cards, and a menu item 'สมัครบัตรเครดิตธนาคารออมสิน'. The fetcher classed the page captcha because of a reCAPTCHA notice; the public catalogue text was still present. The homepage body was stored compressed and was read after decompressing the cached bytes.",
-        "offer_sources": [
-          "https://www.gsb.or.th/promotion/all-promotions/"
-        ],
-        "status": "not_covered"
-      },
-      "id": "th-gsb",
-      "legal_name": "GOVERNMENT SAVINGS BANK",
-      "name": "Government Savings Bank",
-      "offer_count": 0,
-      "official_domains": [
-        "gsb.or.th"
-      ],
-      "website": "https://www.gsb.or.th"
+      "website": "https://www.aeon.co.th"
     },
     {
       "card_ids": [],
@@ -114,48 +48,6 @@
         "americanexpress.com"
       ],
       "website": "https://www.americanexpress.com/th"
-    },
-    {
-      "card_ids": [],
-      "country": "TH",
-      "crawl": {
-        "card_sources": [],
-        "note": "The official site has a credit card promotions listing. No card product catalogue URL was found on the homepage or the spend-save page. The credit card nav item points at the promotions listing.",
-        "offer_sources": [
-          "https://www.ttbbank.com/th/promotion/credit-card"
-        ],
-        "status": "not_covered"
-      },
-      "id": "th-ttb",
-      "legal_name": "TMBTHANACHART BANK PUBLIC COMPANY LIMITED",
-      "name": "ttb",
-      "offer_count": 0,
-      "official_domains": [
-        "ttbbank.com"
-      ],
-      "website": "https://www.ttbbank.com"
-    },
-    {
-      "card_ids": [],
-      "country": "TH",
-      "crawl": {
-        "card_sources": [
-          "https://www.cardx.co.th/th-TH/credit-card/catalog"
-        ],
-        "note": "Ordinary browser mode reached the official site. The credit card catalogue lists consumer cards including CardX Beyond, JCB Platinum, King Power Platinum, UP2ME, Family Plus and Ultra Platinum. The site states CardX is in the SCBX group; SCB itself has no website on the BOT list, so this is recorded as its own issuer, not same_group. A linked host info.cardx.co.th was not added to official_domains.",
-        "offer_sources": [
-          "https://www.cardx.co.th/th-TH/credit-card/promotion"
-        ],
-        "status": "not_covered"
-      },
-      "id": "th-cardx",
-      "legal_name": "CARD X CO., LTD.",
-      "name": "CardX",
-      "offer_count": 0,
-      "official_domains": [
-        "cardx.co.th"
-      ],
-      "website": "https://www.cardx.co.th"
     },
     {
       "card_ids": [],
@@ -185,22 +77,126 @@
       "country": "TH",
       "crawl": {
         "card_sources": [
-          "https://www.aeon.co.th/aeon/cards/"
+          "https://www.cardx.co.th/th-TH/credit-card/catalog"
         ],
-        "note": "The official cards page lists consumer credit cards (for example AEON Gold, Visa Platinum, World Mastercard, J Premier Platinum). The fetcher classed the pages login_required because a password field is present; the public catalogue was still readable.",
+        "note": "Ordinary browser mode reached the official site. The credit card catalogue lists consumer cards including CardX Beyond, JCB Platinum, King Power Platinum, UP2ME, Family Plus and Ultra Platinum. The site states CardX is in the SCBX group; SCB itself has no website on the BOT list, so this is recorded as its own issuer, not same_group. A linked host info.cardx.co.th was not added to official_domains.",
         "offer_sources": [
-          "https://www.aeon.co.th/aeon/promotions/"
+          "https://www.cardx.co.th/th-TH/credit-card/promotion"
         ],
         "status": "not_covered"
       },
-      "id": "th-aeon",
-      "legal_name": "AEON THANA SINSAP (THAILAND) PUBLIC COMPANY LIMITED",
-      "name": "AEON Thana Sinsap",
+      "id": "th-cardx",
+      "legal_name": "CARD X CO., LTD.",
+      "name": "CardX",
       "offer_count": 0,
       "official_domains": [
-        "aeon.co.th"
+        "cardx.co.th"
       ],
-      "website": "https://www.aeon.co.th"
+      "website": "https://www.cardx.co.th"
+    },
+    {
+      "card_ids": [],
+      "country": "TH",
+      "crawl": {
+        "card_sources": [
+          "https://www.firstchoice.co.th/cards"
+        ],
+        "note": "Official cards page lists consumer credit cards (for example Krungsri First Choice Visa Platinum and XU) and cash cards. Apply paths were not fetched.",
+        "offer_sources": [
+          "https://www.firstchoice.co.th/promotion/credit-card"
+        ],
+        "status": "not_covered"
+      },
+      "id": "th-first-choice",
+      "legal_name": "บริษัท อยุธยา แคปปิตอล เซอร์วิสเซส",
+      "name": "Krungsri First Choice",
+      "offer_count": 0,
+      "official_domains": [
+        "firstchoice.co.th"
+      ],
+      "website": "https://www.firstchoice.co.th"
+    },
+    {
+      "card_ids": [
+        "th-gsb-0d623983",
+        "th-gsb-12b7ab1f",
+        "th-gsb-66482f19",
+        "th-gsb-71473e29",
+        "th-gsb-b4dbb751"
+      ],
+      "country": "TH",
+      "crawl": {
+        "card_sources": [
+          "https://www.gsb.or.th/personal/credit-cash/"
+        ],
+        "note": "2026-11-24 run 20261124-0834-th-gsb: first full card and offer run, plain HTTP, recipes config/recipes/th-gsb-cards.json and th-gsb-offers.json. Language is Thai: the English /en/personal/card/ page lists only the GSB Debit Card and has no credit catalogue or promotions. Consumer credit cards were read from /personal/credit-cash/ (five cards). Cash cards (PEOPLE CARD and PRIMA CARD) were left out. Credit-card promotions were read from the shopping, restaurant, travel, health, home-decor, automotive, lifestyle, reward-point, installments0per, etc and rgtc category pages (lifestyle and reward-point had no tiles). listing_complete is true. The fetcher classed pages captcha because of a reCAPTCHA script include; the public catalogue was present and was not treated as blocked. Product pages link specials.priceless.com, which is off-domain and was not fetched. The product-page fee image for Precious waives the entrance fee, while the July 2569 disclosure PDF states 1,000 baht, so that card is fee_unclear.",
+        "offer_sources": [
+          "https://www.gsb.or.th/promotion/shopping/",
+          "https://www.gsb.or.th/promotion/restaurant/",
+          "https://www.gsb.or.th/promotion/travel/",
+          "https://www.gsb.or.th/promotion/health/",
+          "https://www.gsb.or.th/promotion/home-decor/",
+          "https://www.gsb.or.th/promotion/automotive/",
+          "https://www.gsb.or.th/promotion/lifestyle/",
+          "https://www.gsb.or.th/promotion/reward-point/",
+          "https://www.gsb.or.th/promotion/installments0per/",
+          "https://www.gsb.or.th/promotion/etc/",
+          "https://www.gsb.or.th/promotion/rgtc/"
+        ],
+        "status": "ok"
+      },
+      "id": "th-gsb",
+      "legal_name": "GOVERNMENT SAVINGS BANK",
+      "name": "Government Savings Bank",
+      "offer_count": 80,
+      "official_domains": [
+        "gsb.or.th"
+      ],
+      "website": "https://www.gsb.or.th"
+    },
+    {
+      "card_ids": [],
+      "country": "TH",
+      "crawl": {
+        "card_sources": [
+          "https://www.icbcthai.com/th/column/1438059017405874179.html"
+        ],
+        "note": "The official credit card page names UnionPay, Visa, Global Travel, ICBC-F.T.I., Horoscope, ANY Mastercard and Shine Future cards.",
+        "offer_sources": [
+          "https://www.icbcthai.com/th/column/1438059017535897643.html"
+        ],
+        "status": "not_covered"
+      },
+      "id": "th-icbc-thai",
+      "legal_name": "INDUSTRIAL AND COMMERCIAL BANK OF CHINA (THAI) PUBLIC COMPANY LIMITED",
+      "name": "ICBC Thai",
+      "offer_count": 0,
+      "official_domains": [
+        "icbcthai.com"
+      ],
+      "website": "https://www.icbcthai.com"
+    },
+    {
+      "card_ids": [],
+      "country": "TH",
+      "crawl": {
+        "card_sources": [
+          "https://www.krungsricard.com/th/product"
+        ],
+        "note": "The official product page lists consumer Krungsri credit cards, including Visa, Mastercard and JCB products.",
+        "offer_sources": [
+          "https://www.krungsricard.com/th/promotion"
+        ],
+        "status": "not_covered"
+      },
+      "id": "th-krungsri-card",
+      "legal_name": "KRUNGSRIAYUDHYA CARD CO., LTD.",
+      "name": "Krungsri Card",
+      "offer_count": 0,
+      "official_domains": [
+        "krungsricard.com"
+      ],
+      "website": "https://www.krungsricard.com"
     },
     {
       "card_ids": [],
@@ -229,22 +225,42 @@
       "country": "TH",
       "crawl": {
         "card_sources": [
-          "https://www.krungsricard.com/th/product"
+          "https://www.lotussmoney.com/credit-card"
         ],
-        "note": "The official product page lists consumer Krungsri credit cards, including Visa, Mastercard and JCB products.",
+        "note": "Official catalogue lists consumer credit cards, including Lotus's Platinum Beyond and Platinum Reward.",
         "offer_sources": [
-          "https://www.krungsricard.com/th/promotion"
+          "https://www.lotussmoney.com/promotion/credit-card"
         ],
         "status": "not_covered"
       },
-      "id": "th-krungsri-card",
-      "legal_name": "KRUNGSRIAYUDHYA CARD CO., LTD.",
-      "name": "Krungsri Card",
+      "id": "th-lotuss-money",
+      "legal_name": "LOTUS'S MONEY SERVICES LIMITED",
+      "name": "Lotus's Money",
       "offer_count": 0,
       "official_domains": [
-        "krungsricard.com"
+        "lotussmoney.com"
       ],
-      "website": "https://www.krungsricard.com"
+      "website": "https://www.lotussmoney.com"
+    },
+    {
+      "card_ids": [],
+      "country": "TH",
+      "crawl": {
+        "card_sources": [],
+        "note": "The official site has a credit card promotions listing. No card product catalogue URL was found on the homepage or the spend-save page. The credit card nav item points at the promotions listing.",
+        "offer_sources": [
+          "https://www.ttbbank.com/th/promotion/credit-card"
+        ],
+        "status": "not_covered"
+      },
+      "id": "th-ttb",
+      "legal_name": "TMBTHANACHART BANK PUBLIC COMPANY LIMITED",
+      "name": "ttb",
+      "offer_count": 0,
+      "official_domains": [
+        "ttbbank.com"
+      ],
+      "website": "https://www.ttbbank.com"
     },
     {
       "card_ids": [],

@@ -172,8 +172,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 53 | TH | issuer | offers | Krungsri First Choice | `firstchoice.co.th` | untested | https://www.firstchoice.co.th/promotion/credit-card |
 | 54 | TH | issuer | cards | ICBC Thai | `icbcthai.com` | untested | https://www.icbcthai.com/th/column/1438059017405874179.html |
 | 54 | TH | issuer | offers | ICBC Thai | `icbcthai.com` | untested | https://www.icbcthai.com/th/column/1438059017535897643.html |
-| 55 | TH | issuer | cards | Government Savings Bank | `gsb.or.th` | untested | https://www.gsb.or.th/personal/card/ |
-| 55 | TH | issuer | offers | Government Savings Bank | `gsb.or.th` | untested | https://www.gsb.or.th/promotion/all-promotions/ |
+| 55 | TH | issuer | cards | Government Savings Bank | `gsb.or.th` | untested | https://www.gsb.or.th/personal/credit-cash/ |
+| 55 | TH | issuer | offers | Government Savings Bank | `gsb.or.th` | untested | https://www.gsb.or.th/promotion/shopping/, https://www.gsb.or.th/promotion/restaurant/, https://www.gsb.or.th/promotion/travel/, https://www.gsb.or.th/promotion/health/, https://www.gsb.or.th/promotion/home-decor/, https://www.gsb.or.th/promotion/automotive/, https://www.gsb.or.th/promotion/lifestyle/, https://www.gsb.or.th/promotion/reward-point/, https://www.gsb.or.th/promotion/installments0per/, https://www.gsb.or.th/promotion/etc/, https://www.gsb.or.th/promotion/rgtc/ |
 | 56 | TH | issuer | cards | American Express (Thai) | `americanexpress.com` | untested | https://www.americanexpress.com/th/th/compare-credit-cards/, https://www.americanexpress.com/th-th/credit-cards/compare-credit-cards/ |
 | 56 | TH | issuer | offers | American Express (Thai) | `americanexpress.com` | untested | https://www.americanexpress.com/th-th/benefits/promotions/dining.html |
 | 57 | TH | issuer | cards | ttb | `ttbbank.com` | untested |  |
