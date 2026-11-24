@@ -1941,7 +1941,14 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.dbs.com.hk/personal/credit-cards/default.page"
+    "https://www.dbs.com.hk/personal/credit-cards/default.page",
+    "https://www.dbs.com.hk/personal/credit-cards/credit-cards/default.page",
+    "https://www.dbs.com.hk/personal/credit-cards/credit-cards/black-mc",
+    "https://www.dbs.com.hk/personal/credit-cards/credit-cards/black-ae",
+    "https://www.dbs.com.hk/personal/credit-cards/credit-cards/compass-visa-platinum",
+    "https://www.dbs.com.hk/personal/credit-cards/credit-cards/eminent-card",
+    "https://www.dbs.com.hk/personal/credit-cards/credit-cards/livefresh",
+    "https://www.dbs.com.hk/personal/credit-cards/key-statement-tnc.htm"
    ],
    "status": "untested",
    "full_crawl_order": 49,
@@ -1955,7 +1962,12 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.dbs.com.hk/personal/YRO/YROOfferList.xml",
+    "https://www.dbs.com.hk/personal/YRO/index.html",
+    "https://www.dbs.com.hk/personal/credit-cards/promotions/default.page",
+    "https://www.dbs.com.hk/iwov-resources/pdf/creditcards/welcome-tnc-en26Q4.pdf"
+   ],
    "status": "untested",
    "full_crawl_order": 49,
    "suggested_by": null,
