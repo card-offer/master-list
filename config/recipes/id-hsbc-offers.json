@@ -1,0 +1,43 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-hsbc-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "id-hsbc"
+  },
+  "country": "ID",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.hsbc.co.id/en-id/credit-cards/offers/"
+  ],
+  "pagination": {
+    "next": "ul.A-PAGMAN-RW-ALL li.arrow a.icon-chevron-right@href",
+    "max_pages": 10
+  },
+  "list": {
+    "item": "div.M-MINIOFFERSLIST-RW-RBWM div.M-MASTERTILEITEM-DEV",
+    "key": "url",
+    "fields": {
+      "merchant": "h3.link",
+      "url": "a.A-LNKC28L-RW-ALL@href",
+      "benefit": "div.rich-text",
+      "end": {
+        "selector": "div.rich-text",
+        "all": true,
+        "join": " ",
+        "regex": "Expires by (.+)$"
+      }
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "terms": "main"
+    },
+    "text_selector": "main, body"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "The English offers listing at /en-id/credit-cards/offers/ is a mini-offers list of 55 tiles across five pages (12 per page, remainder on page 5). Pagination goes to /en-id/credit-cards/offers.indonesia.all-groups.page-N/. Category filters exist (Dining and Groceries, Electronics and Gadgets, Fashion, Festivities, Health and Beauty, Home Appliances and Furniture, Hotels and Travel, Instalments, Others, Plaza Indonesia, Premier, Watches and Jewellery) but they repeat the same tiles. The You might also be interested in master tiles are product pages, not offers, and are excluded by the M-MINIOFFERSLIST-RW-RBWM selector. The English sitemap lists the same 55 offer URLs. Three slugs end 31-12-2025 (Dyson, Optik Seis, OWNDAYS Indonesia); end dates are taken from each offer page, not from the slug or the tile line alone. robots.txt disallows /*.pdf$, so any deal PDFs cannot be fetched. The Bahasa offers listing was not crawled."
+}
