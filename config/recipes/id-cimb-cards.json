@@ -1,0 +1,33 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-cimb-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "id-cimb"
+  },
+  "country": "ID",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.cimbniaga.co.id/id/personal/kartu-kredit"
+  ],
+  "list": {
+    "item": "div.rr-the-card",
+    "key": "url",
+    "fields": {
+      "name": "h2.text-desc",
+      "url": "a.btn-cc-gotopage@href",
+      "description": "p.rr-description"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "terms": "main"
+    },
+    "text_selector": "main"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The CIMB Niaga Indonesian credit card list at /id/personal/kartu-kredit. There is no English catalogue: /en/personal/kartu-kredit is 404 and the EN language control opens a translate-page tutorial. Each tile is div.rr-the-card. Syariah cards may link under /id/syariah-personal/. Apply and contact forms on the pages are not read."
+}

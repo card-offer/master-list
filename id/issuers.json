@@ -29,22 +29,44 @@
       "website": "https://www.bca.co.id"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "id-cimb-classic",
+        "id-cimb-gold",
+        "id-cimb-jcb-platinum",
+        "id-cimb-kartu-kredit-indonesia",
+        "id-cimb-mastercard-platinum",
+        "id-cimb-niaga-jcb-ultimate",
+        "id-cimb-niaga-world",
+        "id-cimb-octo-card",
+        "id-cimb-octo-card-syariah",
+        "id-cimb-platinum-all-accor-live-limitless",
+        "id-cimb-precious",
+        "id-cimb-preferred-visa-infinite",
+        "id-cimb-private-wealth-credit-card",
+        "id-cimb-syariah-gold",
+        "id-cimb-syariah-platinum",
+        "id-cimb-visa-infinite",
+        "id-cimb-visa-travel-card",
+        "id-cimb-wave-n-go",
+        "id-cimb-world-all-accor-live-limitless",
+        "id-cimb-world-cathay",
+        "id-cimb-world-syariah"
+      ],
       "country": "ID",
       "crawl": {
         "card_sources": [
           "https://www.cimbniaga.co.id/id/personal/kartu-kredit"
         ],
-        "note": null,
+        "note": "First full crawl on 24 Nov 2026, run 20261124-0916-id-cimb, language id. The English catalogue does not exist: /en/personal/kartu-kredit and /en/personal/promo/index returned HTTP 404, and /en redirected then returned HTTP 500. The Kartu Kredit promo tab reported 407 promos. The run capped at the first 300 tiles (newest first). Three of those 300 detail pages returned HTTP 500 (PRM-150926-00007, PRM-210826-00003, PRM-070826-00002), so 297 offers were handed in, none of them expired, and 107 listing tiles were not read. listing_complete is false because of the cap.",
         "offer_sources": [
           "https://www.cimbniaga.co.id/id/personal/promo/index"
         ],
-        "status": "not_covered"
+        "status": "partial"
       },
       "id": "id-cimb",
       "legal_name": "PT BANK CIMB NIAGA Tbk",
       "name": "CIMB Niaga",
-      "offer_count": 0,
+      "offer_count": 297,
       "official_domains": [
         "cimbniaga.co.id"
       ],
