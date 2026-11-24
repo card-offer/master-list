@@ -1,0 +1,23 @@
+{
+  "recipe": "recipe/1",
+  "id": "ph-rcbc-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "ph-rcbc"
+  },
+  "country": "PH",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.rcbc.com/"
+  ],
+  "list": {
+    "item": "a[href='https://rcbccredit.com/']",
+    "fields": {
+      "url": ":scope@href",
+      "label": ":scope"
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "note": "The homepage is in English (html lang=en) and has no language switcher. The Cards menu, the Credit Cards product tile, and the Learn More button all point at https://rcbccredit.com/, which is not in official_domains. The Apply Now button on the same tile points at https://applications.rcbccredit.com/, also not in official_domains. A recipe run must not fetch those hosts. No individual credit card product pages were found on rcbc.com. robots.txt on www.rcbc.com allows all paths other than /cgi-bin/, /tmp/, /admin/, and /search*. sitemap.xml is present and was used as a second list; it has articles about credit cards but no on-host card catalogue. MyDebit at /mydebit is a debit product and was not handed in as a credit card."
+}

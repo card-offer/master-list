@@ -2725,7 +2725,9 @@
    "country": "PH",
    "type": "issuer",
    "purpose": "cards",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.rcbc.com/"
+   ],
    "status": "untested",
    "full_crawl_order": 74,
    "suggested_by": null,
@@ -2739,7 +2741,8 @@
    "type": "issuer",
    "purpose": "offers",
    "entry_urls": [
-    "https://www.rcbc.com/promos"
+    "https://www.rcbc.com/promos",
+    "https://www.rcbc.com/mastercard-debit-deals"
    ],
    "status": "untested",
    "full_crawl_order": 74,

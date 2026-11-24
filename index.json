@@ -28,7 +28,7 @@
       "cards": 0,
       "currency": "PHP",
       "issuers": 7,
-      "offers": 0,
+      "offers": 36,
       "path": "/ph/",
       "timezone": "Asia/Manila"
     },
@@ -49,7 +49,7 @@
       "timezone": "Asia/Bangkok"
     }
   },
-  "generated_at": "2026-11-20T08:39:06+00:00",
+  "generated_at": "2026-11-24T01:56:40+00:00",
   "indexes": "Built in CI and published to GitHub Pages. Not stored on the main branch.",
   "layout": {
     "archive": "{cc}/archive/offers/{issuer}.json",
@@ -67,7 +67,7 @@
     "scope": "Compiled structured data only. Issuer terms belong to the issuers.",
     "url": "https://creativecommons.org/licenses/by/4.0/"
   },
-  "merchants": 2606,
+  "merchants": 2639,
   "name": "card-offer master list",
   "networks": 6,
   "schema_version": "0.3.0",

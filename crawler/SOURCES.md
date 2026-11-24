@@ -212,8 +212,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 72 | ID | issuer | offers | BCA | `promo.bca.co.id` | untested | https://promo.bca.co.id/id/all?productType=kartu-kredit |
 | 73 | PH | issuer | cards | Asia United Bank | `aub.com.ph` | untested |  |
 | 73 | PH | issuer | offers | Asia United Bank | `aub.com.ph` | untested |  |
-| 74 | PH | issuer | cards | RCBC | `rcbc.com` | untested |  |
-| 74 | PH | issuer | offers | RCBC | `rcbc.com` | untested | https://www.rcbc.com/promos |
+| 74 | PH | issuer | cards | RCBC | `rcbc.com` | untested | https://www.rcbc.com/ |
+| 74 | PH | issuer | offers | RCBC | `rcbc.com` | untested | https://www.rcbc.com/promos, https://www.rcbc.com/mastercard-debit-deals |
 | 75 | PH | issuer | cards | Metrobank | `metrobank.com.ph` | untested |  |
 | 75 | PH | issuer | offers | Metrobank | `metrobank.com.ph` | untested |  |
 | 76 | PH | issuer | cards | HSBC Philippines | `hsbc.com.ph` | untested | https://www.hsbc.com.ph/credit-cards/products/ |
