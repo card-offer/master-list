@@ -533,20 +533,50 @@
       "website": "https://www.ocbc.com.hk/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-standard-chartered-a-point-card",
+        "hk-standard-chartered-cathay-mastercard",
+        "hk-standard-chartered-cathay-mastercard-priority-banking",
+        "hk-standard-chartered-cathay-mastercard-priority-private",
+        "hk-standard-chartered-executive-credit-card",
+        "hk-standard-chartered-executive-platinum-credit-card",
+        "hk-standard-chartered-manhattan-classic-visa-credit-card",
+        "hk-standard-chartered-manhattan-gold-credit-card",
+        "hk-standard-chartered-manhattan-id-credit-card",
+        "hk-standard-chartered-manhattan-id-platinum-credit-card",
+        "hk-standard-chartered-manhattan-platinum-credit-card",
+        "hk-standard-chartered-manhattan-titanium-credit-card",
+        "hk-standard-chartered-platinum-credit-card",
+        "hk-standard-chartered-priority-banking-credit-card",
+        "hk-standard-chartered-shop-n-gain-credit-card",
+        "hk-standard-chartered-shop-n-gain-platinum-credit-card",
+        "hk-standard-chartered-simply-cash-visa-card",
+        "hk-standard-chartered-smart-credit-card",
+        "hk-standard-chartered-titanium-credit-card",
+        "hk-standard-chartered-unionpay-dual-currency-platinum-credit-card",
+        "hk-standard-chartered-visa-infinite-credit-card"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
-          "https://www.sc.com/hk/credit-cards/"
+          "https://www.sc.com/hk/credit-cards/",
+          "https://www.sc.com/hk/credit-cards/compare/",
+          "https://www.sc.com/hk/credit-cards/compare/_jcr_content/root/container-top/container-top/container/container_03b9da99-ded5-41da-bc8e-659a9944f53a/offer_listing_produc.products.json",
+          "https://www.sc.com/hk/credit-cards/credit-card-all-benefits/",
+          "https://www.sc.com/hk/sitemap/"
         ],
-        "note": null,
-        "offer_sources": [],
-        "status": "not_covered"
+        "offer_sources": [
+          "https://www.sc.com/hk/credit-cards/offers/",
+          "https://www.sc.com/hk/promotions/the-good-life-year-round-offers/",
+          "https://www.sc.com/hk/data/tgl/offers.json"
+        ],
+        "note": "First full crawl run 20261124-0819-hk-standard-chartered on 24 Nov 2026 (KL). Plain HTTP, no real Chrome. The credit-cards listing has 4 open product tiles. The compare products JSON lists 6 products, including three Cathay Mastercard banking-relationship variants that share one product page (shared_product_page). The all-benefits Other Credit Cards section and the HTML sitemap add 15 further product pages. 21 consumer credit cards were handed in. Visa Infinite is by invitation only on all-benefits; status was left active because the pages do not say the bank is closed to new applications. Four MANHATTAN cards (id, Titanium, Gold, Platinum) have network_not_stated. Visa Infinite is fee_unclear because Key Facts Statements and card terms PDFs are hosted on av.sc.com, which is not in official_domains for this issuer (it is official for my-standard-chartered and sg-standard-chartered) and was not fetched. 32 live offers were handed in: 12 The Good Life year-round offers from /hk/data/tgl/offers.json (end 31 Dec 2026) plus campaigns from the credit-card offers listing and dedicated promo pages, and listing-only tiles for Harbour City, RentSmart, Hotels.com miles, Expedia miles, and Sands Resorts Macao Visa Privileges. Expired campaigns left out include the Apple Watch instalment (until 28 Feb 2026), personal cyber insurance (until 30 Jun 2026), Magic Access instalment (conflicting end dates 31 Dec 2026 and 31 Dec 2025), the FX miles campaign (until 29 Oct 2026), Kee Wah mooncake (Sep 2026), Klook Offer 1 (until 26 Sep 2026), and ended A.Point welcome lucky draw and tax reward pages. Mastercard Travel Rewards was left out because the page says local Hong Kong offers are not available to Standard Chartered cards issued in Hong Kong. SC CASH Instant Loan is a loan product and was excluded. Debit and corporate cards were excluded. robots.txt disallows /*?pid=, so all-benefits card links were fetched without that query. HTML sitemap promotion URLs for fortress, lg and samsung returned HTTP 404 (lg year-round remains in the TGL JSON). listing_complete is true for the main card and offer listings, compare JSON, all-benefits, TGL JSON and the HTML sitemap. The XML sitemap index has many child files; only sitemap-misc.xml and the HTML sitemap were fetched. Four recipes: hk-standard-chartered-cards.json, hk-standard-chartered-compare-products.json, hk-standard-chartered-offers.json and hk-standard-chartered-tgl-offers.json. crawl.status is partial because av.sc.com terms and KFS PDFs were not fetched.",
+        "status": "partial"
       },
       "id": "hk-standard-chartered",
       "legal_name": "STANDARD CHARTERED BANK (HONG KONG) LIMITED",
       "name": "Standard Chartered Hong Kong",
-      "offer_count": 0,
+      "offer_count": 32,
       "official_domains": [
         "sc.com"
       ],

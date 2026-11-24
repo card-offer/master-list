@@ -1,0 +1,38 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-standard-chartered-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-standard-chartered"
+  },
+  "country": "HK",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.sc.com/hk/credit-cards/"
+  ],
+  "list": {
+    "item": "main .sc-promo-cards__card",
+    "key": "name",
+    "fields": {
+      "name": "h2",
+      "url": "a[href*='/credit-cards/']@href",
+      "intro": "p"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "fees": {
+        "selector": "li, p, div",
+        "all": true,
+        "regex": "(?i)(annual fee.*)",
+        "join": " "
+      }
+    },
+    "text_selector": "main"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "Plain mode reads sc.com/hk (24 Nov 2026). The listing shows four open products: Standard Chartered Cathay Mastercard, Simply Cash Visa Card, Standard Chartered Smart Credit Card, and A. Point Card. The comparator loads a public products.json with six rows because Cathay Mastercard is split into the base card, Priority Banking, and Priority Private; use recipe hk-standard-chartered-compare-products for that file. Further consumer cards that are still shown, including MANHATTAN, UnionPay Dual Currency Platinum, Visa Infinite, Priority Banking Credit Card, executive, Titanium, Platinum and SHOP'n GAIN cards, are listed at /hk/credit-cards/credit-card-all-benefits/ and in the HTML sitemap. av.sc.com hosts key-facts PDFs and is not in this issuer official_domains, so do not fetch it."
+}

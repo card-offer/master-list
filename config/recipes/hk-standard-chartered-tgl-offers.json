@@ -1,0 +1,34 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-standard-chartered-tgl-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-standard-chartered"
+  },
+  "country": "HK",
+  "purpose": "offers",
+  "mode": "plain",
+  "source": "json",
+  "start_urls": [
+    "https://www.sc.com/hk/data/tgl/offers.json"
+  ],
+  "list": {
+    "item": "offers.offer",
+    "key": "id",
+    "fields": {
+      "id": "id",
+      "merchant": "name",
+      "title": "otitle",
+      "description": "odesc",
+      "start": "sd",
+      "end": "ed",
+      "terms": "tnc",
+      "category": "cat",
+      "visa": "visa",
+      "mastercard": "mas",
+      "unionpay": "cup"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "The Good Life Year-Round Offers page (https://www.sc.com/hk/promotions/the-good-life-year-round-offers/) loads this public JSON file. Each offer has a short tnc field. The fuller Terms and Conditions PDF is on av.sc.com, which is not in official_domains for hk-standard-chartered, so do not fetch it. Hand-in source_key is offer-<id> on the Good Life page. Read in plain mode on 24 Nov 2026. This run had 12 offers, all ending 31 December 2026."
+}
