@@ -2780,7 +2780,13 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.hsbc.com.ph/credit-cards/products/"
+    "https://www.hsbc.com.ph/credit-cards/products/",
+    "https://www.hsbc.com.ph/credit-cards/compare/",
+    "https://www.hsbc.com.ph/credit-cards/products/other-cards/",
+    "https://www.hsbc.com.ph/credit-cards/products/liveplus/",
+    "https://www.hsbc.com.ph/credit-cards/products/red-mastercard/",
+    "https://www.hsbc.com.ph/credit-cards/products/premier-travel/",
+    "https://www.hsbc.com.ph/credit-cards/products/premier/"
    ],
    "status": "untested",
    "full_crawl_order": 76,
@@ -2795,7 +2801,14 @@
    "type": "issuer",
    "purpose": "offers",
    "entry_urls": [
-    "https://www.hsbc.com.ph/credit-cards/offers/latest/"
+    "https://www.hsbc.com.ph/credit-cards/offers/latest/",
+    "https://www.hsbc.com.ph/credit-cards/offers/",
+    "https://www.hsbc.com.ph/credit-cards/offers/premier/",
+    "https://www.hsbc.com.ph/credit-cards/offers/red-hot-deals/",
+    "https://www.hsbc.com.ph/credit-cards/offers/visa/",
+    "https://www.hsbc.com.ph/credit-cards/offers/rewards-redemption/",
+    "https://www.hsbc.com.ph/credit-cards/features/caltex-rebate/",
+    "https://www.hsbc.com.ph/premier/rewards-and-offers/"
    ],
    "status": "untested",
    "full_crawl_order": 76,

@@ -1,0 +1,33 @@
+{
+  "recipe": "recipe/1",
+  "id": "ph-hsbc-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "ph-hsbc"
+  },
+  "country": "PH",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.hsbc.com.ph/credit-cards/offers/latest/"
+  ],
+  "list": {
+    "item": "div.M-MASTERTILEITEM-DEV",
+    "key": "title",
+    "fields": {
+      "title": "h3",
+      "url": "a@href",
+      "benefit": "div.rich-text"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "terms": "main"
+    },
+    "text_selector": "main, body"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "The English latest-offers listing at /credit-cards/offers/latest/ has 8 master tiles in div.M-MASTERTILEITEM-DEV (plain HTML, 24 Nov 2026). Some tiles have on-host detail (Premier Mastercard offers at /credit-cards/offers/premier/, Card Instalment at /credit-cards/features/card-instalment/). Other tiles point at offers.hsbc.com.ph (All offers, Red Hot Deals, Mastercard offers, Visa offers, waived-fees terms PDF, Live+ 5% travel cashback promo). fetcher.py may_fetch matches official hosts exactly after stripping www, not by suffix, so offers.hsbc.com.ph and www.homeandaway.hsbc.com must not be fetched. Welcome offers also sit on product pages and on /premier/rewards-and-offers/. The official Visa offers page on hsbc.com.ph says offers are coming soon. robots.txt disallows /*.pdf$."
+}

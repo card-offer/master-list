@@ -216,8 +216,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 74 | PH | issuer | offers | RCBC | `rcbc.com` | untested | https://www.rcbc.com/promos |
 | 75 | PH | issuer | cards | Metrobank | `metrobank.com.ph` | untested |  |
 | 75 | PH | issuer | offers | Metrobank | `metrobank.com.ph` | untested |  |
-| 76 | PH | issuer | cards | HSBC Philippines | `hsbc.com.ph` | untested | https://www.hsbc.com.ph/credit-cards/products/ |
-| 76 | PH | issuer | offers | HSBC Philippines | `hsbc.com.ph` | untested | https://www.hsbc.com.ph/credit-cards/offers/latest/ |
+| 76 | PH | issuer | cards | HSBC Philippines | `hsbc.com.ph` | untested | https://www.hsbc.com.ph/credit-cards/products/, https://www.hsbc.com.ph/credit-cards/compare/, https://www.hsbc.com.ph/credit-cards/products/other-cards/, https://www.hsbc.com.ph/credit-cards/products/liveplus/, https://www.hsbc.com.ph/credit-cards/products/red-mastercard/, https://www.hsbc.com.ph/credit-cards/products/premier-travel/, https://www.hsbc.com.ph/credit-cards/products/premier/ |
+| 76 | PH | issuer | offers | HSBC Philippines | `hsbc.com.ph` | untested | https://www.hsbc.com.ph/credit-cards/offers/latest/, https://www.hsbc.com.ph/credit-cards/offers/, https://www.hsbc.com.ph/credit-cards/offers/premier/, https://www.hsbc.com.ph/credit-cards/offers/red-hot-deals/, https://www.hsbc.com.ph/credit-cards/offers/visa/, https://www.hsbc.com.ph/credit-cards/offers/rewards-redemption/, https://www.hsbc.com.ph/credit-cards/features/caltex-rebate/, https://www.hsbc.com.ph/premier/rewards-and-offers/ |
 | 77 | PH | issuer | cards | EastWest Bank | `eastwestbanker.com` | untested | https://www.eastwestbanker.com/cards/creditcards |
 | 77 | PH | issuer | offers | EastWest Bank | `eastwestbanker.com` | untested | https://www.eastwestbanker.com/promos |
 | 78 | PH | issuer | cards | Bank of the Philippine Islands | `bpi.com.ph` | untested | https://www.bpi.com.ph/personal/cards, https://www.bpi.com.ph/personal/cards/credit-cards |
