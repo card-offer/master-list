@@ -1,0 +1,29 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-lotuss-money-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "th-lotuss-money"
+  },
+  "country": "TH",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.lotussmoney.com/credit-card"
+  ],
+  "list": {
+    "item": "div.credit-card-item",
+    "key": "url",
+    "fields": {
+      "name": "div.card-title",
+      "product_line": "div.card-type",
+      "income": "div.condition",
+      "url": "a.with-arrow@href",
+      "image_alt": "img.card-item@alt",
+      "benefits": {"selector": "ul.custom-bullet li", "all": true, "join": " | "}
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "Thai-only catalogue at /credit-card. Two consumer credit card tiles in div.credit-card-item: แพลทินัม บียอนด์ and แพลทินัม รีวอร์ด. The detail link is a.with-arrow (รายละเอียดเพิ่มเติม). The apply link /credit-card/apply-online is an application form and must not be fetched. Do not include loan cards under /loan-card."
+}

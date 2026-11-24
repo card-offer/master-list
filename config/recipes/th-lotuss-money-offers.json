@@ -1,0 +1,37 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-lotuss-money-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "th-lotuss-money"
+  },
+  "country": "TH",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.lotussmoney.com/promotion/credit-card"
+  ],
+  "list": {
+    "item": "a.promotion-item",
+    "key": "url",
+    "fields": {
+      "title": "h3.title",
+      "url": ":scope@href",
+      "benefit": "div.desc",
+      "dates": "div.date",
+      "image_alt": "img@alt",
+      "category": "div.category"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "article": "div.article-body",
+      "terms": "div.meta-condition-group"
+    },
+    "text_selector": "div.article-body"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_offer_page",
+  "note": "Thai-only credit card promotions listing at /promotion/credit-card. All current tiles are in the listing HTML as a.promotion-item (282 on 24 Nov 2026), so no pagination or browser mode is needed. Dates on the tile are Buddhist Era short years (69 = 2569 BE = 2026 CE). Each tile links to a same-host detail page under /promotion/credit-card/{category}/{slug}. Do not fetch loan-card or insurance promotion listings. Do not use an em dash in a title or a published quote."
+}
