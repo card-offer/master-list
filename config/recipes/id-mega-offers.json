@@ -1,0 +1,37 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-mega-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "id-mega"
+  },
+  "country": "ID",
+  "purpose": "offers",
+  "mode": "plain",
+  "source": "json",
+  "start_urls": [
+    "https://bankmega.com/id/promo/data/?page=1&product=Kartu%20Kredit"
+  ],
+  "pagination": {
+    "url_template": "https://bankmega.com/id/promo/data/?page={n}&product=Kartu%20Kredit",
+    "start": 1,
+    "max_pages": 200
+  },
+  "list": {
+    "item": ".",
+    "key": "slug",
+    "fields": {
+      "id": "id",
+      "title": "title",
+      "slug": "slug",
+      "code_promo": "code_promo",
+      "start_date": "start_date",
+      "expired_date": "expired_date",
+      "expired_str": "expired_str",
+      "categories": "categories",
+      "cities": "cities"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "Indonesian only. The /en/promo/ shell has lang=en but its UI is Indonesian and it loads this same official JSON at /id/promo/data/. The public listing filter product=Kartu Kredit is used so savings, loan, insurance, investment and M-Smile-only promos are not included. Each item slug is the offer page at https://bankmega.com/id/promo/{slug}/. The recipe lists the JSON only; detail pages are fetched separately with pipeline/fetcher.py because the JSON slug is not a URL the recipe can join onto /id/promo/data/. 12 items per page. robots.txt allows these paths."
+}
