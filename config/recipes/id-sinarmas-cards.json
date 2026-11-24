@@ -1,0 +1,33 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-sinarmas-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "id-sinarmas"
+  },
+  "country": "ID",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.banksinarmas.com/id/personal/produk/kartukredit"
+  ],
+  "list": {
+    "item": "div.bar div.col-3.boxsizing > div.col-12.boxsizing",
+    "fields": {
+      "name": "div.col-12.boxsizing span",
+      "url": "a@href",
+      "blurb": "p"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "title": "title",
+      "body": "body"
+    },
+    "text_selector": "body"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "Indonesian credit card catalogue at /id/personal/produk/kartukredit. There is no English credit-card or promo site: /en/ and /en/personal/produk/kartukredit return 403/404, and &lang=en only translates the navigation chrome while product names, headings and offer text stay in Indonesian. Catalogue tiles in this selector are Kartu Kredit Platinum (URL kartu-kredit-personal), Kartu Kredit Alfamart (tile has display:none), Kartu Kredit Indigo, and Kartu Kredit Korporat (corporate, not handed in). Red Diamond Infinite Card is a separate banner on the same page. Sitemap also lists nanovest-elite-card and the-kings-card, which are not catalogue tiles. Fetcher class captcha is a false positive from a newsletter form captcha image and the word Captcha; public HTML is present and no challenge was bypassed."
+}
