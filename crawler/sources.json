@@ -1913,7 +1913,10 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.hangseng.com/en-hk/personal/cards/overview/"
+    "https://www.hangseng.com/en-hk/personal/cards/overview/",
+    "https://www.hangseng.com/en-hk/personal/cards/products/platinum-card/",
+    "https://www.hangseng.com/en-hk/personal/cards/products/university-affinity/",
+    "https://www.hangseng.com/en-hk/personal/cards/card-directory/"
    ],
    "status": "untested",
    "full_crawl_order": 48,
@@ -1927,7 +1930,11 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.hangseng.com/en-hk/personal/cards/fun-dollars-merchant-list/",
+    "https://www.hangseng.com/en-hk/personal/cards/spending-privileges/offers-of-the-month-all/month-creditcard/",
+    "https://www.hangseng.com/en-hk/personal/cards/spending-privileges/year-round-offers/"
+   ],
    "status": "untested",
    "full_crawl_order": 48,
    "suggested_by": null,

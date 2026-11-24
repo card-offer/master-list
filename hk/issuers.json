@@ -374,20 +374,41 @@
       "website": "https://www.fubonbank.com.hk/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-hang-seng-city-university-of-hong-kong-credit-card",
+        "hk-hang-seng-cuscs-credit-card",
+        "hk-hang-seng-enjoy-visa-platinum-card",
+        "hk-hang-seng-hong-kong-baptist-university-credit-card",
+        "hk-hang-seng-mmpower-world-mastercard",
+        "hk-hang-seng-muji-card",
+        "hk-hang-seng-platinum-card",
+        "hk-hang-seng-prestige-world-mastercard",
+        "hk-hang-seng-renminbi-credit-card",
+        "hk-hang-seng-the-chinese-university-of-hong-kong-credit-card",
+        "hk-hang-seng-the-hang-seng-university-of-hong-kong-credit-card",
+        "hk-hang-seng-travel-plus-visa-signature-card",
+        "hk-hang-seng-visa-infinite-card"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
-          "https://www.hangseng.com/en-hk/personal/cards/overview/"
+          "https://www.hangseng.com/en-hk/personal/cards/overview/",
+          "https://www.hangseng.com/en-hk/personal/cards/products/platinum-card/",
+          "https://www.hangseng.com/en-hk/personal/cards/products/university-affinity/",
+          "https://www.hangseng.com/en-hk/personal/cards/card-directory/"
         ],
-        "note": "https://www.hangseng.com/en-hk/personal/cards/ redirected to this overview.",
-        "offer_sources": [],
-        "status": "not_covered"
+        "note": "First full crawl on 24 Nov 2026. 13 consumer credit cards were handed in from official product pages. The left-nav catalogue on the Platinum Card page, the university affinity landing and the card directory were used as the card listing. The 13 cards are Hang Seng Visa Infinite, Prestige World Mastercard, MMPOWER World Mastercard, Travel+ Visa Signature, Platinum Card, Renminbi Credit Card, enJoy Visa Platinum, MUJI Card, and five university or college cards (CUHK, CityU, HKBU, CUSCS and HSUHK). The CUHK, CityU, HKBU and CUSCS product pages state that University / College Card will be upgraded from Platinum and Gold Mastercard to World Mastercard with effect from 2 November 2026. The HSUHK page does not state a network and is flagged network_not_stated. The Platinum Card page mixes a generic heading with a UnionPay Platinum apply CTA (network_not_stated, shared_product_page). The Renminbi Credit Card is one nav product; the combined Key Facts Statement lists Platinum, Gold and Classic CNY fees (shared_product_page, fee_unclear). The enJoy Visa Platinum page also describes the enJoy Spending Card, which is a prepaid or deposit-linked product and was excluded (shared_product_page). Multi-Currency Debit Mastercard was excluded. Jockey Club Membership Cards and Racing Club Membership Cards appear only as directory or filter labels, with no product page, and were not handed in. Nine product-page Key Facts Statement URLs returned the same May 2025 booklet (label PPL2026B Card KFS_EN (11 / 2026)). That booklet also names Hang Seng World Mastercard and USD Visa Gold, which have no current product page and were not handed in, and it states annual fees for Visa Infinite / World Mastercard (HK$6,000 / supplementary HK$1,000; waived for Prestige World Mastercard and MMPOWER World Mastercard), Visa Signature (HK$2,000 / HK$1,000) and Platinum (HK$1,500 / HK$750). 12 live offers were handed in: five welcome gifts, the MMPOWER and Travel+ +FUN programmes, the university 2.4% education +FUN offer, and three Merchant Dollars merchants (Chung Yuen Electrical, Joint Publishing and Sa Sa). listing_complete is false because Offers of the Month and Year-Round Merchant Offers are JavaScript shells whose data APIs sit on rbwm-api.hsbc.com.hk, which is not in official_domains, and were recorded as off_domain_redirect. The searchable +FUN Dollars designated merchant list and some card-page merchant campaigns (enJoy year-round discounts, Travel+ Trip.com / Starbucks / Intervals, Prestige lounge and limousine) were not itemized in this run. Two recipes: hk-hang-seng-cards.json and hk-hang-seng-merchant-dollars.json. Real Chrome was not used.",
+        "offer_sources": [
+          "https://www.hangseng.com/en-hk/personal/cards/fun-dollars-merchant-list/",
+          "https://www.hangseng.com/en-hk/personal/cards/spending-privileges/offers-of-the-month-all/month-creditcard/",
+          "https://www.hangseng.com/en-hk/personal/cards/spending-privileges/year-round-offers/"
+        ],
+        "status": "partial"
       },
       "id": "hk-hang-seng",
       "legal_name": "HANG SENG BANK, LIMITED",
       "name": "Hang Seng Bank",
-      "offer_count": 0,
+      "offer_count": 12,
       "official_domains": [
         "hangseng.com"
       ],

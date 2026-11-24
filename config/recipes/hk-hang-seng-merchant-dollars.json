@@ -1,0 +1,28 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-hang-seng-merchant-dollars",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-hang-seng"
+  },
+  "country": "HK",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.hangseng.com/en-hk/personal/cards/fun-dollars-merchant-list/"
+  ],
+  "list": {
+    "item": "ul.merchant-dollars li.rvp_listGrpoup",
+    "key": "id",
+    "fields": {
+      "id": {
+        "selector": ":scope",
+        "output": "@id"
+      },
+      "name": "span.merchant-title",
+      "reward": "li.rvp_listHeader a span:nth-of-type(2)"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "Merchant Dollars Designated Merchants on the +FUN Dollars merchant list. Three merchants are in the static HTML in ul.merchant-dollars as li.rvp_listGrpoup with stable ids chung-yuen, joint and sasa. The searchable +FUN Dollars designated merchant directory (category tabs Newly Joined, Dining and others) is not present in the static HTML. Offers of the Month and Year Round Merchant Offers are JavaScript listings that load from rbwm-api.hsbc.com.hk, which is not an official_domain, so no recipe is written for those listings."
+}
