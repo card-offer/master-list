@@ -1,0 +1,43 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-uob-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "th-uob"
+  },
+  "country": "TH",
+  "purpose": "offers",
+  "mode": "plain",
+  "source": "json",
+  "start_urls": [
+    "https://www.uob.co.th/assets/web-resources/personal/credit-cards/promotions/data-promotion-en.json"
+  ],
+  "list": {
+    "item": ".",
+    "key": "url",
+    "fields": {
+      "id": "PromotionID",
+      "title": "PromotionTitle",
+      "internal_name": "PromotionName",
+      "category": "Category",
+      "cards": "Cards",
+      "url": "PromotionUrl",
+      "image": "PromotionImage",
+      "start": "StartDate",
+      "end": "EndDate",
+      "expiry": "ExpiryDate",
+      "hide_date": "HideDate",
+      "show_on_web": "ShowOnWeb"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "body": "main"
+    },
+    "text_selector": "main"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "The English Credit Card Promotions page at /personal-en/credit-cards/promotions.page loads promotions-main-en.js, which fetches this public JSON file (data-promotion-en.json). The file is a top-level array. PromotionID is often a date, not a stable id, so the recipe key is PromotionUrl (use the last path segment of the cleaned URL as source_key). Use PromotionTitle as the title, not PromotionName, which often holds internal upload notes. Leave out offers whose ExpiryDate (or EndDate) is before the run date. Relative PromotionUrl values resolve to https://www.uob.co.th. Terms PDFs under paths matching /*.pdf$ are disallowed by robots.txt and must not be fetched. The site has an English version, so this recipe crawls English only. Do not use an em dash in a title or a published quote."
+}
