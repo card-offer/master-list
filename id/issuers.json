@@ -73,22 +73,33 @@
       "website": "https://www.danamon.co.id"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "id-hsbc-live-plus-credit-card",
+        "id-hsbc-premier-mastercard",
+        "id-hsbc-visa-platinum",
+        "id-hsbc-visa-signature"
+      ],
       "country": "ID",
       "crawl": {
         "card_sources": [
-          "https://www.hsbc.co.id/en-id/credit-cards/"
+          "https://www.hsbc.co.id/en-id/credit-cards/",
+          "https://www.hsbc.co.id/en-id/credit-cards/products/live-plus/",
+          "https://www.hsbc.co.id/en-id/credit-cards/products/premier-mastercard/",
+          "https://www.hsbc.co.id/en-id/credit-cards/products/visa-signature/",
+          "https://www.hsbc.co.id/en-id/credit-cards/products/visa-platinum/",
+          "https://www.hsbc.co.id/en-id/credit-cards/rates-and-fees/"
         ],
-        "note": null,
+        "note": "First full crawl on 24 Nov 2026. The English card hub at /en-id/credit-cards/ and the English sitemap list four consumer credit cards, all handed in from their product pages: HSBC Live+ Credit Card, HSBC Premier Mastercard, HSBC Visa Signature and HSBC Visa Platinum. The Bahasa site was not crawled because an English site exists. HSBC Flexi Credit is an instalment cash facility, not a payment card, and was not handed in. Debit cards were excluded. The rates-and-fees table also names HSBC Gold and Visa Classic, which have no product pages in the sitemap or the card hub, so they were not handed in. The English offers listing at /en-id/credit-cards/offers/ has 55 tiles across five pages; all tiles were read. Page dates were used, not URL slugs: Dyson, Optik Seis and OWNDAYS Indonesia have slugs ending 31-12-2025, but the official pages say they expire in December 2026, so they were handed in. No listing offer had a page end date before 24 Nov 2026. Four welcome offers on the product pages, each valid until 31 December 2026, were also handed in. Most instalment offers are for all HSBC Indonesia credit cards, excluding Corporate Credit Card, so they carry eligibility_unclear. Rumah Sakit Darmo ends 30 December 2028 and carries end_date_past_horizon. Premier Mastercard annual fee is Free of charge on the rates table and Free every year on the product page subject to Total Relationship Balance, salary or home loan, so the card has fee_unclear. robots.txt disallows all PDFs, including credit card terms, eWelcome packs and deal documents on hsbc.co.id. Offer terms PDFs linked from official pages sit on mail.hsbc.com.hk, which is not in official_domains and was not fetched. listing_complete is false because of those off-domain terms links and the unread Gold and Classic product pages. Recipes: id-hsbc-cards.json and id-hsbc-offers.json. All fetches were plain HTTP via pipeline/fetcher.py. Real-Chrome mode was not used.",
         "offer_sources": [
-          "https://www.hsbc.co.id/en-id/credit-cards/offers/"
+          "https://www.hsbc.co.id/en-id/credit-cards/offers/",
+          "https://www.hsbc.co.id/en-id/credit-cards/rewards/"
         ],
-        "status": "not_covered"
+        "status": "partial"
       },
       "id": "id-hsbc",
       "legal_name": "PT BANK HSBC INDONESIA",
       "name": "HSBC Indonesia",
-      "offer_count": 0,
+      "offer_count": 59,
       "official_domains": [
         "hsbc.co.id"
       ],

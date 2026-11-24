@@ -2434,7 +2434,12 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.hsbc.co.id/en-id/credit-cards/"
+    "https://www.hsbc.co.id/en-id/credit-cards/",
+    "https://www.hsbc.co.id/en-id/credit-cards/products/live-plus/",
+    "https://www.hsbc.co.id/en-id/credit-cards/products/premier-mastercard/",
+    "https://www.hsbc.co.id/en-id/credit-cards/products/visa-signature/",
+    "https://www.hsbc.co.id/en-id/credit-cards/products/visa-platinum/",
+    "https://www.hsbc.co.id/en-id/credit-cards/rates-and-fees/"
    ],
    "status": "untested",
    "full_crawl_order": 65,
@@ -2449,7 +2454,8 @@
    "type": "issuer",
    "purpose": "offers",
    "entry_urls": [
-    "https://www.hsbc.co.id/en-id/credit-cards/offers/"
+    "https://www.hsbc.co.id/en-id/credit-cards/offers/",
+    "https://www.hsbc.co.id/en-id/credit-cards/rewards/"
    ],
    "status": "untested",
    "full_crawl_order": 65,

@@ -192,8 +192,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 63 | ID | issuer | offers | Bank Mayapada | `bankmayapada.com` | untested |  |
 | 64 | ID | issuer | cards | ICBC Indonesia | `icbc.co.id` | untested |  |
 | 64 | ID | issuer | offers | ICBC Indonesia | `icbc.co.id` | untested |  |
-| 65 | ID | issuer | cards | HSBC Indonesia | `hsbc.co.id` | untested | https://www.hsbc.co.id/en-id/credit-cards/ |
-| 65 | ID | issuer | offers | HSBC Indonesia | `hsbc.co.id` | untested | https://www.hsbc.co.id/en-id/credit-cards/offers/ |
+| 65 | ID | issuer | cards | HSBC Indonesia | `hsbc.co.id` | untested | https://www.hsbc.co.id/en-id/credit-cards/, https://www.hsbc.co.id/en-id/credit-cards/products/live-plus/, https://www.hsbc.co.id/en-id/credit-cards/products/premier-mastercard/, https://www.hsbc.co.id/en-id/credit-cards/products/visa-signature/, https://www.hsbc.co.id/en-id/credit-cards/products/visa-platinum/, https://www.hsbc.co.id/en-id/credit-cards/rates-and-fees/ |
+| 65 | ID | issuer | offers | HSBC Indonesia | `hsbc.co.id` | untested | https://www.hsbc.co.id/en-id/credit-cards/offers/, https://www.hsbc.co.id/en-id/credit-cards/rewards/ |
 | 66 | ID | issuer | cards | Bank Sinarmas | `banksinarmas.com` | untested | https://www.banksinarmas.com/id/personal/produk/kartukredit |
 | 66 | ID | issuer | offers | Bank Sinarmas | `banksinarmas.com` | untested | https://www.banksinarmas.com/id/personal/produk/kartukredit/promo |
 | 67 | ID | issuer | cards | OCBC Indonesia | `ocbc.id` | untested | https://www.ocbc.id/id/individu/kartu-transaksi/kartu-kredit |

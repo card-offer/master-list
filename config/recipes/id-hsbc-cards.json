@@ -1,0 +1,33 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-hsbc-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "id-hsbc"
+  },
+  "country": "ID",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.hsbc.co.id/en-id/credit-cards/"
+  ],
+  "list": {
+    "item": "div.M-HERO-ART-DEV:has(a[href*=\"/credit-cards/products/\"]), #chp_main_container_1 div.M-CNT-ITEM-ART-DEV",
+    "key": "url",
+    "fields": {
+      "name": "span.link.text",
+      "url": "a[href*=\"/credit-cards/products/\"]@href",
+      "description": "div.A-TYPS5R-RW-DEV"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "body": "main"
+    },
+    "text_selector": "main, body"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The English credit card hub at /en-id/credit-cards/ lists four consumer cards (plain HTML, 24 Nov 2026): HSBC Live+ Credit Card in the product hero, and HSBC Premier Mastercard, HSBC Visa Signature and HSBC Visa Platinum in #chp_main_container_1 (Our credit card range). The Bahasa listing at /credit-cards/ was not crawled because an English site exists. HSBC Flexi Credit is an instalment facility, not a card. Debit cards are under the Debit cards menu and were excluded. The English sitemap confirms the same four product URLs and no further consumer credit cards. robots.txt disallows /*.pdf$, including the credit card terms, Klub Kartu, rates-related PDFs and other documents linked from the hub."
+}
