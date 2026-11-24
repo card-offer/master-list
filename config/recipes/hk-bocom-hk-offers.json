@@ -10,12 +10,26 @@
   "mode": "plain",
   "source": "html",
   "start_urls": [
-    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046371/list.shtml?channelId=2005575",
-    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046373/list.shtml?channelId=2005575",
-    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046376/list.shtml?channelId=2005575",
-    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046378/list.shtml?channelId=2005575",
-    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7052927/list.shtml?channelId=2005575",
-    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7056441/list.shtml?channelId=2005575"
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046371.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046373.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046376.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046378.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7052927.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7056441.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005201/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005323/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005163/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005165/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005168/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005158/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005158/5066783.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005158/7060995.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005212/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/2602877/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005243/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005246/list.shtml?channelId=2005575"
   ],
   "list": {
     "item": ".m_s_c_con a[href*=\"uploadhk\"], .m_s_c_con a[href*=\"getContentPath\"]",
@@ -26,5 +40,5 @@
     }
   },
   "listing_kind": "issuer_promotion_listing",
-  "note": "First hk-bocom-hk offers recipe, written 20 Nov 2026. Merchant offer T&Cs are linked from the English Merchant Offers country pages (Hong Kong and Macau, Japan, Korea, Thailand) plus the HKT and Imperial Patisserie pages. The visible control text is usually click here. The href on the English merchant pages is /hk/hk/cn/file/previewPdf.html?filePath=/hk/uploadhk/....pdf (a JS PDF viewer on the official host). Some other pages use getContentPath.html?fileId=. A later run should open the viewer in headless browser (not real-chrome) and then fetch the embedded /hk/uploadhk PDF with a plain GET. This recipe does not cover issuer campaigns on other category pages (Fabulous Rewards, Apple Pay, GBA travel, RMB and MOP rebate, Fortune Friends, FX rebate, Trip.com, instalment, Northbound, or card welcome T&Cs). Those pages also use getContentPath or uploadhk links and can be added as start_urls in a later recipe if the listing stays stable. Country tab links at the top of each merchant page are .shtml paths and are not matched by this item selector."
+  "note": "Updated 24 Nov 2026 for the eligibility_unclear re-crawl. English merchant country pages now use .../5005217/<id>.shtml (the previous .../list.shtml paths return 404). The start list covers the English promotions hub, the Merchant Offers parent and country tabs (Hong Kong and Macau, Japan, Korea, Thailand, HKT, Imperial Patisserie), Japanese Popular Merchants, the new MaiDanBa coupon page, and the campaign pages for Fabulous Rewards, Apple Pay, Fortune Friends, FX rebate, Trip.com, instalment, Northbound, RMB and MOP rebate, and GBA travel. The visible control text is usually click here. The href on English merchant pages is /hk/hk/cn/file/previewPdf.html?filePath=/hk/uploadhk/....pdf (a JS PDF viewer on the official host). This run fetches the embedded /hk/uploadhk PDF with a plain GET. Real Chrome is not used."
 }

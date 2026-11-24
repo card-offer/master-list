@@ -1672,10 +1672,15 @@
    "purpose": "offers",
    "entry_urls": [
     "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/list.shtml?channelId=2005575",
-    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046371/list.shtml?channelId=2005575",
-    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046373/list.shtml?channelId=2005575",
-    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046376/list.shtml?channelId=2005575",
-    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046378/list.shtml?channelId=2005575"
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046371.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046373.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046376.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7046378.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7052927.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005217/7056441.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005323/list.shtml?channelId=2005575",
+    "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005601/2602299/5005201/list.shtml?channelId=2005575"
    ],
    "status": "untested",
    "full_crawl_order": 40,
