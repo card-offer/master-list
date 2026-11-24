@@ -1,0 +1,29 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-hsbc-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-hsbc"
+  },
+  "country": "HK",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.hsbc.com.hk/credit-cards/compare/"
+  ],
+  "list": {
+    "item": "div.tile-selector",
+    "key": "name",
+    "fields": {
+      "name": "span.label-for-checkbox",
+      "slug": {
+        "selector": ":scope",
+        "output": "@data-product-type"
+      },
+      "description": "div.description-for-checkbox"
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The compare page lists all 9 consumer credit cards in div.tile-selector (plain HTML, 24 Nov 2026). Tiles have names and data-product-type slugs but no product-page href. Official product URLs from the Credit Cards menu, confirmed on the English sitemap: /credit-cards/products/unionpay-dual-currency-classic/ (UnionPay Dual Currency Card), /visa-gold/ (Visa Gold Card), /unionpay-dual-currency-diamond/ (Pulse Dual Currency Card; page heading HSBC Pulse UnionPay Dual Currency Diamond Credit Card), /premier-mastercard/ (Premier MasterCard; page heading HSBC Premier Mastercard), /visa-signature/ (Visa Signature Card), /student-visa-gold/ (Visa Gold Card for Students), /visa-platinum/ (HSBC easy Credit Card; page heading also names Visa Platinum Credit Card), /red/ (Red Credit Card), /everymile/ (EveryMile Credit Card). The catalogue at /credit-cards/ features 4 cards only. The menu is duplicated in the header, so a menu-link selector would double-count. Payment, instalment and Octopus pages are not cards. Debit cards are under /debit-cards/ and were excluded. robots.txt disallows all PDFs, including the Key Facts Statement and Bank Tariff guide, so fee amounts that exist only in those files cannot be fetched."
+}

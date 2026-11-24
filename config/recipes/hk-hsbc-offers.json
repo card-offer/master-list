@@ -1,0 +1,33 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-hsbc-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-hsbc"
+  },
+  "country": "HK",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.hsbc.com.hk/offers/"
+  ],
+  "list": {
+    "item": "div.M-MASTERTILEITEM-DEV",
+    "key": "url",
+    "fields": {
+      "title": "h3.link",
+      "url": "a.A-LNKC28L-RW-ALL@href",
+      "benefit": "div.rich-text"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "terms": "main"
+    },
+    "text_selector": "main, body"
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "detail_kind": "issuer_promotion_page",
+  "note": "The English offers hub at /offers/ has 13 master tiles in div.M-MASTERTILEITEM-DEV (plain HTML, 24 Nov 2026). Only the credit-card tiles are in scope: cash advance spending credit, All-You-Can-Split, pay other banks' card bills, EveryMile welcome miles, and Spending Instalment Plan campaigns. Other tiles are insurance, loans, FX/wealth or deposits. The Credit Card Offers related link and the catalogue Red Hot Offers / Year-round Offers tiles point at www.redhotoffers.hsbc.com.hk, which is a subdomain of hsbc.com.hk but is not in official_domains. fetcher.py may_fetch matches official hosts exactly after stripping www, not by suffix, so that host must not be fetched until the maintainer adds it. Welcome offers also sit on each product page. robots.txt disallows /*.pdf$, so deal T&C PDFs cannot be fetched."
+}
