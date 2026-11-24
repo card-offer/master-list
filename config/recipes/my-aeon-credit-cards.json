@@ -13,7 +13,7 @@
   ],
   "pagination": {
     "url_template": "https://myaeoncredit.com.my/cards/credit-cards/?_pagination_page_numbers_and_buttons={n}",
-    "start": 2,
+    "start": 1,
     "max_pages": 10
   },
   "list": {
@@ -45,5 +45,5 @@
   },
   "listing_kind": "issuer_listing",
   "detail_kind": "issuer_product_page",
-  "note": "Written on 20 Nov 2026. That day every URL on myaeoncredit.com.my served the same 'Notice of Temporary Service Unavailability' page (HTTP 200, 665 bytes, PHP security suspension), so this recipe was checked against the official listing saved on 13 Nov 2026 by the plain run 20261113-0854-my-aeon-credit (page 1 has 9 card tiles; page 2 has 3 tiles: Motorcycle Association Affinity Gold Visa, the AEON Credit Executive Business Card (by invitation only, corporate, not a consumer card) and the Supplementary Card page). Recheck it on the first run after the site is back. Tiles link Japanese twins (-jp) with the button text; key on the English product URL."
+  "note": "Rechecked on 24 Nov 2026 after the 20 Nov outage. Listing page 1 has 9 consumer credit-card tiles; page 2 has Motorcycle Association Affinity Gold Visa, the AEON Credit Executive Business Card (by invitation only, corporate, not a consumer card) and the Supplementary Card page. pagination.start is 1 because the recipe runner increments n before filling url_template, so start 2 skipped page 2. Tiles also link Japanese twins (-jp) with the button text; key on the English product URL. The fetcher classify() labels every page captcha because Bricks theme i18n strings mention reCAPTCHA (recaptchaIds is empty; no challenge is shown). Public listing and product pages return HTTP 200 with full text."
 }

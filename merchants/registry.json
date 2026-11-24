@@ -1,6 +1,6 @@
 {
   "count": 2606,
-  "generated_at": "2026-11-20T08:39:06+00:00",
+  "generated_at": "2026-11-24T02:35:45+00:00",
   "schema_version": "0.3.0",
   "items": [
     {"aliases":["10|SCOTTS"],"categories":["cafe","dining"],"countries":["SG"],"id":"10-scotts","name":"10 Scotts","offer_ids":["sg-maybank-8f9c8c1877","sg-network-jcb-5cddade2b0"],"official_domain":"singapore.grand.hyattrestaurants.com","verified":true},
@@ -821,7 +821,7 @@
     {"aliases":[],"categories":["dining"],"countries":["SG"],"id":"ginger","name":"Ginger","offer_ids":["sg-amex-6bfe4830aa"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["dining"],"countries":["SG"],"id":"ginger-lily","name":"Ginger Lily","offer_ids":["sg-amex-fc3383d67f"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["shopping"],"countries":["HK"],"id":"giormani","name":"GIORMANI","offer_ids":["hk-cmb-wing-lung-ed9e8a1c72","hk-mox-b1efb38538"],"official_domain":null,"verified":true},
-    {"aliases":["GL Play"],"categories":["entertainment"],"countries":["MY"],"id":"gl-play","name":"GL Play","offer_ids":["my-aeon-credit-24166a47d3","my-aeon-credit-db8ec14b89","my-bsn-0dafda3a78","my-rhb-be8a067ab4"],"official_domain":"glplay.com.my","verified":true},
+    {"aliases":["GL PLay","GL Play"],"categories":["entertainment"],"countries":["MY"],"id":"gl-play","name":"GL Play","offer_ids":["my-aeon-credit-24166a47d3","my-aeon-credit-db8ec14b89","my-bsn-0dafda3a78","my-rhb-be8a067ab4"],"official_domain":"glplay.com.my","verified":true},
     {"aliases":[],"categories":["entertainment"],"countries":["MY"],"id":"gl-play-funpark","name":"GL Play - FunPark","offer_ids":["my-rhb-6cda1acadb"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["entertainment"],"countries":["MY"],"id":"gl-play-paya-indah-park-discovery-wetlands","name":"GL Play - Paya Indah Park Discovery Wetlands","offer_ids":["my-rhb-6fe60d5a29"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["entertainment"],"countries":["MY"],"id":"gl-play-splashmania","name":"GL Play - Splashmania","offer_ids":["my-rhb-e2b24a267f"],"official_domain":null,"verified":false},
