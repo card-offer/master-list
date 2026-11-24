@@ -1,6 +1,6 @@
 {
-  "count": 2606,
-  "generated_at": "2026-11-20T08:39:06+00:00",
+  "count": 2608,
+  "generated_at": "2026-11-24T00:34:05+00:00",
   "schema_version": "0.3.0",
   "items": [
     {"aliases":["10|SCOTTS"],"categories":["cafe","dining"],"countries":["SG"],"id":"10-scotts","name":"10 Scotts","offer_ids":["sg-maybank-8f9c8c1877","sg-network-jcb-5cddade2b0"],"official_domain":"singapore.grand.hyattrestaurants.com","verified":true},
@@ -1754,6 +1754,7 @@
     {"aliases":[],"categories":["beauty"],"countries":["MY"],"id":"pelangi-spa","name":"Pelangi Spa","offer_ids":["my-network-amex-6dd45a9d3f"],"official_domain":"pelangiresort.com","verified":true},
     {"aliases":[],"categories":["dining"],"countries":["SG"],"id":"pen-and","name":"PEN & INC","offer_ids":["sg-ocbc-8bde38a50e"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["shopping"],"countries":["MY"],"id":"penan-lab","name":"Penan Lab","offer_ids":["my-hong-leong-13eb980bba"],"official_domain":null,"verified":false},
+    {"aliases":[],"categories":["sign_up"],"countries":["HK"],"id":"peninsula","name":"The Peninsula Hong Kong","offer_ids":["hk-citi-059c9472c7"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["shopping"],"countries":["MY"],"id":"peninsula-house","name":"Peninsula House","offer_ids":["my-public-bank-bb6c05e2f3"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["dining"],"countries":["SG"],"id":"peony-jade","name":"Peony Jade","offer_ids":["sg-amex-f3b329ec09"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["dining"],"countries":["SG"],"id":"peperoni-pizzeria","name":"Peperoni Pizzeria","offer_ids":["sg-ocbc-82837f37b3"],"official_domain":"peperoni.com.sg","verified":true},
@@ -2132,6 +2133,7 @@
     {"aliases":[],"categories":["beauty"],"countries":["HK"],"id":"slim-beauty","name":"Slim Beauty","offer_ids":["hk-cmb-wing-lung-69674dad1b"],"official_domain":null,"verified":false},
     {"aliases":["Slim Doc (Malaysia)"],"categories":[],"countries":["SG"],"id":"slim-doc","name":"Slim Doc","offer_ids":["sg-maybank-751f24d2b3"],"official_domain":null,"verified":false},
     {"aliases":[],"categories":["electronics"],"countries":["HK"],"id":"smartone","name":"SmarTone","offer_ids":["hk-cmb-wing-lung-21676c6d8c"],"official_domain":null,"verified":false},
+    {"aliases":[],"categories":["shopping"],"countries":["HK"],"id":"smartone-online-store","name":"SmarTone Online Store","offer_ids":["hk-citi-98cbbfd634"],"official_domain":"shop.smartone.com","verified":true},
     {"aliases":[],"categories":["health"],"countries":["MY"],"id":"smile-dental-lounge-johor-bahru","name":"The Smile Dental Lounge, Johor Bahru","offer_ids":["my-maybank-cf63233593"],"official_domain":null,"verified":false},
     {"aliases":["Smith Breads & Café"],"categories":["cafe","dining"],"countries":["MY"],"id":"smith-breads-and-cafe","name":"Smith Breads & Cafe","offer_ids":["my-uob-232ff5b36e"],"official_domain":null,"verified":false},
     {"aliases":["SOFAX","my-sofax"],"categories":["other","shopping"],"countries":["MY"],"id":"sofax","name":"SofaX","offer_ids":["my-alliance-18d6c79c28","my-rhb-71631b1af9"],"official_domain":"sofax.com","verified":true},

@@ -1,0 +1,40 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-citi-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-citi"
+  },
+  "country": "HK",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.citibank.com.hk/en/credit-cards/index.html"
+  ],
+  "list": {
+    "item": "article.c32-1__card",
+    "key": "name",
+    "fields": {
+      "name": "h3",
+      "url": "a.btn--primary-outline@href",
+      "apply": "a.btn--primary@href",
+      "fee": "span.c32-1__fee",
+      "welcome": "div.c32-1__offer",
+      "features": {
+        "selector": "ul.c32-1__features li",
+        "all": true,
+        "join": " | "
+      }
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "title": "title"
+    },
+    "text_selector": "main, .container, body"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The English consumer credit card listing is https://www.citibank.com.hk/en/credit-cards/index.html. The older path /english/credit-cards/ is a JavaScript redirect shell to that page. Nine product tiles sit in article.c32-1__card. The outline button is Know More (the product page). The solid button is Apply Now under /acquisition/, which must not be fetched. Citi Rewards Card and Citi Rewards UnionPay Card both lead to /english/credit-cards/rewards-card/index.html (shared product page, different campaign codes in the query). Some Know More links are on the www1.citibank.com.hk host, which is a subdomain of official domain citibank.com.hk. Do not use an em dash in a title or a published quote."
+}
