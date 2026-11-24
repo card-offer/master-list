@@ -1789,6 +1789,13 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
+    "https://www.hkbea.com/html/en/bea-credit-card-choose-your-card.html",
+    "https://www.hkbea.com/html/en/bea-goal-credit-card.html",
+    "https://www.hkbea.com/html/en/bea-credit-card-platinum-card.html",
+    "https://www.hkbea.com/html/en/bea-i-titanium-card.html",
+    "https://www.hkbea.com/html/en/visa-signature.html",
+    "https://www.hkbea.com/html/en/bea-unionpay-dual-currency-platinum-card.html",
+    "https://www.hkbea.com/html/en/bea-credit-card-world-elite.html",
     "https://www.hkbea.com/html/en/bea-credit-card-world-mc.html",
     "https://www.hkbea.com/html/en/bea-credit-card-world-mastercard.html",
     "https://www.hkbea.com/html/en/bea-unionpay-dual-currency-diamond-card.html",
@@ -1813,7 +1820,10 @@
    "entry_urls": [
     "https://www.hkbea.com/html/en/bea-credit-card-hot-promotions.html",
     "https://www.hkbea.com/html/en/bea-credit-card-dining-offer-yro.html",
-    "https://www.hkbea.com/html/en/bea-credit-card-shopping-offer-yro.html"
+    "https://www.hkbea.com/html/en/bea-credit-card-shopping-offer-yro.html",
+    "https://www.hkbea.com/html/en/suppcard.html",
+    "https://www.hkbea.com/html/en/bea-credit-card-welcome-offer-bea-dual-card.html",
+    "https://www.hkbea.com/html/en/bea-credit-card-pay-my-way-auto-instalment.html"
    ],
    "status": "untested",
    "full_crawl_order": 44,
