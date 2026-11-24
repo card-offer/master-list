@@ -1,0 +1,26 @@
+{
+  "recipe": "recipe/1",
+  "id": "ph-aub-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "ph-aub"
+  },
+  "country": "PH",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.aub.com.ph/announce"
+  ],
+  "list": {
+    "item": "section#content ul.indentlist li",
+    "fields": {
+      "title": {
+        "selector": ":scope",
+        "output": "html",
+        "regex": "<li[^>]*>([^<]+)"
+      }
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "The only public listing on aub.com.ph that could hold time-limited notices is NEWS and Updates at /announce (heading Announcements). On 2026-11-24 that page had five bank notices (branch hours and earnings or capital news). None is a credit-card merchant offer, and none was handed in. There is no promotions, rewards, or offers path on the official domain. Credit card pages live on online.aub.ph, which is not in official_domains. This recipe is kept so a later run can see if a card offer is posted on the announcements list after that host is accepted or if a promo appears here."
+}

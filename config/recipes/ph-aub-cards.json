@@ -1,0 +1,17 @@
+{
+  "recipe": "recipe/1",
+  "id": "ph-aub-cards",
+  "owner": {"type": "issuer", "id": "ph-aub"},
+  "country": "PH",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": ["https://www.aub.com.ph/"],
+  "list": {
+    "item": "a.docs[href='https://www.aub.com.ph/creditcards/']",
+    "fields": {
+      "url": ":scope@href"
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "note": "The homepage is in English and has no language switcher. The only official-domain credit card listing URL is the homepage thumbnail at https://www.aub.com.ph/creditcards/. That path returns HTTP 302 to https://online.aub.ph/creditcards, which is not in official_domains, so a recipe run must not follow the redirect. The thumbnail has no visible text and an empty image alt. Header and footer menu items labelled Credit Cards point straight at https://online.aub.ph/creditcards (four links on the homepage). No individual card product pages were found on aub.com.ph. Prepaid products (HelloMoney, Hello Pag-IBIG, and RediMoney/Card Inquiry at /eBankingPrepaidCards/) are not credit cards. robots.txt on www.aub.com.ph returns HTTP 200 with an empty body (no Disallow rules). sitemap.xml also returns an empty HTTP 200 body."
+}
