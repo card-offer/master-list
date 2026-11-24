@@ -1,0 +1,26 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-bochk-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-bochk"
+  },
+  "country": "HK",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.bochk.com/en/creditcard/details/boccreditcard.html",
+    "https://www.bochk.com/en/creditcard/details/cobrand.html"
+  ],
+  "list": {
+    "item": "li.card",
+    "key": "url",
+    "fields": {
+      "name": "h1",
+      "url": "a.morelink@href",
+      "image": "img[src*=\"/dam/\"]@src"
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "note": "English HTML catalogs at /en/creditcard/details/boccreditcard.html (7 tiles: Cheers, Chill, Private, Visa Infinite, Dual Currency, i-card, UnionPay Dual Currency Diamond) and /en/creditcard/details/cobrand.html (18 co-brand, university and association tiles). Each tile is li.card with the product name in h1 and the product link in a.morelink. The favourite star image is skipped by the /dam/ src filter. The Vue listing at /dam/boccreditcard/cardproductlisting/eng/index.html is a JS shell; its catalog body is /dam/boccreditcard/cardproductlisting/js/data/card-en.js, which is a JavaScript assignment, not a public JSON file, so recipe.py source:json cannot parse it. BOC Go Card and BOC Bliss Card appear in that Vue catalog and are not on these two HTML catalogs; read them from card-en.js or their DAM product pages. The Visa Infinite Card tile is still on boccreditcard.html, but the product page says the card was renamed to BOC Cheers Card from 1 August 2023, so do not hand it in as a separate current card."
+}

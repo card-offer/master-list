@@ -44,21 +44,62 @@
       "website": "https://www.hkbea.com/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-bochk-boc-bliss-card",
+        "hk-bochk-boc-cea-dual-currency-credit-card",
+        "hk-bochk-boc-cheers-card",
+        "hk-bochk-boc-chill-card",
+        "hk-bochk-boc-cmhk-dual-currency-diamond-card",
+        "hk-bochk-boc-dual-currency-card",
+        "hk-bochk-boc-esso-world-mastercard",
+        "hk-bochk-boc-go-card",
+        "hk-bochk-boc-good-day-platinum-card",
+        "hk-bochk-boc-henderson-club-visa-card",
+        "hk-bochk-boc-hk-go-credit-card",
+        "hk-bochk-boc-hkcea-dual-currency-platinum-card",
+        "hk-bochk-boc-hkicpa-platinum-card",
+        "hk-bochk-boc-hkmu-dual-currency-platinum-card",
+        "hk-bochk-boc-hkust-platinum-card",
+        "hk-bochk-boc-hong-kong-airlines-visa-card",
+        "hk-bochk-boc-hospital-authority-credit-card",
+        "hk-bochk-boc-i-card-virtual-card",
+        "hk-bochk-boc-private-card",
+        "hk-bochk-boc-sasa-dual-currency-credit-card",
+        "hk-bochk-boc-shue-yan-university-credit-card",
+        "hk-bochk-boc-sogo-visa-card",
+        "hk-bochk-boc-taobao-world-mastercard",
+        "hk-bochk-boc-twghs-credit-card",
+        "hk-bochk-boc-unionpay-dual-currency-diamond-card",
+        "hk-bochk-gba-youth-card"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
           "https://www.bochk.com/en/creditcard.html",
-          "https://www.bochk.com/dam/boccreditcard/cardproductlisting/eng/index.html"
+          "https://www.bochk.com/dam/boccreditcard/cardproductlisting/eng/index.html",
+          "https://www.bochk.com/en/creditcard/details/boccreditcard.html",
+          "https://www.bochk.com/en/creditcard/details/cobrand.html",
+          "https://www.bochk.com/creditcard/bocci/agt/key_facts_statement_eng.pdf"
         ],
-        "note": "HKMA addr.xls lists www.boci.com.hk (credit card). boci.com.hk redirects to the BOCHK credit card pages. Chiyu Bank's credit card page states the cards are issued by BOC Credit Card (International) Limited.",
-        "offer_sources": [],
-        "status": "not_covered"
+        "note": "First card and offer run on 24 Nov 2026. 26 consumer credit cards handed in from the Vue listing at /dam/boccreditcard/cardproductlisting/eng/index.html (catalog body in card-en.js) plus the older HTML catalogs at /en/creditcard/details/boccreditcard.html and /en/creditcard/details/cobrand.html. Vue had 24 tiles; 3 commercial cards (Visa Infinite Business, Visa Platinum Business, UnionPay Dual Currency Commercial) were excluded. The older catalogs added BOC Private Card, BOC Dual Currency Card, BOC i-card (Virtual Card), BOC CEA Dual Currency Credit Card, and BOC TWGHS Credit Card. The catalog still lists BOC Visa Infinite Card; its product page says the card was renamed to BOC Cheers Card from 1 August 2023, so that catalog row was not handed in as a current card. BOC Cheers Card has a shared Visa Infinite and Visa Signature product page (fee_unclear; annual fee left null). BOC Private Card network is not stated on the product page (network_not_stated); the 17 August 2026 Key Facts Statement gives the main-card fee as HK$18,800 with supplementary annual fee waived. No Chiyu Bank credit cards were found on the official domains crawled. /en/more/boccard/offer.html is a BOC Card debit product and was excluded. Latest Promotions had 33 tiles; 2 had already ended (cardact2611promo on 20 Nov 2026 and cheersptf2026 on 13 Nov 2026) and were left out. 29 featured campaign offers were handed in. Year-round offers (YRO) load from public JSON at /creditcard/promo/offer_yro/hk/data/{Category}.json and /creditcard/promo/offer_yro/mc/data/macau/{Category}.json (569 public items). The 300-offer cap was applied: 29 featured plus 271 YRO handed in, so listing_complete is false. Two public YRO merchants were left out because the published merchant-name test rejects them even with name_checked: ENJOY TIME (BOC_458) and Hiya!Cha Fan (BOC_494). 296 public YRO items remain unread. Travel destination microsites (northbound-go, macao-go, korea-go, taipei-go, Europe-go) and the BOC Pay Dining and Shopping PDFs were not fully handed in under the cap. Three official menu links 404: /en/creditcard/promotions/selected.html, special.html, and ts2022mar.html. Off-config hosts linked from official pages were not fetched: mobile.boccc.com.hk, iservice.boccc.com.hk, mtr.mastercardservices.com, unionpayintl.com, mitsui-shopping-park.com. www.boci.com.hk redirects to www.bochk.com (same official domains). Three recipes: hk-bochk-cards.json (HTML catalogs), hk-bochk-offers.json (Latest Promotions tiles), and hk-bochk-yro.json (YRO public JSON). The Vue card listing cannot use a JSON recipe because card-en.js is JavaScript, not JSON.",
+        "offer_sources": [
+          "https://www.bochk.com/en/creditcard/promotions/offers.html",
+          "https://www.bochk.com/creditcard/promo/offer_yro/hk/data/Dining.json",
+          "https://www.bochk.com/creditcard/promo/offer_yro/hk/data/Shopping.json",
+          "https://www.bochk.com/creditcard/promo/offer_yro/hk/data/HealthBeauty.json",
+          "https://www.bochk.com/creditcard/promo/offer_yro/hk/data/TravelLifestyle.json",
+          "https://www.bochk.com/creditcard/promo/offer_yro/hk/data/OnlinePrivileges.json",
+          "https://www.bochk.com/creditcard/promo/offer_yro/hk/data/PetEssentials.json",
+          "https://www.bochk.com/creditcard/promo/offer_yro/mc/data/macau/Dining.json",
+          "https://www.bochk.com/creditcard/promo/offer_yro/mc/data/macau/HotelPrivileges.json",
+          "https://www.bochk.com/creditcard/promo/offer_yro/mc/data/macau/ShoppingLeisure.json"
+        ],
+        "status": "partial"
       },
       "id": "hk-bochk",
       "legal_name": "BANK OF CHINA (HONG KONG) LIMITED",
       "name": "Bank of China (Hong Kong)",
-      "offer_count": 0,
+      "offer_count": 300,
       "official_domains": [
         "bochk.com",
         "boci.com.hk"
