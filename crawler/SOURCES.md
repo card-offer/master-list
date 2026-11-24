@@ -162,8 +162,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 49 | HK | issuer | offers | DBS Hong Kong | `dbs.com.hk` | untested |  |
 | 50 | HK | issuer | cards | HSBC Hong Kong | `hsbc.com.hk` | untested | https://www.hsbc.com.hk/credit-cards/ |
 | 50 | HK | issuer | offers | HSBC Hong Kong | `hsbc.com.hk` | untested |  |
-| 51 | HK | issuer | cards | Bank of China (Hong Kong) | `bochk.com` | untested | https://www.bochk.com/en/creditcard.html, https://www.bochk.com/dam/boccreditcard/cardproductlisting/eng/index.html |
-| 51 | HK | issuer | offers | Bank of China (Hong Kong) | `bochk.com` | untested |  |
+| 51 | HK | issuer | cards | Bank of China (Hong Kong) | `bochk.com` | untested | https://www.bochk.com/en/creditcard.html, https://www.bochk.com/dam/boccreditcard/cardproductlisting/eng/index.html, https://www.bochk.com/en/creditcard/details/boccreditcard.html, https://www.bochk.com/en/creditcard/details/cobrand.html, https://www.bochk.com/creditcard/bocci/agt/key_facts_statement_eng.pdf |
+| 51 | HK | issuer | offers | Bank of China (Hong Kong) | `bochk.com` | untested | https://www.bochk.com/en/creditcard/promotions/offers.html, https://www.bochk.com/creditcard/promo/offer_yro/hk/data/Dining.json, https://www.bochk.com/creditcard/promo/offer_yro/hk/data/Shopping.json, https://www.bochk.com/creditcard/promo/offer_yro/hk/data/HealthBeauty.json, https://www.bochk.com/creditcard/promo/offer_yro/hk/data/TravelLifestyle.json, https://www.bochk.com/creditcard/promo/offer_yro/hk/data/OnlinePrivileges.json, https://www.bochk.com/creditcard/promo/offer_yro/hk/data/PetEssentials.json, https://www.bochk.com/creditcard/promo/offer_yro/mc/data/macau/Dining.json, https://www.bochk.com/creditcard/promo/offer_yro/mc/data/macau/HotelPrivileges.json, https://www.bochk.com/creditcard/promo/offer_yro/mc/data/macau/ShoppingLeisure.json |
 | 51 | HK | issuer | cards | Bank of China (Hong Kong) | `boci.com.hk` | untested |  |
 | 51 | HK | issuer | offers | Bank of China (Hong Kong) | `boci.com.hk` | untested |  |
 | 52 | TH | issuer | cards | Lotus's Money | `lotussmoney.com` | untested | https://www.lotussmoney.com/credit-card |

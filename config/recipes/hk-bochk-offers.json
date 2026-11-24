@@ -1,0 +1,25 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-bochk-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-bochk"
+  },
+  "country": "HK",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.bochk.com/en/creditcard/promotions/offers.html"
+  ],
+  "list": {
+    "item": "li.card",
+    "key": "url",
+    "fields": {
+      "title": "h1",
+      "url": "a.morelink@href",
+      "image": "img[src*=\"/dam/\"]@src"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "English Latest Promotions listing at /en/creditcard/promotions/offers.html. 33 tiles in li.card, each with the campaign title in h1 and the details link in a.morelink. Most tiles point at a campaign page under /en/creditcard/promotions/offers/; a few point at other official paths (BOC Pay hub, amazing-travel-rewards, statement instalment, ts2022). Many campaign pages are image-led with a Terms and Conditions PDF; read the PDF via pipeline/fetcher.py. The parent /en/creditcard/promotions.html page is only a 4-tile hub and is not this listing."
+}

@@ -1,0 +1,40 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-bochk-yro",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-bochk"
+  },
+  "country": "HK",
+  "purpose": "offers",
+  "mode": "plain",
+  "source": "json",
+  "start_urls": [
+    "https://www.bochk.com/creditcard/promo/offer_yro/hk/data/Dining.json",
+    "https://www.bochk.com/creditcard/promo/offer_yro/hk/data/Shopping.json",
+    "https://www.bochk.com/creditcard/promo/offer_yro/hk/data/HealthBeauty.json",
+    "https://www.bochk.com/creditcard/promo/offer_yro/hk/data/TravelLifestyle.json",
+    "https://www.bochk.com/creditcard/promo/offer_yro/hk/data/OnlinePrivileges.json",
+    "https://www.bochk.com/creditcard/promo/offer_yro/hk/data/PetEssentials.json",
+    "https://www.bochk.com/creditcard/promo/offer_yro/mc/data/macau/Dining.json",
+    "https://www.bochk.com/creditcard/promo/offer_yro/mc/data/macau/HotelPrivileges.json",
+    "https://www.bochk.com/creditcard/promo/offer_yro/mc/data/macau/ShoppingLeisure.json"
+  ],
+  "list": {
+    "item": ".",
+    "key": "merchant_code",
+    "fields": {
+      "id": "id",
+      "merchant_code": "merchant_code",
+      "merchant": "merchant_eng",
+      "merchant_chi": "merchant_chi",
+      "category": "category_eng",
+      "content": "content_eng",
+      "remark": "remark_eng",
+      "website": "website_eng",
+      "public": "public"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "Year-round offers for BOC credit cards. The English YRO pages at /creditcard/promo/offer_yro/hk/eng/ and /creditcard/promo/offer_yro/mc/eng/ are Nuxt apps (js_shell); the listing body is these same-origin public JSON files, which the app loads from /creditcard/promo/offer_yro/hk/data/{Category}.json and /creditcard/promo/offer_yro/mc/data/macau/{Category}.json. Each file is a top-level array. The mc path is Macau merchant offers for the same Hong Kong-issued cards, not a mainland China catalogue. Filter to public=1. This run had 569 public items. There is no per-merchant terms URL in the JSON; terms sit on the YRO page and shared T and C links."
+}

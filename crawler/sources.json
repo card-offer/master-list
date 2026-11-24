@@ -1998,7 +1998,10 @@
    "purpose": "cards",
    "entry_urls": [
     "https://www.bochk.com/en/creditcard.html",
-    "https://www.bochk.com/dam/boccreditcard/cardproductlisting/eng/index.html"
+    "https://www.bochk.com/dam/boccreditcard/cardproductlisting/eng/index.html",
+    "https://www.bochk.com/en/creditcard/details/boccreditcard.html",
+    "https://www.bochk.com/en/creditcard/details/cobrand.html",
+    "https://www.bochk.com/creditcard/bocci/agt/key_facts_statement_eng.pdf"
    ],
    "status": "untested",
    "full_crawl_order": 51,
@@ -2012,7 +2015,18 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.bochk.com/en/creditcard/promotions/offers.html",
+    "https://www.bochk.com/creditcard/promo/offer_yro/hk/data/Dining.json",
+    "https://www.bochk.com/creditcard/promo/offer_yro/hk/data/Shopping.json",
+    "https://www.bochk.com/creditcard/promo/offer_yro/hk/data/HealthBeauty.json",
+    "https://www.bochk.com/creditcard/promo/offer_yro/hk/data/TravelLifestyle.json",
+    "https://www.bochk.com/creditcard/promo/offer_yro/hk/data/OnlinePrivileges.json",
+    "https://www.bochk.com/creditcard/promo/offer_yro/hk/data/PetEssentials.json",
+    "https://www.bochk.com/creditcard/promo/offer_yro/mc/data/macau/Dining.json",
+    "https://www.bochk.com/creditcard/promo/offer_yro/mc/data/macau/HotelPrivileges.json",
+    "https://www.bochk.com/creditcard/promo/offer_yro/mc/data/macau/ShoppingLeisure.json"
+   ],
    "status": "untested",
    "full_crawl_order": 51,
    "suggested_by": null,
