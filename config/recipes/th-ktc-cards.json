@@ -1,0 +1,31 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-ktc-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "th-ktc"
+  },
+  "country": "TH",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.ktc.co.th/en/credit-card"
+  ],
+  "list": {
+    "item": "div.credit-card-item",
+    "fields": {
+      "name": "h3",
+      "url": "a[gtm-event='product_list']@href"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "annual_fee_label": "h3"
+    },
+    "text_selector": "main"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The English catalogue at /en/credit-card is a Next.js page. The default Personal tab shows 18 visible tiles (generic and digital cards) marked div.credit-card-item. The same page payload also lists co-branded, affinity and invitation-only consumer cards (81 consumer cards in total, excluding 3 corporate cards). Invitation and Corporate are tabs on this page; View More Cards reveals further generic products such as Cash Back, Senior and I AM. The fetcher may class the page captcha because of a reCAPTCHA legal notice on the apply form; the public card list is present. Product pages under /en/ktc-digitalcard/ are on the same official host. The site has an English version, so this recipe starts from the English catalogue only."
+}
