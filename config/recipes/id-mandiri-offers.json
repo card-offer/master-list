@@ -1,0 +1,18 @@
+{
+  "recipe": "recipe/1",
+  "id": "id-mandiri-offers",
+  "owner": {"type": "issuer", "id": "id-mandiri"},
+  "country": "ID",
+  "purpose": "offers",
+  "mode": "browser",
+  "start_urls": ["https://www.bankmandiri.co.id/en/promo-mandiri"],
+  "list": {
+    "item": "ul.ag-promo__list > li",
+    "fields": {
+      "title": "a.ag-mask__link@title",
+      "url": "a.ag-mask__link@href"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "English promo hub at /en/promo-mandiri (language switcher lands here; lang=en-US). Four category tiles: Promo Kartu Debit (bmri.id/promodebit, off-domain), Promo Kartu Kredit (mandirikartukredit.com/hot-offer, off-domain and not fetched), Promo Livin Poin (bankmandiri.co.id/livinpoin, not a credit-card listing), and Promo Investasi (bankmandiri.co.id/livin-investasi, investment). No credit-card offer tiles are hosted on bankmandiri.co.id. Plain HTTP timed out; use browser mode. robots.txt was unreadable."
+}

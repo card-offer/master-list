@@ -205,7 +205,7 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 70 | ID | issuer | cards | Bank Mega | `bankmega.com` | untested | https://bankmega.com/id/personal/kartu-kredit/ |
 | 70 | ID | issuer | offers | Bank Mega | `bankmega.com` | untested | https://bankmega.com/id/promo/ |
 | 71 | ID | issuer | cards | Bank Mandiri | `bankmandiri.co.id` | untested |  |
-| 71 | ID | issuer | offers | Bank Mandiri | `bankmandiri.co.id` | untested | https://bankmandiri.co.id/promo-mandiri |
+| 71 | ID | issuer | offers | Bank Mandiri | `bankmandiri.co.id` | untested | https://www.bankmandiri.co.id/en/promo-mandiri |
 | 72 | ID | issuer | cards | BCA | `bca.co.id` | untested | https://www.bca.co.id/id/individu/produk/kartu-kredit |
 | 72 | ID | issuer | offers | BCA | `bca.co.id` | untested | https://www.bca.co.id/id/promo-bca/2021/04/01/14/42/kartu-kredit-bca |
 | 72 | ID | issuer | cards | BCA | `promo.bca.co.id` | untested |  |

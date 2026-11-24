@@ -117,11 +117,11 @@
       "country": "ID",
       "crawl": {
         "card_sources": [],
-        "note": "The official homepage states mandiri kartu kredit and links the product catalogue to mandirikartukredit.com, which is off-domain and was not fetched. https robots.txt was unreadable.",
+        "note": "English first-run 2026-11-24. The site language switcher has ID and EN. English homepage https://www.bankmandiri.co.id/en/home (lang=en-US, title Mandiri - Leading, Trusted. Enabling growth.) and English promo hub https://www.bankmandiri.co.id/en/promo-mandiri exist, so Indonesian pages were not handed in. Plain HTTP timed out twice, 10 minutes apart; the headless browser returned class ok. Real Chrome was not used. robots.txt on www.bankmandiri.co.id timed out (robots_unreachable); every fetched page is marked robots_unreadable. sitemap.xml returned HTTP 403. The English Credit card menu, Find my perfect credit card, and Promo Kartu Kredit tile all link to mandirikartukredit.com, which is not in official_domains and was not fetched. The English loans page /en/pinjaman lists personal loans and mortgages only. No consumer credit-card product page or credit-card offer tile is hosted on bankmandiri.co.id. listing_complete is false.",
         "offer_sources": [
-          "https://bankmandiri.co.id/promo-mandiri"
+          "https://www.bankmandiri.co.id/en/promo-mandiri"
         ],
-        "status": "not_covered"
+        "status": "partial"
       },
       "id": "id-mandiri",
       "legal_name": "PT BANK MANDIRI (PERSERO) Tbk",
