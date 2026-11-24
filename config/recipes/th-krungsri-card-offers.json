@@ -1,0 +1,23 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-krungsri-card-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "th-krungsri-card"
+  },
+  "country": "TH",
+  "purpose": "offers",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.krungsricard.com/en"
+  ],
+  "list": {
+    "item": "div.col-12.d-none.d-sm-block a.ctn-box.newfilter[href*='/en/promotion/']",
+    "fields": {
+      "title": ":scope",
+      "url": ":scope@href"
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "note": "robots.txt disallows /en/promotion, /en/Promotion and /en/article, so the English promotions listing and offer pages under /en/promotion cannot be fetched. This recipe starts from the English homepage, which shows featured offer tiles (a.ctn-box.newfilter) that link into /en/promotion/... Those detail URLs must not be fetched until robots.txt allows them. Thai /th/promotion is allowed by robots but must not be crawled while the English site exists. Featured tiles seen on 24 Nov 2026 included embassy, jubilee, free-ticket, point-cashback and dusit-gold."
+}

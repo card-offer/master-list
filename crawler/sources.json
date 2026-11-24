@@ -2321,7 +2321,7 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.krungsricard.com/th/product"
+    "https://www.krungsricard.com/en/product"
    ],
    "status": "untested",
    "full_crawl_order": 61,
@@ -2336,7 +2336,7 @@
    "type": "issuer",
    "purpose": "offers",
    "entry_urls": [
-    "https://www.krungsricard.com/th/promotion"
+    "https://www.krungsricard.com/en/promotion"
    ],
    "status": "untested",
    "full_crawl_order": 61,

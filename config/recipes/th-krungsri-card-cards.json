@@ -1,0 +1,40 @@
+{
+  "recipe": "recipe/1",
+  "id": "th-krungsri-card-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "th-krungsri-card"
+  },
+  "country": "TH",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.krungsricard.com/en/product"
+  ],
+  "list": {
+    "item": "div.col-12.d-none.d-sm-block div.Product-Filter",
+    "fields": {
+      "name": ":scope@data-name",
+      "name_th": "h2",
+      "url": "a[href*='creditcard']@href",
+      "network": ":scope@data-payment",
+      "income": ":scope@data-income"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading_en": "h2.subtitle, h3",
+      "heading_th": "h1",
+      "hero": ".hero-banner-desc-wrapper",
+      "highlights": {
+        "selector": "h3.highlight-content-title, h3.card-grid-item-title",
+        "all": true,
+        "join": " | "
+      }
+    },
+    "text_selector": "main, body"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "English product listing at /en/product. The same 20 tiles are in the desktop grid (div.col-12.d-none.d-sm-block) and a mobile swiper (div.col-12.d-block.d-sm-none); this recipe uses the desktop grid only. The 20 tiles include two corporate cards (Krungsri Corporate Credit Card and Krungsri HomePro Corporate Card), which must not be handed in. Krungsri Private Banking Credit Card is in the grid, but fetcher SKIP_URL matches e-banking inside private-banking so the product page cannot be fetched. The site has an English version, so this recipe starts from /en/product only. PDFs are disallowed by robots.txt (Disallow: /*.pdf$). Some consumer product pages embed an apply-form reCAPTCHA; the public product text is still in the HTML."
+}
