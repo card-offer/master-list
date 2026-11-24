@@ -2872,8 +2872,7 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.bangkokbank.com/en/personal/cards/credit-cards",
-    "https://www.bangkokbank.com/en/personal/cards/credit-cards/bangkok-bank-airasia-credit-card"
+    "https://www.bangkokbank.com/en/personal/cards/credit-cards"
    ],
    "status": "untested",
    "full_crawl_order": 79,
@@ -2888,7 +2887,8 @@
    "type": "issuer",
    "purpose": "offers",
    "entry_urls": [
-    "https://www.bangkokbank.com/en/personal/cards/credit-cards/promotions"
+    "https://www.bangkokbank.com/en/personal/cards/credit-cards/promotions",
+    "https://www.bangkokbank.com/apiaem/content/bangkokbank/en/personal/cards/credit-cards/promotions.allpromo.json"
    ],
    "status": "untested",
    "full_crawl_order": 79,
