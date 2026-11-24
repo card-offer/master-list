@@ -1,0 +1,24 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-citi-offers",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-citi"
+  },
+  "country": "HK",
+  "purpose": "offers",
+  "mode": "browser",
+  "start_urls": [
+    "https://www.citibank.com.hk/english/credit-cards/promotions/latest-promotions/"
+  ],
+  "list": {
+    "item": "div.productsListCont",
+    "key": "name",
+    "fields": {
+      "name": "h2",
+      "url": "a.grayBtn@href"
+    }
+  },
+  "listing_kind": "issuer_promotion_listing",
+  "note": "The promotions listing used to live at /english/credit-cards/credit-promotions.htm and now redirects to /english/credit-cards/promotions/latest-promotions/. Plain HTTP returns an Akamai 403 bot wall. Headless browser mode reaches the page. Offer tiles are div.productsListCont with a heading and a DETAILS button. Some DETAILS buttons are javascript speedbumps to hosts that are not official (specials.priceless.com, visa.com.hk, citiworldprivileges.com); do not fetch those hosts. Shopping, Dining, Travel and Points Rewards are javascript category filters on this same page. Welcome offers, the student welcome, the member-get-member referral, the Mastercard spender mega draw, and The Peninsula Hong Kong cake e-voucher live on other official pages and must be read with this listing. Do not use an em dash in a title or a published quote."
+}

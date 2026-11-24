@@ -188,21 +188,45 @@
       "website": "https://www.chbank.com/"
     },
     {
-      "card_ids": [],
+      "card_ids": [
+        "hk-citi-cash-back-card",
+        "hk-citi-hktvmall-card",
+        "hk-citi-octopus-platinum-card",
+        "hk-citi-plus-credit-card",
+        "hk-citi-premiermiles-card",
+        "hk-citi-prestige-card",
+        "hk-citi-rewards-card",
+        "hk-citi-rewards-unionpay-card",
+        "hk-citi-the-club-credit-card"
+      ],
       "country": "HK",
       "crawl": {
         "card_sources": [
-          "https://www.citibank.com.hk/",
-          "https://www.citibank.com.hk/english/credit-cards/"
+          "https://www.citibank.com.hk/en/credit-cards/index.html",
+          "https://www.citibank.com.hk/e-welcome/english/credit-cards/prestige/index.html",
+          "https://www.citibank.com.hk/en/credit-cards/premiermiles-card/index.html",
+          "https://www.citibank.com.hk/en/credit-cards/cashback-card/index.html",
+          "https://www.citibank.com.hk/english/credit-cards/rewards-card/index.html",
+          "https://www.citibank.com.hk/english/credit-cards/hktvmall-card/",
+          "https://www.citibank.com.hk/english/credit-cards/citi-the-club-card/",
+          "https://www.citibank.com.hk/english/credit-cards/pdf/fee-schedule.pdf"
         ],
-        "note": "The homepage links credit cards. https://www.citibank.com.hk/english/credit-cards/ was a JavaScript shell this run. CITIBANK, N.A. is listed separately on the HKMA licensed-bank list with the same official website; consumer cards on that site are treated under this issuer.",
-        "offer_sources": [],
-        "status": "not_covered"
+        "note": "First full crawl on 24 Nov 2026. The live consumer listing is https://www.citibank.com.hk/en/credit-cards/index.html; the older /english/credit-cards/ path is a JavaScript redirect shell. 9 cards have a listing tile. Prestige uses the e-welcome product page because the listing Know More link redirects to www1.citibank.com.hk, which is not in official_domains. Octopus Platinum and PLUS have no 200 product page on www.citibank.com.hk (the Octopus path redirects to www1; PLUS returns 403), so those two cards use the listing URL as official_url. Clear, Virtual, and fee-schedule names Classic, Gold, Octopus Gold and ULTIMA were not handed in. 14 live offers from official welcome, student, MGM, Peninsula, Mega Draw and SmarTone pages. listing_complete is false because www1 product pages were not fetched, some listings returned 403, and promotions DETAILS buttons that point off official_domains were not followed. CITIBANK, N.A. shares this official website; consumer cards on the site are under this issuer.",
+        "offer_sources": [
+          "https://www.citibank.com.hk/english/credit-cards/promotions/latest-promotions/",
+          "https://www.citibank.com.hk/english/credit-cards/welcome-offers/tnc/",
+          "https://www.citibank.com.hk/english/credit-cards/promotions/student-cards/",
+          "https://www.citibank.com.hk/english/tnc/peninsula-cake.pdf",
+          "https://www.citibank.com.hk/global_docs/english/credit-cards/mgm/promotion-mgm-referrer.html",
+          "https://www.citibank.com.hk/english/credit-cards/megadraw/index.html",
+          "https://www.citibank.com.hk/english/credit-cards/promotions/shopping/smartone/"
+        ],
+        "status": "partial"
       },
       "id": "hk-citi",
       "legal_name": "CITIBANK (HONG KONG) LIMITED",
       "name": "Citibank (Hong Kong)",
-      "offer_count": 0,
+      "offer_count": 14,
       "official_domains": [
         "citibank.com.hk"
       ],

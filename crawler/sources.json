@@ -1828,8 +1828,14 @@
    "type": "issuer",
    "purpose": "cards",
    "entry_urls": [
-    "https://www.citibank.com.hk/",
-    "https://www.citibank.com.hk/english/credit-cards/"
+    "https://www.citibank.com.hk/en/credit-cards/index.html",
+    "https://www.citibank.com.hk/e-welcome/english/credit-cards/prestige/index.html",
+    "https://www.citibank.com.hk/en/credit-cards/premiermiles-card/index.html",
+    "https://www.citibank.com.hk/en/credit-cards/cashback-card/index.html",
+    "https://www.citibank.com.hk/english/credit-cards/rewards-card/index.html",
+    "https://www.citibank.com.hk/english/credit-cards/hktvmall-card/",
+    "https://www.citibank.com.hk/english/credit-cards/citi-the-club-card/",
+    "https://www.citibank.com.hk/english/credit-cards/pdf/fee-schedule.pdf"
    ],
    "status": "untested",
    "full_crawl_order": 45,
@@ -1843,7 +1849,15 @@
    "country": "HK",
    "type": "issuer",
    "purpose": "offers",
-   "entry_urls": [],
+   "entry_urls": [
+    "https://www.citibank.com.hk/english/credit-cards/promotions/latest-promotions/",
+    "https://www.citibank.com.hk/english/credit-cards/welcome-offers/tnc/",
+    "https://www.citibank.com.hk/english/credit-cards/promotions/student-cards/",
+    "https://www.citibank.com.hk/english/tnc/peninsula-cake.pdf",
+    "https://www.citibank.com.hk/global_docs/english/credit-cards/mgm/promotion-mgm-referrer.html",
+    "https://www.citibank.com.hk/english/credit-cards/megadraw/index.html",
+    "https://www.citibank.com.hk/english/credit-cards/promotions/shopping/smartone/"
+   ],
    "status": "untested",
    "full_crawl_order": 45,
    "suggested_by": null,

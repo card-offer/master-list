@@ -1,10 +1,10 @@
 {
   "countries": {
     "HK": {
-      "cards": 123,
+      "cards": 132,
       "currency": "HKD",
       "issuers": 17,
-      "offers": 545,
+      "offers": 559,
       "path": "/hk/",
       "timezone": "Asia/Hong_Kong"
     },
@@ -49,7 +49,7 @@
       "timezone": "Asia/Bangkok"
     }
   },
-  "generated_at": "2026-11-20T08:39:06+00:00",
+  "generated_at": "2026-11-24T00:34:05+00:00",
   "indexes": "Built in CI and published to GitHub Pages. Not stored on the main branch.",
   "layout": {
     "archive": "{cc}/archive/offers/{issuer}.json",
@@ -67,7 +67,7 @@
     "scope": "Compiled structured data only. Issuer terms belong to the issuers.",
     "url": "https://creativecommons.org/licenses/by/4.0/"
   },
-  "merchants": 2606,
+  "merchants": 2608,
   "name": "card-offer master list",
   "networks": 6,
   "schema_version": "0.3.0",
