@@ -1,0 +1,33 @@
+{
+  "recipe": "recipe/1",
+  "id": "ph-hsbc-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "ph-hsbc"
+  },
+  "country": "PH",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.hsbc.com.ph/credit-cards/products/"
+  ],
+  "list": {
+    "item": "#chp_main_container_1 div.M-CNT-ITEM-ART-DEV",
+    "key": "name",
+    "fields": {
+      "name": "h2 span.link.text",
+      "url": "h2 a@href",
+      "description": "div.A-TYPS5R-RW-DEV"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "body": "main"
+    },
+    "text_selector": "main, body"
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The English products listing at /credit-cards/products/ shows four open consumer credit cards in #chp_main_container_1 div.M-CNT-ITEM-ART-DEV (plain HTML, 24 Nov 2026): HSBC Live+ Credit Card, HSBC Red Platinum Mastercard, HSBC Premier Travel Card and HSBC Premier Mastercard. The compare tool lists the same four. The site menu also names HSBC Gold Visa Cash Back at /credit-cards/products/gold-visa/, which redirects to this listing and is not in the sitemap or the compare selector, so it is not a fifth tile. Closed-to-new-application cards (HSBC Advance Visa, HSBC Gold Mastercard and HSBC Classic Credit Card) are on the shared Other credit cards page at /credit-cards/products/other-cards/, not in these tiles. Supplementary card is a add-on, not a product. robots.txt disallows /*.pdf$, including fees and product terms PDFs. Offer tiles in the two introduction heroes are not cards."
+}
