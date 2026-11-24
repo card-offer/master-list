@@ -156,8 +156,8 @@ There are 256 rows in `crawler/sources.json`. Counts by country: HK 46, ID 34, M
 | 46 | HK | issuer | offers | China CITIC Bank International | `cncbinternational.com` | untested |  |
 | 47 | HK | issuer | cards | Standard Chartered Hong Kong | `sc.com` | untested | https://www.sc.com/hk/credit-cards/ |
 | 47 | HK | issuer | offers | Standard Chartered Hong Kong | `sc.com` | untested |  |
-| 48 | HK | issuer | cards | Hang Seng Bank | `hangseng.com` | untested | https://www.hangseng.com/en-hk/personal/cards/overview/ |
-| 48 | HK | issuer | offers | Hang Seng Bank | `hangseng.com` | untested |  |
+| 48 | HK | issuer | cards | Hang Seng Bank | `hangseng.com` | untested | https://www.hangseng.com/en-hk/personal/cards/overview/, https://www.hangseng.com/en-hk/personal/cards/products/platinum-card/, https://www.hangseng.com/en-hk/personal/cards/products/university-affinity/, https://www.hangseng.com/en-hk/personal/cards/card-directory/ |
+| 48 | HK | issuer | offers | Hang Seng Bank | `hangseng.com` | untested | https://www.hangseng.com/en-hk/personal/cards/fun-dollars-merchant-list/, https://www.hangseng.com/en-hk/personal/cards/spending-privileges/offers-of-the-month-all/month-creditcard/, https://www.hangseng.com/en-hk/personal/cards/spending-privileges/year-round-offers/ |
 | 49 | HK | issuer | cards | DBS Hong Kong | `dbs.com.hk` | untested | https://www.dbs.com.hk/personal/credit-cards/default.page |
 | 49 | HK | issuer | offers | DBS Hong Kong | `dbs.com.hk` | untested |  |
 | 50 | HK | issuer | cards | HSBC Hong Kong | `hsbc.com.hk` | untested | https://www.hsbc.com.hk/credit-cards/ |

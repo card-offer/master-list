@@ -1,0 +1,25 @@
+{
+  "recipe": "recipe/1",
+  "id": "hk-hang-seng-cards",
+  "owner": {
+    "type": "issuer",
+    "id": "hk-hang-seng"
+  },
+  "country": "HK",
+  "purpose": "cards",
+  "mode": "plain",
+  "start_urls": [
+    "https://www.hangseng.com/en-hk/personal/cards/products/platinum-card/"
+  ],
+  "list": {
+    "item": "div.LeftMenu_sectionLeftNav a[href*='cards/products/']",
+    "key": "url",
+    "fields": {
+      "name": ":scope",
+      "url": ":scope@href"
+    }
+  },
+  "listing_kind": "issuer_listing",
+  "detail_kind": "issuer_product_page",
+  "note": "The RWD Cards Overview page does not include a product tile list in the static HTML. The official consumer credit card catalogue is the left menu on classic card pages such as the Hang Seng Platinum Card page (the same menu appears on the +FUN Dollars merchant list). Select div.LeftMenu_sectionLeftNav links whose href contains cards/products/. This run had 15 product links: 13 consumer credit cards (Visa Infinite, Prestige World Mastercard, Travel+ Visa Signature, MMPOWER World Mastercard, Platinum, Renminbi, enJoy, MUJI, and five university or college cards), plus the University / College Affinity Cards landing page and the Multi-Currency Debit Mastercard, which must be left out of the credit-card hand-in. Travel+ and MMPOWER may use /content/wpb/hase/en_hk/personal/cards/products/ paths that resolve to the same product pages."
+}
