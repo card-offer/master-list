@@ -1,0 +1,33 @@
+{
+  "recipe": "recipe/1",
+  "id": "network-jcb-id-campaign",
+  "owner": {"type": "network", "id": "jcb"},
+  "country": "ID",
+  "purpose": "offers",
+  "mode": "plain",
+  "source": "json",
+  "start_urls": [
+    "https://www.specialoffers.jcb/id/campaign/output/d/southeast-and-south-asia/indonesia/ajax.json"
+  ],
+  "list": {
+    "item": "entries",
+    "fields": {
+      "id": "id",
+      "title": "title",
+      "url": "link",
+      "cat1": "cat1",
+      "cat2": "cat2"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1",
+      "sections": {"selector": "h2.ttl", "all": true, "join": " | "},
+      "terms": "main"
+    },
+    "text_selector": "main"
+  },
+  "listing_kind": "network_offer_listing",
+  "detail_kind": "network_offer_page",
+  "note": "The Indonesia campaign page https://www.specialoffers.jcb/id/campaign/d/southeast-and-south-asia/indonesia/ loads its tiles from this public JSON file (20 entries on 25 Nov 2026). The English campaign file lists only 3 multi-region campaigns, and none is for Indonesia-issued cards alone. Each entry is one campaign page /id/campaign/detail/<name>/<id>/. Read each page by hand when it changes: the page text is free text, one page can hold several deals (Trip.com has four promo codes, ANA a discount and a cashback, Singapore Airlines two cashbacks), and the eligible cards are named in the text (Indonesia-issued cards, issuer names, or the Ultimate and Precious tiers). The roundup 'Eksklusif Dining di Jakarta & Bali' (89804) repeats restaurants that have their own offer pages; only Morimoto is handed in from it."
+}

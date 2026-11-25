@@ -1,0 +1,35 @@
+{
+  "recipe": "recipe/1",
+  "id": "network-jcb-id-offers",
+  "owner": {"type": "network", "id": "jcb"},
+  "country": "ID",
+  "purpose": "offers",
+  "mode": "plain",
+  "source": "json",
+  "start_urls": [
+    "https://www.specialoffers.jcb/id/offers/output/d/southeast-and-south-asia/indonesia/ajax.json"
+  ],
+  "list": {
+    "item": "entries",
+    "fields": {
+      "id": "id",
+      "merchant": "title",
+      "url": "link",
+      "benefit": "disc",
+      "cat1": "cat1",
+      "cat2": "cat2",
+      "cat3": "cat3"
+    }
+  },
+  "detail": {
+    "fields": {
+      "heading": "h1.entry-title",
+      "coupon": "div.coupon-Layout",
+      "terms": "div.text-Layout div.text"
+    },
+    "text_selector": "main"
+  },
+  "listing_kind": "network_offer_listing",
+  "detail_kind": "network_offer_page",
+  "note": "The Indonesia regional offers page https://www.specialoffers.jcb/id/offers/d/southeast-and-south-asia/indonesia/ loads its tiles from this public JSON file (137 entries on 25 Nov 2026, equal to the category counts on the page: restaurant 119, retail store 4, relaxation 4, leisure 3, hotel 3, others 3, transport 1). The English page https://www.specialoffers.jcb/en/offers/d/southeast-and-south-asia/indonesia/ returns an empty list, so the Indonesian pages (/id/) are the listing for this location. Each entry is one offer page /id/offers/detail/A-xxxxxxxx-07/; the item key is the last path part, which is the source_key of the hand-in. The Note text starts with the eligibility sentence ('Semua pemegang kartu kredit JCB', 'Subjek hanya untuk pemegang kartu yg diterbitkan di Indonesia' or 'Subjek hanya untuk pemegang kartu tertentu saja'); read the next lines for Ultimate-only perks. The coupon block holds 'Valid :YYYY-MM-DD - YYYY-MM-DD', which gives the start and end date. Offers whose end date is before the run date are still listed on the site: leave them out and count them. Pages with more than one deal (for example Papaya, REGAL, Nomuji, Dandelion, Iseikai) are handed in as benefit-1, benefit-2 and so on."
+}
